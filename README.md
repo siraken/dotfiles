@@ -8,18 +8,6 @@ Place this repository on `username/dotfiles` and run an excutable file `symlink`
 
 `curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher`
 
-## vim
-
-Run the command below to install `vim-plug`
-
-```bash
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-- Add plugins to `.vimrc` and run `:PlugInstall`.
-- To remove plugins, comment out or delete the statement of the plugin and run `:PlugClean`
-
 ## nvim
 
 Run the command below to  install `vim-plug`
@@ -28,6 +16,9 @@ Run the command below to  install `vim-plug`
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
+
+- Add plugins to `nvim/plug.vim` and run `:PlugInstall`.
+- To remove plugins, comment out or delete the statement of the plugin and run `:PlugClean`
 
 ## Coc
 
