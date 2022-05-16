@@ -1,0 +1,18 @@
+add_newline = true
+
+[line_break]
+disabled = false
+
+[username]
+disabled = false
+show_always = true
+
+[localip]
+ssh_only = false
+format = "[$localipv4](bold green) "
+disabled = false
+
+[gcloud]
+format = "[$symbol$active]($style) "
+style = "bold blue"
+disabled = true

@@ -1,0 +1,40 @@
+#!/bin/sh
+
+cat <<EOF
+
+--------------------------------------------------------------------------------
+  dotfiles install: symlinks
+--------------------------------------------------------------------------------
+
+Installing symlinks...
+
+EOF
+
+# zsh
+echo "zsh"
+ln -sf ~/dotfiles/.zprofile ~/.zprofile
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+
+# fish
+echo "fish"
+ln -sf ~/dotfiles/.config/fish/ ~/.config
+
+# tmux
+echo "tmux"
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+
+# Starship
+echo "Starship"
+ln -sf ~/dotfiles/.config/starship.toml ~/.config
+
+# Neovim
+echo "Neovim"
+ln -sf ~/dotfiles/.config/nvim/ ~/.config
+
+cat <<EOF
+
+--------------------------------------------------------------------------------
+  dotfiles install: done!!
+--------------------------------------------------------------------------------
+
+EOF

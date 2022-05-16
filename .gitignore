@@ -1,0 +1,37 @@
+*
+*/
+!*/
+
+# git
+!.gitignore
+!README.md
+
+# Setup files
+!install
+
+# zsh
+!.zshrc
+!.zprofile
+
+# fish
+!.config/fish/config.fish
+!.config/fish/config-darwin.fish
+!.config/fish/config-linux.fish
+!.config/fish/functions/b64.fish
+!.config/fish/functions/cani.fish
+!.config/fish/functions/ffc.fish
+!.config/fish/functions/google.fish
+!.config/fish/functions/ign.fish
+!.config/fish/functions/meme.fish
+
+# tmux
+!.tmux.conf
+
+# Starship
+!.config/starship.toml
+
+# Neovim
+!.config/nvim/colors/*
+!.config/nvim/coc-settings.json
+!.config/nvim/init.vim
+!.config/nvim/plug.vim
