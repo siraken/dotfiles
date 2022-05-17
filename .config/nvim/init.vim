@@ -60,4 +60,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:airline#extensions#tabline#enabled = 1
 
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
 :command Tr NERDTree

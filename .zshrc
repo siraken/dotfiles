@@ -32,6 +32,9 @@ if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc'; fi
 eval "$(anyenv init -)"
 
+# aliases
+alias vim='nvim'
+
 # -------------------------------------------------------------------------------- start oh-my-zsh
 
 # If you come from bash you might have to change your $PATH.
