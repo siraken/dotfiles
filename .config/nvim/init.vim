@@ -29,20 +29,6 @@ colorscheme monokai
 
 runtime ./plug.vim
 
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-	highlight = {
-		enable = true,
-		disable = {}
-	},
-	indent = {
-		enable = true,
-		strategy = 'tab',
-		indent_size = 2
-	},
-}
-EOF
-
 "" coc.nvim
 """ Navigate completion by <Tab>
 function! s:check_back_space() abort
