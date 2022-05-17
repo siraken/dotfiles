@@ -12,6 +12,7 @@
 # zsh
 !.zshrc
 !.zprofile
+!.p10k.zsh
 
 # fish
 !.config/fish/config.fish
