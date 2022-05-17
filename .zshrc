@@ -111,6 +111,8 @@ if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
   plugins=(
     git
     macos
+    zsh-autosuggestions
+    zsh-syntax-highlighting
   )
   source $ZSH/oh-my-zsh.sh
 fi
