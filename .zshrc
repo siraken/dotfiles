@@ -33,6 +33,7 @@ if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then .
 eval "$(anyenv init -)"
 
 # aliases
+alias vi='nvim'
 alias vim='nvim'
 
 # -------------------------------------------------------------------------------- start oh-my-zsh

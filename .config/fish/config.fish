@@ -1,6 +1,7 @@
 set fish_greeting
 
 # aliases
+alias vi="nvim"
 alias vim="nvim"
 
 status --is-interactive; and rbenv init - fish | source
