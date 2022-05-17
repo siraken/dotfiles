@@ -8,6 +8,7 @@ Place this repository on `username/dotfiles` and run an excutable file `symlink`
 
 - [fish](https://fishshell.com/)
   - [fisher](https://github.com/jorgebucaran/fisher)
+  - [IlanCosman/tide](https://github.com/IlanCosman/tide)
 - [Zsh](https://zsh.org/)
   - [Oh My Zsh](https://ohmyz.sh/)
   - [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)

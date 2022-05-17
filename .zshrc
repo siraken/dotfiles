@@ -112,9 +112,8 @@ if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
     git
     macos
   )
+  source $ZSH/oh-my-zsh.sh
 fi
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
