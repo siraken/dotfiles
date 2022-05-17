@@ -14,6 +14,13 @@ require 'nvim-treesitter.configs'.setup {
   },
   ensure_installed = {
     "tsx",
+    "javascript",
+    "typescript",
+    "vue",
+    "c",
+    "ruby",
+    "kotlin",
+    "python",
     "toml",
     "fish",
     "php",
@@ -22,6 +29,7 @@ require 'nvim-treesitter.configs'.setup {
     "swift",
     "rust",
     "go",
+    "gomod",
     "html",
     "scss",
   }
