@@ -27,6 +27,8 @@
 
 # tmux
 !.tmux.conf
+!.tmux.conf.darwin
+!.tmux.powerline.conf
 
 # Starship
 !.config/starship.toml
@@ -36,4 +38,5 @@
 !.config/nvim/coc-settings.json
 !.config/nvim/init.vim
 !.config/nvim/plug.vim
+!.config/nvim/after/plugin/*
 .config/nvim/plugged

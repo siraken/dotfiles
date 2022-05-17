@@ -23,6 +23,8 @@ ln -sf ~/dotfiles/.config/fish/ ~/.config
 # tmux
 echo "tmux"
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/.tmux.conf.darwin ~/.tmux.conf.darwin
+ln -sf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 
 # Starship
 echo "Starship"
