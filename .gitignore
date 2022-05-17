@@ -35,3 +35,4 @@
 !.config/nvim/coc-settings.json
 !.config/nvim/init.vim
 !.config/nvim/plug.vim
+.config/nvim/plugged
