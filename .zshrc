@@ -35,6 +35,7 @@ eval "$(anyenv init -)"
 # aliases
 alias vi='nvim'
 alias vim='nvim'
+alias gs='git status'
 
 # -------------------------------------------------------------------------------- start oh-my-zsh
 
@@ -117,6 +118,7 @@ if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
     macos
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-z
   )
   source $ZSH/oh-my-zsh.sh
 fi
