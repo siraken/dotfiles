@@ -49,4 +49,23 @@ let g:airline#extensions#tabline#enabled = 1
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
+let g:go_template_autocreate = 0
+
+let g:coc_global_extensions = [
+      \'coc-go',
+      \'coc-html',
+      \'coc-json',
+      \'coc-sh',
+      \'coc-tailwindcss',
+      \'coc-tsserver',
+      \'coc-blade',
+      \'coc-yaml',
+      \'coc-java',
+      \'coc-markdownlint',
+      \'coc-spell-checker',
+      \'coc-highlight',
+      \'coc-git',
+      \'coc-deno',
+\]
+
 :command Tr NERDTree
