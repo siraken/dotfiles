@@ -20,6 +20,7 @@ set encoding=utf-8
 set nowrap
 set backspace=start,eol,indent
 set lazyredraw
+set completeopt=menuone,noinsert
 
 highlight CurrLine ctermbg=magenta cterm=bold ctermfg=white
 
@@ -44,6 +45,11 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+
+inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+
 let g:airline#extensions#tabline#enabled = 1
 
 let g:prettier#autoformat = 1
@@ -66,6 +72,8 @@ let g:coc_global_extensions = [
       \'coc-highlight',
       \'coc-git',
       \'coc-deno',
+      \'coc-pyright',
+      \'coc-vetur',
 \]
 
 :command Tr NERDTree

@@ -34,6 +34,10 @@ ln -sf ~/dotfiles/.config/starship.toml ~/.config
 echo "Neovim"
 ln -sf ~/dotfiles/.config/nvim/ ~/.config
 
+# MongoDB Shell
+echo "MongoDB Shell"
+ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
+
 cat <<EOF
 
 --------------------------------------------------------------------------------

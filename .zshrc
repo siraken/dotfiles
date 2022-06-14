@@ -10,9 +10,6 @@ export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
 export PATH="~/.composer/vendor/bin:$PATH"
 export PATH="$PATH:/Users/siraken/Developer/flutter/bin"
 
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh" # This loads nvm

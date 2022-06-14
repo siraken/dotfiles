@@ -12,6 +12,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jwalton512/vim-blade'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tomlion/vim-solidity'
 Plug 'github/copilot.vim'
 
 if has("nvim")
