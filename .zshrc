@@ -29,11 +29,6 @@ if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc'; fi
 eval "$(anyenv init -)"
 
-# aliases
-alias vi='nvim'
-alias vim='nvim'
-alias gs='git status'
-
 # -------------------------------------------------------------------------------- start oh-my-zsh
 
 # If you come from bash you might have to change your $PATH.
@@ -146,6 +141,36 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# aliases
+alias vi='nvim'
+alias vim='nvim'
+alias gs='git status'
+
+case ${OSTYPE} in
+  darwin*)
+    alias ls='exa'
+    alias ll='exa -l -g --icons'
+    alias lla='ll -a'
+    ;;
+  linux*)
+    ;;
+esac
+
+# Functions
+gcom () {
+    git add . && git status
+    echo "Commit message:" && read message;
+    git commit -m ${message} && git push
+}
+
+goinit () {
+    dirname=${PWD##*/}
+    echo "Enter the package name:" && read package;
+    mkdir -p ${package} && cd ${package}
+    go mod init github.com/${dirname}/${package}
+    git init && touch main.go README.md
+}
+
 # ----------------------------------------------------------------------------- end oh-my-zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -154,5 +179,3 @@ fi
 # startship
 # eval "$(starship init zsh)"
 
-# start fish shell on login
-fish
