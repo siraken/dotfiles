@@ -21,9 +21,7 @@
 !.config/fish/functions/b64.fish
 !.config/fish/functions/cani.fish
 !.config/fish/functions/ffc.fish
-!.config/fish/functions/google.fish
 !.config/fish/functions/ign.fish
-!.config/fish/functions/meme.fish
 
 # tmux
 !.tmux.conf
