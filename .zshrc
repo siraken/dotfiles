@@ -145,6 +145,7 @@ fi
 alias vi='nvim'
 alias vim='nvim'
 alias gs='git status'
+alias cat='bat'
 
 case ${OSTYPE} in
   darwin*)
