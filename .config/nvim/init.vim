@@ -74,6 +74,7 @@ let g:coc_global_extensions = [
       \'coc-deno',
       \'coc-pyright',
       \'coc-vetur',
+      \'coc-kotlin',
 \]
 
 :command Tr NERDTree
