@@ -14,6 +14,7 @@ Plug 'jwalton512/vim-blade'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tomlion/vim-solidity'
 Plug 'github/copilot.vim'
+Plug 'rust-lang/rust.vim'
 
 if has("nvim")
   Plug 'neovim/nvim-lspconfig'

@@ -25,6 +25,7 @@ set completeopt=menuone,noinsert
 highlight CurrLine ctermbg=magenta cterm=bold ctermfg=white
 
 syntax enable
+filetype plugin indent on
 
 colorscheme monokai
 
@@ -55,6 +56,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
+let g:rustfmt_autosave = 1
+
 let g:go_template_autocreate = 0
 
 let g:coc_global_extensions = [
@@ -75,6 +78,7 @@ let g:coc_global_extensions = [
       \'coc-pyright',
       \'coc-vetur',
       \'coc-kotlin',
+      \'coc-rls',
 \]
 
 :command Tr NERDTree
