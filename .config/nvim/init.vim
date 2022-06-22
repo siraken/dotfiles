@@ -21,6 +21,15 @@ set nowrap
 set backspace=start,eol,indent
 set lazyredraw
 set completeopt=menuone,noinsert
+set smarttab
+
+if exists("&termguicolors") && exists("&winblend")
+  set termguicolors
+  set winblend=0
+  set wildoptions=pum
+  set pumblend=5
+  set background=dark
+endif
 
 highlight CurrLine ctermbg=magenta cterm=bold ctermfg=white
 
