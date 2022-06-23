@@ -146,6 +146,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias gs='git status'
 alias cat='bat'
+alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
 
 case ${OSTYPE} in
   darwin*)

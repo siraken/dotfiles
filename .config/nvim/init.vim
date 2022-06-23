@@ -6,7 +6,13 @@ set number
 set title
 set tabstop=2
 set shiftwidth=2
-set autoindent
+" set softtabstop=0
+set expandtab
+set smarttab
+" set autoindent
+set smartindent
+" set cindent
+" set shiftround
 set background=dark
 set cmdheight=1
 set ruler
@@ -15,13 +21,18 @@ set nobackup
 set hlsearch
 set ignorecase
 set showcmd
-set expandtab
 set encoding=utf-8
 set nowrap
 set backspace=start,eol,indent
 set lazyredraw
 set completeopt=menuone,noinsert
-set smarttab
+set scrolloff=10
+set shell=zsh
+filetype plugin indent on
+
+if has('nvim')
+  set inccommand=split
+endif
 
 if exists("&termguicolors") && exists("&winblend")
   set termguicolors
@@ -36,9 +47,9 @@ highlight CurrLine ctermbg=magenta cterm=bold ctermfg=white
 syntax enable
 filetype plugin indent on
 
-colorscheme monokai
-
 runtime ./plug.vim
+
+colorscheme monokai
 
 "" coc.nvim
 """ Navigate completion by <Tab>
@@ -60,7 +71,11 @@ inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 
+let g:airline_theme = 'molokai'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+let g:NERDTreeWinSize = 24
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
@@ -88,6 +103,7 @@ let g:coc_global_extensions = [
       \'coc-vetur',
       \'coc-kotlin',
       \'coc-rls',
+      \'@yaegassy/coc-intelephense',
 \]
 
 :command Tr NERDTree

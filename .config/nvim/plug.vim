@@ -16,6 +16,14 @@ Plug 'rust-lang/rust.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'sickill/vim-monokai'
+Plug 'tomasr/molokai'
+Plug 'cocopon/iceberg.vim'
+
+" Homebrew
+" Plug 'SiraKen/html-parser.vim'
 
 if has("nvim")
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
