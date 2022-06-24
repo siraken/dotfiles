@@ -27,7 +27,7 @@ set backspace=start,eol,indent
 set lazyredraw
 set completeopt=menuone,noinsert
 set scrolloff=10
-set shell=zsh
+" set shell=zsh
 filetype plugin indent on
 
 if has('nvim')
