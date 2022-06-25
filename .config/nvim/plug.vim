@@ -37,6 +37,8 @@ if has("nvim")
   Plug 'overcache/NeoSolarized'
   Plug 'rcarriga/nvim-notify'
   Plug 'folke/trouble.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'folke/todo-comments.nvim'
 endif
 
 call plug#end()
