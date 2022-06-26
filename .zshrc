@@ -32,6 +32,21 @@ if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc'; fi
 
+# tmux
+function tmux-ide {
+  case $1 in
+    "l1r3")
+      tmux split-window -h
+      tmux resize-pane -R 25
+      tmux split-window -v
+      tmux split-window -v
+      ;;
+    *)
+      echo "$#"
+      ;;
+  esac
+}
+
 # -------------------------------------------------------------------------------- start oh-my-zsh
 
 # If you come from bash you might have to change your $PATH.
