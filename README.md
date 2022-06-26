@@ -23,10 +23,3 @@ Place this repository on `username/dotfiles` and run an excutable file `symlink`
   - Add plugins to `nvim/plug.vim` and run `:PlugInstall`.
   - To remove plugins, comment out or delete the statement of the plugin and run `:PlugClean`
 
-### Coc
-
-```bash
-:CocInstall coc-html
-:CocInstall coc-tsserver
-:CocInstall coc-json
-```
