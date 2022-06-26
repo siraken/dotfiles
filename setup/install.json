@@ -1,0 +1,242 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "CreationDate": "2022-03-20T14:02:24.955-00:00",
+  "Sources": [
+    {
+      "Packages": [
+        {
+          "PackageIdentifier": "AgileBits.1Password"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VisualStudio.2019.Community"
+        },
+        {
+          "PackageIdentifier": "Google.AndroidStudio"
+        },
+        {
+          "PackageIdentifier": "CPUID.CPU-Z"
+        },
+        {
+          "PackageIdentifier": "Canonical.Ubuntu.2004"
+        },
+        {
+          "PackageIdentifier": "CrystalDewWorld.CrystalDiskInfo"
+        },
+        {
+          "PackageIdentifier": "Discord.Discord"
+        },
+        {
+          "PackageIdentifier": "Docker.DockerDesktop"
+        },
+        {
+          "PackageIdentifier": "Mozilla.Firefox.DeveloperEdition"
+        },
+        {
+          "PackageIdentifier": "GitHub.GitHubDesktop"
+        },
+        {
+          "PackageIdentifier": "Git.Git"
+        },
+        {
+          "PackageIdentifier": "Google.Chrome"
+        },
+        {
+          "PackageIdentifier": "HandBrake.HandBrake"
+        },
+        {
+          "PackageIdentifier": "Logitech.Options"
+        },
+        {
+          "PackageIdentifier": "Microsoft.Edge"
+        },
+        {
+          "PackageIdentifier": "Microsoft.EdgeWebView2Runtime"
+        },
+        {
+          "PackageIdentifier": "Microsoft.WindowsTerminal"
+        },
+        {
+          "PackageIdentifier": "Mozilla.Thunderbird"
+        },
+        {
+          "PackageIdentifier": "Microsoft.OneDrive"
+        },
+        {
+          "PackageIdentifier": "Enterbrain.RGSS-RTPStandard"
+        },
+        {
+          "PackageIdentifier": "Valve.Steam"
+        },
+        {
+          "PackageIdentifier": "Microsoft.Teams"
+        },
+        {
+          "PackageIdentifier": "TeraTermProject.teraterm"
+        },
+        {
+          "PackageIdentifier": "JetBrains.Toolbox"
+        },
+        {
+          "PackageIdentifier": "UnityTechnologies.Unity.2020"
+        },
+        {
+          "PackageIdentifier": "UnityTechnologies.UnityHub"
+        },
+        {
+          "PackageIdentifier": "VideoLAN.VLC"
+        },
+        {
+          "PackageIdentifier": "GitHub.Atom"
+        },
+        {
+          "PackageIdentifier": "SlackTechnologies.Slack"
+        },
+        {
+          "PackageIdentifier": "WinSCP.WinSCP"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2013Redist-x64"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2013Redist-x64"
+        },
+        {
+          "PackageIdentifier": "Microsoft.WindowsInstallationAssistant"
+        },
+        {
+          "PackageIdentifier": "Microsoft.PowerShell"
+        },
+        {
+          "PackageIdentifier": "Logitech.LGS"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2010Redist-x64"
+        },
+        {
+          "PackageIdentifier": "BlenderFoundation.Blender"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2015-2019Redist-x64"
+        },
+        {
+          "PackageIdentifier": "Microsoft.AzureCLI"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2012Redist-x86"
+        },
+        {
+          "PackageIdentifier": "Elgato.4KCaptureUtility"
+        },
+        {
+          "PackageIdentifier": "Microsoft.dotnetRuntime.5-x64"
+        },
+        {
+          "PackageIdentifier": "Elgato.StreamDeck"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2008Redist-x64"
+        },
+        {
+          "PackageIdentifier": "Google.Drive"
+        },
+        {
+          "PackageIdentifier": "Google.ChromeRemoteDesktop"
+        },
+        {
+          "PackageIdentifier": "Microsoft.dotnet"
+        },
+        {
+          "PackageIdentifier": "Elgato.GameCapture.HD"
+        },
+        {
+          "PackageIdentifier": "Microsoft.Teams"
+        },
+        {
+          "PackageIdentifier": "Mojang.MinecraftLauncher"
+        },
+        {
+          "PackageIdentifier": "Amazon.AWSCLI"
+        },
+        {
+          "PackageIdentifier": "Microsoft.PowerToys"
+        },
+        {
+          "PackageIdentifier": "TechPowerUp.GPU-Z"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2015-2019Redist-x86"
+        },
+        {
+          "PackageIdentifier": "Microsoft.dotnet"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2008Redist-x86"
+        },
+        {
+          "PackageIdentifier": "GitHub.cli"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2013Redist-x86"
+        },
+        {
+          "PackageIdentifier": "Google.JapaneseIME"
+        },
+        {
+          "PackageIdentifier": "Nvidia.GeForceExperience"
+        },
+        {
+          "PackageIdentifier": "Nvidia.PhysX"
+        },
+        {
+          "PackageIdentifier": "OpenJS.NodeJS.LTS"
+        },
+        {
+          "PackageIdentifier": "Microsoft.WindowsPCHealthCheck"
+        },
+        {
+          "PackageIdentifier": "EpicGames.EpicGamesLauncher"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VisualStudioCode"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2010Redist-x86"
+        },
+        {
+          "PackageIdentifier": "GoLang.Go"
+        },
+        {
+          "PackageIdentifier": "Microsoft.dotnetRuntime.5-x86"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2005Redist-x64"
+        },
+        {
+          "PackageIdentifier": "Microsoft.dotnetRuntime.3-x86"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2012Redist-x64"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VC++2013Redist-x86"
+        },
+        {
+          "PackageIdentifier": "WinMerge.WinMerge"
+        },
+        {
+          "PackageIdentifier": "JanDeDobbeleer.OhMyPosh"
+        },
+        {
+          "PackageIdentifier": "Neovim.Neovim"
+        }
+      ],
+      "SourceDetails": {
+        "Argument": "https://winget.azureedge.net/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      }
+    }
+  ],
+  "WinGetVersion": "1.2.10271"
+}

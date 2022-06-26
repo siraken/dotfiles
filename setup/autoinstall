@@ -1,0 +1,41 @@
+#!/bin/sh
+
+cat <<EOF
+========================================
+   Install
+========================================
+EOF
+
+# wp-cli
+echo Installing wp-cli...
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+wp --info
+
+# apt setup
+sudo apt update -y
+sudo apt upgrade -y
+
+# basic tools
+echo Installing basic tools...
+sudo apt install tree fish curl
+
+# bat
+echo Installing bat...
+sudo apt install -y bat
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat /usr/local/bin/bat
+
+# fzf
+# echo Installing fzf...
+
+# Homebrew
+echo Installing Homebrew...
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+cat <<EOF
+========================================
+   Installation Complete!
+========================================
+EOF
