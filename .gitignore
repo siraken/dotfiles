@@ -8,6 +8,7 @@
 
 # Setup files
 !install
+!install-zsh-plugins
 
 # zsh
 !.zshrc
