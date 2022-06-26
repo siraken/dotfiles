@@ -73,6 +73,7 @@ brew "youtube-dl"
 brew "mplayer"
 brew "pdf2svg"
 brew "vagrant"
+brew "planetscale/tap/pscale"
 # brew "unixodbc"
 # brew "hhvm"
 brew "tor", restart_service: true
