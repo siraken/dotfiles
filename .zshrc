@@ -21,12 +21,16 @@ then
   eval "$(pyenv init -)"
 fi
 
+if [ -e "$HOME/.anyenv" ]
+then
+  eval "$(anyenv init -)"
+fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc'; fi
-eval "$(anyenv init -)"
 
 # -------------------------------------------------------------------------------- start oh-my-zsh
 
