@@ -7,11 +7,13 @@ cat <<EOF
 EOF
 
 # wp-cli
-echo Installing wp-cli...
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-chmod +x wp-cli.phar
-sudo mv wp-cli.phar /usr/local/bin/wp
-wp --info
+if [ ! -e /usr/local/bin/wp ]; then
+  echo Installing wp-cli...
+  curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  chmod +x wp-cli.phar
+  mv wp-cli.phar /usr/local/bin/wp
+  wp --info
+fi
 
 # apt setup
 sudo apt update -y
@@ -19,7 +21,7 @@ sudo apt upgrade -y
 
 # basic tools
 echo Installing basic tools...
-sudo apt install tree fish curl
+sudo apt install tree fish curl -y
 
 # bat
 echo Installing bat...
@@ -29,6 +31,12 @@ ln -s /usr/bin/batcat /usr/local/bin/bat
 
 # fzf
 # echo Installing fzf...
+
+# vim-plug
+echo Installing vim-plug...
+echo Set up for NeoVim
+sh -c 'curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Homebrew
 echo Installing Homebrew...
