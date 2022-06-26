@@ -5,19 +5,21 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-uname_value=$(uname)
-
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
 export PATH="~/.composer/vendor/bin:$PATH"
 export PATH="$PATH:/Users/siraken/Developer/flutter/bin"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+
+if [ -e "$HOME/.pyenv" ]
+then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc'; fi
