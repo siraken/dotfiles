@@ -47,6 +47,7 @@ brew "tree-sitter"
 brew "neovim"
 brew "lua"
 brew "luajit", args: ["HEAD"]
+brew "luarocks"
 brew "pure"
 brew "starship"
 brew "fzf"
