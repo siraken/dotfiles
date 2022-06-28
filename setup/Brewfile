@@ -29,6 +29,7 @@ brew "ethereum"
 brew "solidity"
 brew "clojure/tools/clojure"
 brew "leiningen"
+brew "sbcl"
 brew "stack"
 brew "go"
 brew "mongodb-community"
@@ -82,11 +83,13 @@ brew "planetscale/tap/pscale"
 brew "tor", restart_service: true
 brew "wget"
 brew "mas"
-cask "firefox"
-cask "firefox-developer-edition"
 cask "google-chrome"
 cask "brave-browser"
+cask "firefox"
+cask "firefox-developer-edition"
+cask "google-drive"
 cask "iterm2"
+# cask "sourcetree"
 cask "mamp"
 cask "visual-studio-code"
 cask "docker"
@@ -132,3 +135,4 @@ mas "Logic Pro", id: 634148309
 mas "Compressor", id: 424390742
 mas "MainStage", id: 634159523
 mas "Motion", id: 434290957
+mas "Final Cut Pro", id: 424389933
