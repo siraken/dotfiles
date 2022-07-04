@@ -194,6 +194,17 @@ goinit () {
     git init && touch main.go README.md
 }
 
+# For Hyper
+precmd() {
+   pwd=$(pwd)
+   cwd=${pwd##*/}
+   print -Pn "\e]0;$cwd\a"
+}
+ 
+preexec() {
+   printf "\033]0;%s\a" "${1%% *} | $cwd"
+}
+
 # ----------------------------------------------------------------------------- end oh-my-zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

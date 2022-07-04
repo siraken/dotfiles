@@ -38,6 +38,10 @@ ln -sf ~/dotfiles/.config/nvim/ ~/.config
 echo "MongoDB Shell"
 ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
+# Hyper
+echo "Hyper"
+ln -sf ~/dotfiles/.hyper.js ~/.hyper.js
+
 cat <<EOF
 
 --------------------------------------------------------------------------------

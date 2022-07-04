@@ -40,3 +40,6 @@
 !.config/nvim/plug.vim
 !.config/nvim/after/plugin/*
 .config/nvim/plugged
+
+# Hyper
+!.hyper.js
