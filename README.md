@@ -1,8 +1,8 @@
-# dot Files
+# dotfiles
 
 An repository that manages dotfiles `.*` under my home directory.
 
-Place this repository on `username/dotfiles` and run an excutable file `symlink`.
+Clone this repository on `username/dotfiles` and run an executable file `symlink`.
 
 ## Shell
 
@@ -22,4 +22,3 @@ Place this repository on `username/dotfiles` and run an excutable file `symlink`
 - [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
   - Add plugins to `nvim/plug.vim` and run `:PlugInstall`.
   - To remove plugins, comment out or delete the statement of the plugin and run `:PlugClean`
-
