@@ -47,3 +47,5 @@
 # npm
 !.npmrc
 
+# yarn
+!.yarnrc
