@@ -43,3 +43,7 @@
 
 # Hyper
 !.hyper.js
+
+# npm
+!.npmrc
+

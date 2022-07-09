@@ -42,6 +42,10 @@ ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 echo "Hyper"
 ln -sf ~/dotfiles/.hyper.js ~/.hyper.js
 
+# npm
+echo "npm"
+ln -sf ~/dotfiles/.npmrc ~/.npmrc
+
 cat <<EOF
 
 --------------------------------------------------------------------------------
