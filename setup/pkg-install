@@ -4,6 +4,7 @@
 packages=(
   "bat"
   "exa"
+  "fish"
   "gh"
   "git"
   "golang"
@@ -23,6 +24,10 @@ cat <<EOF
  termux-setup
 =============================================
 EOF
+
+# Update package list
+echo "Updating package list..."
+pkg update -y
 
 # Install packages
 for package in "${packages[@]}"; do
