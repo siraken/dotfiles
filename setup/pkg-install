@@ -28,7 +28,7 @@ EOF
 for package in "${packages[@]}"; do
   if [ "$package" != "" ]; then
     echo "Installing $package..."
-    pkg install $package
+    pkg install -y $package
   fi
 done
 
