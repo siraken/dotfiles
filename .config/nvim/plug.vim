@@ -22,6 +22,7 @@ Plug 'sickill/vim-monokai'
 Plug 'tomasr/molokai'
 Plug 'cocopon/iceberg.vim'
 Plug 'bfontaine/Brewfile.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Homebrew
 " Plug 'SiraKen/html-parser.vim'
