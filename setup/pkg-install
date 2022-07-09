@@ -5,6 +5,7 @@ packages=(
   "bat"
   "exa"
   "gh"
+  "git"
   "golang"
   "neovim"
   "nodejs-lts"
