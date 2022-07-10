@@ -1,4 +1,5 @@
 autocmd!
+set fileencodings=utf-8,sjis,euc-jp,latin
 scriptencoding utf-8
 
 set nocompatible
@@ -17,6 +18,7 @@ set background=dark
 set cmdheight=1
 set ruler
 set cursorline
+" set cursorcolumn
 set nobackup
 set hlsearch
 set ignorecase
@@ -27,8 +29,25 @@ set backspace=start,eol,indent
 set lazyredraw
 set completeopt=menuone,noinsert
 set scrolloff=10
+set formatoptions+=r
 " set shell=zsh
 filetype plugin indent on
+
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescriptreact
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.mdx set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
+" Fish
+au BufNewFile,BufRead *.fish set filetype=fish
+
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 if has('nvim')
   set inccommand=split
