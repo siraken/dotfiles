@@ -124,6 +124,7 @@ cask "1password/tap/1password-cli"
 cask "numi"
 cask "powershell"
 cask "wireshark"
+cask "drawio"
 cask "google-japanese-ime"
 mas "Messenger", id: 1480068668
 mas "LINE", id: 539883307
