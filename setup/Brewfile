@@ -84,6 +84,7 @@ brew "pandoc"
 brew "brewlet"
 brew "fx"
 brew "arduino-cli"
+brew "xquartz"
 # brew "unixodbc"
 # brew "hhvm"
 brew "tor", restart_service: true
