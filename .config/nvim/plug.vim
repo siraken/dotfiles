@@ -43,6 +43,7 @@ if has("nvim")
   Plug 'folke/todo-comments.nvim'
   Plug 'shaunsingh/nord.nvim'
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'rebelot/kanagawa.nvim'
 endif
 
 call plug#end()
