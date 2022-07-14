@@ -228,7 +228,11 @@
         },
         {
           "PackageIdentifier": "Neovim.Neovim"
+        },
+		{
+          "PackageIdentifier": "Starship.Starship"
         }
+
       ],
       "SourceDetails": {
         "Argument": "https://winget.azureedge.net/cache",
