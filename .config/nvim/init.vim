@@ -3,6 +3,7 @@ set fileencodings=utf-8,sjis,euc-jp,latin
 scriptencoding utf-8
 
 set nocompatible
+set langmenu=en_US
 set number
 set title
 set tabstop=2
@@ -124,5 +125,7 @@ let g:coc_global_extensions = [
       \'coc-rls',
       \'@yaegassy/coc-intelephense',
 \]
+
+let $LANG = 'en_US'
 
 :command Tr NERDTree
