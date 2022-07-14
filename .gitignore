@@ -18,6 +18,7 @@
 # Setup files
 !install
 !install-zsh-plugins
+!install-windows.ps1
 
 # zsh
 !.zshrc
