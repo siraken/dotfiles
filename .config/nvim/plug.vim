@@ -31,7 +31,7 @@ if has("nvim")
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/completion-nvim'
   Plug 'github/copilot.vim'
   Plug 'EdenEast/nightfox.nvim'
