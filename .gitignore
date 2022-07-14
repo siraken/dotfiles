@@ -20,6 +20,9 @@
 !install-zsh-plugins
 !install-windows.ps1
 
+# PowerShell
+!.config/Microsoft.PowerShell_profile.ps1
+
 # zsh
 !.zshrc
 !.zprofile
