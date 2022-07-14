@@ -226,11 +226,14 @@
         {
           "PackageIdentifier": "Neovim.Neovim"
         },
-		{
+        {
           "PackageIdentifier": "Starship.Starship"
         },
-		{
+        {
           "PackageIdentifier": "Volta.Volta"
+        },
+        {
+          "PackageIdentifier": "Zeit.Hyper"
         }
       ],
       "SourceDetails": {
