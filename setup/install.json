@@ -188,9 +188,6 @@
           "PackageIdentifier": "Nvidia.PhysX"
         },
         {
-          "PackageIdentifier": "OpenJS.NodeJS.LTS"
-        },
-        {
           "PackageIdentifier": "Microsoft.WindowsPCHealthCheck"
         },
         {
@@ -231,8 +228,10 @@
         },
 		{
           "PackageIdentifier": "Starship.Starship"
+        },
+		{
+          "PackageIdentifier": "Volta.Volta"
         }
-
       ],
       "SourceDetails": {
         "Argument": "https://winget.azureedge.net/cache",
