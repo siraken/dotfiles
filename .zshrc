@@ -160,7 +160,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# aliases
+# --- aliases
 alias vi='nvim'
 alias vim='nvim'
 alias gs='git status'
@@ -180,13 +180,9 @@ case ${OSTYPE} in
     ;;
 esac
 
-# Functions
-gcom () {
-    git add . && git status
-    echo "Commit message:" && read message;
-    git commit -m ${message} && git push
-}
+# --- Functions
 
+# Initialize Go app
 goinit () {
     dirname=${PWD##*/}
     echo "Enter the package name:" && read package;
@@ -195,13 +191,18 @@ goinit () {
     git init && touch main.go README.md
 }
 
+# Make Docker image tarball
+docker-upload () {
+    docker build -t ${1} .
+    docker save -o ${1}.tar ${1}
+}
+
 # For Hyper
 precmd() {
    pwd=$(pwd)
    cwd=${pwd##*/}
    print -Pn "\e]0;$cwd\a"
 }
-
 preexec() {
    printf "\033]0;%s\a" "${1%% *} | $cwd"
 }
