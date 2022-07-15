@@ -166,6 +166,7 @@ alias vim='nvim'
 alias gs='git status'
 alias cat='bat'
 alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
+alias posh="pwsh"
 
 case ${OSTYPE} in
   darwin*)
@@ -200,7 +201,7 @@ precmd() {
    cwd=${pwd##*/}
    print -Pn "\e]0;$cwd\a"
 }
- 
+
 preexec() {
    printf "\033]0;%s\a" "${1%% *} | $cwd"
 }
