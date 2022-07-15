@@ -23,6 +23,7 @@ Plug 'tomasr/molokai'
 Plug 'cocopon/iceberg.vim'
 Plug 'bfontaine/Brewfile.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Homebrew
 " Plug 'SiraKen/html-parser.vim'
