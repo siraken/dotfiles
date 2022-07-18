@@ -123,6 +123,7 @@ let g:coc_global_extensions = [
       \'coc-vetur',
       \'coc-kotlin',
       \'coc-rls',
+      \'coc-flutter',
       \'@yaegassy/coc-intelephense',
 \]
 

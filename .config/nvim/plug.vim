@@ -42,6 +42,7 @@ if has("nvim")
   Plug 'rcarriga/nvim-notify'
   Plug 'folke/trouble.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'akinsho/flutter-tools.nvim'
   Plug 'folke/todo-comments.nvim'
   Plug 'shaunsingh/nord.nvim'
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
