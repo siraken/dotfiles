@@ -87,6 +87,7 @@ brew "arduino-cli"
 brew "xquartz"
 brew "zig"
 brew "sf-symbols"
+brew "neofetch"
 # brew "unixodbc"
 # brew "hhvm"
 brew "tor", restart_service: true
