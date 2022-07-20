@@ -26,6 +26,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ziglang/zig.vim'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'isobit/vim-caddyfile'
 
 " Homebrew
 " Plug 'SiraKen/html-parser.vim'
