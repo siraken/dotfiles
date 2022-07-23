@@ -1,3 +1,4 @@
+# --- Taps
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
@@ -12,6 +13,7 @@ tap "aws/tap"
 tap "dart-lang/dart"
 tap "heroku/brew"
 tap "sidneys/homebrew"
+# --- Brew Packages
 brew "fish"
 brew "gh"
 brew "deno"
@@ -91,6 +93,10 @@ brew "neofetch"
 brew "caddy"
 brew "scala"
 brew "sbt"
+brew "fd"
+brew "ripgrep"
+brew "pastel"
+brew "broot"
 # brew "unixodbc"
 # brew "hhvm"
 brew "tor", restart_service: true
@@ -98,6 +104,8 @@ brew "wget"
 brew "mas"
 brew "fig"
 brew "graphviz"
+# brew "mono"
+# --- Cask Packages
 cask "google-chrome"
 cask "brave-browser"
 cask "vivaldi"
@@ -132,6 +140,7 @@ cask "powershell"
 cask "wireshark"
 cask "drawio"
 cask "google-japanese-ime"
+# --- Mac App Store Apps
 mas "Messenger", id: 1480068668
 mas "LINE", id: 539883307
 # mas "DaVinci Resolve", id: 571213070
