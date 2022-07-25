@@ -8,6 +8,7 @@ packages=(
   "gh"
   "git"
   "golang"
+  "neofetch"
   "neovim"
   "nodejs-lts"
   "tmux"

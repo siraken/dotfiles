@@ -105,6 +105,7 @@ brew "mas"
 brew "fig"
 brew "graphviz"
 # brew "mono"
+brew "gnu-cobol"
 # --- Cask Packages
 cask "google-chrome"
 cask "brave-browser"
