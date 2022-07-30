@@ -50,6 +50,9 @@
 !.config/nvim/after/plugin/*
 .config/nvim/plugged
 
+# Helix
+!.config/helix/config.toml
+
 # Hyper
 !.hyper.js
 

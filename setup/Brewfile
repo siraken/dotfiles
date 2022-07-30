@@ -106,6 +106,11 @@ brew "fig"
 brew "graphviz"
 # brew "mono"
 brew "gnu-cobol"
+brew "git-delta"
+brew "gitui"
+brew "tokei"
+brew "phpbrew"
+brew "helix"
 # --- Cask Packages
 cask "google-chrome"
 cask "brave-browser"
@@ -143,6 +148,7 @@ cask "dotnet-sdk"
 cask "wireshark"
 cask "drawio"
 cask "google-japanese-ime"
+cask "scenebuilder"
 # --- Mac App Store Apps
 mas "Messenger", id: 1480068668
 mas "LINE", id: 539883307
