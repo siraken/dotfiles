@@ -2,7 +2,8 @@ $packages = @(
     "bottom",
     "neofetch",
     "neovim",
-    "spotify-tui"
+    "spotify-tui",
+    "zig",
 )
 
 foreach ($package in $packages) {
