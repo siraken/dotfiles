@@ -111,6 +111,7 @@ brew "gitui"
 brew "tokei"
 brew "phpbrew"
 brew "helix"
+brew "kakoune"
 # --- Cask Packages
 cask "google-chrome"
 cask "brave-browser"

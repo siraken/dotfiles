@@ -38,6 +38,10 @@ ln -sf ~/dotfiles/.config/nvim/ ~/.config
 echo "Helix"
 ln -sf ~/dotfiles/.config/helix/ ~/.config
 
+# Kakoune
+echo "Kakoune"
+ln -sf ~/dotfiles/.config/kak/ ~/.config
+
 # MongoDB Shell
 echo "MongoDB Shell"
 ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js

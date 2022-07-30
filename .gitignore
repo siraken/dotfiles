@@ -53,6 +53,9 @@
 # Helix
 !.config/helix/config.toml
 
+# Kakoune
+!.config/kak/kakrc
+
 # Hyper
 !.hyper.js
 
