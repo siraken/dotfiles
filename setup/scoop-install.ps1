@@ -1,4 +1,5 @@
 $packages = @(
+    "bottom",
     "neofetch",
     "neovim"
 )
