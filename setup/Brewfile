@@ -117,6 +117,7 @@ brew "genact"
 brew "onefetch"
 brew "bottom"
 brew "dust"
+brew "goreleaser"
 # --- Cask Packages
 cask "google-chrome"
 cask "brave-browser"
