@@ -1,4 +1,4 @@
-# --- Taps
+# :Taps ------------------------------------------------------------------------
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
@@ -14,7 +14,7 @@ tap "dart-lang/dart"
 tap "heroku/brew"
 tap "sidneys/homebrew"
 tap "tgotwig/linux-dust"
-# --- Brew Packages
+# :Brew ------------------------------------------------------------------------
 brew "fish"
 brew "gh"
 brew "deno"
@@ -122,7 +122,7 @@ brew "redis"
 brew "elixir"
 brew "jmeter"
 brew "imagemagick"
-# --- Cask Packages
+# :Cask ------------------------------------------------------------------------
 cask "google-chrome"
 cask "brave-browser"
 cask "vivaldi"
@@ -177,7 +177,7 @@ cask "poedit"
 cask "raspberry-pi-imager"
 cask "sdformatter"
 cask "unity-hub"
-# --- Mac App Store Apps
+# :App Store --------------------------------------------------------------------
 mas "Messenger", id: 1480068668
 mas "LINE", id: 539883307
 # mas "DaVinci Resolve", id: 571213070
