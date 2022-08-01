@@ -2,39 +2,24 @@
 
 # List array of installed packages
 packages=(
-  "bat"
-  "exa"
-  "fish"
-  "gh"
-  "git"
-  "golang"
-  "neofetch"
-  "neovim"
-  "nodejs-lts"
-  "tmux"
-  "tree"
-  "vim"
-  "wget"
-  "yarn"
-  "zsh-completions"
-  "zsh"
 )
+sudo apt install tree fish curl -y
 
 cat <<EOF
 =============================================
-  pkg Installer
+  apt Installer
 =============================================
 EOF
 
 # Update package list
 echo "Updating package list..."
-pkg update -y
+sudo apt update -y
 
 # Install packages
 for package in "${packages[@]}"; do
   if [ "$package" != "" ]; then
     echo "Installing $package..."
-    pkg install -y $package
+    sudo apt install -y $package
   fi
 done
 

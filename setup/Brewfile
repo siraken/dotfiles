@@ -118,6 +118,7 @@ brew "onefetch"
 brew "bottom"
 brew "dust"
 brew "goreleaser"
+brew "redis"
 # --- Cask Packages
 cask "google-chrome"
 cask "brave-browser"

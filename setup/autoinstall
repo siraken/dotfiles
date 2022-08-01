@@ -15,14 +15,6 @@ if [ ! -e /usr/local/bin/wp ]; then
   wp --info
 fi
 
-# apt setup
-sudo apt update -y
-sudo apt upgrade -y
-
-# basic tools
-echo Installing basic tools...
-sudo apt install tree fish curl -y
-
 # bat
 echo Installing bat...
 sudo apt install -y bat

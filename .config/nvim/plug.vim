@@ -28,6 +28,7 @@ Plug 'ziglang/zig.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'isobit/vim-caddyfile'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'udalov/kotlin-vim'
 
 " Homebrew
 " Plug 'SiraKen/html-parser.vim'
