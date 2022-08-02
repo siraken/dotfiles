@@ -6,7 +6,7 @@ packages=(
 )
 
 # Install packages
-echo "Installing packages..."
+printf "Installing packages..."
 
 for package in "${packages[@]}"
 do

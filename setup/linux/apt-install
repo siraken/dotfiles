@@ -2,8 +2,14 @@
 
 # List array of installed packages
 packages=(
+    "curl"
+    "tree"
+    "zsh"
+    "fish"
+    "neovim"
+    "bat"
+    # "powershell"
 )
-sudo apt install tree fish curl -y
 
 cat <<EOF
 =============================================
@@ -12,14 +18,20 @@ cat <<EOF
 EOF
 
 # Update package list
-echo "Updating package list..."
+printf "Updating package list..."
 sudo apt update -y
 
 # Install packages
 for package in "${packages[@]}"; do
   if [ "$package" != "" ]; then
-    echo "Installing $package..."
+    printf "Installing $package..."
     sudo apt install -y $package
+  fi
+
+  # Rename for bat
+  if [ "$package" == "bat" ]; then
+    mkdir -p ~/.local/bin
+    ln -s /usr/bin/batcat /usr/local/bin/bat
   fi
 done
 

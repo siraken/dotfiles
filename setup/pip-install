@@ -6,7 +6,7 @@ packages=(
 )
 
 # Install packages
-echo "Installing packages..."
+printf "Installing packages..."
 
 pip install --upgrade pip
 

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+FILENAME=$0
+ARGS=${@:2}
+
+cat <<EOF
+
+========================================
+    Tool Installer
+    - brew
+    - wp
+    - vim-plug (nvim)
+========================================
+
+EOF
+
+case $1 in
+# Homebrew
+"brew")
+    printf "\e[32m%s\n\e[m" "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+;;
+# wp-cli
+"wp")
+    if [ ! -e /usr/local/bin/wp ]; then
+        printf "\e[32m%s\n\e[m" "Installing wp-cli..."
+        curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        chmod +x wp-cli.phar
+        mv wp-cli.phar /usr/local/bin/wp
+        wp --info
+    fi
+;;
+# vim-plug
+"vim-plug")
+    printf "\e[32m%s\n\e[m" "Installing vim-plug for NeoVim..."
+    sh -c 'curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+;;
+# wrong arguments
+*)
+    printf "\e[31m%s\n\e[m" "Error: Wrong arguments"
+;;
+esac

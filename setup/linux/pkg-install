@@ -27,13 +27,13 @@ cat <<EOF
 EOF
 
 # Update package list
-echo "Updating package list..."
+printf "Updating package list..."
 pkg update -y
 
 # Install packages
 for package in "${packages[@]}"; do
   if [ "$package" != "" ]; then
-    echo "Installing $package..."
+    printf "Installing $package..."
     pkg install -y $package
   fi
 done
