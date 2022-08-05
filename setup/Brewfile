@@ -122,6 +122,8 @@ brew "redis"
 brew "elixir"
 brew "jmeter"
 brew "imagemagick"
+brew "maven"
+brew "gradle"
 # :Cask ------------------------------------------------------------------------
 cask "google-chrome"
 cask "brave-browser"

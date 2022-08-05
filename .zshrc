@@ -30,6 +30,11 @@ then
   eval "$(anyenv init -)"
 fi
 
+if [ -e "$HOME/.deno" ]
+then
+  export PATH="/Users/siraken/.deno/bin:$PATH"
+fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -179,6 +184,7 @@ case ${OSTYPE} in
     alias lla='ll -a'
     alias llt='ll --tree'
     alias llta='llt -a'
+    alias mamp-htdocs="cd /Applications/MAMP/htdocs"
     ;;
   linux*)
     ;;
