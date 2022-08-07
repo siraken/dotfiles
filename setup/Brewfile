@@ -124,6 +124,7 @@ brew "jmeter"
 brew "imagemagick"
 brew "maven"
 brew "gradle"
+brew "testdisk"
 # :Cask ------------------------------------------------------------------------
 cask "google-chrome"
 cask "brave-browser"
