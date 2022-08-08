@@ -125,6 +125,7 @@ brew "imagemagick"
 brew "maven"
 brew "gradle"
 brew "testdisk"
+brew "duf"
 # :Cask ------------------------------------------------------------------------
 cask "google-chrome"
 cask "brave-browser"

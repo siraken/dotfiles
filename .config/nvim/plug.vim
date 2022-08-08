@@ -29,6 +29,8 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'isobit/vim-caddyfile'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'udalov/kotlin-vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'itchyny/calendar.vim'
 
 " Homebrew
 " Plug 'SiraKen/html-parser.vim'

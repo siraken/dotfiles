@@ -35,6 +35,11 @@ then
   export PATH="/Users/siraken/.deno/bin:$PATH"
 fi
 
+if [ -e "$HOME/Library/Application Support/JetBrains/Toolbox" ]
+then
+  export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
+fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc'; fi
 
