@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# List array of installed packages
 packages=(
   "bat"
   "exa"
@@ -19,12 +18,6 @@ packages=(
   "zsh-completions"
   "zsh"
 )
-
-cat <<EOF
-=============================================
-  pkg Installer
-=============================================
-EOF
 
 # Update package list
 printf "Updating package list..."

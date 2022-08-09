@@ -1,24 +1,17 @@
 #!/bin/bash
 
-# List array of packages
 packages=(
     "spt"
 )
 
-cat <<EOF
-=============================================
- snap Installer
-=============================================
-EOF
-
 # Update package list
-printf "Updating package list..."
+printf "Updating package list...\n"
 snap refresh
 
 # Install packages
 for package in "${packages[@]}"; do
   if [ "$package" != "" ]; then
-    printf "Installing $package..."
+    printf "Installing $package...\n"
     snap install $package
   fi
 done

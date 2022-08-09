@@ -1,30 +1,30 @@
 #!/bin/bash
 
-# List array of installed packages
 packages=(
+    "git"
     "curl"
+    "wget"
+    "apt-transport-https"
+    "software-properties-common"
     "tree"
     "zsh"
     "fish"
     "neovim"
     "bat"
+    "neofetch"
     # "powershell"
 )
 
-cat <<EOF
-=============================================
-  apt Installer
-=============================================
-EOF
+# GPG Keys
 
 # Update package list
-printf "Updating package list..."
+printf "Updating package list...\n"
 sudo apt update -y
 
 # Install packages
 for package in "${packages[@]}"; do
   if [ "$package" != "" ]; then
-    printf "Installing $package..."
+    printf "Installing $package...\n"
     sudo apt install -y $package
   fi
 
