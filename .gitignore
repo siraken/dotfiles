@@ -22,6 +22,9 @@
 # PowerShell
 !.config/Microsoft.PowerShell_profile.ps1
 
+# bash
+!.bashrc
+
 # zsh
 !.zshrc
 !.zprofile

@@ -10,6 +10,10 @@ Installing symlinks...
 
 EOF
 
+# bash
+echo "bash"
+ln -sf ~/dotfiles/.bashrc ~/.bashrc
+
 # zsh
 echo "zsh"
 ln -sf ~/dotfiles/.zprofile ~/.zprofile

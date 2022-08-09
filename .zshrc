@@ -35,6 +35,11 @@ then
   export PATH="/Users/siraken/.deno/bin:$PATH"
 fi
 
+if [ -e "$HOME/.progate" ]
+then
+  export PATH="$HOME/.progate/bin:$PATH"
+fi
+
 if [ -e "$HOME/Library/Application Support/JetBrains/Toolbox" ]
 then
   export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
