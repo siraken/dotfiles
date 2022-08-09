@@ -1,12 +1,14 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+##################################################
+# ==> Powerlevel10k
+# - Enable Powerlevel10k instant prompt.
+# - Should stay close to the top of ~/.zshrc.
+##################################################
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 ##################################################
-# Paths
+# ==> Paths
 ##################################################
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
@@ -49,28 +51,8 @@ if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc'; fi
 
-# -------------------------------------------------------------------------------- start oh-my-zsh
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# oh my zsh
-if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
-  plugins=(
-    git
-    macos
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-z
-    zsh-nvm
-  )
-  source $ZSH/oh-my-zsh.sh
-fi
-
 ##################################################
-# Aliases
+# ==> Aliases
 ##################################################
 alias vi='nvim'
 alias vim='nvim'
@@ -93,22 +75,22 @@ case ${OSTYPE} in
 esac
 
 ##################################################
-# Functions
+# ==> Functions
 ##################################################
 
 # Initialize Go app
 goinit () {
-    dirname=${PWD##*/}
-    echo "Enter the package name:" && read package;
-    mkdir -p ${package} && cd ${package}
-    go mod init github.com/${dirname}/${package}
-    git init && touch main.go README.md
+  dirname=${PWD##*/}
+  echo "Enter the package name:" && read package;
+  mkdir -p ${package} && cd ${package}
+  go mod init github.com/${dirname}/${package}
+  git init && touch main.go README.md
 }
 
 # Make Docker image tarball
 docker-upload () {
-    docker build -t ${1} .
-    docker save -o ${1}.tar ${1}
+  docker build -t ${1} .
+  docker save -o ${1}.tar ${1}
 }
 
 # tmux IDE
@@ -119,22 +101,43 @@ tmux-ide() {
       tmux resize-pane -R 25
       tmux split-window -v
       tmux split-window -v
-      ;;
+    ;;
     *)
       echo "$#"
-      ;;
+    ;;
   esac
 }
 
 # For Hyper
 precmd() {
-   pwd=$(pwd)
-   cwd=${pwd##*/}
-   print -Pn "\e]0;$cwd\a"
+  pwd=$(pwd)
+  cwd=${pwd##*/}
+  print -Pn "\e]0;$cwd\a"
 }
 preexec() {
-   printf "\033]0;%s\a" "${1%% *} | $cwd"
+  printf "\033]0;%s\a" "${1%% *} | $cwd"
 }
+
+# -------------------------------------------------------------------------------- start oh-my-zsh
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Zsh Theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# oh my zsh
+if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
+  plugins=(
+    git
+    macos
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-z
+    zsh-nvm
+  )
+  source $ZSH/oh-my-zsh.sh
+fi
 
 # ----------------------------------------------------------------------------- end oh-my-zsh
 
