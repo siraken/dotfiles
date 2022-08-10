@@ -6,6 +6,11 @@
 # Invoke-Expression (&starship init powershell)
 oh-my-posh init pwsh | Invoke-Expression
 
+# --- Functions
+function Get-GitStatus {
+  & git status $args
+}
+
 # --- Aliases
 Set-Alias wget Invoke-WebRequest
 Set-Alias which Get-Command
@@ -15,4 +20,5 @@ Set-Alias Brave "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.
 
 Set-Alias vim nvim
 Set-Alias vi nvim
+Set-Alias gs Get-GitStatus
 

@@ -21,6 +21,7 @@ $packages = @(
     "vscode-insiders",
     "volta",
     "neovim",
+    "jetbrains-toolbox",
     "spotify-tui",
     "zig",
     "jmeter",
