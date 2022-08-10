@@ -2,9 +2,16 @@
 # PowerShell Configuration
 #
 
+# Variables
+$env:POSH_MY_THEME = "powerline"
+
 # Initialize with Starship or Oh My Posh
 # Invoke-Expression (&starship init powershell)
-oh-my-posh init pwsh | Invoke-Expression
+
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$env:POSH_MY_THEME.omp.json" | Invoke-Expression
+
+# Set Oh My Posh theme
+
 
 # --- Functions
 function Get-GitStatus {
