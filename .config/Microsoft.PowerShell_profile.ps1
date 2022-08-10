@@ -20,5 +20,6 @@ Set-Alias Brave "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.
 
 Set-Alias vim nvim
 Set-Alias vi nvim
+Set-Alias g git
 Set-Alias gs Get-GitStatus
 
