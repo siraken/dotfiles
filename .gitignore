@@ -44,12 +44,17 @@
 # Starship
 !.config/starship.toml
 
+# Vim
+!.config/vim/init.vim
+!.config/vim/plug.vim
+!.config/vim/after/plugin/*
+
 # Neovim
+!.config/nvim/init.lua
+!.config/nvim/lua/*
+!.config/nvim/after/plugin/*
 !.config/nvim/colors/*
 !.config/nvim/coc-settings.json
-!.config/nvim/init.vim
-!.config/nvim/plug.vim
-!.config/nvim/after/plugin/*
 .config/nvim/plugged
 
 # Helix

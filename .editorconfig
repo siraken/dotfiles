@@ -12,6 +12,10 @@ trim_trailing_whitespace = true
 [.{zshrc,zprofile,bashrc}]
 indent_size = 2
 
+# Lua
+[*.lua]
+indent_size = 2
+
 # Docs
 [*.md]
 trim_trailing_whitespace = false

@@ -19,6 +19,4 @@ Clone this repository on `username/dotfiles` and run an executable file `symlink
 
 ## Neovim
 
-- [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
-  - Add plugins to `nvim/plug.vim` and run `:PlugInstall`.
-  - To remove plugins, comment out or delete the statement of the plugin and run `:PlugClean`
+- [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
