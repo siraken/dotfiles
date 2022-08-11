@@ -130,6 +130,7 @@ brew "testdisk"
 brew "duf"
 brew "dog"
 brew "zplug"
+brew "lua-language-server"
 # :Cask ------------------------------------------------------------------------
 cask "google-chrome"
 cask "brave-browser"
