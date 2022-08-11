@@ -44,20 +44,28 @@ opt.background = 'dark'
 api.nvim_command [[syntax enable]]
 api.nvim_command [[colorscheme monokai]]
 
-g['airline_theme'] = 'molokai'
+-- 'Tr' as NERDTree
+vim.cmd(':command Tr NERDTree')
 
+-- Airline
+g['airline_theme'] = 'molokai'
 g['airline#extensions#tabline#enabled'] = 1
 g['airline_powerline_fonts'] = 1
 
+-- NERDTree
 g['NERDTreeWinSize'] = 24
 
+-- Prettier
 g['prettier#autoformat'] = 1
 g['prettier#autoformat_require_pragma'] = 0
 
+-- Rust format
 g['rustfmt_autosave'] = 1
 
+-- vim-go no template
 g['go_template_autocreate'] = 0
 
+-- coc
 g['coc_global_extensions'] = {
   'coc-go',
   'coc-html',
@@ -82,5 +90,3 @@ g['coc_global_extensions'] = {
 }
 
 -- let $LANG = 'en_US'
-
--- :command Tr NERDTree

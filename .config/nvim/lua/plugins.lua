@@ -53,9 +53,8 @@ packer.startup(function(use)
     'folke/todo-comments.nvim',
     'shaunsingh/nord.nvim',
     'rebelot/kanagawa.nvim',
-    'fatih/vim-go'
+    'fatih/vim-go',
     -- 'itchyny/lightline.vim',
-    -- 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'},
     -- Homebrew
     -- 'SiraKen/html-parser.vim',
   }
@@ -63,4 +62,5 @@ packer.startup(function(use)
   use { 'neoclide/coc.nvim', branch = 'release' }
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use { 'junegunn/fzf', cmd = '-> fzf#install()'}
+  use { 'nvim-treesitter/nvim-treesitter', cmd = ':TSUpdate' }
 end)

@@ -1,34 +1,14 @@
 local keymap = vim.keymap
+local fn = vim.fn
 
--- coc.nvim
--- Navigate completion by <Tab>
--- function! s:check_back_space() abort
---   let col = col('.') - 1
---   return !col || getline('.')[col - 1]  =~ '\s'
--- endfunction
-
--- inoremap <silent><expr> <Tab>
---       \ pumvisible() ? "\<C-n>" :
---       \ <SID>check_back_space() ? "\<Tab>" :
---       \ coc#refresh()
--- <Tab> for next, <S+Tab> for prev
--- inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
--- inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
--- Not to break line when chosen completion
--- inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
-
--- inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
--- inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
-
---
---
--- ex)
--- keymap.set('i', '<C-p>', function ()
---   return vim.fn.pumvisible() == 1 and '<Up>' or '<C-p>'
--- end, { expr = true })
---
---
+function _G.check_back_space()
+  local col = fn.col(".") - 1
+  if col == 0 or fn.getline("."):sub(col, col):match("%s") then
+    return true
+  else
+    return false
+  end
+end
 
 -- Not to yank with 'x'
 keymap.set('n', 'x', '"_x')
@@ -39,3 +19,6 @@ keymap.set('n', '-', '<C-x>')
 
 -- Delete a word
 keymap.set('n', 'dw', 'vb"_d')
+
+-- Select all
+keymap.set('n', '<C-a>', 'gg<S-v>G')
