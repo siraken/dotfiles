@@ -51,28 +51,28 @@ if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc'; fi
 
-##################################################
-# ==> Aliases
-##################################################
-alias vi='nvim'
-alias vim='nvim'
-alias gs='git status'
-alias cat='bat'
-alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
-alias posh="pwsh"
+# -------------------------------------------------------------------------------- start oh-my-zsh
 
-case ${OSTYPE} in
-  darwin*)
-    alias ls='exa'
-    alias ll='exa -l -g --icons'
-    alias lla='ll -a'
-    alias llt='ll --tree'
-    alias llta='llt -a'
-    alias mamp-htdocs="cd /Applications/MAMP/htdocs"
-    ;;
-  linux*)
-    ;;
-esac
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Zsh Theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# oh my zsh
+if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
+  plugins=(
+    git
+    macos
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-z
+    zsh-nvm
+  )
+  source $ZSH/oh-my-zsh.sh
+fi
+
+# ----------------------------------------------------------------------------- end oh-my-zsh
 
 ##################################################
 # ==> Functions
@@ -118,28 +118,28 @@ preexec() {
   printf "\033]0;%s\a" "${1%% *} | $cwd"
 }
 
-# -------------------------------------------------------------------------------- start oh-my-zsh
+##################################################
+# ==> Aliases
+##################################################
+alias vi='nvim'
+alias vim='nvim'
+alias gs='git status'
+alias cat='bat'
+alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
+alias posh="pwsh"
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Zsh Theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# oh my zsh
-if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
-  plugins=(
-    git
-    macos
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-z
-    zsh-nvm
-  )
-  source $ZSH/oh-my-zsh.sh
-fi
-
-# ----------------------------------------------------------------------------- end oh-my-zsh
+case ${OSTYPE} in
+  darwin*)
+    alias ls='exa'
+    alias ll='exa -l -g --icons'
+    alias lla='ll -a'
+    alias llt='ll --tree'
+    alias llta='llt -a'
+    alias mamp-htdocs="cd /Applications/MAMP/htdocs"
+    ;;
+  linux*)
+    ;;
+esac
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
