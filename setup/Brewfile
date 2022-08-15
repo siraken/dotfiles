@@ -131,6 +131,7 @@ brew "duf"
 brew "dog"
 brew "zplug"
 brew "lua-language-server"
+brew "lapce"
 # :Cask ------------------------------------------------------------------------
 cask "google-chrome"
 cask "brave-browser"

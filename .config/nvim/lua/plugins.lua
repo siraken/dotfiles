@@ -23,7 +23,7 @@ packer.startup(function(use)
     'rust-lang/rust.vim',
     'terryma/vim-multiple-cursors',
     'tpope/vim-commentary',
-    'junegunn/fzf.vim',
+    -- 'junegunn/fzf.vim',
     'tomasiser/vim-code-dark',
     'sickill/vim-monokai',
     'tomasr/molokai',
@@ -57,6 +57,10 @@ packer.startup(function(use)
     -- 'itchyny/lightline.vim',
     -- Homebrew
     -- 'SiraKen/html-parser.vim',
+  }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
   use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
   use { 'neoclide/coc.nvim', branch = 'release' }
