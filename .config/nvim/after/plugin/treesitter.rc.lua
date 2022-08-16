@@ -37,7 +37,7 @@ ts.setup {
     "lua",
     "perl",
     "php",
-    "phpdoc",
+    -- "phpdoc", -- npm error
     "pug",
     "python",
     "ruby",
