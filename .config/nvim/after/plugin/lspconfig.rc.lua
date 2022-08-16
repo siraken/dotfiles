@@ -1,15 +1,14 @@
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 
-local api = vim.api
 local protocol = require('vim.lsp.protocol')
 
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
-    api.nvim_command [[augroup Format]]
-    api.nvim_command [[autocmd! * <buffer>]]
-    api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-    api.nvim_command [[augroup END]]
+    vim.api.nvim_command [[augroup Format]]
+    vim.api.nvim_command [[autocmd! * <buffer>]]
+    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+    vim.api.nvim_command [[augroup END]]
   end
 
   -- ↓ Previous config
@@ -23,9 +22,13 @@ local on_attach = function(client, bufnr)
   -- require 'completion'.on_attach(client, bufnr)
 end
 
+-- tsserver: JavaScript / TypeScript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
     'typescript',
     'typescriptreact',
     'typescript.tsx'
@@ -33,16 +36,31 @@ nvim_lsp.tsserver.setup {
   cmd = { 'typescript-language-server', '--stdio' }
 }
 
--- nvim_lsp.sumneko_lua.setup {
---   on_attach = on_attach,
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = {'vim'}
---       },
---       workspace = {
---         library = vim.api.nvim_get_runtime_file('', true)
---       }
---     }
---   }
--- }
+-- gopls: Golang
+nvim_lsp.gopls.setup {
+  cmd = { 'gopls' },
+  filetypes = {
+    'go',
+    'gomod',
+    'gowork',
+    'gotmpl'
+  }
+}
+
+-- sumneko_lua: Lua
+nvim_lsp.sumneko_lua.setup {
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT'
+      },
+      diagnostics = {
+        globals = { 'vim' }
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true)
+      }
+    }
+  }
+}
