@@ -48,6 +48,7 @@
 !.config/vim/init.vim
 !.config/vim/plug.vim
 !.config/vim/after/plugin/*
+!.config/vim/coc-settings.json
 .config/vim/plugged
 
 # Neovim

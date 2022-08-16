@@ -23,7 +23,6 @@ packer.startup(function(use)
     'rust-lang/rust.vim',
     'terryma/vim-multiple-cursors',
     'tpope/vim-commentary',
-    -- 'junegunn/fzf.vim',
     'tomasiser/vim-code-dark',
     'sickill/vim-monokai',
     'tomasr/molokai',
@@ -48,7 +47,6 @@ packer.startup(function(use)
     'overcache/NeoSolarized',
     'rcarriga/nvim-notify',
     'folke/trouble.nvim',
-    'nvim-lua/plenary.nvim',
     'akinsho/flutter-tools.nvim',
     'folke/todo-comments.nvim',
     'shaunsingh/nord.nvim',
@@ -62,9 +60,9 @@ packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+  use { 'nvim-treesitter/nvim-treesitter' }
   use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
-  use { 'neoclide/coc.nvim', branch = 'release' }
   use { 'folke/tokyonight.nvim', branch = 'main' }
-  use { 'junegunn/fzf', cmd = '-> fzf#install()'}
-  use { 'nvim-treesitter/nvim-treesitter', cmd = ':TSUpdate' }
+  use { 'junegunn/fzf' }
+  -- use { 'neoclide/coc.nvim', branch = 'release' }
 end)
