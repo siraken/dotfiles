@@ -15,6 +15,22 @@ packages=(
     # "powershell"
 )
 
+repositories=(
+    "ppa:neovim-ppa/stable"
+)
+
+# software-properties-common
+sudo apt update
+sudo apt install software-properties-common -y
+
+# add-apt-repository
+for repository in "${repositories[@]}"; do
+  if [ "$repository" != "" ]; then
+    printf "Adding APT Repository: $repository...\n"
+    sudo add-apt-repository $repository -y
+  fi
+done
+
 # GPG Keys
 
 # Update package list
