@@ -12,6 +12,9 @@ local on_attach = function(client, bufnr)
   end
 end
 
+-- Server configuration docs:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
 -- bashls: Bash
 nvim_lsp.bashls.setup {
   cmd = { 'bash-language-server', 'start' },
@@ -42,6 +45,9 @@ nvim_lsp.tsserver.setup {
   },
   cmd = { 'typescript-language-server', '--stdio' }
 }
+
+-- jdtls: Java
+nvim_lsp.jdtls.setup {}
 
 -- gopls: Golang
 nvim_lsp.gopls.setup {
