@@ -136,6 +136,8 @@ brew 'lapce'
 brew 'httpie'
 brew 'koekeishiya/formulae/yabai'
 brew 'koekeishiya/formulae/skhd'
+brew 'bandwhich'
+brew 'wego'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
