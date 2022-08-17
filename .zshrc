@@ -87,6 +87,11 @@ goinit () {
   git init && touch main.go README.md
 }
 
+# Weather
+weather() {
+  curl "wttr.in/$1"
+}
+
 # Make Docker image tarball
 docker-upload () {
   docker build -t ${1} .
