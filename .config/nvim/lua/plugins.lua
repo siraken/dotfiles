@@ -57,6 +57,7 @@ packer.startup(function(use)
     'shaunsingh/nord.nvim',
     'rebelot/kanagawa.nvim',
     'fatih/vim-go',
+    'lewis6991/gitsigns.nvim',
     -- 'itchyny/lightline.vim',
     -- Homebrew
     -- 'SiraKen/html-parser.vim',

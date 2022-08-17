@@ -1,22 +1,24 @@
 # dotfiles
 
-An repository that manages dotfiles `.*` under my home directory.
+This repository manages dotfiles `.*` under `$HOME`.
 
-Clone this repository on `username/dotfiles` and run an executable file `symlink`.
+Clone this repository on `username/dotfiles` and run an executable file `install`.
 
 ## Shell
 
-- [fish](https://fishshell.com/)
-  - [fisher](https://github.com/jorgebucaran/fisher)
-  - [IlanCosman/tide](https://github.com/IlanCosman/tide)
 - [Zsh](https://zsh.org/)
   - [Oh My Zsh](https://ohmyz.sh/)
   - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
   - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
   - [agkozak/zsh-z](https://github.com/agkozak/zsh-z)
   - [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- [fish](https://fishshell.com/)
+  - [fisher](https://github.com/jorgebucaran/fisher)
+  - [IlanCosman/tide](https://github.com/IlanCosman/tide)
 - [Starship](https://starship.rs/)
 
 ## Neovim
+
+Configuration files are written in Lua.
 
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
