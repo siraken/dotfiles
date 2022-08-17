@@ -94,39 +94,52 @@ nvim_lsp.emmet_ls.setup {
 }
 
 -- tailwindcss: TailwindCSS
--- nvim_lsp.tailwindcss.setup {
---   cmd = { 'tailwindcss-language-server', '--stdio' },
---   filetypes = {
---     'blade',
---     'django-html',
---     'htmldjango',
---     'ejs',
---     'erb',
---     'eruby',
---     'haml',
---     'html',
---     'jade',
---     'leaf',
---     'liquid',
---     'php',
---     'razor',
---     'slim',
---     'twig',
---     'css',
---     'less',
---     'postcss',
---     'sass',
---     'scss',
---     'stylus',
---     'javascript',
---     'javascriptreact',
---     'typescript',
---     'typescriptreact',
---     'vue',
---     'svelte',
---   },
---   root_dir = root_pattern('tailwind.config.js', 'tailwind.config.ts')
--- }
+nvim_lsp.tailwindcss.setup {
+  cmd = { 'tailwindcss-language-server', '--stdio' },
+  filetypes = {
+    'blade',
+    'django-html',
+    'htmldjango',
+    'ejs',
+    'erb',
+    'eruby',
+    'haml',
+    'html',
+    'jade',
+    'leaf',
+    'liquid',
+    'php',
+    'razor',
+    'slim',
+    'twig',
+    'css',
+    'less',
+    'postcss',
+    'sass',
+    'scss',
+    'stylus',
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'svelte',
+  },
+  root_dir = nvim_lsp.util.root_pattern('tailwind.config.js', 'tailwind.config.ts'),
+  tailwindCSS = {
+    classAttributes = { "class", "className", "classList", "ngClass" },
+    lint = {
+      cssConflict = "warning",
+      invalidApply = "error",
+      invalidConfigPath = "error",
+      invalidScreen = "error",
+      invalidTailwindDirective = "error",
+      invalidVariant = "error",
+      recommendedVariantOrder = "warning"
+    },
+    validate = true
+  },
+}
 
 -- intelephense: PHP
 nvim_lsp.intelephense.setup {
