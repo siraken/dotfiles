@@ -23,6 +23,9 @@ $packages = @(
     "volta",
     # "virtualbox-np",
     "neovim",
+    "tree-sitter",
+    "ruby",
+    "msys2",
     "jetbrains-toolbox",
     "spotify-tui",
     "zig",
@@ -48,7 +51,8 @@ if (Get-Command scoop) {
 
     # Enable error
     $ErrorActionPreference = "continue"
-} else {
+}
+else {
     Write-Host "Scoop is not installed." -ForegroundColor Red
     Write-Host "Installing Scoop... `r`n"
 
