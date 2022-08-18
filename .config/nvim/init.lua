@@ -1,6 +1,6 @@
+require('plugins')
 require('config')
 require('keymap')
-require('plugins')
 
 local has = function(x)
   return vim.fn.has(x) == 1
