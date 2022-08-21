@@ -59,6 +59,9 @@ packer.startup(function(use)
     'rebelot/kanagawa.nvim',
     'fatih/vim-go',
     'lewis6991/gitsigns.nvim',
+    'lukas-reineke/indent-blankline.nvim',
+    'windwp/nvim-autopairs',
+    'kyazdani42/nvim-tree.lua',
     -- 'itchyny/lightline.vim',
     -- Homebrew
     -- 'SiraKen/html-parser.vim',
@@ -71,5 +74,10 @@ packer.startup(function(use)
   use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use { 'junegunn/fzf' }
+  -- use {
+  --   'akinsho/bufferline.nvim',
+  --   tag = "v2.*",
+  --   requires = 'kyazdani42/nvim-web-devicons'
+  -- }
   -- use { 'neoclide/coc.nvim', branch = 'release' }
 end)

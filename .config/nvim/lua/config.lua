@@ -39,7 +39,7 @@ opt.winblend = 0
 opt.wildoptions = 'pum'
 opt.pumblend = 5
 opt.background = 'dark'
--- opt.formatoptions += 'r'
+opt.list = true
 
 api.nvim_command [[syntax enable]]
 api.nvim_command [[colorscheme monokai]]
