@@ -46,6 +46,27 @@ nvim_lsp.tsserver.setup {
   cmd = { 'typescript-language-server', '--stdio' }
 }
 
+-- jsonls: JSON
+nvim_lsp.jsonls.setup {
+  filetypes = {
+    'json', 'jsonc'
+  },
+  settngs = {
+    json = {
+      schemas = {
+        {
+          fileMatch = { 'package.json' },
+          url = 'https://json.schemastore.org/package.json'
+        },
+        {
+          fileMatch = { 'tsconfig*.json' },
+          url = 'https://json.schemastore.org/tsconfig.json'
+        }
+      }
+    }
+  }
+}
+
 -- jdtls: Java
 nvim_lsp.jdtls.setup {}
 

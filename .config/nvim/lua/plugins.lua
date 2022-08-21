@@ -23,6 +23,7 @@ packer.startup(function(use)
     'rust-lang/rust.vim',
     'terryma/vim-multiple-cursors',
     'tpope/vim-commentary',
+    -- 'numToStr/Comment.nvim',
     'tomasiser/vim-code-dark',
     'sickill/vim-monokai',
     'tomasr/molokai',
