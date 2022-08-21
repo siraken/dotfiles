@@ -1,17 +1,19 @@
 #!/bin/bash
 
-cat <<EOF
+case $(uname) in
+"Darwin" || "Linux")
+    # Oh My Zsh
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
---------------------------------------------------------------------------------
-  Oh My Zsh Plugins
---------------------------------------------------------------------------------
-
-Installing Oh My Zsh Plugins...
-
-EOF
-
-# Remove a file indicates that the plugin is installed.
-rm -f ~/.oh-my-zsh-plugins-installed
+    # Packer
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+;;
+*)
+    # Packer: Windows or other
+    git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+;;
+esac
 
 # Install Oh My Zsh Plugins
 # printf "zsh-autosuggestions"
@@ -28,15 +30,3 @@ rm -f ~/.oh-my-zsh-plugins-installed
 
 # printf "powerlevel10k/powerlevel10k"
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-cat <<EOF
-
---------------------------------------------------------------------------------
-  Installation Complete!
---------------------------------------------------------------------------------
-
-EOF
-
-# Create a file to indicate that the installation has completed
-touch ~/.oh-my-zsh-plugins-installed
-

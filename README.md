@@ -29,10 +29,12 @@ Configuration files are written in Lua.
 
 ```bash
 docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
-    apt-get update -y && apt-get upgrade -y && apt-get install -y git
+    apt-get update -y && apt-get upgrade -y && apt-get install -y git sudo
     git clone https://github.com/SiraKen/dotfiles ~/dotfiles
     cd ~/dotfiles && ./install && cd ./setup/linux && ./apt-install
+    cd ../ && ./install-reqs
     apt-get install -y nodejs
+    nvim --headless +PackerInstall +q
     fish
 '
 ```
