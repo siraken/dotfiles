@@ -12,6 +12,7 @@ packages=(
     "neovim"
     "bat"
     "neofetch"
+    "luajit"
     # "powershell"
 )
 
