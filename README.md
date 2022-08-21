@@ -4,7 +4,9 @@ This repository manages dotfiles `.*` under `$HOME`.
 
 Clone this repository on `username/dotfiles` and run an executable file `install`.
 
-## Shell
+## Packages
+
+### Shell
 
 - [Zsh](https://zsh.org/)
   - [Oh My Zsh](https://ohmyz.sh/)
@@ -17,8 +19,20 @@ Clone this repository on `username/dotfiles` and run an executable file `install
   - [IlanCosman/tide](https://github.com/IlanCosman/tide)
 - [Starship](https://starship.rs/)
 
-## Neovim
+### Neovim
 
 Configuration files are written in Lua.
 
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
+
+## Try on Ubuntu on Docker
+
+```bash
+docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
+    apt-get update -y && apt-get upgrade -y && apt-get install -y git
+    git clone https://github.com/SiraKen/dotfiles ~/dotfiles
+    cd ~/dotfiles && ./install && cd ./setup/linux && ./apt-install
+    apt-get install -y nodejs
+    fish
+'
+```
