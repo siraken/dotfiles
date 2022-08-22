@@ -139,6 +139,7 @@ brew 'koekeishiya/formulae/skhd'
 brew 'bandwhich'
 brew 'wego'
 brew 'tako8ki/tap/gobang'
+brew 'watchman'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
