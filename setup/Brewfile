@@ -140,6 +140,7 @@ brew 'bandwhich'
 brew 'wego'
 brew 'tako8ki/tap/gobang'
 brew 'watchman'
+brew 'cocoapods'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
