@@ -74,10 +74,9 @@ packer.startup(function(use)
   use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use { 'junegunn/fzf' }
-  -- use {
-  --   'akinsho/bufferline.nvim',
-  --   tag = "v2.*",
-  --   requires = 'kyazdani42/nvim-web-devicons'
-  -- }
-  -- use { 'neoclide/coc.nvim', branch = 'release' }
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v2.*",
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
 end)
