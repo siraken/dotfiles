@@ -39,6 +39,7 @@ opt.winblend = 0
 opt.wildoptions = 'pum'
 opt.pumblend = 5
 opt.background = 'dark'
+opt.mouse = 'a'
 opt.list = true
 
 api.nvim_command [[syntax enable]]
