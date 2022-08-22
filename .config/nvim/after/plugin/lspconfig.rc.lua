@@ -46,6 +46,13 @@ nvim_lsp.tsserver.setup {
   cmd = { 'typescript-language-server', '--stdio' }
 }
 
+-- flow: Facebook Flow
+nvim_lsp.flow.setup {
+  cmd = { 'npx', '--no-install', 'flow', 'lsp' },
+  filetypes = { 'javascriptreact', 'javascript.jsx' },
+  root_dir = nvim_lsp.util.root_pattern('.flowconfig')
+}
+
 -- jsonls: JSON
 nvim_lsp.jsonls.setup {
   filetypes = {
