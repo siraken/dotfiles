@@ -141,6 +141,7 @@ brew 'wego'
 brew 'tako8ki/tap/gobang'
 brew 'watchman'
 brew 'cocoapods'
+brew 'streamlink'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
@@ -197,7 +198,9 @@ cask 'poedit'
 cask 'raspberry-pi-imager'
 cask 'sdformatter'
 cask 'unity-hub'
-# :App Store --------------------------------------------------------------------
+cask 'ipfs'
+cask 'local'
+# :MAS - App Store --------------------------------------------------------------------
 mas 'Messenger', id: 1480068668
 mas 'LINE', id: 539883307
 # mas 'DaVinci Resolve', id: 571213070
