@@ -142,6 +142,7 @@ brew 'tako8ki/tap/gobang'
 brew 'watchman'
 brew 'cocoapods'
 brew 'streamlink'
+brew 'git-secrets'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
