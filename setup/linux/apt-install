@@ -1,11 +1,11 @@
 #!/bin/bash
 
 packages=(
+    "software-properties-common"
+    "apt-transport-https"
     "git"
     "curl"
     "wget"
-    "apt-transport-https"
-    "software-properties-common"
     "tree"
     "zsh"
     "fish"
@@ -13,26 +13,27 @@ packages=(
     "bat"
     "neofetch"
     "luajit"
+    # "hhvm"
     # "powershell"
 )
 
 repositories=(
     "ppa:neovim-ppa/stable"
+    # "https://dl.hhvm.com/ubuntu"
 )
 
-# software-properties-common
+# Update package list
 sudo apt update
-sudo apt install software-properties-common -y
+
+# sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xB4112585D386EB94
 
 # add-apt-repository
 for repository in "${repositories[@]}"; do
   if [ "$repository" != "" ]; then
-    printf "Adding APT Repository: $repository...\n"
+    printf "Adding apt repository: $repository...\n"
     sudo add-apt-repository $repository -y
   fi
 done
-
-# GPG Keys
 
 # Update package list
 printf "Updating package list...\n"
