@@ -3,7 +3,6 @@
 # List of npm packages to install in global
 packages=(
   "typescript"
-  "typescript-language-server"
   "source-map-support"
   "prettier"
 )
