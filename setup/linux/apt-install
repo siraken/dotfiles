@@ -13,6 +13,8 @@ packages=(
     "bat"
     "neofetch"
     "luajit"
+    "nodejs"
+    "npm"
     # "hhvm"
     # "powershell"
 )
