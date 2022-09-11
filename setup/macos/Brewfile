@@ -143,6 +143,7 @@ brew 'watchman'
 brew 'cocoapods'
 brew 'streamlink'
 brew 'git-secrets'
+brew 'flyctl'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
