@@ -9,8 +9,11 @@ indent_size = 4
 trim_trailing_whitespace = true
 
 # Shell
-[.{zshrc,zprofile,bashrc}]
+[*.{zshrc,zprofile,bashrc}]
 indent_size = 2
+
+[*.ps1]
+indent_size = 4
 
 # Lua
 [*.lua]
