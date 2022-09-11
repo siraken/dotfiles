@@ -1,45 +1,44 @@
 # Packages: https://scoop.sh/#/apps
 $packages = @(
-    "googlechrome",
-    "firefox",
-    "thunderbird",
-    "winscp",
-    "7zip",
-    "git",
-    "gcc",
-    "cmake",
-    "maven",
-    "python",
-    "steam",
-    "ffmpeg",
-    "sourcetree",
-    "winmerge",
-    "wireshark",
-    "bottom",
-    "neofetch",
-    "vscode",
-    "vscode-insiders",
-    "vagrant",
-    "volta",
-    # "virtualbox-np",
-    "neovim",
-    "tree-sitter",
-    "ruby",
-    "msys2",
-    "jetbrains-toolbox",
-    "spotify-tui",
-    "zig",
-    "jmeter",
-    "Hack-NF",
+    "googlechrome"
+    "firefox"
+    "thunderbird"
+    "winscp"
+    "7zip"
+    "git"
+    "gcc"
+    "cmake"
+    "maven"
+    "python"
+    "steam"
+    "ffmpeg"
+    "sourcetree"
+    "winmerge"
+    "wireshark"
+    "bottom"
+    "neofetch"
+    "vscode"
+    "vscode-insiders"
+    "vagrant"
+    "volta"
+    # "virtualbox-np"
+    "neovim"
+    "tree-sitter"
+    "ruby"
+    "msys2"
+    "jetbrains-toolbox"
+    "spotify-tui"
+    "zig"
+    "jmeter"
+    "Hack-NF"
     "Hack-NF-Mono"
 )
 
 # Buckets: https://scoop.sh/#/buckets
 $buckets = @(
-    # "main",
-    "extras",
-    "versions",
-    "php",
+    "extras"
+    "versions"
+    "php"
     "nerd-fonts"
 )
 
