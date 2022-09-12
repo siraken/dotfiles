@@ -11,8 +11,7 @@
 !README.md
 
 # git config
-!git/.gitconfig
-!git/.gitignore_global
+!.config/git/ignore
 
 # Editor
 !.editorconfig

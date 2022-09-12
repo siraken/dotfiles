@@ -39,6 +39,10 @@ ln -sf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 mes "Starship"
 ln -sf ~/dotfiles/.config/starship.toml ~/.config
 
+# Git
+mes "Git"
+ln -sf ~/dotfiles/.config/git/ ~/.config
+
 # Neovim
 mes "Neovim"
 ln -sf ~/dotfiles/.config/nvim/ ~/.config
