@@ -46,6 +46,16 @@ nvim_lsp.tsserver.setup {
   cmd = { 'typescript-language-server', '--stdio' }
 }
 
+-- astro: Astro
+nvim_lsp.astro.setup {
+  cmd = { 'astro-ls', '--stdio' },
+  filetypes = { 'astro' },
+  init_options = {
+    configuration = {}
+  },
+  root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')
+}
+
 -- flow: Facebook Flow
 nvim_lsp.flow.setup {
   cmd = { 'npx', '--no-install', 'flow', 'lsp' },
