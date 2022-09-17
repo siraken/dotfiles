@@ -9,7 +9,7 @@ indent_size = 4
 trim_trailing_whitespace = true
 
 # Shell
-[*.{zshrc,zprofile,bashrc}]
+[*.{zshrc,zprofile,bashrc,fish}]
 indent_size = 2
 
 [*.ps1]

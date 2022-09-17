@@ -2,7 +2,7 @@
 
 This repository manages dotfiles `.*` under `$HOME`.
 
-Clone this repository on `username/dotfiles` and run an executable file `install`.
+Clone this repository on `$HOME/dotfiles` and run an executable file `install`.
 
 ## Packages
 

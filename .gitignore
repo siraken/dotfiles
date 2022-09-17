@@ -37,7 +37,7 @@
 !.config/fish/config.fish
 !.config/fish/config-darwin.fish
 !.config/fish/config-linux.fish
-!.config/fish/functions/b64.fish
+!.config/fish/fisher-install.fish
 
 # tmux
 !.tmux.conf
