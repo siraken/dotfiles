@@ -79,4 +79,10 @@ packer.startup(function(use)
     tag = "v2.*",
     requires = 'kyazdani42/nvim-web-devicons'
   }
+  use {
+    'gw31415/deepl-commands.nvim',
+    requires = {
+      'gw31415/deepl.vim',
+    }
+  }
 end)

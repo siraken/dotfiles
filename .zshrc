@@ -10,8 +10,6 @@ fi
 ##################################################
 # ==> Paths
 ##################################################
-export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
 export PATH="~/.composer/vendor/bin:$PATH"
 export PATH="$PATH:/Users/siraken/Developer/flutter/bin"
 
@@ -22,10 +20,6 @@ if [ -e "$HOME/Library/Android/sdk" ]; then
   export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 fi
 
-if [ -e "$HOME/.phpbrew" ]; then
-  source $HOME/.phpbrew/bashrc
-fi
-
 if [ -e "$HOME/.pyenv" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
@@ -34,7 +28,12 @@ if [ -e "$HOME/.pyenv" ]; then
 fi
 
 if [ -e "$HOME/.anyenv" ]; then
-  eval "$(anyenv init -)"
+  # eval "$(anyenv init -)"
+  export ANYENV_ROOT="$HOME/.anyenv"
+  export PATH="$ANYENV_ROOT/bin:$PATH"
+  if command -v anyenv 1>/dev/null 2>&1; then
+    eval "$(anyenv init -)"
+  fi
 fi
 
 if [ -e "$HOME/.deno" ]; then
@@ -132,6 +131,7 @@ preexec() {
 ##################################################
 alias vi='nvim'
 alias vim='nvim'
+alias bim='nvim'
 alias gs='git status'
 alias cat='bat'
 alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
@@ -139,7 +139,7 @@ alias posh="pwsh"
 
 case ${OSTYPE} in
   darwin*)
-    alias ls='exa'
+    alias ls='ll'
     alias ll='exa -l -g --icons'
     alias lla='ll -a'
     alias llt='ll --tree'
