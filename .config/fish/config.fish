@@ -4,10 +4,11 @@ set fish_greeting
 alias vi="nvim"
 alias vim="nvim"
 
-# Install fisher and its plugins
-source (dirname (status --current-filename))/fisher-install.fish
+# Functions
+# source (dirname (status --current-filename))/f.fish
+# source (dirname (status --current-filename))/fisher-install.fish
 
-# rbenv
+# Path
 status --is-interactive; and rbenv init - fish | source
 
 # OS-specific config
