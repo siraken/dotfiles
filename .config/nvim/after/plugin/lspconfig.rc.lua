@@ -51,7 +51,10 @@ nvim_lsp.astro.setup {
   cmd = { 'astro-ls', '--stdio' },
   filetypes = { 'astro' },
   init_options = {
-    configuration = {}
+    configuration = {},
+    typescript = {
+      server = ''
+    }
   },
   root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')
 }

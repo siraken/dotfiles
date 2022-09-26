@@ -25,6 +25,15 @@ Configuration files are written in Lua.
 
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
 
+### VSCode
+
+I'm using an extension called [VSCode Vim](https://github.com/VSCodeVim/Vim), to be able to use VSCode with a Vim-like keymap.
+To disable `ApplePressAndHoldEnabled`, run the command below:
+
+```bash
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+```
+
 ## Try on Ubuntu on Docker
 
 ```bash

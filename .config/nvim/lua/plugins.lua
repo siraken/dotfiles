@@ -62,6 +62,7 @@ packer.startup(function(use)
     'lukas-reineke/indent-blankline.nvim',
     'windwp/nvim-autopairs',
     'kyazdani42/nvim-tree.lua',
+    'wuelnerdotexe/vim-astro',
     -- 'itchyny/lightline.vim',
     -- Homebrew
     -- 'SiraKen/html-parser.vim',
