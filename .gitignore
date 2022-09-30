@@ -77,6 +77,3 @@
 
 # yarn
 !.yarnrc
-
-# IME configuation
-!ime/google-japanese-input/keymap.txt
