@@ -18,7 +18,7 @@
             <key>phrase</key>
             <string>#melody_flag</string>
             <key>shortcut</key>
-            <string>#mf</string>
+            <string>,mf</string>
         </dict>
         <dict>
             <key>phrase</key>
