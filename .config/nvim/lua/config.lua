@@ -43,7 +43,7 @@ opt.shellslash = true
 opt.list = true
 
 api.nvim_command [[syntax enable]]
-api.nvim_command [[colorscheme monokai]]
+api.nvim_command [[colorscheme tokyonight]]
 
 -- 'Tr' as NERDTree
 vim.cmd(':command Tr NERDTree')

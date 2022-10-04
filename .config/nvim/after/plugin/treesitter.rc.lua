@@ -3,56 +3,13 @@ if (not status) then return end
 
 ts.setup {
   highlight = {
-    disable = {},
+    enable = true,
+    additional_vim_regex_highlighting = {
+      'php'
+    }
   },
   indent = {
     enable = false,
     disable = {},
   },
-  ensure_installed = {
-    -- A to Z
-    -- "bash",
-    -- "c",
-    -- "c_sharp",
-    -- "clojure",
-    -- "comment",
-    -- "commonlisp",
-    -- "cpp",
-    -- "css",
-    -- "dart",
-    -- "dockerfile",
-    -- "elixir",
-    -- "fish",
-    -- "go",
-    -- "gomod",
-    -- "graphql",
-    -- -- "hack",
-    -- "html",
-    -- "java",
-    -- "javascript",
-    -- "jsdoc",
-    -- "json",
-    -- "kotlin",
-    -- "lua",
-    -- "perl",
-    -- "php",
-    -- -- "phpdoc", -- npm error
-    -- "pug",
-    -- "python",
-    -- "ruby",
-    -- "rust",
-    -- "scala",
-    -- "scss",
-    -- "solidity",
-    -- "sql",
-    -- "svelte",
-    -- "swift",
-    -- "toml",
-    -- "tsx",
-    -- "typescript",
-    -- "vim",
-    -- "vue",
-    -- "yaml",
-    -- "zig",
-  }
 }

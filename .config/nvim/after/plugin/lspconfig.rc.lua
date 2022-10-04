@@ -15,21 +15,11 @@ end
 -- Server configuration docs:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
--- bashls: Bash
-nvim_lsp.bashls.setup {
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'sh' },
-}
-
--- ccls: C/C++
-nvim_lsp.ccls.setup {
-  cmd = { 'ccls' },
-  filetypes = {
-    'c',
-    'cpp',
-    'objc',
-    'objcpp',
-  }
+-- intelephense: PHP
+nvim_lsp.intelephense.setup {
+  on_attach = on_attach,
+  cmd = { 'intelephense', '--stdio' },
+  filetypes = { 'php' }
 }
 
 -- tsserver: JavaScript / TypeScript
@@ -182,10 +172,21 @@ nvim_lsp.tailwindcss.setup {
   },
 }
 
--- intelephense: PHP
-nvim_lsp.intelephense.setup {
-  cmd = { 'intelephense', '--stdio' },
-  filetypes = { 'php' }
+-- bashls: Bash
+nvim_lsp.bashls.setup {
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh' },
+}
+
+-- ccls: C/C++
+nvim_lsp.ccls.setup {
+  cmd = { 'ccls' },
+  filetypes = {
+    'c',
+    'cpp',
+    'objc',
+    'objcpp',
+  }
 }
 
 -- omnisharp: C#

@@ -71,7 +71,10 @@ packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
-  use { 'nvim-treesitter/nvim-treesitter' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
   use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use { 'junegunn/fzf' }
