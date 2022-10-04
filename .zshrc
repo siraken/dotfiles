@@ -136,6 +136,7 @@ alias gs='git status'
 alias cat='bat'
 alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
 alias posh="pwsh"
+alias cls="clear"
 
 case ${OSTYPE} in
   darwin*)
