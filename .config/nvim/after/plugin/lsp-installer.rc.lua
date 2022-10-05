@@ -3,8 +3,7 @@ if (not status) then return end
 
 lsp_installer.setup({
   automatic_installation = false,
-  -- To check installation status, run `:LspInstallInfo`
-  -- More info, see https://github.com/williamboman/nvim-lsp-installer#available-lsps
+  -- See https://github.com/williamboman/nvim-lsp-installer#available-lsps
   ui = {
     icons = {
       server_installed = "✓",

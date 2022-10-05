@@ -47,7 +47,6 @@ packer.startup(function(use)
     -- 'hrsh7th/cmp-path',
     'glepnir/lspsaga.nvim',
     'nvim-lua/completion-nvim',
-    'github/copilot.vim',
     'EdenEast/nightfox.nvim',
     'norcalli/nvim-colorizer.lua',
     'overcache/NeoSolarized',
@@ -63,6 +62,8 @@ packer.startup(function(use)
     'windwp/nvim-autopairs',
     'kyazdani42/nvim-tree.lua',
     'wuelnerdotexe/vim-astro',
+    'junegunn/fzf',
+    'github/copilot.vim',
     -- 'itchyny/lightline.vim',
     -- Homebrew
     -- 'SiraKen/html-parser.vim',
@@ -73,11 +74,10 @@ packer.startup(function(use)
   }
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
   use { 'folke/tokyonight.nvim', branch = 'main' }
-  use { 'junegunn/fzf' }
   use {
     'akinsho/bufferline.nvim',
     tag = "v2.*",
@@ -88,5 +88,9 @@ packer.startup(function(use)
     requires = {
       'gw31415/deepl.vim',
     }
+  }
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
   }
 end)

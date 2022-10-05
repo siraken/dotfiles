@@ -22,6 +22,24 @@ nvim_lsp.intelephense.setup {
   filetypes = { 'php' }
 }
 
+-- denols: Deno
+nvim_lsp.denols.setup {
+  root_dir = nvim_lsp.util.root_pattern('deno.json'),
+  init_options = {
+    lint = true,
+    unstable = true,
+    suggest = {
+      imports = {
+        hosts = {
+          ['https://deno.land'] = true,
+          ['https://cdn.next.land'] = true,
+          ['https://crux.land'] = true,
+        }
+      }
+    }
+  }
+}
+
 -- tsserver: JavaScript / TypeScript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
@@ -47,13 +65,6 @@ nvim_lsp.astro.setup {
     }
   },
   root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')
-}
-
--- flow: Facebook Flow
-nvim_lsp.flow.setup {
-  cmd = { 'npx', '--no-install', 'flow', 'lsp' },
-  filetypes = { 'javascriptreact', 'javascript.jsx' },
-  root_dir = nvim_lsp.util.root_pattern('.flowconfig')
 }
 
 -- jsonls: JSON
