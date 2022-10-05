@@ -1,4 +1,4 @@
-require('telescope').setup{
+require('telescope').setup {
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
@@ -30,6 +30,5 @@ require('telescope').setup{
 }
 
 -- Telescope
-vim.keymap.set('n', 'ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')
-
-
+-- vim.keymap.set('n', 'ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+vim.keymap.set('n', '<C-p>', '<cmd>lua require("telescope.builtin").find_files()<cr>')
