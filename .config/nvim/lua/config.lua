@@ -39,7 +39,6 @@ opt.winblend = 0
 opt.wildoptions = 'pum'
 opt.pumblend = 5
 opt.shellslash = true
-opt.list = true
 -- opt.mouse = 'a'
 
 api.nvim_command [[syntax enable]]

@@ -91,15 +91,7 @@ nvim_lsp.jsonls.setup {
 nvim_lsp.jdtls.setup {}
 
 -- gopls: Golang
-nvim_lsp.gopls.setup {
-  cmd = { 'gopls' },
-  filetypes = {
-    'go',
-    'gomod',
-    'gowork',
-    'gotmpl'
-  }
-}
+nvim_lsp.gopls.setup {}
 
 -- rust_analyzer: Rust
 nvim_lsp.rust_analyzer.setup {
