@@ -42,7 +42,6 @@ packer.startup(function(use)
   use 'wuelnerdotexe/vim-astro'
   -- Other plugins
   use 'nvim-lualine/lualine.nvim' -- Statusline
-  use 'preservim/nerdtree'
   use 'terryma/vim-multiple-cursors'
   use 'numToStr/Comment.nvim'
   use 'itchyny/calendar.vim'

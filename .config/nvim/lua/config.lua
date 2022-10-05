@@ -45,9 +45,8 @@ opt.list = true
 api.nvim_command [[syntax enable]]
 api.nvim_command [[colorscheme tokyonight]]
 
--- NERDTree
-vim.cmd(':command Tr NERDTree')
-g['NERDTreeWinSize'] = 24
+-- nvim-tree
+vim.cmd(':command Tr NvimTreeToggle')
 
 -- Prettier
 g['prettier#autoformat'] = 1
