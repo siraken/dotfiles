@@ -10,6 +10,8 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
     'vim-airline/vim-airline',
     'vim-airline/vim-airline-themes',
     'lambdalisue/fern.vim',
@@ -37,7 +39,6 @@ packer.startup(function(use)
     'OmniSharp/omnisharp-vim',
     'udalov/kotlin-vim',
     'itchyny/calendar.vim',
-    'williamboman/nvim-lsp-installer',
     'neovim/nvim-lspconfig',
     'L3MON4D3/LuaSnip',
     'onsails/lspkind.nvim',
