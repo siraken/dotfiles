@@ -39,21 +39,14 @@ opt.winblend = 0
 opt.wildoptions = 'pum'
 opt.pumblend = 5
 opt.shellslash = true
--- opt.mouse = 'a'
 opt.list = true
+-- opt.mouse = 'a'
 
 api.nvim_command [[syntax enable]]
 api.nvim_command [[colorscheme tokyonight]]
 
--- 'Tr' as NERDTree
-vim.cmd(':command Tr NERDTree')
-
--- Airline
-g['airline_theme'] = 'molokai'
-g['airline#extensions#tabline#enabled'] = 1
-g['airline_powerline_fonts'] = 1
-
 -- NERDTree
+vim.cmd(':command Tr NERDTree')
 g['NERDTreeWinSize'] = 24
 
 -- Prettier
@@ -65,29 +58,5 @@ g['rustfmt_autosave'] = 1
 
 -- vim-go no template
 g['go_template_autocreate'] = 0
-
--- coc
-g['coc_global_extensions'] = {
-  'coc-go',
-  'coc-html',
-  'coc-json',
-  'coc-sh',
-  'coc-tailwindcss',
-  'coc-tsserver',
-  'coc-blade',
-  'coc-yaml',
-  'coc-java',
-  'coc-markdownlint',
-  'coc-spell-checker',
-  'coc-highlight',
-  'coc-git',
-  'coc-deno',
-  'coc-pyright',
-  'coc-vetur',
-  'coc-kotlin',
-  'coc-rls',
-  'coc-flutter',
-  '@yaegassy/coc-intelephense',
-}
 
 -- let $LANG = 'en_US'
