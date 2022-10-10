@@ -38,7 +38,7 @@ packer.startup(function(use)
   use 'wuelnerdotexe/vim-astro'
   -- LSP-related
   use 'onsails/lspkind.nvim'
-  use 'glepnir/lspsaga.nvim'
+  use 'glepnir/lspsaga.nvim' -- LSP UIs
   -- Completion
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'

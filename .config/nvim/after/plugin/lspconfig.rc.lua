@@ -15,30 +15,6 @@ end
 -- Server configuration docs:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
--- intelephense: PHP
-nvim_lsp.intelephense.setup {
-  cmd = { 'intelephense', '--stdio' },
-  filetypes = { 'php' }
-}
-
--- denols: Deno
-nvim_lsp.denols.setup {
-  root_dir = nvim_lsp.util.root_pattern('deno.json'),
-  init_options = {
-    lint = true,
-    unstable = true,
-    suggest = {
-      imports = {
-        hosts = {
-          ['https://deno.land'] = true,
-          ['https://cdn.next.land'] = true,
-          ['https://crux.land'] = true,
-        }
-      }
-    }
-  }
-}
-
 -- tsserver: JavaScript / TypeScript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
@@ -53,39 +29,23 @@ nvim_lsp.tsserver.setup {
   cmd = { 'typescript-language-server', '--stdio' }
 }
 
+-- denols: Deno
+nvim_lsp.denols.setup {}
+
 -- astro: Astro
-nvim_lsp.astro.setup {
-  cmd = { 'astro-ls', '--stdio' },
-  filetypes = { 'astro' },
-  init_options = {
-    configuration = {},
-    typescript = {
-      server = ''
-    }
-  },
-  root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')
-}
+nvim_lsp.astro.setup {}
 
 -- jsonls: JSON
-nvim_lsp.jsonls.setup {
-  filetypes = {
-    'json', 'jsonc'
-  },
-  settngs = {
-    json = {
-      schemas = {
-        {
-          fileMatch = { 'package.json' },
-          url = 'https://json.schemastore.org/package.json'
-        },
-        {
-          fileMatch = { 'tsconfig*.json' },
-          url = 'https://json.schemastore.org/tsconfig.json'
-        }
-      }
-    }
-  }
-}
+nvim_lsp.jsonls.setup {}
+
+-- intelephense: PHP
+nvim_lsp.intelephense.setup {}
+
+-- sourcekit: Swift
+nvim_lsp.sourcekit.setup {}
+
+-- clojure_lsp: Clojure
+nvim_lsp.clojure_lsp.setup {}
 
 -- jdtls: Java
 nvim_lsp.jdtls.setup {}
@@ -105,80 +65,32 @@ nvim_lsp.rust_analyzer.setup {
 }
 
 -- dockerls: Docker
-nvim_lsp.dockerls.setup {
-  cmd = { 'docker-langserver', '--stdio' },
-  filetypes = {
-    'dockerfile',
-  }
-}
+nvim_lsp.dockerls.setup {}
 
 -- emmet_ls: Emmet
-nvim_lsp.emmet_ls.setup {
-  cmd = { 'emmet-ls', '--stdio' },
-  filetypes = {
-    'html',
-    'javascriptreact',
-    'typescriptreact',
-    'css',
-    'sass',
-    'scss',
-    'less',
-  }
-}
+nvim_lsp.emmet_ls.setup {}
 
 -- tailwindcss: TailwindCSS
 nvim_lsp.tailwindcss.setup {
-  cmd = { 'tailwindcss-language-server', '--stdio' },
-  filetypes = {
-    'blade',
-    'django-html',
-    'htmldjango',
-    'ejs',
-    'erb',
-    'eruby',
-    'haml',
-    'html',
-    'jade',
-    'leaf',
-    'liquid',
-    'php',
-    'razor',
-    'slim',
-    'twig',
-    'css',
-    'less',
-    'postcss',
-    'sass',
-    'scss',
-    'stylus',
-    'javascript',
-    'javascriptreact',
-    'typescript',
-    'typescriptreact',
-    'vue',
-    'svelte',
-  },
-  root_dir = nvim_lsp.util.root_pattern('tailwind.config.js', 'tailwind.config.ts'),
-  tailwindCSS = {
-    classAttributes = { "class", "className", "classList", "ngClass" },
-    lint = {
-      cssConflict = "warning",
-      invalidApply = "error",
-      invalidConfigPath = "error",
-      invalidScreen = "error",
-      invalidTailwindDirective = "error",
-      invalidVariant = "error",
-      recommendedVariantOrder = "warning"
-    },
-    validate = true
+  settings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "classList", "ngClass" },
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning"
+      },
+      validate = true
+    }
   },
 }
 
 -- bashls: Bash
-nvim_lsp.bashls.setup {
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'sh' },
-}
+nvim_lsp.bashls.setup {}
 
 -- ccls: C/C++
 nvim_lsp.ccls.setup {
@@ -197,14 +109,7 @@ nvim_lsp.ccls.setup {
 -- }
 
 -- sqlls: SQL
-nvim_lsp.sqlls.setup {
-  cmd = { 'sql-language-server', 'up', '--method', 'stdio' },
-  filetypes = {
-    'sql',
-    'mysql'
-  },
-  settings = {}
-}
+nvim_lsp.sqlls.setup {}
 
 -- solargraph: Ruby
 nvim_lsp.solargraph.setup {
@@ -229,23 +134,13 @@ nvim_lsp.solargraph.setup {
 -- }
 
 -- pylsp: Python
-nvim_lsp.pylsp.setup {
-  cmd = { 'pylsp' },
-  filetypes = { 'python' }
-}
+nvim_lsp.pylsp.setup {}
 
 -- volar: Vue
-nvim_lsp.volar.setup {
-  cmd = { 'vue-language-server', '--stdio' },
-  filetypes = { 'vue' },
-  -- init_options = {}
-}
+nvim_lsp.volar.setup {}
 
 -- solidity_ls: Solidity
-nvim_lsp.solidity_ls.setup {
-  cmd = { 'solidity-language-server', '--stdio' },
-  filetypes = { 'solidity' },
-}
+nvim_lsp.solidity_ls.setup {}
 
 -- sumneko_lua: Lua
 nvim_lsp.sumneko_lua.setup {
