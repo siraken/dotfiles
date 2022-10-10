@@ -72,8 +72,12 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use {
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    'iamcco/markdown-preview.nvim',
+    run = function() vim.fn['mkdp#util#install']() end,
+  }
+  use {
+    'akinsho/toggleterm.nvim',
+    tag = '*'
   }
   -- Homebrew
   -- use 'SiraKen/html-parser.vim'
