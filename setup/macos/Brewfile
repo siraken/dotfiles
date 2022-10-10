@@ -146,6 +146,8 @@ brew 'git-secrets'
 brew 'flyctl'
 brew 'erlang'
 brew 'ios-deploy'
+brew 'jless'
+brew 'elm'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
