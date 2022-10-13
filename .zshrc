@@ -31,10 +31,6 @@ if [ -e "$HOME/.deno" ]; then
   export PATH="/Users/siraken/.deno/bin:$PATH"
 fi
 
-if [ -e "$HOME/.progate" ]; then
-  export PATH="$HOME/.progate/bin:$PATH"
-fi
-
 if [ -e "$HOME/Library/Application Support/JetBrains/Toolbox" ]; then
   export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 fi
@@ -44,3 +40,8 @@ if [ -f '/Users/siraken/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/siraken/Developer/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Execute fish
+if [ -e "$HOME/.config/fish/config.fish" ]; then
+  fish
+fi

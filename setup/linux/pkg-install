@@ -15,8 +15,6 @@ packages=(
   "vim"
   "wget"
   "yarn"
-  "zsh-completions"
-  "zsh"
 )
 
 # Update package list

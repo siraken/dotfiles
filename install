@@ -23,7 +23,6 @@ ln -sf ~/dotfiles/.bashrc ~/.bashrc
 mes "zsh"
 ln -sf ~/dotfiles/.zprofile ~/.zprofile
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # fish
 mes "fish"

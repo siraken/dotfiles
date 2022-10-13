@@ -31,7 +31,7 @@ set lazyredraw
 set completeopt=menuone,noinsert
 set scrolloff=10
 set formatoptions+=r
-" set shell=zsh
+" set shell=fish
 filetype plugin indent on
 
 " JavaScript

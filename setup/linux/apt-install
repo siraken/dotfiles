@@ -7,7 +7,6 @@ packages=(
     "curl"
     "wget"
     "tree"
-    "zsh"
     "fish"
     "neovim"
     "bat"
