@@ -40,16 +40,11 @@ end
 ##################################################
 # ==> Path
 ##################################################
-# Composer
-# set -gx PATH $HOME/.composer/vendor/bin $PATH
-# Go
-# set -gx GOPATH $HOME/go
-# set -gx PATH $GOPATH/bin $PATH
-# Flutter
-# set -gx PATH $HOME/Developer/flutter/bin $PATH
 status --is-interactive; and rbenv init - fish | source
 
-# OS-specific config
+##################################################
+# ==> OS-specific config
+##################################################
 switch (uname)
   case Darwin
     source (dirname (status --current-filename))/config-darwin.fish

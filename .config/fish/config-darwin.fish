@@ -1,3 +1,6 @@
+##################################################
+# ==> Aliases
+##################################################
 if type -q exa
   alias ls "ll"
   alias ll "exa -l -g --icons"
@@ -6,3 +9,7 @@ if type -q exa
   alias llta='llt -a'
   alias mamp-htdocs="cd /Applications/MAMP/htdocs"
 end
+
+##################################################
+# ==> Path
+##################################################
