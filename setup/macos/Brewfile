@@ -148,6 +148,7 @@ brew 'erlang'
 brew 'ios-deploy'
 brew 'jless'
 brew 'elm'
+brew 'jesseduffield/lazygit/lazygit'
 # :Cask ------------------------------------------------------------------------
 cask 'google-chrome'
 cask 'brave-browser'
