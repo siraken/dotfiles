@@ -4,6 +4,8 @@ This repository manages dotfiles `.*` under `$HOME`.
 
 Clone this repository on `$HOME/dotfiles` and run an executable file `install`.
 
+[`SiraKen/installer`](https://github.com/SiraKen/installer) repo is required to work this repository properly.
+
 ## Packages
 
 ### Shell
@@ -34,7 +36,9 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
     apt-get update -y && apt-get upgrade -y && apt-get install -y git sudo
     git clone https://github.com/SiraKen/dotfiles ~/dotfiles
-    cd ~/dotfiles && ./install && cd ./setup/linux && ./apt-install
+    git clone https://github.com/SiraKen/installer ~/installer
+    cd ~/dotfiles && ./install
+    cd ~/installer/linux && ./apt-install
     cd ../ && ./install-reqs
     apt-get install -y nodejs
     nvim --headless +PackerInstall +q
