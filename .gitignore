@@ -35,7 +35,7 @@
 !.config/fish/config-linux.fish
 !.config/fish/f.fish
 !.config/fish/fisher-install.fish
-!.config/fish/fishfile
+!.config/fish/fish_plugins
 
 # tmux
 !.tmux.conf
