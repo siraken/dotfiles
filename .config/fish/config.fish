@@ -1,14 +1,52 @@
-set fish_greeting
-
-# Aliases
+##################################################
+# ==> Aliases
+##################################################
 alias vi="nvim"
 alias vim="nvim"
+alias bim='nvim'
+alias gs='git status'
+alias cat='bat'
+alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
+alias posh="pwsh"
+alias cls="clear"
 
-# Functions
+##################################################
+# ==> Functions
+##################################################
+# Docker upload
+function docker-upload
+  echo $1
+  # docker build -t $1 .
+  # docker save -o $1.tar $1
+end
+
+# Weather
+function weather
+  curl wttr.in/$argv
+end
+
+# Initialize Go app
+function go-init
+  # TODO: from zsh
+  # dirname=${PWD##*/}
+  # echo "Enter the package name:" && read package;
+  # mkdir -p ${package} && cd ${package}
+  # go mod init github.com/${dirname}/${package}
+  # git init && touch main.go README.md
+end
 # source (dirname (status --current-filename))/f.fish
 # source (dirname (status --current-filename))/fisher-install.fish
 
-# Path
+##################################################
+# ==> Path
+##################################################
+# Composer
+# set -gx PATH $HOME/.composer/vendor/bin $PATH
+# Go
+# set -gx GOPATH $HOME/go
+# set -gx PATH $GOPATH/bin $PATH
+# Flutter
+# set -gx PATH $HOME/Developer/flutter/bin $PATH
 status --is-interactive; and rbenv init - fish | source
 
 # OS-specific config
@@ -21,3 +59,5 @@ end
 
 # Starship
 # starship init fish | source
+
+set fish_greeting
