@@ -38,8 +38,8 @@ docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
     git clone https://github.com/SiraKen/dotfiles ~/dotfiles
     git clone https://github.com/SiraKen/installer ~/installer
     cd ~/dotfiles && ./install
-    cd ~/installer/linux && ./apt-install
-    cd ../ && ./install-reqs
+    cd ~/installer/linux && ./apt.sh
+    cd ~/installer/tools && ./install-reqs.sh
     apt-get install -y nodejs
     nvim --headless +PackerInstall +q
     fish

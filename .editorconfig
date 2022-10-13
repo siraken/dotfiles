@@ -8,18 +8,12 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
-# Shell
 [*.{zshrc,zprofile,bashrc,fish}]
 indent_size = 2
 
-[*.ps1]
-indent_size = 4
-
-# Lua
 [*.lua]
 indent_size = 2
 
-# Docs
 [*.md]
 trim_trailing_whitespace = false
 
