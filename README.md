@@ -13,6 +13,7 @@ Clone this repository on `$HOME/dotfiles` and run an executable file `install`.
 - [fish](https://fishshell.com/)
   - [fisher](https://github.com/jorgebucaran/fisher)
   - [IlanCosman/tide](https://github.com/IlanCosman/tide)
+  - [jethrokuan/z](https://github.com/jethrokuan/z)
 - [Starship](https://starship.rs/)
 
 ### Neovim
