@@ -44,7 +44,7 @@ docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
     cd ~/installer/tools && ./install-reqs.sh
     apt-get install -y nodejs
     nvim --headless +PackerInstall +q
-    fish
+    cd ~/ && fish
 '
 ```
 
@@ -58,6 +58,7 @@ docker run -w /root -it --platform linux/x86_64 --rm archlinux:latest sh -uelic 
     git clone https://github.com/SiraKen/installer ~/installer
     cd ~/dotfiles && ./install
     cd ~/installer/linux && ./pacman.sh
-    fish
+    cd ~/installer/tools && ./install-reqs.sh
+    cd ~/ && fish
 '
 ```
