@@ -51,12 +51,13 @@ docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
 ### TODO: Arch Linux
 
 ```bash
-docker run -w /root -it --rm archlinux:latest sh -uelic '
-    sudo pacman -g
-    sudo pacman -Syyu --noconfirm
-    sudo pacman -S --noconfirm git sudo
+docker run -w /root -it --platform linux/x86_64 --rm archlinux:latest sh -uelic '
+    pacman -Syyu --noconfirm
+    pacman -S --noconfirm git sudo
     git clone https://github.com/SiraKen/dotfiles ~/dotfiles
     git clone https://github.com/SiraKen/installer ~/installer
     cd ~/dotfiles && ./install
+    cd ~/installer/linux && ./pacman.sh
+    fish
 '
 ```
