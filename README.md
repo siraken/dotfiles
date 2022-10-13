@@ -30,7 +30,9 @@ To disable `ApplePressAndHoldEnabled`, run the command below:
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```
 
-## Try on Ubuntu on Docker
+## Try on Docker
+
+### Ubuntu 22.04
 
 ```bash
 docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
@@ -43,5 +45,18 @@ docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
     apt-get install -y nodejs
     nvim --headless +PackerInstall +q
     fish
+'
+```
+
+### TODO: Arch Linux
+
+```bash
+docker run -w /root -it --rm archlinux:latest sh -uelic '
+    sudo pacman -g
+    sudo pacman -Syyu --noconfirm
+    sudo pacman -S --noconfirm git sudo
+    git clone https://github.com/SiraKen/dotfiles ~/dotfiles
+    git clone https://github.com/SiraKen/installer ~/installer
+    cd ~/dotfiles && ./install
 '
 ```
