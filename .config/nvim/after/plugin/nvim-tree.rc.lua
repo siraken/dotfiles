@@ -11,6 +11,11 @@ tree.setup {
   },
   filters = {
     dotfiles = false, -- Toggle with H
+    custom = {
+      "^.git$",
+      ".DS_Store",
+      "Thumbs.db",
+    }
   },
   diagnostics = {
     show_on_dirs = true,
