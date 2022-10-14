@@ -10,6 +10,12 @@ tree.setup {
     group_empty = true,
   },
   filters = {
-    dotfiles = true, -- Toggle with H
+    dotfiles = false, -- Toggle with H
   },
+  diagnostics = {
+    show_on_dirs = true,
+  },
+  git = {
+    ignore = false,
+  }
 }
