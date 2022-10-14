@@ -34,4 +34,4 @@ style = "bg:#40A9E0 fg:white"
 [gcloud]
 format = "[$symbol$active]($style) "
 style = "bold blue"
-disabled = true
+# disabled = true

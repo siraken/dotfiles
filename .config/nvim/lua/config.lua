@@ -39,7 +39,7 @@ opt.winblend = 0
 opt.wildoptions = 'pum'
 opt.pumblend = 5
 opt.shellslash = true
--- opt.mouse = 'a'
+opt.mouse = ''
 
 api.nvim_command [[syntax enable]]
 api.nvim_command [[colorscheme tokyonight]]
