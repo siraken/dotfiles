@@ -1,26 +1,27 @@
 # dotfiles
 
+[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/SiraKen/dotfiles)
+
 This repository manages dotfiles `.*` under `$HOME`.
+Clone this repository on `$HOME/dotfiles` and run `install`.
 
-Clone this repository on `$HOME/dotfiles` and run an executable file `install`.
+[SiraKen/installer](https://github.com/SiraKen/installer) repo is required to work this repository properly.
 
-[`SiraKen/installer`](https://github.com/SiraKen/installer) repo is required to work this repository properly.
+Minimized `dotfiles`: [SiraKen/dotfiles-min](https://github.com/SiraKen/dotfiles-min)
 
 ## Packages
 
-### Shell
+### [fish shell](https://fishshell.com/)
 
-- [fish](https://fishshell.com/)
-  - [fisher](https://github.com/jorgebucaran/fisher)
-  - [IlanCosman/tide](https://github.com/IlanCosman/tide)
-  - [jethrokuan/z](https://github.com/jethrokuan/z)
+- [fisher](https://github.com/jorgebucaran/fisher)
+- [IlanCosman/tide](https://github.com/IlanCosman/tide)
+- [jethrokuan/z](https://github.com/jethrokuan/z)
 - [Starship](https://starship.rs/)
 
 ### Neovim
 
 Configuration files are written in Lua.
-
-- [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
+I'm using [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) as a package manager.
 
 ### VSCode
 
@@ -49,7 +50,7 @@ docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
 '
 ```
 
-### TODO: Arch Linux
+### Arch Linux
 
 ```bash
 docker run -w /root -it --platform linux/x86_64 --rm archlinux:latest sh -uelic '
