@@ -4,10 +4,13 @@
 alias vi="nvim"
 alias vim="nvim"
 alias gs="git status"
+alias lzg="lazygit"
+alias lzd="lazydocker"
 alias cat='bat'
 alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
 alias posh="pwsh"
 alias cls="clear"
+alias n="node"
 
 ##################################################
 # ==> Functions
@@ -55,3 +58,10 @@ end
 # starship init fish | source
 
 set fish_greeting
+
+##################################################
+# ==> Variables
+##################################################
+# nvm
+set --universal nvm_default_version v16.15.1
+set --universal nvm_default_packages yarn
