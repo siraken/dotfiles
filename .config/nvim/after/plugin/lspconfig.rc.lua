@@ -44,6 +44,9 @@ nvim_lsp.intelephense.setup {}
 -- sourcekit: Swift
 nvim_lsp.sourcekit.setup {}
 
+-- awk_ls: awk
+nvim_lsp.awk_ls.setup {}
+
 -- clojure_lsp: Clojure
 nvim_lsp.clojure_lsp.setup {}
 
