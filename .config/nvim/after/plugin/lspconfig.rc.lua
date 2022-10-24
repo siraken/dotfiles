@@ -105,7 +105,7 @@ nvim_lsp.ccls.setup {
 
 -- omnisharp: C#
 -- nvim_lsp.omnisharp.setup {
---   filetypes = { 'cs', 'vb' }
+--   cmd = { "dotnet", "/path/to/omnisharp/Omnisharp.dll" }
 -- }
 
 -- sqlls: SQL

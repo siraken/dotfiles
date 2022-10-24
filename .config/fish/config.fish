@@ -1,8 +1,6 @@
 ##################################################
 # ==> Aliases
 ##################################################
-alias vi="nvim"
-alias vim="nvim"
 alias gs="git status"
 alias lzg="lazygit"
 alias lzd="lazydocker"
@@ -29,13 +27,12 @@ end
 
 # Initialize Go app
 function go-init
-  # TODO: from zsh
-  # dirname=${PWD##*/}
-  # echo "Enter the package name:" && read package;
-  # mkdir -p ${package} && cd ${package}
-  # go mod init github.com/${dirname}/${package}
-  # git init && touch main.go README.md
+  echo "Enter the package name:" && read package;
+  mkdir -p $package && cd $package
+  go mod init github.com/$dirname/$package
+  git init && touch main.go README.md
 end
+
 # source (dirname (status --current-filename))/f.fish
 # source (dirname (status --current-filename))/fisher-install.fish
 
@@ -63,5 +60,5 @@ set fish_greeting
 # ==> Variables
 ##################################################
 # nvm
-set --universal nvm_default_version v16.15.1
+set --universal nvm_default_version v16.18.0
 set --universal nvm_default_packages yarn

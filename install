@@ -42,6 +42,10 @@ ln -sf ~/dotfiles/.config/starship.toml ~/.config
 mes "Git"
 ln -sf ~/dotfiles/.config/git/ ~/.config
 
+# Vim
+mes "Vim"
+ln -sf ~/dotfiles/.config/vim/.vimrc ~/.vimrc
+
 # Neovim
 mes "Neovim"
 ln -sf ~/dotfiles/.config/nvim/ ~/.config

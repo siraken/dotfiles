@@ -2,7 +2,6 @@ local opt = vim.opt
 local api = vim.api
 local wo = vim.wo
 local bo = vim.bo
-local g = vim.g
 
 vim.cmd('autocmd!')
 vim.scriptencoding = 'utf-8'
@@ -48,13 +47,13 @@ api.nvim_command [[colorscheme tokyonight]]
 vim.cmd(':command Tr NvimTreeToggle')
 
 -- Prettier
-g['prettier#autoformat'] = 1
-g['prettier#autoformat_require_pragma'] = 0
+vim.g['prettier#autoformat'] = 1
+vim.g['prettier#autoformat_require_pragma'] = 0
 
 -- Rust format
-g['rustfmt_autosave'] = 1
+vim.g['rustfmt_autosave'] = 1
 
 -- vim-go no template
-g['go_template_autocreate'] = 0
+vim.g['go_template_autocreate'] = 0
 
 -- let $LANG = 'en_US'
