@@ -1,2 +1,6 @@
-colorscheme default
+# Set the color scheme
+colorscheme solarized-dark
+
+# Display line numbers
+add-highlighter global/ number-lines -hlcursor
 
