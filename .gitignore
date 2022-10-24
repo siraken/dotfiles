@@ -45,11 +45,7 @@
 !.config/starship.toml
 
 # Vim
-!.config/vim/init.vim
-!.config/vim/plug.vim
-!.config/vim/after/plugin/*
-!.config/vim/coc-settings.json
-.config/vim/plugged
+!.config/vim/.vimrc
 
 # Neovim
 !.config/nvim/init.lua
