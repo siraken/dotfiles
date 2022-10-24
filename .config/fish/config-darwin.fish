@@ -8,6 +8,7 @@ if type -q exa
   alias llt='ll --tree'
   alias llta='llt -a'
   alias mamp-htdocs="cd /Applications/MAMP/htdocs"
+  alias ii="open"
 end
 
 ##################################################
