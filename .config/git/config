@@ -8,3 +8,4 @@
 	email = shirasawa.kento@gmail.com
 [core]
 	autocrlf = input
+    ignorecase = false
