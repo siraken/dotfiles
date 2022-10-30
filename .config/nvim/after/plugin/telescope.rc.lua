@@ -30,5 +30,4 @@ require('telescope').setup {
 }
 
 -- Telescope
--- vim.keymap.set('n', 'ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')
-vim.keymap.set('n', '<C-p>', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+vim.keymap.set('n', 'ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')

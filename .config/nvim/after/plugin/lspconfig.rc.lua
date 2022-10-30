@@ -29,9 +29,6 @@ nvim_lsp.tsserver.setup {
   cmd = { 'typescript-language-server', '--stdio' }
 }
 
--- denols: Deno
-nvim_lsp.denols.setup {}
-
 -- astro: Astro
 nvim_lsp.astro.setup {}
 
