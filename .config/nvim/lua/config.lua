@@ -7,25 +7,35 @@ vim.cmd('autocmd!')
 vim.scriptencoding = 'utf-8'
 
 wo.number = true
+opt.cmdheight = 1
 
-opt.fileencodings = 'utf-8,sjis,euc-jp,latin'
-opt.compatible = false
-opt.langmenu = 'en_US'
-opt.title = true
+opt.virtualedit = 'block'
+opt.wildmenu = true
+opt.wildignorecase = true
+
 opt.tabstop = 2
-opt.shiftwidth = 2
 opt.expandtab = true
+opt.shiftwidth = 2
 opt.smarttab = true
 opt.autoindent = true
 opt.smartindent = true
-opt.background = 'dark'
-opt.cmdheight = 1
-opt.ruler = true
-opt.backup = false
+
 opt.hlsearch = true
 opt.ignorecase = true
-opt.showcmd = true
+opt.smartcase = true
+opt.incsearch = true
+
+opt.swapfile = false
+opt.backup = false
 opt.encoding = 'utf-8'
+opt.fileencodings = 'utf-8,sjis,euc-jp,latin'
+
+opt.compatible = false
+opt.langmenu = 'en_US'
+opt.title = true
+opt.background = 'dark'
+opt.ruler = true
+opt.showcmd = true
 opt.wrap = false
 opt.backspace = 'start,eol,indent'
 opt.lazyredraw = true
@@ -44,7 +54,8 @@ api.nvim_command [[syntax enable]]
 api.nvim_command [[colorscheme tokyonight]]
 
 -- nvim-tree
-vim.cmd(':command Tr NvimTreeToggle')
+vim.keymap.set('n', 'tr', '<cmd>NvimTreeToggle<cr>')
+-- vim.cmd(':command Tr NvimTreeToggle')
 
 -- Prettier
 vim.g['prettier#autoformat'] = 1
