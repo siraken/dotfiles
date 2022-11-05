@@ -129,8 +129,12 @@ mason_lsp.setup_handlers {
     --   opts.root_dir = root_pattern('*.ps1', '*.psd1', '*.psm1', '.git')
     -- end
 
+    -- sourcekit: Swift
+    -- nvim_lsp.sourcekit.setup {}
+
     -- Setup LSP
     nvim_lsp[server_name].setup(opts)
+
   end
 }
 
