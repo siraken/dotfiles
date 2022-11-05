@@ -1,6 +1,7 @@
 ##################################################
 # ==> Aliases
 ##################################################
+alias g="git"
 alias gs="git status"
 alias lzg="lazygit"
 alias lzd="lazydocker"

@@ -1,6 +1,9 @@
 local keymap = vim.keymap
 local fn = vim.fn
 
+-- Input command with ; instead of :
+-- keymap.set('n', ';', ':')
+
 -- Not to yank with 'x'
 keymap.set('n', 'x', '"_x')
 

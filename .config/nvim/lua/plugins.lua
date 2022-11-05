@@ -39,10 +39,15 @@ packer.startup(function(use)
   -- LSP-related
   use 'onsails/lspkind.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'ray-x/lsp_signature.nvim'
+  use 'j-hui/fidget.nvim'
   -- Completion
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  -- use 'hrsh7th/vim-vsnip'
+  -- use 'hrsh7th/vim-vsnip-integ'
   use 'nvim-lua/completion-nvim'
   -- Display style
   use 'nvim-lualine/lualine.nvim' -- Statusline

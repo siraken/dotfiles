@@ -67,4 +67,7 @@ vim.g['rustfmt_autosave'] = 1
 -- vim-go no template
 vim.g['go_template_autocreate'] = 0
 
+-- Insert mode in terminal
+vim.cmd [[autocmd TermOpen * startinsert]]
+
 -- let $LANG = 'en_US'
