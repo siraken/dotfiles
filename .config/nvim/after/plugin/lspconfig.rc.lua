@@ -1,12 +1,12 @@
+-- NeoVim LSP Config
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 
+local root_pattern = nvim_lsp.util.root_pattern
+
+-- Mason LSP Config
 local status2, mason_lsp = pcall(require, 'mason-lspconfig')
 if (not status2) then return end
-
-local protocol = require('vim.lsp.protocol')
-
-local root_pattern = nvim_lsp.util.root_pattern
 
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
@@ -21,6 +21,10 @@ end
 -- Server configuration docs:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+
+mason_lsp.setup {
+  automatic_installation = false,
+}
 
 mason_lsp.setup_handlers {
   function(server_name)
@@ -130,9 +134,11 @@ mason_lsp.setup_handlers {
     -- end
 
     -- sourcekit: Swift
-    -- nvim_lsp.sourcekit.setup {}
+    -- if server_name == 'sourcekit' then
+    --   opts.cmd = { 'sourcekit-lsp' }
+    --   opts.root_dir = root_pattern('Package.swift', '.git')
+    -- end
 
-    -- Setup LSP
     nvim_lsp[server_name].setup(opts)
 
   end
