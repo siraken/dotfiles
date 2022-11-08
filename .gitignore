@@ -45,8 +45,12 @@
 # Starship
 !.config/starship.toml
 
+# Emacs
+!.emacs.d/init.el
+!.emacs.d/custom.el
+
 # Vim
-!.config/vim/.vimrc
+!.vimrc
 
 # Neovim
 !.config/nvim/init.lua
