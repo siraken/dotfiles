@@ -7,9 +7,17 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-packer.startup(function(use)
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
+return packer.startup(function(use)
   -- Packer
-  use 'wbthomason/packer.nvim'
+  use { 'wbthomason/packer.nvim' }
+  -- use { 'wbthomason/packer.nvim', opt = true }
   -- Neovim LSP
   use 'neovim/nvim-lspconfig'
   -- Mason: LSP client for Neovim
@@ -61,6 +69,7 @@ packer.startup(function(use)
   -- Utilities
   use 'github/copilot.vim'
   use 'itchyny/calendar.vim'
+  use 'prettier/vim-prettier'
   -- Uncategorized yet
   use 'terryma/vim-multiple-cursors'
   use 'numToStr/Comment.nvim'
