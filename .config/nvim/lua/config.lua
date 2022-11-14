@@ -67,6 +67,11 @@ vim.g['rustfmt_autosave'] = 1
 -- vim-go no template
 vim.g['go_template_autocreate'] = 0
 
+-- ale_linters
+-- vim.g['ale_linters'] = {
+--
+-- }
+
 -- Insert mode in terminal
 vim.cmd [[autocmd TermOpen * startinsert]]
 

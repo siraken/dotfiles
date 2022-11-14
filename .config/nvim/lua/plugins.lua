@@ -44,12 +44,15 @@ return packer.startup(function(use)
   use 'udalov/kotlin-vim'
   use 'akinsho/flutter-tools.nvim'
   use 'wuelnerdotexe/vim-astro'
+  use { 'vlime/vlime', rtp = 'vim' }
+  use 'vim-scripts/paredit.vim'
   -- LSP-related
   use 'onsails/lspkind.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'ray-x/lsp_signature.nvim'
   use 'j-hui/fidget.nvim'
+  use 'dense-analysis/ale'
   -- Completion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -70,6 +73,7 @@ return packer.startup(function(use)
   use 'github/copilot.vim'
   use 'itchyny/calendar.vim'
   use 'prettier/vim-prettier'
+  use 'pwntester/octo.nvim'
   -- Uncategorized yet
   use 'terryma/vim-multiple-cursors'
   use 'numToStr/Comment.nvim'
