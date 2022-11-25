@@ -61,5 +61,5 @@ set fish_greeting
 # ==> Variables
 ##################################################
 # nvm
-set --universal nvm_default_version v16.18.0
+set --universal nvm_default_version v18.12.1
 set --universal nvm_default_packages yarn
