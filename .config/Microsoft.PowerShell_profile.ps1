@@ -12,10 +12,15 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$env:POSH_MY_THEME.omp.json
 
 # Set Oh My Posh theme
 
+Set-PSReadlineKeyHandler -Key ctrl+d -Function DeleteCharOrExit
 
 # --- Functions
 function Get-GitStatus {
     & git status $args
+}
+
+function Edit-EmacsCUI {
+    emacs -nw $args
 }
 
 # --- Aliases
@@ -27,3 +32,6 @@ Set-Alias Brave "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.
 
 Set-Alias g git
 Set-Alias gs Get-GitStatus
+
+# Set-Alias emacs Edit-EmacsCUI
+
