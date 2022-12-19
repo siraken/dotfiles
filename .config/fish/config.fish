@@ -41,6 +41,7 @@ end
 # ==> Path
 ##################################################
 status --is-interactive; and rbenv init - fish | source
+status --is-interactive; and pyenv init - | source
 
 ##################################################
 # ==> OS-specific config
