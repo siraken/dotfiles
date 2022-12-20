@@ -35,7 +35,6 @@ return packer.startup(function(use)
   use { 'folke/tokyonight.nvim', branch = 'main' }
   -- Language support
   use 'bfontaine/Brewfile.vim'
-  use 'mattn/emmet-vim'
   use 'tomlion/vim-solidity'
   use 'ziglang/zig.vim'
   use 'editorconfig/editorconfig-vim'
@@ -60,10 +59,17 @@ return packer.startup(function(use)
   -- use 'hrsh7th/vim-vsnip'
   -- use 'hrsh7th/vim-vsnip-integ'
   use 'nvim-lua/completion-nvim'
+  -- Notification
+  use 'rcarriga/nvim-notify'
+  -- use {
+  --   'folke/noice.nvim',
+  --   requires = {
+  --     { 'MunifTanjim/nui.nvim' }
+  --   }
+  -- }
   -- Display style
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'norcalli/nvim-colorizer.lua'
-  use 'rcarriga/nvim-notify'
   use 'folke/trouble.nvim'
   use 'lewis6991/gitsigns.nvim'
   use 'kyazdani42/nvim-web-devicons'
