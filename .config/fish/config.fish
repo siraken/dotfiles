@@ -10,6 +10,7 @@ alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
 alias posh="pwsh"
 alias cls="clear"
 alias n="node"
+alias md="mkdir"
 
 ##################################################
 # ==> Functions
