@@ -45,6 +45,7 @@ return packer.startup(function(use)
   use 'wuelnerdotexe/vim-astro'
   use { 'vlime/vlime', rtp = 'vim' }
   use 'vim-scripts/paredit.vim'
+  use 'Olical/conjure'
   -- LSP-related
   use 'onsails/lspkind.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
