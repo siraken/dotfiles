@@ -31,6 +31,7 @@ return packer.startup(function(use)
   use 'EdenEast/nightfox.nvim'
   use 'overcache/NeoSolarized'
   use 'shaunsingh/nord.nvim'
+  use 'morhetz/gruvbox'
   use 'rebelot/kanagawa.nvim'
   use { 'folke/tokyonight.nvim', branch = 'main' }
   -- Language support
@@ -46,6 +47,9 @@ return packer.startup(function(use)
   use { 'vlime/vlime', rtp = 'vim' }
   use 'vim-scripts/paredit.vim'
   use 'Olical/conjure'
+  use 'tpope/vim-dispatch'
+  use 'clojure-vim/vim-jack-in'
+  use 'radenling/vim-dispatch-neovim'
   -- LSP-related
   use 'onsails/lspkind.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
@@ -60,6 +64,8 @@ return packer.startup(function(use)
   -- use 'hrsh7th/vim-vsnip'
   -- use 'hrsh7th/vim-vsnip-integ'
   use 'nvim-lua/completion-nvim'
+  -- Editing
+  use 'guns/vim-sexp'
   -- Notification
   use 'rcarriga/nvim-notify'
   -- use {
@@ -69,6 +75,7 @@ return packer.startup(function(use)
   --   }
   -- }
   -- Display style
+  use 'mhinz/vim-startify' -- Startup screen
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/trouble.nvim'
