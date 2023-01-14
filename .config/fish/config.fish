@@ -11,6 +11,7 @@ alias posh="pwsh"
 alias cls="clear"
 alias n="node"
 alias md="mkdir"
+alias e="emacs"
 
 ##################################################
 # ==> Functions
