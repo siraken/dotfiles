@@ -4,8 +4,7 @@ if (not status) then return end
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-saga.init_lsp_saga {
-}
+saga.setup({})
 
 keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<cr>', opts)
 keymap.set('n', 'gn', '<Cmd>Lspsaga rename<cr>', opts)
