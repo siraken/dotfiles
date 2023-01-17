@@ -57,10 +57,6 @@ api.nvim_command [[colorscheme tokyonight]]
 vim.keymap.set('n', 'tr', '<cmd>NvimTreeToggle<cr>')
 -- vim.cmd(':command Tr NvimTreeToggle')
 
--- Prettier
-vim.g['prettier#autoformat'] = 1
-vim.g['prettier#autoformat_require_pragma'] = 0
-
 -- Rust format
 vim.g['rustfmt_autosave'] = 1
 
