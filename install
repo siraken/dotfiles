@@ -54,6 +54,7 @@ mes "Emacs"
 if [ ! -d ~/.emacs.d ]; then
     git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 fi
+ln -sf ~/dotfiles/.spacemacs ~/.spacemacs
 
 # --- Vim
 mes "Vim"

@@ -48,6 +48,7 @@
 # Emacs
 !.emacs.d/init.el
 !.emacs.d/custom.el
+!.spacemacs
 
 # Vim
 !.vimrc
