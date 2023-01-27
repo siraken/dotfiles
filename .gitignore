@@ -20,7 +20,8 @@
 !install.ps1
 
 # PowerShell
-!.config/Microsoft.PowerShell_profile.ps1
+!.config/powershell/windows.ps1
+!.config/powershell/linux.ps1
 
 # bash
 !.bashrc

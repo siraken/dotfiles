@@ -1,5 +1,6 @@
 #
 # PowerShell Configuration
+# for Windows
 #
 
 # Variables

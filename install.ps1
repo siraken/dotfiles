@@ -1,6 +1,6 @@
 # PowerShell
 Write-Host "Installing PowerShell"
-New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\Microsoft.PowerShell_profile.ps1 -Path $env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\powershell\windows.ps1 -Path $env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 
 # Starship
 Write-Host "Installing Starship"

@@ -76,6 +76,11 @@ ln -sf ~/dotfiles/.config/kak/ ~/.config
 mes "MongoDB Shell"
 ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
+# --- PowerShell
+mes "PowerShell"
+mkdir -p ~/.config/powershell
+ln -sf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
+
 # --- Hyper
 mes "Hyper"
 ln -sf ~/dotfiles/.hyper.js ~/.hyper.js
