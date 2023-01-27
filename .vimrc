@@ -47,7 +47,9 @@ set scrolloff=10
 set formatoptions+=r
 set langmenu=en_US
 
-nmap <silent> <Esc><Esc> :<C-u>nohlsearch<CR><Esc>
+nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR><Esc>
+" Enter commands with ;
+nnoremap ; :
 
 au BufNewFile,BufRead *.tsx setf typescriptreact
 au BufNewFile,BufRead *.md set filetype=markdown
