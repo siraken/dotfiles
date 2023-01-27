@@ -48,7 +48,7 @@ set formatoptions+=r
 set langmenu=en_US
 
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR><Esc>
-" Enter commands with ;
+nnoremap U <C-r>
 nnoremap ; :
 
 au BufNewFile,BufRead *.tsx setf typescriptreact

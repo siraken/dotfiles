@@ -20,6 +20,9 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 -- Enter commands with ;
 keymap.set('n', ';', ':')
 
+-- Use Shift + U as redo
+keymap.set('n', 'U', '<C-r>')
+
 -- Force quit
 keymap.set("n", "<Space>q", ":<C-u>q!<CR>")
 
