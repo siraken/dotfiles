@@ -1,12 +1,30 @@
+[user]
+	name = Kento Shirasawa
+	email = shirasawa.kento@gmail.com
+
+[color]
+ui = true
+
+[init]
+defaultBranch = main
+
+[core]
+	autocrlf = input
+    ignorecase = false
+    editor = nvim
+
+[push]
+; default = current
+
+[pull]
+; ff = only
+; rebase = false
+
+[credential]
+; helper = osxkeychain
+
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[user]
-	name = Kento Shirasawa
-	email = shirasawa.kento@gmail.com
-[core]
-	autocrlf = input
-    ignorecase = false
-    editor = nvim
