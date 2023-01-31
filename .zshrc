@@ -1,5 +1,5 @@
-export PATH="~/.composer/vendor/bin:$PATH"
-export PATH="$PATH:/Users/siraken/Developer/flutter/bin"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/Developer/flutter/bin"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
