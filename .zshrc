@@ -1,9 +1,8 @@
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:$HOME/Developer/flutter/bin"
-
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="$HOME/Developer/flutter/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 if [ -e "$HOME/Library/Android/sdk" ]; then
