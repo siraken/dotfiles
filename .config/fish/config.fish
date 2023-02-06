@@ -12,6 +12,9 @@ alias cls="clear"
 alias n="node"
 alias md="mkdir"
 alias e="emacs"
+alias bim="vim"
+alias nbim="nvim"
+alias nf="neofetch"
 
 ##################################################
 # ==> Path
