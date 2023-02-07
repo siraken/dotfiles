@@ -12,6 +12,7 @@
     pl = pull
     ad = add
     fe = fetch
+    fedr = fetch --dry-run
 
 [color]
 ui = true
