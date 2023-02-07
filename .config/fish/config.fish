@@ -5,7 +5,6 @@ alias g="git"
 alias gs="git status"
 alias lzg="lazygit"
 alias lzd="lazydocker"
-alias cat='bat'
 alias fzf="fzf --preview 'bat --color=always --style=numbers {}'"
 alias posh="pwsh"
 alias cls="clear"
