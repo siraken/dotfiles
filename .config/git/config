@@ -10,7 +10,8 @@
     st = status
     ps = push
     pl = pull
-    a = add
+    ad = add
+    fe = fetch
 
 [color]
 ui = true
