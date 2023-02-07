@@ -1,6 +1,16 @@
 [user]
 	name = Kento Shirasawa
 	email = shirasawa.kento@gmail.com
+    username = SiraKen ; git-it
+
+[alias]
+    cm = commit
+    co = checkout
+    br = branch
+    st = status
+    ps = push
+    pl = pull
+    a = add
 
 [color]
 ui = true
