@@ -41,10 +41,6 @@ set -x GH_URL https://github.com
 ##################################################
 # ==> Variables
 ##################################################
-# nvm
-set --universal nvm_default_version v16.19.0
-# set --universal nvm_default_version v18.12.1
-set --universal nvm_default_packages yarn
 
 ##################################################
 # ==> Functions

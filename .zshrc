@@ -1,8 +1,10 @@
 export GOPATH=$HOME/go
+export VOLTA_HOME=$HOME/.volta
 
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$HOME/Developer/flutter/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 if [ -e "$HOME/Library/Android/sdk" ]; then
