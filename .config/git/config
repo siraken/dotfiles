@@ -10,7 +10,9 @@
     st = status
     ps = push
     pl = pull
-    a = add
+    ad = add
+    fe = fetch
+    fedr = fetch --dry-run
 
 [color]
 ui = true
