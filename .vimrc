@@ -1,3 +1,8 @@
+" ------------------------------------------------------------
+" [CAUTION]
+" This file is used by both Vim and VSCodeVim.
+" ------------------------------------------------------------
+
 autocmd!
 
 scriptencoding utf-8
