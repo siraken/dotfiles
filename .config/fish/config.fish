@@ -21,6 +21,7 @@ alias datetime="date '+%Y-%m-%d %H:%H:%S'"
 ##################################################
 status --is-interactive; and rbenv init - fish | source
 status --is-interactive; and pyenv init - | source
+status --is-interactive; and thefuck --alias | source
 
 ##################################################
 # ==> OS-specific config
