@@ -6,6 +6,7 @@ export PATH="$HOME/Developer/flutter/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.progate/bin:$PATH"
 
 if [ -e "$HOME/Library/Android/sdk" ]; then
   export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
