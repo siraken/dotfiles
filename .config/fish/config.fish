@@ -15,6 +15,7 @@ alias bim="vim"
 alias nbim="nvim"
 alias nf="neofetch"
 alias datetime="date '+%Y-%m-%d %H:%H:%S'"
+alias home="cd $HOME"
 
 ##################################################
 # ==> Path
