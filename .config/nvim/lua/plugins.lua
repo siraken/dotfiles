@@ -17,13 +17,14 @@ vim.cmd([[
 return packer.startup(function(use)
   -- Packer
   use { 'wbthomason/packer.nvim' }
-  -- use { 'wbthomason/packer.nvim', opt = true }
   -- Neovim LSP
   use 'neovim/nvim-lspconfig'
   -- Mason: LSP client for Neovim
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+  --
   -- Colorschemes
+  --
   use 'tomasiser/vim-code-dark'
   use 'sickill/vim-monokai'
   use 'cocopon/iceberg.vim'
@@ -34,7 +35,9 @@ return packer.startup(function(use)
   use 'morhetz/gruvbox'
   use 'rebelot/kanagawa.nvim'
   use { 'folke/tokyonight.nvim', branch = 'main' }
+  --
   -- Language support
+  --
   use 'bfontaine/Brewfile.vim'
   use 'tomlion/vim-solidity'
   use 'ziglang/zig.vim'
@@ -51,23 +54,31 @@ return packer.startup(function(use)
   use 'clojure-vim/vim-jack-in'
   use 'radenling/vim-dispatch-neovim'
   use 'roobert/tailwindcss-colorizer-cmp.nvim'
+  --
   -- LSP-related
-  use 'onsails/lspkind.nvim'
+  --
+  use 'onsails/lspkind.nvim' -- VSCode-like pictograms
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'ray-x/lsp_signature.nvim'
   use 'j-hui/fidget.nvim'
   use 'dense-analysis/ale'
+  --
   -- Completion
+  --
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   -- use 'hrsh7th/vim-vsnip'
   -- use 'hrsh7th/vim-vsnip-integ'
   use 'nvim-lua/completion-nvim'
+  --
   -- Editing
+  --
   use 'guns/vim-sexp'
+  --
   -- Notification
+  --
   use 'rcarriga/nvim-notify'
   -- use {
   --   'folke/noice.nvim',
@@ -75,7 +86,9 @@ return packer.startup(function(use)
   --     { 'MunifTanjim/nui.nvim' }
   --   }
   -- }
+  --
   -- Display style
+  --
   use 'mhinz/vim-startify' -- Startup screen
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'norcalli/nvim-colorizer.lua'
@@ -84,13 +97,17 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use { 'akinsho/bufferline.nvim', tag = "v2.*" } -- Tab
+  --
   -- Utilities
+  --
   use 'github/copilot.vim'
   use 'itchyny/calendar.vim'
   use 'prettier/vim-prettier'
   use 'pwntester/octo.nvim'
+  --
   -- Uncategorized yet
-  use 'terryma/vim-multiple-cursors'
+  --
+  use 'mg979/vim-visual-multi'
   use 'numToStr/Comment.nvim'
   use 'folke/todo-comments.nvim'
   use 'L3MON4D3/LuaSnip'
@@ -112,6 +129,8 @@ return packer.startup(function(use)
     'akinsho/toggleterm.nvim',
     tag = '*'
   }
+  --
   -- Homebrew
+  --
   -- use 'SiraKen/html-parser.vim'
 end)
