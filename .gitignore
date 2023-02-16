@@ -49,7 +49,7 @@
 # Emacs
 !.emacs.d/init.el
 !.emacs.d/custom.el
-!.spacemacs
+!.spacemacs.d/init.el
 
 # Vim
 !.vimrc
