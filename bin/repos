@@ -1,0 +1,35 @@
+#!/bin/bash
+
+OWNER_FROM="SiraKen"
+OWNER_TO="siraken-playground"
+SEARCH_QUERY="learn-"
+
+REPOS=(`gh search repos --owner ${OWNER_FROM} --match name "${SEARCH_QUERY}" --json name | jq '.[] .name'`)
+
+echo -e "\nThe following repos will be transferred to ${OWNER_TO}.\n"
+
+for repo in "${REPOS[@]}"
+do
+  name=`echo $repo | sed 's/"//g'`
+  echo "${name}"
+done
+
+echo ""
+echo -n "Are you sure? [Y/n]: "
+read ANS
+echo ""
+
+case $ANS in
+  "" | [Yy]* )
+    for repo in "${REPOS[@]}"
+    do
+      name=`echo $repo | sed 's/"//g'`
+      # echo "repos/SiraKen/${name}/transfer"
+      gh api "repos/SiraKen/${name}/transfer" -f new_owner=${OWNER_TO}
+    done
+    ;;
+  * )
+    echo "Bye!"
+    ;;
+esac
+
