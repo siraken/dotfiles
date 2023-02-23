@@ -3,6 +3,7 @@ local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 
 local root_pattern = nvim_lsp.util.root_pattern
+local api = vim.api
 
 -- Mason LSP Config
 local status2, mason_lsp = pcall(require, 'mason-lspconfig')
@@ -10,10 +11,10 @@ if (not status2) then return end
 
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_command [[augroup Format]]
-    vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-    vim.api.nvim_command [[augroup END]]
+    api.nvim_command [[augroup Format]]
+    api.nvim_command [[autocmd! * <buffer>]]
+    api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+    api.nvim_command [[augroup END]]
   end
   -- client.resolved_capabilities.document_formatting = false
 end
@@ -49,22 +50,14 @@ mason_lsp.setup_handlers {
 
     -- denols: Deno
     if server_name == 'denols' then
-      opts.root_dir = root_pattern('deno.json')
+      opts.on_attach = on_attach
+      opts.root_dir = root_pattern('deno.json', 'deno.jsonc')
     end
 
     -- tsserver: JavaScript / TypeScript
     if server_name == 'tsserver' then
       opts.on_attach = on_attach
-      opts.filetypes = {
-        'javascript',
-        'javascriptreact',
-        'javascript.jsx',
-        'typescript',
-        'typescriptreact',
-        'typescript.tsx'
-      }
-      opts.cmd = { 'typescript-language-server', '--stdio' }
-      opts.root_dir = root_pattern('package.json')
+      -- opts.single_file_support = false
     end
 
     -- tailwindcss: TailwindCSS

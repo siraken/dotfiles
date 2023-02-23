@@ -62,7 +62,6 @@ return packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'ray-x/lsp_signature.nvim'
   use 'j-hui/fidget.nvim'
-  use 'dense-analysis/ale'
   --
   -- Completion
   --
@@ -104,6 +103,7 @@ return packer.startup(function(use)
   use 'itchyny/calendar.vim'
   use 'prettier/vim-prettier'
   use 'pwntester/octo.nvim'
+  use 'dhruvasagar/vim-table-mode'
   --
   -- Uncategorized yet
   --
