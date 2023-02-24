@@ -16,6 +16,7 @@ alias nbim="nvim"
 alias nf="neofetch"
 alias datetime="date '+%Y-%m-%d %H:%H:%S'"
 alias home="cd $HOME"
+alias sail="[ -f sail ] && sh sail || sh vendor/bin/sail"
 
 ##################################################
 # ==> Path
