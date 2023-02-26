@@ -15,7 +15,6 @@ alias bim="vim"
 alias nbim="nvim"
 alias nf="neofetch"
 alias datetime="date '+%Y-%m-%d %H:%H:%S'"
-alias home="cd $HOME"
 alias sail="[ -f sail ] && sh sail || sh vendor/bin/sail"
 
 ##################################################
@@ -69,8 +68,9 @@ function go-init
   git init && touch main.go README.md
 end
 
-# Add git remote URL with current directory name
-function git-add-url
+# gau - Git Add URL
+# add git remote URL with current directory name
+function gau
   echo "Enter the username:" && read username;
   if test -n "$username"
     git remote add origin "$GH_URL/$username/$(basename $(pwd)).git"
