@@ -1,13 +1,13 @@
 # dotfiles
 
-[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/SiraKen/dotfiles)
+[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/siraken/dotfiles)
 
 This repository manages dotfiles `.*` under `$HOME`.
 Clone this repository on `$HOME/dotfiles` and run `install`.
 
-[SiraKen/installer](https://github.com/SiraKen/installer) repo is required to work this repository properly.
+[siraken/installer](https://github.com/siraken/installer) repo is required to work this repository properly.
 
-Minimized `dotfiles`: [SiraKen/dotfiles-min](https://github.com/SiraKen/dotfiles-min)
+Minimized `dotfiles`: [siraken/dotfiles-min](https://github.com/siraken/dotfiles-min)
 
 ## Packages
 
@@ -39,8 +39,8 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```bash
 docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
     apt-get update -y && apt-get upgrade -y && apt-get install -y git sudo
-    git clone https://github.com/SiraKen/dotfiles ~/dotfiles
-    git clone https://github.com/SiraKen/installer ~/installer
+    git clone https://github.com/siraken/dotfiles ~/dotfiles
+    git clone https://github.com/siraken/installer ~/installer
     cd ~/dotfiles && ./install
     cd ~/installer/linux && ./apt.sh
     cd ~/installer/tools && ./install-reqs.sh
@@ -56,8 +56,8 @@ docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
 docker run -w /root -it --platform linux/x86_64 --rm archlinux:latest sh -uelic '
     pacman -Syyu --noconfirm
     pacman -S --noconfirm git sudo
-    git clone https://github.com/SiraKen/dotfiles ~/dotfiles
-    git clone https://github.com/SiraKen/installer ~/installer
+    git clone https://github.com/siraken/dotfiles ~/dotfiles
+    git clone https://github.com/siraken/installer ~/installer
     cd ~/dotfiles && ./install
     cd ~/installer/linux && ./pacman.sh
     cd ~/installer/tools && ./install-reqs.sh
