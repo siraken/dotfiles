@@ -19,9 +19,6 @@
 !install
 !install.ps1
 
-# bin
-!bin/*
-
 # PowerShell
 !.config/powershell/windows.ps1
 !.config/powershell/linux.ps1
