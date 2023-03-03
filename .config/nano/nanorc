@@ -1,0 +1,9 @@
+# auto indent
+set autoindent
+
+# show status bar
+set constantshow
+
+# show line number
+set linenumbers
+

@@ -56,6 +56,10 @@ if [ ! -d ~/.emacs.d ]; then
 fi
 ln -sf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
 
+# --- nano
+mes "nano"
+ln -sf ~/dotfiles/.config/nano ~/.config
+
 # --- Vim
 mes "Vim"
 ln -sf ~/dotfiles/.vimrc ~/.vimrc

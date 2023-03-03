@@ -51,6 +51,9 @@
 !.emacs.d/custom.el
 !.spacemacs.d/init.el
 
+# nano
+!.config/nano/nanorc
+
 # Vim
 !.vimrc
 
