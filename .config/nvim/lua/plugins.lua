@@ -100,6 +100,7 @@ return packer.startup(function(use)
   -- Utilities
   --
   use 'github/copilot.vim'
+  use 'jackMort/ChatGPT.nvim'
   use 'itchyny/calendar.vim'
   use 'prettier/vim-prettier'
   use 'pwntester/octo.nvim'
