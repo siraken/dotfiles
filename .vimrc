@@ -36,7 +36,8 @@ set noswapfile
 set nobackup
 set noundofile
 set encoding=utf-8
-set fileencodings=utf-8,sjis,euc-jp,latin
+set fileencodings=euc-jp,sjis,latin,utf-8
+set fileformats=unix,dos,mac
 
 set title
 set smarttab
