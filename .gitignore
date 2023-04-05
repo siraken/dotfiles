@@ -36,6 +36,9 @@
 !.config/fish/config-darwin.fish
 !.config/fish/config-linux.fish
 !.config/fish/f.fish
+!.config/fish/alias.fish
+!.config/fish/variable.fish
+!.config/fish/path.fish
 !.config/fish/fish_plugins
 
 # tmux
