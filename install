@@ -1,52 +1,42 @@
 #!/bin/sh
 
-trap INSTALL_ERROR ERR
-trap INSTALL_FINISH EXIT
+trap _ERROR ERR
+trap _FINISH EXIT
 
-# Functions ------------------------------
-INSTALL_MESSAGE() {
+INSTALL() {
     printf "\e[32mInstalling: \e[m$1\n"
 }
-INSTALL_FINISH() {
+_FINISH() {
     printf "\n\e[1;37;42m Done \e[m\n\n"
 }
-INSTALL_ERROR() {
+_ERROR() {
     printf "\e[1;37;41m Error \e[m\n"
 }
 
-# Installer --------------------------------
-
 mkdir -p ~/.config
 
-# > bash
-INSTALL_MESSAGE "bash"
+INSTALL "bash"
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
 
-# > zsh
-INSTALL_MESSAGE "zsh"
+INSTALL "zsh"
 ln -sf ~/dotfiles/.zprofile ~/.zprofile
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 
-# > fish
-INSTALL_MESSAGE "fish"
+INSTALL "fish"
 ln -sf ~/dotfiles/.config/fish ~/.config/
 
-# > tmux
-INSTALL_MESSAGE "tmux"
+INSTALL "tmux"
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.tmux.conf.darwin ~/.tmux.conf.darwin
 ln -sf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 
-# > Starship
-INSTALL_MESSAGE "Starship"
+INSTALL "Starship"
 ln -sf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
-# > Git
-INSTALL_MESSAGE "Git"
+INSTALL "Git"
 ln -sf ~/dotfiles/.config/git ~/.config/
 
-# > Emacs
-INSTALL_MESSAGE "Emacs"
+INSTALL "Emacs"
 # ln -sf ~/dotfiles/.emacs.d/ ~/.emacs.d
 # Use Spacemacs instead of above (check if .emacs.d exists)
 if [ ! -d ~/.emacs.d ]; then
@@ -54,39 +44,30 @@ if [ ! -d ~/.emacs.d ]; then
 fi
 ln -sf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
 
-# > nano
-INSTALL_MESSAGE "nano"
+INSTALL "nano"
 ln -sf ~/dotfiles/.config/nano ~/.config/
 
-# > Vim
-INSTALL_MESSAGE "Vim"
+INSTALL "Vim"
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 
-# > Neovim
-INSTALL_MESSAGE "Neovim"
+INSTALL "Neovim"
 ln -sf ~/dotfiles/.config/nvim ~/.config/
 
-# > Helix
-INSTALL_MESSAGE "Helix"
+INSTALL "Helix"
 ln -sf ~/dotfiles/.config/helix ~/.config/
 
-# > Kakoune
-INSTALL_MESSAGE "Kakoune"
+INSTALL "Kakoune"
 ln -sf ~/dotfiles/.config/kak ~/.config/
 
-# > MongoDB Shell
-INSTALL_MESSAGE "MongoDB Shell"
+INSTALL "MongoDB Shell"
 ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
-# > PowerShell
-INSTALL_MESSAGE "PowerShell"
+INSTALL "PowerShell"
 mkdir -p ~/.config/powershell
 ln -sf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
 
-# > Hyper
-INSTALL_MESSAGE "Hyper"
+INSTALL "Hyper"
 ln -sf ~/dotfiles/.hyper.js ~/.hyper.js
 
-# > npm
-INSTALL_MESSAGE "npm"
+INSTALL "npm"
 ln -sf ~/dotfiles/.npmrc ~/.npmrc
