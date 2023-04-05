@@ -3,9 +3,7 @@
 trap catch ERR
 trap finish EXIT
 
-#
 # Functions ------------------------------
-#
 mes() {
     printf "\e[32mInstalling: \e[m$1\n"
 }
@@ -16,38 +14,38 @@ catch() {
     printf "\e[1;37;41m Error \e[m\n"
 }
 
-#
 # Installer --------------------------------
-#
 
-# --- bash
+mkdir -p ~/.config
+
+# > bash
 mes "bash"
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
 
-# --- zsh
+# > zsh
 mes "zsh"
 ln -sf ~/dotfiles/.zprofile ~/.zprofile
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 
-# --- fish
+# > fish
 mes "fish"
-ln -sf ~/dotfiles/.config/fish/ ~/.config/fish
+ln -sf ~/dotfiles/.config/fish ~/.config/fish
 
-# --- tmux
+# > tmux
 mes "tmux"
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.tmux.conf.darwin ~/.tmux.conf.darwin
 ln -sf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 
-# --- Starship
+# > Starship
 mes "Starship"
 ln -sf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
-# --- Git
+# > Git
 mes "Git"
-ln -sf ~/dotfiles/.config/git/ ~/.config/git
+ln -sf ~/dotfiles/.config/git ~/.config/git
 
-# --- Emacs
+# > Emacs
 mes "Emacs"
 # ln -sf ~/dotfiles/.emacs.d/ ~/.emacs.d
 # Use Spacemacs instead of above (check if .emacs.d exists)
@@ -56,39 +54,39 @@ if [ ! -d ~/.emacs.d ]; then
 fi
 ln -sf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
 
-# --- nano
+# > nano
 mes "nano"
 ln -sf ~/dotfiles/.config/nano ~/.config/nano
 
-# --- Vim
+# > Vim
 mes "Vim"
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 
-# --- Neovim
+# > Neovim
 mes "Neovim"
-ln -sf ~/dotfiles/.config/nvim/ ~/.config/nvim
+ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
 
-# --- Helix
+# > Helix
 mes "Helix"
-ln -sf ~/dotfiles/.config/helix/ ~/.config/helix
+ln -sf ~/dotfiles/.config/helix ~/.config/helix
 
-# --- Kakoune
+# > Kakoune
 mes "Kakoune"
-ln -sf ~/dotfiles/.config/kak/ ~/.config/kak
+ln -sf ~/dotfiles/.config/kak ~/.config/kak
 
-# --- MongoDB Shell
+# > MongoDB Shell
 mes "MongoDB Shell"
 ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
-# --- PowerShell
+# > PowerShell
 mes "PowerShell"
 mkdir -p ~/.config/powershell
 ln -sf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
 
-# --- Hyper
+# > Hyper
 mes "Hyper"
 ln -sf ~/dotfiles/.hyper.js ~/.hyper.js
 
-# --- npm
+# > npm
 mes "npm"
 ln -sf ~/dotfiles/.npmrc ~/.npmrc
