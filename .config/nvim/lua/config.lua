@@ -28,7 +28,7 @@ opt.incsearch = true
 opt.swapfile = false
 opt.backup = false
 opt.encoding = 'utf-8'
-opt.fileencodings = 'euc-jp,sjis,latin,utf-8'
+opt.fileencodings = 'utf-8,euc-jp,sjis,latin'
 opt.fileformats = 'unix,dos,mac'
 
 opt.compatible = false
