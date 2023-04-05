@@ -1,13 +1,13 @@
 #!/bin/sh
 
 trap catch ERR
-trap finish EXIT
+trap INSTALL_FINISH EXIT
 
 # Functions ------------------------------
-mes() {
+INSTALL_MESSAGE() {
     printf "\e[32mInstalling: \e[m$1\n"
 }
-finish() {
+INSTALL_FINISH() {
     printf "\n\e[1;37;42m Done \e[m\n\n"
 }
 catch() {
@@ -19,34 +19,34 @@ catch() {
 mkdir -p ~/.config
 
 # > bash
-mes "bash"
+INSTALL_MESSAGE "bash"
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
 
 # > zsh
-mes "zsh"
+INSTALL_MESSAGE "zsh"
 ln -sf ~/dotfiles/.zprofile ~/.zprofile
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 
 # > fish
-mes "fish"
-ln -sf ~/dotfiles/.config/fish ~/.config/fish
+INSTALL_MESSAGE "fish"
+ln -sf ~/dotfiles/.config/fish ~/.config/
 
 # > tmux
-mes "tmux"
+INSTALL_MESSAGE "tmux"
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.tmux.conf.darwin ~/.tmux.conf.darwin
 ln -sf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 
 # > Starship
-mes "Starship"
+INSTALL_MESSAGE "Starship"
 ln -sf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
 # > Git
-mes "Git"
-ln -sf ~/dotfiles/.config/git ~/.config/git
+INSTALL_MESSAGE "Git"
+ln -sf ~/dotfiles/.config/git ~/.config/
 
 # > Emacs
-mes "Emacs"
+INSTALL_MESSAGE "Emacs"
 # ln -sf ~/dotfiles/.emacs.d/ ~/.emacs.d
 # Use Spacemacs instead of above (check if .emacs.d exists)
 if [ ! -d ~/.emacs.d ]; then
@@ -55,38 +55,38 @@ fi
 ln -sf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
 
 # > nano
-mes "nano"
-ln -sf ~/dotfiles/.config/nano ~/.config/nano
+INSTALL_MESSAGE "nano"
+ln -sf ~/dotfiles/.config/nano ~/.config/
 
 # > Vim
-mes "Vim"
+INSTALL_MESSAGE "Vim"
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 
 # > Neovim
-mes "Neovim"
-ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
+INSTALL_MESSAGE "Neovim"
+ln -sf ~/dotfiles/.config/nvim ~/.config/
 
 # > Helix
-mes "Helix"
-ln -sf ~/dotfiles/.config/helix ~/.config/helix
+INSTALL_MESSAGE "Helix"
+ln -sf ~/dotfiles/.config/helix ~/.config/
 
 # > Kakoune
-mes "Kakoune"
-ln -sf ~/dotfiles/.config/kak ~/.config/kak
+INSTALL_MESSAGE "Kakoune"
+ln -sf ~/dotfiles/.config/kak ~/.config/
 
 # > MongoDB Shell
-mes "MongoDB Shell"
+INSTALL_MESSAGE "MongoDB Shell"
 ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
 # > PowerShell
-mes "PowerShell"
+INSTALL_MESSAGE "PowerShell"
 mkdir -p ~/.config/powershell
 ln -sf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
 
 # > Hyper
-mes "Hyper"
+INSTALL_MESSAGE "Hyper"
 ln -sf ~/dotfiles/.hyper.js ~/.hyper.js
 
 # > npm
-mes "npm"
+INSTALL_MESSAGE "npm"
 ln -sf ~/dotfiles/.npmrc ~/.npmrc
