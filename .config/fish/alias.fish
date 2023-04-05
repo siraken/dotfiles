@@ -22,10 +22,14 @@ alias rb="ruby"
 alias py="python"
 alias n="node"
 
+if type -q bat
+  alias cat="bat"
+end
+
 if type -q exa
-  alias ls "ll"
-  alias ll "exa -l -g --icons"
-  alias lla "ll -a"
+  alias ls="ll"
+  alias ll="exa -l -g --icons"
+  alias lla="ll -a"
   alias llt='ll --tree'
   alias llta='llt -a'
 end
