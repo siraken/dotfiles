@@ -1,6 +1,6 @@
 #!/bin/sh
 
-trap catch ERR
+trap INSTALL_ERROR ERR
 trap INSTALL_FINISH EXIT
 
 # Functions ------------------------------
@@ -10,7 +10,7 @@ INSTALL_MESSAGE() {
 INSTALL_FINISH() {
     printf "\n\e[1;37;42m Done \e[m\n\n"
 }
-catch() {
+INSTALL_ERROR() {
     printf "\e[1;37;41m Error \e[m\n"
 }
 
