@@ -9,3 +9,14 @@ notify.setup {
     },
   }
 }
+
+-- Suppress warning
+-- See: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
+vim.notify = function(msg, ...)
+  if msg:match("warning: multiple different client offset_encoding") then
+    return
+  end
+
+  notify(msg, ...)
+end
+
