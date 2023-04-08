@@ -31,8 +31,8 @@ mason_lsp.setup_handlers {
   function(server_name)
     local opts = {}
 
-    -- sumneko_lua: Lua
-    if server_name == 'sumneko_lua' then
+    -- lua_ls: Lua
+    if server_name == 'lua_ls' then
       opts.settings = {
         Lua = {
           runtime = {
