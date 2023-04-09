@@ -33,4 +33,3 @@ if type -q exa
   alias llt='ll --tree'
   alias llta='llt -a'
 end
-

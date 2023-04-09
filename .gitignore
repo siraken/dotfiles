@@ -30,10 +30,11 @@
 !.p10k.zsh
 
 # fish
+!.config/fish/common.fish
 !.config/fish/config.fish
 !.config/fish/config-darwin.fish
 !.config/fish/config-linux.fish
-!.config/fish/f.fish
+!.config/fish/function.fish
 !.config/fish/alias.fish
 !.config/fish/variable.fish
 !.config/fish/path.fish

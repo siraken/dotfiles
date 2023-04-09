@@ -1,3 +1,6 @@
+# Common functions
+source (dirname (status --current-filename))/common.fish
+
 # Aliases
 source (dirname (status --current-filename))/alias.fish
 
@@ -8,7 +11,7 @@ source (dirname (status --current-filename))/path.fish
 source (dirname (status --current-filename))/variable.fish
 
 # Functions
-source (dirname (status --current-filename))/f.fish
+source (dirname (status --current-filename))/function.fish
 
 # OS-specific configurations
 switch (uname)
@@ -20,4 +23,3 @@ end
 
 # Starship
 # starship init fish | source
-
