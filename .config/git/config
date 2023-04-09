@@ -1,7 +1,7 @@
 [user]
 	name = Kento Shirasawa
 	email = shirasawa.kento@gmail.com
-    username = SiraKen ; git-it
+    username = siraken ; git-it
 
 [alias]
     cm = commit
@@ -40,3 +40,13 @@ defaultBranch = main
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+
+; Sourcetree
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/siraken/.stCommitMsg

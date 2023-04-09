@@ -1,15 +1,39 @@
-# PowerShell
-Write-Host "Installing PowerShell"
+$global:INSTALLING_FILE = ""
+$global:ERROR_COUNT = 0
+
+function _INSTALL($name) {
+    Write-Host "Installing: " -ForegroundColor Green -NoNewline
+    Write-Host $name
+    $global:INSTALLING_FILE = $name
+}
+
+function _ERROR {
+    Write-Host " Error " -BackgroundColor Red -ForegroundColor White -NoNewline
+    Write-Host " $global:INSTALLING_FILE "
+    $global:ERROR_COUNT += 1
+}
+
+function _FINISH {
+    Write-Host " Done " -ForegroundColor White -BackgroundColor Green
+    if ($global:ERROR_COUNT -gt 0) {
+        Write-Host " $($global:ERROR_COUNT) errors " -ForegroundColor White -BackgroundColor Red
+    }
+}
+
+_INSTALL PowerShell
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\powershell\windows.ps1 -Path $env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 
-# Starship
-Write-Host "Installing Starship"
+_INSTALL Starship
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\starship.toml -Path $env:USERPROFILE\.config\starship.toml
 
-# NeoVim
-Write-Host "Installing NeoVim"
+_INSTALL NeoVim
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\nvim\ -Path $env:USERPROFILE\AppData\Local\nvim
 
-# Hyper
-Write-Host "Installing Hyper"
+_INSTALL Hyper
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.hyper.js -Path $env:USERPROFILE\AppData\Roaming\Hyper\.hyper.js
+
+trap {
+    _ERROR
+}
+
+_FINISH

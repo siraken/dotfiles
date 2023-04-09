@@ -3,40 +3,48 @@
 trap _ERROR ERR
 trap _FINISH EXIT
 
+INSTALLING_FILE=""
+ERROR_COUNT=0
+
 INSTALL() {
     printf "\e[32mInstalling: \e[m$1\n"
+    INSTALLING_FILE=$1
 }
 _FINISH() {
     printf "\n\e[1;37;42m Done \e[m\n\n"
+    if [ $ERROR_COUNT -gt 0 ]; then
+        printf "\e[1;37;41m $ERROR_COUNT errors \e[m\n\n"
+    fi
 }
 _ERROR() {
-    printf "\e[1;37;41m Error \e[m\n"
+    printf "\e[1;37;41m Error \e[m $INSTALLING_FILE\n"
+    ERROR_COUNT=$((ERROR_COUNT+1))
 }
 
 mkdir -p ~/.config
 
-INSTALL "bash"
+INSTALL bash
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
 
-INSTALL "zsh"
+INSTALL zsh
 ln -sf ~/dotfiles/.zprofile ~/.zprofile
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 
-INSTALL "fish"
+INSTALL fish
 ln -sf ~/dotfiles/.config/fish ~/.config/
 
-INSTALL "tmux"
+INSTALL tmux
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.tmux.conf.darwin ~/.tmux.conf.darwin
 ln -sf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 
-INSTALL "Starship"
+INSTALL Starship
 ln -sf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
-INSTALL "Git"
+INSTALL Git
 ln -sf ~/dotfiles/.config/git ~/.config/
 
-INSTALL "Emacs"
+INSTALL Emacs
 # ln -sf ~/dotfiles/.emacs.d/ ~/.emacs.d
 # Use Spacemacs instead of above (check if .emacs.d exists)
 if [ ! -d ~/.emacs.d ]; then
@@ -44,30 +52,30 @@ if [ ! -d ~/.emacs.d ]; then
 fi
 ln -sf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
 
-INSTALL "nano"
+INSTALL nano
 ln -sf ~/dotfiles/.config/nano ~/.config/
 
-INSTALL "Vim"
+INSTALL Vim
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 
-INSTALL "Neovim"
+INSTALL Neovim
 ln -sf ~/dotfiles/.config/nvim ~/.config/
 
-INSTALL "Helix"
+INSTALL Helix
 ln -sf ~/dotfiles/.config/helix ~/.config/
 
-INSTALL "Kakoune"
+INSTALL Kakoune
 ln -sf ~/dotfiles/.config/kak ~/.config/
 
-INSTALL "MongoDB Shell"
+INSTALL MongoDB Shell
 ln -sf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
-INSTALL "PowerShell"
+INSTALL PowerShell
 mkdir -p ~/.config/powershell
 ln -sf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
 
-INSTALL "Hyper"
+INSTALL Hyper
 ln -sf ~/dotfiles/.hyper.js ~/.hyper.js
 
-INSTALL "npm"
+INSTALL npm
 ln -sf ~/dotfiles/.npmrc ~/.npmrc
