@@ -13,6 +13,9 @@ source (dirname (status --current-filename))/variable.fish
 # Functions
 source (dirname (status --current-filename))/function.fish
 
+# GitHub Copilot CLI
+source (dirname (status --current-filename))/config-copilot.fish
+
 # OS-specific configurations
 switch (uname)
   case Darwin
