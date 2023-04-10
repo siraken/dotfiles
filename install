@@ -1,8 +1,5 @@
 #!/bin/sh
 
-trap _ERROR ERR
-trap _FINISH EXIT
-
 INSTALLING_FILE=""
 ERROR_COUNT=0
 
@@ -20,6 +17,9 @@ _ERROR() {
     printf "\e[1;37;41m Error \e[m $INSTALLING_FILE\n"
     ERROR_COUNT=$((ERROR_COUNT+1))
 }
+
+trap _ERROR ERR
+trap _FINISH EXIT
 
 mkdir -p ~/.config
 
