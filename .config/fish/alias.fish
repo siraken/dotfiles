@@ -27,6 +27,7 @@ if type -q bat
 end
 
 if type -q exa
+  alias l="ll"
   alias ls="ll"
   alias ll="exa -l -g --icons"
   alias lla="ll -a"
