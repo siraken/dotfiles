@@ -1,6 +1,10 @@
 ##################################################
 # > Alias
 ##################################################
+alias ls="ls -p -G"
+alias la "ls -A"
+alias ll="ls -l"
+alias lla="ls -A"
 alias g="git"
 alias gs="git status"
 alias lzg="lazygit"
@@ -21,16 +25,3 @@ alias mrm="touch README.md"
 alias rb="ruby"
 alias py="python"
 alias n="node"
-
-if type -q bat
-  alias cat="bat"
-end
-
-if type -q exa
-  alias l="ll"
-  alias ls="ll"
-  alias ll="exa -l -g --icons"
-  alias lla="ll -a"
-  alias llt='ll --tree'
-  alias llta='llt -a'
-end

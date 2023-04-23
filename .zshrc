@@ -32,7 +32,3 @@ fi
 if [ -f "$HOME/Developer/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Developer/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "$HOME/Developer/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Developer/google-cloud-sdk/completion.zsh.inc"; fi
 
-# fish
-if [ -e "$HOME/.config/fish/config.fish" ]; then
-  fish
-fi
