@@ -62,7 +62,7 @@
 
 # Neovim
 !.config/nvim/init.lua
-!.config/nvim/lua/*
+!.config/nvim/lua/siraken/*
 !.config/nvim/after/plugin/*
 !.config/nvim/colors/*
 !.config/nvim/coc-settings.json

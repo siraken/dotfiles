@@ -3,7 +3,11 @@
 	email = shirasawa.kento@gmail.com
     username = siraken ; git-it
 
+[github]
+    user = siraken
+
 [alias]
+    d = diff
     cm = commit
     co = checkout
     br = branch
@@ -15,31 +19,44 @@
     fedr = fetch --dry-run
 
 [color]
-ui = true
+    status = auto
+    diff = auto
+    branch = auto
+    interactive = auto
+    grep = auto
+    ui = auto
 
 [init]
-defaultBranch = main
+    defaultBranch = main
 
 [core]
 	autocrlf = input
     ignorecase = false
     editor = nvim
+	excludesfile = /Users/siraken/.gitignore_global
 
 [push]
-; default = current
+    default = simple
 
 [pull]
-; ff = only
-; rebase = false
+    ; ff = only
+    ; rebase = false
 
 [credential]
-; helper = osxkeychain
+    ; helper = osxkeychain
 
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+
+[difftool "nvimdiff"]
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "nvimdiff"]
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 ; Sourcetree
 [difftool "sourcetree"]
