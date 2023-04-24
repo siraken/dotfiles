@@ -1,13 +1,28 @@
--- NeoVim LSP Config
-local status, nvim_lsp = pcall(require, 'lspconfig')
-if (not status) then return end
-
-local root_pattern = nvim_lsp.util.root_pattern
 local api = vim.api
 
+-- NeoVim LSP Config
+local nvim_lsp__status, nvim_lsp = pcall(require, 'lspconfig')
+if (not nvim_lsp__status) then return end
+
+local root_pattern = nvim_lsp.util.root_pattern
+
+-- Mason Config
+local mason__status, mason = pcall(require, 'mason')
+if (not mason__status) then return end
+
+mason.setup {
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  }
+}
+
 -- Mason LSP Config
-local status2, mason_lsp = pcall(require, 'mason-lspconfig')
-if (not status2) then return end
+local mason_lsp__status, mason_lsp = pcall(require, 'mason-lspconfig')
+if (not mason_lsp__status) then return end
 
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
@@ -119,7 +134,5 @@ mason_lsp.setup_handlers {
     -- end
 
     nvim_lsp[server_name].setup(opts)
-
   end
 }
-
