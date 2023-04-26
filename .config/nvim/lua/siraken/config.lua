@@ -2,12 +2,15 @@ local opt = vim.opt
 local api = vim.api
 local wo = vim.wo
 local bo = vim.bo
+local vscode = vim.g.vscode
 
 vim.cmd('autocmd!')
 vim.scriptencoding = 'utf-8'
 
 wo.number = true
 opt.cmdheight = 1
+
+opt.visualbell = true
 
 opt.virtualedit = 'block'
 opt.wildmenu = true
@@ -54,8 +57,12 @@ api.nvim_command [[syntax enable]]
 api.nvim_command [[colorscheme tokyonight]]
 
 -- nvim-tree
-vim.keymap.set('n', 'tr', '<cmd>NvimTreeToggle<cr>')
--- vim.cmd(':command Tr NvimTreeToggle')
+if not vscode then
+  vim.keymap.set('n', 'tr', '<Cmd>NvimTreeToggle<CR>')
+else
+  vim.keymap.set('n', 'tr', "<Cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
+  vim.keymap.set('n', 'tr', "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
+end
 
 -- Rust format
 vim.g['rustfmt_autosave'] = 1
