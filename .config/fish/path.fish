@@ -12,6 +12,7 @@ set -gx PATH /opt/homebrew/sbin $PATH
 
 set -gx PATH bin $PATH
 set -gx PATH "$GOPATH/bin" $PATH
+set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -gx PATH "$HOME/.composer/vendor/bin" $PATH
 set -gx PATH "$HOME/Developer/flutter/bin" $PATH
@@ -23,6 +24,8 @@ set -gx PATH "$HOME/.progate/bin" $PATH
 set -gx PATH "$HOME/Library/Android/sdk/platform-tools" $PATH
 set -gx PATH "$HOME/.deno/bin" $PATH
 set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" $PATH
+
+test -e "$HOME/.phpbrew/phpbrew.fish"; and source "$HOME/.phpbrew/phpbrew.fish"
 
 status --is-interactive; and rbenv init - fish | source
 status --is-interactive; and pyenv init - | source
