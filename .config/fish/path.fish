@@ -10,6 +10,9 @@ set -g JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH /opt/homebrew/sbin $PATH
 
+# Use homebrew-installed openssl
+set -gx PATH "/opt/homebrew/opt/openssl@3/bin" $PATH
+
 set -gx PATH bin $PATH
 set -gx PATH "$GOPATH/bin" $PATH
 set -gx PATH "$HOME/.cargo/bin" $PATH
