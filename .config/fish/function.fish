@@ -8,6 +8,12 @@ function docker-upload
   # docker save -o $1.tar $1
 end
 
+# Docker init
+function docker-init
+  printf "version: \"3\"\nservices:\n" > docker-compose.yml
+  printf "FROM IMAGE\n\n" > Dockerfile
+end
+
 # Weather
 function weather
   curl wttr.in/$argv
