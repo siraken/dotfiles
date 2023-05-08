@@ -14,7 +14,11 @@ function github-copilot_helper
     return 1
   end
 end
+
 set -U fish_features qmark-noglob
-alias ??='github-copilot_helper what-the-shell'
-alias git?='github-copilot_helper git-assist'
-alias gh?='github-copilot_helper gh-assist'
+
+if type -q github-copilot_helper
+  alias ??='github-copilot_helper what-the-shell'
+  alias git?='github-copilot_helper git-assist'
+  alias gh?='github-copilot_helper gh-assist'
+end
