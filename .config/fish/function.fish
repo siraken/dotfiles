@@ -32,7 +32,7 @@ end
 function gau
   echo "Enter the username:" && read username;
   if test -n "$username"
-    git remote add origin "$GH_URL/$username/$(basename $(pwd)).git"
+    git remote add origin "$GH_URL/$username/"(basename (pwd))".git"
     git remote -v
   else
     echo "Please provide the username you want to use."
