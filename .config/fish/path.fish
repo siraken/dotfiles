@@ -30,7 +30,7 @@ set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" $PATH
 
 test -e "$HOME/.phpbrew/phpbrew.fish"; and source "$HOME/.phpbrew/phpbrew.fish"
 
-status --is-interactive; and rbenv init - fish | source
-status --is-interactive; and pyenv init - | source
-status --is-interactive; and thefuck --alias | source
+command -q rbenv; and status --is-interactive; and rbenv init - fish | source
+command -q pyenv; and status --is-interactive; and pyenv init - | source
+command -q fuck; and status --is-interactive; and thefuck --alias | source
 
