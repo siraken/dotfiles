@@ -93,8 +93,8 @@ return packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/trouble.nvim'
   use 'lewis6991/gitsigns.nvim'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+  use 'nvim-tree/nvim-web-devicons'
+  use 'nvim-tree/nvim-tree.lua'
   use { 'akinsho/bufferline.nvim', tag = "v2.*" } -- Tab
   --
   -- Utilities
