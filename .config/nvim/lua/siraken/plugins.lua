@@ -25,7 +25,6 @@ return packer.startup(function(use)
   --
   -- Colorschemes
   --
-  use 'tomasiser/vim-code-dark'
   use 'sickill/vim-monokai'
   use 'cocopon/iceberg.vim'
   use 'KeitaNakamura/neodark.vim'
@@ -35,6 +34,7 @@ return packer.startup(function(use)
   use 'morhetz/gruvbox'
   use 'rebelot/kanagawa.nvim'
   use { 'folke/tokyonight.nvim', branch = 'main' }
+  use 'Mofiqul/vscode.nvim'
   --
   -- Language support
   --
