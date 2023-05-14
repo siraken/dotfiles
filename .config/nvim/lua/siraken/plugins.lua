@@ -95,7 +95,7 @@ return packer.startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
-  use { 'akinsho/bufferline.nvim', tag = "v2.*" } -- Tab
+  use { 'akinsho/bufferline.nvim', tag = "*" } -- Tab
   --
   -- Utilities
   --
