@@ -1,9 +1,6 @@
 # Common functions
 source (dirname (status --current-filename))/common.fish
 
-# Aliases
-source (dirname (status --current-filename))/alias.fish
-
 # Paths
 source (dirname (status --current-filename))/path.fish
 
@@ -12,6 +9,9 @@ source (dirname (status --current-filename))/variable.fish
 
 # Functions
 source (dirname (status --current-filename))/function.fish
+
+# Aliases
+source (dirname (status --current-filename))/alias.fish
 
 # GitHub Copilot CLI
 source (dirname (status --current-filename))/config-copilot.fish
