@@ -13,6 +13,7 @@ set -gx PATH /opt/homebrew/opt/openssl@3/bin $PATH # Use openssl installed by ho
 set -gx PATH bin $PATH
 set -gx PATH "$GOPATH/bin" $PATH
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+set -gx PATH "$HOME/.rye/shims" $PATH
 set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx PATH "$HOME/.deno/bin" $PATH
 set -gx PATH "$HOME/.composer/vendor/bin" $PATH
