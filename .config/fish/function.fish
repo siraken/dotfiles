@@ -39,6 +39,27 @@ function gau
   end
 end
 
+# ggl
+# Google Search
+function ggl
+  echo "Searching for $argv on Google..."
+  open "https://www.google.com/search?q=$argv"
+end
+
+# meme
+# Find memes on Know Your Meme
+function meme
+  echo "Searching for $argv on Know Your Meme..."
+  open "https://knowyourmeme.com/search?q=$argv"
+end
+
+# cani
+# Can I use
+function cani
+  echo "Can I use \"$argv\"...?"
+  open "https://caniuse.com/?search=$argv"
+end
+
 # Open splitted tmux
 function ide
   tmux split-window -v -p 30
