@@ -60,6 +60,13 @@ function cani
   open "https://caniuse.com/?search=$argv"
 end
 
+# caniemail
+# Can I email
+function caniemail
+  echo "Can I email \"$argv\"...?"
+  open "https://caniemail.com/search/?s=$argv"
+end
+
 # Open splitted tmux
 function ide
   tmux split-window -v -p 30
