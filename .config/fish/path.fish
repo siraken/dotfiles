@@ -18,6 +18,7 @@ set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx PATH "$HOME/.deno/bin" $PATH
 set -gx PATH "$HOME/.composer/vendor/bin" $PATH
 set -gx PATH "$HOME/Developer/flutter/bin" $PATH
+set -gx PATH "$HOME/.pub-cache/bin" $PATH
 set -gx PATH "$HOME/bin" $PATH
 set -gx PATH "$HOME/.local/bin" $PATH
 set -gx PATH "$HOME/.progate/bin" $PATH
