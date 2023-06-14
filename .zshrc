@@ -32,3 +32,8 @@ fi
 if [ -f "$HOME/Developer/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Developer/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "$HOME/Developer/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Developer/google-cloud-sdk/completion.zsh.inc"; fi
 
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# Start fish shell
+fish
