@@ -1,3 +1,7 @@
+# Activate compinit
+autoload -Uz compinit
+compinit
+
 export GOPATH=$HOME/go
 export VOLTA_HOME=$HOME/.volta
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
@@ -29,11 +33,15 @@ if [ -e "$HOME/Library/Application Support/JetBrains/Toolbox" ]; then
 fi
 
 # Google Cloud SDK
-if [ -f "$HOME/Developer/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Developer/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "$HOME/Developer/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Developer/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "$HOME/Developer/google-cloud-sdk/path.zsh.inc" ]; then
+  . "$HOME/Developer/google-cloud-sdk/path.zsh.inc";
+fi
+if [ -f "$HOME/Developer/google-cloud-sdk/completion.zsh.inc" ]; then
+  . "$HOME/Developer/google-cloud-sdk/completion.zsh.inc";
+fi
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 
-# Start fish shell
+# Start fish shell (optional)
 fish
