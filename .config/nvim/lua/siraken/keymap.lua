@@ -43,3 +43,9 @@ keymap.set('n', 'U', '<C-r>')
 -- Force quit
 keymap.set("n", "<Space>q", ":<C-u>q!<CR>")
 
+-- Reselect visual block after indents
+keymap.set('v', '<', '<gv')
+keymap.set('v', '>', '>gv')
+
+-- Stay visual mode after formatting
+keymap.set('v', '=', '=gv')
