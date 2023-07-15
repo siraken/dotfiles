@@ -53,9 +53,47 @@ set scrolloff=10
 set formatoptions+=r
 set langmenu=en_US
 
-nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR><Esc>
-nnoremap U <C-r>
+" Increment / decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Select all
+nnoremap <C-a> gg<S-v>G
+
+" Spit window
+nnoremap ss :split<CR><C-W>w
+nnoremap sv :vsplit<CR><C-w>w
+
+" Move window
+nnoremap <Space> <C-w>w
+noremap sh <C-w>h
+noremap sk <C-w>k
+noremap sj <C-w>j
+noremap sl <C-w>l
+
+" Resize window
+nnoremap <C-w><left> <C-w><
+nnoremap <C-w><right> <C-w>>
+nnoremap <C-w><up> <C-w>+
+nnoremap <C-w><down> <C-w>-
+
+
+" Close buffer
+nnoremap <C-w>q :bd<CR>
+
+" Swap ; and :
 nnoremap ; :
+" nnoremap : ;
+
+" Use U as redo
+nnoremap U <C-r>
+
+" Reselect visual block after indents
+xnoremap < <gv
+xnoremap > >gv
+
+" Stay visual mode after formatting
+xnoremap = =gv
 
 au BufNewFile,BufRead *.tsx setf typescriptreact
 au BufNewFile,BufRead *.md set filetype=markdown
