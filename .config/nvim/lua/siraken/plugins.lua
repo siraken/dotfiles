@@ -54,6 +54,7 @@ return packer.startup(function(use)
   use 'clojure-vim/vim-jack-in'
   use 'radenling/vim-dispatch-neovim'
   use 'roobert/tailwindcss-colorizer-cmp.nvim'
+  use { 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } }
   --
   -- LSP-related
   --
