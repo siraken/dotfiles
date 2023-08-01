@@ -49,7 +49,7 @@ return packer.startup(function(use)
   use 'wuelnerdotexe/vim-astro'
   use { 'vlime/vlime', rtp = 'vim' }
   use 'vim-scripts/paredit.vim'
-  use 'Olical/conjure'
+  -- use 'Olical/conjure'
   use 'tpope/vim-dispatch'
   use 'clojure-vim/vim-jack-in'
   use 'radenling/vim-dispatch-neovim'
@@ -62,7 +62,7 @@ return packer.startup(function(use)
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'ray-x/lsp_signature.nvim'
-  use 'j-hui/fidget.nvim'
+  use { 'j-hui/fidget.nvim', tag = 'legacy' }
   --
   -- Completion
   --
