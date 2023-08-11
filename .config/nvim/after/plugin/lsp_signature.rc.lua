@@ -2,7 +2,7 @@
 local status, lsp_signature = pcall(require, 'lsp_signature')
 if (not status) then return end
 
-local cfg = {
+lsp_signature.setup({
   debug = false,
   verbose = false,
   floating_window = true,
@@ -10,10 +10,10 @@ local cfg = {
   fix_pos = false,
   hint_enable = false,
   handler_opts = {
-    border = "rounded"
+    border = "single"
   },
   always_trigger = false,
-  transparency = 50
-}
-
-lsp_signature.setup(cfg)
+  padding = '',
+  transparency = nil,
+  shadow_blend = 36,
+})

@@ -1,26 +1,30 @@
 -- NeoVim LSP Config
-local nvim_lsp__status, nvim_lsp = pcall(require, 'lspconfig')
-if (not nvim_lsp__status) then return end
+-- https://github.com/neovim/nvim-lspconfig
+-- Mason Config
+-- https://github.com/williamboman/mason.nvim
+-- Mason LSP Config
+-- https://github.com/williamboman/mason-lspconfig.nvim
+local status1, nvim_lsp = pcall(require, 'lspconfig')
+local status2, mason = pcall(require, 'mason')
+local status3, mason_lsp = pcall(require, 'mason-lspconfig')
+if (not status1) then return end
+if (not status2) then return end
+if (not status3) then return end
 
 local root_pattern = nvim_lsp.util.root_pattern
-
--- Mason Config
-local mason__status, mason = pcall(require, 'mason')
-if (not mason__status) then return end
 
 mason.setup {
   ui = {
     icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗"
+      package_installed = "",
+      package_pending = "",
+      package_uninstalled = ""
+      -- package_installed = "✓",
+      -- package_pending = "➜",
+      -- package_uninstalled = "✗"
     }
   }
 }
-
--- Mason LSP Config
-local mason_lsp__status, mason_lsp = pcall(require, 'mason-lspconfig')
-if (not mason_lsp__status) then return end
 
 -- Server configuration docs:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

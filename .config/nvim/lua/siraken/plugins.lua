@@ -1,3 +1,7 @@
+-- Plugins
+--
+-- Icons:
+-- https://www.nerdfonts.com/cheat-sheet
 local status, packer = pcall(require, 'packer')
 
 if (not status) then
@@ -7,14 +11,7 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
-
-return packer.startup(function(use)
+packer.startup(function(use)
   -- Packer
   use { 'wbthomason/packer.nvim' }
   -- Neovim LSP
@@ -134,5 +131,5 @@ return packer.startup(function(use)
   --
   -- Homebrew
   --
-  -- use 'SiraKen/html-parser.vim'
+  -- use 'siraken/html-parser.vim'
 end)

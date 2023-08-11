@@ -1,3 +1,4 @@
+-- https://github.com/nvimdev/lspsaga.nvim
 local status, saga = pcall(require, 'lspsaga')
 if (not status) then return end
 
@@ -22,5 +23,5 @@ keymap.set('n', 'gl', '<Cmd>Lspsaga show_line_diagnostics<CR>', opts)
 keymap.set('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
 keymap.set('n', '<C-k>', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
 
-keymap.set("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>")
-keymap.set("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
+keymap.set("n", "<A-d>", "<Cmd>Lspsaga open_floaterm<CR>")
+keymap.set("t", "<A-d>", [[<C-\><C-n><Cmd>Lspsaga close_floaterm<CR>]])

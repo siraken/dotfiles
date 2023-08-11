@@ -1,3 +1,4 @@
+-- https://github.com/nvim-tree/nvim-tree.lua
 local status, tree = pcall(require, 'nvim-tree')
 if (not status) then return end
 
