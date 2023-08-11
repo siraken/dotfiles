@@ -22,23 +22,6 @@ mason.setup {
 local mason_lsp__status, mason_lsp = pcall(require, 'mason-lspconfig')
 if (not mason_lsp__status) then return end
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
-  --Enable completion triggered by <c-x><c-o>
-  --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  local opts = { noremap = true, silent = true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-end
-
 -- Server configuration docs:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
@@ -51,7 +34,7 @@ mason_lsp.setup_handlers {
   function(server_name)
     local opts = {}
 
-    -- lua_ls: Lua
+    -- Lua
     if server_name == 'lua_ls' then
       opts.settings = {
         Lua = {
@@ -68,19 +51,17 @@ mason_lsp.setup_handlers {
       }
     end
 
-    -- denols: Deno
+    -- Deno
     if server_name == 'denols' then
-      opts.on_attach = on_attach
       opts.root_dir = root_pattern('deno.json', 'deno.jsonc')
     end
 
-    -- tsserver: JavaScript / TypeScript
+    -- JavaScript / TypeScript
     if server_name == 'tsserver' then
-      opts.on_attach = on_attach
-      -- opts.single_file_support = false
+      opts.single_file_support = true
     end
 
-    -- tailwindcss: TailwindCSS
+    -- TailwindCSS
     if server_name == 'tailwindcss' then
       opts.settings = {
         tailwindCSS = {
@@ -99,7 +80,7 @@ mason_lsp.setup_handlers {
       }
     end
 
-    -- rust_analyzer: Rust
+    -- Rust
     if server_name == 'rust_analyzer' then
       opts.cmd = { 'rust-analyzer' }
       opts.filetypes = {
@@ -110,7 +91,7 @@ mason_lsp.setup_handlers {
       }
     end
 
-    -- ccls: C/C++
+    -- C/C++
     if server_name == 'ccls' then
       opts.cmd = { 'ccls' }
       opts.filetypes = {
@@ -121,18 +102,18 @@ mason_lsp.setup_handlers {
       }
     end
 
-    -- omnisharp: C#
+    -- C#
     -- if server_name == 'omnisharp' then
     --   opts.cmd = { "dotnet", "/path/to/omnisharp/Omnisharp.dll" }
     -- end
 
-    -- powershell_es: PowerShell
+    -- PowerShell
     -- if server_name == 'powershell_es' then
     --   opts.filetypes = { 'powershell' }
     --   opts.root_dir = root_pattern('*.ps1', '*.psd1', '*.psm1', '.git')
     -- end
 
-    -- sourcekit: Swift
+    -- Swift
     -- if server_name == 'sourcekit' then
     --   opts.cmd = { 'sourcekit-lsp' }
     --   opts.root_dir = root_pattern('Package.swift', '.git')

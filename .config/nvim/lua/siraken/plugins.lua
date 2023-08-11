@@ -59,7 +59,7 @@ return packer.startup(function(use)
   -- LSP-related
   --
   use 'onsails/lspkind.nvim' -- VSCode-like pictograms
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use 'nvimdev/lspsaga.nvim' -- LSP UIs
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'ray-x/lsp_signature.nvim'
   use { 'j-hui/fidget.nvim', tag = 'legacy' }
@@ -89,7 +89,7 @@ return packer.startup(function(use)
   --
   -- Display style
   --
-  use 'mhinz/vim-startify' -- Startup screen
+  use 'mhinz/vim-startify'        -- Startup screen
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/trouble.nvim'
