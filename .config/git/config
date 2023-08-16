@@ -17,6 +17,7 @@
     ad = add
     fe = fetch
     fedr = fetch --dry-run
+    cp = cherry-pick
 
 [color]
     status = auto
