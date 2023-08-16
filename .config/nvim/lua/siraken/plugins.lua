@@ -46,7 +46,7 @@ packer.startup(function(use)
   use 'wuelnerdotexe/vim-astro'
   use { 'vlime/vlime', rtp = 'vim' }
   use 'vim-scripts/paredit.vim'
-  -- use 'Olical/conjure'
+  use 'Olical/conjure'
   use 'tpope/vim-dispatch'
   use 'clojure-vim/vim-jack-in'
   use 'radenling/vim-dispatch-neovim'
@@ -109,6 +109,7 @@ packer.startup(function(use)
   use 'mg979/vim-visual-multi'
   use 'numToStr/Comment.nvim'
   use 'folke/todo-comments.nvim'
+  use 'folke/which-key.nvim'
   use 'L3MON4D3/LuaSnip'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'windwp/nvim-autopairs'
