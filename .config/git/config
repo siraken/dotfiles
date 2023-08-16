@@ -2,6 +2,7 @@
 	name = Kento Shirasawa
 	email = shirasawa.kento@gmail.com
     username = siraken ; git-it
+    ; signingkey = ssh-rsa XXXXX
 
 [github]
     user = siraken
@@ -59,12 +60,21 @@
     cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
 
-; Sourcetree
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
+
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
 [commit]
 	template = /Users/siraken/.stCommitMsg
+    ; gpgsign = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
