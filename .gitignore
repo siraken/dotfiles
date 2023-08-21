@@ -41,6 +41,12 @@
 !.config/fish/path.fish
 !.config/fish/fish_plugins
 
+# yabai
+!.config/yabai/yabairc
+
+# skhd
+!.config/skhd/skhdrc
+
 # tmux
 !.tmux.conf
 !.tmux.conf.darwin
