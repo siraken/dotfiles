@@ -47,6 +47,9 @@
 # skhd
 !.config/skhd/skhdrc
 
+# simple-bar
+!.simplebarrc
+
 # tmux
 !.tmux.conf
 !.tmux.conf.darwin
