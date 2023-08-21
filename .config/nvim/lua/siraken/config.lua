@@ -54,7 +54,6 @@ opt.pumblend = 5
 opt.shellslash = true
 
 api.nvim_command [[syntax enable]]
-api.nvim_command [[colorscheme tokyonight]]
 
 -- nvim-tree
 if not vscode then
