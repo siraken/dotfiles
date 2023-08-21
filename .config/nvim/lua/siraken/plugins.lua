@@ -74,15 +74,15 @@ packer.startup(function(use)
   --
   use 'guns/vim-sexp'
   --
-  -- Notification
+  -- UI for messages, cmdline, popup, etc.
   --
-  use 'rcarriga/nvim-notify'
-  -- use {
-  --   'folke/noice.nvim',
-  --   requires = {
-  --     { 'MunifTanjim/nui.nvim' }
-  --   }
-  -- }
+  use {
+    'folke/noice.nvim',
+    requires = {
+      { 'MunifTanjim/nui.nvim' },
+      { 'rcarriga/nvim-notify' } -- for notifications
+    }
+  }
   --
   -- Display style
   --
@@ -98,7 +98,6 @@ packer.startup(function(use)
   -- Utilities
   --
   use 'github/copilot.vim'
-  use 'jackMort/ChatGPT.nvim'
   use 'itchyny/calendar.vim'
   use 'prettier/vim-prettier'
   use 'pwntester/octo.nvim'
