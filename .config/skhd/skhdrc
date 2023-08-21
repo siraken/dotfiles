@@ -29,26 +29,6 @@ shift + cmd - l : yabai -m window --warp east
 # balance size of windows
 shift + alt - 0 : yabai -m space --balance
 
-# make floating window fill screen
-shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
-
-# make floating window fill left-half of screen
-shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
-
-# make floating window fill right-half of screen
-shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
-
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-# shift + cmd - n : yabai -m space --create && \
-#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-#                   yabai -m window --space "${index}" && \
-#                   yabai -m space --focus "${index}"
-
-# create desktop and follow focus - uses jq for parsing json (brew install jq)
-# cmd + alt - n : yabai -m space --create && \
-#                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-#                 yabai -m space --focus "${index}"
-
 # destroy desktop
 # cmd + alt - w : yabai -m space --destroy
 cmd + alt - w : yabai -m space --focus prev && yabai -m space recent --destroy
