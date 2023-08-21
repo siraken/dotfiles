@@ -41,7 +41,7 @@ ln -snf ~/dotfiles/.config/yabai ~/.config/
 INSTALL skhd
 ln -snf ~/dotfiles/.config/skhd ~/.config/
 
-INSTALL
+INSTALL simple-bar
 ln -snf ~/dotfiles/.simplebarrc ~/.simplebarrc
 
 INSTALL tmux
