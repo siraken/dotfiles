@@ -1,6 +1,6 @@
 format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
+[    ](bg:#a3aed2 fg:#090c0c)\
+$localip\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
@@ -12,9 +12,14 @@ $rust\
 $golang\
 $php\
 [](fg:#212736 bg:#1d2230)\
-$time\
+$status\
 [ ](fg:#1d2230)\
-\n$character"""
+"""
+
+[localip]
+ssh_only = true
+format = '[ $localipv4 ](bg:#a3aed2 fg:#090c0c bold)'
+disabled = false
 
 [directory]
 style = "fg:#e3e5e5 bg:#769ff0"
@@ -57,8 +62,13 @@ symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[time]
+[status]
+format = '[ $symbol ]($style)'
+style = "bg:#1d2230 fg:#769ff0 bold"
+symbol = ""
+success_symbol = ""
+not_executable_symbol = ""
+not_found_symbol = ""
+sigint_symbol = ""
+signal_symbol = ""
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
