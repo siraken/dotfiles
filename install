@@ -25,6 +25,9 @@ _ERROR() {
 
 mkdir -p ~/.config
 
+INSTALL kitty
+ln -snf ~/dotfiles/.config/kitty ~/.config/
+
 INSTALL bash
 ln -snf ~/dotfiles/.bashrc ~/.bashrc
 
