@@ -1,25 +1,25 @@
 {
   "global": {
-    "theme": "dark",
+    "theme": "auto",
     "floatingBar": true,
     "noBarBg": true,
     "noColorInData": false,
     "bottomBar": false,
     "inlineSpacesOptions": false,
     "disableNotifications": false,
-    "compactMode": false,
+    "compactMode": true,
     "widgetMaxWidth": "160px",
     "spacesBackgroundColorAsForeground": false,
     "widgetsBackgroundColorAsForeground": true,
     "font": "JetBrains Mono, Monaco, Menlo, monospace",
     "fontSize": "11px",
-    "yabaiPath": "/usr/local/bin/yabai",
+    "yabaiPath": "/opt/homebrew/bin/yabai",
     "shell": "sh",
     "slidingAnimationPace": 4,
     "externalConfigFile": true
   },
   "themes": {
-    "lightTheme": "NightShiftLight",
+    "lightTheme": "SolarizedLight",
     "darkTheme": "TokyoNight"
   },
   "process": {
@@ -39,13 +39,13 @@
     "displayStickyWindowsSeparately": false,
     "hideEmptySpaces": false,
     "showOptionsOnHover": true,
-    "switchSpacesWithoutYabai": false
+    "switchSpacesWithoutYabai": true
   },
   "widgets": {
     "processWidget": true,
     "weatherWidget": false,
     "batteryWidget": true,
-    "wifiWidget": false,
+    "wifiWidget": true,
     "vpnWidget": false,
     "zoomWidget": false,
     "soundWidget": true,
@@ -70,7 +70,7 @@
   },
   "batteryWidgetOptions": {
     "refreshFrequency": 10000,
-    "toggleCaffeinateOnClick": true,
+    "toggleCaffeinateOnClick": false,
     "caffeinateOption": ""
   },
   "networkWidgetOptions": {
