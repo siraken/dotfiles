@@ -47,6 +47,9 @@ ln -snf ~/dotfiles/.config/skhd ~/.config/
 INSTALL simple-bar
 ln -snf ~/dotfiles/.simplebarrc ~/.simplebarrc
 
+INSTALL ranger
+ln -snf ~/dotfiles/.config/ranger ~/.config/
+
 INSTALL tmux
 ln -snf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -snf ~/dotfiles/.tmux.conf.darwin ~/.tmux.conf.darwin

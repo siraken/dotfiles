@@ -53,6 +53,13 @@
 # simple-bar
 !.simplebarrc
 
+# ranger
+# !.config/ranger/commands_full.py
+# !.config/ranger/commands.py
+# !.config/ranger/rc.conf
+# !.config/ranger/rifle.conf
+# !.config/ranger/scope.sh
+
 # tmux
 !.tmux.conf
 !.tmux.conf.darwin
