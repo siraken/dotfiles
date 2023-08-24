@@ -1,5 +1,5 @@
 format = """
-[    ](bg:#444444 fg:#ffffff)\
+[    ](bg:#333333 fg:#ffffff)\
 $localip\
 $directory\
 $git_branch\
@@ -8,18 +8,19 @@ $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:#444444 bg:#1d2230)\
+[](fg:#333333 bg:#1d2230)\
 $status\
-[ ](fg:#1d2230)\
+[ ](fg:#1d2230)\
+\n$character
 """
 
 [localip]
 ssh_only = true
-format = '[ $localipv4 ](bg:#a3aed2 fg:#090c0c bold)'
+format = '[$localipv4  ](bg:#333333 fg:#eeeeee bold)'
 disabled = false
 
 [directory]
-style = "fg:#4692CB bg:#444444 bold"
+style = "fg:#46A3FF bg:#333333 bold"
 format = "[  $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -32,32 +33,12 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#444444"
-format = '[[ $symbol $branch ](fg:#6CA53A bg:#444444 bold)]($style)'
+style = "bg:#333333"
+format = '[[$symbol $branch ](fg:#6CA53A bg:#333333 bold)]($style)'
 
 [git_status]
-style = "bg:#444444"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#444444)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#444444"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#444444)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#444444"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#444444)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:#444444"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#444444)]($style)'
-
-[php]
-symbol = ""
-style = "bg:#444444"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#444444)]($style)'
+style = "bg:#333333"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#333333)]($style)'
 
 [status]
 format = '[ $symbol ]($style)'
@@ -69,3 +50,24 @@ not_found_symbol = ""
 sigint_symbol = ""
 signal_symbol = ""
 disabled = false
+
+[nodejs]
+symbol = ""
+style = "bg:#333333"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#333333)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#333333"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#333333)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#333333"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#333333)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#333333"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#333333)]($style)'
+
