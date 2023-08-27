@@ -52,7 +52,7 @@ yabai -m config                                 \
 # Manage off for all
 # yabai -m rule --add app=.* manage=off
 
-# yabai -m rule --add app=Finder manage=off
+yabai -m rule --add app=Finder manage=off
 yabai -m rule --add app=System\ Preferences manage=off
 yabai -m rule --add app=Activity\ Monitor manage=off
 yabai -m rule --add app=Console manage=off
@@ -62,17 +62,19 @@ yabai -m rule --add app=Photos manage=off
 yabai -m rule --add app=QuickTime\ Player manage=off
 yabai -m rule --add app=Messages manage=off
 # yabai -m rule --add app=zoom.us manage=off
-# yabai -m rule --add app=Word manage=off
-# yabai -m rule --add app=Excel manage=off
-# yabai -m rule --add app=PowerPoint manage=off
+yabai -m rule --add app=Word manage=off
+yabai -m rule --add app=Excel manage=off
+yabai -m rule --add app=PowerPoint manage=off
 # yabai -m rule --add app=OneNote manage=off
 yabai -m rule --add app=Microsoft\ Remote\ Desktop manage=off
 yabai -m rule --add app=TablePlus manage=off
 yabai -m rule --add app=Transmit manage=off
 yabai -m rule --add app=GitHub\ Desktop manage=off
 yabai -m rule --add app=Slack manage=off
+yabai -m rule --add app=Discord manage=off
 yabai -m rule --add app=Spotify manage=off
 yabai -m rule --add app=Spark manage=off
+yabai -m rule --add app=OrbStack manage=off
 # yabai -m rule --add app=Brave\ Browser manage=off
 # yabai -m rule --add app=Google\ Chrome manage=off
 # yabai -m rule --add app=Firefox manage=off
