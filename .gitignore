@@ -87,6 +87,7 @@
 !.vimrc
 
 # Neovim
+!.config/nvim/ginit.vim
 !.config/nvim/init.lua
 !.config/nvim/lua/siraken/*
 !.config/nvim/after/plugin/*
