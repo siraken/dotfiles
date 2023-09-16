@@ -47,6 +47,10 @@
 !.config/fish/path.fish
 !.config/fish/fish_plugins
 
+# nushell
+!.config/nushell/config.nu
+!.config/nushell/env.nu
+
 # yabai
 !.config/yabai/yabairc
 

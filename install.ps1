@@ -32,6 +32,10 @@ New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\
 _INSTALL Hyper
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.hyper.js -Path $env:USERPROFILE\AppData\Roaming\Hyper\.hyper.js
 
+_INSTALL Nushell
+New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\nushell\ -Path $env:USERPROFILE\AppData\Roaming\nushell
+
+
 trap {
     _ERROR
 }
