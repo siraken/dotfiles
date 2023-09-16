@@ -12,7 +12,13 @@ if type -q bat
   alias cat="bat"
 end
 
+# TODO: to be removed
 if type -q exa
   alias ll="exa -l -g --icons"
+  alias lla="ll -a"
+end
+
+if type -q eza
+  alias ll="eza -l -g --icons"
   alias lla="ll -a"
 end
