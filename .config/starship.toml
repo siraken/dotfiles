@@ -1,5 +1,5 @@
 format = """
-[    ](bg:#333333 fg:#ffffff)\
+$os(bg:#333333 fg:#ffffff)\
 $localip\
 $directory\
 $git_branch\
@@ -13,6 +13,25 @@ $status\
 [ ](fg:#1d2230)\
 \n$character
 """
+
+[os]
+disabled = false
+format = '[  $symbol  ]($style)'
+style = "bg:#333333 fg:#eeeeee"
+[os.symbols]
+Arch = " "
+CentOS = " "
+Debian = " "
+Fedora = " "
+FreeBSD = " "
+Gentoo = " "
+Linux = " "
+Macos = ""
+Mint = " "
+NixOS = " "
+Ubuntu = " "
+Unknown = " "
+Windows = ""
 
 [localip]
 ssh_only = true
