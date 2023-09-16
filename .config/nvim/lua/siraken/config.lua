@@ -53,28 +53,14 @@ opt.wildoptions = 'pum'
 opt.pumblend = 5
 opt.shellslash = true
 
+api.nvim_command [[language en_US]]
 api.nvim_command [[syntax enable]]
 
--- nvim-tree
+vim.cmd [[autocmd TermOpen * startinsert]]
+
 if not vscode then
   vim.keymap.set('n', 'tr', '<Cmd>NvimTreeToggle<CR>')
 else
   vim.keymap.set('n', 'tr', "<Cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
   vim.keymap.set('n', 'tr', "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
 end
-
--- Rust format
-vim.g['rustfmt_autosave'] = 1
-
--- vim-go no template
-vim.g['go_template_autocreate'] = 0
-
--- ale_linters
--- vim.g['ale_linters'] = {
---
--- }
-
--- Insert mode in terminal
-vim.cmd [[autocmd TermOpen * startinsert]]
-
--- let $LANG = 'en_US'
