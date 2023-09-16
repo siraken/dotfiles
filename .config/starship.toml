@@ -11,8 +11,7 @@ $php\
 [](fg:#333333 bg:#1d2230)\
 $status\
 [ ](fg:#1d2230)\
-\n$character
-"""
+\n$character"""
 
 [os]
 disabled = false
