@@ -1,3 +1,7 @@
 if exists(':GuiFont')
-  GuiFont Hack NF:h12
+  GuiFont! Hack Nerd Font Mono:h16
+endif
+
+if exists(':GuiWindowOpacity')
+  GuiWindowOpacity .85
 endif
