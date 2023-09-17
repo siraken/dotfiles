@@ -3,5 +3,6 @@
 # for Linux / macOS
 #
 
-. ".\function.ps1"
-. ".\alias.ps1"
+# . $env:USERPROFILE\dotfiles\.config\powershell\includes\variable.ps1
+# . $env:USERPROFILE\dotfiles\.config\powershell\includes\function.ps1
+# . $env:USERPROFILE\dotfiles\.config\powershell\includes\alias.ps1
