@@ -11,12 +11,13 @@ Minimized `dotfiles`: [siraken/dotfiles-min](https://github.com/siraken/dotfiles
 
 ## Packages
 
-### [fish shell](https://fishshell.com/)
+### Shells
 
-- [fisher](https://github.com/jorgebucaran/fisher)
-- [IlanCosman/tide](https://github.com/IlanCosman/tide)
-- [jethrokuan/z](https://github.com/jethrokuan/z)
-- [Starship](https://starship.rs/)
+-   [fish shell](https://fishshell.com/)
+    -   [fisher](https://github.com/jorgebucaran/fisher)
+    -   [jethrokuan/z](https://github.com/jethrokuan/z)
+-   [Nushell](https://www.nushell.sh/)
+-   [Starship](https://starship.rs/)
 
 ### Neovim
 
