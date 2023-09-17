@@ -767,4 +767,6 @@ $env.config = {
     ]
 }
 
+alias vim = nvim
+
 use ~/.cache/starship/init.nu
