@@ -82,6 +82,9 @@ yabai -m rule --add app=PowerPoint manage=off
 # yabai -m rule --add app=Microsoft\ Teams manage=off
 yabai -m rule --add app=Microsoft\ Remote\ Desktop manage=off
 
+# Utilities
+yabai -m rule --add app=1Password manage=off
+
 # Adobe
 yabai -m rule --add app=Adobe\ Photoshop\ 2023 manage=off
 yabai -m rule --add app=Adobe\ Illustrator\ 2023 manage=off
@@ -119,6 +122,8 @@ yabai -m rule --add app=Transmit manage=off
 yabai -m rule --add app=GitHub\ Desktop manage=off
 yabai -m rule --add app=Sourcetree manage=off
 yabai -m rule --add app=OrbStack manage=off
+yabai -m rule --add app=Sublime\ Text manage=off
+yabai -m rule --add app=WebTorrent manage=off
 # yabai -m rule --add app=iTerm2 manage=off
 # yabai -m rule --add app=Visual\ Studio manage=off
 
