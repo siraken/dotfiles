@@ -1,138 +1,150 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+-- Install lazy.nvim automatically if not installed
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-require('packer').startup(function(use)
-  -- Packer
-  use { 'wbthomason/packer.nvim' }
+-- Plugins definition
+local plugins = {
   -- Neovim LSP
-  use 'neovim/nvim-lspconfig'
+  { 'neovim/nvim-lspconfig' },
   -- Mason: LSP client for Neovim
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
+  { 'williamboman/mason.nvim' },
+  { 'williamboman/mason-lspconfig.nvim' },
   --
   -- Colorschemes
   --
-  use 'sickill/vim-monokai'
-  use 'cocopon/iceberg.vim'
-  use 'KeitaNakamura/neodark.vim'
-  use 'EdenEast/nightfox.nvim'
-  use 'overcache/NeoSolarized'
-  use 'shaunsingh/nord.nvim'
-  use 'morhetz/gruvbox'
-  use 'rebelot/kanagawa.nvim'
-  use { 'folke/tokyonight.nvim', branch = 'main' }
-  use 'Mofiqul/vscode.nvim'
+  { 'sickill/vim-monokai' },
+  { 'cocopon/iceberg.vim' },
+  { 'KeitaNakamura/neodark.vim' },
+  { 'EdenEast/nightfox.nvim' },
+  { 'overcache/NeoSolarized' },
+  { 'shaunsingh/nord.nvim' },
+  { 'morhetz/gruvbox' },
+  { 'rebelot/kanagawa.nvim' },
+  { 'folke/tokyonight.nvim',                 lazy = false,                              branch = 'main' },
+  { 'Mofiqul/vscode.nvim' },
   --
   -- Language support
   --
-  use 'bfontaine/Brewfile.vim'
-  use 'tomlion/vim-solidity'
-  use 'ziglang/zig.vim'
-  use 'editorconfig/editorconfig-vim'
-  use 'isobit/vim-caddyfile'
-  use 'OmniSharp/omnisharp-vim'
-  use 'udalov/kotlin-vim'
-  use 'akinsho/flutter-tools.nvim'
-  use 'wuelnerdotexe/vim-astro'
-  use { 'vlime/vlime', rtp = 'vim' }
-  use 'vim-scripts/paredit.vim'
-  use 'Olical/conjure'
-  use 'tpope/vim-dispatch'
-  use 'clojure-vim/vim-jack-in'
-  use 'radenling/vim-dispatch-neovim'
-  use 'roobert/tailwindcss-colorizer-cmp.nvim'
-  use { 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } }
+  { 'bfontaine/Brewfile.vim' },
+  { 'tomlion/vim-solidity' },
+  { 'ziglang/zig.vim' },
+  { 'editorconfig/editorconfig-vim' },
+  { 'isobit/vim-caddyfile' },
+  { 'OmniSharp/omnisharp-vim' },
+  { 'udalov/kotlin-vim' },
+  { 'akinsho/flutter-tools.nvim' },
+  { 'wuelnerdotexe/vim-astro' },
+  -- FIXME: rtp can be accomplished.
+  -- Read: https://github.com/folke/lazy.nvim#-migration-guide
+  { 'vlime/vlime',                           rtp = 'vim' },
+  { 'vim-scripts/paredit.vim' },
+  { 'Olical/conjure' },
+  { 'tpope/vim-dispatch' },
+  { 'clojure-vim/vim-jack-in' },
+  { 'radenling/vim-dispatch-neovim' },
+  { 'roobert/tailwindcss-colorizer-cmp.nvim' },
+  { 'scalameta/nvim-metals',                 dependencies = { 'nvim-lua/plenary.nvim' } },
   --
   -- LSP-related
   --
-  use 'onsails/lspkind.nvim' -- VSCode-like pictograms
-  use 'nvimdev/lspsaga.nvim' -- LSP UIs
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'ray-x/lsp_signature.nvim'
-  use { 'j-hui/fidget.nvim', tag = 'legacy' }
+  { 'onsails/lspkind.nvim' }, -- VSCode-like pictograms
+  { 'nvimdev/lspsaga.nvim' }, -- LSP UIs
+  { 'jose-elias-alvarez/null-ls.nvim' },
+  { 'ray-x/lsp_signature.nvim' },
+  { 'j-hui/fidget.nvim',                     tag = 'legacy' },
   --
   -- Completion
   --
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  -- use 'hrsh7th/vim-vsnip'
-  -- use 'hrsh7th/vim-vsnip-integ'
-  use 'nvim-lua/completion-nvim'
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
+      -- 'hrsh7th/vim-vsnip',
+      -- 'hrsh7th/vim-vsnip-integ',
+    }
+  },
+  { 'nvim-lua/completion-nvim' },
   --
   -- Editing
   --
-  use 'guns/vim-sexp'
+  { 'guns/vim-sexp' },
   --
   -- UI for messages, cmdline, popup, etc.
   --
-  use {
+  {
     'folke/noice.nvim',
-    requires = {
+    dependencies = {
       { 'MunifTanjim/nui.nvim' },
       { 'rcarriga/nvim-notify' } -- for notifications
     }
-  }
+  },
   --
   -- Display style
   --
-  use 'mhinz/vim-startify'        -- Startup screen
-  use 'nvim-lualine/lualine.nvim' -- Statusline
-  use 'norcalli/nvim-colorizer.lua'
-  use 'folke/trouble.nvim'
-  use 'lewis6991/gitsigns.nvim'
-  use 'nvim-tree/nvim-web-devicons'
-  use 'nvim-tree/nvim-tree.lua'
-  use { 'akinsho/bufferline.nvim', tag = "*" } -- Tab
+  { 'mhinz/vim-startify' },        -- Startup screen
+  { 'nvim-lualine/lualine.nvim' }, -- Statusline
+  { 'norcalli/nvim-colorizer.lua' },
+  { 'folke/trouble.nvim' },
+  { 'lewis6991/gitsigns.nvim' },
+  { 'nvim-tree/nvim-web-devicons' },
+  { 'nvim-tree/nvim-tree.lua' },
+  { 'akinsho/bufferline.nvim',            version = '*' }, -- Tab
   --
   -- Utilities
   --
-  use 'github/copilot.vim'
-  use 'itchyny/calendar.vim'
-  use 'prettier/vim-prettier'
-  use 'pwntester/octo.nvim'
-  use 'dhruvasagar/vim-table-mode'
+  { 'github/copilot.vim' },
+  { 'itchyny/calendar.vim' },
+  { 'prettier/vim-prettier' },
+  { 'pwntester/octo.nvim' },
+  { 'dhruvasagar/vim-table-mode' },
+  { 'dstein64/vim-startuptime' },
   --
   -- Uncategorized yet
   --
-  use 'mg979/vim-visual-multi'
-  use 'numToStr/Comment.nvim'
-  use 'folke/todo-comments.nvim'
-  use 'folke/which-key.nvim'
-  use 'L3MON4D3/LuaSnip'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'windwp/nvim-autopairs'
-  use {
+  { 'mg979/vim-visual-multi' },
+  { 'numToStr/Comment.nvim' },
+  { 'folke/todo-comments.nvim' },
+  { 'folke/which-key.nvim' },
+  { 'folke/neodev.nvim' },
+  { 'L3MON4D3/LuaSnip' },
+  { 'lukas-reineke/indent-blankline.nvim' },
+  { 'windwp/nvim-autopairs' },
+  {
     'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
-  use {
+    dependencies = { { 'nvim-lua/plenary.nvim' } }
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
-  use {
+    build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  },
+  {
     'iamcco/markdown-preview.nvim',
-    run = function() vim.fn['mkdp#util#install']() end,
-  }
-  use {
+    build = function() vim.fn['mkdp#util#install']() end,
+  },
+  {
     'akinsho/toggleterm.nvim',
-    tag = '*'
-  }
+    version = '*'
+  },
   --
   -- Homebrew
   --
-  -- use 'siraken/html-parser.vim'
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  -- { 'siraken/html-parser.vim' }
+}
+
+-- Lazy configuration
+local opts = {}
+
+-- FIXME: E492: Not an editor command: Lazy
+require('lazy').setup(plugins, opts)
