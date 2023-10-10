@@ -31,7 +31,9 @@ mason.setup {
 -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 
 mason_lsp.setup {
-  automatic_installation = false,
+  automatic_installation = true,
+  -- ensure_installed = {
+  -- }
 }
 
 mason_lsp.setup_handlers {

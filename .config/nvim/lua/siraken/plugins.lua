@@ -106,7 +106,6 @@ local plugins = {
   --
   { 'github/copilot.vim' },
   { 'itchyny/calendar.vim' },
-  { 'prettier/vim-prettier' },
   { 'pwntester/octo.nvim' },
   { 'dhruvasagar/vim-table-mode' },
   { 'dstein64/vim-startuptime' },
@@ -129,6 +128,7 @@ local plugins = {
     'nvim-treesitter/nvim-treesitter',
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   },
+  { 'nvim-treesitter/nvim-treesitter-textobjects' },
   {
     'iamcco/markdown-preview.nvim',
     build = function() vim.fn['mkdp#util#install']() end,
