@@ -1,24 +1,25 @@
+-- ARCHIVED:
 -- https://github.com/jose-elias-alvarez/null-ls.nvim
-local status, null_ls = pcall(require, 'null-ls')
+--
+-- Current:
+-- https://github.com/nvimtools/none-ls.nvim
+local status, nl = pcall(require, 'null-ls')
 if (not status) then return end
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local d = null_ls.builtins.diagnostics
-local f = null_ls.builtins.formatting
+local c = nl.builtins.completion
+local d = nl.builtins.diagnostics
+local f = nl.builtins.formatting
 
 local sources = {
-  d.eslint.with {
-    prefer_local = 'node_modules/.bin'
-  },
-  f.prettier.with {
-    condition = function(utils)
-      return utils.has_file { '.prettierrc' }
-    end,
-  },
+  c.spell,
+  d.eslint,
+  f.prettier,
+  f.prettierd,
 }
 
-null_ls.setup {
+nl.setup {
   sources = sources,
   on_attach = function(client, bufnr)
     if client.supports_method('textDocument/formatting') then

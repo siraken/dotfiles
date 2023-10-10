@@ -4,7 +4,6 @@ local wo = vim.wo
 local bo = vim.bo
 local vscode = vim.g.vscode
 
-vim.cmd('autocmd!')
 vim.scriptencoding = 'utf-8'
 
 wo.number = true

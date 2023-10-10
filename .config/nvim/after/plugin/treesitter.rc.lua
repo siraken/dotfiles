@@ -1,8 +1,17 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
-local status, ts = pcall(require, "nvim-treesitter.configs")
+local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
-ts.setup {
+treesitter.setup {
+  ensure_installed = {
+    'markdown',
+    'markdown_inline',
+    'regex',
+    'vim',
+    'lua',
+    'bash',
+  },
+  sync_install = true,
   auto_install = true,
   ignore_install = {},
   highlight = {
