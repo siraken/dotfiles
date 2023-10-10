@@ -22,7 +22,7 @@ Minimized `dotfiles`: [siraken/dotfiles-min](https://github.com/siraken/dotfiles
 ### Neovim
 
 Configuration files are written in Lua.
-I'm using [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) as a package manager.
+I'm using [folke/lazy.nvim](https://github.com/folke/lazy.nvim) as a package manager.
 
 ### VSCode
 
