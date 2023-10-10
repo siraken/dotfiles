@@ -6,7 +6,8 @@ set -gx EDITOR nvim
 set -gx SSH_AUTH_SOCK "$HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 set -gx VOLTA_HOME "$HOME/.volta"
-set -gx GOPATH $HOME/go
+set -gx GOPATH "$HOME/go"
+set -gx PNPM_HOME "$HOME/.pnpm"
 
 set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH /opt/homebrew/sbin $PATH
@@ -14,6 +15,7 @@ set -gx PATH /opt/homebrew/opt/openssl@3/bin $PATH # Use openssl installed by ho
 set -gx PATH bin $PATH
 set -gx PATH "$GOPATH/bin" $PATH
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+set -gx PATH "$PNPM_HOME" $PATH
 set -gx PATH "$HOME/.rye/shims" $PATH
 set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx PATH "$HOME/.deno/bin" $PATH
