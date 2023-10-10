@@ -55,6 +55,7 @@ yabai -m config                                 \
 # macOS Utilities
 yabai -m rule --add app=Finder manage=off
 yabai -m rule --add app=System\ Preferences manage=off
+yabai -m rule --add app=System\ Settings manage=off
 yabai -m rule --add app=Activity\ Monitor manage=off
 yabai -m rule --add app=Console manage=off
 yabai -m rule --add app=Screen\ Sharing manage=off
@@ -84,6 +85,7 @@ yabai -m rule --add app=Microsoft\ Remote\ Desktop manage=off
 
 # Utilities
 yabai -m rule --add app=1Password manage=off
+yabai -m rule --add app=DiffusionBee manage=off
 
 # Adobe
 yabai -m rule --add app=Adobe\ Photoshop\ 2023 manage=off
