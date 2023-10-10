@@ -35,11 +35,9 @@ local plugins = {
   --
   -- Language support
   --
-  { 'bfontaine/Brewfile.vim' },
   { 'tomlion/vim-solidity' },
   { 'ziglang/zig.vim' },
   { 'editorconfig/editorconfig-vim' },
-  { 'isobit/vim-caddyfile' },
   { 'OmniSharp/omnisharp-vim' },
   { 'udalov/kotlin-vim' },
   { 'akinsho/flutter-tools.nvim' },

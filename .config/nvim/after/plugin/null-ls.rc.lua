@@ -3,40 +3,35 @@
 --
 -- Current:
 -- https://github.com/nvimtools/none-ls.nvim
-local status, nl = pcall(require, 'null-ls')
+local status, null_ls = pcall(require, 'null-ls')
 if (not status) then return end
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local c = nl.builtins.completion
-local d = nl.builtins.diagnostics
-local f = nl.builtins.formatting
+local cmp = null_ls.builtins.completion
+local dia = null_ls.builtins.diagnostics
+local fmt = null_ls.builtins.formatting
 
 local sources = {
-  c.spell,
-  d.eslint,
-  f.prettier,
-  f.prettierd,
+  cmp.spell,
+  dia.eslint,
+  fmt.prettier,
+  fmt.prettierd,
 }
 
-nl.setup {
+null_ls.setup {
   sources = sources,
   on_attach = function(client, bufnr)
-    if client.supports_method('textDocument/formatting') then
+    if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd('BufWritePre', {
+      vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format({
-            bufnr = bufnr,
-            filter = function()
-              return client.name == 'null-ls'
-            end,
-          })
+          vim.lsp.buf.format({ bufnr = bufnr, async = false })
         end,
       })
     end
   end,
-  debug = false,
+  debug = true,
 }
