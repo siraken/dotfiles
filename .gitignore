@@ -1,8 +1,6 @@
 *
 */
 !*/
-
-# git
 !.gitignore
 !README.md
 
@@ -23,6 +21,9 @@
 !.config/powershell/includes/variable.ps1
 !.config/powershell/windows.ps1
 !.config/powershell/linux.ps1
+
+# hammerspoon
+!.hammerspoon/init.lua
 
 # kitty
 !.config/kitty/kitty.conf
@@ -69,7 +70,7 @@
 
 # tmux
 !.tmux.conf
-!.tmux.conf.darwin
+!.tmux.darwin.conf
 !.tmux.powerline.conf
 
 # Starship

@@ -25,6 +25,9 @@ _ERROR() {
 
 mkdir -p ~/.config
 
+INSTALL hammerspoon
+ln -snf ~/dotfiles/.hammerspoon ~/
+
 INSTALL kitty
 ln -snf ~/dotfiles/.config/kitty ~/.config/
 
@@ -52,7 +55,7 @@ ln -snf ~/dotfiles/.config/ranger ~/.config/
 
 INSTALL tmux
 ln -snf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -snf ~/dotfiles/.tmux.conf.darwin ~/.tmux.conf.darwin
+ln -snf ~/dotfiles/.tmux.darwin.conf ~/.tmux.darwin.conf
 ln -snf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 
 INSTALL Starship
