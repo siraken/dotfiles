@@ -23,6 +23,9 @@ mason.setup {
       -- package_pending = "➜",
       -- package_uninstalled = "✗"
     }
+  },
+  ensure_installed = {
+    'prettier'
   }
 }
 

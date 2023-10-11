@@ -37,7 +37,8 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'path' },
-    { name = 'buffer' }
+    { name = 'buffer' },
+    { name = 'conjure' },
   }),
   formatting = {
     format = lspkind.cmp_format({ wirth_text = false, maxwidth = 50 })

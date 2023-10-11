@@ -46,7 +46,7 @@ local plugins = {
   -- Read: https://github.com/folke/lazy.nvim#-migration-guide
   { 'vlime/vlime',                           rtp = 'vim' },
   { 'vim-scripts/paredit.vim' },
-  { 'Olical/conjure' },
+  { 'Olical/conjure', ft = { 'clojure' } },
   { 'tpope/vim-dispatch' },
   { 'clojure-vim/vim-jack-in' },
   { 'radenling/vim-dispatch-neovim' },
@@ -60,6 +60,14 @@ local plugins = {
   { 'nvimdev/lspsaga.nvim' }, -- LSP UIs
   -- { 'jose-elias-alvarez/null-ls.nvim' }, -- ARCHIVED
   { 'nvimtools/none-ls.nvim' }, -- Alternative of above?
+  {
+    'jay-babu/mason-null-ls.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      'williamboman/mason.nvim',
+      'nvimtools/none-ls.nvim',
+    },
+  },
   { 'ray-x/lsp_signature.nvim' },
   { 'j-hui/fidget.nvim',                     tag = 'legacy', event = 'LspAttach' },
   {
