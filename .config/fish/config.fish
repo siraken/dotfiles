@@ -1,27 +1,38 @@
+# $HOME/.config/fish
+set FISH_CONFIG_PATH (dirname (status --current-filename))
+
 # Common functions
-source (dirname (status --current-filename))/common.fish
+source $FISH_CONFIG_PATH/common.fish
 
 # Paths
-source (dirname (status --current-filename))/path.fish
+source $FISH_CONFIG_PATH/path.fish
 
 # Variables
-source (dirname (status --current-filename))/variable.fish
+source $FISH_CONFIG_PATH/variable.fish
 
 # Functions
-source (dirname (status --current-filename))/function.fish
+source $FISH_CONFIG_PATH/function.fish
 
 # Aliases
-source (dirname (status --current-filename))/alias.fish
+source $FISH_CONFIG_PATH/alias.fish
 
 # GitHub Copilot CLI
-source (dirname (status --current-filename))/config-copilot.fish
+source $FISH_CONFIG_PATH/config-copilot.fish
+
+# pnpm completion
+if test -f $FISH_CONFIG_PATH/pnpm.fish
+  source $FISH_CONFIG_PATH/pnpm.fish
+else
+  command -q pnpm; and status --is-interactive; \\
+  and pnpm install-completion | source
+end
 
 # OS-specific configurations
 switch (uname)
   case Darwin
-    source (dirname (status --current-filename))/config-darwin.fish
+    source $FISH_CONFIG_PATH/config-darwin.fish
   case Linux
-    source (dirname (status --current-filename))/config-linux.fish
+    source $FISH_CONFIG_PATH/config-linux.fish
 end
 
 # Starship
