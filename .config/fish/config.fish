@@ -23,8 +23,8 @@ source $FISH_CONFIG_PATH/config-copilot.fish
 if test -f $FISH_CONFIG_PATH/pnpm.fish
   source $FISH_CONFIG_PATH/pnpm.fish
 else
-  command -q pnpm; and status --is-interactive; \\
-  and pnpm install-completion | source
+  # command -q pnpm; and status --is-interactive;
+  # and pnpm install-completion | source
 end
 
 # OS-specific configurations
