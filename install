@@ -96,6 +96,3 @@ ln -snf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.P
 
 INSTALL Hyper
 ln -snf ~/dotfiles/.hyper.js ~/.hyper.js
-
-INSTALL npm
-ln -snf ~/dotfiles/.npmrc ~/.npmrc
