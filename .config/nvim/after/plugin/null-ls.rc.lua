@@ -17,7 +17,7 @@ local code_actions = null_ls.builtins.code_actions
 local hover = null_ls.builtins.hover
 
 local sources = {
-  completion.spell,
+  -- completion.spell,
   diagnostics.eslint,
   formatting.prettier,
 }
