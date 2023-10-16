@@ -35,6 +35,8 @@ New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.hyper.j
 _INSTALL Nushell
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\nushell\ -Path $env:USERPROFILE\AppData\Roaming\nushell
 
+_INSTALL Git
+New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\git\ -Path $env:USERPROFILE\.config\git
 
 trap {
     _ERROR
