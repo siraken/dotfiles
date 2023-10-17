@@ -111,6 +111,14 @@ mason_lsp.setup_handlers {
       }
     end
 
+    -- Avoid "Multiple different client offset_encodings detected"
+    if server_name == 'clangd' then
+      opts.cmd = {
+        'clangd',
+        '--offset-encoding=utf-16'
+      }
+    end
+
     -- C#
     -- if server_name == 'omnisharp' then
     --   opts.cmd = { "dotnet", "/path/to/omnisharp/Omnisharp.dll" }
