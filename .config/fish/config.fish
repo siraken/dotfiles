@@ -19,13 +19,8 @@ source $FISH_CONFIG_PATH/alias.fish
 # GitHub Copilot CLI
 source $FISH_CONFIG_PATH/config-copilot.fish
 
-# pnpm completion
-if test -f $FISH_CONFIG_PATH/pnpm.fish
-  source $FISH_CONFIG_PATH/pnpm.fish
-else
-  # command -q pnpm; and status --is-interactive;
-  # and pnpm install-completion | source
-end
+# Completions
+source $FISH_CONFIG_PATH/completion.fish
 
 # OS-specific configurations
 switch (uname)
