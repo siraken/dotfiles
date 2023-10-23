@@ -8,6 +8,7 @@ set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx GOPATH "$HOME/go"
 set -gx PNPM_HOME "$HOME/.pnpm"
+set -gx MODULAR_HOME "$HOME/.modular"
 
 set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH /opt/homebrew/sbin $PATH
