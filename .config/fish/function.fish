@@ -27,6 +27,12 @@ function goinit
   git init && touch main.go README.md
 end
 
+# Initialize Laravel app
+function laravelinit
+  echo "Enter the project name:" && read projName;
+  curl -s "https://laravel.build/$projName" | bash
+end
+
 # gau - Git Add URL
 # Add git remote URL with current directory name
 function gau
@@ -77,5 +83,30 @@ end
 function res-yabai
   yabai --restart-service
   skhd --restart-service
+end
+
+# 二番煎じ
+function トウキョウ・シャンディ・
+  if test -f ./vendor/bin/sail
+    if test -f pnpm-lock.yaml
+      sail pnpm $argv
+    end
+    if test -f yarn.lock
+      sail yarn $argv
+    end
+    if test -f package-lock.json
+      sail npm $argv
+    end
+  else
+    if test -f pnpm-lock.yaml
+      pnpm $argv
+    end
+    if test -f yarn.lock
+      yarn $argv
+    end
+    if test -f package-lock.json
+      npm $argv
+    end
+  end
 end
 
