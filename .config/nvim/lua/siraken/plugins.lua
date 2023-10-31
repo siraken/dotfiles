@@ -93,6 +93,15 @@ local plugins = {
     }
   },
   { 'L3MON4D3/LuaSnip' },
+  ---
+  --- Debugging
+  ---
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = {
+      { 'mfussenegger/nvim-dap' }
+    }
+  },
   --
   -- UI for messages, cmdline, popup, etc.
   --
@@ -103,6 +112,7 @@ local plugins = {
       { 'rcarriga/nvim-notify' } -- for notifications
     }
   },
+  { 'RRethy/vim-illuminate' },
   --
   -- Display style
   --
