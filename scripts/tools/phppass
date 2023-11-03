@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+if (empty($argv[1])) {
+    echo "Usage: phppass <string>" . PHP_EOL;
+    exit;
+}
+
+$hash = password_hash($argv[1], PASSWORD_DEFAULT);
+
+echo $hash . PHP_EOL;
+

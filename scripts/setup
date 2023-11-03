@@ -1,0 +1,196 @@
+#!/bin/bash
+#
+# Setup my development environment.
+#
+# Compatible OS:
+#   - macOS
+#   - Linux (and on WSL)
+#
+
+trap _ERROR ERR
+trap _FINISH EXIT
+trap _CANCEL INT
+
+# --------------------------------------------------
+# * CONSTANTS
+# --------------------------------------------------
+IS_DEBUG=0
+USERNAME="siraken"
+GH_URL="https://github.com"
+GH_USERNAME=$USERNAME
+HOME_DIR="/home/$USERNAME"
+DOTFILES=(
+  "$GH_URL/$GH_USERNAME/dotfiles.git"
+  "$GH_URL/$GH_USERNAME/dotfiles-private.git"
+)
+GH_ORGANIZATIONS=(
+  "siraken"
+  "siraken-pg"
+  "novalumo"
+)
+LANGUAGE_SPECIFIED_INSTALLERS=(
+  "cargo.sh"
+  "composer.sh"
+  "dart.sh"
+  "deno.sh"
+  "gem.sh"
+  "go.sh"
+  "luarocks.sh"
+  "pecl.sh"
+  "pnpm.sh"
+  "python.sh"
+)
+SCRIPT_PATH=$(cd $(dirname $0); pwd)
+INSTALLER_SCRIPT_PATH="$SCRIPT_PATH/.."
+# --------------------------------------------------
+
+# --------------------------------------------------
+# * Specify OS
+# --------------------------------------------------
+if [ "$(uname)" = "Darwin" ]; then
+  OS="Darwin"
+  HOME_DIR="/Users/$USERNAME"
+elif [ -e /etc/debian_version ] || [ -e /etc/debian_release ]; then
+  OS="Debian"
+elif [ -e /etc/arch-release ]; then
+  OS="ArchLinux"
+else
+  OS="Other"
+fi
+
+# --------------------------------------------------
+# * VARIABLES (Prefix: V_)
+# --------------------------------------------------
+V_ERROR_COUNT=0
+V_PACKAGE_LIST_UPDATED=0
+
+# --------------------------------------------------
+# * FUNCTIONS
+# --------------------------------------------------
+INSTALL() {
+  if [ $V_PACKAGE_LIST_UPDATED -eq 0 ]; then
+    case $OS in
+      Darwin)
+        brew update
+        ;;
+      Debian)
+        sudo apt update
+        ;;
+      ArchLinux)
+        sudo pacman -Syu
+        ;;
+      *)
+        printf "\e[1;37;41m ERROR \e[m $1 is not supported\n"
+        V_ERROR_COUNT=$((V_ERROR_COUNT+1))
+        ;;
+    esac
+    V_PACKAGE_LIST_UPDATED=1
+  fi
+  case $OS in
+    Darwin)
+      INSTALLING_FILE=$1
+      brew install $1
+      ;;
+    Debian)
+      INSTALLING_FILE=$1
+      sudo apt install -y $1
+      ;;
+    ArchLinux)
+      INSTALLING_FILE=$1
+      sudo pacman -S --noconfirm $1
+      ;;
+    *)
+      printf "\e[1;37;41m ERROR \e[m $1 is not supported\n"
+      V_ERROR_COUNT=$((V_ERROR_COUNT+1))
+      ;;
+  esac
+  printf "\e[32mInstalling: \e[m$1\n"
+}
+_FINISH() {
+  printf "\n\e[1;37;42m SETUP SCRIPT FINISHED \e[m\n"
+  if [ $V_ERROR_COUNT -gt 0 ]; then
+    printf "\e[1;37;41m $V_ERROR_COUNT errors \e[m\n\n"
+  fi
+}
+_ERROR() {
+  printf "\e[1;37;41m ERROR \e[m $INSTALLING_FILE\n"
+  V_ERROR_COUNT=$((V_ERROR_COUNT+1))
+}
+_CANCEL() {
+  printf "\n\e[1;37;41m CANCELED \e[m\n"
+  exit 1
+}
+_DEBUG() {
+  if [ $IS_DEBUG -eq 1 ]; then
+    printf "\e[1;37;43m DEBUG \e[m $1 | Line ${BASH_LINENO[0]}\n"
+  fi
+}
+
+# --------------------------------------------------
+# * STARTUP SCREEN
+# --------------------------------------------------
+_DEBUG "STARTUP SCREEN"
+printf "\n"
+printf "\e[1;37;44m Script path \e[m $SCRIPT_PATH\n\n"
+printf "\e[1;37;44m OS \e[m $OS\n\n"
+printf "\e[1;37;44m User \e[m $USERNAME\n\n"
+printf "\e[1;37;44m Debug \e[m $IS_DEBUG\n"
+printf "\n"
+printf "Press any key to start setup...\n"
+printf "(If you want to cancel, press \e[1;34mCtrl + C\e[m)\n"
+read -n 1
+printf "\e[1;37;44m SETUP SCRIPT STARTED \e[m\n"
+
+# --------------------------------------------------
+# Add user if not exists and add to sudoers
+# --------------------------------------------------
+if [ ! -d $HOME_DIR ]; then
+  sudo useradd -m $USERNAME
+  sudo usermod -aG sudo $USERNAME
+fi
+
+# --------------------------------------------------
+# Clone dotfiles
+# --------------------------------------------------
+cd $HOME_DIR
+if [ ! -x "$(command -v git)" ]; then
+  INSTALL git
+fi
+for repo in ${DOTFILES[@]}; do
+  git clone $repo
+done
+
+# --------------------------------------------------
+# Make repos directory
+# --------------------------------------------------
+mkdir -p ~/repos
+for org in ${GH_ORGANIZATIONS[@]}; do
+  mkdir -p ~/repos/$org
+done
+
+# --------------------------------------------------
+# Install packages
+# TODO: Test
+# --------------------------------------------------
+if [ $OS = "Darwin" ]; then
+  if [ ! -x "$(command -v brew)" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+  brew bundle --file=$INSTALLER_SCRIPT_PATH/Brewfile
+elif [ $OS = "Debian" ]; then
+  . $INSTALLER_SCRIPT_PATH/apt.sh
+elif [ $OS = "ArchLinux" ]; then
+  . $INSTALLER_SCRIPT_PATH/pacman.sh
+else
+  printf "\e[1;37;41m ERROR \e[m $OS is not supported\n"
+  V_ERROR_COUNT=$((V_ERROR_COUNT+1))
+fi
+for installer in ${LANGUAGE_SPECIFIED_INSTALLERS[@]}; do
+  . $INSTALLER_SCRIPT_PATH/$installer
+done
+
+# --------------------------------------------------
+# Setup dotfiles
+# --------------------------------------------------
+cd $HOME/dotfiles
+./install

@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# Sort repositories by remote username
+#
+
+REPOS_DIR="$HOME/Documents/GitHub/*"
+DIRS=`find $REPOS_DIR -maxdepth 0 -type d`
+
+for dir in $DIRS;
+do
+  cd $dir
+  if [ -d "$dir/.git" ]; then
+    # Get a remote URL
+    REMOTE_URL=`git remote -v | grep 'push' | awk '/origin[[:space:]]/{print $2}'`
+
+    if [[ $REMOTE_URL =~ https://github.com/([^/]+)/([^/]+) ]]; then
+      USERNAME="${BASH_REMATCH[1]}"
+      REPOSITORY_NAME="${BASH_REMATCH[2]}"
+
+      # Convert the username to lowercase
+      new_dir_name=`echo $USERNAME | tr '[:upper:]' '[:lower:]'`
+      # Destination path
+      new_dest="$HOME/repos/$new_dir_name"
+
+      # Make a directory if it does not exist
+      if [ ! -d $new_dest ]; then
+        mkdir $new_dest
+      fi
+
+      mv $dir $HOME/repos/$new_dir_name/
+    fi
+  fi
+done
