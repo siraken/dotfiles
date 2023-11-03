@@ -1,15 +1,15 @@
 *
 */
 !*/
+!/README.md
 !.gitignore
-!README.md
 
 # git config
-!.config/git/config
-!.config/git/ignore
+!/.config/git/config
+!/.config/git/ignore
 
 # Editor
-!.editorconfig
+!/.editorconfig
 
 # Setup files
 !/setup
@@ -44,103 +44,96 @@
 !/scripts/macos/fixer
 !/scripts/tools/phppass
 
-# home-managet
-!.config/home-manager/home.nix
-!.config/home-manager/min.nix
+# home-manager
+!/.config/home-manager/home.nix
+!/.config/home-manager/min.nix
 
 # PowerShell
-!.config/powershell/includes/alias.ps1
-!.config/powershell/includes/function.ps1
-!.config/powershell/includes/variable.ps1
-!.config/powershell/windows.ps1
-!.config/powershell/linux.ps1
+!/.config/powershell/includes/alias.ps1
+!/.config/powershell/includes/function.ps1
+!/.config/powershell/includes/variable.ps1
+!/.config/powershell/windows.ps1
+!/.config/powershell/linux.ps1
 
 # hammerspoon
 !.hammerspoon/init.lua
 
 # kitty
-!.config/kitty/kitty.conf
+!/.config/kitty/kitty.conf
 
 # bash
-!.bashrc
+!/.bashrc
 
 # zsh
-!.zshrc
-!.zprofile
-!.p10k.zsh
+!/.zshrc
+!/.zprofile
 
 # fish
-!.config/fish/common.fish
-!.config/fish/config.fish
-!.config/fish/config-darwin.fish
-!.config/fish/config-linux.fish
-!.config/fish/config-copilot.fish
-!.config/fish/function.fish
-!.config/fish/alias.fish
-!.config/fish/variable.fish
-!.config/fish/path.fish
-!.config/fish/completion.fish
-!.config/fish/fish_plugins
+!/.config/fish/common.fish
+!/.config/fish/config.fish
+!/.config/fish/config-darwin.fish
+!/.config/fish/config-linux.fish
+!/.config/fish/config-copilot.fish
+!/.config/fish/function.fish
+!/.config/fish/alias.fish
+!/.config/fish/variable.fish
+!/.config/fish/path.fish
+!/.config/fish/completion.fish
+!/.config/fish/fish_plugins
 
 # nushell
-!.config/nushell/config.nu
-!.config/nushell/env.nu
+!/.config/nushell/config.nu
+!/.config/nushell/env.nu
 
 # yabai
-!.config/yabai/yabairc
+!/.config/yabai/yabairc
 
 # skhd
-!.config/skhd/skhdrc
+!/.config/skhd/skhdrc
 
 # simple-bar
-!.simplebarrc
+!/.simplebarrc
 
 # ranger
-# !.config/ranger/commands_full.py
-# !.config/ranger/commands.py
-# !.config/ranger/rc.conf
-# !.config/ranger/rifle.conf
-# !.config/ranger/scope.sh
+# !/.config/ranger/commands_full.py
+# !/.config/ranger/commands.py
+# !/.config/ranger/rc.conf
+# !/.config/ranger/rifle.conf
+# !/.config/ranger/scope.sh
 
 # tmux
-!.tmux.conf
-!.tmux.darwin.conf
-!.tmux.powerline.conf
+!/.tmux.conf
+!/.tmux.darwin.conf
+!/.tmux.powerline.conf
 
 # Starship
-!.config/starship.toml
+!/.config/starship.toml
 
 # Emacs
-!.emacs.d/init.el
-!.emacs.d/custom.el
-!.spacemacs.d/init.el
+!/.emacs.d/init.el
+!/.emacs.d/custom.el
+!/.spacemacs.d/init.el
 
 # nano
-!.config/nano/nanorc
+!/.config/nano/nanorc
 
 # Vim
-!.vimrc
+!/.vimrc
 
 # Neovim
-!.config/nvim/ginit.vim
-!.config/nvim/init.lua
-!.config/nvim/lua/siraken/*
-!.config/nvim/after/plugin/*
-!.config/nvim/colors/*
-!.config/nvim/coc-settings.json
-.config/nvim/plugged
+!/.config/nvim/ginit.vim
+!/.config/nvim/init.lua
+!/.config/nvim/lua/siraken/*
+!/.config/nvim/after/plugin/*
+!/.config/nvim/colors/*
+!/.config/nvim/coc-settings.json
+/.config/nvim/plugged
 
 # Helix
-!.config/helix/config.toml
+!/.config/helix/config.toml
 
 # Kakoune
-!.config/kak/kakrc
+!/.config/kak/kakrc
 
 # Hyper
-!.hyper.js
-
-# npm
-!.npmrc
-
-# yarn
-!.yarnrc
+!/.hyper.js
