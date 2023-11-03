@@ -12,8 +12,37 @@
 !.editorconfig
 
 # Setup files
-!setup
-!install.ps1
+!/setup
+!/install.ps1
+
+# Installers
+!/installers/Brewfile
+!/installers/scoop.ps1
+!/installers/winget.ps1
+!/installers/apk.sh
+!/installers/apt.sh
+!/installers/cargo.sh
+!/installers/composer.sh
+!/installers/dart.sh
+!/installers/deno.sh
+!/installers/gem.sh
+!/installers/go.sh
+!/installers/luarocks.sh
+!/installers/pacman.sh
+!/installers/paru.sh
+!/installers/pecl.sh
+!/installers/pkg.sh
+!/installers/pnpm.sh
+!/installers/python.sh
+!/installers/snap.sh
+!/installers/yay.sh
+
+# scripts
+!/scripts/setup
+!/scripts/git/move-gh-repos
+!/scripts/git/sort-repos-by-username
+!/scripts/macos/fixer
+!/scripts/tools/phppass
 
 # home-managet
 !.config/home-manager/home.nix
