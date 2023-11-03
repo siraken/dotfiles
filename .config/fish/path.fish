@@ -10,10 +10,9 @@ set -gx GOPATH "$HOME/go"
 set -gx PNPM_HOME "$HOME/.pnpm"
 set -gx MODULAR_HOME "$HOME/.modular"
 
-set -gx PATH /opt/homebrew/bin $PATH
-set -gx PATH /opt/homebrew/sbin $PATH
-set -gx PATH /opt/homebrew/opt/openssl@3/bin $PATH # Use openssl installed by homebrew
-set -gx PATH bin $PATH
+set -gx PATH "/opt/homebrew/bin" $PATH
+set -gx PATH "/opt/homebrew/sbin" $PATH
+set -gx PATH "/opt/homebrew/opt/openssl@3/bin" $PATH # Use openssl installed by homebrew
 set -gx PATH "$GOPATH/bin" $PATH
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -gx PATH "$PNPM_HOME" $PATH
@@ -29,6 +28,7 @@ set -gx PATH "$HOME/.progate/bin" $PATH
 set -gx PATH "$HOME/Library/Android/sdk/platform-tools" $PATH
 set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" $PATH
 set -gx PATH "$HOME/Library/Application Support/Coursier/bin" $PATH
+set -gx PATH bin $PATH
 
 test -e "$HOME/.phpbrew/phpbrew.fish"; and source "$HOME/.phpbrew/phpbrew.fish"
 # FIXME: rye does not work on fish shell
