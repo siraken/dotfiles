@@ -86,6 +86,8 @@ yabai -m rule --add app=Microsoft\ Remote\ Desktop manage=off
 # Utilities
 yabai -m rule --add app=1Password manage=off
 yabai -m rule --add app=DiffusionBee manage=off
+yabai -m rule --add app=balenaEtcher manage=off
+yabai -m rule --add app=Alfred\ Preferences manage=off
 
 # Adobe
 yabai -m rule --add app=Adobe\ Photoshop\ 2023 manage=off
