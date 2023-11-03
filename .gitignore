@@ -4,8 +4,6 @@
 !/README.md
 !.gitignore
 
-!/Dangerfile
-
 # git config
 !/.config/git/config
 !/.config/git/ignore
