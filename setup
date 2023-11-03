@@ -42,6 +42,9 @@ case $ACTION in
         INSTALL kitty
         ln -snf ~/dotfiles/.config/kitty ~/.config/
 
+        INSTALL home-manager
+        ln -snf ~/dotfiles/.config/home-manager ~/.config/
+
         INSTALL bash
         ln -snf ~/dotfiles/.bashrc ~/.bashrc
 

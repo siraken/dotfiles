@@ -15,6 +15,10 @@
 !setup
 !install.ps1
 
+# home-managet
+!.config/home-manager/home.nix
+!.config/home-manager/min.nix
+
 # PowerShell
 !.config/powershell/includes/alias.ps1
 !.config/powershell/includes/function.ps1

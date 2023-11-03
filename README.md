@@ -11,13 +11,31 @@ Minimized `dotfiles`: [siraken/dotfiles-min](https://github.com/siraken/dotfiles
 
 ## Packages
 
+### [Home Manager](https://github.com/nix-community/home-manager)
+
+This manages my development environment using [Nix](https://nixos.org/).
+
+```bash
+# Install Nix
+sh <(curl -L https://nixos.org/nix/install)
+
+# Install Home Manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+
+# Install home-manager packages
+nix-shell '<home-manager>' -A install
+
+# Switch to home-manager configuration (-f option is optional)
+home-manager switch -f /path/to/nix-file.nix
+```
+
 ### Shells
 
--   [fish shell](https://fishshell.com/)
-    -   [fisher](https://github.com/jorgebucaran/fisher)
-    -   [jethrokuan/z](https://github.com/jethrokuan/z)
--   [Nushell](https://www.nushell.sh/)
--   [Starship](https://starship.rs/)
+- [fish shell](https://fishshell.com/)
+  - [fisher](https://github.com/jorgebucaran/fisher)
+- [Nushell](https://www.nushell.sh/)
+- [Starship](https://starship.rs/)
 
 ### Neovim
 
@@ -31,37 +49,4 @@ To disable `ApplePressAndHoldEnabled`, run the command below:
 
 ```bash
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-```
-
-## Try on Docker
-
-### Ubuntu 22.04
-
-```bash
-docker run -w /root -it --rm ubuntu:22.04 sh -uelic '
-    apt-get update -y && apt-get upgrade -y && apt-get install -y git sudo
-    git clone https://github.com/siraken/dotfiles ~/dotfiles
-    git clone https://github.com/siraken/installer ~/installer
-    cd ~/dotfiles && ./install
-    cd ~/installer/linux && ./apt.sh
-    cd ~/installer/tools && ./install-reqs.sh
-    apt-get install -y nodejs
-    nvim --headless +PackerInstall +q
-    cd ~/ && fish
-'
-```
-
-### Arch Linux
-
-```bash
-docker run -w /root -it --platform linux/x86_64 --rm archlinux:latest sh -uelic '
-    pacman -Syyu --noconfirm
-    pacman -S --noconfirm git sudo
-    git clone https://github.com/siraken/dotfiles ~/dotfiles
-    git clone https://github.com/siraken/installer ~/installer
-    cd ~/dotfiles && ./install
-    cd ~/installer/linux && ./pacman.sh
-    cd ~/installer/tools && ./install-reqs.sh
-    cd ~/ && fish
-'
 ```
