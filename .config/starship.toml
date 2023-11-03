@@ -1,34 +1,41 @@
-# Colors based on tokyo-night
-#
-# Background:
-# - Base: #202334
-# - Primary: #83A1F1
-# - Secondary: #3D425F
-#
-# Foreground:
-# - Base: #ffffff
-# - Primary: #1E202E
-# - Secondary: #7892DA
-
 format = """
 $os\
 $localip\
-[](bg:#3D425F fg:#83A1F1)\
+[](bg:v_secondary fg:v_primary)\
 $directory\
-[ ](bg:#202334 fg:#3D425F)\
+[ ](bg:v_base fg:v_secondary)\
 $git_branch\
 $git_status\
 $nodejs\
 $rust\
 $golang\
 $php\
-[ ](fg:#1d2230)\
+[](fg:v_base)\
 \n$character"""
+
+palette = "tokyo-night"
+
+[palettes.tokyo-night]
+git-green = '#6CA53A'
+# Variants
+v_base = '#202334'
+v_primary = '#83A1F1'
+v_secondary = '#3D425F'
+v_tertiary = '#3D4A6D'
+# Text colors
+t_base = '#769ff0'
+t_primary = '#1E202E'
+t_secondary = '#7892DA'
+t_tertiary = '#D9DBE3'
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'
 
 [os]
 disabled = false
-format = '[  $symbol  ]($style)'
-style = "bg:#83A1F1 fg:#1E202E"
+format = '[  $symbol  ](bg:v_primary fg:t_primary)'
+
 [os.symbols]
 Arch = ""
 CentOS = ""
@@ -46,12 +53,11 @@ Windows = ""
 
 [localip]
 ssh_only = true
-format = '[$localipv4  ](bg:#83A1F1 fg:#1E202E bold)'
+format = '[$localipv4  ](bg:v_primary fg:t_primary bold)'
 disabled = false
 
 [directory]
-style = "bg:#3D425F fg:#7892DA bold"
-format = "[  $path ]($style)"
+format = "[  $path ](bg:v_secondary fg:t_secondary)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -63,30 +69,27 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#202334"
-format = '[[$symbol $branch ](fg:#6CA53A bg:#202334 bold)]($style)'
+format = '[[$symbol $branch ](fg:git-green bg:v_base bold)](bg:v_base)'
 
 [git_status]
-style = "bg:#202334"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#202334)]($style)'
+format = '[[($all_status$ahead_behind )](fg:t_base bg:v_base)](bg:v_base$style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#202334"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#202334)]($style)'
+style = "bg:v_base"
+format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#202334"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#202334)]($style)'
+style = "bg:v_base"
+format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:#202334"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#202334)]($style)'
+style = "bg:v_base"
+format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
 
 [php]
 symbol = ""
-style = "bg:#202334"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#202334)]($style)'
-
+style = "bg:v_base"
+format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
