@@ -12,7 +12,7 @@
 !.editorconfig
 
 # Setup files
-!install
+!setup
 !install.ps1
 
 # PowerShell
