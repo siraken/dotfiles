@@ -102,6 +102,7 @@ local plugins = {
       { 'mfussenegger/nvim-dap' }
     }
   },
+  { 'theHamsta/nvim-dap-virtual-text' },
   --
   -- UI for messages, cmdline, popup, etc.
   --
