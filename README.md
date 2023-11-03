@@ -5,8 +5,6 @@
 This repository manages dotfiles `.*` under `$HOME`.
 Clone this repository on `$HOME/dotfiles` and run `install`.
 
-[siraken/installer](https://github.com/siraken/installer) repo is required to work this repository properly.
-
 ## Packages
 
 ### [Home Manager](https://github.com/nix-community/home-manager)
