@@ -7,8 +7,6 @@ Clone this repository on `$HOME/dotfiles` and run `install`.
 
 [siraken/installer](https://github.com/siraken/installer) repo is required to work this repository properly.
 
-Minimized `dotfiles`: [siraken/dotfiles-min](https://github.com/siraken/dotfiles-min)
-
 ## Packages
 
 ### [Home Manager](https://github.com/nix-community/home-manager)
