@@ -1,4 +1,3 @@
-# Activate compinit
 autoload -Uz compinit
 compinit
 
@@ -33,7 +32,6 @@ if [ -e "$HOME/Library/Application Support/JetBrains/Toolbox" ]; then
   export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 fi
 
-# Google Cloud SDK
 if [ -f "$HOME/Developer/google-cloud-sdk/path.zsh.inc" ]; then
   . "$HOME/Developer/google-cloud-sdk/path.zsh.inc";
 fi
@@ -41,8 +39,6 @@ if [ -f "$HOME/Developer/google-cloud-sdk/completion.zsh.inc" ]; then
   . "$HOME/Developer/google-cloud-sdk/completion.zsh.inc";
 fi
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
-# Start fish shell (optional)
-fish
+if type ng &>/dev/null; then
+  source <(ng completion script)
+fi
