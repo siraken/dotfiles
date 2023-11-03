@@ -109,31 +109,31 @@ case $ACTION in
         ln -snf ~/dotfiles/.hyper.js ~/.hyper.js
         ;;
     "uninstall")
-        unlink ~/.hammerspoon
-        unlink ~/.config/kitty
-        unlink ~/.bashrc
-        unlink ~/.zprofile
-        unlink ~/.zshrc
-        unlink ~/.config/fish
-        unlink ~/.config/yabai
-        unlink ~/.config/skhd
-        unlink ~/.simplebarrc
-        unlink ~/.config/ranger
-        unlink ~/.tmux.conf
-        unlink ~/.tmux.darwin.conf
-        unlink ~/.tmux.powerline.conf
-        unlink ~/.config/starship.toml
-        unlink ~/.config/git
-        unlink ~/.emacs.d
-        unlink ~/.spacemacs.d
-        unlink ~/.config/nano
-        unlink ~/.vimrc
-        unlink ~/.config/nvim
-        unlink ~/.config/helix
-        unlink ~/.config/kak
-        unlink ~/.mongoshrc.js
-        unlink ~/.config/powershell/Microsoft.PowerShell_profile.ps1
-        unlink ~/.hyper.js
+        rm -rf ~/.hammerspoon
+        rm -rf ~/.config/kitty
+        rm -rf ~/.bashrc
+        rm -rf ~/.zprofile
+        rm -rf ~/.zshrc
+        rm -rf ~/.config/fish
+        rm -rf ~/.config/yabai
+        rm -rf ~/.config/skhd
+        rm -rf ~/.simplebarrc
+        rm -rf ~/.config/ranger
+        rm -rf ~/.tmux.conf
+        rm -rf ~/.tmux.darwin.conf
+        rm -rf ~/.tmux.powerline.conf
+        rm -rf ~/.config/starship.toml
+        rm -rf ~/.config/git
+        rm -rf ~/.emacs.d
+        rm -rf ~/.spacemacs.d
+        rm -rf ~/.config/nano
+        rm -rf ~/.vimrc
+        rm -rf ~/.config/nvim
+        rm -rf ~/.config/helix
+        rm -rf ~/.config/kak
+        rm -rf ~/.mongoshrc.js
+        rm -rf ~/.config/powershell/Microsoft.PowerShell_profile.ps1
+        rm -rf ~/.hyper.js
         ;;
     *)
         printf "\e[1;37;41m Error \e[m Unknown action: $ACTION\n"
