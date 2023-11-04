@@ -12,6 +12,9 @@ packages=(
 
     # Terminal file manager
     "github.com/antonmedv/llama@latest"
+
+    # Code snippets in terminal
+    "github.com/maaslalani/nap@main"
 )
 
 for package in "${packages[@]}"
