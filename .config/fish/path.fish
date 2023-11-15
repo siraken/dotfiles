@@ -34,6 +34,10 @@ test -e "$HOME/.phpbrew/phpbrew.fish"; and source "$HOME/.phpbrew/phpbrew.fish"
 # FIXME: rye does not work on fish shell
 # test -e "$HOME/.rye/env"; and source "$HOME/.rye/env"
 
+if test -f $HOME/Developer/google-cloud-sdk/path.fish.inc
+  source $HOME/Developer/google-cloud-sdk/path.fish.inc
+end
+
 command -q rbenv; and status --is-interactive; and rbenv init - fish | source
 command -q fuck; and status --is-interactive; and thefuck --alias | source
 command -q zoxide; and status --is-interactive; and zoxide init fish | source
