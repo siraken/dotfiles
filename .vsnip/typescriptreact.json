@@ -1,0 +1,15 @@
+{
+  "Create a component": {
+    "prefix": "component",
+    "body": [
+      "const ${1:ComponentName} = () => {",
+      "\treturn (",
+      "\t\t<>",
+      "\t\t\t<h1>Hello World</h1>",
+      "\t\t</>",
+      "\t)",
+      "}"
+    ],
+    "description": ""
+  }
+}

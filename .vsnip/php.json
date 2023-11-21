@@ -1,10 +1,22 @@
 {
-  "PHP tag": {
-    "prefix": "php",
-    "body": ["<?php $1 ?>"]
-  },
   "Show PHP info": {
-    "prefix": "phpinfo",
-    "body": ["<?php phpinfo(); ?>"]
+    "prefix": "sn_phpinfo",
+    "body": ["<?php phpinfo(); ?>"],
+    "description": ""
+  },
+  "Shorthand echo": {
+    "prefix": "sn_echo",
+    "body": ["<?= ${1:value} ?>"],
+    "description": ""
+  },
+  "Create a PHP class": {
+    "prefix": "sn_class",
+    "body": ["class ${1:ClassName} {", "\t$0", "}"],
+    "description": ""
+  },
+  "Create a PHP function": {
+    "prefix": "sn_function",
+    "body": ["function ${1:functionName}($2) {", "\t$0", "}"],
+    "description": ""
   }
 }

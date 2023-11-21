@@ -1,0 +1,7 @@
+{
+  "Initialize": {
+    "prefix": "mdinit",
+    "body": ["# ${1:Title}\n", "## Subtitle"],
+    "description": ""
+  }
+}
