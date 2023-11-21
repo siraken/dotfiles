@@ -137,3 +137,6 @@
 
 # Hyper
 !/.hyper.js
+
+# vsnip
+!/.vsnip/*.json
