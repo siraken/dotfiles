@@ -242,6 +242,7 @@ if OS.mac?
   brew 'pwgen'
   brew 'xsv'
   brew 'invoice'
+  brew 'skaffold'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
