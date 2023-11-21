@@ -100,6 +100,17 @@ mason_lsp.setup_handlers {
       }
     end
 
+    -- Solargraph
+    if server_name == 'solargraph' then
+      opts.settings = {
+        transport = 'external',
+        externalServer = {
+          host = 'localhost',
+          port = 7658
+        }
+      }
+    end
+
     -- C/C++
     if server_name == 'ccls' then
       opts.cmd = { 'ccls' }
