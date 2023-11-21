@@ -110,6 +110,9 @@ case $ACTION in
 
         INSTALL Hyper
         ln -snf ~/dotfiles/.hyper.js ~/.hyper.js
+
+        INSTALL .vsnip
+        ln -snf ~/dotfiles/.vsnip ~/.vsnip
         ;;
     "uninstall")
         rm -rf ~/.hammerspoon
