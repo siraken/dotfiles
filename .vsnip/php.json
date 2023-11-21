@@ -1,0 +1,10 @@
+{
+  "PHP tag": {
+    "prefix": "php",
+    "body": ["<?php $1 ?>"]
+  },
+  "Show PHP info": {
+    "prefix": "phpinfo",
+    "body": ["<?php phpinfo(); ?>"]
+  }
+}

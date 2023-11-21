@@ -4,11 +4,13 @@ local status2, lspkind = pcall(require, 'lspkind')
 if (not status) then return end
 if (not status2) then return end
 
-cmp.setup({
+cmp.setup ({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  window = {
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -36,16 +38,17 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'vsnip' },
     { name = 'path' },
     { name = 'buffer' },
     { name = 'conjure' },
   }),
   formatting = {
     format = lspkind.cmp_format({ wirth_text = false, maxwidth = 50 })
-  }
+  },
 })
 
-vim.cmd [[
-  set completeopt=menuone,noinsert,noselect
-  highlight! default link CmpItemKind CmpItemMenuDefault
-]]
+-- vim.cmd [[
+--   set completeopt=menuone,noinsert,noselect
+--   highlight! default link CmpItemKind CmpItemMenuDefault
+-- ]]

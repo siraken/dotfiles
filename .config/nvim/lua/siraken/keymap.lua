@@ -41,5 +41,10 @@ keymap.set('n', 'U', '<C-r>')
 keymap.set('v', '<', '<gv')
 keymap.set('v', '>', '>gv')
 
+-- Use Tab, Shift + Tab
+keymap.set('i', '<S-Tab>', '<C-d>')
+keymap.set('v', '<Tab>', '>>')
+keymap.set('v', '<S-Tab>', '<<')
+
 -- Stay visual mode after formatting
 keymap.set('v', '=', '=gv')

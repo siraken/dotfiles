@@ -22,16 +22,16 @@ local plugins = {
   --
   -- Colorschemes
   --
-  { 'sickill/vim-monokai' },
-  { 'cocopon/iceberg.vim' },
-  { 'KeitaNakamura/neodark.vim' },
-  { 'EdenEast/nightfox.nvim' },
-  { 'overcache/NeoSolarized' },
-  { 'shaunsingh/nord.nvim' },
-  { 'morhetz/gruvbox' },
-  { 'rebelot/kanagawa.nvim' },
-  { 'folke/tokyonight.nvim',                 lazy = false,                              branch = 'main' },
-  { 'Mofiqul/vscode.nvim' },
+  { 'folke/tokyonight.nvim', lazy = false, branch = 'main' },
+  -- { 'sickill/vim-monokai' },
+  -- { 'cocopon/iceberg.vim' },
+  -- { 'KeitaNakamura/neodark.vim' },
+  -- { 'EdenEast/nightfox.nvim' },
+  -- { 'overcache/NeoSolarized' },
+  -- { 'shaunsingh/nord.nvim' },
+  -- { 'morhetz/gruvbox' },
+  -- { 'rebelot/kanagawa.nvim' },
+  -- { 'Mofiqul/vscode.nvim' },
   --
   -- Language support
   --
@@ -44,14 +44,14 @@ local plugins = {
   { 'wuelnerdotexe/vim-astro' },
   -- FIXME: rtp can be accomplished.
   -- Read: https://github.com/folke/lazy.nvim#-migration-guide
-  { 'vlime/vlime',                           rtp = 'vim' },
+  { 'vlime/vlime', rtp = 'vim' },
   { 'vim-scripts/paredit.vim' },
   { 'Olical/conjure', ft = { 'clojure' } },
   { 'tpope/vim-dispatch' },
   { 'clojure-vim/vim-jack-in' },
   { 'radenling/vim-dispatch-neovim' },
   { 'roobert/tailwindcss-colorizer-cmp.nvim' },
-  { 'scalameta/nvim-metals',                 dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'scalameta/nvim-metals', dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'sheerun/vim-polyglot' },
   --
   -- LSP-related
@@ -69,11 +69,7 @@ local plugins = {
     },
   },
   { 'ray-x/lsp_signature.nvim' },
-  { 'j-hui/fidget.nvim',                     tag = 'legacy', event = 'LspAttach' },
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = { { 'nvim-lua/plenary.nvim' } }
-  },
+  { 'j-hui/fidget.nvim', tag = 'legacy', event = 'LspAttach' },
   {
     'nvim-treesitter/nvim-treesitter',
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
@@ -87,9 +83,11 @@ local plugins = {
     dependencies = {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/vim-vsnip',
       'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/vim-vsnip-integ',
     }
   },
   { 'L3MON4D3/LuaSnip' },
@@ -136,6 +134,16 @@ local plugins = {
   { 'numToStr/Comment.nvim' },
   { 'folke/todo-comments.nvim' },
   { 'guns/vim-sexp' },
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = { { 'nvim-lua/plenary.nvim' } }
+  },
+  {
+    'nvim-telescope/telescope-frecency.nvim',
+    config = function()
+      require('telescope').load_extension 'frecency'
+    end,
+  },
   --
   -- Uncategorized yet
   --

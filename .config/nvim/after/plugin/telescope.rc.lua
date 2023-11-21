@@ -21,8 +21,10 @@ telescope.setup {
 
 -- Keymap
 local keymap = vim.keymap
+local builtin = require('telescope.builtin')
 if not vim.g.vscode then
-  keymap.set('n', 'ff', '<Cmd>lua require("telescope.builtin").find_files()<CR>')
+  keymap.set('n', 'ff', builtin.find_files, {})
+  keymap.set('n', 'fg', builtin.live_grep, {})
 else
   -- * VSCodeNotify() to call VSCode command
   keymap.set('n', 'ff', "<Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
