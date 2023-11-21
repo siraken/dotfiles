@@ -18,5 +18,15 @@
     "prefix": "sn_company_website",
     "body": ["https://www.novalumo.com"],
     "description": ""
+  },
+  "Lorem ipsum": {
+    "prefix": "lorem",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Amet cursus sit amet dictum sit amet justo.",
+      "Nunc non blandit massa enim nec dui.",
+      "Turpis egestas pretium aenean pharetra magna ac placerat vestibulum."
+    ],
+    "description": ""
   }
 }
