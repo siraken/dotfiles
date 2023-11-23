@@ -134,6 +134,7 @@ local plugins = {
   { 'numToStr/Comment.nvim' },
   { 'folke/todo-comments.nvim' },
   { 'guns/vim-sexp' },
+  { 'thinca/vim-quickrun' },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
