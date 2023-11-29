@@ -49,3 +49,6 @@ fi
 if type direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
+
+eval "$(starship init zsh)"
+
