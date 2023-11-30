@@ -1,8 +1,3 @@
-" ------------------------------------------------------------
-" [CAUTION]
-" This file is used by both Vim and VSCodeVim.
-" ------------------------------------------------------------
-
 autocmd!
 
 scriptencoding utf-8
@@ -77,31 +72,22 @@ nnoremap <C-w><right> <C-w>>
 nnoremap <C-w><up> <C-w>+
 nnoremap <C-w><down> <C-w>-
 
-
 " Close buffer
 nnoremap <C-w>q :bd<CR>
 
-" Swap ; and :
-nnoremap ; :
-" nnoremap : ;
-
-" Use U as redo
+" Use Shift + U as redo
 nnoremap U <C-r>
 
 " Reselect visual block after indents
 xnoremap < <gv
 xnoremap > >gv
 
+" Use Tab, Shift + Tab
+inoremap <S-Tab> <C-d>
+xnoremap <Tab> >gv
+xnoremap <S-Tab> <gv
+
 " Stay visual mode after formatting
 xnoremap = =gv
 
-au BufNewFile,BufRead *.tsx setf typescriptreact
-au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.mdx set filetype=markdown
-au BufNewFile,BufRead *.fish set filetype=fish
-
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-
 let $LANG = 'en_US'
-

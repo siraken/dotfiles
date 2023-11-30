@@ -27,10 +27,6 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 -- Close buffer
 keymap.set('n', '<C-w>q', ':bd<CR>')
 
--- Swap ; and :
-keymap.set('n', ';', ':')
--- keymap.set('n', ':', ';')
-
 -- Use Shift + U as redo
 keymap.set('n', 'U', '<C-r>')
 
