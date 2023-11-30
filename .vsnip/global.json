@@ -28,5 +28,10 @@
       "Turpis egestas pretium aenean pharetra magna ac placerat vestibulum."
     ],
     "description": ""
+  },
+  "Rabbit": {
+    "prefix": "rabbit",
+    "body": ["₍ ᐢ. ̫ .ᐢ ₎"],
+    "description": ""
   }
 }
