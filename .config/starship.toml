@@ -6,10 +6,6 @@ $directory\
 [ ](bg:v_base fg:v_secondary)\
 $git_branch\
 $git_status\
-$nodejs\
-$rust\
-$golang\
-$php\
 [](fg:v_base)\
 \n$character"""
 
@@ -17,20 +13,14 @@ palette = "tokyo-night"
 
 [palettes.tokyo-night]
 git-green = '#6CA53A'
-# Variants
 v_base = '#202334'
 v_primary = '#83A1F1'
 v_secondary = '#3D425F'
 v_tertiary = '#3D4A6D'
-# Text colors
 t_base = '#769ff0'
 t_primary = '#1E202E'
 t_secondary = '#7892DA'
 t_tertiary = '#D9DBE3'
-
-[character]
-success_symbol = '[➜](bold green)'
-error_symbol = '[➜](bold red)'
 
 [os]
 disabled = false
@@ -74,22 +64,3 @@ format = '[[$symbol $branch ](fg:git-green bg:v_base bold)](bg:v_base)'
 [git_status]
 format = '[[($all_status$ahead_behind )](fg:t_base bg:v_base)](bg:v_base$style)'
 
-[nodejs]
-symbol = ""
-style = "bg:v_base"
-format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:v_base"
-format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:v_base"
-format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
-
-[php]
-symbol = ""
-style = "bg:v_base"
-format = '[[ $symbol ($version) ](fg:t_base bg:v_base)]($style)'
