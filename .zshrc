@@ -11,6 +11,7 @@ zstyle ':completion:*' list-colors ''
 
 alias g='git'
 alias gs='git status'
+alias cls='clear'
 
 export CLICOLOR=true
 
