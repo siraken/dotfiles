@@ -1,5 +1,18 @@
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt share_history
+setopt list_packed
+setopt correct
+
+autoload -Uz colors && colors
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' list-colors ''
+
+alias g='git'
+alias gs='git status'
+
+export CLICOLOR=true
 
 export SSH_AUTH_SOCK="$HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
