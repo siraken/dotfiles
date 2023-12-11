@@ -30,5 +30,8 @@ switch (uname)
     source $FISH_CONFIG_PATH/config-linux.fish
 end
 
+# direnv
+direnv hook fish | source
+
 # Starship
 starship init fish | source
