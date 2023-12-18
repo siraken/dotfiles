@@ -13,6 +13,8 @@ Default leader key is `<space>`.
 <space> <space>
 ```
 
+To find more keymaps, visit [Keymaps](https://www.lazyvim.org/keymaps).
+
 ## LazyVim
 
 My Neovim configuration is based on [LazyVim](https://www.lazyvim.org).
