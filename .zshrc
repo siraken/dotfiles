@@ -12,6 +12,7 @@ zstyle ':completion:*' list-colors ''
 alias g='git'
 alias gs='git status'
 alias cls='clear'
+alias vim='nvim'
 
 export CLICOLOR=true
 
