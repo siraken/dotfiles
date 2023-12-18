@@ -1,36 +1,9 @@
--- Install lazy.nvim automatically if not installed
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Plugins definition
 local plugins = {
   -- Neovim LSP
   { "neovim/nvim-lspconfig" },
   -- Mason: LSP client for Neovim
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
-  --
-  -- Colorschemes
-  --
-  -- { 'sickill/vim-monokai' },
-  -- { 'cocopon/iceberg.vim' },
-  -- { 'KeitaNakamura/neodark.vim' },
-  -- { 'EdenEast/nightfox.nvim' },
-  -- { 'overcache/NeoSolarized' },
-  -- { 'shaunsingh/nord.nvim' },
-  -- { 'morhetz/gruvbox' },
-  -- { 'rebelot/kanagawa.nvim' },
-  -- { 'Mofiqul/vscode.nvim' },
   --
   -- Language support
   --
