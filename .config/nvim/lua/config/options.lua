@@ -7,6 +7,8 @@ local vscode = vim.g.vscode
 vim.scriptencoding = "utf-8"
 
 wo.number = true
+wo.relativenumber = false
+
 opt.cmdheight = 1
 
 opt.visualbell = true
