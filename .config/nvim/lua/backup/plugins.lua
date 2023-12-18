@@ -22,7 +22,6 @@ local plugins = {
   --
   -- Colorschemes
   --
-  { "folke/tokyonight.nvim", lazy = false, branch = "main" },
   -- { 'sickill/vim-monokai' },
   -- { 'cocopon/iceberg.vim' },
   -- { 'KeitaNakamura/neodark.vim' },
@@ -44,20 +43,19 @@ local plugins = {
   { "wuelnerdotexe/vim-astro" },
   -- FIXME: rtp can be accomplished.
   -- Read: https://github.com/folke/lazy.nvim#-migration-guide
-  { "vlime/vlime", rtp = "vim" },
+  { "vlime/vlime",                           rtp = "vim" },
   { "vim-scripts/paredit.vim" },
-  { "Olical/conjure", ft = { "clojure" } },
+  { "Olical/conjure",                        ft = { "clojure" } },
   { "tpope/vim-dispatch" },
   { "clojure-vim/vim-jack-in" },
   { "radenling/vim-dispatch-neovim" },
   { "roobert/tailwindcss-colorizer-cmp.nvim" },
-  { "scalameta/nvim-metals", dependencies = { "nvim-lua/plenary.nvim" } },
-  { "sheerun/vim-polyglot" },
+  { "scalameta/nvim-metals",                 dependencies = { "nvim-lua/plenary.nvim" } },
   --
   -- LSP-related
   --
-  { "onsails/lspkind.nvim" }, -- VSCode-like pictograms
-  { "nvimdev/lspsaga.nvim" }, -- LSP UIs
+  { "onsails/lspkind.nvim" },   -- VSCode-like pictograms
+  { "nvimdev/lspsaga.nvim" },   -- LSP UIs
   -- { 'jose-elias-alvarez/null-ls.nvim' }, -- ARCHIVED
   { "nvimtools/none-ls.nvim" }, -- Alternative of above?
   {
@@ -69,7 +67,7 @@ local plugins = {
     },
   },
   { "ray-x/lsp_signature.nvim" },
-  { "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach" },
+  { "j-hui/fidget.nvim",       tag = "legacy", event = "LspAttach" },
   {
     "nvim-treesitter/nvim-treesitter",
     build = function()
@@ -117,25 +115,22 @@ local plugins = {
   --
   -- Display style
   --
-  { "mhinz/vim-startify" }, -- Startup screen
+  { "mhinz/vim-startify" },        -- Startup screen
   { "nvim-lualine/lualine.nvim" }, -- Statusline
   { "norcalli/nvim-colorizer.lua" },
   { "folke/trouble.nvim" },
   { "lewis6991/gitsigns.nvim" },
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
-  { "akinsho/bufferline.nvim", version = "*" }, -- Tab
+  { "akinsho/bufferline.nvim",        version = "*" }, -- Tab
   --
   -- Utilities
   --
-  { "github/copilot.vim" },
   { "itchyny/calendar.vim" },
-  { "pwntester/octo.nvim" },
   { "dhruvasagar/vim-table-mode" },
   { "dstein64/vim-startuptime" },
   { "folke/todo-comments.nvim" },
   { "guns/vim-sexp" },
-  { "thinca/vim-quickrun" },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { { "nvim-lua/plenary.nvim" } },
