@@ -118,8 +118,6 @@ local plugins = {
   { "mhinz/vim-startify" },        -- Startup screen
   { "nvim-lualine/lualine.nvim" }, -- Statusline
   { "norcalli/nvim-colorizer.lua" },
-  { "folke/trouble.nvim" },
-  { "lewis6991/gitsigns.nvim" },
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
   { "akinsho/bufferline.nvim",        version = "*" }, -- Tab
@@ -145,10 +143,8 @@ local plugins = {
   -- Uncategorized yet
   --
   { "mg979/vim-visual-multi" },
-  { "folke/which-key.nvim" },
   { "folke/neodev.nvim" },
   { "lukas-reineke/indent-blankline.nvim" },
-  { "windwp/nvim-autopairs" },
   {
     "iamcco/markdown-preview.nvim",
     build = function()
