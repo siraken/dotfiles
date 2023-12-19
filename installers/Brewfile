@@ -331,6 +331,7 @@ if OS.mac?
   cask 'hammerspoon'
   cask 'mjml'
   cask 'termius'
+  cask 'alacritty'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
