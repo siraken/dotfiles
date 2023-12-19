@@ -41,3 +41,7 @@ keymap.set("v", "<S-Tab>", "<<")
 
 -- Stay visual mode after formatting
 keymap.set("v", "=", "=gv")
+
+-- Swap : and ;
+-- keymap.set("n", ";", ":")
+-- keymap.set("n", ":", ";")
