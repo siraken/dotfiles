@@ -9,141 +9,144 @@ INSTALLING_FILE=""
 ERROR_COUNT=0
 
 INSTALL() {
-    printf "\e[32mInstalling: \e[m$1\n"
-    INSTALLING_FILE=$1
+  printf "\e[32mInstalling: \e[m$1\n"
+  INSTALLING_FILE=$1
 }
 
 _FINISH() {
-    if [ $ERROR_COUNT -gt 0 ]; then
-        printf "\n\e[1;37;41m $ERROR_COUNT errors \e[m\n\n"
-    else
-        printf "\n\e[1;37;42m Done \e[m\n\n"
-    fi
+  if [ $ERROR_COUNT -gt 0 ]; then
+    printf "\n\e[1;37;41m $ERROR_COUNT errors \e[m\n\n"
+  else
+    printf "\n\e[1;37;42m Done \e[m\n\n"
+  fi
 }
 
 _ERROR() {
-    printf "\e[1;37;41m Error \e[m $INSTALLING_FILE\n"
-    ERROR_COUNT=$((ERROR_COUNT+1))
+  printf "\e[1;37;41m Error \e[m $INSTALLING_FILE\n"
+  ERROR_COUNT=$((ERROR_COUNT + 1))
 }
 
 if [ $# -eq 0 ]; then
-    printf "\e[1;37;41m Error \e[m No action specified\n"
-    ERROR_COUNT=$((ERROR_COUNT+1))
-    exit 1
+  printf "\e[1;37;41m Error \e[m No action specified\n"
+  ERROR_COUNT=$((ERROR_COUNT + 1))
+  exit 1
 fi
 
 case $ACTION in
-    "install")
-        mkdir -p ~/.config
+"install")
+  mkdir -p ~/.config
 
-        INSTALL hammerspoon
-        ln -snf ~/dotfiles/.hammerspoon ~/
+  INSTALL hammerspoon
+  ln -snf ~/dotfiles/.hammerspoon ~/
 
-        INSTALL kitty
-        ln -snf ~/dotfiles/.config/kitty ~/.config/
+  INSTALL kitty
+  ln -snf ~/dotfiles/.config/kitty ~/.config/
 
-        INSTALL home-manager
-        ln -snf ~/dotfiles/.config/home-manager ~/.config/
+  INSTALL home-manager
+  ln -snf ~/dotfiles/.config/home-manager ~/.config/
 
-        INSTALL bash
-        ln -snf ~/dotfiles/.bashrc ~/.bashrc
+  INSTALL bash
+  ln -snf ~/dotfiles/.bashrc ~/.bashrc
 
-        INSTALL zsh
-        ln -snf ~/dotfiles/.zprofile ~/.zprofile
-        ln -snf ~/dotfiles/.zshrc ~/.zshrc
+  INSTALL zsh
+  ln -snf ~/dotfiles/.zprofile ~/.zprofile
+  ln -snf ~/dotfiles/.zshrc ~/.zshrc
 
-        INSTALL fish
-        ln -snf ~/dotfiles/.config/fish ~/.config/
+  INSTALL fish
+  ln -snf ~/dotfiles/.config/fish ~/.config/
 
-        INSTALL yabai
-        ln -snf ~/dotfiles/.config/yabai ~/.config/
+  INSTALL yabai
+  ln -snf ~/dotfiles/.config/yabai ~/.config/
 
-        INSTALL skhd
-        ln -snf ~/dotfiles/.config/skhd ~/.config/
+  INSTALL skhd
+  ln -snf ~/dotfiles/.config/skhd ~/.config/
 
-        INSTALL simple-bar
-        ln -snf ~/dotfiles/.simplebarrc ~/.simplebarrc
+  INSTALL simple-bar
+  ln -snf ~/dotfiles/.simplebarrc ~/.simplebarrc
 
-        INSTALL ranger
-        ln -snf ~/dotfiles/.config/ranger ~/.config/
+  INSTALL ranger
+  ln -snf ~/dotfiles/.config/ranger ~/.config/
 
-        INSTALL tmux
-        ln -snf ~/dotfiles/.tmux.conf ~/.tmux.conf
-        ln -snf ~/dotfiles/.tmux.darwin.conf ~/.tmux.darwin.conf
-        ln -snf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
+  INSTALL tmux
+  ln -snf ~/dotfiles/.tmux.conf ~/.tmux.conf
+  ln -snf ~/dotfiles/.tmux.darwin.conf ~/.tmux.darwin.conf
+  ln -snf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
 
-        INSTALL Starship
-        ln -snf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
+  INSTALL Starship
+  ln -snf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
-        INSTALL Git
-        ln -snf ~/dotfiles/.config/git ~/.config/
+  INSTALL Git
+  ln -snf ~/dotfiles/.config/git ~/.config/
 
-        INSTALL Emacs
-        # ln -snf ~/dotfiles/.emacs.d/ ~/.emacs.d
-        # Use Spacemacs instead of above (check if .emacs.d exists)
-        if [ ! -d ~/.emacs.d ]; then
-            git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
-        fi
-        ln -snf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
+  INSTALL Emacs
+  # ln -snf ~/dotfiles/.emacs.d/ ~/.emacs.d
+  # Use Spacemacs instead of above (check if .emacs.d exists)
+  if [ ! -d ~/.emacs.d ]; then
+    git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
+  fi
+  ln -snf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
 
-        INSTALL nano
-        ln -snf ~/dotfiles/.config/nano ~/.config/
+  INSTALL nano
+  ln -snf ~/dotfiles/.config/nano ~/.config/
 
-        INSTALL Vim
-        ln -snf ~/dotfiles/.vimrc ~/.vimrc
+  INSTALL Vim
+  ln -snf ~/dotfiles/.vimrc ~/.vimrc
 
-        INSTALL Neovim
-        ln -snf ~/dotfiles/.config/nvim ~/.config/
+  INSTALL Neovim
+  ln -snf ~/dotfiles/.config/nvim ~/.config/
 
-        INSTALL Helix
-        ln -snf ~/dotfiles/.config/helix ~/.config/
+  INSTALL Helix
+  ln -snf ~/dotfiles/.config/helix ~/.config/
 
-        INSTALL Kakoune
-        ln -snf ~/dotfiles/.config/kak ~/.config/
+  INSTALL Kakoune
+  ln -snf ~/dotfiles/.config/kak ~/.config/
 
-        INSTALL MongoDB Shell
-        ln -snf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
+  INSTALL MongoDB Shell
+  ln -snf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
-        INSTALL PowerShell
-        mkdir -p ~/.config/powershell
-        ln -snf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
+  INSTALL PowerShell
+  mkdir -p ~/.config/powershell
+  ln -snf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
 
-        INSTALL Hyper
-        ln -snf ~/dotfiles/.hyper.js ~/.hyper.js
+  INSTALL Hyper
+  ln -snf ~/dotfiles/.hyper.js ~/.hyper.js
 
-        INSTALL .vsnip
-        ln -snf ~/dotfiles/.vsnip ~/.vsnip
-        ;;
-    "uninstall")
-        rm -rf ~/.hammerspoon
-        rm -rf ~/.config/kitty
-        rm -rf ~/.bashrc
-        rm -rf ~/.zprofile
-        rm -rf ~/.zshrc
-        rm -rf ~/.config/fish
-        rm -rf ~/.config/yabai
-        rm -rf ~/.config/skhd
-        rm -rf ~/.simplebarrc
-        rm -rf ~/.config/ranger
-        rm -rf ~/.tmux.conf
-        rm -rf ~/.tmux.darwin.conf
-        rm -rf ~/.tmux.powerline.conf
-        rm -rf ~/.config/starship.toml
-        rm -rf ~/.config/git
-        rm -rf ~/.emacs.d
-        rm -rf ~/.spacemacs.d
-        rm -rf ~/.config/nano
-        rm -rf ~/.vimrc
-        rm -rf ~/.config/nvim
-        rm -rf ~/.config/helix
-        rm -rf ~/.config/kak
-        rm -rf ~/.mongoshrc.js
-        rm -rf ~/.config/powershell/Microsoft.PowerShell_profile.ps1
-        rm -rf ~/.hyper.js
-        ;;
-    *)
-        printf "\e[1;37;41m Error \e[m Unknown action: $ACTION\n"
-        ERROR_COUNT=$((ERROR_COUNT+1))
-        exit 1
-        ;;
+  INSTALL .vsnip
+  ln -snf ~/dotfiles/.vsnip ~/.vsnip
+
+  INSTALL Alacritty
+  ln -snf ~/dotfiles/.config/alacritty ~/.config
+  ;;
+"uninstall")
+  rm -rf ~/.hammerspoon
+  rm -rf ~/.config/kitty
+  rm -rf ~/.bashrc
+  rm -rf ~/.zprofile
+  rm -rf ~/.zshrc
+  rm -rf ~/.config/fish
+  rm -rf ~/.config/yabai
+  rm -rf ~/.config/skhd
+  rm -rf ~/.simplebarrc
+  rm -rf ~/.config/ranger
+  rm -rf ~/.tmux.conf
+  rm -rf ~/.tmux.darwin.conf
+  rm -rf ~/.tmux.powerline.conf
+  rm -rf ~/.config/starship.toml
+  rm -rf ~/.config/git
+  rm -rf ~/.emacs.d
+  rm -rf ~/.spacemacs.d
+  rm -rf ~/.config/nano
+  rm -rf ~/.vimrc
+  rm -rf ~/.config/nvim
+  rm -rf ~/.config/helix
+  rm -rf ~/.config/kak
+  rm -rf ~/.mongoshrc.js
+  rm -rf ~/.config/powershell/Microsoft.PowerShell_profile.ps1
+  rm -rf ~/.hyper.js
+  ;;
+*)
+  printf "\e[1;37;41m Error \e[m Unknown action: $ACTION\n"
+  ERROR_COUNT=$((ERROR_COUNT + 1))
+  exit 1
+  ;;
 esac
