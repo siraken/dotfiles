@@ -1,6 +1,5 @@
 format = """
 $os\
-$localip\
 [](bg:v_secondary fg:v_primary)\
 $directory\
 [ ](bg:v_base fg:v_secondary)\
@@ -8,6 +7,9 @@ $git_branch\
 $git_status\
 [](fg:v_base)\
 \n$character"""
+
+right_format = """
+$localip"""
 
 palette = "tokyo-night"
 
@@ -43,7 +45,7 @@ Windows = ""
 
 [localip]
 ssh_only = true
-format = '[$localipv4  ](bg:v_primary fg:t_primary bold)'
+format = '[ $localipv4 ](bg:v_primary fg:t_primary bold)'
 disabled = false
 
 [directory]
@@ -63,4 +65,3 @@ format = '[[$symbol $branch ](fg:git-green bg:v_base bold)](bg:v_base)'
 
 [git_status]
 format = '[[($all_status$ahead_behind )](fg:t_base bg:v_base)](bg:v_base$style)'
-
