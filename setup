@@ -49,6 +49,7 @@ case $ACTION in
   ln -snf ~/dotfiles/.bashrc ~/.bashrc
 
   INSTALL zsh
+  ln -snf ~/dotfiles/.config/zsh ~/.config/zsh
   ln -snf ~/dotfiles/.zprofile ~/.zprofile
   ln -snf ~/dotfiles/.zshrc ~/.zshrc
 
