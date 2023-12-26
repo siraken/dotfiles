@@ -85,14 +85,14 @@ function laravelinit() {
 
 # Git Add Url
 # FIXME: from fish shell
-function gaurl() {
-  echo "Enter the username:" && read username;
-  if test -n "$username"
-    git remote add origin "$GH_URL/$username/"(basename (pwd))".git"
-    git remote -v
-  else
-    echo "Please provide the username you want to use."
-  end
+function gau() {
+  # echo "Enter the username:" && read username;
+  # if test -n "$username"
+  #   git remote add origin "$GH_URL/$username/"(basename (pwd))".git"
+  #   git remote -v
+  # else
+  #   echo "Please provide the username you want to use."
+  # end
 }
 
 # Google Search
