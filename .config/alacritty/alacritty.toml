@@ -1,0 +1,58 @@
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[env]
+GITHUB_USERNAME = "siraken"
+TERM = "alacritty"
+
+[font]
+builtin_box_drawing = true
+size = 16.0
+
+[font.bold]
+family = "Hack Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "Hack Nerd Font"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Hack Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 1
+y = 0
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+
+[shell]
+program = "/opt/homebrew/bin/fish"
+
+[window]
+dynamic_title = true
+opacity = 0.95
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.dimensions]
+columns = 150
+lines = 40
