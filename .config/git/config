@@ -1,6 +1,6 @@
 [user]
-	name = Kento Shirasawa
-	email = shirasawa.kento@gmail.com
+    name = Kento Shirasawa
+    email = shirasawa.kento@gmail.com
     username = siraken ; git-it
     ; signingkey = ssh-rsa XXXXX
 
@@ -19,6 +19,7 @@
     fe = fetch
     fedr = fetch --dry-run
     cp = cherry-pick
+    dft = difftool
 
 [color]
     status = auto
@@ -32,10 +33,10 @@
     defaultBranch = main
 
 [core]
-	autocrlf = input
+    autocrlf = input
     ignorecase = false
     editor = nvim
-	excludesfile = /Users/siraken/.gitignore_global
+    excludesfile = /Users/siraken/.gitignore_global
 
 [push]
     default = simple
@@ -48,10 +49,19 @@
     ; helper = osxkeychain
 
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+	  process = git-lfs filter-process
+	  required = true
+	  clean = git-lfs clean -- %f
+
+[diff]
+    tool = difftastic
+
+[pager]
+    difftool = true
+
+[difftool]
+    prompt = false
 
 [difftool "nvimdiff"]
     cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
@@ -61,24 +71,28 @@
     trustExitCode = true
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
 
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 [commit]
-	template = /Users/siraken/.stCommitMsg
+    template = /Users/siraken/.stCommitMsg
     ; gpgsign = true
 
 [gpg]
-  format = ssh
+    format = ssh
 
 [gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [credential "https://github.com"]
-  helper = !/opt/homebrew/bin/gh auth git-credential
+    helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-  helper = !/opt/homebrew/bin/gh auth git-credential
+    helper = !/opt/homebrew/bin/gh auth git-credential
+
