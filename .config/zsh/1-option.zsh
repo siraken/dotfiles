@@ -1,6 +1,8 @@
 ##################################################
 # Option
 ##################################################
+bindkey -e
+
 setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 setopt share_history
