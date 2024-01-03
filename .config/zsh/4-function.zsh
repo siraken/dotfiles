@@ -21,7 +21,6 @@ function weather() {
 }
 
 # Initialize Go app
-# FIXME: from fish shell
 function goinit() {
   echo "Enter the package name:" && read package;
   mkdir -p $package && cd $package
@@ -30,22 +29,20 @@ function goinit() {
 }
 
 # Initialize Laravel app
-# FIXME: from fish shell
 function laravelinit() {
   echo "Enter the project name:" && read projName;
   curl -s "https://laravel.build/$projName" | bash
 }
 
 # Git Add Url
-# FIXME: from fish shell
 function gau() {
-  # echo "Enter the username:" && read username;
-  # if test -n "$username"
-  #   git remote add origin "$GH_URL/$username/"(basename (pwd))".git"
-  #   git remote -v
-  # else
-  #   echo "Please provide the username you want to use."
-  # end
+  echo "Enter the username:" && read username;
+  if [[ -n "$username" ]]; then
+    git remote add origin "$GH_URL/$username/$(basename $(pwd)).git"
+    git remote -v
+  else
+    echo "Please provide the username you want to use."
+  fi
 }
 
 # Google Search
@@ -78,27 +75,22 @@ function res-yabai() {
   skhd --restart-service
 }
 
-# function トウキョウ・シャンディ・
-#   if test -f ./vendor/bin/sail
-#     if test -f pnpm-lock.yaml
-#       sail pnpm $argv
-#     end
-#     if test -f yarn.lock
-#       sail yarn $argv
-#     end
-#     if test -f package-lock.json
-#       sail npm $argv
-#     end
-#   else
-#     if test -f pnpm-lock.yaml
-#       pnpm $argv
-#     end
-#     if test -f yarn.lock
-#       yarn $argv
-#     end
-#     if test -f package-lock.json
-#       npm $argv
-#     end
-#   end
-# end
-
+function トウキョウ・シャンディ・ () {
+  if [ -f ./vendor/bin/sail ]; then
+    if [ -f pnpm-lock.yaml ]; then
+      sail pnpm $argv
+    elif [ -f yarn.lock ]; then
+      sail yarn $argv
+    elif [ -f package-lock.json ]; then
+      sail npm $argv
+    fi
+  else
+    if [ -f pnpm-lock.yaml ]; then
+      pnpm $argv
+    elif [ -f yarn.lock ]; then
+      yarn $argv
+    elif [ -f package-lock.json ]; then
+      npm $argv
+    fi
+  fi
+}
