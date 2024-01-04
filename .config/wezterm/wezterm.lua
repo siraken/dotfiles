@@ -5,6 +5,9 @@
 --
 
 require("status")
+require("event")
+require("format")
+
 local wezterm = require("wezterm")
 local keybinds = require("keybinds")
 local config = {}
@@ -40,6 +43,7 @@ config.macos_window_background_blur = 15
 config.win32_system_backdrop = "Acrylic"
 -- config.macos_window_dragging_behavior = "all"
 config.window_close_confirmation = "NeverPrompt"
+config.window_decorations = "RESIZE"
 config.window_padding = {
   left = 0,
   right = 0,

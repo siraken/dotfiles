@@ -161,7 +161,6 @@ return {
     { key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
     { key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
   },
-
   key_tables = {
     copy_mode = {
       { key = "Tab", mods = "NONE", action = act.CopyMode("MoveForwardWord") },
