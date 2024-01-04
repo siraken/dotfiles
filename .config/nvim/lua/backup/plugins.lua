@@ -2,20 +2,9 @@ local plugins = {
   --
   -- Language support
   --
-  { "tomlion/vim-solidity" },
-  { "ziglang/zig.vim" },
-  { "editorconfig/editorconfig-vim" },
-  { "OmniSharp/omnisharp-vim" },
   { "udalov/kotlin-vim" },
   { "akinsho/flutter-tools.nvim" },
-  { "wuelnerdotexe/vim-astro" },
-  -- FIXME: rtp can be accomplished.
-  -- Read: https://github.com/folke/lazy.nvim#-migration-guide
-  { "vlime/vlime", rtp = "vim" },
   { "vim-scripts/paredit.vim" },
-  { "Olical/conjure", ft = { "clojure" } },
-  { "tpope/vim-dispatch" },
-  { "clojure-vim/vim-jack-in" },
   { "radenling/vim-dispatch-neovim" },
   { "roobert/tailwindcss-colorizer-cmp.nvim" },
   { "scalameta/nvim-metals", dependencies = { "nvim-lua/plenary.nvim" } },
@@ -57,7 +46,6 @@ local plugins = {
   --
   -- Utilities
   --
-  { "itchyny/calendar.vim" },
   { "dhruvasagar/vim-table-mode" },
   { "dstein64/vim-startuptime" },
   { "guns/vim-sexp" },
