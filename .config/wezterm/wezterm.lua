@@ -4,8 +4,9 @@
 -- https://wezfurlong.org/wezterm/config/files.html
 --
 
+require("status")
 local wezterm = require("wezterm")
-local act = wezterm.action
+local keybinds = require("keybinds")
 local config = {}
 
 -- In newer versions of wezterm, use the config_builder which will
@@ -14,23 +15,9 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.keys = {
-  {
-    key = "f",
-    mods = "SHIFT|META",
-    action = act.ToggleFullScreen,
-  },
-  {
-    key = "d",
-    mods = "META",
-    action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-  },
-  {
-    key = "d",
-    mods = "SHIFT|META",
-    action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
-  },
-}
+config.keys = keybinds.keys
+config.key_tables = keybinds.key_tables
+config.status_update_interval = 1000
 config.colors = {
   scrollbar_thumb = "white",
 }
@@ -45,7 +32,8 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false
 config.enable_scroll_bar = false
 config.enable_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
+config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 15
