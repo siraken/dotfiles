@@ -1,9 +1,4 @@
 local plugins = {
-  -- Neovim LSP
-  { "neovim/nvim-lspconfig" },
-  -- Mason: LSP client for Neovim
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
   --
   -- Language support
   --
@@ -16,21 +11,17 @@ local plugins = {
   { "wuelnerdotexe/vim-astro" },
   -- FIXME: rtp can be accomplished.
   -- Read: https://github.com/folke/lazy.nvim#-migration-guide
-  { "vlime/vlime",                           rtp = "vim" },
+  { "vlime/vlime", rtp = "vim" },
   { "vim-scripts/paredit.vim" },
-  { "Olical/conjure",                        ft = { "clojure" } },
+  { "Olical/conjure", ft = { "clojure" } },
   { "tpope/vim-dispatch" },
   { "clojure-vim/vim-jack-in" },
   { "radenling/vim-dispatch-neovim" },
   { "roobert/tailwindcss-colorizer-cmp.nvim" },
-  { "scalameta/nvim-metals",                 dependencies = { "nvim-lua/plenary.nvim" } },
+  { "scalameta/nvim-metals", dependencies = { "nvim-lua/plenary.nvim" } },
   --
   -- LSP-related
   --
-  { "onsails/lspkind.nvim" },   -- VSCode-like pictograms
-  { "nvimdev/lspsaga.nvim" },   -- LSP UIs
-  -- { 'jose-elias-alvarez/null-ls.nvim' }, -- ARCHIVED
-  { "nvimtools/none-ls.nvim" }, -- Alternative of above?
   {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -39,30 +30,10 @@ local plugins = {
       "nvimtools/none-ls.nvim",
     },
   },
-  { "ray-x/lsp_signature.nvim" },
-  { "j-hui/fidget.nvim",       tag = "legacy", event = "LspAttach" },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
-    end,
-  },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   --
   -- Completion
   --
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-vsnip",
-      "hrsh7th/vim-vsnip",
-      "hrsh7th/vim-vsnip-integ",
-    },
-  },
   { "L3MON4D3/LuaSnip" },
   ---
   --- Debugging
@@ -77,41 +48,19 @@ local plugins = {
   --
   -- UI for messages, cmdline, popup, etc.
   --
-  {
-    "folke/noice.nvim",
-    dependencies = {
-      { "MunifTanjim/nui.nvim" },
-      { "rcarriga/nvim-notify" }, -- for notifications
-    },
-  },
   { "RRethy/vim-illuminate" },
   --
   -- Display style
   --
-  { "mhinz/vim-startify" },        -- Startup screen
-  { "nvim-lualine/lualine.nvim" }, -- Statusline
+  { "mhinz/vim-startify" }, -- Startup screen
   { "norcalli/nvim-colorizer.lua" },
-  { "nvim-tree/nvim-web-devicons" },
-  { "nvim-tree/nvim-tree.lua" },
-  { "akinsho/bufferline.nvim",        version = "*" }, -- Tab
   --
   -- Utilities
   --
   { "itchyny/calendar.vim" },
   { "dhruvasagar/vim-table-mode" },
   { "dstein64/vim-startuptime" },
-  { "folke/todo-comments.nvim" },
   { "guns/vim-sexp" },
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-  },
-  {
-    "nvim-telescope/telescope-frecency.nvim",
-    config = function()
-      require("telescope").load_extension("frecency")
-    end,
-  },
   --
   -- Uncategorized yet
   --
@@ -124,18 +73,10 @@ local plugins = {
       vim.fn["mkdp#util#install"]()
     end,
   },
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-  },
   --
   -- Homebrew
   --
   -- { 'siraken/html-parser.vim' }
 }
 
--- Lazy configuration
-local opts = {}
-
--- FIXME: E492: Not an editor command: Lazy
-require("lazy").setup(plugins, opts)
+require("lazy").setup(plugins, {})

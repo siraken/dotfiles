@@ -1,5 +1,6 @@
 -- https://github.com/folke/todo-comments.nvim
-local status, todo = pcall(require, 'todo-comments')
-if (not status) then return end
+return {
+  -- "folke/todo-comments.nvim"
+}
 
-todo.setup {}
+-- todo.setup {}
