@@ -117,6 +117,9 @@ case $ACTION in
 
   INSTALL Alacritty
   ln -snf ~/dotfiles/.config/alacritty ~/.config
+
+  INSTALL WezTerm
+  ln -snf ~/dotfiles/.config/wezterm ~/.config
   ;;
 "uninstall")
   rm -rf ~/.hammerspoon
