@@ -39,7 +39,7 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.window_background_opacity = 0.8
-config.macos_window_background_blur = 15
+config.macos_window_background_blur = 30
 config.win32_system_backdrop = "Acrylic"
 -- config.macos_window_dragging_behavior = "all"
 config.window_close_confirmation = "NeverPrompt"
@@ -53,9 +53,11 @@ config.window_padding = {
 config.window_background_gradient = {
   orientation = "Vertical",
   colors = {
-    "#0f0c29",
-    "#302b63",
-    "#24243e",
+    -- "#0f0c29",
+    -- "#302b63",
+    -- "#24243e",
+    "#000000",
+    "#111111",
   },
   interpolation = "Linear",
   blend = "Rgb",
