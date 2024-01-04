@@ -18,6 +18,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- config.default_prog = { "/bin/zsh", "-l" }
+config.default_prog = { "/opt/homebrew/bin/fish" }
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.status_update_interval = 1000
