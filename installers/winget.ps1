@@ -85,12 +85,15 @@ $packages = @(
     "Zeit.Hyper"
     "Gyan.FFmpeg"
     "MAMP.MAMP"
+    "wez.wezterm"
 )
 
 # Install packages
 Write-Host ("Installing " + $packages.count + " packages...`r`n")
-foreach ($package in $packages) {
+foreach ($package in $packages)
+{
     # winget install $package
 }
 
 Write-Host "`r`nInstallation is successfully completed." -ForegroundColor Green
+
