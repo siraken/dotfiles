@@ -9,17 +9,35 @@
 
 [alias]
     d = diff
+    b = branch
+    ad = add
+    bm = branch -m
+    bD = branch -D
+    bD = branch
     cm = commit
+    ecm = commit --allow-empty
     co = checkout
-    br = branch
     st = status
     ps = push
     pl = pull
-    ad = add
+    rb = rebase
+    mg = merge --no-ff
+    mgff = merge --ff
     fe = fetch
     fedr = fetch --dry-run
+    l = log
+    lg = log --graph
+    lol = log --oneline
+    bg = log --graph --simplify-by-decoration --pretty=format:'%d' --all
     cp = cherry-pick
-    dft = difftool
+    dt = difftool
+    undo = reset --soft HEAD^
+    sp = stash pop
+    ss = stash save
+    sl = stash list
+    sa = stash apply
+    rhh = reset --hard HEAD
+    gh = !gh repo view --web
 
 [color]
     status = auto
