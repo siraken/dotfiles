@@ -11,6 +11,7 @@
     d = diff
     b = branch
     ad = add
+    us = reset HEAD
     bm = branch -m
     bD = branch -D
     bD = branch
