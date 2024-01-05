@@ -117,6 +117,7 @@ return {
     { key = "k", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
     { key = "k", mods = "SUPER", action = act.ClearScrollback("ScrollbackOnly") },
     { key = "l", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
+    { key = "l", mods = "ALT", action = act.ShowLauncher },
     { key = "m", mods = "SHIFT|CTRL", action = act.Hide },
     { key = "m", mods = "SUPER", action = act.Hide },
     { key = "n", mods = "SHIFT|CTRL", action = act.SpawnWindow },

@@ -18,10 +18,21 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- config.default_prog = { "/bin/zsh", "-l" }
-config.default_prog = { "/opt/homebrew/bin/fish" }
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
+config.launch_menu = {
+  {
+    label = "fish on macOS",
+    args = { "/opt/homebrew/bin/fish", "-l" },
+  },
+  {
+    label = "fish on Linux",
+    args = { "/usr/bin/fish", "-l" },
+  },
+}
+-- config.default_prog = { "/bin/zsh", "-l" }
+config.default_prog = { "/opt/homebrew/bin/fish" }
+config.exit_behavior = "CloseOnCleanExit"
 config.status_update_interval = 1000
 config.colors = {
   scrollbar_thumb = "white",
