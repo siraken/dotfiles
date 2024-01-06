@@ -42,7 +42,8 @@ config.font_size = 16
 config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
   "Hack Nerd Font Mono",
-  "Fira Code",
+  "Hiragino Sans",
+  "Noto Sans JP",
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false
