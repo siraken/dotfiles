@@ -1,0 +1,18 @@
+# Window
+
+[window]
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.25
+startup_mode = "Windowed"
+title = "Alacritty"
+blur = true
+decorations = "Buttonless"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.dimensions]
+columns = 150
+lines = 40
