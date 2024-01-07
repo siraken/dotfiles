@@ -1,8 +1,8 @@
 [user]
     name = Kento Shirasawa
     email = shirasawa.kento@gmail.com
-    username = siraken ; git-it
-    ; signingkey = ssh-rsa XXXXX
+    username = siraken
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL
 
 [github]
     user = siraken
@@ -70,6 +70,15 @@
 [credential]
     ; helper = osxkeychain
 
+[commit]
+    gpgsign = true
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
 	  process = git-lfs filter-process
@@ -103,14 +112,9 @@
     cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
 
-[gpg]
-    format = ssh
-
-[gpg "ssh"]
-    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
 [credential "https://github.com"]
     helper = !/opt/homebrew/bin/gh auth git-credential
+
 [credential "https://gist.github.com"]
     helper = !/opt/homebrew/bin/gh auth git-credential
 
