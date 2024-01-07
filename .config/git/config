@@ -55,7 +55,7 @@
     autocrlf = input
     ignorecase = false
     editor = nvim
-    excludesfile = /Users/siraken/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [push]
     default = simple
@@ -103,10 +103,6 @@
     cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
     trustExitCode = true
 
-[commit]
-    template = /Users/siraken/.stCommitMsg
-    ; gpgsign = true
-
 [gpg]
     format = ssh
 
@@ -118,3 +114,6 @@
 [credential "https://gist.github.com"]
     helper = !/opt/homebrew/bin/gh auth git-credential
 
+[safe]
+    directory = *
+	  ; directory = %(prefix)///wsl.localhost
