@@ -51,9 +51,6 @@ alt - x : yabai -m space --mirror x-axis
 # toggle desktop offset
 alt - a : yabai -m space --toggle padding --toggle gap
 
-# toggle window parent zoom
-alt - d : yabai -m window --toggle zoom-parent
-
 # toggle window fullscreen zoom
 alt - f : yabai -m window --toggle zoom-fullscreen
 
