@@ -85,6 +85,7 @@ $packages = @(
     "Zeit.Hyper"
     "Gyan.FFmpeg"
     "MAMP.MAMP"
+    "Alacritty.Alacritty"
     "wez.wezterm"
 )
 
@@ -96,4 +97,5 @@ foreach ($package in $packages)
 }
 
 Write-Host "`r`nInstallation is successfully completed." -ForegroundColor Green
+
 
