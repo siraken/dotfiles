@@ -37,15 +37,22 @@ config.launch_menu = {
 if is_mac then
   config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
   config.font_size = 16
+  config.window_background_opacity = 0.8
+  config.macos_window_background_blur = 30
+  -- config.macos_window_dragging_behavior = "all"
 elseif is_win then
   config.default_prog = { "powershell.exe" }
   config.font_size = 12
+  config.window_background_opacity = 0.7
+  config.win32_system_backdrop = "Acrylic"
 elseif is_linux then
   config.default_prog = { "/usr/bin/fish", "-l" }
   config.font_size = 16
+  config.window_background_opacity = 0.8
 else
   config.default_prog = { "/bin/zsh", "-l" }
   config.font_size = 16
+  config.window_background_opacity = 0.8
 end
 config.exit_behavior = "CloseOnCleanExit"
 config.status_update_interval = 1000
@@ -66,10 +73,6 @@ config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
-config.window_background_opacity = 0.8
-config.macos_window_background_blur = 30
-config.win32_system_backdrop = "Acrylic"
--- config.macos_window_dragging_behavior = "all"
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
 config.window_padding = {
