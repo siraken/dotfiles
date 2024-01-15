@@ -87,6 +87,7 @@ $packages = @(
     "MAMP.MAMP"
     "Alacritty.Alacritty"
     "wez.wezterm"
+    "tailscale.tailscale"
 )
 
 # Install packages
