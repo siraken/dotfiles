@@ -12,7 +12,7 @@ local wezterm = require("wezterm")
 local keybinds = require("keybinds")
 local config = {}
 
-local is_mac = wezterm.target_triple == "x86_64-apple-darwin" or wezterm.target_triple == "aarch64-apple-darwin"
+local is_mac = string.find(wezterm.target_triple, "apple")
 local is_win = wezterm.target_triple == "x86_64-pc-windows-msvc"
 local is_linux = wezterm.target_triple == "x86_64-unknown-linux-gnu"
 
