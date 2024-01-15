@@ -12,6 +12,10 @@ local wezterm = require("wezterm")
 local keybinds = require("keybinds")
 local config = {}
 
+local is_mac = wezterm.target_triple == "x86_64-apple-darwin"
+local is_win = wezterm.target_triple == "x86_64-pc-windows-msvc"
+local is_linux = wezterm.target_triple == "x86_64-unknown-linux-gnu"
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
@@ -30,8 +34,15 @@ config.launch_menu = {
     args = { "/usr/bin/fish", "-l" },
   },
 }
--- config.default_prog = { "/bin/zsh", "-l" }
-config.default_prog = { "/opt/homebrew/bin/fish" }
+if is_mac then
+  config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
+elseif is_win then
+  config.default_prog = { "powershell.exe" }
+elseif is_linux then
+  config.default_prog = { "/usr/bin/fish", "-l" }
+else
+  config.default_prog = { "/bin/zsh", "-l" }
+end
 config.exit_behavior = "CloseOnCleanExit"
 config.status_update_interval = 1000
 config.colors = {
