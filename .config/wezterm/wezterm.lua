@@ -36,12 +36,16 @@ config.launch_menu = {
 }
 if is_mac then
   config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
+  config.font_size = 16
 elseif is_win then
   config.default_prog = { "powershell.exe" }
+  config.font_size = 14
 elseif is_linux then
   config.default_prog = { "/usr/bin/fish", "-l" }
+  config.font_size = 16
 else
   config.default_prog = { "/bin/zsh", "-l" }
+  config.font_size = 16
 end
 config.exit_behavior = "CloseOnCleanExit"
 config.status_update_interval = 1000
@@ -49,7 +53,6 @@ config.colors = {
   scrollbar_thumb = "white",
 }
 config.color_scheme = "Tokyo Night"
-config.font_size = 16
 config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
   "Hack Nerd Font Mono",
