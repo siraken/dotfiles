@@ -1,27 +1,23 @@
 $global:INSTALLING_FILE = ""
 $global:ERROR_COUNT = 0
 
-function _INSTALL($name)
-{
-    Write-Host "Installing: " -ForegroundColor Green -NoNewline
-    Write-Host $name
-    $global:INSTALLING_FILE = $name
+function _INSTALL($name) {
+  Write-Host "Installing: " -ForegroundColor Green -NoNewline
+  Write-Host $name
+  $global:INSTALLING_FILE = $name
 }
 
-function _ERROR
-{
-    Write-Host " Error " -BackgroundColor Red -ForegroundColor White -NoNewline
-    Write-Host " $global:INSTALLING_FILE "
-    $global:ERROR_COUNT += 1
+function _ERROR {
+  Write-Host " Error " -BackgroundColor Red -ForegroundColor White -NoNewline
+  Write-Host " $global:INSTALLING_FILE "
+  $global:ERROR_COUNT += 1
 }
 
-function _FINISH
-{
-    Write-Host " Done " -ForegroundColor White -BackgroundColor Green
-    if ($global:ERROR_COUNT -gt 0)
-    {
-        Write-Host " $($global:ERROR_COUNT) errors " -ForegroundColor White -BackgroundColor Red
-    }
+function _FINISH {
+  Write-Host " Done " -ForegroundColor White -BackgroundColor Green
+  if ($global:ERROR_COUNT -gt 0) {
+    Write-Host " $($global:ERROR_COUNT) errors " -ForegroundColor White -BackgroundColor Red
+  }
 }
 
 _INSTALL PowerShell
@@ -42,12 +38,14 @@ New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\
 _INSTALL Git
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\git\ -Path $env:USERPROFILE\.config\git
 
+_INSTALL Alacritty
+New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\alacritty\ -Path $env:APPDATA\alacritty
+
 _INSTALL WezTerm
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\wezterm\ -Path $env:USERPROFILE\.config\wezterm
 
-trap
-{
-    _ERROR
+trap {
+  _ERROR
 }
 
 _FINISH
