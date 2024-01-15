@@ -39,7 +39,7 @@ if is_mac then
   config.font_size = 16
 elseif is_win then
   config.default_prog = { "powershell.exe" }
-  config.font_size = 14
+  config.font_size = 12
 elseif is_linux then
   config.default_prog = { "/usr/bin/fish", "-l" }
   config.font_size = 16
