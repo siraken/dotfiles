@@ -88,6 +88,7 @@ $packages = @(
     "Alacritty.Alacritty"
     "wez.wezterm"
     "tailscale.tailscale"
+    "Cloudflare.Warp"
 )
 
 # Install packages
