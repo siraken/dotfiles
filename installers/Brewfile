@@ -334,6 +334,7 @@ if OS.mac?
   cask 'alacritty'
   cask 'wezterm'
   cask 'arc'
+  cask 'xbar'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
