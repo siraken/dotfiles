@@ -205,7 +205,6 @@ if OS.mac?
   brew 'putty'
   brew 'glow'
   brew 'git-filter-repo'
-  brew 'jenkins'
   brew 'tnftp'
   brew 'openssl'
   brew 'ansible'
