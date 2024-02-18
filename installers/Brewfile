@@ -78,7 +78,6 @@ if OS.mac?
   brew 'dart'
   brew 'sqlite'
   brew 'tfenv'
-  brew 'terraform'
   brew 'azure-cli'
   brew 'themekit'
   brew 'act'
