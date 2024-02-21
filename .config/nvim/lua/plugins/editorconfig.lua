@@ -1,2 +1,0 @@
---
-return { "editorconfig/editorconfig-vim" }
