@@ -34,5 +34,11 @@ return {
     config = function()
       require("nvim-paredit").setup()
     end,
+  },
+  -- https://github.com/pwntester/octo.nvim
+  {
+    "pwntester/octo.nvim",
+    lazy = true,
+    -- octo.setup {}
   }
 }
