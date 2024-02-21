@@ -4,17 +4,6 @@ return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
 
-  -- Colorschemes
-  -- { 'sickill/vim-monokai' },
-  -- { 'cocopon/iceberg.vim' },
-  -- { 'KeitaNakamura/neodark.vim' },
-  -- { 'EdenEast/nightfox.nvim' },
-  -- { 'overcache/NeoSolarized' },
-  -- { 'shaunsingh/nord.nvim' },
-  -- { 'morhetz/gruvbox' },
-  -- { 'rebelot/kanagawa.nvim' },
-  -- { 'Mofiqul/vscode.nvim' },
-
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",

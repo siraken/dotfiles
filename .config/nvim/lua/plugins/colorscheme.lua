@@ -1,3 +1,4 @@
+-- Colorschemes
 return {
   -- https://github.com/folke/tokyonight.nvim
   {
@@ -15,5 +16,14 @@ return {
       },
       day_brightness = 0.3,
     },
-  }
+  },
+  -- { 'sickill/vim-monokai' },
+  -- { 'cocopon/iceberg.vim' },
+  -- { 'KeitaNakamura/neodark.vim' },
+  -- { 'EdenEast/nightfox.nvim' },
+  -- { 'overcache/NeoSolarized' },
+  -- { 'shaunsingh/nord.nvim' },
+  -- { 'morhetz/gruvbox' },
+  -- { 'rebelot/kanagawa.nvim' },
+  -- { 'Mofiqul/vscode.nvim' },
 }
