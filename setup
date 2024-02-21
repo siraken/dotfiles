@@ -69,9 +69,7 @@ case $ACTION in
   ln -snf ~/dotfiles/.config/ranger ~/.config/
 
   INSTALL tmux
-  ln -snf ~/dotfiles/.tmux.conf ~/.tmux.conf
-  ln -snf ~/dotfiles/.tmux.darwin.conf ~/.tmux.darwin.conf
-  ln -snf ~/dotfiles/.tmux.powerline.conf ~/.tmux.powerline.conf
+  ln -snf ~/dotfiles/.config/tmux ~/.config/
 
   INSTALL Starship
   ln -snf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
