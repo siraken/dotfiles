@@ -26,6 +26,7 @@ alias py="python"
 alias n="node"
 alias gopj="cd $GOPATH/src/github.com/"
 alias rustrepl="evcxr"
+alias tf="terraform"
 alias -g G='| grep'
 alias -g L='| less'
 alias -g F='| fzf'
