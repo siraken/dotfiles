@@ -2,7 +2,6 @@ local opt = vim.opt
 local api = vim.api
 local wo = vim.wo
 local bo = vim.bo
-local vscode = vim.g.vscode
 
 vim.scriptencoding = "utf-8"
 vim.language = "en_us.utf-8"
@@ -53,12 +52,3 @@ opt.termguicolors = true
 opt.winblend = 0
 opt.wildoptions = "pum"
 opt.pumblend = 5
-
-vim.cmd([[autocmd TermOpen * startinsert]])
-
-if not vscode then
-  vim.keymap.set("n", "tr", "<Cmd>NvimTreeToggle<CR>")
-else
-  vim.keymap.set("n", "tr", "<Cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
-  vim.keymap.set("n", "tr", "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
-end

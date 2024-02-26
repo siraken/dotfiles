@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+local vscode = vim.g.vscode
 
 -- Increment / decrement
 keymap.set("n", "+", "<C-a>")
@@ -42,6 +43,9 @@ keymap.set("v", "<S-Tab>", "<<")
 -- Stay visual mode after formatting
 keymap.set("v", "=", "=gv")
 
--- Swap : and ;
--- keymap.set("n", ";", ":")
--- keymap.set("n", ":", ";")
+if not vscode then
+  keymap.set("n", "tr", "<Cmd>NvimTreeToggle<CR>")
+else
+  keymap.set("n", "tr", "<Cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
+  keymap.set("n", "tr", "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
+end
