@@ -5,6 +5,7 @@ local bo = vim.bo
 local vscode = vim.g.vscode
 
 vim.scriptencoding = "utf-8"
+vim.language = "en_us.utf-8"
 
 wo.number = true
 wo.relativenumber = false
@@ -52,10 +53,6 @@ opt.termguicolors = true
 opt.winblend = 0
 opt.wildoptions = "pum"
 opt.pumblend = 5
--- opt.shellslash = true
-
-api.nvim_command([[language en_US.UTF-8]])
-api.nvim_command([[syntax enable]])
 
 vim.cmd([[autocmd TermOpen * startinsert]])
 
