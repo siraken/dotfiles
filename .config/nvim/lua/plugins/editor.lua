@@ -1,6 +1,31 @@
 return {
   -- https://github.com/editorconfig/editorconfig-vim
   { "editorconfig/editorconfig-vim" },
+  -- https://github.com/stevearc/conform.nvim
+  {
+    "stevearc/conform.nvim",
+    dependencies = { "mason.nvim" },
+    lazy = true,
+    cmd = "ConformInfo",
+    keys = {
+      {
+        "<leader>cF",
+        function()
+          require("conform").format({ formatters = { "injected" } })
+        end,
+        mode = { "n", "v" },
+        desc = "Format Injected Langs",
+      },
+    },
+    opts = {
+      formatters_by_ft = {
+        javascript = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" } },
+        javascriptreact = { { "prettierd", "prettier" } },
+        typescriptreact = { { "prettierd", "prettier" } },
+      }
+    }
+  },
   -- https://github.com/windwp/nvim-autopairs
   {
     "windwp/nvim-autopairs",
