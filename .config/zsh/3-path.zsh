@@ -2,7 +2,7 @@
 # Path
 ##################################################
 # Variables
-export SSH_AUTH_SOCK="$HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export VOLTA_HOME="$HOME/.volta"
 export GOPATH="$HOME/go"
