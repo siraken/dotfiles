@@ -243,6 +243,7 @@ if OS.mac?
   brew 'invoice'
   brew 'skaffold'
   brew 'kompose'
+  brew 'zed'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
