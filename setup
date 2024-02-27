@@ -100,6 +100,9 @@ case $ACTION in
   INSTALL Kakoune
   ln -snf ~/dotfiles/.config/kak ~/.config/
 
+  INSTALL Zed
+  ln -snf ~/dotfiles/.config/zed/settings.json ~/.config/zed/settings.json
+
   INSTALL MongoDB Shell
   ln -snf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
@@ -147,8 +150,8 @@ case $ACTION in
   rm -rf ~/.hyper.js
   ;;
 "1password")
-  mkdir -p ~/.1password && \
-  ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+  mkdir -p ~/.1password &&
+    ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
   ;;
 *)
   printf "\e[1;37;41m Error \e[m Unknown action: $ACTION\n"

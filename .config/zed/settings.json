@@ -1,0 +1,23 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+{
+  "theme": "Ayu Dark",
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "auto_update": true,
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "buffer_font_size": 16,
+  "terminal": {
+    "font_family": "Hack Nerd Font Mono",
+    "font_size": 16,
+    "font_features": {
+      "calt": true
+    },
+    "shell": {
+      "program": "fish"
+    }
+  }
+}
