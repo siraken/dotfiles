@@ -2,7 +2,6 @@
 # > Path
 ##################################################
 
-set -gx SSH_AUTH_SOCK "$HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx GOPATH "$HOME/go"
