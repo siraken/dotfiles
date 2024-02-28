@@ -244,6 +244,7 @@ if OS.mac?
   brew 'skaffold'
   brew 'kompose'
   brew 'zed'
+  brew 'grpc'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
