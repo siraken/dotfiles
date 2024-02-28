@@ -1,44 +1,14 @@
-[user]
-  name = Kento Shirasawa
-  email = shirasawa.kento@gmail.com
-  username = siraken
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL
+[include]
+  path = conf.d/user.conf
+  path = conf.d/alias.conf
+  path = conf.d/commit.conf
+  path = conf.d/credential.conf
+  path = conf.d/gpg.conf
+  path = conf.d/difftool.conf
+  path = conf.d/mergetool.conf
 
-[github]
-  user = siraken
-
-[alias]
-  d = diff
-  b = branch
-  ad = add
-  us = reset HEAD
-  bm = branch -m
-  bD = branch -D
-  bD = branch
-  cm = commit
-  ecm = commit --allow-empty
-  co = checkout
-  st = status
-  ps = push
-  pl = pull
-  rb = rebase
-  mg = merge --no-ff
-  mgff = merge --ff
-  fe = fetch
-  fedr = fetch --dry-run
-  l = log
-  lg = log --graph
-  lol = log --oneline
-  bg = log --graph --simplify-by-decoration --pretty=format:'%d' --all
-  cp = cherry-pick
-  dt = difftool
-  undo = reset --soft HEAD^
-  sp = stash pop
-  ss = stash save
-  sl = stash list
-  sa = stash apply
-  rhh = reset --hard HEAD
-  gh = !gh repo view --web
+[init]
+  defaultBranch = main
 
 [color]
   status = auto
@@ -48,36 +18,10 @@
   grep = auto
   ui = auto
 
-[init]
-  defaultBranch = main
-
 [core]
   autocrlf = input
   ignorecase = false
   editor = nvim
-  excludesfile = ~/.gitignore_global
-
-[push]
-  default = simple
-
-[pull]
-  rebase = true
-  ; ff = only
-
-[advice]
-  ; skippedCherryPicks = false
-
-[credential]
-  ; helper = osxkeychain
-
-[commit]
-  gpgsign = true
-
-[gpg]
-  format = ssh
-
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
@@ -90,33 +34,6 @@
 
 [pager]
   difftool = true
-
-[difftool]
-  prompt = false
-
-[difftool "nvimdiff"]
-  cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
-
-[mergetool "nvimdiff"]
-  cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
-
-[mergetool "sourcetree"]
-  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-
-[credential "https://github.com"]
-  helper = !/opt/homebrew/bin/gh auth git-credential
-
-[credential "https://gist.github.com"]
-  helper = !/opt/homebrew/bin/gh auth git-credential
 
 [safe]
   directory = *
