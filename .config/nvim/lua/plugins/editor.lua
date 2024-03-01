@@ -23,18 +23,18 @@ return {
         typescript = { { "prettierd", "prettier" } },
         javascriptreact = { { "prettierd", "prettier" } },
         typescriptreact = { { "prettierd", "prettier" } },
-      }
-    }
+      },
+    },
   },
   -- https://github.com/windwp/nvim-autopairs
   {
     "windwp/nvim-autopairs",
     opts = {
       disable_filetype = {
-        'TelescopePrompt',
-        'vim'
-      }
-    }
+        "TelescopePrompt",
+        "vim",
+      },
+    },
   },
   -- https://github.com/numToStr/Comment.nvim
   {
@@ -47,10 +47,9 @@ return {
   -- https://github.com/thinca/vim-quickrun
   {
     "thinca/vim-quickrun",
-    lazy = true,
   },
   -- https://github.com/Olical/conjure
-  { "Olical/conjure",               lazy = false, ft = { "clojure" } },
+  { "Olical/conjure", lazy = false, ft = { "clojure" } },
   -- https://github.com/tpope/vim-dispatch
   { "tpope/vim-dispatch" },
   -- https://github.com/julienvincent/nvim-paredit
@@ -65,5 +64,5 @@ return {
     "pwntester/octo.nvim",
     lazy = true,
     -- octo.setup {}
-  }
+  },
 }
