@@ -249,6 +249,7 @@ if OS.mac?
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
+  cask 'chromium', args: { 'no-quarantine': true }
   cask 'google-chrome'
   cask 'brave-browser'
   cask 'vivaldi'
