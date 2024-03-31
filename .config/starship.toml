@@ -1,3 +1,5 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
 $os\
 [](bg:v_secondary fg:v_primary)\
