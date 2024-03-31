@@ -87,6 +87,11 @@ inoremap <S-Tab> <C-d>
 xnoremap <Tab> >gv
 xnoremap <S-Tab> <gv
 
+" Auto close brackets
+inoremap ( ()<Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+
 " Stay visual mode after formatting
 xnoremap = =gv
 
