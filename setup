@@ -76,6 +76,7 @@ case $ACTION in
 
   INSTALL Git
   ln -snf ~/dotfiles/.config/git ~/.config/
+  ln -snf ~/dotfiles/.config/git/conf.d/os/macos.conf ~/.config/git/conf.d/credential.conf
 
   INSTALL Emacs
   # ln -snf ~/dotfiles/.emacs.d/ ~/.emacs.d

@@ -37,6 +37,7 @@ New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\
 
 _INSTALL Git
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\git\ -Path $env:USERPROFILE\.config\git
+New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\git\conf.d\os\windows.conf -Path $env:USERPROFILE\.config\git\conf.d\credential.conf
 
 _INSTALL Alacritty
 New-Item -Force -ItemType SymbolicLink -Value $env:USERPROFILE\dotfiles\.config\alacritty\ -Path $env:APPDATA\alacritty
