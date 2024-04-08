@@ -339,6 +339,7 @@ if OS.mac?
   cask 'wezterm'
   cask 'arc'
   cask 'xbar'
+  cask 'neovide'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
