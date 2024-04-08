@@ -95,6 +95,9 @@ case $ACTION in
   INSTALL Neovim
   ln -snf ~/dotfiles/.config/nvim ~/.config/
 
+  INSTALL Neovide
+  ln -snf ~/dotfiles/.config/neovide ~/.config/
+
   INSTALL Helix
   ln -snf ~/dotfiles/.config/helix ~/.config/
 
