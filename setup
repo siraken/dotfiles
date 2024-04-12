@@ -80,11 +80,6 @@ case $ACTION in
 
   INSTALL Emacs
   # ln -snf ~/dotfiles/.emacs.d/ ~/.emacs.d
-  # Use Spacemacs instead of above (check if .emacs.d exists)
-  if [ ! -d ~/.emacs.d ]; then
-    git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
-  fi
-  ln -snf ~/dotfiles/.spacemacs.d/ ~/.spacemacs.d
 
   INSTALL nano
   ln -snf ~/dotfiles/.config/nano ~/.config/
@@ -125,6 +120,9 @@ case $ACTION in
 
   INSTALL WezTerm
   ln -snf ~/dotfiles/.config/wezterm ~/.config
+
+  INSTALL yt-dlp
+  ln -snf ~/dotfiles/.config/yt-dlp ~/.config
   ;;
 "uninstall")
   rm -rf ~/.hammerspoon
