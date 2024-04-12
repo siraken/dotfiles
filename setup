@@ -79,7 +79,7 @@ case $ACTION in
   ln -snf ~/dotfiles/.config/git/conf.d/os/macos.conf ~/.config/git/conf.d/credential.conf
 
   INSTALL Emacs
-  # ln -snf ~/dotfiles/.emacs.d/ ~/.emacs.d
+  ln -snf ~/dotfiles/.config/emacs ~/.config/
 
   INSTALL nano
   ln -snf ~/dotfiles/.config/nano ~/.config/
