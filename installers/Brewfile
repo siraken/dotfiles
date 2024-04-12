@@ -54,7 +54,6 @@ if OS.mac?
   brew 'anyenv'
   brew 'llvm'
   brew 'ninja'
-  brew 'phpbrew'
   brew 'rustup-init'
   brew 'pyenv'
   brew 'rbenv'
