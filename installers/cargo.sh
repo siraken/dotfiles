@@ -6,6 +6,7 @@ if ! type rustc >/dev/null 2>&1; then
 fi
 
 packages=(
+  "cargo-binstall"
   "cargo-generate"
   "diesel_cli"
   "dioxus-cli"
