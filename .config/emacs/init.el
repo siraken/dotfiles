@@ -1,3 +1,12 @@
+;;; init.el --- Initialization file for Emacs
+
+;; Author: siraken
+;; Maintainer: siraken
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'package)
 
 (setq package-archives
@@ -11,8 +20,22 @@
 
 (defvar my/packages
   '(
+    auto-complete
+    helm
+    flycheck
+    projectile
+    cider
+    ;; Mode
+    markdown-mode
+    clojure-mode
     ;; git
-    magit git-gutter
+    magit
+    git-gutter
+    ;; Line
+    doom-modeline
+    ;; Theme
+    zenburn-theme
+    doom-themes
     ))
 
 ;; Install packages
@@ -20,8 +43,19 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-(require 'linum)
-(global-linum-mode 1)
+;; Enable packages
+(require 'doom-themes)
+(require 'doom-modeline)
+(require 'magit)
+(require 'auto-complete)
+(require 'auto-complete-config)
+
+(doom-modeline-mode 1)
+
+(global-auto-complete-mode +1)
+(global-flycheck-mode +1)
+
+(global-display-line-numbers-mode 1)
 
 (display-time)
 
@@ -30,6 +64,9 @@
 (show-paren-mode 1)
 
 (transient-mark-mode 1)
+
+(setq-default indicate-empty-lines t)
+(setq-default indicate-buffer-boundaries 'left)
 
 (setq mac-command-modifier 'super)
 
