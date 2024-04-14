@@ -33,6 +33,7 @@
     neotree
     undo-tree
     rainbow-delimiters
+    which-key
     multiple-cursors
     evil
     ;; Mode
@@ -68,14 +69,8 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;; Enable packages
-(require 'magit)
-(require 'auto-complete)
-(require 'auto-complete-config)
-(require 'evil)
-
-(global-auto-complete-mode 1)
-(global-git-gutter-mode 1)
+;; https://github.com/magit/magit
+(use-package magit)
 
 ;; https://github.com/flycheck/flycheck
 (use-package flycheck
@@ -95,6 +90,16 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+
+;; https://github.com/auto-complete/auto-complete
+(use-package auto-complete)
+(use-package auto-complete-config)
+
+;; https://github.com/emacs-evil/evil
+(use-package evil)
+
+(global-auto-complete-mode 1)
+(global-git-gutter-mode 1)
 
 ;;
 ;; Emacs Configuration
