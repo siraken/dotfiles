@@ -20,14 +20,39 @@
 
 (defvar my/packages
   '(
+    use-package
     auto-complete
     helm
     flycheck
     projectile
     cider
+    tide
+    slime
+    paredit
+    dashboard
+    neotree
+    undo-tree
+    rainbow-delimiters
+    multiple-cursors
+    evil
     ;; Mode
+    lsp-mode
+    web-mode
+    emmet-mode
+    js2-mode
     markdown-mode
     clojure-mode
+    php-mode
+    yaml-mode
+    scss-mode
+    dockerfile-mode
+    csharp-mode
+    rust-mode
+    swift-mode
+    lua-mode
+    kotlin-mode
+    nim-mode
+    go-mode
     ;; git
     magit
     git-gutter
@@ -44,48 +69,76 @@
     (package-install package)))
 
 ;; Enable packages
-(require 'doom-themes)
-(require 'doom-modeline)
 (require 'magit)
 (require 'auto-complete)
 (require 'auto-complete-config)
+(require 'evil)
 
-(doom-modeline-mode 1)
+(evil-mode 1)
 
-(global-auto-complete-mode +1)
-(global-flycheck-mode +1)
+(global-auto-complete-mode 1)
+(global-git-gutter-mode 1)
+
+;; https://github.com/flycheck/flycheck
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+;; https://github.com/doomemacs/themes
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-themes-enabled-bold t
+	doom-themes-enabled-italic t)
+  (load-theme 'doom-tokyo-night t))
+
+;; https://github.com/seagle0128/doom-modeline
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+;;
+;; Emacs Configuration
+;;
 
 (global-display-line-numbers-mode 1)
 
-(display-time)
+(add-to-list 'default-frame-alist '(cursor-type . bar))
+(add-to-list 'default-frame-alist '(cursor-type . hbar))
+(add-to-list 'default-frame-alist '(cursor-type . (hbar . 10)))
+(add-to-list 'default-frame-alist '(cursor-type . box))
+(add-to-list 'default-frame-alist '(cursor-type . hollow))
 
-(menu-bar-mode 0)
+(set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
 
-(show-paren-mode 1)
-
-(transient-mark-mode 1)
+(blink-cursor-mode t)
 
 (setq-default indicate-empty-lines t)
 (setq-default indicate-buffer-boundaries 'left)
 
-(setq mac-command-modifier 'super)
+(tool-bar-mode 0)
+(display-time)
+(menu-bar-mode 0)
+(show-paren-mode 1)
+(transient-mark-mode 1)
+(which-function-mode 1)
 
-;; Do not show menu on terminal
-(if (eq window-system 'x)
-    (menu-bar-mode 1) (menu-bar-mode 0))
-(menu-bar-mode nil)
+(delete-selection-mode t)
+(cua-mode t)
 
-;; Ignore caps
+(setq inhibit-startup-message 1)
+(setq initial-scratch-message "")
+(setq scroll-conservatively 1)
 (setq case-fold-search t)
-
-;; Copy to clipboard
-(setq x-select-enable-clipboard t)
-
-;; Do not create *.~ backup file
 (setq make-backup-files nil)
-
-;; Do not create .#* backup file
 (setq auto-save-default nil)
+(setq mac-command-modifier 'super)
+(setq default-tab-width 4)
+(setq x-select-enable-clipboard t)
+(setq cua-enable-cua-keys nil)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
