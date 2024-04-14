@@ -74,8 +74,6 @@
 (require 'auto-complete-config)
 (require 'evil)
 
-(evil-mode 1)
-
 (global-auto-complete-mode 1)
 (global-git-gutter-mode 1)
 
@@ -101,6 +99,7 @@
 ;;
 ;; Emacs Configuration
 ;;
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (global-display-line-numbers-mode 1)
 
@@ -134,9 +133,9 @@
 (setq case-fold-search t)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(setq select-enable-clipboard t)
 (setq mac-command-modifier 'super)
 (setq default-tab-width 4)
-(setq x-select-enable-clipboard t)
 (setq cua-enable-cua-keys nil)
 
 (custom-set-variables
