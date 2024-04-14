@@ -128,6 +128,7 @@
 (show-paren-mode 1)
 (transient-mark-mode 1)
 (which-function-mode 1)
+(xterm-mouse-mode 1)
 
 (delete-selection-mode t)
 (cua-mode t)
