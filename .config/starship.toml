@@ -5,12 +5,11 @@ command_timeout = 500
 add_newline = true
 follow_symlinks = true
 
-[character]
-success_symbol = '[➜](bold green)'
-error_symbol = '[✗](bold red)'
-
 [line_break]
 disabled = false
+
+[aws]
+disabled = true
 
 [docker_context]
 disabled = true
@@ -25,3 +24,6 @@ style = 'bold dimmed green'
 
 [sudo]
 disabled = false
+
+[vagrant]
+disabled = true
