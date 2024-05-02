@@ -3,7 +3,7 @@ autocmd!
 scriptencoding utf-8
 filetype plugin indent on
 syntax enable
-colorscheme habamax
+colorscheme industry
 
 set nocompatible
 
