@@ -1,7 +1,8 @@
 #!/bin/bash
 
 packages=(
-    # "rbenv"
+  # "rbenv"
+  "babashka-bin"
 )
 
 # Install yay if not installed
@@ -14,9 +15,8 @@ yay
 
 # Install packages
 for package in "${packages[@]}"; do
-    if [ "$package" != "" ]; then
-        printf "Installing $package...\n"
-        yay $package
-    fi
+  if [ "$package" != "" ]; then
+    printf "Installing $package...\n"
+    yay $package
+  fi
 done
-
