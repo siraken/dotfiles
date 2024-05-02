@@ -2,6 +2,7 @@
 
 packages=(
     "base-devel"
+    "libyaml"
     "curl"
     "wget"
     "git"
