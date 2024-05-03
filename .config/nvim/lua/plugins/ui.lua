@@ -6,6 +6,14 @@ return {
     enabled = false,
     opts = { mode = "cursor", max_lines = 3 },
   },
+  -- https://github.com/akinsho/bufferline.nvim
+  {
+    -- "akinsho/bufferline.nvim", version = "*"
+    -- bufferline.setup {}
+    --
+    -- vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
+    -- vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
+  },
   -- https://github.com/folke/trouble.nvim
   {
     "folke/trouble.nvim",
