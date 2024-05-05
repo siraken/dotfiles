@@ -106,6 +106,10 @@
 ;;
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(if window-system 
+    (progn
+      (set-frame-parameter nil 'alpha 75)))
+
 (global-display-line-numbers-mode 1)
 
 (add-to-list 'default-frame-alist '(cursor-type . bar))
