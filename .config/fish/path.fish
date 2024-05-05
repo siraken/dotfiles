@@ -8,9 +8,10 @@ set -gx VOLTA_HOME "$HOME/.volta"
 set -gx GOPATH "$HOME/go"
 set -gx PNPM_HOME "$HOME/.pnpm"
 set -gx MODULAR_HOME "$HOME/.modular"
+set -gx BUN_INSTALL "$HOME/.bun"
 
 set -gx PATH $PATH "/opt/homebrew/opt/openssl@3/bin" # Use openssl installed by homebrew
-set -gx PATH $PATH "bin"
+set -gx PATH $PATH bin
 set -gx PATH $PATH "$HOME/bin"
 set -gx PATH $PATH "$HOME/.local/bin"
 set -gx PATH $PATH "$HOME/.progate/bin"
@@ -26,8 +27,9 @@ set -gx PATH $PATH "$HOME/.rye/shims"
 set -gx PATH $PATH "$PNPM_HOME"
 set -gx PATH $PATH "$VOLTA_HOME/bin"
 set -gx PATH $PATH "$GOPATH/bin"
-set -gx PATH $PATH "/opt/homebrew/sbin"
-set -gx PATH $PATH "/opt/homebrew/bin"
+set -gx PATH $PATH "$BUN_INSTALL/bin"
+set -gx PATH $PATH /opt/homebrew/sbin
+set -gx PATH $PATH /opt/homebrew/bin
 
 if test -f $HOME/Developer/google-cloud-sdk/path.fish.inc
     source $HOME/Developer/google-cloud-sdk/path.fish.inc

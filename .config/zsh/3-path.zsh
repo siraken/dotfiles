@@ -8,6 +8,7 @@ export VOLTA_HOME="$HOME/.volta"
 export GOPATH="$HOME/go"
 export PNPM_HOME="$HOME/.pnpm"
 export MODULAR_HOME="$HOME/.modular"
+export BUN_INSTALL="$HOME/.bun"
 
 # Path
 export PATH="$PATH:/opt/homebrew/opt/openssl@3/bin" # Use openssl installed by homebrew
@@ -27,5 +28,6 @@ export PATH="$PATH:$HOME/.rye/shims"
 export PATH="$PATH:$PNPM_HOME"
 export PATH="$PATH:$VOLTA_HOME/bin"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$BUN_INSTALL/bin"
 export PATH="$PATH:/opt/homebrew/sbin"
 export PATH="$PATH:/opt/homebrew/bin"
