@@ -247,6 +247,7 @@ if OS.mac?
   brew 'navi'
   brew 'bats-core'
   brew 'getsentry/tools/sentry-cli'
+  brew 'gibo'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
