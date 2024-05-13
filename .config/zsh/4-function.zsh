@@ -60,7 +60,7 @@ function meme() {
 # Can I use
 function cani() {
   echo "Can I use \"$argv\"...?"
-  open "https://caniuse.com/search/?s=$argv"
+  open "https://caniuse.com?search=$argv"
 }
 
 # Can I email
