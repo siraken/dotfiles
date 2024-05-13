@@ -42,6 +42,7 @@ if OS.mac?
   tap 'grishka/grishka'
   tap 'modularml/packages'
   tap 'symfony-cli/tap'
+  tap 'cargo-lambda/cargo-lambda'
 end
 # :Brew ------------------------------------------------------------------------
 if OS.mac?
@@ -248,6 +249,7 @@ if OS.mac?
   brew 'bats-core'
   brew 'getsentry/tools/sentry-cli'
   brew 'gibo'
+  brew 'cargo-lambda'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
