@@ -222,6 +222,7 @@ if OS.mac?
   brew 'cairo'
   brew 'pango'
   brew 'libpng'
+  brew 'libpq'
   brew 'jpeg'
   brew 'giflib'
   brew 'librsvg'
