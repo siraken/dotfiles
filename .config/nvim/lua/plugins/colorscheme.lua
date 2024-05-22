@@ -8,7 +8,7 @@ return {
     opts = {
       style = "night",
       light_style = "day",
-      transparent = true,
+      transparent = false,
       terminal_colors = true,
       styles = {
         sidebars = "transparent",

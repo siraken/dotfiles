@@ -47,6 +47,7 @@ return {
   -- https://github.com/thinca/vim-quickrun
   {
     "thinca/vim-quickrun",
+    lazy = true,
   },
   -- https://github.com/Olical/conjure
   { "Olical/conjure", lazy = false, ft = { "clojure" } },
