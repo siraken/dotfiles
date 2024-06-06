@@ -86,7 +86,7 @@ if OS.mac?
   brew 'tree-sitter'
   brew 'emacs'
   # brew 'emacs-plus', args: ['with-spacemacs-icon', 'with-native-comp']
-  brew 'neovim', args: ['HEAD']
+  brew 'neovim'
   brew 'lua'
   brew 'luajit', args: ['HEAD']
   brew 'luarocks'
