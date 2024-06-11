@@ -15,7 +15,8 @@ set scrolloff=5
 set incsearch
 
 " Clipboard
-" set clipboard=unnamed
+set clipboard=unnamed
+" set clipboard^=ideaput
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
