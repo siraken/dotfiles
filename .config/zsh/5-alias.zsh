@@ -31,6 +31,7 @@ alias tf="terraform"
 alias d="docker"
 alias dc="docker compose"
 alias dcrun="docker compose run --rm"
+alias spt="spotify_player"
 alias -g G='| grep'
 alias -g L='| less'
 alias -g F='| fzf'
