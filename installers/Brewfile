@@ -95,7 +95,6 @@ if OS.mac?
   brew 'fzf'
   brew 'eza'
   brew 'bat'
-  brew 'spotify-tui'
   brew 'shpotify'
   brew 'sl'
   brew 'ffmpeg'
