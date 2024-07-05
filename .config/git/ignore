@@ -4,3 +4,7 @@
 # Windows
 Thumbs.db
 desktop.ini
+
+# Application files
+.idea
+.vscode
