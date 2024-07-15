@@ -45,6 +45,7 @@ $packages = @(
   "Elgato.4KCaptureUtility"
   "Microsoft.dotnetRuntime.5-x64"
   "Elgato.StreamDeck"
+  "Streamlabs.Streamlabs"
   "Microsoft.VC++2008Redist-x64"
   "Google.Drive"
   "Google.ChromeRemoteDesktop"
