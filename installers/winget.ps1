@@ -6,6 +6,7 @@ $packages = @(
   "CPUID.CPU-Z"
   "CrystalDewWorld.CrystalDiskInfo"
   "Discord.Discord"
+  "Discord.Discord.Canary"
   "Docker.DockerDesktop"
   "Mozilla.Firefox.DeveloperEdition"
   "GitHub.GitHubDesktop"
