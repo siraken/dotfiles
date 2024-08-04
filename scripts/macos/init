@@ -4,4 +4,6 @@
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock orientation -string left
 
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+
 killall Dock
