@@ -251,6 +251,8 @@ if OS.mac?
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
+  # cask '1password' installed
+  # cask 'github' installed
   cask 'chromium', args: { 'no-quarantine': true }
   cask 'google-chrome'
   cask 'brave-browser'
@@ -260,12 +262,10 @@ if OS.mac?
   cask 'blisk'
   cask 'google-drive'
   cask 'dropbox'
-  # cask '1password' installed
   cask 'iterm2'
   cask 'kitty'
   cask 'hyper'
   # cask 'sourcetree'
-  # cask 'github' installed
   cask 'mamp'
   cask 'visual-studio-code'
   cask 'docker'
