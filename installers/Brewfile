@@ -347,6 +347,7 @@ if OS.mac?
   cask 'xbar'
   cask 'neovide'
   cask 'bartender'
+  cask 'transmit'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
