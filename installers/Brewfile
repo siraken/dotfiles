@@ -349,6 +349,7 @@ if OS.mac?
   cask 'elgato-camera-hub'
   cask 'elgato-control-center'
   cask 'elgato-stream-deck'
+  cask 'eqmac'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
