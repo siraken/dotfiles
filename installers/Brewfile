@@ -356,6 +356,7 @@ if OS.mac?
   cask 'streamlabs'
   cask 'surge-xt'
   cask 'balenaetcher'
+  cask 'bitcoin-core'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
