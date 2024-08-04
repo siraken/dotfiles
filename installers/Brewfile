@@ -354,6 +354,7 @@ if OS.mac?
   cask 'logitech-g-hub'
   cask 'obsidian'
   cask 'streamlabs'
+  cask 'surge-xt'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
