@@ -344,6 +344,7 @@ if OS.mac?
   cask 'bartender'
   cask 'transmit'
   cask 'figma'
+  cask 'cloudflare-warp'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
