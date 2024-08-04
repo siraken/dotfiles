@@ -343,6 +343,7 @@ if OS.mac?
   cask 'neovide'
   cask 'bartender'
   cask 'transmit'
+  cask 'figma'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
