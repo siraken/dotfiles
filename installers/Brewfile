@@ -265,12 +265,12 @@ if OS.mac?
   cask 'blisk'
   cask 'google-drive'
   cask 'dropbox'
-  cask '1password'
+  # cask '1password' installed
   cask 'iterm2'
   cask 'kitty'
   cask 'hyper'
   # cask 'sourcetree'
-  cask 'github'
+  # cask 'github' installed
   cask 'mamp'
   cask 'visual-studio-code'
   cask 'docker'
@@ -335,7 +335,7 @@ if OS.mac?
   cask 'burp-suite'
   cask 'azure-data-studio'
   cask 'audacity'
-  cask 'eclipse'
+  # cask 'eclipse' similarly casks are available
   cask 'orbstack'
   cask 'tableplus'
   cask 'hammerspoon'
