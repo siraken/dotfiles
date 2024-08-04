@@ -5,11 +5,11 @@
 # :Taps ------------------------------------------------------------------------
 if OS.mac?
   tap 'homebrew/bundle'
-  tap 'homebrew/cask'
-  tap 'homebrew/core'
+  # tap 'homebrew/cask'
+  # tap 'homebrew/core'
   tap 'homebrew/services'
-  tap 'homebrew/cask-versions'
-  tap 'homebrew/cask-fonts'
+  # tap 'homebrew/cask-versions'
+  # tap 'homebrew/cask-fonts'
   tap 'mongodb/brew'
   tap 'shopify/shopify'
   tap 'ethereum/ethereum'
@@ -55,23 +55,23 @@ if OS.mac?
   brew 'anyenv'
   brew 'llvm'
   brew 'ninja'
-  brew 'rustup-init'
+  brew 'rustup'
   brew 'pyenv'
   brew 'rbenv'
   brew 'jq'
   brew 'tmux'
   brew 'tree'
-  brew 'symfony-cli'
+  # brew 'symfony-cli' no available formula
   brew 'ethereum'
   brew 'solidity'
   brew 'clojure'
   brew 'leiningen'
-  brew 'babashka'
+  # brew 'babashka' no available formula
   brew 'sbcl'
   brew 'stack'
   brew 'go'
-  brew 'mongodb-community'
-  brew 'sass'
+  # brew 'mongodb-community' no available formula
+  # brew 'sass' no available formula
   brew 'duck'
   brew 'awscli'
   brew 'aws/tap/lightsailctl'
@@ -79,10 +79,10 @@ if OS.mac?
   brew 'sqlite'
   brew 'tfenv'
   brew 'azure-cli'
-  brew 'themekit'
+  # brew 'themekit' no available formula
   brew 'act'
   brew 'hugo'
-  brew 'heroku'
+  # brew 'heroku' no available formula
   brew 'tree-sitter'
   brew 'emacs'
   # brew 'emacs-plus', args: ['with-spacemacs-icon', 'with-native-comp']
@@ -105,7 +105,7 @@ if OS.mac?
   brew 'cabextract'
   brew 'wimlib'
   brew 'cdrtools'
-  brew 'sidneys/homebrew/chntpw'
+  # brew 'sidneys/homebrew/chntpw' installation failed
   brew 'kotlin'
   brew 'nim'
   brew 'pdfcrack'
@@ -116,8 +116,8 @@ if OS.mac?
   brew 'yt-dlp'
   brew 'mplayer'
   brew 'pdf2svg'
-  brew 'supabase'
-  brew 'pscale'
+  # brew 'supabase' no available formula
+  # brew 'pscale' no available formula
   brew 'cfonts'
   brew 'pandoc'
   brew 'fx'
@@ -158,15 +158,15 @@ if OS.mac?
   brew 'gradle'
   brew 'testdisk'
   brew 'duf'
-  brew 'dog'
+  # brew 'dog' installation failed
   brew 'zplug'
   brew 'lua-language-server'
   brew 'httpie'
-  brew 'yabai'
-  brew 'skhd'
+  # brew 'yabai' no available formula
+  # brew 'skhd' no available formula
   brew 'bandwhich'
   brew 'wego'
-  brew 'gobang'
+  # brew 'gobang' no available formula
   brew 'watchman'
   brew 'cocoapods'
   brew 'streamlink'
@@ -188,16 +188,16 @@ if OS.mac?
   brew 'ghcup'
   brew 'zola'
   brew 'direnv'
-  brew 'fvm'
+  # brew 'fvm' no available formula
   brew 'gpg'
-  brew 'clj-kondo'
+  # brew 'clj-kondo' no available formula
   brew 'minikube'
-  brew 'nekome'
+  # brew 'nekome' no available formula
   brew 'qemu'
-  brew 'speedtest'
+  # brew 'speedtest' no available formula
   brew 'golang-migrate'
-  brew 'ngrok'
-  brew 'shopify-cli'
+  # brew 'ngrok' # install with cask
+  # brew 'shopify-cli' no available formula
   brew 'wp-cli'
   brew 'earthly'
   brew 'difftastic'
@@ -214,7 +214,7 @@ if OS.mac?
   brew 'zoxide'
   brew 'procs'
   brew 'nushell'
-  brew 'vapor'
+  # brew 'vapor' # requires Xcode installed
   brew 'samba'
   brew 'mist'
   brew 'pkg-config'
@@ -235,24 +235,24 @@ if OS.mac?
   brew 'ranger'
   brew 'w3m'
   brew 'pipes-sh'
-  brew 'bun'
-  brew 'neardrop'
+  # brew 'bun' no available formula
+  # brew 'neardrop' installation failed
   brew 'portaudio'
   brew 'monolith'
   # brew 'sapling'
-  brew 'modular'
+  # brew 'modular' no available formula
   brew 'pwgen'
   brew 'xsv'
   brew 'invoice'
   brew 'skaffold'
   brew 'kompose'
-  brew 'zed'
+  # brew 'zed' no available formula
   brew 'grpc'
   brew 'navi'
   brew 'bats-core'
-  brew 'getsentry/tools/sentry-cli'
+  # brew 'getsentry/tools/sentry-cli' please tap
   brew 'gibo'
-  brew 'cargo-lambda'
+  # brew 'cargo-lambda' no available formula
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
@@ -261,7 +261,7 @@ if OS.mac?
   cask 'brave-browser'
   cask 'vivaldi'
   cask 'firefox'
-  cask 'firefox-developer-edition'
+  cask 'firefox@developer-edition'
   cask 'blisk'
   cask 'google-drive'
   cask 'dropbox'
