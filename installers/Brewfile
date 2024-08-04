@@ -353,6 +353,7 @@ if OS.mac?
   cask 'logi-options-plus'
   cask 'logitech-g-hub'
   cask 'obsidian'
+  cask 'streamlabs'
   # cask 'asana'
   # cask 'wrike'
   # cask 'emacs'
