@@ -6,4 +6,6 @@ defaults write com.apple.dock orientation -string left
 
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
 
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
 killall Dock
