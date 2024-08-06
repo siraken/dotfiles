@@ -352,6 +352,7 @@ if OS.mac?
   cask 'surge-xt'
   cask 'balenaetcher'
   cask 'bitcoin-core'
+  cask 'whisky'
   # cask 'native-access'
 end
 # :MAS - App Store --------------------------------------------------------------------
