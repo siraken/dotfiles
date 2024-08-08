@@ -354,6 +354,7 @@ if OS.mac?
   cask 'bitcoin-core'
   cask 'whisky'
   cask 'epic-games'
+  cask 'drivedx'
   # cask 'native-access'
 end
 # :MAS - App Store --------------------------------------------------------------------
