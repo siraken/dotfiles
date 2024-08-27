@@ -147,5 +147,6 @@ yabai -m rule --add app=ESET\ Endpoint\ Security manage=off
 # Games
 yabai -m rule --add app=Steam manage=off
 yabai -m rule --add app=Riot\ Client manage=off
+yabai -m rule --add app=League\ of\ Legends manage=off
 
 echo "yabai configuration loaded.."
