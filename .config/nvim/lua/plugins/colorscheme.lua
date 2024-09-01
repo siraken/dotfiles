@@ -6,9 +6,8 @@ return {
     lazy = false,
     branch = "main",
     opts = {
-      style = "night",
-      light_style = "day",
-      transparent = false,
+      -- style = "night",
+      transparent = true,
       terminal_colors = true,
       styles = {
         sidebars = "transparent",
