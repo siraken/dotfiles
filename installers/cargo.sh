@@ -14,6 +14,7 @@ packages=(
   "evcxr_repl"
   "gitoxide"
   "pagefind"
+  "spotify_player"
 )
 
 # Install packages
