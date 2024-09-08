@@ -56,6 +56,7 @@ $packages = @(
   "Cloudflare.Warp"
   "Cloudflare.cloudflared"
   "Readdle.Spark"
+  "OBSProject.OBSStudio"
   # "Microsoft.VC++2015-2019Redist-x86"
   # "Microsoft.VC++2008Redist-x86"
   # "Microsoft.VC++2013Redist-x86"
