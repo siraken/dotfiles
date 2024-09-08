@@ -22,7 +22,6 @@ $packages = @(
   "SlackTechnologies.Slack"
   "Microsoft.WindowsInstallationAssistant"
   "Microsoft.WingetCreate"
-  "Logitech.LGS"
   "Logitech.GHUB"
   "BlenderFoundation.Blender"
   "Microsoft.AzureCLI"
