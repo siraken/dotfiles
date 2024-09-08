@@ -55,6 +55,7 @@ $packages = @(
   "tailscale.tailscale"
   "Cloudflare.Warp"
   "Cloudflare.cloudflared"
+  "Readdle.Spark"
   # "Microsoft.VC++2015-2019Redist-x86"
   # "Microsoft.VC++2008Redist-x86"
   # "Microsoft.VC++2013Redist-x86"
@@ -75,7 +76,7 @@ $packages = @(
 # Install packages
 Write-Host ("Installing " + $packages.count + " packages...`r`n")
 foreach ($package in $packages) {
-  winget install $package
+  winget install --id=$package
 }
 
 Write-Host "`r`nInstallation is successfully completed." -ForegroundColor Green
