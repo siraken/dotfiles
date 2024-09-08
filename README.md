@@ -46,3 +46,9 @@ To disable `ApplePressAndHoldEnabled`, run the command below:
 ```bash
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```
+
+### Execute PowerShell Script
+
+```powershell
+Set-ExecutionPolicy RemoteSigned
+```
