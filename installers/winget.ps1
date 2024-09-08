@@ -23,6 +23,7 @@ $packages = @(
   "Microsoft.WindowsInstallationAssistant"
   "Microsoft.WingetCreate"
   "Logitech.LGS"
+  "Logitech.GHUB"
   "BlenderFoundation.Blender"
   "Microsoft.AzureCLI"
   "Elgato.4KCaptureUtility"
@@ -77,7 +78,7 @@ $packages = @(
 # Install packages
 Write-Host ("Installing " + $packages.count + " packages...`r`n")
 foreach ($package in $packages) {
-  winget install --id=$package
+  winget install -e --id $package
 }
 
 Write-Host "`r`nInstallation is successfully completed." -ForegroundColor Green
