@@ -7,7 +7,7 @@ vim.scriptencoding = "utf-8"
 vim.language = "en_us.utf-8"
 
 wo.number = true
-wo.relativenumber = false
+wo.relativenumber = true
 
 opt.cmdheight = 1
 
