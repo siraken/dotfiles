@@ -70,9 +70,11 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false
 config.enable_scroll_bar = false
 config.enable_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
+config.show_new_tab_button_in_tab_bar = false
+-- config.show_close_tab_button_in_tabs = false
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
 config.window_padding = {
