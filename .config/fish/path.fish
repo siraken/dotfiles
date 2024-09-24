@@ -3,12 +3,15 @@
 ##################################################
 
 set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
-set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx GOPATH "$HOME/go"
 set -gx PNPM_HOME "$HOME/.pnpm"
 set -gx MODULAR_HOME "$HOME/.modular"
 set -gx BUN_INSTALL "$HOME/.bun"
+set -gx JAVA_HOME "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
+#set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+#set -gx JAVA_HOME "/opt/homebrew/opt/openjdk@23/libexec/openjdk.jdk/Contents/Home"
+#set -gx JAVA_HOME "/opt/homebrew/opt/openjdk@22/libexec/openjdk.jdk/Contents/Home"
 
 set -gx PATH "/opt/homebrew/opt/openssl@3/bin" $PATH # Use openssl installed by homebrew
 set -gx PATH bin $PATH

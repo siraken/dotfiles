@@ -3,12 +3,15 @@
 ##################################################
 # Variables
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export VOLTA_HOME="$HOME/.volta"
 export GOPATH="$HOME/go"
 export PNPM_HOME="$HOME/.pnpm"
 export MODULAR_HOME="$HOME/.modular"
 export BUN_INSTALL="$HOME/.bun"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
+# export JAVA_HOME="/opt/homebrew/opt/openjdk@23/libexec/openjdk.jdk/Contents/Home"
+# export JAVA_HOME="/opt/homebrew/opt/openjdk@22/libexec/openjdk.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 
 # Path
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH" # Use openssl installed by homebrew
