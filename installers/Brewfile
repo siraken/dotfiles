@@ -227,7 +227,6 @@ if OS.mac?
   brew 'pixman'
   brew 'smartmontools'
   brew 'mpv'
-  brew 'wallpaper'
   brew 'ranger'
   brew 'w3m'
   brew 'pipes-sh'
