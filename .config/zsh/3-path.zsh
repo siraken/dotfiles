@@ -15,6 +15,8 @@ export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
 
 # Path
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH" # Use openssl installed by homebrew
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -32,5 +34,3 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"

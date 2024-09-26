@@ -14,6 +14,8 @@ set -gx JAVA_HOME "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Hom
 #set -gx JAVA_HOME "/opt/homebrew/opt/openjdk@22/libexec/openjdk.jdk/Contents/Home"
 
 set -gx PATH "/opt/homebrew/opt/openssl@3/bin" $PATH # Use openssl installed by homebrew
+set -gx PATH /opt/homebrew/sbin $PATH
+set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH bin $PATH
 set -gx PATH "$HOME/bin" $PATH
 set -gx PATH "$HOME/.local/bin" $PATH
@@ -31,8 +33,6 @@ set -gx PATH "$PNPM_HOME" $PATH
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -gx PATH "$GOPATH/bin" $PATH
 set -gx PATH "$BUN_INSTALL/bin" $PATH
-set -gx PATH /opt/homebrew/sbin $PATH
-set -gx PATH /opt/homebrew/bin $PATH
 
 if test -f $HOME/Developer/google-cloud-sdk/path.fish.inc
     source $HOME/Developer/google-cloud-sdk/path.fish.inc
