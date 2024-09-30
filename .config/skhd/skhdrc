@@ -12,16 +12,16 @@
 #
 
 # focus window
-shift + alt - h : yabai -m window --focus west
-shift + alt - j : yabai -m window --focus south
-shift + alt - k : yabai -m window --focus north
-shift + alt - l : yabai -m window --focus east
+shift + alt - h : yabai -m window --focus west || yabai -m display --focus west
+shift + alt - j : yabai -m window --focus south || yabai -m display --focus south
+shift + alt - k : yabai -m window --focus north || yabai -m display --focus north
+shift + alt - l : yabai -m window --focus east || yabai -m display --focus east
 
 # move window
-ctrl + cmd - h : yabai -m window --warp west || (yabai -m window --display west && yabai -m window --focus west)
-ctrl + cmd - j : yabai -m window --warp south || (yabai -m window --display south && yabai -m window --focus south)
-ctrl + cmd - k : yabai -m window --warp north || (yabai -m window --display north && yabai -m window --focus north)
-ctrl + cmd - l : yabai -m window --warp east || (yabai -m window --display east && yabai -m window --focus east)
+ctrl + cmd - h : yabai -m window --warp west || (yabai -m window --display west; yabai -m display --focus west)
+ctrl + cmd - j : yabai -m window --warp south || (yabai -m window --display south; yabai -m display --focus south)
+ctrl + cmd - k : yabai -m window --warp north || (yabai -m window --display north; yabai -m display --focus north)
+ctrl + cmd - l : yabai -m window --warp east || (yabai -m window --display east; yabai -m display --focus east)
 
 # rotate tree
 alt - r : yabai -m space --rotate 90
