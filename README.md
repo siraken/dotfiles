@@ -7,6 +7,7 @@ Clone this repository on `$HOME/dotfiles` and run `install`.
 
 ## Packages
 
+<!--
 ### [Home Manager](https://github.com/nix-community/home-manager)
 
 This manages my development environment using [Nix](https://nixos.org/).
@@ -25,22 +26,21 @@ nix-shell '<home-manager>' -A install
 # Switch to home-manager configuration (-f option is optional)
 home-manager switch -f /path/to/nix-file.nix
 ```
+-->
 
-### Shells
+### Shell
 
 - [fish shell](https://fishshell.com/)
-  - [fisher](https://github.com/jorgebucaran/fisher)
-- [Nushell](https://www.nushell.sh/)
 - [Starship](https://starship.rs/)
 
 ### Neovim
 
 Configuration files are written in Lua.
-I'm using [folke/lazy.nvim](https://github.com/folke/lazy.nvim) as a package manager.
+I'm using [LazyVim](https://www.lazyvim.org/) for my base setup.
 
 ### VSCode
 
-I'm using an extension called [VSCode Vim](https://github.com/VSCodeVim/Vim), to be able to use VSCode with a Vim-like keymap.
+I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.
 To disable `ApplePressAndHoldEnabled`, run the command below:
 
 ```bash
