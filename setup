@@ -46,12 +46,12 @@ case $ACTION in
   ln -snf ~/dotfiles/.config/home-manager ~/.config/
 
   INSTALL bash
-  ln -snf ~/dotfiles/.bashrc ~/.bashrc
+  ln -snf ~/dotfiles/.config/bash/.bashrc ~/.bashrc
 
   INSTALL zsh
   ln -snf ~/dotfiles/.config/zsh ~/.config/zsh
-  ln -snf ~/dotfiles/.zprofile ~/.zprofile
-  ln -snf ~/dotfiles/.zshrc ~/.zshrc
+  ln -snf ~/dotfiles/.config/zsh/.zprofile ~/.zprofile
+  ln -snf ~/dotfiles/.config/zsh/.zshrc ~/.zshrc
 
   INSTALL fish
   ln -snf ~/dotfiles/.config/fish ~/.config/
@@ -85,10 +85,10 @@ case $ACTION in
   ln -snf ~/dotfiles/.config/nano ~/.config/
 
   INSTALL Vim
-  ln -snf ~/dotfiles/.vimrc ~/.vimrc
+  ln -snf ~/dotfiles/.config/vim/.vimrc ~/.vimrc
 
   INSTALL IdeaVim
-  ln -snf ~/dotfiles/.ideavimrc ~/.ideavimrc
+  ln -snf ~/dotfiles/.config/idea/.ideavimrc ~/.ideavimrc
 
   INSTALL Neovim
   ln -snf ~/dotfiles/.config/nvim ~/.config/
@@ -126,6 +126,9 @@ case $ACTION in
 
   INSTALL yt-dlp
   ln -snf ~/dotfiles/.config/yt-dlp ~/.config
+
+  # INSTALL nix
+  # ln -snf ~/dotfiles/.config/nix ~/.config
   ;;
 "uninstall")
   rm -rf ~/.hammerspoon

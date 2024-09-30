@@ -8,6 +8,7 @@ colorscheme industry
 set nocompatible
 
 set number
+set relativenumber
 set signcolumn=yes
 set laststatus=2
 set cmdheight=1
