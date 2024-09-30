@@ -63,7 +63,7 @@ case $ACTION in
   ln -snf ~/dotfiles/.config/skhd ~/.config/
 
   INSTALL simple-bar
-  ln -snf ~/dotfiles/.simplebarrc ~/.simplebarrc
+  ln -snf ~/dotfiles/.config/simple-bar/.simplebarrc ~/.simplebarrc
 
   INSTALL ranger
   ln -snf ~/dotfiles/.config/ranger ~/.config/
@@ -113,7 +113,7 @@ case $ACTION in
   ln -snf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
 
   INSTALL Hyper
-  ln -snf ~/dotfiles/.hyper.js ~/.hyper.js
+  ln -snf ~/dotfiles/.config/hyper/.hyper.js ~/.hyper.js
 
   INSTALL .vsnip
   ln -snf ~/dotfiles/.vsnip ~/.vsnip
