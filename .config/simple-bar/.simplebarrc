@@ -72,7 +72,7 @@
     "stockWidget": false,
     "musicWidget": true,
     "mpdWidget": false,
-    "browserTrackWidget": true
+    "browserTrackWidget": false
   },
   "weatherWidgetOptions": {
     "refreshFrequency": 1800000,
