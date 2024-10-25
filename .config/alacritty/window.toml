@@ -3,7 +3,7 @@
 [window]
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.25
+opacity = 0.5
 startup_mode = "Windowed"
 title = "Alacritty"
 blur = true

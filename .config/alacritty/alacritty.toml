@@ -1,14 +1,16 @@
 #
 # Alacritty Configuration
 #
+[general]
+
+live_config_reload = true
 import = [
   "~/.config/alacritty/color.toml",
   "~/.config/alacritty/font.toml",
   "~/.config/alacritty/window.toml",
 ]
 
-live_config_reload = true
-
+[terminal]
 [cursor.style]
 blinking = "Off"
 shape = "Block"
@@ -23,7 +25,7 @@ hide_when_typing = false
 [scrolling]
 history = 10000
 
-[shell]
+[terminal.shell]
 program = "/opt/homebrew/bin/fish"
 
 [keyboard]
