@@ -10,6 +10,7 @@ require("format")
 
 local wezterm = require("wezterm")
 local keybinds = require("keybinds")
+local mouse_bindings = require("mousebinds")
 local config = {}
 
 local is_mac = string.find(wezterm.target_triple, "apple")
@@ -24,6 +25,7 @@ end
 
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
+config.mouse_bindings = mouse_bindings
 config.launch_menu = {
   {
     label = "fish on macOS",
