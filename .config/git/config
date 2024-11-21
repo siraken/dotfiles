@@ -22,6 +22,7 @@
   autocrlf = input
   ignorecase = false
   editor = nvim
+  hooksPath = ~/.config/git/hooks
 
 [filter "lfs"]
   smudge = git-lfs smudge -- %f

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+
+TICKET_ID_REGEX='(d|b)/([0-9]+)'
+
+if [[ $BRANCH_NAME =~ $TICKET_ID_REGEX ]]; then
+    TICKET_ID=$(echo "${BASH_REMATCH[2]}" | sed 's/0*\([0-9]*[0-9]$\)/\1/g')
+    COMMIT_MSG_PREFIX="TK-${TICKET_ID}"
+
+    if [ -n "$COMMIT_MSG_PREFIX" ]; then
+        sed -i.bak -e "1s/^/$COMMIT_MSG_PREFIX /" "$1"
+    fi
+fi
