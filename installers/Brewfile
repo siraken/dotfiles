@@ -358,6 +358,7 @@ if OS.mac?
   cask 'drivedx'
   cask 'xsplit-vcam'
   cask 'zulu@17'
+  cask 'session-manager-plugin'
   # cask 'native-access'
 end
 # :MAS - App Store --------------------------------------------------------------------
