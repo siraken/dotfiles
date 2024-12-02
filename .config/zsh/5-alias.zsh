@@ -32,6 +32,7 @@ alias d="docker"
 alias dc="docker compose"
 alias dcrun="docker compose run --rm"
 alias spt="spotify_player"
+alias act="act --container-architecture linux/amd64"
 alias -g G='| grep'
 alias -g L='| less'
 alias -g F='| fzf'
