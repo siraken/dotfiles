@@ -359,6 +359,7 @@ if OS.mac?
   cask 'xsplit-vcam'
   cask 'zulu@17'
   cask 'session-manager-plugin'
+  cask 'chatgpt'
   # cask 'native-access'
 end
 # :MAS - App Store --------------------------------------------------------------------
