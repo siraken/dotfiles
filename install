@@ -124,6 +124,9 @@ case $ACTION in
   INSTALL WezTerm
   ln -snf ~/dotfiles/.config/wezterm ~/.config
 
+  INSTALL Ghostty
+  ln -snf ~/dotfiles/.config/ghostty ~/.config
+
   INSTALL yt-dlp
   ln -snf ~/dotfiles/.config/yt-dlp ~/.config
 
