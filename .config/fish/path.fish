@@ -2,6 +2,7 @@
 # > Path
 ##################################################
 
+set -gx PHP_INI_SCAN_DIR "$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx GOPATH "$HOME/go"
@@ -23,6 +24,7 @@ set -gx PATH "$HOME/.progate/bin" $PATH
 set -gx PATH "$HOME/Library/Application Support/Coursier/bin" $PATH
 set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" $PATH
 set -gx PATH "$HOME/Library/Android/sdk/platform-tools" $PATH
+set -gx PATH "$HOME/.config/herd-lite/bin" $PATH
 set -gx PATH "$HOME/.pub-cache/bin" $PATH
 set -gx PATH "$HOME/Developer/flutter/bin" $PATH
 set -gx PATH "$HOME/.composer/vendor/bin" $PATH
