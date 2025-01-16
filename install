@@ -130,6 +130,9 @@ case $ACTION in
   INSTALL yt-dlp
   ln -snf ~/dotfiles/.config/yt-dlp ~/.config
 
+  INSTALL nano
+  ln -snf ~/dotfiles/.config/bat ~/.config/
+
   # INSTALL nix
   # ln -snf ~/dotfiles/.config/nix ~/.config
   ;;
