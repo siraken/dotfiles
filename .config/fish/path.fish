@@ -21,6 +21,7 @@ set -gx PATH bin $PATH
 set -gx PATH "$HOME/bin" $PATH
 set -gx PATH "$HOME/.local/bin" $PATH
 set -gx PATH "$HOME/.progate/bin" $PATH
+set -gx PATH "$HOME/.slack/bin" $PATH
 set -gx PATH "$HOME/Library/Application Support/Coursier/bin" $PATH
 set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" $PATH
 set -gx PATH "$HOME/Library/Android/sdk/platform-tools" $PATH
