@@ -361,6 +361,7 @@ if OS.mac?
   cask 'zulu@17'
   cask 'session-manager-plugin'
   cask 'chatgpt'
+  cask 'background-music'
   # cask 'native-access'
 end
 # :MAS - App Store --------------------------------------------------------------------
