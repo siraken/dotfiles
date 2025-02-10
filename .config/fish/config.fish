@@ -16,6 +16,9 @@ source $FISH_CONFIG_PATH/function.fish
 # Aliases
 source $FISH_CONFIG_PATH/alias.fish
 
+# asdf
+source $FISH_CONFIG_PATH/asdf
+
 # GitHub Copilot CLI
 source $FISH_CONFIG_PATH/config-copilot.fish
 
@@ -24,10 +27,10 @@ source $FISH_CONFIG_PATH/completion.fish
 
 # OS-specific configurations
 switch (uname)
-  case Darwin
-    source $FISH_CONFIG_PATH/config-darwin.fish
-  case Linux
-    source $FISH_CONFIG_PATH/config-linux.fish
+    case Darwin
+        source $FISH_CONFIG_PATH/config-darwin.fish
+    case Linux
+        source $FISH_CONFIG_PATH/config-linux.fish
 end
 
 # direnv

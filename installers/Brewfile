@@ -249,6 +249,7 @@ if OS.mac?
   # brew 'getsentry/tools/sentry-cli' please tap
   brew 'gibo'
   # brew 'cargo-lambda' no available formula
+  brew 'asdf'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
