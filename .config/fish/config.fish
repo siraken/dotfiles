@@ -17,7 +17,7 @@ source $FISH_CONFIG_PATH/function.fish
 source $FISH_CONFIG_PATH/alias.fish
 
 # asdf
-source $FISH_CONFIG_PATH/asdf
+source $FISH_CONFIG_PATH/asdf.fish
 
 # GitHub Copilot CLI
 source $FISH_CONFIG_PATH/config-copilot.fish
