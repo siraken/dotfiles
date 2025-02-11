@@ -251,6 +251,7 @@ if OS.mac?
   # brew 'cargo-lambda' no available formula
   brew 'asdf'
   brew 'ggshield'
+  brew 'cloudflare/cloudflare/cf-terraforming'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
