@@ -30,6 +30,7 @@ alias rustrepl="evcxr"
 alias tf="terraform"
 alias spt="spotify_player"
 alias act="act --container-architecture linux/amd64"
+alias code="cursor"
 alias -g G='| grep'
 alias -g L='| less'
 alias -g F='| fzf'
