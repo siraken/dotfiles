@@ -252,6 +252,7 @@ if OS.mac?
   brew 'asdf'
   brew 'ggshield'
   brew 'cloudflare/cloudflare/cf-terraforming'
+  brew 'ollama'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
