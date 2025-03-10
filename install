@@ -133,6 +133,9 @@ case $ACTION in
   INSTALL nano
   ln -snf ~/dotfiles/.config/bat ~/.config/
 
+  INSTALL Ghostty
+  ln -snf ~/dotfiles/.config/sketchybar ~/.config
+
   # INSTALL nix
   # ln -snf ~/dotfiles/.config/nix ~/.config
   ;;
