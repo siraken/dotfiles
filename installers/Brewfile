@@ -38,6 +38,7 @@ if OS.mac?
   tap 'modularml/packages'
   tap 'symfony-cli/tap'
   tap 'cargo-lambda/cargo-lambda'
+  tap 'FelixKratz/formulae'
 end
 # :Brew ------------------------------------------------------------------------
 if OS.mac?
@@ -253,6 +254,7 @@ if OS.mac?
   brew 'ggshield'
   brew 'cloudflare/cloudflare/cf-terraforming'
   brew 'ollama'
+  brew 'sketchybar'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
