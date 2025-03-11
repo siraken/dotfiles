@@ -255,6 +255,7 @@ if OS.mac?
   brew 'cloudflare/cloudflare/cf-terraforming'
   brew 'ollama'
   brew 'sketchybar'
+  brew 'borders'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
@@ -368,6 +369,7 @@ if OS.mac?
   cask 'session-manager-plugin'
   cask 'chatgpt'
   cask 'background-music'
+  cask 'alt-tab'
   # cask 'native-access'
 end
 # :MAS - App Store --------------------------------------------------------------------
