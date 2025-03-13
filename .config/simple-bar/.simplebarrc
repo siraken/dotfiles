@@ -1,31 +1,50 @@
 {
+  "$schema": "https://raw.githubusercontent.com/Jean-Tinland/simple-bar/refs/heads/master/lib/schemas/config.json",
   "global": {
     "theme": "auto",
+    "compactMode": false,
     "floatingBar": true,
     "noBarBg": true,
     "noColorInData": false,
     "bottomBar": false,
-    "sideDecoration": false,
+    "sideDecoration": true,
     "inlineSpacesOptions": false,
-    "disableNotifications": false,
-    "compactMode": false,
-    "widgetMaxWidth": "160px",
     "spacesBackgroundColorAsForeground": false,
     "widgetsBackgroundColorAsForeground": true,
+    "widgetMaxWidth": "160px",
+    "slidingAnimationPace": 4,
     "font": "JetBrains Mono, Monaco, Menlo, monospace",
     "fontSize": "11px",
     "yabaiPath": "/opt/homebrew/bin/yabai",
+    "aerospacePath": "/opt/homebrew/bin/aerospace",
+    "windowManager": "yabai",
     "shell": "sh",
     "terminal": "iTerm2",
-    "slidingAnimationPace": 4,
-    "externalConfigFile": true,
+    "disableNotifications": false,
+    "enableMissives": false,
     "enableServer": false,
     "serverSocketPort": 7777,
-    "yabaiServerRefresh": false
+    "yabaiServerRefresh": false,
+    "aerospaceServerRefresh": false
   },
   "themes": {
     "lightTheme": "SolarizedLight",
-    "darkTheme": "TokyoNight"
+    "darkTheme": "TokyoNight",
+    "colorMain": "",
+    "colorMainAlt": "",
+    "colorMinor": "",
+    "colorAccent": "",
+    "colorRed": "",
+    "colorGreen": "",
+    "colorYellow": "",
+    "colorOrange": "",
+    "colorBlue": "",
+    "colorMagenta": "",
+    "colorCyan": "",
+    "colorBlack": "",
+    "colorWhite": "",
+    "colorForeground": "",
+    "colorBackground": ""
   },
   "process": {
     "showOnDisplay": "",
@@ -58,6 +77,8 @@
     "weatherWidget": false,
     "netstatsWidget": false,
     "cpuWidget": false,
+    "gpuWidget": false,
+    "memoryWidget": false,
     "batteryWidget": true,
     "wifiWidget": true,
     "vpnWidget": false,
@@ -70,6 +91,7 @@
     "spotifyWidget": true,
     "cryptoWidget": false,
     "stockWidget": false,
+    "youtubeMusicWidget": false,
     "musicWidget": true,
     "mpdWidget": false,
     "browserTrackWidget": false
@@ -92,6 +114,17 @@
     "showOnDisplay": "",
     "displayAsGraph": false,
     "cpuMonitorApp": "Top"
+  },
+  "gpuWidgetOptions": {
+    "refreshFrequency": 3000,
+    "showOnDisplay": "",
+    "displayAsGraph": false,
+    "gpuMacmonBinaryPath": "/opt/homebrew/bin/macmon"
+  },
+  "memoryWidgetOptions": {
+    "refreshFrequency": "4000",
+    "showOnDisplay": "",
+    "memoryMonitorApp": "Activity Monitor"
   },
   "batteryWidgetOptions": {
     "refreshFrequency": 10000,
@@ -169,6 +202,12 @@
     "showOnDisplay": "",
     "showSpecter": true
   },
+  "youtubeMusicWidgetOptions": {
+    "refreshFrequency": 10000,
+    "showOnDisplay": "",
+    "showSpecter": true,
+    "youtubeMusicPort": 26538
+  },
   "musicWidgetOptions": {
     "refreshFrequency": 10000,
     "showOnDisplay": "",
@@ -178,6 +217,7 @@
     "refreshFrequency": 10000,
     "showOnDisplay": "",
     "showSpecter": true,
+    "mpdBinaryPath": "/opt/homebrew/bin/mpc",
     "mpdPort": "6600",
     "mpdHost": "127.0.0.1",
     "mpdFormatString": "%title%[ - %artist%]|[%file%]"
