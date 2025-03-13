@@ -25,11 +25,11 @@ case "$PLAYER_STATE" in
     ;;
   "paused")
     ICON=󰏤
-    ICON_COLOR=0xfff7768e
+    ICON_COLOR=0xff9ece6a
     ;;
   *)
     ICON=󰓛
-    ICON_COLOR=0xff9399b2
+    ICON_COLOR=0xff9ece6a
     ;;
 esac
 
