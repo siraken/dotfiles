@@ -20,5 +20,7 @@ if [ "$SENDER" = "volume_change" ]; then
     icon="$ICON" \
     icon.color=0xfff7768e \
     background.color=0xff1a1b26 \
-    label="$VOLUME%"
+    background.drawing=on \
+    label="$VOLUME%" \
+    label.color=0xfff7768e
 fi

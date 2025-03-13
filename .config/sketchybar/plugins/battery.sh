@@ -7,28 +7,27 @@ if [ "$PERCENTAGE" = "" ]; then
   exit 0
 fi
 
+# バッテリー残量に応じてアイコンを設定
 case "${PERCENTAGE}" in
 9[0-9] | 100)
-  ICON=""
+  ICON=""
   ;;
 [6-8][0-9])
-  ICON=""
+  ICON=""
   ;;
 [3-5][0-9])
-  ICON=""
+  ICON=""
   ;;
 [1-2][0-9])
-  ICON=""
+  ICON=""
   ;;
-*) ICON="" ;;
+*) ICON="" ;;
 esac
-
-if [[ "$CHARGING" != "" ]]; then
-  ICON=""
-fi
 
 sketchybar --set "$NAME" \
   icon="$ICON" \
-  icon.color=0xff7aa2f7 \
+  icon.color=0xff9d7cd8 \
+  label="${PERCENTAGE}%" \
+  label.color=0xff9d7cd8 \
   background.color=0xff1a1b26 \
-  label="${PERCENTAGE}%"
+  background.drawing=on

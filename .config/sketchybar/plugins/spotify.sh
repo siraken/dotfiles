@@ -2,7 +2,13 @@
 
 # Spotifyが起動しているか確認
 if ! pgrep -x "Spotify" >/dev/null; then
-  sketchybar --set "$NAME" label="Not running" icon=󰓛 icon.color=0xff9399b2 background.color=0xff1a1b26
+  sketchybar --set "$NAME" \
+    label="Not running" \
+    label.color=0xff9ece6a \
+    icon=󰓛 \
+    icon.color=0xff9399b2 \
+    background.color=0xff1a1b26 \
+    background.drawing=on
   exit 0
 fi
 
@@ -27,11 +33,14 @@ case "$PLAYER_STATE" in
     ;;
 esac
 
-# 曲名とアーティスト名を結合（最大30文字）
+# 曲名とアーティスト名を結合して文字数を制限
 if [ "$PLAYER_STATE" = "playing" ] || [ "$PLAYER_STATE" = "paused" ]; then
+  # まず結合
   LABEL="$TRACK_NAME - $ARTIST_NAME"
-  if [ ${#LABEL} -gt 30 ]; then
-    LABEL="${LABEL:0:27}..."
+
+  # 18文字を超える場合は省略
+  if [ ${#LABEL} -gt 18 ]; then
+    LABEL="${LABEL:0:18}..."
   fi
 else
   LABEL="Not playing"
@@ -41,4 +50,6 @@ sketchybar --set "$NAME" \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \
-  background.color=0xff1a1b26
+  label.color=0xff9ece6a \
+  background.color=0xff1a1b26 \
+  background.drawing=on

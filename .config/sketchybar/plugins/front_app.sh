@@ -13,4 +13,5 @@ fi
 
 sketchybar --set "$NAME" \
   label="$FRONT_APP" \
-  background.color=0xff1a1b26
+  background.color=0xff1a1b26 \
+  background.drawing=on
