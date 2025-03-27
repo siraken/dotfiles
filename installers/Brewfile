@@ -370,6 +370,7 @@ if OS.mac?
   cask 'chatgpt'
   cask 'background-music'
   cask 'alt-tab'
+  cask 'lm-studio'
   # cask 'native-access'
 end
 # :MAS - App Store --------------------------------------------------------------------
