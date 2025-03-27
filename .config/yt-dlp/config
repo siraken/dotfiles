@@ -1,2 +1,4 @@
---format mp4
 --cookies-from-browser brave
+--format "bv[ext=mp4]+ba[ext=m4a]"
+--merge-output-format mp4
+
