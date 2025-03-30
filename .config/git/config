@@ -6,6 +6,7 @@
   path = conf.d/gpg.conf
   path = conf.d/difftool.conf
   path = conf.d/mergetool.conf
+  path = conf.d/ghq.conf
 
 [init]
   defaultBranch = main
@@ -39,3 +40,6 @@
 [safe]
   directory = *
  ; directory = %(prefix)///wsl.localhost
+[user]
+	name = siraken
+	email = shirasawa.kento@gmail.com

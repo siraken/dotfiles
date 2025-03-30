@@ -256,6 +256,7 @@ if OS.mac?
   brew 'ollama'
   brew 'sketchybar'
   brew 'borders'
+  brew 'ghq'
 end
 # :Cask ------------------------------------------------------------------------
 if OS.mac?
