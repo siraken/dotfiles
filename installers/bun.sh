@@ -23,6 +23,7 @@ packages=(
   "dredd"
   "neovim"
   "@anthropic-ai/claude-code"
+  "web-push"
 )
 
 # Install packages
