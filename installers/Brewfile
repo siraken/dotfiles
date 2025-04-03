@@ -74,7 +74,7 @@ if OS.mac?
   brew 'aws/tap/lightsailctl'
   brew 'dart'
   brew 'sqlite'
-  brew 'tfenv'
+  brew 'tenv'
   brew 'azure-cli'
   # brew 'themekit' no available formula
   brew 'act'
