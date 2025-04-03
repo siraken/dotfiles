@@ -1,29 +1,22 @@
-[include]
-  path = conf.d/user.conf
-  path = conf.d/alias.conf
-  path = conf.d/commit.conf
-  path = conf.d/credential.conf
-  path = conf.d/gpg.conf
-  path = conf.d/difftool.conf
-  path = conf.d/mergetool.conf
-  path = conf.d/ghq.conf
-
-[init]
-  defaultBranch = main
-
-[color]
-  status = auto
-  diff = auto
-  branch = auto
-  interactive = auto
-  grep = auto
-  ui = auto
-
 [core]
   autocrlf = input
   ignorecase = false
   editor = nvim
   hooksPath = ~/.config/git/hooks
+
+[init]
+  defaultBranch = main
+
+[include]
+  path = conf.d/user.conf
+  path = conf.d/alias.conf
+  path = conf.d/commit.conf
+  path = conf.d/color.conf
+  path = conf.d/credential.conf
+  path = conf.d/gpg.conf
+  path = conf.d/difftool.conf
+  path = conf.d/mergetool.conf
+  path = conf.d/ghq.conf
 
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
@@ -39,7 +32,3 @@
 
 [safe]
   directory = *
- ; directory = %(prefix)///wsl.localhost
-[user]
-	name = siraken
-	email = shirasawa.kento@gmail.com
