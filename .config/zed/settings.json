@@ -10,7 +10,21 @@
     "light": "One Light",
     "dark": "One Dark"
   },
+  // "ui_font_family": "Hack Nerd Font Mono",
   "terminal": {
-    "shell": "system"
+    "shell": {
+      "program": "fish"
+    },
+    "toolbar": {
+      "breadcrumbs": false
+    },
+    "font_family": "Hack Nerd Font Mono"
+  },
+  "indent_guides": {
+    "background_coloring": "indent_aware"
+  },
+  "relative_line_numbers": true,
+  "tabs": {
+    "git_status": true
   }
 }
