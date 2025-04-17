@@ -24,6 +24,8 @@ packages=(
   "neovim"
   "@anthropic-ai/claude-code"
   "web-push"
+  "purescript"
+  "spago"
 )
 
 # Install packages
