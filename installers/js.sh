@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=(
+bun_packages=(
   "typescript"
   "nativescript"
   "@ionic/cli"
@@ -24,13 +24,21 @@ packages=(
   "neovim"
   "@anthropic-ai/claude-code"
   "web-push"
+)
+
+npm_packages=(
   "purescript"
   "spago"
 )
 
-# Install packages
-printf "Installing npm packages using pnpm..."
+printf "Installing npm packages using bun..."
 
-for package in "${packages[@]}"; do
+for package in "${bun_packages[@]}"; do
   bun add -g $package
+done
+
+printf "Installing npm packages using npm..."
+
+for package in "${npm_packages[@]}"; do
+  npm install -g $package
 done
