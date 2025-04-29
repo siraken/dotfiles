@@ -32,10 +32,10 @@ if type direnv &> /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
-if type zoxide &> /dev/null; then
-  eval "$(zoxide init bash)"
-fi
-
 if type starship &> /dev/null; then
   eval "$(starship init bash)"
+fi
+
+if type zoxide &> /dev/null; then
+  eval "$(zoxide init bash)"
 fi
