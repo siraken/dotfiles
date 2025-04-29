@@ -21,6 +21,15 @@
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 5;
+
+    defaults = {
+      NSGlobalDomain.AppleShowAllExtensions = true;
+      dock = {
+        autohide = true;
+        show-recents = false;
+        orientation = "left";
+      };
+    }
   };
 
   # The platform the configuration will be used on.
