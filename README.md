@@ -40,6 +40,8 @@ cd dotfiles
 nix run nix-darwin/nix-darwin-24.11#darwin-rebuild -- switch --flake .
 ```
 
+After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
+
 ## VSCode
 
 I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.
