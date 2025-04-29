@@ -4,18 +4,11 @@ This repository manages dotfiles `.*` under `$HOME`. To use, clone this reposito
 
 ## Installation
 
-### macOS
-
-1. Install [Nix](#Nix)
-2. Clone this repository
-
-## Information
-
-### Nix
+### 1. Install Nix
 
 Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 
-If the installer prompts you to install Determinate Nix, select `yes` to install the Determinate version of Nix.
+If the installer prompts you to install Determinate Nix, select `no` to install Nix from NixOS instead.
 
 ```
 INFO nix-installer v3.4.1
@@ -28,7 +21,13 @@ Selecting 'no' will install Nix from NixOS instead.
 Proceed? ([Y]es/[n]o/[e]xplain):
 ```
 
-### VSCode
+To uninstall Nix, run the command below:
+
+```bash
+/nix/nix-installer uninstall
+```
+
+## VSCode
 
 I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.
 To disable `ApplePressAndHoldEnabled`, run the command below:
