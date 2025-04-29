@@ -1,5 +1,6 @@
 # $HOME/.config/fish
 set FISH_CONFIG_PATH (dirname (status --current-filename))
+set fish_greeting
 
 # Common functions
 source $FISH_CONFIG_PATH/common.fish
@@ -7,20 +8,11 @@ source $FISH_CONFIG_PATH/common.fish
 # Paths
 source $FISH_CONFIG_PATH/path.fish
 
-# Variables
-source $FISH_CONFIG_PATH/variable.fish
-
 # Functions
 source $FISH_CONFIG_PATH/function.fish
 
-# Aliases
-source $FISH_CONFIG_PATH/alias.fish
-
 # asdf
 source $FISH_CONFIG_PATH/asdf.fish
-
-# GitHub Copilot CLI
-source $FISH_CONFIG_PATH/config-copilot.fish
 
 # Completions
 source $FISH_CONFIG_PATH/completion.fish
