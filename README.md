@@ -6,6 +6,19 @@ This repository manages dotfiles `.*` under `$HOME`. To use, clone this reposito
 
 Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 
+If the installer prompts you to install Determinate Nix, select `yes` to install the Determinate version of Nix.
+
+```
+INFO nix-installer v3.4.1
+INFO For a more robust Nix installation, use the Determinate package for macOS: https://dtr.mn/determinate-nix
+
+Install Determinate Nix?
+
+Selecting 'no' will install Nix from NixOS instead.
+
+Proceed? ([Y]es/[n]o/[e]xplain):
+```
+
 ## VSCode
 
 I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.
