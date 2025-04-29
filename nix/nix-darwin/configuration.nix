@@ -24,7 +24,7 @@
       dock = {
         autohide = true;
         show-recents = false;
-        orientation = "left";
+        orientation = "bottom";
       };
     };
   };

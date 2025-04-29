@@ -28,6 +28,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Kentos-MacBook-Pro
+    # $ darwin-rebuild switch --flake .#Kentos-MacBook-Pro
     darwinConfigurations.${darwinHost} = makeDarwinSystem {
       hostname = darwinHost;
       username = darwinUser;
