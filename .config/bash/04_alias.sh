@@ -30,10 +30,6 @@ alias rustrepl="evcxr"
 alias tf="terraform"
 alias spt="spotify_player"
 alias act="act --container-architecture linux/amd64"
-alias -g G='| grep'
-alias -g L='| less'
-alias -g F='| fzf'
-alias -g C='| pbcopy'
 # Aliases for macOS
 alias ii="open"
 alias mamp-htdocs="cd /Applications/MAMP/htdocs"
