@@ -18,7 +18,9 @@ if [ -f "$HOME/Developer/google-cloud-sdk/completion.bash.inc" ]; then
   . "$HOME/Developer/google-cloud-sdk/completion.bash.inc";
 fi
 
-# . "$HOME/.cargo/env"
+# if [ -f "$HOME/.cargo/env" ]; then
+#   . "$HOME/.cargo/env"
+# fi
 
 # complete -f -c dotnet -a "(dotnet complete (commandline -cp))"
 
@@ -30,6 +32,10 @@ if type direnv &> /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
-eval "$(zoxide init bash)"
-eval "$(starship init bash)"
+if type zoxide &> /dev/null; then
+  eval "$(zoxide init bash)"
+fi
 
+if type starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
