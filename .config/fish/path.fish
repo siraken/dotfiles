@@ -6,7 +6,6 @@ set -gx PHP_INI_SCAN_DIR "$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 set -gx SSH_AUTH_SOCK "$HOME/.1password/agent.sock"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx GOPATH "$HOME/go"
-set -gx PNPM_HOME "$HOME/.pnpm"
 set -gx MODULAR_HOME "$HOME/.modular"
 set -gx BUN_INSTALL "$HOME/.bun"
 set -gx JAVA_HOME "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
@@ -32,7 +31,6 @@ set -gx PATH "$HOME/.composer/vendor/bin" $PATH
 set -gx PATH "$HOME/.deno/bin" $PATH
 set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx PATH "$HOME/.rye/shims" $PATH
-set -gx PATH "$PNPM_HOME" $PATH
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -gx PATH "$GOPATH/bin" $PATH
 set -gx PATH "$BUN_INSTALL/bin" $PATH

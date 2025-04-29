@@ -91,9 +91,7 @@ function トウキョウ・シャンディ・ () {
       sail npm $argv
     fi
   else
-    if [ -f pnpm-lock.yaml ]; then
-      pnpm $argv
-    elif [ -f yarn.lock ]; then
+    if [ -f yarn.lock ]; then
       yarn $argv
     elif [ -f package-lock.json ]; then
       npm $argv

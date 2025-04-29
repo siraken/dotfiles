@@ -98,9 +98,6 @@ function トウキョウ・シャンディ・
       sail npm $argv
     end
   else
-    if test -f pnpm-lock.yaml
-      pnpm $argv
-    end
     if test -f yarn.lock
       yarn $argv
     end
