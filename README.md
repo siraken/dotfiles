@@ -2,30 +2,11 @@
 
 This repository manages dotfiles `.*` under `$HOME`. To use, clone this repository on `$HOME/dotfiles` and run `install`.
 
-## Packages
+## Nix
 
-<!--
-### [Home Manager](https://github.com/nix-community/home-manager)
+Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 
-This manages my development environment using [Nix](https://nixos.org/).
-
-```bash
-# Install Nix
-sh <(curl -L https://nixos.org/nix/install)
-
-# Install Home Manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-
-# Install home-manager packages
-nix-shell '<home-manager>' -A install
-
-# Switch to home-manager configuration (-f option is optional)
-home-manager switch -f /path/to/nix-file.nix
-```
--->
-
-### VSCode
+## VSCode
 
 I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.
 To disable `ApplePressAndHoldEnabled`, run the command below:
@@ -34,7 +15,7 @@ To disable `ApplePressAndHoldEnabled`, run the command below:
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```
 
-### Execute PowerShell Script
+## Execute PowerShell Script
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned
