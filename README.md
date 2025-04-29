@@ -2,7 +2,16 @@
 
 This repository manages dotfiles `.*` under `$HOME`. To use, clone this repository on `$HOME/dotfiles` and run `install`.
 
-## Nix
+## Installation
+
+### macOS
+
+1. Install [Nix](#Nix)
+2. Clone this repository
+
+## Information
+
+### Nix
 
 Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 
@@ -19,7 +28,7 @@ Selecting 'no' will install Nix from NixOS instead.
 Proceed? ([Y]es/[n]o/[e]xplain):
 ```
 
-## VSCode
+### VSCode
 
 I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.
 To disable `ApplePressAndHoldEnabled`, run the command below:
@@ -28,7 +37,7 @@ To disable `ApplePressAndHoldEnabled`, run the command below:
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```
 
-## Execute PowerShell Script
+### Execute PowerShell Script
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned
