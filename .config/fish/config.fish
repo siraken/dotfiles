@@ -2,9 +2,6 @@
 set FISH_CONFIG_PATH (dirname (status --current-filename))
 set fish_greeting
 
-# Common functions
-source $FISH_CONFIG_PATH/common.fish
-
 # Paths
 source $FISH_CONFIG_PATH/path.fish
 
