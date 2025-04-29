@@ -1,6 +1,7 @@
 ##################################################
 # Variable
 ##################################################
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export CLICOLOR=true
 export TERM='xterm-256color'
 export EDITOR='nvim'
