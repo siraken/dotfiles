@@ -15,9 +15,6 @@
   # programs.fish.enable = true;
 
   system = {
-    # Set Git commit hash for darwin-version.
-    configurationRevision = self.rev or self.dirtyRev or null;
-
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 5;
@@ -29,9 +26,9 @@
         show-recents = false;
         orientation = "left";
       };
-    }
+    };
   };
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
-};
+}
