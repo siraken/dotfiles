@@ -26,18 +26,8 @@ end
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.mouse_bindings = mouse_bindings
-config.launch_menu = {
-  {
-    label = "fish on macOS",
-    args = { "/opt/homebrew/bin/fish", "-l" },
-  },
-  {
-    label = "fish on Linux",
-    args = { "/usr/bin/fish", "-l" },
-  },
-}
+config.default_prog = { "/bin/zsh", "-l" }
 if is_mac then
-  config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
   config.font_size = 16
   config.window_background_opacity = 0.8
   config.macos_window_background_blur = 30
@@ -48,7 +38,6 @@ elseif is_win then
   config.window_background_opacity = 0.7
   config.win32_system_backdrop = "Acrylic"
 elseif is_linux then
-  config.default_prog = { "/usr/bin/fish", "-l" }
   config.font_size = 16
   config.window_background_opacity = 0.8
 else

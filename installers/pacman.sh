@@ -7,7 +7,6 @@ packages=(
     "wget"
     "git"
     "sudo"
-    "fish"
     "neofetch"
     "onefetch"
     "vim"

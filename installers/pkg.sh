@@ -3,7 +3,6 @@
 packages=(
     "bat"
     "exa"
-    "fish"
     "gh"
     "git"
     "golang"

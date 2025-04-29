@@ -13,7 +13,7 @@
   // "ui_font_family": "Hack Nerd Font Mono",
   "terminal": {
     "shell": {
-      "program": "fish"
+      "program": "zsh"
     },
     "toolbar": {
       "breadcrumbs": false
@@ -26,5 +26,12 @@
   "relative_line_numbers": true,
   "tabs": {
     "git_status": true
+  },
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
   }
 }

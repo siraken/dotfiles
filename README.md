@@ -25,16 +25,6 @@ home-manager switch -f /path/to/nix-file.nix
 ```
 -->
 
-### Shell
-
-- [fish shell](https://fishshell.com/)
-- [Starship](https://starship.rs/)
-
-### Neovim
-
-Configuration files are written in Lua.
-I'm using [LazyVim](https://www.lazyvim.org/) for my base setup.
-
 ### VSCode
 
 I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.

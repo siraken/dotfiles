@@ -6,7 +6,6 @@ REPOSITORIES=(
 PACKAGES=(
     "bash"
     "zsh"
-    "fish"
     "git"
     "go"
     "openssh"

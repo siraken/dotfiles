@@ -12,7 +12,6 @@ PACKAGES=(
     "wget"
     "libfuse2"
     "tree"
-    "fish"
     "neovim"
     "bat"
     "neofetch"
