@@ -26,8 +26,9 @@ end
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.mouse_bindings = mouse_bindings
-config.default_prog = { "/bin/zsh", "-l" }
+config.default_prog = { "/bin/bash", "-l" }
 if is_mac then
+  config.default_prog = { "/opt/homebrew/bin/bash", "-l" }
   config.font_size = 16
   config.window_background_opacity = 0.8
   config.macos_window_background_blur = 30
@@ -41,7 +42,6 @@ elseif is_linux then
   config.font_size = 16
   config.window_background_opacity = 0.8
 else
-  config.default_prog = { "/bin/zsh", "-l" }
   config.font_size = 16
   config.window_background_opacity = 0.8
 end

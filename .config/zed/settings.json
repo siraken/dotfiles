@@ -13,7 +13,7 @@
   // "ui_font_family": "Hack Nerd Font Mono",
   "terminal": {
     "shell": {
-      "program": "zsh"
+      "program": "/opt/homebrew/bin/bash"
     },
     "toolbar": {
       "breadcrumbs": false
