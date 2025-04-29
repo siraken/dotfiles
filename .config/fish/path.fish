@@ -40,6 +40,5 @@ if test -f $HOME/Developer/google-cloud-sdk/path.fish.inc
 end
 
 command -q rbenv; and status --is-interactive; and rbenv init - fish | source
-command -q fuck; and status --is-interactive; and thefuck --alias | source
 command -q zoxide; and status --is-interactive; and zoxide init fish | source
 # command -q pyenv; and status --is-interactive; and pyenv init - | source

@@ -176,7 +176,6 @@ if OS.mac?
   brew 'lazydocker'
   brew 'ipfs' # ipfs/kubo
   brew 'coursier'
-  brew 'thefuck'
   brew 'gum'
   brew 'vhs'
   brew 'ttyd', args: ['HEAD']
