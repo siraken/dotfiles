@@ -10,17 +10,15 @@ if [ -e "$HOME/.pyenv" ]; then
   eval "$(pyenv init -)"
 fi
 
-if [ -f "$HOME/Developer/google-cloud-sdk/path.zsh.inc" ]; then
-  . "$HOME/Developer/google-cloud-sdk/path.zsh.inc";
+if [ -f "$HOME/Developer/google-cloud-sdk/path.bash.inc" ]; then
+  . "$HOME/Developer/google-cloud-sdk/path.bash.inc";
 fi
 
-if [ -f "$HOME/Developer/google-cloud-sdk/completion.zsh.inc" ]; then
-  . "$HOME/Developer/google-cloud-sdk/completion.zsh.inc";
+if [ -f "$HOME/Developer/google-cloud-sdk/completion.bash.inc" ]; then
+  . "$HOME/Developer/google-cloud-sdk/completion.bash.inc";
 fi
 
-# if [ -f "$HOME/pnpm.zsh" ]; then
-#   . "$HOME/pnpm.zsh";
-# fi
+# . "$HOME/.cargo/env"
 
 # complete -f -c dotnet -a "(dotnet complete (commandline -cp))"
 
@@ -29,9 +27,9 @@ if type ng &>/dev/null; then
 fi
 
 if type direnv &> /dev/null; then
-  eval "$(direnv hook zsh)"
+  eval "$(direnv hook bash)"
 fi
 
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+eval "$(zoxide init bash)"
+eval "$(starship init bash)"
 

@@ -46,7 +46,7 @@ case $ACTION in
   ln -snf ~/dotfiles/.config/home-manager ~/.config/
 
   INSTALL bash
-  ln -snf ~/dotfiles/.config/bash/config.bash ~/.bashrc
+  ln -snf ~/dotfiles/.config/bash/.bash_profile ~/.bash_profile
 
   INSTALL zsh
   ln -snf ~/dotfiles/.config/zsh ~/.config/zsh
