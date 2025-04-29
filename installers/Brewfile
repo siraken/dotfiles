@@ -336,7 +336,6 @@ if OS.mac?
   cask 'azure-data-studio'
   cask 'audacity'
   # cask 'eclipse' similarly casks are available
-  cask 'orbstack'
   cask 'tableplus'
   cask 'hammerspoon'
   cask 'mjml'
