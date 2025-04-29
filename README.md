@@ -4,7 +4,13 @@ This repository manages dotfiles `.*` under `$HOME`. To use, clone this reposito
 
 ## Installation
 
-### 1. Install Nix
+### 1. Clone this repository
+
+```bash
+git clone https://github.com/siraken/dotfiles.git
+```
+
+### 2. Install Nix
 
 Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 
@@ -25,6 +31,13 @@ To uninstall Nix, run the command below:
 
 ```bash
 /nix/nix-installer uninstall
+```
+
+### 3. Install `nix-darwin`
+
+```bash
+cd dotfiles
+nix run nix-darwin/nix-darwin-24.11#darwin-rebuild -- switch --flake .
 ```
 
 ## VSCode
