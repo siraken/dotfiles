@@ -30,6 +30,16 @@
           system = "aarch64-darwin";
           modules = [
             ./nix/nix-darwin/configuration.nix
+            home-manager.darwinModules.home-manager
+            (
+              { pkgs, ... }:
+              {
+                home-manager.users.${username} = import ./nix/nix-darwin/home.nix {
+                  pkgs = pkgs;
+                  username = username;
+                };
+              }
+            )
           ];
         };
     in
