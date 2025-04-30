@@ -1,21 +1,13 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
 { pkgs, modulePath, ... }:
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment = {
-    systemPackages = with pkgs; [
-      vim
-      nixfmt-rfc-style
-    ];
-  };
-
   nix = {
     # Necessary for using flakes on this system.
     settings.experimental-features = "nix-command flakes";
   };
 
   imports = [
+    ./environment/system-packages.nix
     # ./programs/bash.nix
     # ./programs/direnv.nix
     # ./programs/fish.nix
