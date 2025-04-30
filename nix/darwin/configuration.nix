@@ -6,6 +6,11 @@
     settings.experimental-features = "nix-command flakes";
   };
 
+  networking = {
+    hostName = "Kentos-MacBook-Pro";
+    localHostName = "Kentos-MacBook-Pro";
+  };
+
   imports = [
     ./environment/system-packages.nix
     # ./programs/bash.nix
