@@ -27,9 +27,6 @@ up)
   INSTALL fish
   ln -snf ~/dotfiles/.config/fish ~/.config/
 
-  INSTALL yabai
-  ln -snf ~/dotfiles/.config/yabai ~/.config/
-
   INSTALL simple-bar
   ln -snf ~/dotfiles/.config/simple-bar/.simplebarrc ~/.simplebarrc
 
@@ -117,7 +114,6 @@ down)
   rm -rf ~/.zprofile
   rm -rf ~/.zshrc
   rm -rf ~/.config/fish
-  rm -rf ~/.config/yabai
   rm -rf ~/.simplebarrc
   rm -rf ~/.config/ranger
   rm -rf ~/.tmux.conf
