@@ -21,6 +21,7 @@
     # ./programs/fish.nix
     # ./services/sketchybar.nix
     ./services/skhd.nix
+    ./services/spotifyd.nix
     ./services/yabai.nix
     ./homebrew.nix
   ];
