@@ -20,11 +20,19 @@
     stateVersion = 5;
 
     defaults = {
-      NSGlobalDomain.AppleShowAllExtensions = true;
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+      };
       dock = {
-        autohide = true;
-        show-recents = false;
         orientation = "bottom";
+        tilesize = 40;
+        autohide = true;
+        autohide-time-modifier = 0.5;
+        autohide-delay = 0.2;
+        show-recents = true;
+        mineffect = "scale";
+        static-only = false;
+        scroll-to-open = false;
       };
     };
   };
