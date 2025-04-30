@@ -33,9 +33,6 @@ up)
   INSTALL yabai
   ln -snf ~/dotfiles/.config/yabai ~/.config/
 
-  INSTALL skhd
-  ln -snf ~/dotfiles/.config/skhd ~/.config/
-
   INSTALL simple-bar
   ln -snf ~/dotfiles/.config/simple-bar/.simplebarrc ~/.simplebarrc
 
@@ -124,7 +121,6 @@ down)
   rm -rf ~/.zshrc
   rm -rf ~/.config/fish
   rm -rf ~/.config/yabai
-  rm -rf ~/.config/skhd
   rm -rf ~/.simplebarrc
   rm -rf ~/.config/ranger
   rm -rf ~/.tmux.conf
