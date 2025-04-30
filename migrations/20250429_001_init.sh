@@ -15,9 +15,6 @@ up)
   INSTALL kitty
   ln -snf ~/dotfiles/.config/kitty ~/.config/
 
-  INSTALL home-manager
-  ln -snf ~/dotfiles/.config/home-manager ~/.config/
-
   INSTALL bash
   ln -snf ~/dotfiles/.config/bash/.bash_profile ~/.bash_profile
   ln -snf ~/dotfiles/.config/bash ~/.config/
