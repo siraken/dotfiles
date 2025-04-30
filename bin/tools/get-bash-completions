@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -o $HOME/dotfiles/.config/bash/completions/git-completion.bash https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-completion.bash
