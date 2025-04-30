@@ -6,6 +6,7 @@
   environment = {
     systemPackages = with pkgs; [
       vim
+      nixfmt-rfc-style
     ];
   };
 
@@ -45,16 +46,15 @@
     };
   };
 
-  imports =
-    [
-      # ./services/sketchybar.nix
-      ./services/skhd.nix
-      ./services/yabai.nix
-      ./homebrew.nix
-    ];
+  imports = [
+    # ./services/sketchybar.nix
+    ./services/skhd.nix
+    ./services/yabai.nix
+    ./homebrew.nix
+  ];
 
   fonts = {
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 
   # The platform the configuration will be used on.

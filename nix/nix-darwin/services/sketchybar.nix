@@ -2,7 +2,6 @@
 {
   services.sketchybar = {
     enable = true;
-    config = ''
-    '';
+    config = '''';
   };
 }
