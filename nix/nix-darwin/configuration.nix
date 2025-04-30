@@ -20,9 +20,10 @@
     stateVersion = 5;
 
     defaults = {
-      NSGlobalDomain = {
-        AppleShowAllExtensions = true;
-      };
+      # TODO:
+      # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+      # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
       dock = {
         orientation = "bottom";
         tilesize = 40;
@@ -33,6 +34,10 @@
         mineffect = "scale";
         static-only = false;
         scroll-to-open = false;
+      };
+      finder = {
+        AppleShowAllExtensions = false;
+        AppleShowAllFiles = false;
       };
     };
   };
