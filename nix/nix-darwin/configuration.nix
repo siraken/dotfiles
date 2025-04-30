@@ -27,6 +27,9 @@
       # TODO:
       # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
       # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+      # defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+      # defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled -bool false
+      # defaults write com.jetbrains.rubymine ApplePressAndHoldEnabled -bool false
 
       dock = {
         orientation = "bottom";

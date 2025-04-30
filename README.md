@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository manages dotfiles `.*` under `$HOME`. To use, clone this repository on `$HOME/dotfiles` and run `install`.
+~~This repository manages dotfiles `.*` under `$HOME`. To use, clone this repository on `$HOME/dotfiles` and run `install`.~~
 
 ## Installation
 
@@ -41,18 +41,3 @@ nix run nix-darwin/nix-darwin-24.11#darwin-rebuild -- switch --flake .
 ```
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
-
-## VSCode
-
-I'm using [VSCode Vim](https://github.com/VSCodeVim/Vim) extension to be able to use VSCode with a Vim-like keymap.
-To disable `ApplePressAndHoldEnabled`, run the command below:
-
-```bash
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-```
-
-### Execute PowerShell Script
-
-```powershell
-Set-ExecutionPolicy RemoteSigned
-```

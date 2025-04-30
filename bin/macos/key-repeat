@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# JetBtains IDEs
-defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled -bool false
-defaults write com.jetbrains.rubymine ApplePressAndHoldEnabled -bool false
