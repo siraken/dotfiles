@@ -43,6 +43,7 @@ end
 # :Brew ------------------------------------------------------------------------
 if OS.mac?
   brew 'bash'
+  brew 'bash-completion'
   brew 'gh'
   brew 'volta'
   brew 'deno'
