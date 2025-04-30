@@ -29,20 +29,13 @@
         nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            ./nix/nix-darwin/configuration.nix
+            ./nix/darwin/configuration.nix
             home-manager.darwinModules.home-manager
-            (
-              { pkgs, lib, ... }:
-              {
-                home-manager.users.${username} = import ./nix/nix-darwin/home.nix {
-                  inherit
-                    pkgs
-                    lib
-                    username
-                    ;
-                };
-              }
-            )
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.siraken = ./nix/darwin/home.nix;
+            }
           ];
         };
     in
@@ -50,9 +43,11 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Kentos-MacBook-Pro
       # $ darwin-rebuild switch --flake .#Kentos-MacBook-Pro
-      darwinConfigurations.${darwinHost} = mkDarwinSystem {
-        hostname = darwinHost;
-        username = darwinUser;
+      darwinConfigurations = {
+        ${darwinHost} = mkDarwinSystem {
+          hostname = darwinHost;
+          username = darwinUser;
+        };
       };
     };
 }
