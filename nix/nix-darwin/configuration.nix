@@ -15,8 +15,15 @@
     settings.experimental-features = "nix-command flakes";
   };
 
-  # Enable alternative shell support in nix-darwin.
-  # programs.fish.enable = true;
+  imports = [
+    # ./programs/bash.nix
+    # ./programs/direnv.nix
+    # ./programs/fish.nix
+    # ./services/sketchybar.nix
+    ./services/skhd.nix
+    ./services/yabai.nix
+    ./homebrew.nix
+  ];
 
   system = {
     # Used for backwards compatibility, please read the changelog before changing.
@@ -45,13 +52,6 @@
       };
     };
   };
-
-  imports = [
-    # ./services/sketchybar.nix
-    ./services/skhd.nix
-    ./services/yabai.nix
-    ./homebrew.nix
-  ];
 
   fonts = {
     packages = with pkgs; [ ];
