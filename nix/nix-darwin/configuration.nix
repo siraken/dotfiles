@@ -1,3 +1,4 @@
+# https://nix-darwin.github.io/nix-darwin/manual/index.html
 { pkgs, ... }:
 {
   # List packages installed in system profile. To search by name, run:
@@ -39,6 +40,17 @@
         AppleShowAllExtensions = false;
         AppleShowAllFiles = false;
       };
+    };
+
+    homebrew = {
+      enable = true;
+      onActivation = {
+        autoUpdate = true;
+        cleanup = "none";
+      };
+      taps = [];
+      brews = [];
+      casks = [];
     };
   };
 
