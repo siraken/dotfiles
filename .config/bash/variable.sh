@@ -8,5 +8,6 @@ export EDITOR='nvim'
 export GH_URL='https://github.com'
 export AWS_PROFILE='default'
 export AWS_DEFAULT_REGION='ap-northeast-1'
+export HOMEBREW_PREFIX=$(brew --prefix)
 export DARWIN_USER=$(whoami)
 export DARWIN_HOST=$(hostname -s)
