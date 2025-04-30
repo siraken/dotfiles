@@ -32,11 +32,14 @@
             ./nix/nix-darwin/configuration.nix
             home-manager.darwinModules.home-manager
             (
-              { pkgs, ... }:
+              { pkgs, lib, ... }:
               {
                 home-manager.users.${username} = import ./nix/nix-darwin/home.nix {
-                  pkgs = pkgs;
-                  username = username;
+                  inherit
+                    pkgs
+                    lib
+                    username
+                    ;
                 };
               }
             )
