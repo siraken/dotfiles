@@ -42,6 +42,10 @@
       };
     };
 
+    fonts = {
+      packages = with pkgs; [];
+    };
+
     homebrew = {
       enable = true;
       onActivation = {
