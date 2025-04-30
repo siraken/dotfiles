@@ -24,7 +24,7 @@
       darwinUser = "siraken";
       darwinHost = "Kentos-MacBook-Pro";
 
-      makeDarwinSystem =
+      mkDarwinSystem =
         { hostname, username }:
         nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
@@ -37,7 +37,7 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Kentos-MacBook-Pro
       # $ darwin-rebuild switch --flake .#Kentos-MacBook-Pro
-      darwinConfigurations.${darwinHost} = makeDarwinSystem {
+      darwinConfigurations.${darwinHost} = mkDarwinSystem {
         hostname = darwinHost;
         username = darwinUser;
       };
