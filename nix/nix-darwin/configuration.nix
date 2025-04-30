@@ -31,6 +31,8 @@
       dock = {
         orientation = "bottom";
         tilesize = 40;
+        magnification = false;
+        largesize = 64;
         autohide = true;
         autohide-time-modifier = 0.5;
         autohide-delay = 0.2;
@@ -38,10 +40,13 @@
         mineffect = "scale";
         static-only = false;
         scroll-to-open = false;
+        launchanim = true;
       };
       finder = {
         AppleShowAllExtensions = false;
         AppleShowAllFiles = false;
+        ShowPathbar = true;
+        ShowStatusBar = true;
       };
     };
   };
