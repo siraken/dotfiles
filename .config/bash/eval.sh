@@ -22,6 +22,10 @@ if [ -f "$HOME/Developer/google-cloud-sdk/completion.bash.inc" ]; then
   . "$HOME/Developer/google-cloud-sdk/completion.bash.inc";
 fi
 
+if [ -s "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
+  . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+fi
+
 # if [ -f "$HOME/.cargo/env" ]; then
 #   . "$HOME/.cargo/env"
 # fi
