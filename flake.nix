@@ -32,11 +32,11 @@
           modules = [
             ./nix/darwin/configuration.nix
             home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.siraken = ./nix/darwin/home.nix;
-            }
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.siraken = ./nix/darwin/home.nix;
+            # }
           ];
         };
     in
