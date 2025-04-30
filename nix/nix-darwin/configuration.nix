@@ -302,7 +302,34 @@
         # "ghq",
       ];
       casks = [];
-      masApps = {};
+      masApps = {
+        # mas 'Messenger', id: 1480068668
+        # mas 'LINE', id: 539883307
+        # mas 'KakaoTalk', id: 869223134
+        # mas 'Magnet', id: 441258766
+        # mas 'Twitter', id: 1482454543
+        # mas 'The Unarchiver', id: 425424353
+        # mas 'DaisyDisk', id: 411643860
+        # mas 'LanScan', id: 472226235
+        # mas 'Spark', id: 1176895641
+        # # mas 'Sequel Ace', id: 1518036000
+        # mas 'Slack', id: 803453959
+        # mas 'RunCat', id: 1429033973
+        # mas 'PopClip', id: 445189367
+        # mas 'Microsoft Word', id: 462054704
+        # mas 'Microsoft Excel', id: 462058435
+        # mas 'Microsoft PowerPoint', id: 462062816
+        # mas 'Microsoft Outlook', id: 985367838
+        # mas 'Tailscale', id: 1475387142
+        # mas 'Kindle', id: 302584613
+        # # mas 'Trello', id: 1278508951
+        # # mas 'DaVinci Resolve', id: 571213070
+        # # mas 'Final Cut Pro', id: 424389933
+        # # mas 'Motion', id: 434290957
+        # # mas 'Compressor', id: 424390742
+        # # mas 'Logic Pro', id: 634148309
+        # # mas 'MainStage', id: 634159523
+      };
     };
   };
 
