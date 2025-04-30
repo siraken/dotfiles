@@ -11,6 +11,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -19,6 +24,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      nix-on-droid,
     }:
     let
       darwinSystem = "aarch64-darwin";
