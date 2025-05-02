@@ -66,6 +66,7 @@
               { pkgs, ... }:
               {
                 environment.systemPackages = with pkgs; [
+                  # uv
                   # ===== from `apk` =====
                   # bash
                   # git
