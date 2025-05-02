@@ -1,10 +1,9 @@
 #!/bin/bash
 
-packages=(
-    "dart_frog_cli"
+pkgs=(
+  "dart_frog_cli"
 )
 
-for package in "${packages[@]}"
-do
-    dart pub global activate $package
+for pkg in "${pkgs[@]}"; do
+  dart pub global activate $pkg
 done

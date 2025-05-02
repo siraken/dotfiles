@@ -1,23 +1,20 @@
 #!/bin/bash
 
-packages=(
-    "diagrams"
-    "safetensors"
-    "frogmouth"
+pkgs=(
+  "diagrams"
+  "safetensors"
+  "frogmouth"
 )
 
-# Install packages
 if [ -e "$HOME/.rye/shims" ]; then
-    rye self update
-    for package in "${packages[@]}"
-    do
-        rye install "$package"
-    done
+  rye self update
+  for pkg in "${pkgs[@]}"; do
+    rye install "$pkg"
+  done
 else
-    pip install --upgrade pip
+  pip install --upgrade pip
 
-    for package in "${packages[@]}"
-    do
-        pip install "$package"
-    done
+  for pkg in "${pkgs[@]}"; do
+    pip install "$pkg"
+  done
 fi

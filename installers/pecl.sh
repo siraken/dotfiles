@@ -1,10 +1,9 @@
 #!/bin/bash
 
-packages=(
-    "xdebug"
+pkgs=(
+  "xdebug"
 )
 
-for package in "${packages[@]}"
-do
-    pecl install $package
+for pkg in "${pkgs[@]}"; do
+  pecl install $pkg
 done

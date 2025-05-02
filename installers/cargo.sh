@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=(
+pkgs=(
   "cargo-binstall"
   "cargo-generate"
   "diesel_cli"
@@ -12,9 +12,6 @@ packages=(
   "spotify_player"
 )
 
-# Install packages
-printf "Installing packages..."
-
-for package in "${packages[@]}"; do
-  cargo install $package
+for pkg in "${pkgs[@]}"; do
+  cargo install $pkg
 done

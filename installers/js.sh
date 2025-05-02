@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bun_packages=(
+bun_pkgs=(
   "typescript"
   "nativescript"
   "@ionic/cli"
@@ -26,19 +26,19 @@ bun_packages=(
   "web-push"
 )
 
-npm_packages=(
+npm_pkgs=(
   "purescript"
   "spago"
 )
 
-printf "Installing npm packages using bun..."
+printf "Installing bun packages..."
 
-for package in "${bun_packages[@]}"; do
-  bun add -g $package
+for pkg in "${bun_pkgs[@]}"; do
+  bun add -g $pkg
 done
 
-printf "Installing npm packages using npm..."
+printf "Installing npm packages..."
 
-for package in "${npm_packages[@]}"; do
-  npm install -g $package
+for pkg in "${npm_pkgs[@]}"; do
+  npm install -g $pkg
 done

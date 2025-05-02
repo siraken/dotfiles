@@ -1,13 +1,9 @@
 #!/bin/bash
 
-packages=(
-    "lapis"
+pkgs=(
+  "lapis"
 )
 
-# Install packages
-printf "Installing packages..."
-
-for package in "${packages[@]}"
-do
-   luarocks install "$package"
+for pkg in "${pkgs[@]}"; do
+  luarocks install "$pkg"
 done
