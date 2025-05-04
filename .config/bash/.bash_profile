@@ -1,4 +1,5 @@
 BASH_DIR="${HOME}/.config/bash"
+HISTCONTROL=erasedups
 
 if [ -d $BASH_DIR ] && [ -r $BASH_DIR ] && [ -x $BASH_DIR ]; then
   source $BASH_DIR/variable.sh
