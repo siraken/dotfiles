@@ -1,6 +1,7 @@
 [tools]
 bun = "latest"
 deno = "latest"
+node = "latest"
 python = "3"
 ruby = "latest"
 zig = "latest"
