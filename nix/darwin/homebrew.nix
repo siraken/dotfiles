@@ -256,6 +256,7 @@
       # "sketchybar"
       # "borders"
       # "ghq"
+      # "mise"
     ];
     casks = [
       # # "1password" installed,
