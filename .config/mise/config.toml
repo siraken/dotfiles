@@ -1,3 +1,4 @@
 [tools]
 bun = "latest"
 deno = "latest"
+python = "3"
