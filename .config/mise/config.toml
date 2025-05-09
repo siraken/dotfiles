@@ -4,3 +4,6 @@ deno = "latest"
 python = "3"
 ruby = "latest"
 zig = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = []
