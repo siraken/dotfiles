@@ -8,4 +8,11 @@ zig = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
-npm = { bun = true }
+
+[settings.npm]
+bun = true
+
+[settings.status]
+missing_tools = "if_other_versions_installed"
+show_env = false
+show_tools = true
