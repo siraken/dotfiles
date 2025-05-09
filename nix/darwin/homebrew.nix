@@ -47,7 +47,6 @@
       # "bash"
       # "bash-completion"
       # "gh"
-      # "volta"
       # "deno"
       # "mysql"
       # "anyenv"

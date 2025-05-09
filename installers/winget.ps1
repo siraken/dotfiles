@@ -46,7 +46,6 @@ $packages = @(
   "WinMerge.WinMerge"
   "Neovim.Neovim"
   "Starship.Starship"
-  "Volta.Volta"
   "sharkdp.bat"
   "Zeit.Hyper"
   "MAMP.MAMP" # Install Fails
