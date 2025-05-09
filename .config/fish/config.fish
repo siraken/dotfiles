@@ -9,9 +9,6 @@ command -q zoxide; and status --is-interactive; and zoxide init fish | source
 # Functions
 source $FISH_CONFIG_PATH/function.fish
 
-# asdf
-source $FISH_CONFIG_PATH/asdf.fish
-
 # Completions
 source $FISH_CONFIG_PATH/completion.fish
 
