@@ -4,11 +4,19 @@
   editor = nvim
   hooksPath = ~/.config/git/hooks
 
+[user]
+  name = Kento Shirasawa
+  email = shirasawa.kento@gmail.com
+  username = siraken
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL
+
+[github]
+  user = siraken
+
 [init]
   defaultBranch = main
 
 [include]
-  path = conf.d/user.conf
   path = conf.d/alias.conf
   path = conf.d/commit.conf
   path = conf.d/color.conf
