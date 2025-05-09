@@ -19,7 +19,6 @@ $packages = @(
     "msys2"
     "jetbrains-toolbox"
     "spotify-tui"
-    "zig"
     "jmeter"
     "Hack-NF"
     "Hack-NF-Mono"

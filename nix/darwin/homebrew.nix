@@ -117,7 +117,6 @@
       # "pandoc"
       # "fx"
       # "arduino-cli"
-      # "zig"
       # "neofetch"
       # "caddy"
       # "scala"
