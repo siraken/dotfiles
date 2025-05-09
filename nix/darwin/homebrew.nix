@@ -243,7 +243,6 @@
       # # "getsentry/tools/sentry-cli" please tap
       # "gibo"
       # # "cargo-lambda" no available formula
-      # "asdf"
       # "ggshield"
       # "cloudflare/cloudflare/cf-terraforming"
       # "ollama"
