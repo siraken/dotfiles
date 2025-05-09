@@ -4,7 +4,6 @@ set fish_greeting
 
 # Paths
 command -q zoxide; and status --is-interactive; and zoxide init fish | source
-# command -q pyenv; and status --is-interactive; and pyenv init - | source
 
 # Functions
 source $FISH_CONFIG_PATH/function.fish

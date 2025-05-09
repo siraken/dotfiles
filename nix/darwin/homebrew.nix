@@ -51,7 +51,6 @@
       # "llvm"
       # "ninja"
       # "rustup"
-      # "pyenv"
       # "jq"
       # "tmux"
       # "tree"
