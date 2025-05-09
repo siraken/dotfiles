@@ -2,3 +2,4 @@
 bun = "latest"
 deno = "latest"
 python = "3"
+zig = "latest"
