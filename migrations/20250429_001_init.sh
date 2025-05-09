@@ -30,6 +30,9 @@ up)
   INSTALL simple-bar
   ln -snf ~/dotfiles/.config/simple-bar/.simplebarrc ~/.simplebarrc
 
+  INSTALL mise
+  ln -snf ~/dotfiles/.config/mise ~/.config/
+
   INSTALL ranger
   ln -snf ~/dotfiles/.config/ranger ~/.config/
 
