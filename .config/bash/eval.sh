@@ -36,6 +36,10 @@ if type ng &>/dev/null; then
   source <(ng completion script)
 fi
 
+if type mise &> /dev/null; then
+  eval "$(mise activate bash)"
+fi
+
 if type direnv &> /dev/null; then
   eval "$(direnv hook bash)"
 fi
