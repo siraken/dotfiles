@@ -10,10 +10,6 @@ if [ -e "$HOME/.pyenv" ]; then
   eval "$(pyenv init -)"
 fi
 
-if [ -e "$HOME/.rbenv" ]; then
-  eval "$(rbenv init -)"
-fi
-
 if [ -f "$HOME/Developer/google-cloud-sdk/path.bash.inc" ]; then
   . "$HOME/Developer/google-cloud-sdk/path.bash.inc";
 fi

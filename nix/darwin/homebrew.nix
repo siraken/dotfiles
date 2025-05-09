@@ -52,7 +52,6 @@
       # "ninja"
       # "rustup"
       # "pyenv"
-      # "rbenv"
       # "jq"
       # "tmux"
       # "tree"

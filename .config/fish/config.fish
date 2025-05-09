@@ -3,7 +3,6 @@ set FISH_CONFIG_PATH (dirname (status --current-filename))
 set fish_greeting
 
 # Paths
-command -q rbenv; and status --is-interactive; and rbenv init - fish | source
 command -q zoxide; and status --is-interactive; and zoxide init fish | source
 # command -q pyenv; and status --is-interactive; and pyenv init - | source
 
