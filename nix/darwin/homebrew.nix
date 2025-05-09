@@ -46,7 +46,6 @@
       # "bash"
       # "bash-completion"
       # "gh"
-      # "deno"
       # "mysql"
       # "anyenv"
       # "llvm"
