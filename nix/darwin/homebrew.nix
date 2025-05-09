@@ -36,7 +36,6 @@
       # "borkdude/brew",
       # "ngrok/ngrok",
       # "earthly/earthly",
-      # "oven-sh/bun",
       # "grishka/grishka",
       # "modularml/packages",
       # "symfony-cli/tap",
@@ -230,7 +229,6 @@
       # "ranger"
       # "w3m"
       # "pipes-sh"
-      # # "bun" no available formula
       # # "neardrop" installation failed
       # "portaudio"
       # "monolith"
