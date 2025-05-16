@@ -4,10 +4,10 @@
 if ! pgrep -x "Music" >/dev/null; then
   sketchybar --set "$NAME" \
     label="Not running" \
-    label.color=0xff9ece6a \
+    label.color=0xfff5f5f7 \
     icon=󰓛 \
-    icon.color=0xff9399b2 \
-    background.color=0xff1a1b26 \
+    icon.color=0xffe91e63 \
+    background.color=0xff2c2c2e \
     background.drawing=on
   exit 0
 fi
@@ -21,15 +21,15 @@ ARTIST_NAME=$(osascript -e 'tell application "Music" to artist of current track 
 case "$PLAYER_STATE" in
   "playing")
     ICON=󰐊
-    ICON_COLOR=0xff9ece6a
+    ICON_COLOR=0xfffa233f
     ;;
   "paused")
     ICON=󰏤
-    ICON_COLOR=0xff9ece6a
+    ICON_COLOR=0xfffa233f
     ;;
   *)
     ICON=󰓛
-    ICON_COLOR=0xff9ece6a
+    ICON_COLOR=0xffe91e63
     ;;
 esac
 
@@ -50,6 +50,6 @@ sketchybar --set "$NAME" \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \
-  label.color=0xff9ece6a \
-  background.color=0xff1a1b26 \
+  label.color=0xfff5f5f7 \
+  background.color=0xff2c2c2e \
   background.drawing=on
