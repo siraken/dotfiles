@@ -19,7 +19,6 @@
       # "tgotwig/linux-dust",
       # "leoafarias/fvm",
       # "clojure/tools",
-      # "sass/sass",
       # "supabase/tap",
       # "planetscale/tap",
       # "planetscale/tap",
@@ -65,7 +64,6 @@
       # "stack"
       # "go"
       # # "mongodb-community" no available formula
-      # # "sass" no available formula
       # "duck"
       # "awscli"
       # "aws/tap/lightsailctl"
