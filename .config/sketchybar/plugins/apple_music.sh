@@ -29,7 +29,7 @@ case "$PLAYER_STATE" in
     ;;
   *)
     ICON=󰓛
-    ICON_COLOR=0xffe91e63
+    ICON_COLOR=0xfffa233f
     ;;
 esac
 
@@ -50,6 +50,6 @@ sketchybar --set "$NAME" \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \
-  label.color=0xfff5f5f7 \
+  label.color=0xffffffff \
   background.color=0xff2c2c2e \
   background.drawing=on

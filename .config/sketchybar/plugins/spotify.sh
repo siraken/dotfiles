@@ -50,6 +50,6 @@ sketchybar --set "$NAME" \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \
-  label.color=0xff9ece6a \
+  label.color=0xffffffff \
   background.color=0xff1a1b26 \
   background.drawing=on
