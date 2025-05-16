@@ -15,10 +15,16 @@ ICON="󰈙"
 ICON_DRAWING=on
 ICON_COLOR=0xffffffff
 
-if [[ "$FRONT_APP" =~ ^(Google Chrome|Chromium|Vivaldi)$ ]]; then
+if [[ "$FRONT_APP" =~ ^(Google Chrome|Chromium|Brave|Vivaldi)$ ]]; then
   ICON=""
+elif [[ "$FRONT_APP" =~ ^(Microsoft Edge|Edge)$ ]]; then
+  ICON=""
+elif [[ "$FRONT_APP" = "Safari" ]]; then
+  ICON=""
 elif [[ "$FRONT_APP" =~ ^(Code|Cursor)$ ]]; then
   ICON=""
+elif [[ "$FRONT_APP" = "GitHub Desktop" ]]; then
+  ICON=""
 elif [[ "$FRONT_APP" = "Finder" ]]; then
   ICON="󰀶"
 elif [[ "$FRONT_APP" = "Slack" ]]; then
@@ -39,6 +45,8 @@ elif [[ "$FRONT_APP" = "WebStorm" ]]; then
   ICON=""
 elif [[ "$FRONT_APP" = "GoLand" ]]; then
   ICON=""
+elif [[ "$FRONT_APP" = "Xcode" ]]; then
+  ICON=""
 else
   ICON_DRAWING=off
 fi
