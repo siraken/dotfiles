@@ -10,7 +10,7 @@ if ! pgrep -x "Spotify" >/dev/null; then
     label.color=0xff9ece6a \
     icon=󰓛 \
     icon.color=0xff9399b2 \
-    background.color=0xff1a1b26 \
+    background.color="$DEFAULT_BACKGROUND_COLOR" \
     background.drawing=on
   exit 0
 fi
@@ -32,13 +32,13 @@ case "$PLAYER_STATE" in
     ICON=󰏤
     ICON_COLOR=0xff9ece6a
     LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=0xff1a1b26
+    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
     ;;
   *)
     ICON=󰓛
     ICON_COLOR=0xff9ece6a
     LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=0xff1a1b26
+    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
     ;;
 esac
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DEFAULT_BACKGROUND_COLOR=0xff2c2c2e
+DEFAULT_BACKGROUND_COLOR=0xff1a1b26
 BRAND_COLOR=0xffff4e6b
 
 # Apple Musicが起動しているか確認
@@ -10,7 +10,7 @@ if ! pgrep -x "Music" >/dev/null; then
     label.color=0xfff5f5f7 \
     icon=󰓛 \
     icon.color=0xffe91e63 \
-    background.color=0xff2c2c2e \
+    background.color="$DEFAULT_BACKGROUND_COLOR" \
     background.drawing=on
   exit 0
 fi
