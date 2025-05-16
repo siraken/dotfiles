@@ -6,12 +6,7 @@ BRAND_COLOR=0xff1ed760
 # Spotifyが起動しているか確認
 if ! pgrep -x "Spotify" >/dev/null; then
   sketchybar --set "$NAME" \
-    label="Not running" \
-    label.color=0xff9ece6a \
-    icon=󰓛 \
-    icon.color=0xff9399b2 \
-    background.color="$DEFAULT_BACKGROUND_COLOR" \
-    background.drawing=on
+    drawing=off
   exit 0
 fi
 
@@ -56,6 +51,7 @@ else
 fi
 
 sketchybar --set "$NAME" \
+  drawing=on \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \

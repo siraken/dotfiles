@@ -5,13 +5,8 @@ BRAND_COLOR=0xffff4e6b
 
 # Apple Musicが起動しているか確認
 if ! pgrep -x "Music" >/dev/null; then
-  sketchybar --set "$NAME" \
-    label="Not running" \
-    label.color=0xfff5f5f7 \
-    icon=󰓛 \
-    icon.color=0xffe91e63 \
-    background.color="$DEFAULT_BACKGROUND_COLOR" \
-    background.drawing=on
+  sketchybar -m --set "$NAME" \
+    drawing=off
   exit 0
 fi
 
@@ -56,6 +51,7 @@ else
 fi
 
 sketchybar --set "$NAME" \
+  drawing=on \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \
