@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DEFAULT_BACKGROUND_COLOR=0xff2c2c2e
+BRAND_COLOR=0xffff4e6b
 
 # Apple Musicが起動しているか確認
 if ! pgrep -x "Music" >/dev/null; then
@@ -23,9 +24,9 @@ ARTIST_NAME=$(osascript -e 'tell application "Music" to artist of current track 
 case "$PLAYER_STATE" in
   "playing")
     ICON=󰐊
-    ICON_COLOR=0xfffa233f
+    ICON_COLOR=0xffffffff
     LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
+    BACKGROUND_COLOR=$BRAND_COLOR
     ;;
   "paused")
     ICON=󰏤

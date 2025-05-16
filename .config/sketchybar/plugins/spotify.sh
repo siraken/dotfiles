@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DEFAULT_BACKGROUND_COLOR=0xff1a1b26
+BRAND_COLOR=0xff1ed760
 
 # Spotifyが起動しているか確認
 if ! pgrep -x "Spotify" >/dev/null; then
@@ -23,9 +24,9 @@ ARTIST_NAME=$(osascript -e 'tell application "Spotify" to artist of current trac
 case "$PLAYER_STATE" in
   "playing")
     ICON=󰐊
-    ICON_COLOR=0xff9ece6a
+    ICON_COLOR=0xffffffff
     LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=0xff1a1b26
+    BACKGROUND_COLOR=$BRAND_COLOR
     ;;
   "paused")
     ICON=󰏤
