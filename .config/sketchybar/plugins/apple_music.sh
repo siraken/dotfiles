@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DEFAULT_BACKGROUND_COLOR=0xff2c2c2e
+
 # Apple Musicが起動しているか確認
 if ! pgrep -x "Music" >/dev/null; then
   sketchybar --set "$NAME" \
@@ -22,14 +24,20 @@ case "$PLAYER_STATE" in
   "playing")
     ICON=󰐊
     ICON_COLOR=0xfffa233f
+    LABEL_COLOR=0xffffffff
+    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
     ;;
   "paused")
     ICON=󰏤
     ICON_COLOR=0xfffa233f
+    LABEL_COLOR=0xffffffff
+    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
     ;;
   *)
     ICON=󰓛
     ICON_COLOR=0xfffa233f
+    LABEL_COLOR=0xffffffff
+    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
     ;;
 esac
 
@@ -50,6 +58,6 @@ sketchybar --set "$NAME" \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \
-  label.color=0xffffffff \
-  background.color=0xff2c2c2e \
+  label.color="$LABEL_COLOR" \
+  background.color="$BACKGROUND_COLOR" \
   background.drawing=on
