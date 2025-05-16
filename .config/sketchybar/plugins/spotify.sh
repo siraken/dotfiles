@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DEFAULT_BACKGROUND_COLOR=0xff1a1b26
+
 # Spotifyが起動しているか確認
 if ! pgrep -x "Spotify" >/dev/null; then
   sketchybar --set "$NAME" \
@@ -22,14 +24,20 @@ case "$PLAYER_STATE" in
   "playing")
     ICON=󰐊
     ICON_COLOR=0xff9ece6a
+    LABEL_COLOR=0xffffffff
+    BACKGROUND_COLOR=0xff1a1b26
     ;;
   "paused")
     ICON=󰏤
     ICON_COLOR=0xff9ece6a
+    LABEL_COLOR=0xffffffff
+    BACKGROUND_COLOR=0xff1a1b26
     ;;
   *)
     ICON=󰓛
     ICON_COLOR=0xff9ece6a
+    LABEL_COLOR=0xffffffff
+    BACKGROUND_COLOR=0xff1a1b26
     ;;
 esac
 
@@ -50,6 +58,6 @@ sketchybar --set "$NAME" \
   icon="$ICON" \
   icon.color="$ICON_COLOR" \
   label="$LABEL" \
-  label.color=0xffffffff \
-  background.color=0xff1a1b26 \
+  label.color="$LABEL_COLOR" \
+  background.color="$BACKGROUND_COLOR" \
   background.drawing=on
