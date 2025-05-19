@@ -41,3 +41,9 @@ nix run nix-darwin/nix-darwin-24.11#darwin-rebuild -- switch --flake .
 ```
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
+
+## 4. Run `darwin-rebuild`
+
+```bash
+darwin-rebuild switch --flake .#Hostname
+```
