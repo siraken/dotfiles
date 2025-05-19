@@ -97,6 +97,7 @@
 
       # Music
       yabai -m rule --add app=Studio\ One\ 5 manage=off
+      yabai -m rule --add app=eqMac manage=off
 
       # Video
       yabai -m rule --add app=DaVinci\ Resolve manage=off
