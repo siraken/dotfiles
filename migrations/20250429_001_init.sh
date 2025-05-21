@@ -27,6 +27,9 @@ up)
   INSTALL fish
   ln -snf ~/dotfiles/.config/fish ~/.config/
 
+  INSTALL husky
+  ln -snf ~/dotfiles/.config/husky ~/.config/
+
   INSTALL simple-bar
   ln -snf ~/dotfiles/.config/simple-bar/.simplebarrc ~/.simplebarrc
 
