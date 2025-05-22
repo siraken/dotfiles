@@ -361,6 +361,7 @@
       # "alt-tab",
       # "lm-studio",
       # # "native-access",
+      # "input-source-pro",
     ];
     masApps = {
       # mas 'Messenger', id: 1480068668
