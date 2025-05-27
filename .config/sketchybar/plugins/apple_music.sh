@@ -1,7 +1,7 @@
 #!/bin/sh
 
-DEFAULT_BACKGROUND_COLOR=0xff1a1b26
-BRAND_COLOR=0xffff4e6b
+_COLOR_DEFAULT_BACKGROUND=0xff1a1b26
+_COLOR_BRAND=0xffff4e6b
 
 # Apple Musicが起動しているか確認
 if ! pgrep -x "Music" >/dev/null; then
@@ -21,26 +21,26 @@ case "$PLAYER_STATE" in
     ICON=󰐊
     ICON_COLOR=0xffffffff
     LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=$BRAND_COLOR
+    BACKGROUND_COLOR=$_COLOR_BRAND
     ;;
   "paused")
     ICON=󰏤
     ICON_COLOR=0xfffa233f
     LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
+    BACKGROUND_COLOR=$_COLOR_DEFAULT_BACKGROUND
     ;;
   *)
     ICON=󰓛
     ICON_COLOR=0xfffa233f
     LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=$DEFAULT_BACKGROUND_COLOR
+    BACKGROUND_COLOR=$_COLOR_DEFAULT_BACKGROUND
     ;;
 esac
 
 # 曲名とアーティスト名を結合して文字数を制限
 if [ "$PLAYER_STATE" = "playing" ] || [ "$PLAYER_STATE" = "paused" ]; then
   # まず結合
-  LABEL="$TRACK_NAME - $ARTIST_NAME"
+  LABEL="$TRACK_NAME | $ARTIST_NAME"
 
   # 24文字を超える場合は省略
   if [ ${#LABEL} -gt 24 ]; then
