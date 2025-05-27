@@ -37,8 +37,8 @@ sketchybar \
 --set battery update_freq=120 padding_left=5 script="$PLUGIN_DIR/battery.sh" \
 --subscribe battery system_woke power_source_change \
 --add item spotify right \
---set spotify update_freq=1 padding_left=5 script="$PLUGIN_DIR/spotify.sh" \
+--set spotify update_freq=1 padding_left=5 script="$PLUGIN_DIR/spotify.sh" click_script="$PLUGIN_DIR/spotify_click.sh" \
 --add item apple_music right \
---set apple_music update_freq=1 padding_left=5 script="$PLUGIN_DIR/apple_music.sh"
+--set apple_music update_freq=1 padding_left=5 script="$PLUGIN_DIR/apple_music.sh " click_script="$PLUGIN_DIR/apple_music_click.sh" \
 
 sketchybar --update
