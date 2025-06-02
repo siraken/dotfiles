@@ -13,12 +13,5 @@ sublime-text
 ubersicht
 visual-studio-code
 vivaldi
-whisky
-wireshark
-xbar
-xquartz
-xsplit-vcam
 youtube-music
 zed
-zoom
-zulu@17
