@@ -47,3 +47,9 @@ After the installation, you may need to restart your terminal. The `darwin-*` co
 ```bash
 darwin-rebuild switch --flake .#Hostname
 ```
+
+## x. Garbage Collection
+
+```bash
+nix store gc
+```
