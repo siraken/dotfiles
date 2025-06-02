@@ -385,8 +385,10 @@
       "lapce"
       "lm-studio"
       "local"
-      # "logi-options-plus" # logi-options+ ?
+      # FIXME: "logi-options+"
+      # FIXME: "logi-options-plus"
       "logitech-g-hub"
+      # "macfuse"
       "mamp"
       "microsoft-teams"
       "min"
@@ -416,6 +418,7 @@
       "termius"
       "tor-browser"
       "transmit"
+      "ngrok"
       # "ubersicht"
       "unity-hub"
       "vagrant"
@@ -429,8 +432,10 @@
       "xbar"
       "xquartz"
       "xsplit-vcam"
+      "youtube-music"
       "zoom"
       "zulu@17"
+      "zed"
       # # "eclipse" similarly casks are available
       # # "google-japanese-ime" # Failed to install
       # # "mongodb-compass"
