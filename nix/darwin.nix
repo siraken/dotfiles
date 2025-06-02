@@ -353,9 +353,6 @@
       # "jetbrains-toolbox",
       # "tor-browser",
       # "keycastr",
-      # "font-hack-nerd-font",
-      # "font-monocraft",
-      # "font-source-code-pro",
       # "1password/tap/1password-cli",
       # "webtorrent",
       # "numi",
@@ -461,7 +458,11 @@
   };
 
   fonts = {
-    packages = with pkgs; [ ];
+    packages = with pkgs; [
+      nerd-fonts-hack
+      source-code-pro
+      monocraft
+    ];
   };
 
   # The platform the configuration will be used on.
