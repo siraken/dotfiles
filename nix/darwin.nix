@@ -15,7 +15,7 @@
     ./environment/system-packages.nix
     # ./programs/bash.nix
     # ./programs/direnv.nix
-    # ./programs/fish.nix
+    ./programs/fish.nix
     # ./services/sketchybar.nix
     ./services/skhd.nix
     ./services/spotifyd.nix
