@@ -137,19 +137,19 @@
       # "ethereum"
       # "solidity"
       "clojure"
-      # "leiningen"
+      "leiningen"
       # # "babashka" no available formula
       "sbcl"
       "stack"
       "go"
       # # "mongodb-community" no available formula
       "duck"
-      # "awscli"
+      "awscli"
       # "aws/tap/lightsailctl"
       "dart"
       # "sqlite"
       "tenv"
-      # "azure-cli"
+      "azure-cli"
       # # "themekit" no available formula
       "act"
       "hugo"
@@ -157,7 +157,7 @@
       "tree-sitter"
       "emacs"
       # # "emacs-plus" args: ["with-spacemacs-icon" "with-native-comp"]
-      # "neovim"
+      "neovim"
       "lua"
       "luajit" # args: ["HEAD"]
       "luarocks"
@@ -213,11 +213,11 @@
       # "git-delta"
       "gitui"
       "tokei"
-      # "helix"
-      # "kakoune"
+      "helix"
+      "kakoune"
       "genact"
       "onefetch"
-      # "bottom"
+      "bottom"
       "dust"
       "goreleaser"
       # "redis"
@@ -240,7 +240,7 @@
       "streamlink"
       "git-secrets"
       "flyctl"
-      # "erlang"
+      "erlang"
       "ios-deploy"
       "jless"
       "elm"
@@ -261,7 +261,7 @@
       # # "clj-kondo" no available formula
       "minikube"
       # # "nekome" no available formula
-      # "qemu"
+      "qemu"
       # # "speedtest" no available formula
       # "golang-migrate"
       # # "ngrok" # install with cask
