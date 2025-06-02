@@ -12,16 +12,10 @@
   };
 
   imports = [
-    ./environment/system-packages.nix
-    # ./programs/bash.nix
-    ./programs/zsh.nix
-    # ./programs/direnv.nix
-    ./programs/fish.nix
     # ./services/sketchybar.nix
     ./services/skhd.nix
     ./services/spotifyd.nix
     ./services/yabai.nix
-    # ./programs/starship.nix
   ];
 
   system = {
