@@ -442,38 +442,38 @@
       # # "native-access"
     ];
     masApps = {
-      # # mas 'Compressor', id: 424390742
-      # # mas 'DaVinci Resolve', id: 571213070
-      # # mas 'Final Cut Pro', id: 424389933
-      # # mas 'Logic Pro', id: 634148309
-      # # mas 'MainStage', id: 634159523
-      # # mas 'Motion', id: 434290957
-      # # mas 'Sequel Ace', id: 1518036000
-      # # mas 'Trello', id: 1278508951
-      # mas 'DaisyDisk', id: 411643860
-      # mas 'KakaoTalk', id: 869223134
-      # mas 'Kindle', id: 302584613
-      # mas 'LanScan', id: 472226235
-      # mas 'LINE', id: 539883307
-      # mas 'Magnet', id: 441258766
-      # mas 'Messenger', id: 1480068668
-      # mas 'Microsoft Excel', id: 462058435
-      # mas 'Microsoft Outlook', id: 985367838
-      # mas 'Microsoft PowerPoint', id: 462062816
-      # mas 'Microsoft Word', id: 462054704
-      # mas 'PopClip', id: 445189367
-      # mas 'RunCat', id: 1429033973
-      # mas 'Slack', id: 803453959
-      # mas 'Spark', id: 1176895641
-      # mas 'Tailscale', id: 1475387142
-      # mas 'The Unarchiver', id: 425424353
-      # mas 'Twitter', id: 1482454543
+      # # 'Compressor', id: 424390742
+      # # 'DaVinci Resolve', id: 571213070
+      # # 'Final Cut Pro', id: 424389933
+      # # 'Logic Pro', id: 634148309
+      # # 'MainStage', id: 634159523
+      # # 'Motion', id: 434290957
+      # # 'Sequel Ace', id: 1518036000
+      # # 'Trello', id: 1278508951
+      # 'DaisyDisk', id: 411643860
+      # 'KakaoTalk', id: 869223134
+      # 'Kindle', id: 302584613
+      # 'LanScan', id: 472226235
+      # 'LINE', id: 539883307
+      # 'Magnet', id: 441258766
+      # 'Messenger', id: 1480068668
+      # 'Microsoft Excel', id: 462058435
+      # 'Microsoft Outlook', id: 985367838
+      # 'Microsoft PowerPoint', id: 462062816
+      # 'Microsoft Word', id: 462054704
+      # 'PopClip', id: 445189367
+      # 'RunCat', id: 1429033973
+      # 'Slack', id: 803453959
+      # 'Spark', id: 1176895641
+      # 'Tailscale', id: 1475387142
+      # 'The Unarchiver', id: 425424353
+      # 'Twitter', id: 1482454543
     };
   };
 
   fonts = {
     packages = with pkgs; [
-      # nerd-fonts-hack
+      nerd-fonts-hack
       source-code-pro
       monocraft
     ];
