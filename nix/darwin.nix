@@ -266,11 +266,11 @@
       # # "ngrok" # install with cask
       # # "shopify-cli" no available formula
       "earthly"
-      # "difftastic"
+      "difftastic"
       "putty"
       "glow"
       "git-filter-repo"
-      # "tnftp"
+      "tnftp"
       "openssl"
       "ansible"
       "pipx"
