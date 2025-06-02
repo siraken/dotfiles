@@ -21,7 +21,7 @@
     ./services/skhd.nix
     ./services/spotifyd.nix
     ./services/yabai.nix
-    ./programs/starship.nix
+    # ./programs/starship.nix
   ];
 
   system = {
@@ -474,7 +474,7 @@
 
   fonts = {
     packages = with pkgs; [
-      # nerd-fonts-hack
+      nerd-fonts.hack
       source-code-pro
       monocraft
     ];
