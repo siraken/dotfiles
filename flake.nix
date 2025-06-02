@@ -37,11 +37,19 @@
           modules = [
             ./nix/darwin.nix
             home-manager.darwinModules.home-manager
-            # {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users.siraken = ./nix/home.nix;
-            # }
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+              };
+              users.users.siraken = {
+                home = {
+                  username = "siraken";
+                  homeDirectory = "/Users/siraken";
+                  stateVersion = "24.11";
+                };
+              };
+            }
           ];
         };
       };
