@@ -29,9 +29,6 @@
     {
       # macOS (darwin) configuration
       darwinConfigurations = {
-        # Build darwin flake using:
-        # $ darwin-rebuild build --flake .#mbp
-        # $ darwin-rebuild switch --flake .#mbp
         "mbp" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
