@@ -1,0 +1,19 @@
+Name              Status User    File
+borders           none                    
+caddy             none                    
+cloudflared       none                    
+dbus              none                    
+emacs             none                    
+ipfs              none                    
+mongodb-community none                    
+mysql             none                    
+nginx             none                    
+ollama            started         siraken ~/Library/LaunchAgents/homebrew.mxcl.ollama.plist
+php               none                    
+postgresql@14     started         siraken ~/Library/LaunchAgents/homebrew.mxcl.postgresql@14.plist
+postgresql@16     none                    
+redis             none                    
+sketchybar        started         siraken ~/Library/LaunchAgents/homebrew.mxcl.sketchybar.plist
+symfony-cli       none                    
+tor               started         siraken ~/Library/LaunchAgents/homebrew.mxcl.tor.plist
+unbound           none                    
