@@ -14,6 +14,7 @@
   imports = [
     ./environment/system-packages.nix
     # ./programs/bash.nix
+    ./programs/zsh.nix
     # ./programs/direnv.nix
     ./programs/fish.nix
     # ./services/sketchybar.nix
