@@ -39,13 +39,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
               };
-              users.users.siraken = {
-                home = {
-                  username = "siraken";
-                  homeDirectory = "/Users/siraken";
-                  stateVersion = "25.05";
-                };
-              };
+              users.users.siraken = import ./nix/home.nix;
             }
           ];
         };
