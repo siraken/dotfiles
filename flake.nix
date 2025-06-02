@@ -26,14 +26,13 @@
       home-manager,
       nix-on-droid,
     }:
-    let
-      darwinSystem = "aarch64-darwin";
-      darwinUser = "siraken";
-      darwinHost = "Kentos-MacBook-Pro";
-
-      mkDarwinSystem =
-        { hostname, username }:
-        nix-darwin.lib.darwinSystem {
+    {
+      # macOS (darwin) configuration
+      darwinConfigurations = {
+        # Build darwin flake using:
+        # $ darwin-rebuild build --flake .#mbp
+        # $ darwin-rebuild switch --flake .#mbp
+        "mbp" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
             ./nix/darwin.nix
@@ -45,21 +44,12 @@
             # }
           ];
         };
-    in
-    {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#Kentos-MacBook-Pro
-      # $ darwin-rebuild switch --flake .#Kentos-MacBook-Pro
-      darwinConfigurations = {
-        ${darwinHost} = mkDarwinSystem {
-          hostname = darwinHost;
-          username = darwinUser;
-        };
       };
 
+      # Linux configuration
       # TODO: Add NixOS modules for your Linux machine
       nixosConfigurations = {
-        your-linux-machine-name = nixpkgs.lib.nixosSystem {
+        "your-linux-machine-name" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             (
