@@ -326,115 +326,115 @@
       "mise"
     ];
     casks = [
-      # # "1password" installed,
-      # # "github" installed,
-      # "chromium", args: { "no-quarantine": true },
-      # "google-chrome",
-      # "brave-browser",
-      # "vivaldi",
-      # "firefox",
-      # "firefox@developer-edition",
-      # "blisk",
-      # "google-drive",
-      # "dropbox",
-      # "iterm2",
-      # "kitty",
-      # "hyper",
-      # # "sourcetree",
-      # "mamp",
-      # "visual-studio-code",
-      # "docker",
-      # "blackhole-2ch",
-      # "blackhole-16ch",
-      # "blackhole-64ch",
-      # "skype",
-      # "discord",
-      # "zoom",
-      # "obs",
-      # "appcleaner",
-      # "postman",
-      # "spotify",
-      # "vlc",
-      # "steam",
-      # "sublime-text",
-      # "lapce",
-      # "gitify",
-      # "jetbrains-toolbox",
-      # "tor-browser",
-      # "keycastr",
-      # "1password/tap/1password-cli",
-      # "webtorrent",
-      # "numi",
-      # "powershell",
-      # "ubersicht",
-      # # "dotnet",
-      # "dotnet-sdk",
-      # "wireshark",
-      # "drawio",
-      # # "google-japanese-ime" # Failed to install,
-      # "alfred",
-      # # "scenebuilder",
-      # "blender",
-      # "cyberduck",
-      # "eqmac",
-      # "figma",
-      # "handbrake",
-      # "imageoptim",
-      # "min",
-      # "minecraft",
-      # # "mongodb-compass",
-      # "notion",
-      # "poedit",
-      # "raspberry-pi-imager",
-      # "sdformatter",
-      # "unity-hub",
-      # "ipfs" # ipfs/ipfs-desktop,
-      # "local",
-      # "microsoft-teams",
-      # "vagrant",
-      # "brewlet",
-      # "xquartz",
-      # "sf-symbols",
-      # "onyx",
-      # "burp-suite",
-      # "azure-data-studio",
-      # "audacity",
-      # # "eclipse" similarly casks are available,
-      # "tableplus",
-      # "hammerspoon",
-      # "mjml",
-      # "termius",
-      # "alacritty",
-      # "wezterm",
-      # "ghostty",
-      # "arc",
-      # "xbar",
-      # "neovide",
-      # "bartender",
-      # "transmit",
-      # "cloudflare-warp",
-      # "diffusionbee",
-      # "elgato-camera-hub",
-      # "elgato-control-center",
-      # "elgato-stream-deck",
-      # "logi-options-plus",
-      # "logitech-g-hub",
-      # "obsidian",
-      # "streamlabs",
-      # "surge-xt",
-      # "balenaetcher",
-      # "bitcoin-core",
-      # "whisky",
-      # "epic-games",
-      # "drivedx",
-      # "xsplit-vcam",
-      # "zulu@17",
-      # "session-manager-plugin",
-      # "chatgpt",
-      # "background-music",
-      # "alt-tab",
-      # "lm-studio",
-      # # "native-access",
+      # "1password"
+      # "github"
+      # "chromium" args: { "no-quarantine": true }
+      # "google-chrome"
+      # "brave-browser"
+      # "vivaldi"
+      # "firefox"
+      # "firefox@developer-edition"
+      # "blisk"
+      # "google-drive"
+      # "dropbox"
+      # "iterm2"
+      # "kitty"
+      # "hyper"
+      # # "sourcetree"
+      # "mamp"
+      # "visual-studio-code"
+      # "docker"
+      # "blackhole-2ch"
+      # "blackhole-16ch"
+      # "blackhole-64ch"
+      # "skype"
+      # "discord"
+      # "zoom"
+      # "obs"
+      # "appcleaner"
+      # "postman"
+      # "spotify"
+      # "vlc"
+      # "steam"
+      # "sublime-text"
+      # "lapce"
+      # "gitify"
+      # "jetbrains-toolbox"
+      # "tor-browser"
+      # "keycastr"
+      # "1password/tap/1password-cli"
+      # "webtorrent"
+      # "numi"
+      # "powershell"
+      # "ubersicht"
+      # # "dotnet"
+      # "dotnet-sdk"
+      # "wireshark"
+      # "drawio"
+      # # "google-japanese-ime" # Failed to install
+      # "alfred"
+      # # "scenebuilder"
+      # "blender"
+      # "cyberduck"
+      # "eqmac"
+      # "figma"
+      # "handbrake"
+      # "imageoptim"
+      # "min"
+      # "minecraft"
+      # # "mongodb-compass"
+      # "notion"
+      # "poedit"
+      # "raspberry-pi-imager"
+      # "sdformatter"
+      # "unity-hub"
+      # "ipfs" # ipfs/ipfs-desktop
+      # "local"
+      # "microsoft-teams"
+      # "vagrant"
+      # "brewlet"
+      # "xquartz"
+      # "sf-symbols"
+      # "onyx"
+      # "burp-suite"
+      # "azure-data-studio"
+      # "audacity"
+      # # "eclipse" similarly casks are available
+      # "tableplus"
+      # "hammerspoon"
+      # "mjml"
+      # "termius"
+      # "alacritty"
+      # "wezterm"
+      # "ghostty"
+      # "arc"
+      # "xbar"
+      # "neovide"
+      # "bartender"
+      # "transmit"
+      # "cloudflare-warp"
+      # "diffusionbee"
+      # "elgato-camera-hub"
+      # "elgato-control-center"
+      # "elgato-stream-deck"
+      # "logi-options-plus"
+      # "logitech-g-hub"
+      # "obsidian"
+      # "streamlabs"
+      # "surge-xt"
+      # "balenaetcher"
+      # "bitcoin-core"
+      # "whisky"
+      # "epic-games"
+      # "drivedx"
+      # "xsplit-vcam"
+      # "zulu@17"
+      # "session-manager-plugin"
+      # "chatgpt"
+      # "background-music"
+      # "alt-tab"
+      # "lm-studio"
+      # # "native-access"
     ];
     masApps = {
       # mas 'Messenger', id: 1480068668
