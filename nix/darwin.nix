@@ -442,32 +442,32 @@
       # # "native-access"
     ];
     masApps = {
-      # # 'Compressor', id: 424390742
-      # # 'DaVinci Resolve', id: 571213070
-      # # 'Final Cut Pro', id: 424389933
-      # # 'Logic Pro', id: 634148309
-      # # 'MainStage', id: 634159523
-      # # 'Motion', id: 434290957
-      # # 'Sequel Ace', id: 1518036000
-      # # 'Trello', id: 1278508951
-      # 'DaisyDisk', id: 411643860
-      # 'KakaoTalk', id: 869223134
-      # 'Kindle', id: 302584613
-      # 'LanScan', id: 472226235
-      # 'LINE', id: 539883307
-      # 'Magnet', id: 441258766
-      # 'Messenger', id: 1480068668
-      # 'Microsoft Excel', id: 462058435
-      # 'Microsoft Outlook', id: 985367838
-      # 'Microsoft PowerPoint', id: 462062816
-      # 'Microsoft Word', id: 462054704
-      # 'PopClip', id: 445189367
-      # 'RunCat', id: 1429033973
-      # 'Slack', id: 803453959
-      # 'Spark', id: 1176895641
-      # 'Tailscale', id: 1475387142
-      # 'The Unarchiver', id: 425424353
-      # 'Twitter', id: 1482454543
+      # # "Compressor", id: 424390742
+      # # "DaVinci Resolve", id: 571213070
+      # # "Final Cut Pro", id: 424389933
+      # # "Logic Pro", id: 634148309
+      # # "MainStage", id: 634159523
+      # # "Motion", id: 434290957
+      # # "Sequel Ace", id: 1518036000
+      # # "Trello", id: 1278508951
+      # "DaisyDisk", id: 411643860
+      # "KakaoTalk", id: 869223134
+      # "Kindle", id: 302584613
+      # "LanScan", id: 472226235
+      # "LINE", id: 539883307
+      # "Magnet", id: 441258766
+      # "Messenger", id: 1480068668
+      # "Microsoft Excel", id: 462058435
+      # "Microsoft Outlook", id: 985367838
+      # "Microsoft PowerPoint", id: 462062816
+      # "Microsoft Word", id: 462054704
+      # "PopClip", id: 445189367
+      # "RunCat", id: 1429033973
+      # "Slack", id: 803453959
+      # "Spark", id: 1176895641
+      # "Tailscale", id: 1475387142
+      # "The Unarchiver", id: 425424353
+      # "Twitter", id: 1482454543
     };
   };
 
