@@ -459,7 +459,7 @@
 
   fonts = {
     packages = with pkgs; [
-      nerd-fonts-hack
+      # nerd-fonts-hack
       source-code-pro
       monocraft
     ];

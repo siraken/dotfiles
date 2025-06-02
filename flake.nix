@@ -2,13 +2,13 @@
   description = "siraken's Nix configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-24.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-on-droid = {
@@ -46,7 +46,7 @@
                 home = {
                   username = "siraken";
                   homeDirectory = "/Users/siraken";
-                  stateVersion = "24.11";
+                  stateVersion = "25.05";
                 };
               };
             }
