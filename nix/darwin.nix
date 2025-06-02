@@ -26,7 +26,7 @@
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 5;
-
+    primaryUser = "siraken";
     defaults = {
       # TODO:
       # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
@@ -63,6 +63,17 @@
         };
         "com.jetbrains.rubymine" = {
           ApplePressAndHoldEnabled = false;
+        };
+      };
+    };
+  };
+
+  security = {
+    pam = {
+      services = {
+        sudo_local = {
+          touchIdAuth = true;
+          watchIdAuth = true;
         };
       };
     };
