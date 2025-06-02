@@ -369,7 +369,7 @@
       "firefox"
       "firefox@developer-edition"
       "ghostty"
-      # "github"
+      "github"
       "gitify"
       "google-chrome"
       "google-drive"
@@ -419,8 +419,8 @@
       # "ubersicht"
       "unity-hub"
       "vagrant"
-      # "visual-studio-code"
-      # "vivaldi"
+      "visual-studio-code"
+      "vivaldi"
       "vlc"
       "webtorrent"
       "wezterm"
@@ -435,7 +435,6 @@
       # # "google-japanese-ime" # Failed to install
       # # "mongodb-compass"
       # # "native-access"
-      # # "scenebuilder"
     ];
     masApps = {
       # mas 'Messenger', id: 1480068668

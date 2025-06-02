@@ -1,5 +1,4 @@
 1password-cli
-claude
 font-hack-nerd-font
 font-monocraft
 font-source-code-pro
@@ -9,9 +8,6 @@ logi-options-plus
 macfuse
 microsoft-auto-update
 ngrok
-sublime-text
 ubersicht
-visual-studio-code
-vivaldi
 youtube-music
 zed
