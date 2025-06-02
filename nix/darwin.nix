@@ -21,6 +21,7 @@
     ./services/skhd.nix
     ./services/spotifyd.nix
     ./services/yabai.nix
+    ./programs/starship.nix
   ];
 
   system = {
@@ -269,7 +270,6 @@
       "solidity"
       "sqlite"
       "stack"
-      "starship"
       "streamlink"
       "telnet"
       "tenv"
