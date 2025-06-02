@@ -36,12 +36,12 @@
         nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            ./nix/darwin/configuration.nix
+            ./nix/configuration.nix
             home-manager.darwinModules.home-manager
             # {
             #   home-manager.useGlobalPkgs = true;
             #   home-manager.useUserPackages = true;
-            #   home-manager.users.siraken = ./nix/darwin/home.nix;
+            #   home-manager.users.siraken = ./nix/home.nix;
             # }
           ];
         };
