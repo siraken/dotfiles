@@ -115,6 +115,7 @@
       # "symfony-cli/tap",
       # "cargo-lambda/cargo-lambda",
       # "FelixKratz/formulae",
+      # "VOICEVOX/voicevox"
     ];
     brews = [
       "act"
