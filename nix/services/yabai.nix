@@ -98,10 +98,12 @@
       # Music
       yabai -m rule --add app=Studio\ One\ 5 manage=off
       yabai -m rule --add app=eqMac manage=off
+      yabai -m rule --add app=VOICEVOX manage=off
 
       # Video
       yabai -m rule --add app=DaVinci\ Resolve manage=off
       yabai -m rule --add app=OBS manage=off
+      yabai -m rule --add app=VTube\ Studio manage=off
 
       # Browsers
       # yabai -m rule --add app=Google\ Chrome manage=off
