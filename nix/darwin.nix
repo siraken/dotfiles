@@ -436,6 +436,10 @@
       # # "google-japanese-ime" # Failed to install
       # # "mongodb-compass"
       # # "native-access"
+      # {
+      #   name = "voicevox";
+      #   args = { "no_quarantine" = true; };
+      # }
     ];
     masApps = {
       "Compressor" = 424390742;
