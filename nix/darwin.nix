@@ -290,6 +290,7 @@
       "zola"
       "zoxide"
       "zplug"
+      "pinact"
       # "aws/tap/lightsailctl"
       # "cloudflare/cloudflare/cf-terraforming"
       # "ipfs" # ipfs/kubo
