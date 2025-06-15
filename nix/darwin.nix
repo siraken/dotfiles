@@ -16,6 +16,7 @@
     ./services/skhd.nix
     ./services/spotifyd.nix
     ./services/yabai.nix
+    ./programs/tmux.nix
   ];
 
   system = {
