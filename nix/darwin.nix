@@ -220,6 +220,7 @@
       "mise"
       "mist"
       "mkcert"
+      "certbot"
       "monolith"
       "mplayer"
       "mpv"
