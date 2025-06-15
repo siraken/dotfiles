@@ -112,6 +112,7 @@ up)
 
   INSTALL Claude
   ln -snf ~/dotfiles/.config/claude/commands ~/.claude
+  ln -snf ~/dotfiles/.config/claude/settings.json ~/.claude
 
   # INSTALL nix
   # ln -snf ~/dotfiles/.config/nix ~/.config
