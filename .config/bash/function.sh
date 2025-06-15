@@ -75,6 +75,17 @@ function ide() {
   tmux split-window -h -p 50
 }
 
+function ccc() {
+  tmux split-window -h && \
+  tmux split-window -v && \
+  tmux select-pane -t 0 && \
+  tmux split-window -v && \
+  tmux select-pane -t 2 && \
+  tmux split-window -v && \
+  tmux select-pane -t 4 && \
+  tmux split-window -v
+}
+
 # Restart yabai and skhd
 function res-yabai() {
   yabai --restart-service
