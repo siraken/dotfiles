@@ -36,16 +36,22 @@
 
       # Function for nix-darwin system configuration
       mkDarwinConfiguration =
-        { system }:
+        { system, username }:
         nix-darwin.lib.darwinSystem {
           system = system;
           modules = [
             ./nix/darwin.nix
             home-manager.darwinModules.home-manager
             {
+              users.users = {
+                "${username}" = {
+                  name = "${username}";
+                  home = "/Users/${username}";
+                };
+              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              # home-manager.users.siraken = import ./nix/home.nix;
+              home-manager.users.siraken = import ./nix/home.nix;
             }
           ];
         };
@@ -159,7 +165,7 @@
         };
     in {
       darwinConfigurations = {
-        "mbp" = mkDarwinConfiguration { system = "aarch64-darwin"; };
+        "mbp" = mkDarwinConfiguration { system = "aarch64-darwin"; username = "siraken"; };
       };
 
       nixosConfigurations = {
