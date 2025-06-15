@@ -2,20 +2,9 @@
 {
   programs.tmux = {
     enable = true;
-
-    # Terminal settings
-    terminal = "tmux-256color";
-    escapeTime = 1;
-    historyLimit = 64096;
-
-    # Mouse support
-    mouse = true;
-
-    # Prefix key
-    prefix = "C-t";
-
-    # Key bindings
-    keyMode = "vi";
+    enableMouse = true;
+    enableSensible = true;
+    enableVim = true;
 
     # Custom configuration
     extraConfig = ''
@@ -63,30 +52,38 @@
       # if-shell 'uname -s | grep -q Darwin' 'source $HOME/.config/tmux/tmux.darwin.conf'
     '';
 
+    # tmuxOptions = {
+    #   # Terminal settings
+    #   terminal = "tmux-256color";
+    #   escapeTime = 1;
+    #   historyLimit = 64096;
+
+    #   # Mouse support
+
+    #   # Prefix key
+    #   prefix = "C-t";
+    # };
+
     # Plugins
-    plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = tpm;
-        extraConfig = "";
-      }
-      {
-        plugin = sensible;
-        extraConfig = "";
-      }
-      {
-        plugin = logging;
-        extraConfig = "";
-      }
-      {
-        plugin = pain-control;
-        extraConfig = "";
-      }
-      {
-        plugin = prefix-highlight;
-        extraConfig = "";
-      }
-      # Note: tmux-spotify-tui and tmux-keyboard-layout may need to be added manually
-      # as they might not be available in nixpkgs
-    ];
+    # plugins = with pkgs.tmuxPlugins; [
+    #   {
+    #     plugin = tpm;
+    #     extraConfig = "";
+    #   }
+    #   {
+    #     plugin = logging;
+    #     extraConfig = "";
+    #   }
+    #   {
+    #     plugin = pain-control;
+    #     extraConfig = "";
+    #   }
+    #   {
+    #     plugin = prefix-highlight;
+    #     extraConfig = "";
+    #   }
+    #   # Note: tmux-spotify-tui and tmux-keyboard-layout may need to be added manually
+    #   # as they might not be available in nixpkgs
+    # ];
   };
 }
