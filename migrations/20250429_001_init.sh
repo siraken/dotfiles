@@ -76,10 +76,6 @@ up)
   INSTALL MongoDB Shell
   ln -snf ~/dotfiles/.mongoshrc.js ~/.mongoshrc.js
 
-  INSTALL PowerShell
-  mkdir -p ~/.config/powershell
-  ln -snf ~/dotfiles/.config/powershell/linux.ps1 ~/.config/powershell/Microsoft.PowerShell_profile.ps1
-
   INSTALL Hyper
   ln -snf ~/dotfiles/.config/hyper/.hyper.js ~/.hyper.js
 
@@ -133,7 +129,6 @@ down)
   rm -rf ~/.config/helix
   rm -rf ~/.config/kak
   rm -rf ~/.mongoshrc.js
-  rm -rf ~/.config/powershell/Microsoft.PowerShell_profile.ps1
   rm -rf ~/.hyper.js
 ;;
 esac
