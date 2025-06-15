@@ -1,8 +1,10 @@
 { config, pkgs, ... }:
-{
+let
+  username = "siraken";
+in {
   home = {
-    username = "siraken";
-    homeDirectory = "/Users/siraken";
+    username = username;
+    homeDirectory = "/Users/${username}";
 
     imports = [
       ./environment/system-packages.nix
