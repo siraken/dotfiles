@@ -271,7 +271,6 @@
       "tenv"
       "testdisk"
       "tldr"
-      "tmux"
       "tnftp"
       "tokei"
       "tor" # restart_service: true
