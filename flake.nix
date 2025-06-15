@@ -26,7 +26,9 @@
       home-manager,
       nix-on-droid,
     }:
-    {
+    let
+      username = "siraken";
+    in {
       # macOS (darwin) configuration
       darwinConfigurations = {
         "mbp" = nix-darwin.lib.darwinSystem {
