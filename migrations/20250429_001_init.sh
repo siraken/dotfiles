@@ -110,6 +110,9 @@ up)
   INSTALL JankyBorders
   ln -snf ~/dotfiles/.config/borders ~/.config
 
+  INSTALL Claude
+  ln -snf ~/dotfiles/.config/claude/commands ~/.claude
+
   # INSTALL nix
   # ln -snf ~/dotfiles/.config/nix ~/.config
 ;;
