@@ -39,9 +39,6 @@ up)
   INSTALL ranger
   ln -snf ~/dotfiles/.config/ranger ~/.config/
 
-  INSTALL tmux
-  ln -snf ~/dotfiles/.config/tmux ~/.config/
-
   INSTALL Starship
   ln -snf ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 
@@ -126,7 +123,6 @@ down)
   rm -rf ~/.config/fish
   rm -rf ~/.simplebarrc
   rm -rf ~/.config/ranger
-  rm -rf ~/.config/tmux
   rm -rf ~/.config/starship.toml
   rm -rf ~/.config/git
   rm -rf ~/.emacs.d
