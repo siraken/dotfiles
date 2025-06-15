@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
@@ -43,11 +43,9 @@
             ./nix/darwin.nix
             home-manager.darwinModules.home-manager
             {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-              };
-              users.users.siraken = import ./nix/home.nix;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              # home-manager.users.siraken = import ./nix/home.nix;
             }
           ];
         };
