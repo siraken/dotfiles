@@ -8,6 +8,10 @@
 
     # Custom configuration
     extraConfig = ''
+      set -s escape-time 50
+      set-option -g default-shell "/opt/homebrew/bin/bash"
+      set -g default-command "/opt/homebrew/bin/bash"
+
       # Terminal overrides
       set -ag terminal-overrides ',xterm-256color:RGB'
 
