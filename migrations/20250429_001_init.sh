@@ -126,9 +126,7 @@ down)
   rm -rf ~/.config/fish
   rm -rf ~/.simplebarrc
   rm -rf ~/.config/ranger
-  rm -rf ~/.tmux.conf
-  rm -rf ~/.tmux.darwin.conf
-  rm -rf ~/.tmux.powerline.conf
+  rm -rf ~/.config/tmux
   rm -rf ~/.config/starship.toml
   rm -rf ~/.config/git
   rm -rf ~/.emacs.d
