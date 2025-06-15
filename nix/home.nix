@@ -6,7 +6,7 @@ in {
     # ./environment/system-packages.nix
     # ./programs/bash.nix
     # ./programs/zsh.nix
-    ./programs/fish.nix
+    # ./programs/fish.nix
     # ./programs/tmux.nix
     # ./programs/direnv.nix
     # ./programs/starship.nix
