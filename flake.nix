@@ -27,12 +27,18 @@
       nix-on-droid,
     }:
     let
-      username = "siraken";
-    in {
-      # macOS (darwin) configuration
-      darwinConfigurations = {
-        "mbp" = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
+      users = {
+        siraken = {
+          username = "siraken";
+          fullName = "Kento Shirasawa";
+        };
+      };
+
+      # Function for nix-darwin system configuration
+      mkDarwinConfiguration =
+        { system }:
+        nix-darwin.lib.darwinSystem {
+          system = system;
           modules = [
             ./nix/darwin.nix
             home-manager.darwinModules.home-manager
@@ -45,12 +51,11 @@
             }
           ];
         };
-      };
 
-      # Linux configuration
+      # Function for NixOS (Linux) system configuration
       # TODO: Add NixOS modules for your Linux machine
-      nixosConfigurations = {
-        "your-linux-machine-name" = nixpkgs.lib.nixosSystem {
+      mkNixOSConfiguration =
+        {}: nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             (
@@ -154,6 +159,13 @@
             )
           ];
         };
+    in {
+      darwinConfigurations = {
+        "mbp" = mkDarwinConfiguration { system = "aarch64-darwin"; };
+      };
+
+      nixosConfigurations = {
+        "your-linux-machine-name" = mkNixOSConfiguration { };
       };
     };
 }
