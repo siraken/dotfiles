@@ -31,6 +31,7 @@ config.audible_bell = 'SystemBeep'
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.mouse_bindings = mouse_bindings
+config.use_ime = true
 config.default_prog = { "/bin/bash", "-l" }
 if is_mac then
   config.default_prog = { "/opt/homebrew/bin/bash", "-l" }
