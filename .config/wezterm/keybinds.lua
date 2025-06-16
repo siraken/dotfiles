@@ -6,6 +6,7 @@ return {
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
+    { key = "Enter", mods = "SHIFT", action = act.SendString("\n") },
     { key = "!", mods = "CTRL", action = act.ActivateTab(0) },
     { key = "!", mods = "SHIFT|CTRL", action = act.ActivateTab(0) },
     { key = '"', mods = "ALT|CTRL", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
