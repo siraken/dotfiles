@@ -23,6 +23,11 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+wezterm.on('bell', function(window, pane)
+  window:toast_notification('Claude Code', 'Task completed', nil, 4000)
+end)
+
+config.audible_bell = 'SystemBeep'
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.mouse_bindings = mouse_bindings
