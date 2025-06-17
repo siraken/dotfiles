@@ -17,6 +17,9 @@ local is_mac = string.find(wezterm.target_triple, "apple")
 local is_win = wezterm.target_triple == "x86_64-pc-windows-msvc"
 local is_linux = wezterm.target_triple == "x86_64-unknown-linux-gnu"
 
+local act = wezterm.action
+local mux = wezterm.mux
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
@@ -25,6 +28,12 @@ end
 
 wezterm.on('bell', function(window, pane)
   window:toast_notification('Claude Code', 'Task completed', nil, 4000)
+end)
+
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  pane:split { direction = 'Bottom', size = 0.25 }
+  pane:split { direction = 'Right', size = 0.5 }
 end)
 
 config.audible_bell = 'SystemBeep'
