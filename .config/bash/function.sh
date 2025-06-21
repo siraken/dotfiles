@@ -86,26 +86,18 @@ function ccc() {
   tmux split-window -v
 }
 
+function cccw() {
+  # CURRENT_DIR=$(pwd)
+  # CURRENT_PANE=$(wezterm cli list --format json | jq '.[] | select(.is_active == true) | .pane_id')
+  # RIGHT_TOP=$(wezterm cli split-pane --right --percent 50)
+  # wezterm cli activate-pane --pane-id $CURRENT_PANE
+  # RIGHT_BOTTOM=$(wezterm cli split-pane --bottom --percent 50)
+  # wezterm cli activate-pane --pane-id $RIGHT_TOP
+  # wezterm cli split-pane --bottom --percent 50
+}
+
 # Restart yabai and skhd
 function res-yabai() {
   yabai --restart-service
   skhd --restart-service
-}
-
-function トウキョウ・シャンディ・ () {
-  if [ -f ./vendor/bin/sail ]; then
-    if [ -f pnpm-lock.yaml ]; then
-      sail pnpm $argv
-    elif [ -f yarn.lock ]; then
-      sail yarn $argv
-    elif [ -f package-lock.json ]; then
-      sail npm $argv
-    fi
-  else
-    if [ -f yarn.lock ]; then
-      yarn $argv
-    elif [ -f package-lock.json ]; then
-      npm $argv
-    fi
-  fi
 }

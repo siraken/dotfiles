@@ -30,12 +30,6 @@ wezterm.on('bell', function(window, pane)
   window:toast_notification('Claude Code', 'Task completed', nil, 4000)
 end)
 
-wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  pane:split { direction = 'Bottom', size = 0.25 }
-  pane:split { direction = 'Right', size = 0.5 }
-end)
-
 config.audible_bell = 'SystemBeep'
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
