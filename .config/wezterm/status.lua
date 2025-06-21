@@ -12,19 +12,6 @@ local function AddIcon(elems, icon)
   table.insert(elems, { Text = " " })
 end
 
-local function GetKeyboard(elems, window)
-  local HEADER_LEADER = { Foreground = { Color = colors.WHITE }, Text = "" }
-  local HEADER_KEY_NORMAL = { Foreground = DEFAULT_FG, Text = "AB" }
-  local HEADER_IME = { Foreground = DEFAULT_FG, Text = "あ" }
-
-  if window:leader_is_active() then
-    AddIcon(elems, HEADER_LEADER)
-    return
-  end
-
-  AddIcon(elems, window:composition_status() and HEADER_IME or HEADER_KEY_NORMAL)
-end
-
 local function AddElement(elems, header, str)
   -- Space: start
   table.insert(elems, { Background = DEFAULT_BG })
@@ -54,9 +41,6 @@ end
 -- Right
 local function UpdateRight(window, pane)
   local elems = {}
-
-  -- Keyboard
-  GetKeyboard(elems, window)
 
   -- DateTime
   AddElement(
