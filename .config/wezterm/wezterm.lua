@@ -54,7 +54,7 @@ else
   config.font_size = 16
   config.window_background_opacity = 0.8
 end
-config.exit_behavior = "CloseOnCleanExit"
+config.exit_behavior = "Close"
 config.status_update_interval = 1000
 config.colors = {
   scrollbar_thumb = "white",
