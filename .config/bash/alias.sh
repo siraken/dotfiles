@@ -29,6 +29,7 @@ alias rustrepl="evcxr"
 alias tf="terraform"
 alias spt="spotify_player"
 alias act="act --container-architecture linux/amd64"
+alias wez="wezterm"
 alias cc="claude"
 alias ccd="claude --dangerously-skip-permissions"
 # Aliases for macOS
