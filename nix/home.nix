@@ -6,6 +6,7 @@ in {
   imports = [
     # ./environment/system-packages.nix
     # ./programs/bash.nix
+    ./programs/git.nix
     # ./programs/zsh.nix
     # ./programs/fish.nix
     # ./programs/tmux.nix
@@ -44,8 +45,7 @@ in {
       ".config/husky".source = "${dotfilesPath}/.config/husky";
       ".config/mise".source = "${dotfilesPath}/.config/mise";
       ".config/ranger".source = "${dotfilesPath}/.config/ranger";
-      ".config/git".source = "${dotfilesPath}/.config/git";
-      ".config/git/conf.d/credential.conf".source = "${dotfilesPath}/.config/git/conf.d/os/macos.conf";
+      # ".config/git".source = "${dotfilesPath}/.config/git";
       # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
       ".config/nano".source = "${dotfilesPath}/.config/nano";
       ".config/nvim".source = "${dotfilesPath}/.config/nvim";
