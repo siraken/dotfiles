@@ -10,7 +10,7 @@ in {
     # ./programs/fish.nix
     # ./programs/tmux.nix
     # ./programs/direnv.nix
-    # ./programs/starship.nix
+    ./programs/starship.nix
   ];
 
   home = {
@@ -44,7 +44,6 @@ in {
       ".config/husky".source = "${dotfilesPath}/.config/husky";
       ".config/mise".source = "${dotfilesPath}/.config/mise";
       ".config/ranger".source = "${dotfilesPath}/.config/ranger";
-      ".config/starship.toml".source = "${dotfilesPath}/.config/starship.toml";
       ".config/git".source = "${dotfilesPath}/.config/git";
       ".config/git/conf.d/credential.conf".source = "${dotfilesPath}/.config/git/conf.d/os/macos.conf";
       # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
