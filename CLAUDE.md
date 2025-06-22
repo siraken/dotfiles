@@ -2,50 +2,50 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## コマンド
+## Commands
 
-### 環境構築
+### Environment Setup
 
 ```bash
-# Nixをインストール
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+# Install Nix
+curl --proto '=https' --tls-version=1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
-# nix-darwinをインストール
+# Install nix-darwin
 nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .
 
-# システム構成をビルド・適用
+# Build and apply system configuration
 sudo darwin-rebuild build --flake .#mbp
 sudo darwin-rebuild switch --flake .#mbp
 
-# ガベージコレクション
+# Garbage collection
 nix store gc
 ```
 
-### dotfilesの管理
+### Dotfiles Management
 
 ```bash
-# dotfilesのシンボリックリンクを作成
+# Create dotfiles symlinks
 ./install up
 
-# dotfilesのシンボリックリンクを削除
+# Remove dotfiles symlinks
 ./install down
 ```
 
-## アーキテクチャ
+## Architecture
 
-このリポジトリは個人用dotfiles管理システムで、Nixとmigrationシステムを組み合わせた構成：
+Personal dotfiles management system combining Nix and migration system:
 
-### Nixによるシステム管理
-- `flake.nix` - Nixフレークの設定、nix-darwinとhome-managerの統合
-- `nix/darwin.nix` - macOS固有の設定（Homebrew、システム設定、セキュリティ設定）
-- `nix/home.nix` - ユーザー環境の設定
-- アーキテクチャはaarch64-darwin（Apple Silicon Mac）向け
+### Nix System Management
+- `flake.nix` - Nix flake configuration, integrates nix-darwin and home-manager
+- `nix/darwin.nix` - macOS-specific settings (Homebrew, system preferences, security)
+- `nix/home.nix` - User environment configuration
+- Target architecture: arm64-darwin (Apple Silicon Mac)
 
-### Migration管理システム
-- `install` - migration実行スクリプト
-- `migrations/` - 設定ファイルのシンボリックリンク作成スクリプト
-- `migrations/__setup__` - migration共通関数の定義
-- 主要設定ファイルを`~/.config/`や`~/`にシンボリックリンクで配置
+### Migration Management System
+- `install` - Migration execution script
+- `migrations/` - Configuration file symlink creation scripts
+- `migrations/__setup__` - Common migration functions
+- Creates symlinks for config files in `~/.config/` and `~/`
 
-### 設定対象
-Neovim、Git、シェル（Bash/Zsh/Fish）、ターミナル（Kitty/Alacritty/WezTerm）、エディタ（Vim/Emacs/Helix）、ウィンドウマネージャー（Yabai/Sketchybar）など100種類以上のツール設定を管理
+### Configuration Coverage
+Manages 100+ tool configurations including Neovim, Git, shells (Bash/Zsh/Fish), terminals (Kitty/Alacritty/WezTerm), editors (Vim/Emacs/Helix), window managers (Yabai/Sketchybar)
