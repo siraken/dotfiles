@@ -232,7 +232,6 @@
       "nginx"
       "nim"
       "ninja"
-      "nushell"
       "ollama"
       "onefetch"
       "openssl"
