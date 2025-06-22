@@ -34,5 +34,3 @@ lrwxr-xr-x@ 1 siraken  staff  73 Jun 22 14:56 /Users/siraken/.ideavimrc -> /nix/
 lrwxr-xr-x@ 1 siraken  staff  69 Jun 22 14:56 /Users/siraken/.vimrc -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.vimrc
 lrwxr-xr-x@ 1 siraken  staff  72 Jun 22 14:56 /Users/siraken/.hyper.js -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.hyper.js
 lrwxr-xr-x@ 1 siraken  staff  76 Jun 22 14:56 /Users/siraken/.bash_profile -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.bash_profile
-lrwxr-xr-x@ 1 siraken  staff  36 Apr 29 22:13 /Users/siraken/.hammerspoon -> /Users/siraken/dotfiles/.hammerspoon
-lrwxr-xr-x@ 1 siraken  staff  37 Apr 29 22:13 /Users/siraken/.mongoshrc.js -> /Users/siraken/dotfiles/.mongoshrc.js

@@ -51,8 +51,6 @@ The following symlinks were created manually and are NOT managed by home-manager
 .local/state/nix/profiles/profile
 dotfiles-private/.config/1Password
 dotfiles/.config/emacs
-dotfiles/.hammerspoon
-dotfiles/.mongoshrc.js
 
 ## Notes
 - Emacs config (.config/emacs) was excluded due to unsupported file types (sockets)
