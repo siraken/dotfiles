@@ -1,6 +1,3 @@
-##################################################
-# Eval
-##################################################
 if [ -f "$HOME/Developer/google-cloud-sdk/path.bash.inc" ]; then
   . "$HOME/Developer/google-cloud-sdk/path.bash.inc";
 fi

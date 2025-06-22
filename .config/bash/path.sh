@@ -1,6 +1,3 @@
-##################################################
-# Path
-##################################################
 # Variables
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
