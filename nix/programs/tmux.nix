@@ -2,15 +2,13 @@
 {
   programs.tmux = {
     enable = true;
-    enableMouse = true;
-    enableSensible = true;
-    enableVim = true;
 
     # Custom configuration
     extraConfig = ''
       set -s escape-time 50
       set-option -g default-shell "/opt/homebrew/bin/bash"
       set -g default-command "/opt/homebrew/bin/bash"
+      set -g mouse on
 
       # Terminal overrides
       set -ag terminal-overrides ',xterm-256color:RGB'

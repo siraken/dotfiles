@@ -9,7 +9,7 @@ in {
     ./programs/git.nix
     # ./programs/zsh.nix
     # ./programs/fish.nix
-    # ./programs/tmux.nix
+    ./programs/tmux.nix
     # ./programs/direnv.nix
     ./programs/starship.nix
   ];
