@@ -16,4 +16,4 @@ bun = true
 [settings.status]
 missing_tools = "if_other_versions_installed"
 show_env = false
-show_tools = true
+show_tools = false
