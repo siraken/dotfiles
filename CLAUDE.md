@@ -13,7 +13,7 @@ curl --proto '=https' --tls-version=1.2 -sSf -L https://install.determinate.syst
 # Install nix-darwin
 nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .
 
-# Build and apply system configuration
+# Build and apply system configuration (includes dotfiles symlinks)
 sudo darwin-rebuild build --flake .#mbp
 sudo darwin-rebuild switch --flake .#mbp
 
@@ -24,11 +24,14 @@ nix store gc
 ### Dotfiles Management
 
 ```bash
-# Create dotfiles symlinks
+# Create additional symlinks (Claude config only)
 ./install up
 
-# Remove dotfiles symlinks
+# Remove additional symlinks
 ./install down
+
+# Note: Most dotfiles are now managed by home-manager
+# Use darwin-rebuild to apply dotfiles changes
 ```
 
 ## Architecture

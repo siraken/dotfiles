@@ -1,0 +1,66 @@
+# Symlink Creation Report - Home Manager Migration
+Generated on: Sun Jun 22 14:58:58 JST 2025
+
+## Summary
+Total home-manager symlinks: 30
+Total existing symlinks:       38
+
+## Home Manager Managed Symlinks (New)
+The following symlinks are now managed by home-manager:
+
+### Configuration Directories (.config/)
+.config/alacritty
+.config/bash
+.config/bat
+.config/borders
+.config/fish
+.config/ghostty
+.config/git
+.config/helix
+.config/husky
+.config/kak
+.config/kitty
+.config/mise
+.config/nano
+.config/neovide
+.config/nvim
+.config/ranger
+.config/sketchybar
+.config/starship.toml
+.config/wezterm
+.config/yt-dlp
+.config/zed/settings.json
+.config/zsh
+
+### Home Dotfiles
+.bash_profile
+.hyper.js
+.ideavimrc
+.simplebarrc
+.vimrc
+.vsnip
+.zprofile
+.zshrc
+
+## Legacy Symlinks (Pre-existing)
+The following symlinks were created manually and are NOT managed by home-manager:
+
+.config/gcloud/virtenv/bin/python
+.config/gcloud/virtenv/bin/python3
+.config/gcloud/virtenv/bin/python3.11
+.local/state/nix/profiles/profile
+dotfiles-private/.config/1Password
+dotfiles/.config/emacs
+dotfiles/.hammerspoon
+dotfiles/.mongoshrc.js
+
+## Notes
+- Emacs config (.config/emacs) was excluded due to unsupported file types (sockets)
+- All other dotfiles are now declaratively managed by home-manager
+
+## Migration Benefits
+✅ Declarative configuration management
+✅ Automatic conflict detection and handling
+✅ Atomic updates via darwin-rebuild
+✅ Rollback capabilities through Nix generations
+✅ Consistent state across rebuilds
