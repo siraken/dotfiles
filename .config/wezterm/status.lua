@@ -46,7 +46,7 @@ local function UpdateRight(window, pane)
   AddElement(
     elems,
     { Foreground = { Color = colors.TOKYO_NIGHT_BLUE.Color }, Text = "󱪺" },
-    wezterm.strftime("%a %b %-d")
+    wezterm.strftime("%b %-d")
   )
   AddElement(
     elems,
