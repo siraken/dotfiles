@@ -141,8 +141,6 @@
     };
 
     aliases = {
-      d = "diff";
-      b = "branch";
       br = "branch";
       ad = "add";
       us = "reset HEAD";
