@@ -15,33 +15,27 @@ in {
 
   home = {
     stateVersion = "25.05";
-    
+
     # Symlink configuration files
     file = {
-      # Hammerspoon (disabled - directory not found)
-      # ".hammerspoon".source = "${dotfilesPath}/.hammerspoon";
-      
       # Shell configurations
       ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
       ".zprofile".source = "${dotfilesPath}/.config/zsh/.zprofile";
       ".zshrc".source = "${dotfilesPath}/.config/zsh/.zshrc";
-      
+
       # Simple bar
       ".simplebarrc".source = "${dotfilesPath}/.config/simple-bar/.simplebarrc";
-      
+
       # Vim
       ".vimrc".source = "${dotfilesPath}/.config/vim/.vimrc";
       ".ideavimrc".source = "${dotfilesPath}/.config/idea/.ideavimrc";
-      
-      # MongoDB Shell (disabled - file not found)
-      # ".mongoshrc.js".source = "${dotfilesPath}/.mongoshrc.js";
-      
+
       # Hyper
       ".hyper.js".source = "${dotfilesPath}/.config/hyper/.hyper.js";
-      
+
       # VSCode snippets
       ".vsnip".source = "${dotfilesPath}/.vsnip";
-      
+
       # XDG config directories
       ".config/kitty".source = "${dotfilesPath}/.config/kitty";
       ".config/bash".source = "${dotfilesPath}/.config/bash";
@@ -65,10 +59,10 @@ in {
       ".config/bat".source = "${dotfilesPath}/.config/bat";
       ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
       ".config/borders".source = "${dotfilesPath}/.config/borders";
-      
+
       # Git credential helper for macOS (handled by git config symlink)
       # ".config/git/conf.d/credential.conf".source = "${dotfilesPath}/.config/git/conf.d/os/macos.conf";
-      
+
       # Zed settings (specific file)
       ".config/zed/settings.json".source = "${dotfilesPath}/.config/zed/settings.json";
     };
