@@ -26,7 +26,6 @@ The following symlinks are now managed by home-manager:
 .config/nvim
 .config/ranger
 .config/sketchybar
-.config/starship.toml
 .config/wezterm
 .config/yt-dlp
 .config/zed/settings.json

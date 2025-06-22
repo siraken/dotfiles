@@ -13,7 +13,6 @@ lrwxr-xr-x@ 1 siraken  staff  78 Jun 22 14:56 /Users/siraken/.config/neovide -> 
 lrwxr-xr-x@ 1 siraken  staff  75 Jun 22 14:56 /Users/siraken/.config/nvim -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.config/nvim
 lrwxr-xr-x@ 1 siraken  staff  75 Jun 22 14:56 /Users/siraken/.config/nano -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.config/nano
 lrwxr-xr-x@ 1 siraken  staff  78 Jun 22 14:56 /Users/siraken/.config/wezterm -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.config/wezterm
-lrwxr-xr-x@ 1 siraken  staff  84 Jun 22 14:56 /Users/siraken/.config/starship.toml -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.config/starship.toml
 lrwxr-xr-x@ 1 siraken  staff  37 Apr 29 22:13 /Users/siraken/.config/emacs -> /Users/siraken/dotfiles/.config/emacs
 lrwxr-xr-x@ 1 siraken  staff  75 Jun 22 14:56 /Users/siraken/.config/bash -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.config/bash
 lrwxr-xr-x@ 1 siraken  staff  74 Jun 22 14:56 /Users/siraken/.config/bat -> /nix/store/dml1jy4rzdajig20rfv3f75qf5yrwwpi-home-manager-files/.config/bat

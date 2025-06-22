@@ -75,7 +75,6 @@ $wingetPackages = @(
   "GoLang.Go"
   "WinMerge.WinMerge"
   "Neovim.Neovim"
-  "Starship.Starship"
   "sharkdp.bat"
   "Zeit.Hyper"
   "MAMP.MAMP" # Install Fails

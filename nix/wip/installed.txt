@@ -22,7 +22,6 @@ emacs
 lua
 luajit
 luarocks
-starship
 fzf
 eza
 bat
