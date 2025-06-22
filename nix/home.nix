@@ -46,6 +46,7 @@ in {
       ".config/ranger".source = "${dotfilesPath}/.config/ranger";
       ".config/starship.toml".source = "${dotfilesPath}/.config/starship.toml";
       ".config/git".source = "${dotfilesPath}/.config/git";
+      ".config/git/conf.d/credential.conf".source = "${dotfilesPath}/.config/git/conf.d/os/macos.conf";
       # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
       ".config/nano".source = "${dotfilesPath}/.config/nano";
       ".config/nvim".source = "${dotfilesPath}/.config/nvim";
@@ -59,9 +60,6 @@ in {
       ".config/bat".source = "${dotfilesPath}/.config/bat";
       ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
       ".config/borders".source = "${dotfilesPath}/.config/borders";
-
-      # Git credential helper for macOS (handled by git config symlink)
-      # ".config/git/conf.d/credential.conf".source = "${dotfilesPath}/.config/git/conf.d/os/macos.conf";
 
       # Zed settings (specific file)
       ".config/zed/settings.json".source = "${dotfilesPath}/.config/zed/settings.json";
