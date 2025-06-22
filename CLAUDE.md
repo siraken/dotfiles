@@ -52,3 +52,12 @@ Personal dotfiles management system combining Nix and migration system:
 
 ### Configuration Coverage
 Manages 100+ tool configurations including Neovim, Git, shells (Bash/Zsh/Fish), terminals (Kitty/Alacritty/WezTerm), editors (Vim/Emacs/Helix), window managers (Yabai/Sketchybar)
+
+## Git Commit Guidelines
+
+- Write all commit messages in English
+- Follow Conventional Commits format: `type(scope): description`
+- Common types: feat, fix, docs, style, refactor, test, chore
+- Use imperative mood (e.g., "Add feature" not "Added feature")
+- Keep subject line under 50 characters
+- Separate subject from body with blank line if needed
