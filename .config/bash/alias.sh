@@ -32,6 +32,8 @@ alias act="act --container-architecture linux/amd64"
 alias wez="wezterm"
 alias cc="claude"
 alias ccd="claude --dangerously-skip-permissions"
+alias ccu="bunx ccusage@latest"
+alias cculv="bunx ccusage@latest blocks --live"
 # Aliases for macOS
 alias ii="open"
 alias mamp-htdocs="cd /Applications/MAMP/htdocs"
