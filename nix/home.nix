@@ -65,7 +65,6 @@ in {
 
       # Claude configuration
       ".claude/commands".source = "${dotfilesPath}/.config/claude/commands";
-      ".claude/settings.json".source = "${dotfilesPath}/.config/claude/settings.json";
       ".claude/CLAUDE.md".source = "${dotfilesPath}/.config/claude/CLAUDE.md";
     };
   };
