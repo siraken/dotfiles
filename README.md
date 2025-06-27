@@ -48,6 +48,9 @@ After the installation, you may need to restart your terminal. The `darwin-*` co
 # Build darwin flake using:
 sudo darwin-rebuild build --flake .#THE_NAME --impure
 sudo darwin-rebuild switch --flake .#THE_NAME --impure
+
+# ex)
+sudo darwin-rebuild build --flake .#mbp --impure
 ```
 
 ## x. Garbage Collection
