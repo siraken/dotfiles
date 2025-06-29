@@ -477,6 +477,7 @@
       nerd-fonts.hack
       source-code-pro
       monocraft
+      udev-gothic
     ];
   };
 
