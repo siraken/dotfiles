@@ -4,7 +4,7 @@
     enable = true;
 
     userName = "Kento Shirasawa";
-    userEmail = "shirasawa.kento@gmail.com";
+    userEmail = "shirasawa@novalumo.com";
 
     extraConfig = {
       core = {
