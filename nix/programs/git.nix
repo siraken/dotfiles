@@ -182,6 +182,7 @@
       ".idea"
       ".vscode"
       "**/.claude/settings.local.json"
+      "mise.local.toml"
     ];
   };
 }
