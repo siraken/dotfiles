@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local spotify_controls = require("spotify-controls")
 
 return {
   keys = {
@@ -162,6 +163,14 @@ return {
     { key = "DownArrow", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Down", 1 }) },
     { key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
     { key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
+
+    -- Spotify controls (Cmd+Shift+S prefix)
+    { key = "s", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.play_pause) },
+    { key = "n", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.next_track) },
+    { key = "p", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.previous_track) },
+    { key = "i", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.show_track_info) },
+    { key = "=", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.volume_up) },
+    { key = "-", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.volume_down) },
   },
   key_tables = {
     copy_mode = {

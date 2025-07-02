@@ -10,4 +10,6 @@ return {
   TOKYO_NIGHT_PINK = { Color = "#FF75A0" },
   TOKYO_NIGHT_PURPLE = { Color = "#BB9AF7" },
   TOKYO_NIGHT_RED = { Color = "#F7768E" },
+  SPOTIFY_GREEN = { Color = "#1DB954" },
+  SPOTIFY_GRAY = { Color = "#B3B3B3" },
 }
