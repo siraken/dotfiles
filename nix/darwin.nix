@@ -291,6 +291,7 @@
       "zoxide"
       "zplug"
       "pinact"
+      "svn"
       # "aws/tap/lightsailctl"
       # "cloudflare/cloudflare/cf-terraforming"
       # "ipfs" # ipfs/kubo
