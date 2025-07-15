@@ -166,9 +166,8 @@
 
       mkHomeConfiguration =
         { username, homeDirectory }: home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            ./nix/home.nix
+            ./nix/hosts/wsl-ubuntu/home.nix
             {
               home = {
                 username = username;
@@ -189,7 +188,7 @@
       };
 
       homeConfigurations = {
-        "galleria-wsl" = mkHomeConfiguration { username = "siraken"; homeDirectory = "/home/siraken"; };
+        "wsl-ubuntu" = mkHomeConfiguration { username = "siraken"; homeDirectory = "/home/siraken"; };
       };
     };
 }
