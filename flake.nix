@@ -40,7 +40,7 @@
         nix-darwin.lib.darwinSystem {
           system = system;
           modules = [
-            ./nix/darwin.nix
+            ./nix/hosts/mbp/darwin.nix
             home-manager.darwinModules.home-manager
             {
               users.users = {
@@ -51,7 +51,7 @@
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.siraken = import ./nix/home.nix;
+              home-manager.users.siraken = import ./nix/hosts/mbp/home.nix;
             }
           ];
         };
