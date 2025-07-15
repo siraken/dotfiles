@@ -42,7 +42,7 @@ nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
 
-## 4. Run `darwin-rebuild`
+## 4. Run `darwin-rebuild` or `home-manager`
 
 ```bash
 # Build darwin flake using:
@@ -51,6 +51,12 @@ sudo darwin-rebuild switch --flake .#THE_NAME --impure
 
 # ex)
 sudo darwin-rebuild build --flake .#mbp --impure
+```
+
+or 
+
+```bash
+nix run home-manager/release-25.05 -- switch --flake .#THE_NAME
 ```
 
 ## x. Garbage Collection
