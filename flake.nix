@@ -85,14 +85,14 @@
                   # nginx
                   # php81
                   # ===== from `apt` =====
-                  # git
+                  git
                   # curl
                   # wget
                   # libfuse2 -> not found
-                  # tree
-                  # neovim
+                  tree
+                  neovim
                   # bat
-                  # neofetch
+                  neofetch
                   # luajit
                   # eza
                   # # hhvm -> not found
@@ -163,6 +163,22 @@
             )
           ];
         };
+
+      mkHomeConfiguration =
+        { username, homeDirectory }: home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            ./nix/home.nix
+            {
+              home = {
+                username = username;
+                homeDirectory = homeDirectory;
+                stateVersion = "25.05";
+              };
+            }
+          ];
+          extraSpecialArgs = { inherit inputs; };
+        };
     in {
       darwinConfigurations = {
         "mbp" = mkDarwinConfiguration { system = "aarch64-darwin"; username = "siraken"; };
@@ -170,6 +186,10 @@
 
       nixosConfigurations = {
         "your-linux-machine-name" = mkNixOSConfiguration { };
+      };
+
+      homeConfigurations = {
+        "galleria-wsl" = mkHomeConfiguration { username = "siraken"; homeDirectory = "/home/siraken"; };
       };
     };
 }
