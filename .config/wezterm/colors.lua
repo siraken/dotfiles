@@ -5,4 +5,6 @@ return {
   YELLOW = { Color = "#dfe166" },
   TOKYO_NIGHT_BLUE = { Color = "#5AC9FB" },
   TOKYO_NIGHT_GREEN = { Color = "#8FC668" },
+  SPOTIFY_GREEN = { Color = "#1DB954" },
+  SPOTIFY_GRAY = { Color = "#B3B3B3" },
 }
