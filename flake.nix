@@ -65,8 +65,10 @@
           ];
         };
 
+      # Function for home-manager configuration
       mkHomeConfiguration =
-        { username, homeDirectory }: home-manager.lib.homeManagerConfiguration {
+        { username, homeDirectory, pkgs }: home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
           modules = [
             ./nix/hosts/wsl-ubuntu/home.nix
             {
@@ -95,7 +97,11 @@
       };
 
       homeConfigurations = {
-        "wsl-ubuntu" = mkHomeConfiguration { username = "siraken"; homeDirectory = "/home/siraken"; };
+        "wsl-ubuntu" = mkHomeConfiguration {
+          username = "siraken";
+          homeDirectory = "/home/siraken";
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        };
       };
     };
 }
