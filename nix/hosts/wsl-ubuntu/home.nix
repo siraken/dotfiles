@@ -22,6 +22,7 @@ in {
     file = {
       # Shell configurations
       ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
+      ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
       ".zprofile".source = "${dotfilesPath}/.config/zsh/.zprofile";
       ".zshrc".source = "${dotfilesPath}/.config/zsh/.zshrc";
 
