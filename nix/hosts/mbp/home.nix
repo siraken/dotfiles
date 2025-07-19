@@ -20,6 +20,7 @@ in {
     # Symlink configuration files
     file = {
       # Shell configurations
+      ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
       ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
       ".zprofile".source = "${dotfilesPath}/.config/zsh/.zprofile";
       ".zshrc".source = "${dotfilesPath}/.config/zsh/.zshrc";
