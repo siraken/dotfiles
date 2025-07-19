@@ -70,12 +70,12 @@
         #   format = ssh
         #   # program = !'C:\\Program Files\\Git\\usr\\bin\\gpg.exe'
         # [gpg "ssh"]
-        #   program = "C:/Users/siraken/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+        #   program = "C:/Program Files/1Password/app/8/op-ssh-sign.exe"
         # WSL:
         # [gpg]
         #   format = ssh
         # [gpg "ssh"]
-        #   program = "/mnt/c/Users/siraken/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+        #   program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl"
       ];
 
       gpg = {
@@ -83,7 +83,7 @@
       } // (lib.optionalAttrs pkgs.stdenv.isDarwin {
         ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       }) // (lib.optionalAttrs pkgs.stdenv.isLinux {
-        ssh.program = "/mnt/c/Users/siraken/AppData/Local/1Password/app/8/op-ssh-sign-wsl";
+        ssh.program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
       });
 
       color = {
