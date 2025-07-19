@@ -56,8 +56,7 @@
           ];
         };
 
-      # Function for NixOS (Linux) system configuration
-      # TODO: Add NixOS modules for your Linux machine
+      # Function for NixOS system configuration
       mkNixOSConfiguration =
         {}: nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
