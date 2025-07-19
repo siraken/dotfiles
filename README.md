@@ -56,7 +56,7 @@ sudo darwin-rebuild build --flake .#mbp --impure
 or 
 
 ```bash
-nix run home-manager/release-25.05 -- switch --flake .#THE_NAME
+nix run home-manager/release-25.05 -- switch --flake .#THE_NAME --impure
 ```
 
 ## x. Garbage Collection
