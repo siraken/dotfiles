@@ -6,6 +6,7 @@ in {
   imports = [
     # ../../environment/system-packages.nix
     # ../../programs/bash.nix
+    ../../programs/zoxide.nix
     ../../programs/git.nix
     ../../programs/zsh.nix
     # ../../programs/fish.nix
@@ -67,6 +68,11 @@ in {
       ".claude/commands".source = "${dotfilesPath}/.config/claude/commands";
       ".claude/CLAUDE.md".source = "${dotfilesPath}/.config/claude/CLAUDE.md";
     };
+
+    packages = with pkgs; [
+      eza
+      bat
+    ];
   };
 
   programs.home-manager.enable = true;
