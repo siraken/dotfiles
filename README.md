@@ -50,10 +50,10 @@ sudo darwin-rebuild build --flake .#THE_NAME --impure
 sudo darwin-rebuild switch --flake .#THE_NAME --impure
 
 # ex)
-sudo darwin-rebuild build --flake .#mbp --impure
+sudo darwin-rebuild switch --flake .#mbp --impure
 ```
 
-or 
+or
 
 ```bash
 nix run home-manager/release-25.05 -- switch --flake .#THE_NAME --impure
