@@ -168,7 +168,6 @@
       "ggshield"
       "gh"
       "ghcup"
-      "ghq"
       "gibo"
       "giflib"
       "git-delta"

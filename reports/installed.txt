@@ -121,5 +121,4 @@ ggshield
 ollama
 sketchybar
 borders
-ghq
 mise
