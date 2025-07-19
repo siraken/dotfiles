@@ -58,8 +58,8 @@
 
       # Function for NixOS system configuration
       mkNixOSConfiguration =
-        {}: nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+        { system, username }: nixpkgs.lib.nixosSystem {
+          system = system;
           modules = [
             (
               { pkgs, ... }:
@@ -179,11 +179,17 @@
         };
     in {
       darwinConfigurations = {
-        "mbp" = mkDarwinConfiguration { system = "aarch64-darwin"; username = "siraken"; };
+        "mbp" = mkDarwinConfiguration {
+          system = "aarch64-darwin";
+          username = "siraken";
+        };
       };
 
       nixosConfigurations = {
-        "your-linux-machine-name" = mkNixOSConfiguration { };
+        "your-linux-machine-name" = mkNixOSConfiguration {
+          system = "x86_64-linux";
+          username = "siraken";
+        };
       };
 
       homeConfigurations = {
