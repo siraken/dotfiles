@@ -5,6 +5,6 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
-    flags = [ "--cmd cd" ];
+    options = [ "--cmd cd" ];
   };
 }
