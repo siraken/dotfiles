@@ -33,5 +33,5 @@ if type starship &> /dev/null; then
 fi
 
 if type zoxide &> /dev/null; then
-  eval "$(zoxide init bash)"
+  eval "$(zoxide init bash --cmd cd)"
 fi
