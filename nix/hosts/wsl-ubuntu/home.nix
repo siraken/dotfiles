@@ -72,6 +72,8 @@ in {
     packages = with pkgs; [
       eza
       bat
+      neovim
+      libgcc
     ];
   };
 
