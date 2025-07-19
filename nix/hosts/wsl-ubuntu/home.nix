@@ -75,6 +75,7 @@ in {
       bat
       neovim
       libgcc
+      xdg-utils
     ];
   };
 
