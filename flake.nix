@@ -26,6 +26,7 @@
       nix-darwin,
       home-manager,
       nix-on-droid,
+      ...
     }:
     let
       users = {
