@@ -2,7 +2,9 @@
   description = "siraken's Nix configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    };
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";

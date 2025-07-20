@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
   username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
@@ -13,6 +13,7 @@ in {
     ../../programs/tmux.nix
     # ../../programs/direnv.nix
     ../../programs/starship.nix
+    inputs._1password-shell-plugins.hmModules.default
   ];
 
   home = {
@@ -79,5 +80,16 @@ in {
     ];
   };
 
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "1password-cli"
+      ];
+  };
+
   programs.home-manager.enable = true;
+  programs._1password-shell-plugins = {
+    enable = true;
+    plugins = with pkgs; [ gh awscli2 cachix ];
+  };
 }
