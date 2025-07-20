@@ -77,6 +77,7 @@ in {
       neovim
       libgcc
       xdg-utils
+      jq
     ];
   };
 
