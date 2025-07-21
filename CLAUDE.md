@@ -21,19 +21,6 @@ sudo darwin-rebuild switch --flake .#mbp --impure
 nix store gc
 ```
 
-### Dotfiles Management
-
-```bash
-# Create additional symlinks (Claude config only)
-./install up
-
-# Remove additional symlinks
-./install down
-
-# Note: Most dotfiles are now managed by home-manager
-# Use darwin-rebuild to apply dotfiles changes
-```
-
 ## Architecture
 
 Personal dotfiles management system combining Nix and migration system:
@@ -41,16 +28,9 @@ Personal dotfiles management system combining Nix and migration system:
 ### Nix System Management
 
 - `flake.nix` - Nix flake configuration, integrates nix-darwin and home-manager
-- `nix/configuration.nix` - macOS-specific settings (Homebrew, system preferences, security)
-- `nix/home.nix` - User environment configuration
+- `nix/hosts/mbp/configuration.nix` - macOS-specific settings (Homebrew, system preferences, security)
+- `nix/hosts/mbp/home.nix` - User environment configuration
 - Target architecture: arm64-darwin (Apple Silicon Mac)
-
-### Migration Management System
-
-- `install` - Migration execution script
-- `migrations/` - Configuration file symlink creation scripts
-- `migrations/__setup__` - Common migration functions
-- Creates symlinks for config files in `~/.config/` and `~/`
 
 ### Configuration Coverage
 
