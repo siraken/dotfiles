@@ -89,20 +89,20 @@
       darwinConfigurations = {
         "darwin" = mkDarwinConfiguration {
           system = "aarch64-darwin";
-          username = "siraken";
+          username = users.siraken.username;
         };
       };
 
       nixosConfigurations = {
         "your-linux-machine-name" = mkNixOSConfiguration {
           system = "x86_64-linux";
-          username = "siraken";
+          username = users.siraken.username;
         };
       };
 
       homeConfigurations = {
         "wsl-ubuntu" = mkHomeConfiguration {
-          username = "siraken";
+          username = users.siraken.username;
           homeDirectory = "/home/siraken";
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
