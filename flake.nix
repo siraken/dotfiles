@@ -103,7 +103,7 @@
       homeConfigurations = {
         "wsl-ubuntu" = mkHomeConfiguration {
           username = users.siraken.username;
-          homeDirectory = "/home/siraken";
+          homeDirectory = "/home/${users.siraken.username}";
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
       };
