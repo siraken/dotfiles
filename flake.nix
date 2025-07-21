@@ -44,7 +44,7 @@
         nix-darwin.lib.darwinSystem {
           system = system;
           modules = [
-            ./nix/hosts/mbp/configuration.nix
+            ./nix/hosts/darwin/configuration.nix
             home-manager.darwinModules.home-manager
             {
               users.users = {
@@ -55,7 +55,7 @@
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.siraken = import ./nix/hosts/mbp/home.nix;
+              home-manager.users.siraken = import ./nix/hosts/darwin/home.nix;
             }
           ];
         };
@@ -87,7 +87,7 @@
         };
     in {
       darwinConfigurations = {
-        "mbp" = mkDarwinConfiguration {
+        "darwin" = mkDarwinConfiguration {
           system = "aarch64-darwin";
           username = "siraken";
         };

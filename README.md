@@ -50,7 +50,7 @@ sudo darwin-rebuild build --flake .#THE_NAME --impure
 sudo darwin-rebuild switch --flake .#THE_NAME --impure
 
 # ex)
-sudo darwin-rebuild switch --flake .#mbp --impure
+sudo darwin-rebuild switch --flake .#darwin --impure
 ```
 
 or

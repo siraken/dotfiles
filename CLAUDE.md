@@ -14,8 +14,8 @@ curl --proto '=https' --tls-version=1.2 -sSf -L https://install.determinate.syst
 nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .
 
 # Build and apply system configuration (includes dotfiles symlinks)
-sudo darwin-rebuild build --flake .#mbp --impure
-sudo darwin-rebuild switch --flake .#mbp --impure
+sudo darwin-rebuild build --flake .#darwin --impure
+sudo darwin-rebuild switch --flake .#darwin --impure
 
 # Garbage collection
 nix store gc
@@ -28,8 +28,8 @@ Personal dotfiles management system combining Nix and migration system:
 ### Nix System Management
 
 - `flake.nix` - Nix flake configuration, integrates nix-darwin and home-manager
-- `nix/hosts/mbp/configuration.nix` - macOS-specific settings (Homebrew, system preferences, security)
-- `nix/hosts/mbp/home.nix` - User environment configuration
+- `nix/hosts/darwin/configuration.nix` - macOS-specific settings (Homebrew, system preferences, security)
+- `nix/hosts/darwin/home.nix` - User environment configuration
 - Target architecture: arm64-darwin (Apple Silicon Mac)
 
 ### Configuration Coverage
