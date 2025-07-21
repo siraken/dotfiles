@@ -65,7 +65,7 @@
         { system, username }: nixpkgs.lib.nixosSystem {
           system = system;
           modules = [
-            ./nix/hosts/nixos/config.nix
+            ./nix/hosts/nixos/configuration.nix
           ];
         };
 
