@@ -41,7 +41,7 @@ Personal dotfiles management system combining Nix and migration system:
 ### Nix System Management
 
 - `flake.nix` - Nix flake configuration, integrates nix-darwin and home-manager
-- `nix/darwin.nix` - macOS-specific settings (Homebrew, system preferences, security)
+- `nix/configuration.nix` - macOS-specific settings (Homebrew, system preferences, security)
 - `nix/home.nix` - User environment configuration
 - Target architecture: arm64-darwin (Apple Silicon Mac)
 

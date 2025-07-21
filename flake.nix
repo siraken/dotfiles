@@ -44,7 +44,7 @@
         nix-darwin.lib.darwinSystem {
           system = system;
           modules = [
-            ./nix/hosts/mbp/darwin.nix
+            ./nix/hosts/mbp/configuration.nix
             home-manager.darwinModules.home-manager
             {
               users.users = {
