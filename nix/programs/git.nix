@@ -165,10 +165,10 @@
       cp = "cherry-pick";
       dt = "difftool";
       undo = "reset --soft HEAD^";
-      stp = "stash pop";
-      sts = "stash save";
-      stl = "stash list";
-      sta = "stash apply";
+      sp = "stash pop";
+      ss = "stash save";
+      sl = "stash list";
+      sa = "stash apply";
       rhh = "reset --hard HEAD";
       gh = "!gh repo view --web";
       cz = "!cz";
