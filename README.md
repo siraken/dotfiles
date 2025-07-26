@@ -57,6 +57,9 @@ or
 
 ```bash
 nix run home-manager/release-25.05 -- switch --flake .#THE_NAME --impure
+
+# ex)
+nix run home-manager/release-25.05 -- switch --flake .#wsl-ubuntu --impure
 ```
 
 ## x. Garbage Collection
