@@ -71,13 +71,14 @@ in {
       ".claude/CLAUDE.md".source = "${dotfilesPath}/.config/claude/CLAUDE.md";
     };
 
-    packages = with pkgs; [
-      eza
-      bat
-      neovim
-      libgcc
-      xdg-utils
-      jq
+    packages = [
+      pkgs.eza
+      pkgs.bat
+      pkgs.neovim
+      pkgs.gcc
+      pkgs.libgcc
+      pkgs.xdg-utils
+      pkgs.jq
     ];
   };
 
