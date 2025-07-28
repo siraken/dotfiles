@@ -1,4 +1,6 @@
 {
+  "autoUpdates": true,
+  "includeCoAuthoredBy": true,
   "permissions": {
     "allow": [],
     "deny": [
