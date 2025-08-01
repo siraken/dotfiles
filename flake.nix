@@ -106,6 +106,11 @@
           homeDirectory = "/home/${users.siraken.username}";
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
+        "minimal" = mkHomeConfiguration {
+          username = users.siraken.username;
+          homeDirectory = "/home/${users.siraken.username}";
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        };
       };
     };
 }
