@@ -19,6 +19,12 @@
     # ../../programs/tmux.nix
   ];
 
+  environment = {
+    systemPackages = [
+      pkgs.nil
+    ];
+  };
+
   system = {
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
