@@ -37,7 +37,7 @@ To uninstall Nix, run the command below:
 
 ```bash
 cd dotfiles
-nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darwin --impure
+sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darwin --impure
 ```
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
