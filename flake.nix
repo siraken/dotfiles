@@ -66,6 +66,17 @@
         "aarch64-darwin" = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
       };
 
+      devShells = {
+        "aarch64-darwin" = {
+          default = nixpkgs.legacyPackages.aarch64-darwin.mkShell {
+            buildInputs = [
+              nixpkgs.legacyPackages.aarch64-darwin.nixfmt
+              nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt
+            ];
+          };
+        };
+      };
+
       darwinConfigurations = {
         "darwin" = darwinSystem {
           system = "aarch64-darwin";
