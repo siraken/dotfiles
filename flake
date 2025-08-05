@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo darwin-rebuild switch --flake .#darwin --impure
