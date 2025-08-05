@@ -20,6 +20,8 @@ in
 
     file = import ../../modules/dotfiles.nix {
       inherit config dotfilesPath;
+    } // {
+
     };
   };
 
