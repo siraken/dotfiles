@@ -31,11 +31,9 @@
       ...
     }:
     let
-      users = {
-        siraken = {
-          username = "siraken";
-          fullName = "Kento Shirasawa";
-        };
+      whoami = {
+        username = "siraken";
+        fullName = "Kento Shirasawa";
       };
 
       darwinSystem = nix-darwin.lib.darwinSystem;
@@ -66,9 +64,9 @@
             home-manager.darwinModules.home-manager
             {
               users.users = {
-                "${users.siraken.username}" = {
-                  name = "${users.siraken.username}";
-                  home = "/Users/${users.siraken.username}";
+                "${whoami.username}" = {
+                  name = "${whoami.username}";
+                  home = "/Users/${whoami.username}";
                 };
               };
               home-manager.useGlobalPkgs = true;
@@ -85,9 +83,9 @@
             home-manager.darwinModules.home-manager
             {
               users.users = {
-                "${users.siraken.username}" = {
-                  name = "${users.siraken.username}";
-                  home = "/Users/${users.siraken.username}";
+                "${whoami.username}" = {
+                  name = "${whoami.username}";
+                  home = "/Users/${whoami.username}";
                 };
               };
               home-manager.useGlobalPkgs = true;
@@ -101,7 +99,7 @@
       nixosConfigurations = {
         "your-linux-machine-name" = nixosSystem {
           system = "x86_64-linux";
-          username = users.siraken.username;
+          username = whoami.username;
           modules = [
             ./nix/hosts/nixos/configuration.nix
           ];
@@ -110,13 +108,13 @@
 
       homeConfigurations = {
         "wsl-ubuntu" = mkHomeConfiguration {
-          username = users.siraken.username;
-          homeDirectory = "/home/${users.siraken.username}";
+          username = whoami.username;
+          homeDirectory = "/home/${whoami.username}";
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
         "minimal" = mkHomeConfiguration {
-          username = users.siraken.username;
-          homeDirectory = "/home/${users.siraken.username}";
+          username = whoami.username;
+          homeDirectory = "/home/${whoami.username}";
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
       };
