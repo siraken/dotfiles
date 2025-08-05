@@ -9,6 +9,7 @@ in
     # ../../programs/bash.nix
     ../../programs/git.nix
     ../../programs/zsh.nix
+    ../../programs/zoxide.nix
     # ../../programs/fish.nix
     ../../programs/tmux.nix
     ../../programs/direnv.nix

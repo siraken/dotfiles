@@ -292,7 +292,6 @@
       "youtube-dl"
       "yt-dlp"
       "zola"
-      "zoxide"
       "zplug"
       "pinact"
       "svn"
