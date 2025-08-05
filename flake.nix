@@ -41,7 +41,12 @@
 
       # Function for home-manager configuration
       mkHomeConfiguration =
-        { username, homeDirectory, pkgs }: home-manager.lib.homeManagerConfiguration {
+        {
+          username,
+          homeDirectory,
+          pkgs,
+        }:
+        home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
           modules = [
             ./nix/hosts/wsl-ubuntu/home.nix
@@ -55,7 +60,8 @@
           ];
           extraSpecialArgs = { inherit inputs; };
         };
-    in {
+    in
+    {
       formatter = {
         "aarch64-darwin" = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
       };
