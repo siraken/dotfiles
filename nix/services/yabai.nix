@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 let
   unmanagedApps = {
-    # macOS Utilities
     macOSUtilities = [
       "Finder"
       "Stickies"
@@ -22,14 +21,12 @@ let
       "Disk Utility"
     ];
 
-    # macOS iWork
     iWork = [
       "Pages"
       "Numbers"
       "Keynote"
     ];
 
-    # Microsoft Office
     microsoftOffice = [
       "Word"
       "Excel"
@@ -40,7 +37,6 @@ let
       "Microsoft Remote Desktop"
     ];
 
-    # Utilities
     utilities = [
       "1Password"
       "DiffusionBee"
@@ -52,7 +48,6 @@ let
       "Google Drive"
     ];
 
-    # Adobe
     adobe = [
       "Adobe Photoshop 2023"
       "Adobe Illustrator 2023"
@@ -62,28 +57,24 @@ let
       "Adobe Lightroom"
     ];
 
-    # Design
     design = [
       "Pixelmator Pro"
       "Figma"
       "Blender"
     ];
 
-    # Music
     music = [
       "Studio One 5"
       "eqMac"
       "VOICEVOX"
     ];
 
-    # Video
     video = [
       "DaVinci Resolve"
       "OBS"
       "VTube Studio"
     ];
 
-    # Browsers (コメントアウト)
     # browsers = [
     #   "Google Chrome"
     #   "Firefox"
@@ -96,7 +87,6 @@ let
     #   "Tor Browser"
     # ];
 
-    # Development
     development = [
       "TablePlus"
       "Transmit"
@@ -109,7 +99,6 @@ let
       # "Visual Studio"
     ];
 
-    # Communication
     communication = [
       # "zoom.us"
       "Spark"
@@ -117,17 +106,14 @@ let
       "Discord"
     ];
 
-    # Streaming
     streaming = [
       "Spotify"
     ];
 
-    # Security
     security = [
       "ESET Endpoint Security"
     ];
 
-    # Games
     games = [
       "Steam"
       "Riot Client"
