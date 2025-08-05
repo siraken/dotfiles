@@ -11,7 +11,7 @@ in
     ../../programs/zsh.nix
     # ../../programs/fish.nix
     ../../programs/tmux.nix
-    # ../../programs/direnv.nix
+    ../../programs/direnv.nix
     ../../programs/starship.nix
   ];
 

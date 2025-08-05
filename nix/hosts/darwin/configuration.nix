@@ -154,7 +154,6 @@
       "coursier"
       "dart"
       "difftastic"
-      "direnv"
       "duck"
       "duf"
       "dust"

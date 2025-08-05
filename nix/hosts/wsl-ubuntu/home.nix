@@ -18,7 +18,7 @@ in
     ../../programs/zsh.nix
     # ../../programs/fish.nix
     ../../programs/tmux.nix
-    # ../../programs/direnv.nix
+    ../../programs/direnv.nix
     ../../programs/starship.nix
     inputs._1password-shell-plugins.hmModules.default
   ];
