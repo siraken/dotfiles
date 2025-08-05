@@ -81,6 +81,7 @@
       yabai -m rule --add app=DaisyDisk manage=off
       yabai -m rule --add app=VMware\ Fusion manage=off
       yabai -m rule --add app=HYPERSBI2 manage=off
+      yabai -m rule --add app=Google\ Drive manage=off
 
       # Adobe
       yabai -m rule --add app=Adobe\ Photoshop\ 2023 manage=off
