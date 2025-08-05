@@ -75,6 +75,14 @@
             ];
           };
         };
+        "x86_64-linux" = {
+          default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+            buildInputs = [
+              nixpkgs.legacyPackages.x86_64-linux.nixfmt
+              nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt
+            ];
+          };
+        };
       };
 
       darwinConfigurations = {
