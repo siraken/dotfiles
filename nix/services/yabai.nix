@@ -1,4 +1,150 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+let
+  unmanagedApps = {
+    # macOS Utilities
+    macOSUtilities = [
+      "Finder"
+      "Stickies"
+      "System Preferences"
+      "System Settings"
+      "Activity Monitor"
+      "Console"
+      "Screen Sharing"
+      "Preview"
+      "Photos"
+      "QuickTime Player"
+      "Messages"
+      "Feedback Assistant"
+      "Xcode"
+      "Final Cut Pro"
+      "Motion"
+      "Logic Pro"
+      "Disk Utility"
+    ];
+
+    # macOS iWork
+    iWork = [
+      "Pages"
+      "Numbers"
+      "Keynote"
+    ];
+
+    # Microsoft Office
+    microsoftOffice = [
+      "Word"
+      "Excel"
+      "PowerPoint"
+      # "OneNote"
+      # "Outlook"
+      # "Microsoft Teams"
+      "Microsoft Remote Desktop"
+    ];
+
+    # Utilities
+    utilities = [
+      "1Password"
+      "DiffusionBee"
+      "balenaEtcher"
+      "Alfred Preferences"
+      "DaisyDisk"
+      "VMware Fusion"
+      "HYPERSBI2"
+      "Google Drive"
+    ];
+
+    # Adobe
+    adobe = [
+      "Adobe Photoshop 2023"
+      "Adobe Illustrator 2023"
+      "Adobe Premiere Pro 2023"
+      "Adobe After Effects 2023"
+      "Adobe XD"
+      "Adobe Lightroom"
+    ];
+
+    # Design
+    design = [
+      "Pixelmator Pro"
+      "Figma"
+      "Blender"
+    ];
+
+    # Music
+    music = [
+      "Studio One 5"
+      "eqMac"
+      "VOICEVOX"
+    ];
+
+    # Video
+    video = [
+      "DaVinci Resolve"
+      "OBS"
+      "VTube Studio"
+    ];
+
+    # Browsers (コメントアウト)
+    # browsers = [
+    #   "Google Chrome"
+    #   "Firefox"
+    #   "Firefox Developer Edition"
+    #   "Brave Browser"
+    #   "Vivaldi"
+    #   "Safari"
+    #   "Blisk"
+    #   "Microsoft Edge"
+    #   "Tor Browser"
+    # ];
+
+    # Development
+    development = [
+      "TablePlus"
+      "Transmit"
+      "GitHub Desktop"
+      "Sourcetree"
+      "Docker Desktop"
+      "Sublime Text"
+      "WebTorrent"
+      # "iTerm2"
+      # "Visual Studio"
+    ];
+
+    # Communication
+    communication = [
+      # "zoom.us"
+      "Spark"
+      "Slack"
+      "Discord"
+    ];
+
+    # Streaming
+    streaming = [
+      "Spotify"
+    ];
+
+    # Security
+    security = [
+      "ESET Endpoint Security"
+    ];
+
+    # Games
+    games = [
+      "Steam"
+      "Riot Client"
+      "League of Legends"
+      "League Of Legends"
+    ];
+  };
+
+  # すべてのアプリを1つのリストに結合
+  allUnmanagedApps = lib.flatten (lib.attrValues unmanagedApps);
+
+  # アプリ名をエスケープする関数
+  escapeAppName = name: builtins.replaceStrings [" "] ["\\ "] name;
+
+  # yabaiルールを生成する関数
+  generateRule = app: "yabai -m rule --add app=${escapeAppName app} manage=off";
+in
 {
   services.yabai = {
     enable = true;
@@ -39,112 +185,6 @@
       mouse_action2 = "resize";
       mouse_drop_action = "swap";
     };
-    extraConfig = ''
-      # macOS Utilities
-      yabai -m rule --add app=Finder manage=off
-      yabai -m rule --add app=Stickies manage=off
-      yabai -m rule --add app=System\ Preferences manage=off
-      yabai -m rule --add app=System\ Settings manage=off
-      yabai -m rule --add app=Activity\ Monitor manage=off
-      yabai -m rule --add app=Console manage=off
-      yabai -m rule --add app=Screen\ Sharing manage=off
-      yabai -m rule --add app=Preview manage=off
-      yabai -m rule --add app=Photos manage=off
-      yabai -m rule --add app=QuickTime\ Player manage=off
-      yabai -m rule --add app=Messages manage=off
-      yabai -m rule --add app=Feedback\ Assistant manage=off
-      yabai -m rule --add app=Xcode manage=off
-      yabai -m rule --add app=Final\ Cut\ Pro manage=off
-      yabai -m rule --add app=Motion manage=off
-      yabai -m rule --add app=Logic\ Pro manage=off
-      yabai -m rule --add app=Disk\ Utility manage=off
-
-      # macOS iWork
-      yabai -m rule --add app=Pages manage=off
-      yabai -m rule --add app=Numbers manage=off
-      yabai -m rule --add app=Keynote manage=off
-
-      # Microsoft Office
-      yabai -m rule --add app=Word manage=off
-      yabai -m rule --add app=Excel manage=off
-      yabai -m rule --add app=PowerPoint manage=off
-      # yabai -m rule --add app=OneNote manage=off
-      # yabai -m rule --add app=Outlook manage=off
-      # yabai -m rule --add app=Microsoft\ Teams manage=off
-      yabai -m rule --add app=Microsoft\ Remote\ Desktop manage=off
-
-      # Utilities
-      yabai -m rule --add app=1Password manage=off
-      yabai -m rule --add app=DiffusionBee manage=off
-      yabai -m rule --add app=balenaEtcher manage=off
-      yabai -m rule --add app=Alfred\ Preferences manage=off
-      yabai -m rule --add app=DaisyDisk manage=off
-      yabai -m rule --add app=VMware\ Fusion manage=off
-      yabai -m rule --add app=HYPERSBI2 manage=off
-      yabai -m rule --add app=Google\ Drive manage=off
-
-      # Adobe
-      yabai -m rule --add app=Adobe\ Photoshop\ 2023 manage=off
-      yabai -m rule --add app=Adobe\ Illustrator\ 2023 manage=off
-      yabai -m rule --add app=Adobe\ Premiere\ Pro\ 2023 manage=off
-      yabai -m rule --add app=Adobe\ After\ Effects\ 2023 manage=off
-      yabai -m rule --add app=Adobe\ XD manage=off
-      yabai -m rule --add app=Adobe\ Lightroom manage=off
-
-      # Design
-      yabai -m rule --add app=Pixelmator\ Pro manage=off
-      yabai -m rule --add app=Figma manage=off
-      yabai -m rule --add app=Blender manage=off
-
-      # Music
-      yabai -m rule --add app=Studio\ One\ 5 manage=off
-      yabai -m rule --add app=eqMac manage=off
-      yabai -m rule --add app=VOICEVOX manage=off
-
-      # Video
-      yabai -m rule --add app=DaVinci\ Resolve manage=off
-      yabai -m rule --add app=OBS manage=off
-      yabai -m rule --add app=VTube\ Studio manage=off
-
-      # Browsers
-      # yabai -m rule --add app=Google\ Chrome manage=off
-      # yabai -m rule --add app=Firefox manage=off
-      # yabai -m rule --add app=Firefox\ Developer\ Edition manage=off
-      # yabai -m rule --add app=Brave\ Browser manage=off
-      # yabai -m rule --add app=Vivaldi manage=off
-      # yabai -m rule --add app=Safari manage=off
-      # yabai -m rule --add app=Blisk manage=off
-      # yabai -m rule --add app=Microsoft\ Edge manage=off
-      # yabai -m rule --add app=Tor\ Browser manage=off
-
-      # Development
-      yabai -m rule --add app=TablePlus manage=off
-      yabai -m rule --add app=Transmit manage=off
-      yabai -m rule --add app=GitHub\ Desktop manage=off
-      yabai -m rule --add app=Sourcetree manage=off
-      yabai -m rule --add app=Docker\ Desktop manage=off
-      yabai -m rule --add app=Sublime\ Text manage=off
-      yabai -m rule --add app=WebTorrent manage=off
-      # yabai -m rule --add app=iTerm2 manage=off
-      # yabai -m rule --add app=Visual\ Studio manage=off
-
-      # Communication
-      # yabai -m rule --add app=zoom.us manage=off
-      yabai -m rule --add app=Spark manage=off
-      yabai -m rule --add app=Slack manage=off
-      yabai -m rule --add app=Discord manage=off
-
-      # Streaming
-      yabai -m rule --add app=Spotify manage=off
-
-      # Security
-      yabai -m rule --add app=ESET\ Endpoint\ Security manage=off
-
-      # Games
-      yabai -m rule --add app=Steam manage=off
-      yabai -m rule --add app=Riot\ Client manage=off
-      yabai -m rule --add app=League\ of\ Legends manage=off
-      yabai -m rule --add app=League\ Of\ Legends manage=off
-    '';
+    extraConfig = lib.concatMapStringsSep "\n" generateRule allUnmanagedApps;
   };
 }
