@@ -122,11 +122,6 @@
           homeDirectory = "/home/${whoami.username}";
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
-        "minimal" = mkHomeConfiguration {
-          username = whoami.username;
-          homeDirectory = "/home/${whoami.username}";
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        };
       };
     };
 }
