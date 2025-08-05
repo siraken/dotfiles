@@ -38,36 +38,8 @@
         };
       };
 
-      # Function for nix-darwin system configuration
-      mkDarwinConfiguration =
-        { system, username }:
-        nix-darwin.lib.darwinSystem {
-          system = system;
-          modules = [
-            ./nix/hosts/darwin/configuration.nix
-            home-manager.darwinModules.home-manager
-            {
-              users.users = {
-                "${username}" = {
-                  name = "${username}";
-                  home = "/Users/${username}";
-                };
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.siraken = import ./nix/hosts/darwin/home.nix;
-            }
-          ];
-        };
-
-      # Function for NixOS system configuration
-      mkNixOSConfiguration =
-        { system, username }: nixpkgs.lib.nixosSystem {
-          system = system;
-          modules = [
-            ./nix/hosts/nixos/configuration.nix
-          ];
-        };
+      darwinSystem = nix-darwin.lib.darwinSystem;
+      nixosSystem = nixpkgs.lib.nixosSystem;
 
       # Function for home-manager configuration
       mkHomeConfiguration =
@@ -87,20 +59,52 @@
         };
     in {
       darwinConfigurations = {
-        "darwin" = mkDarwinConfiguration {
+        "darwin" = darwinSystem {
           system = "aarch64-darwin";
-          username = users.siraken.username;
+          modules = [
+            ./nix/hosts/darwin/configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              users.users = {
+                "${users.siraken.username}" = {
+                  name = "${users.siraken.username}";
+                  home = "/Users/${users.siraken.username}";
+                };
+              };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.siraken = import ./nix/hosts/darwin/home.nix;
+            }
+          ];
         };
-        "darwin-min" = mkDarwinConfiguration {
+
+        "darwin-min" = darwinSystem {
           system = "aarch64-darwin";
-          username = users.siraken.username;
+          modules = [
+            ./nix/hosts/darwin/configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              users.users = {
+                "${users.siraken.username}" = {
+                  name = "${users.siraken.username}";
+                  home = "/Users/${users.siraken.username}";
+                };
+              };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.siraken = import ./nix/hosts/darwin/home.nix;
+            }
+          ];
         };
       };
 
       nixosConfigurations = {
-        "your-linux-machine-name" = mkNixOSConfiguration {
+        "your-linux-machine-name" = nixosSystem {
           system = "x86_64-linux";
           username = users.siraken.username;
+          modules = [
+            ./nix/hosts/nixos/configuration.nix
+          ];
         };
       };
 
