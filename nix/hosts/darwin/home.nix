@@ -2,7 +2,8 @@
 let
   username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
-in {
+in
+{
   imports = [
     # ../../environment/system-packages.nix
     # ../../programs/bash.nix

@@ -445,7 +445,9 @@
       # # "native-access"
       {
         name = "voicevox";
-        args = { "no_quarantine" = true; };
+        args = {
+          "no_quarantine" = true;
+        };
       }
     ];
     masApps = {

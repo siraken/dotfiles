@@ -1,8 +1,15 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
-in {
+in
+{
   imports = [
     # ../../environment/system-packages.nix
     # ../../programs/bash.nix
@@ -87,7 +94,8 @@ in {
   };
 
   nixpkgs.config = {
-    allowUnfreePredicate = pkg:
+    allowUnfreePredicate =
+      pkg:
       builtins.elem (lib.getName pkg) [
         "1password-cli"
       ];
@@ -96,6 +104,10 @@ in {
   programs.home-manager.enable = true;
   programs._1password-shell-plugins = {
     enable = true;
-    plugins = with pkgs; [ gh awscli2 cachix ];
+    plugins = with pkgs; [
+      gh
+      awscli2
+      cachix
+    ];
   };
 }

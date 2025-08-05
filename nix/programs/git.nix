@@ -78,13 +78,16 @@
         #   program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl"
       ];
 
-      gpg = {
-        format = "ssh";
-      } // (lib.optionalAttrs pkgs.stdenv.isDarwin {
-        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      }) // (lib.optionalAttrs pkgs.stdenv.isLinux {
-        ssh.program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
-      });
+      gpg =
+        {
+          format = "ssh";
+        }
+        // (lib.optionalAttrs pkgs.stdenv.isDarwin {
+          ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        })
+        // (lib.optionalAttrs pkgs.stdenv.isLinux {
+          ssh.program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
+        });
 
       color = {
         status = "auto";

@@ -126,7 +126,7 @@ let
   allUnmanagedApps = lib.flatten (lib.attrValues unmanagedApps);
 
   # アプリ名をエスケープする関数
-  escapeAppName = name: builtins.replaceStrings [" "] ["\\ "] name;
+  escapeAppName = name: builtins.replaceStrings [ " " ] [ "\\ " ] name;
 
   # yabaiルールを生成する関数
   generateRule = app: "yabai -m rule --add app=${escapeAppName app} manage=off";

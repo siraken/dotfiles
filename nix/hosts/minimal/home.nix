@@ -1,8 +1,15 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
-in {
+in
+{
   imports = [
     ../../programs/zoxide.nix
     ../../programs/git.nix
