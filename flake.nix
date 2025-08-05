@@ -91,6 +91,10 @@
           system = "aarch64-darwin";
           username = users.siraken.username;
         };
+        "darwin-min" = mkDarwinConfiguration {
+          system = "aarch64-darwin";
+          username = users.siraken.username;
+        };
       };
 
       nixosConfigurations = {
