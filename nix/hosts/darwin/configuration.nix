@@ -346,7 +346,6 @@
       "diffusionbee"
       "discord"
       "docker-desktop"
-      "dotnet-sdk"
       "drawio"
       "drivedx"
       "dropbox"

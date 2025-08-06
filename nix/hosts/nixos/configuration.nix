@@ -92,6 +92,5 @@
     # sbcl
     # tree-sitter
     # openssh
-    # dotnet-sdk
   ];
 }
