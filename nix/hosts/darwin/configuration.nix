@@ -236,7 +236,6 @@
       "nginx"
       "nim"
       "ninja"
-      "ollama"
       "onefetch"
       "openssl"
       "pandoc"
