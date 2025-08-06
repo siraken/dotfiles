@@ -8,6 +8,7 @@ ruby = "latest"
 zig = "latest"
 ghq = "latest"
 uv = "latest"
+go = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
