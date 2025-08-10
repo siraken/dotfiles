@@ -108,7 +108,7 @@
         "darwin-min" = darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            ./nix/hosts/darwin/configuration.nix
+            ./nix/hosts/darwin-min/configuration.nix
             home-manager.darwinModules.home-manager
             {
               users.users = {
@@ -119,7 +119,7 @@
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.siraken = import ./nix/hosts/darwin/home.nix;
+              home-manager.users.siraken = import ./nix/hosts/darwin-min/home.nix;
             }
           ];
         };
