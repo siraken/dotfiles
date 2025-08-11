@@ -119,6 +119,8 @@ let
       "Riot Client"
       "League of Legends"
       "League Of Legends"
+      "Minecraft Launcher"
+      "java"
     ];
   };
 
