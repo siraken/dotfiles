@@ -1,5 +1,4 @@
 # Variables
-export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 export GOPATH="$HOME/go"
 export MODULAR_HOME="$HOME/.modular"
@@ -21,7 +20,6 @@ export PATH="$HOME/.slack/bin:$PATH"
 export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
 export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-export PATH="$HOME/.config/herd-lite/bin:$PATH"
 export PATH="$HOME/.pub-cache/bin:$PATH"
 export PATH="$HOME/Developer/flutter/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
