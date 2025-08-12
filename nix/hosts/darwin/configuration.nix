@@ -425,7 +425,6 @@
       "zoom"
       "zulu@17"
       "zed"
-      "herd"
       # # "eclipse" similarly casks are available
       # # "google-japanese-ime" # Failed to install
       # # "mongodb-compass"
