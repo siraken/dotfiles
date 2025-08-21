@@ -12,6 +12,7 @@ zig = "latest"
 ghq = "latest"
 uv = "latest"
 go = "latest"
+rust = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
