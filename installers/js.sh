@@ -22,7 +22,6 @@ bun_pkgs=(
   "terminalizer"
   "dredd"
   "neovim"
-  "@anthropic-ai/claude-code"
   "web-push"
 )
 
