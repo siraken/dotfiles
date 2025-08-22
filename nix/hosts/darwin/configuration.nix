@@ -91,6 +91,8 @@
     taps = [
       # "homebrew/bundle"
       # "homebrew/services"
+      "siraken/homebrew-tap"
+      "novalumo/homebrew-tap"
       # "mongodb/brew"
       # "shopify/shopify"
       # "ethereum/ethereum"
