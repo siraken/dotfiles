@@ -122,7 +122,6 @@
       # "grishka/grishka"
       # "modularml/packages"
       # "symfony-cli/tap"
-      # "cargo-lambda/cargo-lambda"
       # "FelixKratz/formulae"
       "VOICEVOX/voicevox"
     ];
@@ -290,7 +289,6 @@
       # "cloudflare/cloudflare/cf-terraforming"
       # "ipfs" # ipfs/kubo
       # # "babashka" no available formula
-      # # "cargo-lambda" no available formula
       # # "clj-kondo" no available formula
       # # "dog" installation failed
       # # "emacs-plus" args: ["with-spacemacs-icon" "with-native-comp"]
