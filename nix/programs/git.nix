@@ -186,6 +186,9 @@
       ".vscode"
       "**/.claude/settings.local.json"
       "mise.local.toml"
+      ".envrc"
+      ".env.development"
+      ".env.production"
     ];
   };
 }
