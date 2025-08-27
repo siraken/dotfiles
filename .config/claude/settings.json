@@ -6,6 +6,13 @@
       "Bash(sudo:*)",
       "Bash(rm:*)",
       "Bash(rm -rf:*)",
+      "Read(.env*)",
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Write(.env*)",
+      "mcp__supabase__execute_sql"
+    ],
+    "ask": [
       "Bash(git push:*)",
       "Bash(git reset:*)",
       "Bash(git rebase:*)",
@@ -13,12 +20,7 @@
       "Bash(wget:*)",
       "Bash(psql:*)",
       "Bash(mysql:*)",
-      "Bash(mongod:*)",
-      "Read(.env*)",
-      "Read(id_rsa)",
-      "Read(id_ed25519)",
-      "Write(.env*)",
-      "mcp__supabase__execute_sql"
+      "Bash(mongod:*)"
     ]
   },
   "hooks": {
