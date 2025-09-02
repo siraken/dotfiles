@@ -4,8 +4,6 @@
     "allow": [],
     "deny": [
       "Bash(sudo:*)",
-      "Bash(rm:*)",
-      "Bash(rm -rf:*)",
       "Read(.env*)",
       "Read(id_rsa)",
       "Read(id_ed25519)",
@@ -13,6 +11,8 @@
       "mcp__supabase__execute_sql"
     ],
     "ask": [
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
       "Bash(git push:*)",
       "Bash(git reset:*)",
       "Bash(git rebase:*)",
