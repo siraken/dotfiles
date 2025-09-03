@@ -32,6 +32,8 @@ alias ccd="claude --dangerously-skip-permissions"
 alias ccu="bunx ccusage@latest"
 alias cculv="bunx ccusage@latest blocks --live"
 alias cx="codex"
+alias di="bunx difit"
+alias ccm="bunx ccmanager"
 # Aliases for macOS
 alias ii="open"
 alias mamp-htdocs="cd /Applications/MAMP/htdocs"
