@@ -1,5 +1,6 @@
 {
   "includeCoAuthoredBy": true,
+  "model": "sonnet",
   "permissions": {
     "allow": [],
     "deny": [
