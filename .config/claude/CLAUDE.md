@@ -8,3 +8,4 @@
 - If you don't know something or if something is unclear, don't force yourself to proceed with the task and communicate that to me.
 - When working with projects, determine which package manager to use by checking lock files (such as package-lock.json, yarn.lock, pnpm-lock.yaml, etc.) and other project configuration files first.
 - When suggesting commit messages, check recent commit messages for prefixes that might be automatically added by Git hooks. Only add prefixes if no automatic prefix configuration is detected to avoid duplication.
+- When tests fail, implement proper solutions rather than quick fixes that merely make tests pass. If implementation approaches are unclear or multiple options exist, ask the user for guidance on the preferred approach.
