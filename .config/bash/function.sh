@@ -24,6 +24,14 @@ function gau() {
   fi
 }
 
+function gd() {
+  local dir
+  dir=$(ghq list -p | fzf)
+  if [[ -n "$dir" ]]; then
+    cd "$dir"
+  fi
+}
+
 function ggl() {
   echo "Searching for $argv on Google..."
   open "https://www.google.com/search?q=$argv"
