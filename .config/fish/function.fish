@@ -84,26 +84,3 @@ function res-yabai
   yabai --restart-service
   skhd --restart-service
 end
-
-# 二番煎じ
-function トウキョウ・シャンディ・
-  if test -f ./vendor/bin/sail
-    if test -f pnpm-lock.yaml
-      sail pnpm $argv
-    end
-    if test -f yarn.lock
-      sail yarn $argv
-    end
-    if test -f package-lock.json
-      sail npm $argv
-    end
-  else
-    if test -f yarn.lock
-      yarn $argv
-    end
-    if test -f package-lock.json
-      npm $argv
-    end
-  end
-end
-
