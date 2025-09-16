@@ -392,6 +392,7 @@
       "poedit"
       "postman"
       "powershell"
+      "popclip"
       "raspberry-pi-imager"
       "sdformatter"
       "session-manager-plugin"
@@ -456,7 +457,6 @@
       "Microsoft Outlook" = 985367838;
       "Microsoft PowerPoint" = 462062816;
       "Microsoft Word" = 462054704;
-      "PopClip" = 445189367;
       # "RunCat" = 1429033973;
       "Slack" = 803453959;
       # "Spark" = 1176895641;
