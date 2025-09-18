@@ -45,6 +45,17 @@ rust = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@lhci/cli" = "latest"
 
+# cargo packages
+# "cargo:cargo-binstall" = "latest"
+# "cargo:cargo-generate" = "latest"
+# "cargo:diesel_cli" = "latest"
+# "cargo:dioxus-cli" = "latest"
+# "cargo:du-dust" = "latest"
+# "cargo:evcxr_repl" = "latest"
+# "cargo:gitoxide" = "latest"
+# "cargo:pagefind" = "latest"
+# "cargo:spotify_player" = "latest"
+
  [settings]
 idiomatic_version_file_enable_tools = []
 
