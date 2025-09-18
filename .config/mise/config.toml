@@ -44,6 +44,7 @@ rust = "latest"
 "npm:@google/gemini-cli" = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@lhci/cli" = "latest"
+"npm:@nestjs/cli" = "latest"
 
 # cargo packages
 # "cargo:cargo-binstall" = "latest"
