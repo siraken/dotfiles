@@ -422,7 +422,6 @@
       "xbar"
       "xquartz"
       "xsplit-vcam"
-      "youtube-music"
       "zoom"
       "zulu@17"
       "zed"
