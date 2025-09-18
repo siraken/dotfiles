@@ -37,12 +37,12 @@ rust = "latest"
 # "npm:web-push" = "latest"
 "npm:purescript" = "latest"
 "npm:spago" = "latest"
-
 "npm:ccmanager" = "latest"
 "npm:dev3000" = "latest"
 "npm:@biomejs/biome" = "latest"
 "npm:@openai/codex" = "latest"
 "npm:@google/gemini-cli" = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@lhci/cli" = "latest"
 
  [settings]
