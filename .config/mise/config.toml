@@ -56,6 +56,12 @@ rust = "latest"
 # "cargo:pagefind" = "latest"
 # "cargo:spotify_player" = "latest"
 
+# gem packages
+# "gem:rubocop" = "latest"
+# "gem:rufo" = "latest"
+# "gem:solargraph" = "latest"
+# "gem:neovim" = "latest"
+
  [settings]
 idiomatic_version_file_enable_tools = []
 
