@@ -62,6 +62,14 @@ rust = "latest"
 # "gem:solargraph" = "latest"
 # "gem:neovim" = "latest"
 
+# go packages
+# godoc
+"go:golang.org/x/tools/cmd/godoc" = "latest"
+"go:github.com/sheepla/pingu" = "latest" # ping alternative: pingu
+"go:github.com/fatih/gomodifytags" = "latest" # Go tool to modify struct field tags
+"go:github.com/antonmedv/llama" = "latest" # Terminal file manager
+"go:github.com/maaslalani/nap" = "latest" # Code snippets in terminal
+
  [settings]
 idiomatic_version_file_enable_tools = []
 
