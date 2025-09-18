@@ -14,11 +14,42 @@ uv = "latest"
 go = "latest"
 rust = "latest"
 
-[settings]
+# npm packages
+"npm:typescript" = "latest"
+# "npm:nativescript" = "latest"
+# "npm:@ionic/cli" = "latest"
+# "npm:native-run" = "latest"
+# "npm:source-map-support" = "latest"
+# "npm:@aws-amplify/cli" = "latest"
+# "npm:firebase-tools" = "latest"
+# "npm:commitizen" = "latest"
+# "npm:@angular/cli" = "latest"
+# "npm:@nestjs/cli" = "latest"
+# "npm:fastify-cli" = "latest"
+"npm:yo" = "latest"
+# "npm:json-server" = "latest"
+# "npm:cordova" = "latest"
+# "npm:typeorm" = "latest"
+"npm:wrangler" = "latest"
+# "npm:terminalizer" = "latest"
+# "npm:dredd" = "latest"
+# "npm:neovim" = "latest"
+# "npm:web-push" = "latest"
+"npm:purescript" = "latest"
+"npm:spago" = "latest"
+
+"npm:ccmanager" = "latest"
+"npm:dev3000" = "latest"
+"npm:@biomejs/biome" = "latest"
+"npm:@openai/codex" = "latest"
+"npm:@google/gemini-cli" = "latest"
+"npm:@lhci/cli" = "latest"
+
+ [settings]
 idiomatic_version_file_enable_tools = []
 
 [settings.npm]
-bun = true
+bun = false
 
 [settings.status]
 missing_tools = "if_other_versions_installed"
