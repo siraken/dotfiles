@@ -23,7 +23,7 @@ in
     # sessionVariables = import ../../modules/variable.nix;
     # sessionPath = import ../../modules/path.nix;
 
-    file = import ../../modules/dotfiles.nix {
+    file = import ../../modules/symlinks.nix {
       inherit config dotfilesPath;
     } // {
 

@@ -27,7 +27,7 @@ in
   home = {
     stateVersion = "25.05";
 
-    file = import ../../modules/dotfiles.nix {
+    file = import ../../modules/symlinks.nix {
       inherit config dotfilesPath;
     } // {
 
