@@ -19,6 +19,7 @@ in
 
   home = {
     stateVersion = "25.05";
+    # preferXdgDirectories = true; # to be enabled
 
     file = import ../../modules/dotfiles.nix {
       inherit config dotfilesPath;
