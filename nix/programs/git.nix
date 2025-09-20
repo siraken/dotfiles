@@ -9,7 +9,6 @@
     extraConfig = {
       core = {
         autocrlf = "input";
-        ignorecase = false;
         editor = "nvim";
         hooksPath = "~/.config/git/hooks";
       };
