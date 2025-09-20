@@ -58,6 +58,9 @@ config.exit_behavior = "Close"
 config.status_update_interval = 1000
 config.colors = {
   scrollbar_thumb = "white",
+  tab_bar = {
+    background = "none",
+  },
 }
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
@@ -81,19 +84,6 @@ config.window_padding = {
   right = 0,
   top = 0,
   bottom = 0,
-}
-config.window_background_gradient = {
-  orientation = "Vertical",
-  colors = {
-    -- "#0f0c29",
-    -- "#302b63",
-    -- "#24243e",
-    "#000000",
-    "#111111",
-  },
-  interpolation = "Linear",
-  blend = "Rgb",
-  noise = 64,
 }
 
 return config
