@@ -189,6 +189,7 @@
       ".envrc"
       ".env.development"
       ".env.production"
+      "**/node_modules"
     ];
   };
 }
