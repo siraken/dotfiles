@@ -39,20 +39,20 @@ config.default_prog = { "/bin/bash", "-l" }
 if is_mac then
   config.default_prog = { "/opt/homebrew/bin/bash", "-l" }
   config.font_size = 16
-  config.window_background_opacity = 0.8
-  config.macos_window_background_blur = 30
+  config.window_background_opacity = 0.85
+  config.macos_window_background_blur = 20
   -- config.macos_window_dragging_behavior = "all"
 elseif is_win then
   config.default_prog = { "pwsh.exe" }
   config.font_size = 12
-  config.window_background_opacity = 0.7
+  config.window_background_opacity = 0.85
   config.win32_system_backdrop = "Acrylic"
 elseif is_linux then
   config.font_size = 16
-  config.window_background_opacity = 0.8
+  config.window_background_opacity = 0.85
 else
   config.font_size = 16
-  config.window_background_opacity = 0.8
+  config.window_background_opacity = 0.85
 end
 config.exit_behavior = "Close"
 config.status_update_interval = 1000
