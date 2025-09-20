@@ -12,6 +12,7 @@ in
     ../../programs/zoxide.nix
     # ../../programs/fish.nix
     ../../programs/tmux.nix
+    ../../programs/yazi.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
   ];

@@ -15,6 +15,7 @@ in
     ../../programs/git.nix
     ../../programs/zsh.nix
     ../../programs/tmux.nix
+    ../../programs/yazi.nix
     ../../programs/starship.nix
   ];
 
