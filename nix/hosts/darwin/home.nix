@@ -28,6 +28,10 @@ in
     } // {
 
     };
+
+    shell = {
+      enableShellIntegration = true;
+    };
   };
 
   programs.home-manager.enable = true;
