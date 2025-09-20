@@ -20,6 +20,7 @@ in
   home = {
     stateVersion = "25.05";
     # preferXdgDirectories = true; # to be enabled
+    # sessionPath = import ../../modules/path.nix;
 
     file = import ../../modules/dotfiles.nix {
       inherit config dotfilesPath;
