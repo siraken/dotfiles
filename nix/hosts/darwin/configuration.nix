@@ -246,7 +246,6 @@
       "putty"
       "pwgen"
       "qemu"
-      "ranger"
       "redis"
       "ripgrep"
       "samba"
