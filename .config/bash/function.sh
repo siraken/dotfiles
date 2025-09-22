@@ -32,6 +32,14 @@ function gd() {
   fi
 }
 
+function gco() {
+  local branch
+  branch=$(git branch --all | sed 's/^[* ]*//' | fzf)
+  if [[ -n "$branch" ]]; then
+    git checkout "$(echo $branch | sed 's#remotes/origin/##')"
+  fi
+}
+
 function ggl() {
   echo "Searching for $argv on Google..."
   open "https://www.google.com/search?q=$argv"
