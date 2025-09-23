@@ -45,6 +45,7 @@ rust = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@lhci/cli" = "latest"
 "npm:@nestjs/cli" = "latest"
+"npm:cordova" = "latest"
 
 # cargo packages
 # "cargo:cargo-binstall" = "latest"
