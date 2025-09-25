@@ -388,6 +388,7 @@
       "obs"
       "obsidian"
       "onyx"
+      "podman-desktop"
       "poedit"
       "postman"
       "powershell"
