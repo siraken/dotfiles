@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
@@ -34,7 +34,7 @@ in
     };
 
     activation = {
-      createSymlinksForAgents = pkgs.lib.hm.dag.entryAfter ["writeBoundary"] ''
+      createSymlinksForAgents = lib.hm.dag.entryAfter ["writeBoundary"] ''
         ${pkgs.bash}/bin/bash ${dotfilesPath}/.agents/symlink
       '';
     };
