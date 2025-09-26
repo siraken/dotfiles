@@ -46,9 +46,4 @@
 
   # Claude configuration
   ".claude/commands".source = "${dotfilesPath}/.config/claude/commands";
-  ".claude/settings.json".source = "${dotfilesPath}/.config/claude/settings.json";
-  ".claude/CLAUDE.md".source = "${dotfilesPath}/.config/claude/CLAUDE.md";
-
-  # Gemini configuration
-  ".gemini/settings.json".source = "${dotfilesPath}/.config/gemini/settings.json";
 }

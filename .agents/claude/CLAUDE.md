@@ -11,3 +11,6 @@
 - When tests fail, implement proper solutions rather than quick fixes that merely make tests pass. If implementation approaches are unclear or multiple valid options exist, ask for guidance on the preferred approach.
 - Always explain your reasoning when making technical decisions or recommendations.
 - When providing code solutions, include relevant context and explain any trade-offs or considerations.
+- 表面的な解決策を急いで提示しない
+- 問題の存在を十分に確認してから対応する
+- ユーザーの疑問や指摘を軽視しない
