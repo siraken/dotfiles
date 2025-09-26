@@ -32,6 +32,12 @@ in
     shell = {
       enableShellIntegration = true;
     };
+
+    activation = {
+      createSymlinksForAgents = pkgs.lib.hm.dag.entryAfter ["writeBoundary"] ''
+        ${pkgs.bash}/bin/bash ${dotfilesPath}/.agents/symlink
+      '';
+    };
   };
 
   programs.home-manager.enable = true;
