@@ -1,6 +1,8 @@
 {
+  "env": {
+    "DISABLE_AUTOUPDATER": "0"
+  },
   "includeCoAuthoredBy": true,
-  "model": "sonnet",
   "permissions": {
     "allow": [],
     "deny": [
@@ -24,6 +26,7 @@
       "Bash(mongod:*)"
     ]
   },
+  "model": "sonnet",
   "hooks": {
     "PostToolUse": [
       {
@@ -36,8 +39,5 @@
         ]
       }
     ]
-  },
-  "env": {
-    "DISABLE_AUTOUPDATER": 0
   }
 }
