@@ -33,10 +33,8 @@ in
       enableShellIntegration = true;
     };
 
-    activation = {
-      createSymlinksForAgents = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        ${pkgs.bash}/bin/bash ${dotfilesPath}/symlink
-      '';
+    activation = import ../../modules/home-activation.nix {
+      inherit config pkgs lib dotfilesPath;
     };
   };
 
