@@ -11,5 +11,4 @@ ln -sf "${DOTFILES_PATH}/.agents/claude/CLAUDE.md" "${HOME}/.claude/CLAUDE.md"
 ln -sf "${DOTFILES_PATH}/.agents/gemini/settings.json" "${HOME}/.gemini/settings.json"
 
 # Neovim
-mkdir -p "${HOME}/.config/nvim"
 ln -sf "${DOTFILES_PATH}/.config/nvim" "${HOME}/.config/nvim"
