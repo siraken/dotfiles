@@ -2,14 +2,19 @@
   "theme": "GitHub",
   "selectedAuthType": "oauth-personal",
   "mcpServers": {
-    "MCP_DOCKER": {
-      "command": "docker",
+    "chrome-devtools": {
+      "command": "npx",
       "args": [
-        "mcp",
-        "gateway",
-        "run"
-      ],
-      "type": "stdio"
+        "chrome-devtools-mcp@latest"
+      ]
     }
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "GitHub"
   }
 }
