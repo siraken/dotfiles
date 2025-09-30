@@ -10,31 +10,78 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Install Nix
 curl --proto '=https' --tls-version=1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
-# Install nix-darwin
-nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .
+# Install nix-darwin (macOS only)
+cd dotfiles
+sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darwin --impure
 
-# Build and apply system configuration (includes dotfiles symlinks)
+# Build and apply system configuration
 sudo darwin-rebuild build --flake .#darwin --impure
 sudo darwin-rebuild switch --flake .#darwin --impure
+
+# For WSL/Ubuntu (home-manager only, no system-level changes)
+nix run home-manager/release-25.05 -- switch --flake .#wsl-ubuntu --impure
 
 # Garbage collection
 nix store gc
 ```
 
+### Development
+
+```bash
+# Format Nix files
+nix fmt
+
+# Enter development shell with formatters
+nix develop
+```
+
 ## Architecture
 
-Personal dotfiles management system combining Nix and migration system:
+Personal dotfiles management system combining Nix and declarative configuration management.
 
-### Nix System Management
+### Flake Structure
 
-- `flake.nix` - Nix flake configuration, integrates nix-darwin and home-manager
-- `nix/hosts/darwin/configuration.nix` - macOS-specific settings (Homebrew, system preferences, security)
+- `flake.nix` - Main flake configuration with multiple system profiles:
+  - `darwin` - Full macOS configuration (primary)
+  - `darwin-min` - Minimal macOS configuration
+  - `wsl-ubuntu` - WSL/Ubuntu home-manager configuration
+  - `nixos` - NixOS system configuration (placeholder)
+
+### Key Components
+
+**System Management (macOS)**:
+- `nix/hosts/darwin/configuration.nix` - System-level settings (Homebrew, macOS preferences, security)
 - `nix/hosts/darwin/home.nix` - User environment configuration
-- Target architecture: arm64-darwin (Apple Silicon Mac)
+
+**Modular Configuration**:
+- `nix/modules/home-symlinks.nix` - Declarative symlink mappings for dotfiles
+- `nix/modules/home-activation.nix` - Home activation scripts (runs `./symlink` for additional symlinks)
+- `nix/programs/*.nix` - Individual program configurations (git, zsh, tmux, yazi, etc.)
+
+**Symlink Management**:
+- Nix home-manager handles most symlinks via `home-symlinks.nix`
+- Additional symlinks (AI agents, nvim) managed by `./symlink` bash script executed during home-manager activation
 
 ### Configuration Coverage
 
-Manages 100+ tool configurations including Neovim, Git, shells (Bash/Zsh/Fish), terminals (Kitty/Alacritty/WezTerm), editors (Vim/Emacs/Helix), window managers (Yabai/Sketchybar)
+Manages 100+ tool configurations across multiple categories:
+- **Editors**: Neovim, Vim, Emacs, Helix, Kakoune
+- **Shells**: Bash, Zsh, Fish
+- **Terminals**: Kitty, Alacritty, WezTerm, Ghostty, Hyper
+- **Window Managers**: Yabai, Sketchybar, Borders
+- **Dev Tools**: Git, Tmux, Yazi, Direnv, Starship, Mise
+- **AI Agents**: Claude, Gemini
+
+### Target Architectures
+
+- `aarch64-darwin` - Apple Silicon Macs (primary)
+- `x86_64-linux` - WSL/Ubuntu and NixOS
+
+## Important Files
+
+- `.config/` - Application configurations (managed as symlinks)
+- `.agents/` - AI agent configurations (Claude, Gemini)
+- `symlink` - Bash script for non-Nix symlink management
 
 ## Git Commit Guidelines
 
