@@ -26,7 +26,6 @@
       "Bash(mongod:*)"
     ]
   },
-  "model": "sonnet",
   "hooks": {
     "PostToolUse": [
       {
@@ -39,5 +38,6 @@
         ]
       }
     ]
-  }
+  },
+  "alwaysThinkingEnabled": true
 }
