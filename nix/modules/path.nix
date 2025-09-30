@@ -1,4 +1,5 @@
-{}: [
+{ }:
+[
   "/opt/homebrew/opt/openssl@3/bin" # Use openssl installed by homebrew
   "/opt/homebrew/sbin"
   "/opt/homebrew/bin"
