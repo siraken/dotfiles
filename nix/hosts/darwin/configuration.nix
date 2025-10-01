@@ -93,6 +93,7 @@
       # "homebrew/services"
       "siraken/homebrew-tap"
       "novalumo/homebrew-tap"
+      # "cirruslabs/cli"
       # "mongodb/brew"
       # "shopify/shopify"
       # "ethereum/ethereum"
@@ -261,6 +262,7 @@
       "sqlite"
       "stack"
       "streamlink"
+      # "tart" # cirruslabs/cli/tart
       "telnet"
       "tenv"
       "testdisk"
