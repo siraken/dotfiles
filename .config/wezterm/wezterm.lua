@@ -67,10 +67,10 @@ config.colors = {
 }
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
-  { family = "JetBrains Mono", weight = "regular" },
-  { family = "Hack Nerd Font Mono", weight = "regular" },
-  { family = "Hiragino Sans", weight = "regular" },
-  { family = "Noto Sans JP", weight = "regular" },
+  { family = "JetBrains Mono", weight = "Regular" },
+  { family = "Hack Nerd Font Mono", weight = "Regular" },
+  { family = "Hiragino Sans", weight = "Regular" },
+  { family = "Noto Sans JP", weight = "Regular" },
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false
