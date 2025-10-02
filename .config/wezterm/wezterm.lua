@@ -26,11 +26,11 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-wezterm.on('bell', function(window, pane)
-  window:toast_notification('Claude Code', 'Task completed', nil, 4000)
+wezterm.on("bell", function(window, pane)
+  window:toast_notification("Claude Code", "Task completed", nil, 4000)
 end)
 
-config.audible_bell = 'SystemBeep'
+config.audible_bell = "SystemBeep"
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.mouse_bindings = mouse_bindings
@@ -38,7 +38,7 @@ config.use_ime = true
 config.default_prog = { "/bin/bash", "-l" }
 if is_mac then
   config.default_prog = { "/opt/homebrew/bin/bash", "-l" }
-  config.font_size = 16
+  config.font_size = 14
   config.window_background_opacity = 0.85
   config.macos_window_background_blur = 20
   -- config.macos_window_dragging_behavior = "all"
@@ -48,10 +48,10 @@ elseif is_win then
   config.window_background_opacity = 0.85
   config.win32_system_backdrop = "Acrylic"
 elseif is_linux then
-  config.font_size = 16
+  config.font_size = 14
   config.window_background_opacity = 0.85
 else
-  config.font_size = 16
+  config.font_size = 14
   config.window_background_opacity = 0.85
 end
 config.exit_behavior = "Close"
