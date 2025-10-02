@@ -20,11 +20,13 @@ in
   home = {
     stateVersion = "25.05";
 
-    file = import ../../modules/symlinks.nix {
-      inherit config dotfilesPath;
-    } // {
+    file =
+      import ../../modules/symlinks.nix {
+        inherit config dotfilesPath;
+      }
+      // {
 
-    };
+      };
   };
 
   programs.home-manager.enable = true;
