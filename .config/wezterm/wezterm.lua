@@ -39,6 +39,7 @@ config.default_prog = { "/bin/bash", "-l" }
 if is_mac then
   config.default_prog = { "/opt/homebrew/bin/bash", "-l" }
   config.font_size = 14
+  config.line_height = 1.2
   config.window_background_opacity = 0.85
   config.macos_window_background_blur = 20
   -- config.macos_window_dragging_behavior = "all"
