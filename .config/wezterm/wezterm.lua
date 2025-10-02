@@ -50,9 +50,11 @@ elseif is_win then
   config.win32_system_backdrop = "Acrylic"
 elseif is_linux then
   config.font_size = 14
+  config.line_height = 1.2
   config.window_background_opacity = 0.85
 else
   config.font_size = 14
+  config.line_height = 1.2
   config.window_background_opacity = 0.85
 end
 config.exit_behavior = "Close"
