@@ -20,7 +20,6 @@
   ".vsnip".source = "${dotfilesPath}/.vsnip";
 
   # XDG config directories
-  ".config/kitty".source = "${dotfilesPath}/.config/kitty";
   ".config/bash".source = "${dotfilesPath}/.config/bash";
   ".config/zsh".source = "${dotfilesPath}/.config/zsh";
   ".config/fish".source = "${dotfilesPath}/.config/fish";

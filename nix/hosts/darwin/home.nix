@@ -17,6 +17,7 @@ in
     ../../programs/git.nix
     ../../programs/helix.nix
     ../../programs/kakoune.nix
+    ../../programs/kitty.nix
     ../../programs/zsh.nix
     ../../programs/zoxide.nix
     # ../../programs/fish.nix
