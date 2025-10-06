@@ -31,7 +31,6 @@
   ".config/neovide".source = "${dotfilesPath}/.config/neovide";
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
-  ".config/yt-dlp".source = "${dotfilesPath}/.config/yt-dlp";
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
   ".config/borders".source = "${dotfilesPath}/.config/borders";
 
