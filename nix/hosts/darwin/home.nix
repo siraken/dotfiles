@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
@@ -7,6 +12,7 @@ in
   imports = [
     # ../../environment/system-packages.nix
     # ../../programs/bash.nix
+    ../../programs/alacritty.nix
     ../../programs/git.nix
     ../../programs/zsh.nix
     ../../programs/zoxide.nix
@@ -23,18 +29,25 @@ in
     # sessionVariables = import ../../modules/variable.nix;
     # sessionPath = import ../../modules/path.nix;
 
-    file = import ../../modules/home-symlinks.nix {
-      inherit config dotfilesPath;
-    } // {
+    file =
+      import ../../modules/home-symlinks.nix {
+        inherit config dotfilesPath;
+      }
+      // {
 
-    };
+      };
 
     shell = {
       enableShellIntegration = true;
     };
 
     activation = import ../../modules/home-activation.nix {
-      inherit config pkgs lib dotfilesPath;
+      inherit
+        config
+        pkgs
+        lib
+        dotfilesPath
+        ;
     };
   };
 

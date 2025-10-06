@@ -32,7 +32,7 @@
   ".config/neovide".source = "${dotfilesPath}/.config/neovide";
   ".config/helix".source = "${dotfilesPath}/.config/helix";
   ".config/kak".source = "${dotfilesPath}/.config/kak";
-  ".config/alacritty".source = "${dotfilesPath}/.config/alacritty";
+  # ".config/alacritty".source = "${dotfilesPath}/.config/alacritty"; # Managed by nix/programs/alacritty.nix
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
   ".config/yt-dlp".source = "${dotfilesPath}/.config/yt-dlp";
