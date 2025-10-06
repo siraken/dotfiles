@@ -35,7 +35,7 @@
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
   ".config/yt-dlp".source = "${dotfilesPath}/.config/yt-dlp";
-  ".config/bat".source = "${dotfilesPath}/.config/bat";
+  # ".config/bat".source = "${dotfilesPath}/.config/bat"; # Managed by nix/programs/bat.nix
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
   ".config/borders".source = "${dotfilesPath}/.config/borders";
 

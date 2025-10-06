@@ -13,6 +13,7 @@ in
     # ../../environment/system-packages.nix
     # ../../programs/bash.nix
     ../../programs/alacritty.nix
+    ../../programs/bat.nix
     ../../programs/git.nix
     ../../programs/zsh.nix
     ../../programs/zoxide.nix
