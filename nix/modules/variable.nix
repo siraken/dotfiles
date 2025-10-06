@@ -1,4 +1,5 @@
-{}: {
+{ }:
+{
   "XDG_CONFIG_HOME" = "$HOME/.config";
   "SSH_AUTH_SOCK" = "$HOME/.1password/agent.sock";
   "GOPATH" = "$HOME/go";
