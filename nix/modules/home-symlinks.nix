@@ -28,7 +28,6 @@
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
   # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
   ".config/nano".source = "${dotfilesPath}/.config/nano";
-  ".config/neovide".source = "${dotfilesPath}/.config/neovide";
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
