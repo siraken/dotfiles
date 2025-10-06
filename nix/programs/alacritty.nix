@@ -5,7 +5,9 @@
 
     settings = {
       # General settings
-      live_config_reload = true;
+      general = {
+        live_config_reload = true;
+      };
 
       # Environment variables
       env = {
