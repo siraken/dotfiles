@@ -18,6 +18,8 @@ in
     ../../programs/helix.nix
     ../../programs/kakoune.nix
     ../../programs/kitty.nix
+    ../../programs/lazydocker.nix
+    ../../programs/lazygit.nix
     ../../programs/neovide.nix
     ../../programs/zsh.nix
     ../../programs/zoxide.nix
