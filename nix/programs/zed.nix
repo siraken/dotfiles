@@ -8,8 +8,8 @@
         edit_prediction_provider = "zed";
       };
       vim_mode = true;
-      ui_font_size = 16;
-      buffer_font_size = 16;
+      ui_font_size = 14;
+      buffer_font_size = 14;
       theme = {
         mode = "system";
         light = "One Light";
