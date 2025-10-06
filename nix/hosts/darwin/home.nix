@@ -23,6 +23,7 @@ in
     # ../../programs/fish.nix
     ../../programs/tmux.nix
     ../../programs/yazi.nix
+    ../../programs/yt-dlp.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
   ];
