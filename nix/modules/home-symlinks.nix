@@ -30,12 +30,9 @@
   # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
   ".config/nano".source = "${dotfilesPath}/.config/nano";
   ".config/neovide".source = "${dotfilesPath}/.config/neovide";
-  # ".config/helix".source = "${dotfilesPath}/.config/helix"; # Managed by nix/programs/helix.nix
-  ".config/kak".source = "${dotfilesPath}/.config/kak";
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
   ".config/yt-dlp".source = "${dotfilesPath}/.config/yt-dlp";
-  # ".config/bat".source = "${dotfilesPath}/.config/bat"; # Managed by nix/programs/bat.nix
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
   ".config/borders".source = "${dotfilesPath}/.config/borders";
 
