@@ -16,6 +16,7 @@ in
     ../../programs/bat.nix
     ../../programs/git.nix
     ../../programs/helix.nix
+    ../../programs/kakoune.nix
     ../../programs/zsh.nix
     ../../programs/zoxide.nix
     # ../../programs/fish.nix
