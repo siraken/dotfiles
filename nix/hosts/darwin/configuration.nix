@@ -139,7 +139,6 @@
       "bash"
       "bats-core"
       "borders"
-      "bottom"
       "broot"
       "cabextract"
       "cairo"

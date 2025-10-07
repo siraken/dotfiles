@@ -14,6 +14,7 @@ in
     # ../../programs/bash.nix
     ../../programs/alacritty.nix
     ../../programs/bat.nix
+    ../../programs/bottom.nix
     ../../programs/git.nix
     ../../programs/helix.nix
     ../../programs/kakoune.nix
