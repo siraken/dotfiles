@@ -1,9 +1,8 @@
 { config, dotfilesPath }:
 {
   # Shell configurations
-  # Bash is now managed by nix/programs/bash.nix
-  ".zprofile".source = "${dotfilesPath}/.config/zsh/.zprofile";
-  ".zshrc".source = "${dotfilesPath}/.config/zsh/.zshrc";
+  ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
+  ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
 
   # Simple bar
   ".simplebarrc".source = "${dotfilesPath}/.config/simple-bar/.simplebarrc";
@@ -19,9 +18,7 @@
   ".vsnip".source = "${dotfilesPath}/.vsnip";
 
   # XDG config directories
-  # .config/bash is now managed by nix/programs/bash.nix
-  ".config/zsh".source = "${dotfilesPath}/.config/zsh";
-  ".config/fish".source = "${dotfilesPath}/.config/fish";
+  ".config/bash".source = "${dotfilesPath}/.config/bash";
   ".config/husky".source = "${dotfilesPath}/.config/husky";
   ".config/mise".source = "${dotfilesPath}/.config/mise";
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
