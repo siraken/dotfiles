@@ -3,8 +3,6 @@
   # Shell configurations
   ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
   ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
-  ".zprofile".source = "${dotfilesPath}/.config/zsh/.zprofile";
-  ".zshrc".source = "${dotfilesPath}/.config/zsh/.zshrc";
 
   # Simple bar
   ".simplebarrc".source = "${dotfilesPath}/.config/simple-bar/.simplebarrc";
@@ -21,8 +19,6 @@
 
   # XDG config directories
   ".config/bash".source = "${dotfilesPath}/.config/bash";
-  ".config/zsh".source = "${dotfilesPath}/.config/zsh";
-  ".config/fish".source = "${dotfilesPath}/.config/fish";
   ".config/husky".source = "${dotfilesPath}/.config/husky";
   ".config/mise".source = "${dotfilesPath}/.config/mise";
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
