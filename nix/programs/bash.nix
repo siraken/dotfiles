@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.bash = {
-    enable = true;
+    enable = false;
     enableCompletion = true;
     # historyControl = ["ignoredups" "erasedups"];
     # historyIgnore = ["ls *" "cd *" "pwd" "exit"];
