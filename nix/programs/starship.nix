@@ -36,12 +36,12 @@ let
 
     format = lib.concatStrings [
       "$os"
-      "[](bg:v_secondary fg:v_primary)"
+      "[](bg:v_secondary fg:v_primary)"
       "$directory"
-      "[ ](bg:v_base fg:v_secondary)"
+      "[ ](bg:v_base fg:v_secondary)"
       "$git_branch"
       "$git_status"
-      "[](fg:v_base)"
+      "[](fg:v_base)"
       "$line_break$character"
     ];
 
@@ -90,19 +90,19 @@ let
     };
 
     directory = {
-      format = "[  $path ](bg:v_secondary fg:t_secondary)";
+      format = "[  $path ](bg:v_secondary fg:t_secondary)";
       truncation_length = 3;
       truncation_symbol = "…/";
       substitutions = {
         "Documents" = "󰈙 ";
-        "Downloads" = " ";
+        "Downloads" = " ";
         "Music" = "󰝚 ";
-        "Pictures" = " ";
+        "Pictures" = " ";
       };
     };
 
     git_branch = {
-      symbol = "";
+      symbol = "";
       format = "[[$symbol $branch ](fg:git-green bg:v_base bold)](bg:v_base)";
     };
 
