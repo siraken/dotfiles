@@ -6,8 +6,8 @@
     # Custom configuration
     extraConfig = ''
       set -s escape-time 50
-      set-option -g default-shell "/opt/homebrew/bin/bash"
-      set -g default-command "/opt/homebrew/bin/bash"
+      set-option -g default-shell "bash"
+      set -g default-command "bash"
       set -g mouse on
 
       # Terminal overrides

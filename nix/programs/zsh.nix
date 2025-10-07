@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.zsh = {
-    enable = true;
+    enable = false;
     enableCompletion = true;
     # autocd = true;
     # autosuggestion = {

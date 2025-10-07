@@ -20,7 +20,6 @@
   ".vsnip".source = "${dotfilesPath}/.vsnip";
 
   # XDG config directories
-  ".config/kitty".source = "${dotfilesPath}/.config/kitty";
   ".config/bash".source = "${dotfilesPath}/.config/bash";
   ".config/zsh".source = "${dotfilesPath}/.config/zsh";
   ".config/fish".source = "${dotfilesPath}/.config/fish";
@@ -29,19 +28,10 @@
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
   # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
   ".config/nano".source = "${dotfilesPath}/.config/nano";
-  ".config/neovide".source = "${dotfilesPath}/.config/neovide";
-  ".config/helix".source = "${dotfilesPath}/.config/helix";
-  ".config/kak".source = "${dotfilesPath}/.config/kak";
-  ".config/alacritty".source = "${dotfilesPath}/.config/alacritty";
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
-  ".config/yt-dlp".source = "${dotfilesPath}/.config/yt-dlp";
-  ".config/bat".source = "${dotfilesPath}/.config/bat";
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
   ".config/borders".source = "${dotfilesPath}/.config/borders";
-
-  # Zed settings (specific file)
-  ".config/zed/settings.json".source = "${dotfilesPath}/.config/zed/settings.json";
 
   # Claude configuration
   ".claude/commands".source = "${dotfilesPath}/.config/claude/commands";
