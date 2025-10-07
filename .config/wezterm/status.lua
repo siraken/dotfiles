@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local colors = require("colors")
+local spotify = require("spotify")
 
 local DEFAULT_FG = colors.DEFAULT_FG
 local DEFAULT_BG = colors.DEFAULT_BG
@@ -41,6 +42,16 @@ end
 -- Right
 local function UpdateRight(window, pane)
   local elems = {}
+
+  -- Spotify status
+  local spotify_info = spotify.get_status_element()
+  if spotify_info then
+    AddElement(
+      elems,
+      { Foreground = { Color = spotify_info.color }, Text = spotify_info.icon },
+      spotify_info.text
+    )
+  end
 
   -- DateTime
   AddElement(
