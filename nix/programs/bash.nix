@@ -19,10 +19,10 @@
     historyFileSize = 20000;
 
     # Shell options (configured in initExtra instead)
-    # shellOptions = [
-    #   "histappend"
-    #   "checkwinsize"
-    # ];
+    shellOptions = [
+      "histappend"
+      "checkwinsize"
+    ];
 
     # Environment variables
     sessionVariables = {
@@ -42,30 +42,6 @@
       BUN_INSTALL = "$HOME/.bun";
       JAVA_HOME = "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home";
     };
-
-    # PATH configuration (configured in initExtra instead)
-    # Note: Many paths are added by Nix automatically for packages installed via home.packages
-    # sessionPath = [
-    #   "/opt/homebrew/opt/openssl@3/bin"
-    #   "/opt/homebrew/sbin"
-    #   "/opt/homebrew/bin"
-    #   "bin"
-    #   "$HOME/bin"
-    #   "$HOME/.local/bin"
-    #   "$HOME/.progate/bin"
-    #   "$HOME/.slack/bin"
-    #   "$HOME/Library/Application Support/Coursier/bin"
-    #   "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
-    #   "$HOME/Library/Android/sdk/platform-tools"
-    #   "$HOME/.pub-cache/bin"
-    #   "$HOME/Developer/flutter/bin"
-    #   "$HOME/.deno/bin"
-    #   "$HOME/.cargo/bin"
-    #   "$HOME/.rye/shims"
-    #   "$COMPOSER_HOME/vendor/bin"
-    #   "$GOPATH/bin"
-    #   "$BUN_INSTALL/bin"
-    # ];
 
     # Shell aliases
     shellAliases = {
@@ -111,31 +87,6 @@
 
     # Additional initialization
     initExtra = ''
-      # Shell options
-      shopt -s histappend
-      shopt -s checkwinsize
-
-      # PATH configuration
-      export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-      export PATH="/opt/homebrew/sbin:$PATH"
-      export PATH="/opt/homebrew/bin:$PATH"
-      export PATH="bin:$PATH"
-      export PATH="$HOME/bin:$PATH"
-      export PATH="$HOME/.local/bin:$PATH"
-      export PATH="$HOME/.progate/bin:$PATH"
-      export PATH="$HOME/.slack/bin:$PATH"
-      export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
-      export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
-      export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-      export PATH="$HOME/.pub-cache/bin:$PATH"
-      export PATH="$HOME/Developer/flutter/bin:$PATH"
-      export PATH="$HOME/.deno/bin:$PATH"
-      export PATH="$HOME/.cargo/bin:$PATH"
-      export PATH="$HOME/.rye/shims:$PATH"
-      export PATH="$COMPOSER_HOME/vendor/bin:$PATH"
-      export PATH="$GOPATH/bin:$PATH"
-      export PATH="$BUN_INSTALL/bin:$PATH"
-
       # Utility functions for messages
       info_message() {
         local message="$1"
