@@ -11,7 +11,7 @@ in
 {
   imports = [
     # ../../environment/system-packages.nix
-    # ../../programs/bash.nix
+    ../../programs/bash.nix
     ../../programs/alacritty.nix
     ../../programs/bat.nix
     ../../programs/bottom.nix
@@ -24,7 +24,7 @@ in
     ../../programs/neovide.nix
     ../../programs/zsh.nix
     ../../programs/zoxide.nix
-    # ../../programs/fish.nix
+    ../../programs/fish.nix
     ../../programs/tmux.nix
     ../../programs/yazi.nix
     ../../programs/yt-dlp.nix

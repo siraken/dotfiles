@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.bash = {
-    enable = true;
+    enable = false;
     completion = {
       enable = true;
     };
