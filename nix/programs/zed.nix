@@ -17,7 +17,7 @@
       };
       terminal = {
         shell = {
-          program = "/opt/homebrew/bin/bash";
+          program = "bash";
         };
         toolbar = {
           breadcrumbs = false;
