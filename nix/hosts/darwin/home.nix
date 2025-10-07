@@ -48,6 +48,9 @@ in
       };
 
     shell = {
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
       enableShellIntegration = true;
     };
 

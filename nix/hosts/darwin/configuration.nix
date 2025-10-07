@@ -23,6 +23,8 @@
     systemPackages = [
       pkgs.nil
     ];
+
+    shells = [ pkgs.zsh pkgs.bashInteractive pkgs.fish ];
   };
 
   system = {
