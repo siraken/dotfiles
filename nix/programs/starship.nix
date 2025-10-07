@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let
   # Set to true to use Tokyo Night theme, false for default theme
-  useTokyoNight = true;
+  useTokyoNight = false;
 
   defaultSettings = {
     add_newline = true;
