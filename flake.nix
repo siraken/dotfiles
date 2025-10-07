@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     home-manager = {
