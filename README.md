@@ -1,7 +1,5 @@
 # dotfiles
 
-~~This repository manages dotfiles `.*` under `$HOME`. To use, clone this repository on `$HOME/dotfiles` and run `install`.~~
-
 ## Installation
 
 ### 1. Clone this repository
