@@ -39,5 +39,10 @@
       }
     ]
   },
+  "enabledPlugins": {
+    "github@siraken-plugins": true,
+    "common@siraken-plugins": true,
+    "dev@siraken-plugins": true
+  },
   "alwaysThinkingEnabled": true
 }
