@@ -8,12 +8,12 @@
         edit_prediction_provider = "zed";
       };
       vim_mode = true;
-      ui_font_size = 14;
+      ui_font_size = 16;
       buffer_font_size = 14;
       theme = {
         mode = "system";
-        light = "One Light";
-        dark = "One Dark";
+        light = "Tokyo Night Light";
+        dark = "Tokyo Night";
       };
       terminal = {
         shell = {
