@@ -10,6 +10,7 @@
       vim_mode = true;
       ui_font_size = 16;
       buffer_font_size = 14;
+      buffer_font_family = "Hack Nerd Font Mono";
       theme = {
         mode = "system";
         light = "Tokyo Night Light";
