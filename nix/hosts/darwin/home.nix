@@ -16,6 +16,7 @@ in
     ../../programs/bat.nix
     ../../programs/bottom.nix
     ../../programs/git.nix
+    # ../../programs/ghostty.nix
     ../../programs/helix.nix
     ../../programs/kakoune.nix
     ../../programs/kitty.nix
