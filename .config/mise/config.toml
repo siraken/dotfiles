@@ -61,9 +61,10 @@ rust = "latest"
 # "cargo:spotify_player" = "latest"
 
 # gem packages
-# "gem:rubocop" = "latest"
-# "gem:rufo" = "latest"
-# "gem:solargraph" = "latest"
+"gem:rails" = "latest"
+"gem:rubocop" = "latest"
+"gem:rufo" = "latest"
+"gem:solargraph" = "latest"
 # "gem:neovim" = "latest"
 
 # go packages
