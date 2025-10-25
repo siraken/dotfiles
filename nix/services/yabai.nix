@@ -46,6 +46,8 @@ let
       "VMware Fusion"
       "HYPERSBI2"
       "Google Drive"
+      "Happy Hacking Keyboard Keymap Tool"
+      "HHKB Keymap Tool"
     ];
 
     adobe = [
