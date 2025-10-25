@@ -37,7 +37,7 @@ in
     stateVersion = "25.05";
     # preferXdgDirectories = true; # to be enabled
     # sessionVariables = import ../../modules/variable.nix;
-    # sessionPath = import ../../modules/path.nix;
+    sessionPath = import ../../modules/path.nix { };
 
     file =
       import ../../modules/home-symlinks.nix {
@@ -48,6 +48,9 @@ in
       };
 
     shell = {
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
       enableShellIntegration = true;
     };
 

@@ -1,9 +1,5 @@
 { config, dotfilesPath }:
 {
-  # Shell configurations
-  ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
-  ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
-
   # Simple bar
   ".simplebarrc".source = "${dotfilesPath}/.config/simple-bar/.simplebarrc";
 
@@ -18,7 +14,6 @@
   ".vsnip".source = "${dotfilesPath}/.vsnip";
 
   # XDG config directories
-  ".config/bash".source = "${dotfilesPath}/.config/bash";
   ".config/husky".source = "${dotfilesPath}/.config/husky";
   ".config/mise".source = "${dotfilesPath}/.config/mise";
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
