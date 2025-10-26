@@ -138,7 +138,10 @@
       };
 
       ghq = {
-        root = "~/repos";
+        root = [
+          "~/repos"
+          "~/go/src"
+        ];
       };
     };
 
