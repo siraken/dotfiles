@@ -246,6 +246,16 @@ in
       # Window rules for unmanaged applications
       # これらのアプリはタイリングではなくフローティングになります
       on-window-detected = map generateWindowRule allUnmanagedApps;
+
+      after-startup-command = [
+        "exec-and-forget sketchybar"
+      ];
+
+      exec-on-workspace-change = [
+        "/bin/bash"
+        "-c"
+        "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+      ];
     };
   };
 }
