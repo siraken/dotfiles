@@ -50,25 +50,29 @@ Personal dotfiles management system combining Nix and declarative configuration 
 ### Key Components
 
 **System Management (macOS)**:
+
 - `nix/hosts/darwin/configuration.nix` - System-level settings (Homebrew, macOS preferences, security)
 - `nix/hosts/darwin/home.nix` - User environment configuration
 
 **Modular Configuration**:
+
 - `nix/modules/home-symlinks.nix` - Declarative symlink mappings for dotfiles
 - `nix/modules/home-activation.nix` - Home activation scripts (runs `./symlink` for additional symlinks)
 - `nix/programs/*.nix` - Individual program configurations (git, zsh, tmux, yazi, etc.)
 
 **Symlink Management**:
+
 - Nix home-manager handles most symlinks via `home-symlinks.nix`
 - Additional symlinks (AI agents, nvim) managed by `./symlink` bash script executed during home-manager activation
 
 ### Configuration Coverage
 
 Manages 100+ tool configurations across multiple categories:
+
 - **Editors**: Neovim, Vim, Emacs, Helix, Kakoune
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, Alacritty, WezTerm, Ghostty, Hyper
-- **Window Managers**: Yabai, Sketchybar, Borders
+- **Window Managers**: Aerospace, Sketchybar, JankyBorders
 - **Dev Tools**: Git, Tmux, Yazi, Direnv, Starship, Mise
 - **AI Agents**: Claude, Gemini
 
