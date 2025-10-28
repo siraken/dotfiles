@@ -146,7 +146,7 @@ in
       enable = true;
     };
 
-    settings = {
+    userSettings = {
       # Normalizations
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
