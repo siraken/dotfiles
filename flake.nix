@@ -100,7 +100,7 @@
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.siraken = import ./nix/hosts/darwin/home.nix;
+              home-manager.users.siraken = ./nix/hosts/darwin/home.nix;
             }
           ];
         };
