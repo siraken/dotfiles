@@ -175,19 +175,19 @@ in
 
       # Mode configuration
       mode.main.binding = {
-        # Focus windows
-        alt-h = "focus left";
-        alt-j = "focus down";
-        alt-k = "focus up";
-        alt-l = "focus right";
+        # Focus windows (skhd: shift + alt - h/j/k/l)
+        alt-shift-h = "focus left";
+        alt-shift-j = "focus down";
+        alt-shift-k = "focus up";
+        alt-shift-l = "focus right";
 
-        # Move windows
-        alt-shift-h = "move left";
-        alt-shift-j = "move down";
-        alt-shift-k = "move up";
-        alt-shift-l = "move right";
+        # Move windows (skhd: ctrl + cmd - h/j/k/l)
+        ctrl-cmd-h = "move left";
+        ctrl-cmd-j = "move down";
+        ctrl-cmd-k = "move up";
+        ctrl-cmd-l = "move right";
 
-        # Resize windows (yabai の split_ratio に相当)
+        # Resize windows
         alt-ctrl-h = "resize smart -50";
         alt-ctrl-j = "resize smart -50";
         alt-ctrl-k = "resize smart +50";
