@@ -168,11 +168,6 @@ in
         outer.right = 12;
       };
 
-      # Workspace to monitor mapping
-      workspace-to-monitor-force-assignment = {
-        "1" = "main";
-      };
-
       # Mode configuration
       mode.main.binding = {
         # Focus windows
