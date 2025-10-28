@@ -31,6 +31,8 @@ in
     ../../programs/zed.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
+    ../../services/jankyborders.nix
+    ../../services/aerospace.nix
   ];
 
   home = {

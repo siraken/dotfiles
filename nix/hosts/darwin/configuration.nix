@@ -13,10 +13,8 @@
 
   imports = [
     # ../../services/sketchybar.nix
-    ../../services/jankyborders.nix
-    ../../services/skhd.nix
+    # ../../services/jankyborders.nix  # home-managerのモジュールなのでhome.nixに移動
     ../../services/spotifyd.nix
-    ../../services/yabai.nix
     # ../../programs/tmux.nix
   ];
 
