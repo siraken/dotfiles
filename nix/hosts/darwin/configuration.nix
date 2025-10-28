@@ -14,13 +14,6 @@ in
     localHostName = networkingHostName;
   };
 
-  imports = [
-    # ../../services/sketchybar.nix
-    # ../../services/jankyborders.nix  # home-managerのモジュールなのでhome.nixに移動
-    ../../services/spotifyd.nix
-    # ../../programs/tmux.nix
-  ];
-
   environment = {
     systemPackages = [
       pkgs.nil
