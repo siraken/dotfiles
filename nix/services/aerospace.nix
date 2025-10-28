@@ -176,16 +176,16 @@ in
       # Mode configuration
       mode.main.binding = {
         # Focus windows (skhd: shift + alt - h/j/k/l)
-        alt-shift-h = "focus left";
-        alt-shift-j = "focus down";
-        alt-shift-k = "focus up";
-        alt-shift-l = "focus right";
+        alt-shift-h = "focus --boundaries all-monitors-outer-frame left";
+        alt-shift-j = "focus --boundaries all-monitors-outer-frame down";
+        alt-shift-k = "focus --boundaries all-monitors-outer-frame up";
+        alt-shift-l = "focus --boundaries all-monitors-outer-frame right";
 
         # Move windows (skhd: ctrl + cmd - h/j/k/l)
-        ctrl-cmd-h = "move left";
-        ctrl-cmd-j = "move down";
-        ctrl-cmd-k = "move up";
-        ctrl-cmd-l = "move right";
+        ctrl-cmd-h = "move --boundaries all-monitors-outer-frame left";
+        ctrl-cmd-j = "move --boundaries all-monitors-outer-frame down";
+        ctrl-cmd-k = "move --boundaries all-monitors-outer-frame up";
+        ctrl-cmd-l = "move --boundaries all-monitors-outer-frame right";
 
         # Resize windows
         alt-ctrl-h = "resize smart -50";
