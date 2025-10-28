@@ -1,5 +1,8 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
 { pkgs, modulePath, ... }:
+let
+  networkingHostName = "Kentos-MacBook-Pro";
+in
 {
   nix = {
     # Necessary for using flakes on this system.
@@ -7,8 +10,8 @@
   };
 
   networking = {
-    hostName = "Kentos-MacBook-Pro";
-    localHostName = "Kentos-MacBook-Pro";
+    hostName = networkingHostName;
+    localHostName = networkingHostName;
   };
 
   imports = [
