@@ -13,6 +13,7 @@
 
   imports = [
     # ../../services/sketchybar.nix
+    ../../services/jankyborders.nix
     ../../services/skhd.nix
     ../../services/spotifyd.nix
     ../../services/yabai.nix
@@ -136,7 +137,6 @@
       "azure-cli"
       "bandwhich"
       "bats-core"
-      "borders"
       "broot"
       "cabextract"
       "cairo"

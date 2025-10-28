@@ -27,7 +27,6 @@
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
-  ".config/borders".source = "${dotfilesPath}/.config/borders";
 
   # Claude configuration
   ".claude/commands".source = "${dotfilesPath}/.config/claude/commands";
