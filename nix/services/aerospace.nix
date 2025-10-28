@@ -151,14 +151,11 @@ in
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
 
-      # Layout configuration (yabai の layout = "bsp" に対応)
+      # Layout configuration
       default-root-container-layout = "tiles";
       default-root-container-orientation = "auto";
 
       # Gaps and padding
-      # yabai: external_bar = "all:32:0"
-      # yabai: top_padding = 12, bottom_padding = 12, left_padding = 12, right_padding = 12
-      # yabai: window_gap = 6
       gaps = {
         inner.horizontal = 6;
         inner.vertical = 6;
@@ -178,13 +175,13 @@ in
 
       # Mode configuration
       mode.main.binding = {
-        # Focus windows (skhd: shift + alt - h/j/k/l)
+        # Focus windows
         alt-shift-h = "focus --boundaries all-monitors-outer-frame left";
         alt-shift-j = "focus --boundaries all-monitors-outer-frame down";
         alt-shift-k = "focus --boundaries all-monitors-outer-frame up";
         alt-shift-l = "focus --boundaries all-monitors-outer-frame right";
 
-        # Move windows (skhd: ctrl + cmd - h/j/k/l)
+        # Move windows
         ctrl-cmd-h = "move --boundaries all-monitors-outer-frame left";
         ctrl-cmd-j = "move --boundaries all-monitors-outer-frame down";
         ctrl-cmd-k = "move --boundaries all-monitors-outer-frame up";
@@ -222,7 +219,7 @@ in
         alt-shift-space = "layout tiles horizontal vertical";
         alt-f = "fullscreen";
 
-        # Balance windows (yabai の auto_balance equivalent)
+        # Balance windows
         alt-shift-b = "balance-sizes";
 
         # Reload config
@@ -252,7 +249,7 @@ in
       };
 
       # Window rules for unmanaged applications
-      # これらのアプリはタイリングではなくフローティングになります (yabai の manage=off に相当)
+      # これらのアプリはタイリングではなくフローティングになります
       on-window-detected = map generateWindowRule allUnmanagedApps;
     };
   };
