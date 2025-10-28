@@ -31,7 +31,6 @@ in
     ../../programs/zed.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
-    ../../services/spotifyd.nix
     ../../services/jankyborders.nix
     ../../services/aerospace.nix
   ];

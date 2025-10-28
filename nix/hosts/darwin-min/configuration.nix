@@ -13,7 +13,6 @@
 
   imports = [
     # ../../services/sketchybar.nix
-    ../../services/spotifyd.nix
     # ../../programs/tmux.nix
   ];
 
