@@ -164,7 +164,10 @@ in
         inner.vertical = 6;
         outer.left = 12;
         outer.bottom = 12;
-        outer.top = 44; # 32 (external bar) + 12 (top_padding)
+        outer.top = [
+          { monitor.main = 12; }
+          44 # 32 (external bar) + 12 (top_padding)
+        ];
         outer.right = 12;
       };
 
@@ -230,10 +233,22 @@ in
       };
 
       mode.service.binding = {
-        esc = [ "reload-config" "mode main" ];
-        r = [ "flatten-workspace-tree" "mode main" ];
-        f = [ "layout floating tiling" "mode main" ];
-        backspace = [ "close-all-windows-but-current" "mode main" ];
+        esc = [
+          "reload-config"
+          "mode main"
+        ];
+        r = [
+          "flatten-workspace-tree"
+          "mode main"
+        ];
+        f = [
+          "layout floating tiling"
+          "mode main"
+        ];
+        backspace = [
+          "close-all-windows-but-current"
+          "mode main"
+        ];
       };
 
       # Window rules for unmanaged applications
