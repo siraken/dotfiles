@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "_1password-shell-plugins": {
+    "_1password": {
       "inputs": {
         "nixpkgs": "nixpkgs",
         "systems": "systems"
@@ -218,7 +218,7 @@
     },
     "root": {
       "inputs": {
-        "_1password-shell-plugins": "_1password-shell-plugins",
+        "_1password": "_1password",
         "darwin": "darwin",
         "droid": "droid",
         "home-manager": "home-manager",
