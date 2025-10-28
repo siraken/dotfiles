@@ -5,7 +5,7 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
-    _1password-shell-plugins.url = "github:1Password/shell-plugins";
+    _1password.url = "github:1Password/shell-plugins";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
