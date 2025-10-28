@@ -72,7 +72,7 @@ Manages 100+ tool configurations across multiple categories:
 - **Editors**: Neovim, Vim, Emacs, Helix, Kakoune
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, Alacritty, WezTerm, Ghostty, Hyper
-- **Window Managers**: Aerospace, Sketchybar, JankyBorders
+- **Window Managers**: AeroSpace, Sketchybar, JankyBorders
 - **Dev Tools**: Git, Tmux, Yazi, Direnv, Starship, Mise
 - **AI Agents**: Claude, Gemini
 
