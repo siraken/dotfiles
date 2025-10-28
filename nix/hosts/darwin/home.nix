@@ -34,7 +34,7 @@ in
   ];
 
   home = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     # preferXdgDirectories = true; # to be enabled
     # sessionVariables = import ../../modules/variable.nix;
     # sessionPath = import ../../modules/path.nix;
