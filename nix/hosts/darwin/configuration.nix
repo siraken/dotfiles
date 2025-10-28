@@ -53,6 +53,9 @@
         ShowPathbar = true;
         ShowStatusBar = true;
       };
+      NSGlobalDomain = {
+        NSWindowShouldDragOnGesture = true;
+      };
       CustomUserPreferences = {
         "com.microsoft.VSCode" = {
           ApplePressAndHoldEnabled = false;
