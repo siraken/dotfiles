@@ -18,7 +18,7 @@ in
     ../../programs/bottom.nix
     ../../programs/direnv.nix
     ../../programs/fish.nix
-    ../../programs/ghostty.nix
+    # ../../programs/ghostty.nix
     ../../programs/git.nix
     ../../programs/helix.nix
     ../../programs/kakoune.nix
