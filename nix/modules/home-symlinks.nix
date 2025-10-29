@@ -8,7 +8,6 @@
   ".simplebarrc".source = "${dotfilesPath}/.config/simple-bar/.simplebarrc";
 
   # Vim
-  ".vimrc".source = "${dotfilesPath}/.config/vim/.vimrc";
   ".ideavimrc".source = "${dotfilesPath}/.config/idea/.ideavimrc";
 
   # Hyper
