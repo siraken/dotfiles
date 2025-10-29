@@ -16,7 +16,6 @@
   # XDG config directories
   ".config/bash".source = "${dotfilesPath}/.config/bash";
   ".config/husky".source = "${dotfilesPath}/.config/husky";
-  ".config/mise".source = "${dotfilesPath}/.config/mise";
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
   # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
   ".config/nano".source = "${dotfilesPath}/.config/nano";

@@ -26,6 +26,7 @@ in
     ../../programs/kitty.nix
     ../../programs/lazydocker.nix
     ../../programs/lazygit.nix
+    ../../programs/mise.nix
     ../../programs/neovide.nix
     ../../programs/starship.nix
     ../../programs/tmux.nix

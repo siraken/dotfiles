@@ -223,7 +223,6 @@ in
       "mas"
       "maven"
       "minikube"
-      "mise"
       "mist"
       "mkcert"
       "certbot"
