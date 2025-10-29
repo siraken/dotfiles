@@ -11,10 +11,13 @@ in
 {
   imports = [
     # ../../environment/system-packages.nix
-    ../../programs/bash.nix
+    # programs
     ../../programs/alacritty.nix
+    ../../programs/bash.nix
     ../../programs/bat.nix
     ../../programs/bottom.nix
+    ../../programs/direnv.nix
+    ../../programs/fish.nix
     ../../programs/git.nix
     ../../programs/helix.nix
     ../../programs/kakoune.nix
@@ -22,17 +25,18 @@ in
     ../../programs/lazydocker.nix
     ../../programs/lazygit.nix
     ../../programs/neovide.nix
-    ../../programs/zsh.nix
-    ../../programs/zoxide.nix
-    ../../programs/fish.nix
+    ../../programs/starship.nix
     ../../programs/tmux.nix
+    ../../programs/vim.nix
+    ../../programs/vscode.nix
     ../../programs/yazi.nix
     ../../programs/yt-dlp.nix
     ../../programs/zed.nix
-    ../../programs/direnv.nix
-    ../../programs/starship.nix
-    ../../services/jankyborders.nix
+    ../../programs/zoxide.nix
+    ../../programs/zsh.nix
+    # services
     ../../services/aerospace.nix
+    ../../services/jankyborders.nix
   ];
 
   home = {
