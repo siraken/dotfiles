@@ -16,7 +16,7 @@ in
     ../../programs/bash.nix
     ../../programs/bat.nix
     ../../programs/bottom.nix
-    ../../programs/difftastic.nix
+    # ../../programs/difftastic.nix
     ../../programs/direnv.nix
     ../../programs/fish.nix
     # ../../programs/ghostty.nix
