@@ -155,6 +155,7 @@ in
       default-root-container-layout = "tiles";
       default-root-container-orientation = "auto";
 
+      automatically-unhide-macos-hidden-apps = false;
       on-focus-changed = [];
       on-focused-monitor-changed = [];
 
