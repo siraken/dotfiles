@@ -24,6 +24,5 @@
   # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
   ".config/nano".source = "${dotfilesPath}/.config/nano";
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
-  ".config/ghostty".source = "${dotfilesPath}/.config/ghostty";
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
 }
