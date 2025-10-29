@@ -7,8 +7,6 @@ colorscheme industry
 
 set nocompatible
 
-set number
-set relativenumber
 set signcolumn=yes
 set laststatus=2
 set cmdheight=1
@@ -18,26 +16,19 @@ set virtualedit=block
 set wildmenu
 set wildignorecase
 
-set tabstop=2
-set expandtab
-set shiftwidth=2
 set smartindent
 
 set hlsearch
-set ignorecase
-set smartcase
 set incsearch
 
 set noswapfile
 set nobackup
-set noundofile
 set encoding=utf-8
 set fileencodings=euc-jp,sjis,latin,utf-8
 set fileformats=unix,dos,mac
 
 set title
 set smarttab
-set background=dark
 set ruler
 set cursorline
 set showcmd
