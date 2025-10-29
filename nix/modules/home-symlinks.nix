@@ -13,9 +13,6 @@
   # Hyper
   ".hyper.js".source = "${dotfilesPath}/.config/hyper/.hyper.js";
 
-  # VSCode snippets
-  ".vsnip".source = "${dotfilesPath}/.vsnip";
-
   # XDG config directories
   ".config/bash".source = "${dotfilesPath}/.config/bash";
   ".config/husky".source = "${dotfilesPath}/.config/husky";
