@@ -155,6 +155,9 @@ in
       default-root-container-layout = "tiles";
       default-root-container-orientation = "auto";
 
+      on-focus-changed = [];
+      on-focused-monitor-changed = [];
+
       # Gaps and padding
       gaps = {
         inner.horizontal = 6;
