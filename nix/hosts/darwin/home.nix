@@ -28,7 +28,7 @@ in
     ../../programs/starship.nix
     ../../programs/tmux.nix
     ../../programs/vim.nix
-    ../../programs/vscode.nix
+    # ../../programs/vscode.nix
     ../../programs/yazi.nix
     ../../programs/yt-dlp.nix
     ../../programs/zed.nix
