@@ -163,7 +163,6 @@ in
       "composer"
       "coursier"
       "dart"
-      "difftastic"
       "duck"
       "duf"
       "dust"
