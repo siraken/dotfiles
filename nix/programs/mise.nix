@@ -71,6 +71,7 @@
         "gem:rufo" = "latest";
         "gem:solargraph" = "latest";
         "gem:slim" = "latest";
+        "gem:htmlbeautifier" = "latest";
         # "gem:neovim" = "latest";
 
         # go packages
