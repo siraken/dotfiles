@@ -70,6 +70,7 @@
         "gem:rubocop" = "latest";
         "gem:rufo" = "latest";
         "gem:solargraph" = "latest";
+        "gem:slim" = "latest";
         # "gem:neovim" = "latest";
 
         # go packages
