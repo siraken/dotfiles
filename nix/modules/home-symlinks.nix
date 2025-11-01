@@ -1,9 +1,5 @@
 { config, dotfilesPath }:
 {
-  # Shell configurations
-  ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
-  ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
-
   # Simple bar
   ".simplebarrc".source = "${dotfilesPath}/.config/simple-bar/.simplebarrc";
 
@@ -14,7 +10,6 @@
   ".hyper.js".source = "${dotfilesPath}/.config/hyper/.hyper.js";
 
   # XDG config directories
-  ".config/bash".source = "${dotfilesPath}/.config/bash";
   ".config/husky".source = "${dotfilesPath}/.config/husky";
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
   # ".config/emacs".source = "${dotfilesPath}/.config/emacs"; # Contains unsupported file types (sockets)
