@@ -5,7 +5,6 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
-    _1password.url = "github:1Password/shell-plugins";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,15 +18,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    op-shell-plugins = {
+      url = "github:1Password/shell-plugins";
+    };
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
-      darwin,
       home-manager,
+      darwin,
       droid,
+      op-shell-plugins,
       ...
     }:
     let
@@ -101,6 +104,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.siraken = ./nix/hosts/darwin/home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
             }
           ];
         };

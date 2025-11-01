@@ -9,6 +9,14 @@ in
     settings.experimental-features = "nix-command flakes";
   };
 
+  nixpkgs = {
+    # The platform the configuration will be used on.
+    hostPlatform = "aarch64-darwin";
+
+    # Allow unfree packages
+    config.allowUnfree = true;
+  };
+
   networking = {
     hostName = networkingHostName;
     localHostName = networkingHostName;
@@ -480,7 +488,4 @@ in
       udev-gothic
     ];
   };
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
 }

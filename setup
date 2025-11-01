@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DEFAULT_TARGET="darwin"
+TARGET=${1:-$DEFAULT_TARGET}
+
+sudo darwin-rebuild switch --flake .#$TARGET --impure

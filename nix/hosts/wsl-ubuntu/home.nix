@@ -12,6 +12,7 @@ in
 {
   imports = [
     # ../../environment/system-packages.nix
+    ../../programs/1password-shell-plugins.nix
     # ../../programs/bash.nix
     ../../programs/zoxide.nix
     ../../programs/git.nix
@@ -21,7 +22,7 @@ in
     ../../programs/yazi.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
-    inputs._1password.hmModules.default
+    inputs._1password-shell-plugins.hmModules.default
   ];
 
   home = {
@@ -55,12 +56,4 @@ in
   };
 
   programs.home-manager.enable = true;
-  programs._1password = {
-    enable = true;
-    plugins = with pkgs; [
-      gh
-      awscli2
-      cachix
-    ];
-  };
 }

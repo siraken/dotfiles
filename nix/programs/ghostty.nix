@@ -4,7 +4,8 @@
     enable = true;
     package =
       if pkgs.stdenv.isDarwin then
-        pkgs.brewCasks.ghostty
+        # TODO: use package for macOS (for now, set `null` to use brew-installed version)
+        null
       else
         pkgs.ghostty;
     settings = {
@@ -24,6 +25,9 @@
       window-padding-x = 0;
       window-padding-y = 0;
       macos-titlebar-style = "tabs";
+
+      confirm-close-surface = false;
+      quit-after-last-window-closed = true;
     };
   };
 }
