@@ -90,7 +90,7 @@ let
   allUnmanagedApps = lib.flatten (lib.attrValues unmanagedApps);
 
   # AeroSpace on-window-detected ルールを生成
-  generateWindowRule = app: {
+  mkWindowRule = app: {
     "if" = {
       app-name-regex-substring = app;
     };
@@ -209,7 +209,7 @@ in
 
       # Window rules for unmanaged applications
       # これらのアプリはタイリングではなくフローティングになります
-      on-window-detected = map generateWindowRule allUnmanagedApps;
+      on-window-detected = map mkWindowRule allUnmanagedApps;
 
       after-startup-command = [
         "exec-and-forget sketchybar"
