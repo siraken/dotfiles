@@ -5,7 +5,13 @@
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/siraken/dotfiles.git
+git clone --depth 1 https://github.com/siraken/dotfiles.git
+```
+
+or using `gh` CLI:
+
+```bash
+gh repo clone siraken/dotfiles -- --depth 1
 ```
 
 ### 2. Install Nix
