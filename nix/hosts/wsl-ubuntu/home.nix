@@ -21,11 +21,11 @@ in
     ../../programs/yazi.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
-    inputs._1password-shell-plugins.hmModules.default
+    inputs._1password.hmModules.default
   ];
 
   home = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
 
     file =
       import ../../modules/symlinks.nix {
@@ -55,7 +55,7 @@ in
   };
 
   programs.home-manager.enable = true;
-  programs._1password-shell-plugins = {
+  programs._1password = {
     enable = true;
     plugins = with pkgs; [
       gh

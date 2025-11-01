@@ -2,9 +2,6 @@
 set FISH_CONFIG_PATH (dirname (status --current-filename))
 set fish_greeting
 
-# Paths
-command -q zoxide; and status --is-interactive; and zoxide init fish --cmd cd | source
-
 # Functions
 source $FISH_CONFIG_PATH/function.fish
 

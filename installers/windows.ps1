@@ -29,7 +29,6 @@ $scoopPackages = @(
 )
 
 $wingetPackages = @(
-  "jdx.mise"
   "AgileBits.1Password"
   "Microsoft.VisualStudio.2019.Community"
   "CPUID.CPU-Z"

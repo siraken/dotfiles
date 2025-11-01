@@ -1,5 +1,8 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
 { pkgs, modulePath, ... }:
+let
+  networkingHostName = "Kentos-MacBook-Pro";
+in
 {
   nix = {
     # Necessary for using flakes on this system.
@@ -7,17 +10,9 @@
   };
 
   networking = {
-    hostName = "Kentos-MacBook-Pro";
-    localHostName = "Kentos-MacBook-Pro";
+    hostName = networkingHostName;
+    localHostName = networkingHostName;
   };
-
-  imports = [
-    # ../../services/sketchybar.nix
-    ../../services/skhd.nix
-    ../../services/spotifyd.nix
-    ../../services/yabai.nix
-    # ../../programs/tmux.nix
-  ];
 
   environment = {
     systemPackages = [
@@ -33,9 +28,6 @@
     stateVersion = 5;
     primaryUser = "siraken";
     defaults = {
-      # TODO:
-      # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
-      # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
       dock = {
         orientation = "bottom";
         tilesize = 40;
@@ -55,6 +47,12 @@
         AppleShowAllFiles = false;
         ShowPathbar = true;
         ShowStatusBar = true;
+      };
+      # TODO:
+      # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+      NSGlobalDomain = {
+        NSWindowShouldDragOnGesture = true;
+        "com.apple.mouse.tapBehavior" = 1; # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
       };
       CustomUserPreferences = {
         "com.microsoft.VSCode" = {
@@ -80,6 +78,23 @@
           touchIdAuth = true;
           watchIdAuth = true;
         };
+      };
+    };
+  };
+
+  services = {
+    spotifyd = {
+      enable = true;
+      settings = {
+        username = "siraken";
+        use_keyring = true;
+        device_name = "spotifyd @ Kento's MacBook Pro";
+        device_type = "computer";
+        device = "default";
+        bitrate = 320;
+        backend = "portaudio";
+        initial_volume = 100;
+        volume_controller = "softvol";
       };
     };
   };
@@ -138,7 +153,6 @@
       "azure-cli"
       "bandwhich"
       "bats-core"
-      "borders"
       "broot"
       "cabextract"
       "cairo"
@@ -151,7 +165,6 @@
       "composer"
       "coursier"
       "dart"
-      "difftastic"
       "duck"
       "duf"
       "dust"
@@ -212,7 +225,6 @@
       "mas"
       "maven"
       "minikube"
-      "mise"
       "mist"
       "mkcert"
       "certbot"
