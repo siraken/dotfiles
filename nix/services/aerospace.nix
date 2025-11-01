@@ -39,7 +39,6 @@ let
 
     utilities = [
       "1Password"
-      "DiffusionBee"
       "balenaEtcher"
       "Alfred Preferences"
       "DaisyDisk"
@@ -48,21 +47,6 @@ let
       "Google Drive"
       "Happy Hacking Keyboard Keymap Tool"
       "HHKB Keymap Tool"
-    ];
-
-    adobe = [
-      "Adobe Photoshop 2023"
-      "Adobe Illustrator 2023"
-      "Adobe Premiere Pro 2023"
-      "Adobe After Effects 2023"
-      "Adobe XD"
-      "Adobe Lightroom"
-    ];
-
-    design = [
-      "Pixelmator Pro"
-      "Figma"
-      "Blender"
     ];
 
     music = [
@@ -77,39 +61,15 @@ let
       "VTube Studio"
     ];
 
-    # browsers = [
-    #   "Google Chrome"
-    #   "Firefox"
-    #   "Firefox Developer Edition"
-    #   "Brave Browser"
-    #   "Vivaldi"
-    #   "Safari"
-    #   "Blisk"
-    #   "Microsoft Edge"
-    #   "Tor Browser"
-    # ];
-
     development = [
       "TablePlus"
       "Transmit"
       "GitHub Desktop"
       "Sourcetree"
       "Docker Desktop"
-      "Sublime Text"
       "WebTorrent"
       # "iTerm2"
       # "Visual Studio"
-    ];
-
-    communication = [
-      # "zoom.us"
-      "Spark"
-      "Slack"
-      "Discord"
-    ];
-
-    streaming = [
-      "Spotify"
     ];
 
     security = [
