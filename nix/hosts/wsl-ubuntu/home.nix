@@ -12,6 +12,7 @@ in
 {
   imports = [
     # ../../environment/system-packages.nix
+    ../../programs/1password-shell-plugins.nix
     # ../../programs/bash.nix
     ../../programs/zoxide.nix
     ../../programs/git.nix

@@ -12,6 +12,7 @@ in
   imports = [
     # ../../environment/system-packages.nix
     # programs
+    ../../programs/1password-shell-plugins.nix
     ../../programs/alacritty.nix
     ../../programs/bash.nix
     ../../programs/bat.nix
