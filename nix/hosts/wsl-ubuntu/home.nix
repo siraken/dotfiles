@@ -21,7 +21,7 @@ in
     ../../programs/yazi.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
-    inputs._1password.hmModules.default
+    inputs._1password-shell-plugins.hmModules.default
   ];
 
   home = {
@@ -55,7 +55,7 @@ in
   };
 
   programs.home-manager.enable = true;
-  programs._1password = {
+  programs._1password-shell-plugins = {
     enable = true;
     plugins = with pkgs; [
       gh
