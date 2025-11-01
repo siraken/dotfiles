@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    inputs._1password-shell-plugins.hmModules.default
+    inputs.op-shell-plugins.hmModules.default
     # ../../environment/system-packages.nix
     # programs
     ../../programs/1password-shell-plugins.nix

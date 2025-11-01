@@ -18,7 +18,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    _1password-shell-plugins.url = "github:1Password/shell-plugins";
+    op-shell-plugins = {
+      url = "github:1Password/shell-plugins";
+    };
   };
 
   outputs =
@@ -28,7 +30,7 @@
       home-manager,
       darwin,
       droid,
-      _1password-shell-plugins,
+      op-shell-plugins,
       ...
     }:
     let
@@ -102,6 +104,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.siraken = ./nix/hosts/darwin/home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
             }
           ];
         };
