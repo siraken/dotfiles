@@ -85,9 +85,3 @@ function cccw() {
   wezterm cli activate-pane --pane-id $RIGHT_TOP
   wezterm cli split-pane --bottom --percent 50
 }
-
-# Restart yabai and skhd
-function res-yabai() {
-  yabai --restart-service
-  skhd --restart-service
-}

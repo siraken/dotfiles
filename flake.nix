@@ -3,18 +3,18 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
-    _1password-shell-plugins.url = "github:1Password/shell-plugins";
+    _1password.url = "github:1Password/shell-plugins";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+    darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-on-droid = {
+    droid = {
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
@@ -28,9 +28,9 @@
     inputs@{
       self,
       nixpkgs,
-      nix-darwin,
+      darwin,
       home-manager,
-      nix-on-droid,
+      droid,
       ...
     }:
     let
@@ -39,7 +39,7 @@
         fullName = "Kento Shirasawa";
       };
 
-      darwinSystem = nix-darwin.lib.darwinSystem;
+      darwinSystem = darwin.lib.darwinSystem;
       nixosSystem = nixpkgs.lib.nixosSystem;
 
       # Function for home-manager configuration
@@ -57,7 +57,7 @@
               home = {
                 username = username;
                 homeDirectory = homeDirectory;
-                stateVersion = "25.05";
+                stateVersion = "25.11";
               };
             }
           ];
@@ -103,7 +103,7 @@
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.siraken = import ./nix/hosts/darwin/home.nix;
+              home-manager.users.siraken = ./nix/hosts/darwin/home.nix;
             }
           ];
         };

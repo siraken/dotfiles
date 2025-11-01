@@ -4,16 +4,19 @@
   },
   "includeCoAuthoredBy": true,
   "permissions": {
-    "allow": [],
+    "allow": [
+      "Bash(gh pr view :*)",
+      "Bash(gh pr diff :*)",
+      "Bash(gh pr checks :*)"
+    ],
     "deny": [
-      "Bash(sudo:*)",
-      "Read(.env*)",
       "Read(id_rsa)",
       "Read(id_ed25519)",
-      "Write(.env*)",
-      "mcp__supabase__execute_sql"
+      "Read(.env*)",
+      "Write(.env*)"
     ],
     "ask": [
+      "Bash(sudo:*)",
       "Bash(rm:*)",
       "Bash(rm -rf:*)",
       "Bash(git push:*)",
@@ -30,14 +33,14 @@
     "PostToolUse": [
       {
         "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "FILE_PATH=$(jq -r '.tool_input.file_path') && [ -n \"$(tail -c1 \"$FILE_PATH\")\" ] && echo >> \"$FILE_PATH\""
-          }
-        ]
+        "hooks": []
       }
     ]
+  },
+  "enabledPlugins": {
+    "github@siraken-plugins": true,
+    "common@siraken-plugins": true,
+    "dev@siraken-plugins": true
   },
   "alwaysThinkingEnabled": true
 }

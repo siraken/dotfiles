@@ -37,7 +37,7 @@ config.mouse_bindings = mouse_bindings
 config.use_ime = true
 config.default_prog = { "/bin/bash", "-l" }
 if is_mac then
-  config.default_prog = { "/opt/homebrew/bin/bash", "-l" }
+  config.default_prog = { "bash", "-l" }
   config.font_size = 14
   config.line_height = 1.2
   config.window_background_opacity = 0.85

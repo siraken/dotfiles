@@ -18,7 +18,7 @@
       # Terminal settings
       terminal = {
         shell = {
-          program = "/opt/homebrew/bin/bash";
+          program = "bash";
         };
       };
 

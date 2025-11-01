@@ -2,13 +2,12 @@
 {
   programs.ghostty = {
     enable = true;
-
     settings = {
       shell-integration = "zsh";
 
       # Font settings
       font-family = "Hack Nerd Font Mono";
-      font-size = 16;
+      font-size = 14;
       adjust-cell-height = "20%";
 
       # Appearance
