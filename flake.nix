@@ -5,7 +5,6 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
-    _1password-shell-plugins.url = "github:1Password/shell-plugins";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,15 +18,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    _1password-shell-plugins.url = "github:1Password/shell-plugins";
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
-      darwin,
       home-manager,
+      darwin,
       droid,
+      _1password-shell-plugins,
       ...
     }:
     let
