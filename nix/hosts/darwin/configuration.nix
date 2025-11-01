@@ -27,7 +27,7 @@ in
       pkgs.nil
     ];
 
-    shells = [ pkgs.zsh pkgs.bashInteractive pkgs.fish ];
+    # shells = [ pkgs.zsh pkgs.bashInteractive pkgs.fish ];
   };
 
   system = {
