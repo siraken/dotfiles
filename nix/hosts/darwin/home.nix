@@ -16,7 +16,7 @@ in
     # programs
     ../../programs/1password-shell-plugins.nix
     ../../programs/alacritty.nix
-    ../../programs/bash.nix
+    # ../../programs/bash.nix
     ../../programs/bat.nix
     ../../programs/bottom.nix
     # ../../programs/difftastic.nix
