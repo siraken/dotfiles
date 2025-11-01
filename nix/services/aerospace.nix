@@ -177,6 +177,7 @@ in
         # Toggle layout modes
         alt-shift-space = "layout tiles horizontal vertical";
         alt-f = "fullscreen";
+        alt-t = "layout floating tiling";
 
         # Balance windows
         alt-shift-b = "balance-sizes";
