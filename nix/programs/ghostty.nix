@@ -25,6 +25,9 @@
       window-padding-x = 0;
       window-padding-y = 0;
       macos-titlebar-style = "tabs";
+
+      confirm-close-surface = false;
+      quit-after-last-window-closed = true;
     };
   };
 }
