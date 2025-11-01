@@ -4,7 +4,8 @@
     enable = true;
     package =
       if pkgs.stdenv.isDarwin then
-        []
+        # TODO: use package for macOS (for now, set `null` to use brew-installed version)
+        null
       else
         pkgs.ghostty;
     settings = {
