@@ -2,7 +2,6 @@
 {
   programs.gh = {
     enable = true;
-    package = null;
     gitCredentialHelper= {
       hosts = ["https://github.com" "https://gist.github.com"];
     };
