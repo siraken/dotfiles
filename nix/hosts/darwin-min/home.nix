@@ -41,8 +41,8 @@ in
     ../../programs/zoxide.nix
     ../../programs/zsh.nix
     # services
-    # ../../services/aerospace.nix
-    # ../../services/jankyborders.nix
+    ../../services/aerospace.nix
+    ../../services/jankyborders.nix
   ];
 
   home = {
