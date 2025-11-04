@@ -99,10 +99,24 @@ in
       cleanup = "none";
     };
     taps = [
+      "siraken/homebrew-tap"
+      "novalumo/homebrew-tap"
     ];
     brews = [
+      "ansible"
+      "awscli"
+      "cloudflared"
     ];
     casks = [
+      "alfred"
+      "alt-tab"
+      "appcleaner"
+      "arc"
+      "brave-browser"
+      "drivedx"
+      "google-chrome"
+      "visual-studio-code"
+      "vivaldi"
     ];
     masApps = {
     };
