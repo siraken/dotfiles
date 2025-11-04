@@ -22,6 +22,7 @@ in
     # ../../programs/difftastic.nix
     ../../programs/direnv.nix
     ../../programs/fish.nix
+    ../../programs/fzf.nix
     ../../programs/ghostty.nix
     ../../programs/git.nix
     ../../programs/helix.nix

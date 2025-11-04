@@ -185,7 +185,6 @@ in
       "ffmpeg"
       "flyctl"
       "fx"
-      "fzf"
       "genact"
       "ggshield"
       "gh"
