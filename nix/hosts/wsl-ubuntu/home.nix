@@ -11,6 +11,7 @@ let
 in
 {
   imports = [
+    inputs.op-shell-plugins.hmModules.default
     # ../../environment/system-packages.nix
     ../../programs/1password-shell-plugins.nix
     # ../../programs/bash.nix
@@ -22,7 +23,6 @@ in
     ../../programs/yazi.nix
     ../../programs/direnv.nix
     ../../programs/starship.nix
-    inputs._1password-shell-plugins.hmModules.default
   ];
 
   home = {
