@@ -412,7 +412,6 @@ in
       "sdformatter"
       "session-manager-plugin"
       "sf-symbols"
-      "skype"
       "sourcetree"
       "spotify"
       "steam"
