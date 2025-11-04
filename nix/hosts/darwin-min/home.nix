@@ -52,7 +52,7 @@ in
     sessionPath = import ../../modules/path.nix { };
 
     file =
-      import ../../modules/symlinks.nix {
+      import ../../modules/home-symlinks.nix {
         inherit config dotfilesPath;
       }
       // {
