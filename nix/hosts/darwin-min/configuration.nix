@@ -1,20 +1,26 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
 { pkgs, modulePath, ... }:
+let
+  networkingHostName = "Kentos-Darwin-Min";
+in
 {
   nix = {
     # Necessary for using flakes on this system.
     settings.experimental-features = "nix-command flakes";
   };
 
-  networking = {
-    hostName = "Kentos-Darwin-Min";
-    localHostName = "Kentos-Darwin-Min";
+  nixpkgs = {
+    # The platform the configuration will be used on.
+    hostPlatform = "aarch64-darwin";
+
+    # Allow unfree packages
+    config.allowUnfree = true;
   };
 
-  imports = [
-    # ../../services/sketchybar.nix
-    # ../../programs/tmux.nix
-  ];
+  networking = {
+    hostName = networkingHostName;
+    localHostName = networkingHostName;
+  };
 
   environment = {
     systemPackages = [
@@ -93,7 +99,4 @@
       udev-gothic
     ];
   };
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
 }

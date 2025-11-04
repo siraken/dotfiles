@@ -1,4 +1,10 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";

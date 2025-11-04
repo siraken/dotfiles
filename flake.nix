@@ -123,7 +123,8 @@
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.siraken = import ./nix/hosts/darwin-min/home.nix;
+              home-manager.users.siraken = ./nix/hosts/darwin-min/home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
             }
           ];
         };
