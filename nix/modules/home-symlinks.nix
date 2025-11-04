@@ -5,9 +5,6 @@
   ".bash_profile".source = "${dotfilesPath}/.config/bash/.bash_profile";
   ".config/bash".source = "${dotfilesPath}/.config/bash";
 
-  # Simple bar
-  ".simplebarrc".source = "${dotfilesPath}/.config/simple-bar/.simplebarrc";
-
   # Vim
   ".ideavimrc".source = "${dotfilesPath}/.config/idea/.ideavimrc";
 
