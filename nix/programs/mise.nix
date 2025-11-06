@@ -74,6 +74,9 @@
         "gem:htmlbeautifier" = "latest";
         # "gem:neovim" = "latest";
 
+        # pip packages
+        # "pipx:watchdog" = "latest";
+
         # go packages
         # "go:golang.org/x/tools/cmd/godoc" = "latest"; # godoc
         # "go:github.com/sheepla/pingu" = "latest"; # ping alternative: pingu
@@ -87,6 +90,10 @@
 
         npm = {
           bun = false;
+        };
+
+        pipx = {
+          uvx = true;
         };
 
         status = {
