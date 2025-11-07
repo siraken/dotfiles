@@ -45,9 +45,9 @@ if [ "$PLAYER_STATE" = "playing" ] || [ "$PLAYER_STATE" = "paused" ]; then
   # まず結合
   LABEL="$TRACK_NAME | $ARTIST_NAME"
 
-  # 28文字を超える場合は省略
-  if [ ${#LABEL} -gt 28 ]; then
-    LABEL="${LABEL:0:28}..."
+  # 32文字を超える場合は省略
+  if [ ${#LABEL} -gt 32 ]; then
+    LABEL="${LABEL:0:32}..."
   fi
 else
   LABEL="Not playing"
