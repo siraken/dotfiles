@@ -17,10 +17,6 @@ PLAYER_STATE=$(osascript -e 'tell application "Spotify" to player state as strin
 TRACK_NAME=$(osascript -e 'tell application "Spotify" to name of current track as string')
 ARTIST_NAME=$(osascript -e 'tell application "Spotify" to artist of current track as string')
 
-# Track名やArtist名のエスケープ
-TRACK_NAME=$(echo "$TRACK_NAME" | sed 's/"/\\"/g')
-ARTIST_NAME=$(echo "$ARTIST_NAME" | sed 's/"/\\"/g')
-
 # 再生状態に応じてアイコンを設定
 case "$PLAYER_STATE" in
   "playing")
@@ -42,13 +38,17 @@ esac
 
 # 曲名とアーティスト名を結合して文字数を制限
 if [ "$PLAYER_STATE" = "playing" ] || [ "$PLAYER_STATE" = "paused" ]; then
-  # まず結合
-  LABEL="$TRACK_NAME | $ARTIST_NAME"
-
-  # 32文字を超える場合は省略
-  if [ ${#LABEL} -gt 32 ]; then
-    LABEL="${LABEL:0:32}..."
+  # 規定文字数を超える場合は省略
+  if [ ${#TRACK_NAME} -gt 18 ]; then
+    TRACK_NAME="${TRACK_NAME:0:18}..."
   fi
+
+  if [ ${#ARTIST_NAME} -gt 18 ]; then
+    ARTIST_NAME="${ARTIST_NAME:0:18}..."
+  fi
+
+  # 結合
+  LABEL="$TRACK_NAME | $ARTIST_NAME"
 else
   LABEL="Not playing"
 fi
