@@ -10,31 +10,65 @@ let
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
 in
 {
+  nixpkgs.config = {
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "1password-cli"
+      ];
+  };
+
   imports = [
     inputs.op-shell-plugins.hmModules.default
-    # ../../environment/system-packages.nix
+    # programs
     ../../programs/1password-shell-plugins.nix
     # ../../programs/bash.nix
-    ../../programs/zoxide.nix
-    ../../programs/git.nix
-    ../../programs/zsh.nix
-    # ../../programs/fish.nix
-    ../../programs/tmux.nix
-    ../../programs/yazi.nix
+    ../../programs/bat.nix
+    ../../programs/bottom.nix
+    # ../../programs/difftastic.nix
     ../../programs/direnv.nix
+    ../../programs/fish.nix
+    ../../programs/fzf.nix
+    # ../../programs/gh.nix
+    ../../programs/ghostty.nix
+    ../../programs/git.nix
+    ../../programs/helix.nix
+    ../../programs/kakoune.nix
+    ../../programs/kitty.nix
+    ../../programs/lazydocker.nix
+    ../../programs/lazygit.nix
+    ../../programs/mise.nix
+    ../../programs/neovide.nix
     ../../programs/starship.nix
+    ../../programs/tmux.nix
+    ../../programs/vim.nix
+    ../../programs/yazi.nix
+    ../../programs/yt-dlp.nix
+    ../../programs/zed.nix
+    ../../programs/zoxide.nix
+    ../../programs/zsh.nix
   ];
 
   home = {
     stateVersion = "25.11";
+    # preferXdgDirectories = true; # to be enabled
+    # sessionVariables = import ../../modules/variable.nix;
+    sessionPath = import ../../modules/path.nix { };
 
     file =
-      import ../../modules/symlinks.nix {
+      import ../../modules/home-symlinks.nix {
         inherit config dotfilesPath;
       }
       // {
 
       };
+
+    shell = {
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+      enableShellIntegration = true;
+    };
 
     packages = [
       pkgs.eza
@@ -45,14 +79,6 @@ in
       pkgs.xdg-utils
       pkgs.jq
     ];
-  };
-
-  nixpkgs.config = {
-    allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "1password-cli"
-      ];
   };
 
   programs.home-manager.enable = true;
