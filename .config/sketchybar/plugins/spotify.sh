@@ -39,12 +39,12 @@ esac
 # 曲名とアーティスト名を結合して文字数を制限
 if [ "$PLAYER_STATE" = "playing" ] || [ "$PLAYER_STATE" = "paused" ]; then
   # 規定文字数を超える場合は省略
-  if [ ${#TRACK_NAME} -gt 18 ]; then
-    TRACK_NAME="${TRACK_NAME:0:18}..."
+  if [ ${#TRACK_NAME} -gt 24 ]; then
+    TRACK_NAME="${TRACK_NAME:0:24}..."
   fi
 
-  if [ ${#ARTIST_NAME} -gt 18 ]; then
-    ARTIST_NAME="${ARTIST_NAME:0:18}..."
+  if [ ${#ARTIST_NAME} -gt 24 ]; then
+    ARTIST_NAME="${ARTIST_NAME:0:24}..."
   fi
 
   # 結合
