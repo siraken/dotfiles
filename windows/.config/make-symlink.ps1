@@ -18,4 +18,4 @@ New-Symlink "$Env:USERPROFILE\komorebi.json" "$DOTFILES_DIR\windows\.config\komo
 New-Symlink "$Env:USERPROFILE\komorebi.bar.json" "$DOTFILES_DIR\windows\.config\komorebi\komorebi.bar.json"
 
 # whkd
-New-Symlink "$Env:USERPROFILE\whkd\whkdrc" "$DOTFILES_DIR\windows\.config\whkd\whkdrc"
+New-Symlink "$Env:USERPROFILE\.config\whkdrc" "$DOTFILES_DIR\windows\.config\whkd\whkdrc"
