@@ -14,8 +14,8 @@ Function New-Symlink {
 }
 
 # Komorebi
-New-Symlink "$Env:USERPROFILE\komorebi.json" "$DOTFILES_DIR\windows\.config\komorebi.json"
-New-Symlink "$Env:USERPROFILE\komorebi.bar.json" "$DOTFILES_DIR\windows\.config\komorebi.bar.json"
+New-Symlink "$Env:USERPROFILE\komorebi.json" "$DOTFILES_DIR\windows\.config\komorebi\komorebi.json"
+New-Symlink "$Env:USERPROFILE\komorebi.bar.json" "$DOTFILES_DIR\windows\.config\komorebi\komorebi.bar.json"
 
 # whkd
-New-Symlink "$Env:USERPROFILE\whkdrc" "$DOTFILES_DIR\windows\.config\whkdrc"
+New-Symlink "$Env:USERPROFILE\whkd\whkdrc" "$DOTFILES_DIR\windows\.config\whkd\whkdrc"
