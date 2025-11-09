@@ -63,7 +63,6 @@ $wingetPackages = @(
   "Microsoft.dotnet"
   "Elgato.GameCapture.HD"
   "Mojang.MinecraftLauncher"
-  "Amazon.AWSCLI"
   "Microsoft.PowerToys"
   "TechPowerUp.GPU-Z"
   "Microsoft.dotnet"

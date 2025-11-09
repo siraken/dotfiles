@@ -104,7 +104,6 @@ in
     ];
     brews = [
       "ansible"
-      "awscli"
       "cloudflared"
     ];
     casks = [
