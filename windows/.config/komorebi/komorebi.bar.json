@@ -2,6 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.38/schema.bar.json",
   "monitor": 0,
   "font_family": "JetBrains Mono",
+  "font_size": 14,
+  "padding": {
+    "top": 0,
+    "right": 14,
+    "bottom": 0,
+    "left": 14
+  },
+  "height": 32,
+  "transparency_alpha": 200,
+  "max_label_width": 180,
   "theme": {
     "palette": "Base16",
     "name": "Ashes",
