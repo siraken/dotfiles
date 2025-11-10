@@ -53,6 +53,7 @@
         "npm:@nestjs/cli" = "latest";
         "npm:cordova" = "latest";
         "npm:cordova-res" = "latest";
+        "npm:md-to-pdf" = "latest";
 
         # cargo packages
         # "cargo:cargo-binstall" = "latest";
