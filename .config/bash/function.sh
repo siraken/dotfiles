@@ -85,3 +85,11 @@ function cccw() {
   wezterm cli activate-pane --pane-id $RIGHT_TOP
   wezterm cli split-pane --bottom --percent 50
 }
+
+function acli() {
+  if [[ "$1" == "aws" ]] && [[ "$2" == "login" ]]; then
+    eval $(command acli aws login "${@:3}")
+  else
+    command acli "$@"
+  fi
+}
