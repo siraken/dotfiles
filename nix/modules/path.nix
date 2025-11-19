@@ -6,6 +6,7 @@
   "bin"
   "$HOME/bin"
   "$HOME/.local/bin"
+  "$HOME/.local/share/mise/shims"
   "$HOME/.progate/bin"
   "$HOME/.slack/bin"
   "$HOME/Library/Application Support/Coursier/bin"
