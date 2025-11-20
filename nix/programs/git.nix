@@ -2,11 +2,7 @@
 {
   programs.git = {
     enable = true;
-
-    userName = "Kento Shirasawa";
-    userEmail = "shirasawa@novalumo.com";
-
-    extraConfig = {
+    settings = {
       core = {
         autocrlf = "input";
         editor = "nvim";
@@ -14,8 +10,45 @@
       };
 
       user = {
+        name = "Kento Shirasawa";
+        email = "shirasawa@novalumo.com";
         username = "siraken";
         signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL";
+      };
+
+      alias = {
+        br = "branch";
+        ad = "add";
+        us = "reset HEAD";
+        bm = "branch -m";
+        bD = "branch -D";
+        cm = "commit";
+        ecm = "commit --allow-empty";
+        co = "checkout";
+        st = "status";
+        wt = "worktree";
+        ps-f = "push --force-with-lease";
+        ps = "push";
+        pl = "pull";
+        rb = "rebase";
+        mg = "merge --no-ff";
+        mgff = "merge --ff";
+        fe = "fetch";
+        l = "log";
+        lg = "log --graph";
+        lol = "log --oneline";
+        bg = "log --graph --simplify-by-decoration --pretty=format:'%d' --all";
+        cp = "cherry-pick";
+        dt = "difftool";
+        undo = "reset --soft HEAD^";
+        sp = "stash pop";
+        ss = "stash save";
+        sl = "stash list";
+        sa = "stash apply";
+        rhh = "reset --hard HEAD";
+        gh = "!gh repo view --web";
+        cz = "!cz";
+        update-from = "!f(){ echo \"Update from $1...\" && git checkout $1 && git pull && git checkout - && git merge -; };f";
       };
 
       github = {
@@ -142,41 +175,6 @@
           "~/go/src"
         ];
       };
-    };
-
-    aliases = {
-      br = "branch";
-      ad = "add";
-      us = "reset HEAD";
-      bm = "branch -m";
-      bD = "branch -D";
-      cm = "commit";
-      ecm = "commit --allow-empty";
-      co = "checkout";
-      st = "status";
-      wt = "worktree";
-      ps-f = "push --force-with-lease";
-      ps = "push";
-      pl = "pull";
-      rb = "rebase";
-      mg = "merge --no-ff";
-      mgff = "merge --ff";
-      fe = "fetch";
-      l = "log";
-      lg = "log --graph";
-      lol = "log --oneline";
-      bg = "log --graph --simplify-by-decoration --pretty=format:'%d' --all";
-      cp = "cherry-pick";
-      dt = "difftool";
-      undo = "reset --soft HEAD^";
-      sp = "stash pop";
-      ss = "stash save";
-      sl = "stash list";
-      sa = "stash apply";
-      rhh = "reset --hard HEAD";
-      gh = "!gh repo view --web";
-      cz = "!cz";
-      update-from = "!f(){ echo \"Update from $1...\" && git checkout $1 && git pull && git checkout - && git merge -; };f";
     };
 
     ignores = [
