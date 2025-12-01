@@ -154,6 +154,7 @@ in
       "act"
       "aircrack-ng"
       "ansible"
+      "apktool"
       "arduino-cli"
       "aria2"
       "azure-cli"
