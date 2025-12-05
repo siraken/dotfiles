@@ -39,8 +39,11 @@
         fullName = "Kento Shirasawa";
       };
 
-      darwinSystem = nix-darwin.lib.darwinSystem;
-      nixosSystem = nixpkgs.lib.nixosSystem;
+      darwinSystem = "aarch64-darwin";
+      linuxSystem = "x86_64-linux";
+
+      mkDarwinSystem = nix-darwin.lib.darwinSystem;
+      mkNixosSystem = nixpkgs.lib.nixosSystem;
 
       # Function for home-manager configuration
       mkHomeConfiguration =
@@ -63,34 +66,41 @@
           ];
           extraSpecialArgs = { inherit inputs; };
         };
+
+      # Function for creating app entries
+      mkApp = system: name: script: {
+        type = "app";
+        program = toString (nixpkgs.legacyPackages.${system}.writeShellScript name script);
+      };
+      darwinApp = mkApp darwinSystem;
     in
     {
       formatter = {
-        "aarch64-darwin" = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
+        ${darwinSystem} = nixpkgs.legacyPackages.${darwinSystem}.nixfmt-tree;
       };
 
       devShells = {
-        "aarch64-darwin" = {
-          default = nixpkgs.legacyPackages.aarch64-darwin.mkShell {
+        ${darwinSystem} = {
+          default = nixpkgs.legacyPackages.${darwinSystem}.mkShell {
             buildInputs = [
-              nixpkgs.legacyPackages.aarch64-darwin.nixfmt
-              nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt
+              nixpkgs.legacyPackages.${darwinSystem}.nixfmt
+              nixpkgs.legacyPackages.${darwinSystem}.nixpkgs-fmt
             ];
           };
         };
-        "x86_64-linux" = {
-          default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+        ${linuxSystem} = {
+          default = nixpkgs.legacyPackages.${linuxSystem}.mkShell {
             buildInputs = [
-              nixpkgs.legacyPackages.x86_64-linux.nixfmt
-              nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt
+              nixpkgs.legacyPackages.${linuxSystem}.nixfmt
+              nixpkgs.legacyPackages.${linuxSystem}.nixpkgs-fmt
             ];
           };
         };
       };
 
       darwinConfigurations = {
-        "darwin" = darwinSystem {
-          system = "aarch64-darwin";
+        "darwin" = mkDarwinSystem {
+          system = darwinSystem;
           modules = [
             ./nix/hosts/darwin/configuration.nix
             home-manager.darwinModules.home-manager
@@ -109,8 +119,8 @@
           ];
         };
 
-        "darwin-min" = darwinSystem {
-          system = "aarch64-darwin";
+        "darwin-min" = mkDarwinSystem {
+          system = darwinSystem;
           modules = [
             ./nix/hosts/darwin-min/configuration.nix
             home-manager.darwinModules.home-manager
@@ -131,8 +141,8 @@
       };
 
       nixosConfigurations = {
-        "your-linux-machine-name" = nixosSystem {
-          system = "x86_64-linux";
+        "your-linux-machine-name" = mkNixosSystem {
+          system = linuxSystem;
           username = whoami.username;
           modules = [
             ./nix/hosts/nixos/configuration.nix
@@ -144,7 +154,24 @@
         "wsl-ubuntu" = mkHomeConfiguration {
           username = whoami.username;
           homeDirectory = "/home/${whoami.username}";
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = nixpkgs.legacyPackages.${linuxSystem};
+        };
+      };
+
+      apps = {
+        ${darwinSystem} = {
+          setup = darwinApp "setup" ''
+            sudo darwin-rebuild switch --flake ${self}#darwin --impure
+          '';
+          setup-min = darwinApp "setup-min" ''
+            sudo darwin-rebuild switch --flake ${self}#darwin-min --impure
+          '';
+          build = darwinApp "build" ''
+            darwin-rebuild build --flake ${self}#darwin --impure
+          '';
+          gc = darwinApp "gc" ''
+            nix store gc
+          '';
         };
       };
     };
