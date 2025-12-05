@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    darwin = {
+    nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -28,7 +28,7 @@
       self,
       nixpkgs,
       home-manager,
-      darwin,
+      nix-darwin,
       droid,
       op-shell-plugins,
       ...
@@ -39,7 +39,7 @@
         fullName = "Kento Shirasawa";
       };
 
-      darwinSystem = darwin.lib.darwinSystem;
+      darwinSystem = nix-darwin.lib.darwinSystem;
       nixosSystem = nixpkgs.lib.nixosSystem;
 
       # Function for home-manager configuration
