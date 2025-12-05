@@ -4,45 +4,21 @@
 
 ### Initial Setup
 
-#### 1. Install Nix
+1. Install [Determinate Nix](https://github.com/DeterminateSystems/nix-installer):
 
-Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
-
-If the installer prompts you to install Determinate Nix, select `no` to install Nix from NixOS instead.
-
-```
-INFO nix-installer v3.4.1
-INFO For a more robust Nix installation, use the Determinate package for macOS: https://dtr.mn/determinate-nix
-
-Install Determinate Nix?
-
-Selecting 'no' will install Nix from NixOS instead.
-
-Proceed? ([Y]es/[n]o/[e]xplain):
+```sh
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
 
-To uninstall Nix, run the command below:
+2. Clone this repository:
 
-```bash
-/nix/nix-installer uninstall
-```
-
-#### 2. Clone this repository
-
-```bash
+```sh
 git clone --depth 1 \
   https://github.com/siraken/dotfiles.git \
   ~/repos/github.com/siraken/dotfiles
 ```
 
-or using `gh` CLI:
-
-```bash
-gh repo clone siraken/dotfiles \
-  ~/repos/github.com/siraken/dotfiles -- --depth 1
-```
-
-#### 3. Install `nix-darwin`
+3. Install `nix-darwin`
 
 ```bash
 cd dotfiles
@@ -51,7 +27,7 @@ sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darw
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
 
-#### 4. Run `darwin-rebuild` or `home-manager`
+4. Run `darwin-rebuild` or `home-manager`
 
 ```bash
 # Build darwin flake using:
@@ -71,7 +47,15 @@ nix run home-manager/release-25.05 -- switch --flake .#THE_NAME --impure
 nix run home-manager/release-25.05 -- switch --flake .#wsl-ubuntu --impure
 ```
 
-#### x. Garbage Collection
+### Uninstall
+
+To uninstall Nix, run the command below:
+
+```bash
+/nix/nix-installer uninstall
+```
+
+### Garbage Collection
 
 ```bash
 nix store gc
