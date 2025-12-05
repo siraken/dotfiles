@@ -5,13 +5,11 @@
 ### Initial Setup
 
 1. Install [Determinate Nix](https://github.com/DeterminateSystems/nix-installer):
-
 ```sh
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
 
 2. Clone this repository:
-
 ```sh
 git clone --depth 1 \
   https://github.com/siraken/dotfiles.git \
@@ -19,7 +17,6 @@ git clone --depth 1 \
 ```
 
 3. Install `nix-darwin`
-
 ```bash
 cd dotfiles
 sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darwin --impure
@@ -28,7 +25,6 @@ sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darw
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
 
 4. Run `darwin-rebuild` or `home-manager`
-
 ```bash
 # Build darwin flake using:
 sudo darwin-rebuild build --flake .#THE_NAME --impure
