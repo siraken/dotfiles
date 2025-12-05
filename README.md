@@ -1,8 +1,10 @@
 # dotfiles
 
-## Installation
+## Usage
 
-### 1. Clone this repository
+### Initial Setup
+
+#### 1. Clone this repository
 
 ```bash
 git clone --depth 1 https://github.com/siraken/dotfiles.git
@@ -14,7 +16,7 @@ or using `gh` CLI:
 gh repo clone siraken/dotfiles -- --depth 1
 ```
 
-### 2. Install Nix
+#### 2. Install Nix
 
 Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 
@@ -37,7 +39,7 @@ To uninstall Nix, run the command below:
 /nix/nix-installer uninstall
 ```
 
-### 3. Install `nix-darwin`
+#### 3. Install `nix-darwin`
 
 ```bash
 cd dotfiles
@@ -46,7 +48,7 @@ sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darw
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
 
-## 4. Run `darwin-rebuild` or `home-manager`
+#### 4. Run `darwin-rebuild` or `home-manager`
 
 ```bash
 # Build darwin flake using:
@@ -66,7 +68,7 @@ nix run home-manager/release-25.05 -- switch --flake .#THE_NAME --impure
 nix run home-manager/release-25.05 -- switch --flake .#wsl-ubuntu --impure
 ```
 
-## x. Garbage Collection
+#### x. Garbage Collection
 
 ```bash
 nix store gc
