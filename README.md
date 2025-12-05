@@ -4,19 +4,7 @@
 
 ### Initial Setup
 
-#### 1. Clone this repository
-
-```bash
-git clone --depth 1 https://github.com/siraken/dotfiles.git
-```
-
-or using `gh` CLI:
-
-```bash
-gh repo clone siraken/dotfiles -- --depth 1
-```
-
-#### 2. Install Nix
+#### 1. Install Nix
 
 Install Nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer).
 
@@ -37,6 +25,21 @@ To uninstall Nix, run the command below:
 
 ```bash
 /nix/nix-installer uninstall
+```
+
+#### 2. Clone this repository
+
+```bash
+git clone --depth 1 \
+  https://github.com/siraken/dotfiles.git \
+  ~/repos/github.com/siraken/dotfiles
+```
+
+or using `gh` CLI:
+
+```bash
+gh repo clone siraken/dotfiles \
+  ~/repos/github.com/siraken/dotfiles -- --depth 1
 ```
 
 #### 3. Install `nix-darwin`
