@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 let
   # プレフィックス付きツールをマッピングするヘルパー関数
-  prefixTools = prefix: tools:
-    lib.mapAttrs' (name: value: lib.nameValuePair "${prefix}:${name}" value) tools;
+  prefixTools =
+    prefix: tools: lib.mapAttrs' (name: value: lib.nameValuePair "${prefix}:${name}" value) tools;
 
   # npm パッケージ
   npm = {
@@ -105,7 +105,7 @@ in
       // prefixTools "go" go;
 
       settings = {
-        idiomatic_version_file_enable_tools = [];
+        idiomatic_version_file_enable_tools = [ ];
 
         npm = {
           bun = false;

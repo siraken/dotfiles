@@ -90,7 +90,7 @@ in
     };
   };
 
-  services = {};
+  services = { };
 
   homebrew = {
     enable = true;

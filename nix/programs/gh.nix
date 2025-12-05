@@ -2,8 +2,11 @@
 {
   programs.gh = {
     enable = true;
-    gitCredentialHelper= {
-      hosts = ["https://github.com" "https://gist.github.com"];
+    gitCredentialHelper = {
+      hosts = [
+        "https://github.com"
+        "https://gist.github.com"
+      ];
     };
     settings = {
       aliases = {

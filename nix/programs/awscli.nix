@@ -2,6 +2,6 @@
 {
   programs.awscli = {
     enable = true;
-    settings = {};
+    settings = { };
   };
 }

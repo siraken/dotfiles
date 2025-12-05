@@ -2,6 +2,6 @@
 {
   programs.gemini-cli = {
     enable = true;
-    commands = {};
+    commands = { };
   };
 }
