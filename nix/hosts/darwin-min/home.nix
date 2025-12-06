@@ -58,7 +58,11 @@ in
         inherit config dotfilesPath;
       }
       // {
-
+        # Mutable symlinks using mkOutOfStoreSymlink
+        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.config/nvim";
+        ".claude/settings.json".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/settings.json";
+        ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/CLAUDE.md";
+        ".gemini/settings.json".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/gemini/settings.json";
       };
 
     shell = {

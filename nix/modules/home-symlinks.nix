@@ -1,7 +1,4 @@
 { config, dotfilesPath }:
-let
-  mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
-in
 {
   # bash (TODO: to be removed later)
   ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
@@ -22,13 +19,5 @@ in
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
 
-  # Mutable symlinks (using mkOutOfStoreSymlink for direct file access)
-  # Full path is required for mkOutOfStoreSymlink
-  # AI Agents
-  ".claude/settings.json".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/settings.json";
-  ".claude/CLAUDE.md".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/CLAUDE.md";
-  ".gemini/settings.json".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/gemini/settings.json";
-
-  # Neovim
-  ".config/nvim".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.config/nvim";
+  # Mutable symlinks are defined in home.nix using mkOutOfStoreSymlink
 }
