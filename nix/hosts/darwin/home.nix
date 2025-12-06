@@ -58,12 +58,17 @@ in
         inherit config dotfilesPath;
       }
       // {
-        # Mutable symlinks using mkOutOfStoreSymlink
-        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.config/nvim";
-        ".claude/settings.json".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/settings.json";
-        ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/CLAUDE.md";
-        ".gemini/settings.json".source = config.lib.file.mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/gemini/settings.json";
+
       };
+
+    activation.mutableSymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      # Mutable symlinks (not managed by Nix store)
+      mkdir -p $HOME/.claude $HOME/.gemini
+      ln -sfn ${dotfilesPath}/.config/nvim $HOME/.config/nvim
+      ln -sfn ${dotfilesPath}/.agents/claude/settings.json $HOME/.claude/settings.json
+      ln -sfn ${dotfilesPath}/.agents/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
+      ln -sfn ${dotfilesPath}/.agents/gemini/settings.json $HOME/.gemini/settings.json
+    '';
 
     shell = {
       enableBashIntegration = true;

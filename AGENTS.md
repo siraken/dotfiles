@@ -54,13 +54,13 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Modular Configuration**:
 
-- `nix/modules/home-symlinks.nix` - Declarative symlink mappings for dotfiles (uses `mkOutOfStoreSymlink` for mutable symlinks)
+- `nix/modules/home-symlinks.nix` - Declarative symlink mappings for dotfiles (immutable, copied to Nix store)
 - `nix/programs/*.nix` - Individual program configurations (git, zsh, tmux, yazi, etc.)
 
 **Symlink Management**:
 
-- All symlinks are managed by home-manager via `home-symlinks.nix`
-- Mutable symlinks (AI agents, nvim) use `mkOutOfStoreSymlink` for direct file access
+- Immutable symlinks are managed by home-manager via `home-symlinks.nix` (copied to Nix store)
+- Mutable symlinks (AI agents, nvim) are created via `home.activation` scripts for direct file access
 
 ### Configuration Coverage
 
