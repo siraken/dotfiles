@@ -1,6 +1,6 @@
--- UI enhancement plugins
+-- UI enhancement plugins (minimal configuration)
 return {
-  -- Status line
+  -- Status line (minimal)
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -8,52 +8,31 @@ return {
       options = {
         theme = "auto",
         globalstatus = true,
-        disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+        component_separators = "",
+        section_separators = "",
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "neo-tree" } },
       },
       sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
+        lualine_a = {},
+        lualine_b = {},
         lualine_c = {
-          { "diagnostics" },
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { "filename", path = 1 },
+          { "filename", path = 1, color = { fg = "#7aa2f7" } },
         },
-        lualine_x = {
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
-        },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-      },
-      extensions = { "neo-tree", "lazy" },
-    },
-  },
-  -- Buffer line
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Close unpinned" },
-      { "[b", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
-      { "]b", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
-    },
-    opts = {
-      options = {
-        close_command = function(n) require("snacks").bufdelete(n) end,
-        right_mouse_command = function(n) require("snacks").bufdelete(n) end,
-        diagnostics = "nvim_lsp",
-        always_show_bufferline = false,
-        offsets = {
-          {
-            filetype = "neo-tree",
-            text = "Neo-tree",
-            highlight = "Directory",
-            text_align = "left",
-          },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {
+          { "location", padding = { left = 1, right = 1 } },
         },
       },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { { "filename", path = 1 } },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      extensions = { "neo-tree", "lazy", "trouble", "fzf" },
     },
   },
   -- Noice - better UI for messages, cmdline, popupmenu
@@ -62,6 +41,10 @@ return {
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim" },
     opts = {
+      cmdline = {
+        enabled = true,
+        view = "cmdline_popup",
+      },
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -86,6 +69,7 @@ return {
         bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
+        lsp_doc_border = true,
       },
     },
   },
