@@ -25,10 +25,10 @@ in
   # Mutable symlinks (using mkOutOfStoreSymlink for direct file access)
   # Full path is required for mkOutOfStoreSymlink
   # AI Agents
-  ".claude/settings.json".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.agents/claude/settings.json";
-  ".claude/CLAUDE.md".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.agents/claude/CLAUDE.md";
-  ".gemini/settings.json".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.agents/gemini/settings.json";
+  ".claude/settings.json".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/settings.json";
+  ".claude/CLAUDE.md".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/claude/CLAUDE.md";
+  ".gemini/settings.json".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.agents/gemini/settings.json";
 
   # Neovim
-  ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/nvim";
+  ".config/nvim".source = mkOutOfStoreSymlink "/Users/siraken/dotfiles/.config/nvim";
 }
