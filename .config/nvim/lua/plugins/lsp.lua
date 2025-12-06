@@ -83,7 +83,7 @@ return {
   -- Mason LSP config bridge
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "mason.nvim" },
+    dependencies = { "mason.nvim", "neovim/nvim-lspconfig" },
     opts = {
       ensure_installed = {
         "lua_ls",
@@ -101,10 +101,7 @@ return {
         "nil_ls",
       },
       automatic_installation = true,
-    },
-    config = function(_, opts)
-      require("mason-lspconfig").setup(opts)
-      require("mason-lspconfig").setup_handlers({
+      handlers = {
         function(server_name)
           require("lspconfig")[server_name].setup({})
         end,
@@ -119,8 +116,8 @@ return {
             },
           })
         end,
-      })
-    end,
+      },
+    },
   },
   -- Linting
   {
