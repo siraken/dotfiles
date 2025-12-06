@@ -9,8 +9,8 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Split window
-keymap.set("n", "ss", ":split<CR><C-W>w", { desc = "Split horizontal" })
-keymap.set("n", "sv", ":vsplit<CR><C-w>w", { desc = "Split vertical" })
+keymap.set("n", "ss", "<cmd>split<cr><C-w>w", { desc = "Split horizontal" })
+keymap.set("n", "sv", "<cmd>vsplit<cr><C-w>w", { desc = "Split vertical" })
 
 -- Move window
 keymap.set("n", "sh", "<C-w>h", { desc = "Go to left window" })
@@ -72,10 +72,9 @@ keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 
-if not vscode then
-  keymap.set("n", "tr", "<Cmd>Neotree toggle<CR>", { desc = "Toggle file tree" })
-else
-  keymap.set("n", "tr", "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
+-- File tree (also defined in editor.lua with <leader>e)
+if vscode then
+  keymap.set("n", "<leader>e", "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>", { desc = "Toggle sidebar" })
 end
 
 -- UI toggles
