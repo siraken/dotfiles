@@ -8,8 +8,8 @@ vim.g.maplocalleader = "\\"
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Command line
-opt.cmdheight = 1
+-- Command line (0 = use noice.nvim for cmdline)
+opt.cmdheight = 0
 
 -- Visual
 opt.visualbell = true
@@ -58,7 +58,7 @@ opt.lazyredraw = false
 opt.completeopt = "menu,menuone,noselect"
 opt.scrolloff = 10
 opt.inccommand = "split"
-opt.signcolumn = "yes"
+opt.signcolumn = "auto"
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 opt.undofile = true
 opt.undolevels = 10000
