@@ -1,11 +1,5 @@
+-- UI enhancement plugins
 return {
-  -- https://github.com/nvim-treesitter/nvim-treesitter-context
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "LazyFile",
-    enabled = false,
-    opts = { mode = "cursor", max_lines = 3 },
-  },
   -- https://github.com/akinsho/bufferline.nvim
   {
     -- "akinsho/bufferline.nvim", version = "*"
@@ -25,15 +19,6 @@ return {
     "folke/which-key.nvim",
     -- which_key.setup {}
   },
-  -- https://github.com/lewis6991/gitsigns.nvim
-  {
-    "lewis6991/gitsigns.nvim",
-    -- gitsigns.setup {}
-  },
-  -- https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
-  {
-    "roobert/tailwindcss-colorizer-cmp.nvim",
-  },
   -- https://github.com/norcalli/nvim-colorizer.lua
   {
     "norcalli/nvim-colorizer.lua",
@@ -41,6 +26,4 @@ return {
       require("colorizer").setup()
     end,
   },
-  -- https://github.com/itchyny/calendar.vim
-  { "itchyny/calendar.vim" },
 }
