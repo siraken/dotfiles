@@ -1,4 +1,7 @@
 { config, dotfilesPath }:
+let
+  mkSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
+in
 {
   # bash (TODO: to be removed later)
   ".bashrc".source = "${dotfilesPath}/.config/bash/.bashrc";
@@ -18,4 +21,13 @@
   ".config/nano".source = "${dotfilesPath}/.config/nano";
   ".config/wezterm".source = "${dotfilesPath}/.config/wezterm";
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
+
+  # Mutable symlinks (previously managed by ./symlink script)
+  # AI Agents
+  ".claude/settings.json".source = mkSymlink "${dotfilesPath}/.agents/claude/settings.json";
+  ".claude/CLAUDE.md".source = mkSymlink "${dotfilesPath}/.agents/claude/CLAUDE.md";
+  ".gemini/settings.json".source = mkSymlink "${dotfilesPath}/.agents/gemini/settings.json";
+
+  # Neovim
+  ".config/nvim".source = mkSymlink "${dotfilesPath}/.config/nvim";
 }
