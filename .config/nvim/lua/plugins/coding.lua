@@ -1,16 +1,15 @@
 -- Coding assistance plugins (formatting, pairing, comments, structural editing)
 return {
-  -- https://github.com/stevearc/conform.nvim
+  -- Formatting
   {
     "stevearc/conform.nvim",
-    dependencies = { "mason.nvim" },
-    lazy = true,
-    cmd = "ConformInfo",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     keys = {
       {
         "<leader>cF",
         function()
-          require("conform").format({ formatters = { "injected" } })
+          require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
         end,
         mode = { "n", "v" },
         desc = "Format Injected Langs",
@@ -18,36 +17,58 @@ return {
     },
     opts = {
       formatters_by_ft = {
-        javascript = { { "prettierd", "prettier" } },
-        typescript = { { "prettierd", "prettier" } },
-        javascriptreact = { { "prettierd", "prettier" } },
-        typescriptreact = { { "prettierd", "prettier" } },
+        lua = { "stylua" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
+        yaml = { "prettierd", "prettier", stop_after_first = true },
+        markdown = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier", stop_after_first = true },
+        css = { "prettierd", "prettier", stop_after_first = true },
+        sh = { "shfmt" },
+      },
+      format_on_save = {
+        timeout_ms = 3000,
+        lsp_fallback = true,
       },
     },
   },
-  -- https://github.com/windwp/nvim-autopairs
+  -- Auto pairs
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     opts = {
-      disable_filetype = {
-        "TelescopePrompt",
-        "vim",
-      },
+      disable_filetype = { "TelescopePrompt", "vim" },
     },
   },
-  -- https://github.com/numToStr/Comment.nvim
+  -- Comments
   {
     "numToStr/Comment.nvim",
-    lazy = true,
-    config = function()
-      require("Comment").setup({})
-    end,
+    event = "VeryLazy",
+    opts = {},
   },
-  -- https://github.com/julienvincent/nvim-paredit
+  -- Paredit for Lisp
   {
     "julienvincent/nvim-paredit",
-    config = function()
-      require("nvim-paredit").setup()
-    end,
+    ft = { "clojure", "lisp", "scheme", "fennel" },
+    opts = {},
+  },
+  -- Yank history
+  {
+    "gbprod/yanky.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>p", function() require("fzf-lua").registers() end, desc = "Paste from registers" },
+      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank" },
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put after" },
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put before" },
+      { "[y", "<Plug>(YankyCycleForward)", desc = "Cycle forward through yank history" },
+      { "]y", "<Plug>(YankyCycleBackward)", desc = "Cycle backward through yank history" },
+    },
+    opts = {
+      highlight = { timer = 200 },
+    },
   },
 }

@@ -1,17 +1,21 @@
+-- Load core configuration
+require("config.options")
 require("config.lazy")
+require("config.keymaps")
+require("config.autocmds")
 
+-- Platform-specific settings
 local has = vim.fn.has
 
-local is_mac = has("macunix")
-local is_win = has("win32")
-local is_wsl = has("wsl")
-
-if is_mac then
+if has("macunix") == 1 then
   require("config.macos")
 end
 
-if is_win then
+if has("win32") == 1 then
   require("config.windows")
 end
 
-require("config.neovide")
+-- Neovide GUI settings
+if vim.g.neovide then
+  require("config.neovide")
+end

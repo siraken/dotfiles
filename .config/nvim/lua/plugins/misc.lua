@@ -1,10 +1,7 @@
 -- Miscellaneous plugins
 return {
-  -- https://github.com/itchyny/calendar.vim
-  { "itchyny/calendar.vim" },
-  -- https://github.com/sheerun/vim-polyglot
-  {
-    "sheerun/vim-polyglot",
-    -- polyglot.setup {}
-  },
+  -- Calendar
+  { "itchyny/calendar.vim", cmd = "Calendar" },
+  -- Polyglot syntax
+  { "sheerun/vim-polyglot", event = { "BufReadPost", "BufNewFile" } },
 }
