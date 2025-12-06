@@ -1,7 +1,13 @@
--- Clojure development plugins
+-- Clojure development
 return {
-  -- https://github.com/Olical/conjure
-  { "Olical/conjure", lazy = false, ft = { "clojure" } },
-  -- https://github.com/clojure-vim/vim-jack-in
-  { "clojure-vim/vim-jack-in" },
+  -- Conjure - interactive evaluation
+  {
+    "Olical/conjure",
+    ft = { "clojure", "fennel", "lisp", "scheme" },
+    init = function()
+      vim.g["conjure#mapping#doc_word"] = "K"
+    end,
+  },
+  -- REPL jack-in
+  { "clojure-vim/vim-jack-in", ft = "clojure" },
 }

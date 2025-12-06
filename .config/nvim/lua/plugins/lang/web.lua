@@ -1,7 +1,5 @@
--- Web development plugins (templates, CSS utilities)
+-- Web development (templates)
 return {
-  -- https://github.com/slim-template/vim-slim
-  { "slim-template/vim-slim" },
-  -- https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
-  { "roobert/tailwindcss-colorizer-cmp.nvim" },
+  -- Slim template language
+  { "slim-template/vim-slim", ft = "slim" },
 }

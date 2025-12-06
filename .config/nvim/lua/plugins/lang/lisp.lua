@@ -1,10 +1,11 @@
--- Common Lisp development plugins
+-- Common Lisp development
 return {
-  -- https://github.com/vlime/vlime
-  -- TODO: rtp can be accomplished.
-  -- Read: https://github.com/folke/lazy.nvim#-migration-guide
+  -- Vlime - Common Lisp IDE
   {
     "vlime/vlime",
-    -- rtp = "vim"
+    ft = "lisp",
+    init = function()
+      vim.g.vlime_cl_impl = "sbcl"
+    end,
   },
 }
