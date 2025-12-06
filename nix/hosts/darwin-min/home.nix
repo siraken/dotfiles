@@ -67,15 +67,6 @@ in
       enableFishIntegration = true;
       enableShellIntegration = true;
     };
-
-    activation = import ../../modules/home-activation.nix {
-      inherit
-        config
-        pkgs
-        lib
-        dotfilesPath
-        ;
-    };
   };
 
   programs.home-manager.enable = true;

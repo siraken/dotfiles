@@ -42,5 +42,5 @@
     "common@siraken-plugins": true,
     "dev@siraken-plugins": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": false
 }
