@@ -1,7 +1,6 @@
 { config, dotfilesPath }:
 let
-  # Use string concatenation (+) instead of interpolation to avoid Nix store copy
-  mkSymlink = path: config.lib.file.mkOutOfStoreSymlink (dotfilesPath + path);
+  mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
   # bash (TODO: to be removed later)
@@ -24,11 +23,12 @@ in
   ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
 
   # Mutable symlinks (using mkOutOfStoreSymlink for direct file access)
+  # Full path is required for mkOutOfStoreSymlink
   # AI Agents
-  ".claude/settings.json".source = mkSymlink "/.agents/claude/settings.json";
-  ".claude/CLAUDE.md".source = mkSymlink "/.agents/claude/CLAUDE.md";
-  ".gemini/settings.json".source = mkSymlink "/.agents/gemini/settings.json";
+  ".claude/settings.json".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.agents/claude/settings.json";
+  ".claude/CLAUDE.md".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.agents/claude/CLAUDE.md";
+  ".gemini/settings.json".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.agents/gemini/settings.json";
 
   # Neovim
-  ".config/nvim".source = mkSymlink "/.config/nvim";
+  ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/nvim";
 }
