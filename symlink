@@ -6,9 +6,9 @@ DOTFILES_PATH="${HOME}/dotfiles"
 mkdir -p "${HOME}/.claude"
 mkdir -p "${HOME}/.gemini"
 
-ln -sf "${DOTFILES_PATH}/.agents/claude/settings.json" "${HOME}/.claude/settings.json"
-ln -sf "${DOTFILES_PATH}/.agents/claude/CLAUDE.md" "${HOME}/.claude/CLAUDE.md"
-ln -sf "${DOTFILES_PATH}/.agents/gemini/settings.json" "${HOME}/.gemini/settings.json"
+ln -sfn "${DOTFILES_PATH}/.agents/claude/settings.json" "${HOME}/.claude/settings.json"
+ln -sfn "${DOTFILES_PATH}/.agents/claude/CLAUDE.md" "${HOME}/.claude/CLAUDE.md"
+ln -sfn "${DOTFILES_PATH}/.agents/gemini/settings.json" "${HOME}/.gemini/settings.json"
 
 # Neovim
-ln -sf "${DOTFILES_PATH}/.config/nvim" "${HOME}/.config/nvim"
+ln -sfn "${DOTFILES_PATH}/.config/nvim" "${HOME}/.config/nvim"
