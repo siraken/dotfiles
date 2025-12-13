@@ -36,6 +36,7 @@ let
     "@anthropic-ai/claude-code" = "latest";
     "@lhci/cli" = "latest";
     "@nestjs/cli" = "latest";
+    "@antfu/ni" = "latest";
     cordova = "latest";
     cordova-res = "latest";
     md-to-pdf = "latest";
