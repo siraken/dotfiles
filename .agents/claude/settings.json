@@ -1,46 +1,39 @@
 {
-  "env": {
-    "DISABLE_AUTOUPDATER": "0"
-  },
-  "includeCoAuthoredBy": true,
-  "permissions": {
-    "allow": [
-      "Bash(gh pr view :*)",
-      "Bash(gh pr diff :*)",
-      "Bash(gh pr checks :*)"
-    ],
-    "deny": [
-      "Read(id_rsa)",
-      "Read(id_ed25519)",
-      "Read(.env*)",
-      "Write(.env*)"
-    ],
-    "ask": [
-      "Bash(sudo:*)",
-      "Bash(rm:*)",
-      "Bash(rm -rf:*)",
-      "Bash(git push:*)",
-      "Bash(git reset:*)",
-      "Bash(git rebase:*)",
-      "Bash(curl:*)",
-      "Bash(wget:*)",
-      "Bash(psql:*)",
-      "Bash(mysql:*)",
-      "Bash(mongod:*)"
-    ]
-  },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": []
-      }
-    ]
-  },
-  "enabledPlugins": {
-    "github@siraken-plugins": true,
-    "common@siraken-plugins": true,
-    "dev@siraken-plugins": true
-  },
-  "alwaysThinkingEnabled": true
+	"includeCoAuthoredBy": true,
+	"permissions": {
+		"allow": [
+			"Bash(gh pr view :*)",
+			"Bash(gh pr diff :*)",
+			"Bash(gh pr checks :*)",
+			"Read(.env.example)"
+		],
+		"deny": ["Read(id_rsa)", "Read(id_ed25519)", "Read(.env*)", "Write(.env*)"],
+		"ask": [
+			"Bash(sudo:*)",
+			"Bash(rm:*)",
+			"Bash(rm -rf:*)",
+			"Bash(git push:*)",
+			"Bash(git reset:*)",
+			"Bash(git rebase:*)",
+			"Bash(curl:*)",
+			"Bash(wget:*)",
+			"Bash(psql:*)",
+			"Bash(mysql:*)",
+			"Bash(mongod:*)"
+		]
+	},
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Write",
+				"hooks": []
+			}
+		]
+	},
+	"enabledPlugins": {
+		"github@siraken-plugins": true,
+		"common@siraken-plugins": true,
+		"dev@siraken-plugins": true
+	},
+	"alwaysThinkingEnabled": true
 }
