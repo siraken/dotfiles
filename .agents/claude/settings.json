@@ -12,9 +12,11 @@
 			"Read(.env)",
 			"Read(.env.local)",
 			"Read(.env.production)",
+			"Read(.dev.vars)",
 			"Write(.env)",
 			"Write(.env.local)",
-			"Write(.env.production)"
+			"Write(.env.production)",
+			"Write(.dev.vars)"
 		],
 		"ask": [
 			"Bash(sudo:*)",
