@@ -1,49 +1,54 @@
 {
-	"includeCoAuthoredBy": true,
-	"permissions": {
-		"allow": [
-			"Bash(gh pr view :*)",
-			"Bash(gh pr diff :*)",
-			"Bash(gh pr checks :*)"
-		],
-		"deny": [
-			"Read(id_rsa)",
-			"Read(id_ed25519)",
-			"Read(.env)",
-			"Read(.env.local)",
-			"Read(.env.production)",
-			"Read(.dev.vars)",
-			"Write(.env)",
-			"Write(.env.local)",
-			"Write(.env.production)",
-			"Write(.dev.vars)"
-		],
-		"ask": [
-			"Bash(sudo:*)",
-			"Bash(rm:*)",
-			"Bash(rm -rf:*)",
-			"Bash(git push:*)",
-			"Bash(git reset:*)",
-			"Bash(git rebase:*)",
-			"Bash(curl:*)",
-			"Bash(wget:*)",
-			"Bash(psql:*)",
-			"Bash(mysql:*)",
-			"Bash(mongod:*)"
-		]
-	},
-	"hooks": {
-		"PostToolUse": [
-			{
-				"matcher": "Write",
-				"hooks": []
-			}
-		]
-	},
-	"enabledPlugins": {
-		"github@siraken-plugins": true,
-		"common@siraken-plugins": true,
-		"dev@siraken-plugins": true
-	},
-	"alwaysThinkingEnabled": true
+  "includeCoAuthoredBy": true,
+  "permissions": {
+    "allow": [
+      "Bash(gh pr view :*)",
+      "Bash(gh pr diff :*)",
+      "Bash(gh pr checks :*)"
+    ],
+    "deny": [
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.env.production)",
+      "Read(.dev.vars)",
+      "Write(.env)",
+      "Write(.env.local)",
+      "Write(.env.production)",
+      "Write(.dev.vars)"
+    ],
+    "ask": [
+      "Bash(sudo:*)",
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(psql:*)",
+      "Bash(mysql:*)",
+      "Bash(mongod:*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": []
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "github@siraken-plugins": true,
+    "common@siraken-plugins": true,
+    "dev@siraken-plugins": true,
+    "code-review@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true
 }
