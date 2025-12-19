@@ -76,6 +76,10 @@ in
       enableFishIntegration = true;
       enableShellIntegration = true;
     };
+
+    packages = [
+      pkgs.nixfmt-rfc-style
+    ];
   };
 
   programs.home-manager.enable = true;

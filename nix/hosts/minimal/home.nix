@@ -38,6 +38,7 @@ in
       pkgs.libgcc
       pkgs.xdg-utils
       pkgs.jq
+      pkgs.nixfmt-rfc-style
     ];
   };
 
