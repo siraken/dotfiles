@@ -1,11 +1,7 @@
 # CLI tools migrated from Homebrew
-# See: https://github.com/siraken/dotfiles/issues/31
-# See: https://github.com/siraken/dotfiles/issues/32
 { pkgs }:
 with pkgs;
 let
-  # ── CLI Tools (#31) ─────────────────────────────────────────────────
-
   # File operations and browsing
   fileTools = [
     broot # file manager
@@ -56,8 +52,6 @@ let
   miscCliTools = [
     hugo # static site generator
   ];
-
-  # ── Development Tools (#32) ─────────────────────────────────────────
 
   # Programming languages
   languages = [
