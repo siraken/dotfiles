@@ -18,6 +18,7 @@ in
     # ../../programs/bash.nix
     ../../programs/bat.nix
     ../../programs/bottom.nix
+    ../../programs/coding-agents.nix
     # ../../programs/difftastic.nix
     ../../programs/direnv.nix
     ../../programs/fish.nix
