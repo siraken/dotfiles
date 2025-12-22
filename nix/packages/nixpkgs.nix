@@ -55,8 +55,10 @@ let
 
   # Programming languages
   languages = [
+    bun # JavaScript/TypeScript runtime
     clojure
     dart
+    deno # JavaScript/TypeScript runtime
     elmPackages.elm
     kotlin
     lua

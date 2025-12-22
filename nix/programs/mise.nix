@@ -86,8 +86,6 @@ in
     globalConfig = {
       tools = {
         usage = "latest";
-        bun = "latest";
-        deno = "latest";
         node = "latest";
         dotnet = "latest";
         erlang = "latest";
