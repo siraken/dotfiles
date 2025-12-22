@@ -59,6 +59,7 @@
 
       mkDarwinSystem = nix-darwin.lib.darwinSystem;
       mkNixosSystem = nixpkgs.lib.nixosSystem;
+      mkNixOnDroidSystem = nix-on-droid.lib.nixOnDroidConfiguration;
 
       # Function for home-manager configuration
       mkHomeConfiguration =
@@ -87,6 +88,7 @@
         type = "app";
         program = toString (nixpkgs.legacyPackages.${system}.writeShellScript name script);
       };
+
       darwinApp = mkApp darwinSystem;
     in
     {
@@ -163,6 +165,15 @@
             ./nix/hosts/nixos/configuration.nix
           ];
         };
+      };
+
+      nixOnDroidConfigurations = {
+        # "nixondroid-device" = mkNixOnDroidSystem {
+        #   system = "aarch64-linux";
+        #   modules = [
+        #     ./nix/hosts/nixondroid/configuration.nix
+        #   ];
+        # };
       };
 
       homeConfigurations = {
