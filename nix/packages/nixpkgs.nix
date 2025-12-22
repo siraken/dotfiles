@@ -1,8 +1,10 @@
-# High-priority CLI tools migrated from Homebrew
+# CLI tools migrated from Homebrew
 # See: https://github.com/siraken/dotfiles/issues/31
+# See: https://github.com/siraken/dotfiles/issues/32
 { pkgs }:
 with pkgs;
 [
+  # High-priority CLI tools (#31)
   aria2 # downloader
   bandwhich # network bandwidth monitor
   broot # file manager
@@ -30,4 +32,33 @@ with pkgs;
   tree # directory tree
   vhs # terminal recording
   wget # downloader
+
+  # Development tools (#32)
+  act # GitHub Actions local runner
+  ansible # configuration management
+  cloudflared # Cloudflare tunnel
+  cmake # build tool
+  clojure # language
+  dart # language
+  elmPackages.elm # language
+  flyctl # Fly.io CLI
+  gradle # Java build
+  graphviz # graph visualization
+  kotlin # language
+  kompose # K8s conversion
+  lua # language
+  lua-language-server # LSP
+  luarocks # Lua packages
+  maven # Java build
+  minikube # K8s local
+  mkcert # local certificates
+  nim # language
+  ninja # build tool
+  pandoc # document conversion
+  sbcl # Common Lisp
+  sbt # Scala build
+  scala # language
+  tenv # Terraform version manager
+  tor # anonymous network
+  tree-sitter # parser
 ]

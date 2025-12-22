@@ -151,9 +151,9 @@ in
       "VOICEVOX/voicevox"
     ];
     brews = [
-      "act"
+      # "act" # moved to nixpkgs
       "aircrack-ng"
-      "ansible"
+      # "ansible" # moved to nixpkgs
       "apktool"
       "arduino-cli"
       # "aria2" # moved to nixpkgs
@@ -165,24 +165,24 @@ in
       "cairo"
       "cdrtools"
       "cfonts"
-      "clojure"
-      "cloudflared"
-      "cmake"
+      # "clojure" # moved to nixpkgs
+      # "cloudflared" # moved to nixpkgs
+      # "cmake" # moved to nixpkgs
       "cocoapods"
       "composer"
       "coursier"
-      "dart"
+      # "dart" # moved to nixpkgs
       "duck"
       # "duf" # moved to nixpkgs
       # "dust" # moved to nixpkgs
       "earthly"
-      "elm"
+      # "elm" # moved to nixpkgs
       "emacs"
       "ethereum"
       # "eza" # moved to nixpkgs
       # "fd" # moved to nixpkgs
       "ffmpeg"
-      "flyctl"
+      # "flyctl" # moved to nixpkgs
       # "fx" # moved to nixpkgs
       # "genact" # moved to nixpkgs
       "ggshield"
@@ -198,8 +198,8 @@ in
       "gnucobol"
       "goreleaser"
       "gpg"
-      "gradle"
-      "graphviz"
+      # "gradle" # moved to nixpkgs
+      # "graphviz" # moved to nixpkgs
       "grpc"
       # "gum" # moved to nixpkgs
       "hashcat"
@@ -214,8 +214,8 @@ in
       "jmeter"
       "jpeg"
       # "jq" # moved to nixpkgs
-      "kompose"
-      "kotlin"
+      # "kompose" # moved to nixpkgs
+      # "kotlin" # moved to nixpkgs
       "leiningen"
       "libffi"
       "libiconv"
@@ -224,15 +224,15 @@ in
       "librsvg"
       "libxslt"
       "llvm"
-      "lua-language-server"
-      "lua"
+      # "lua-language-server" # moved to nixpkgs
+      # "lua" # moved to nixpkgs
       "luajit" # args: ["HEAD"]
-      "luarocks"
+      # "luarocks" # moved to nixpkgs
       "mas"
-      "maven"
-      "minikube"
+      # "maven" # moved to nixpkgs
+      # "minikube" # moved to nixpkgs
       "mist"
-      "mkcert"
+      # "mkcert" # moved to nixpkgs
       "certbot"
       "monolith"
       "mplayer"
@@ -241,11 +241,11 @@ in
       # "navi" # moved to nixpkgs
       # "neofetch" # moved to nixpkgs
       "neovim"
-      "nim"
-      "ninja"
+      # "nim" # moved to nixpkgs
+      # "ninja" # moved to nixpkgs
       # "onefetch" # moved to nixpkgs
       "openssl"
-      "pandoc"
+      # "pandoc" # moved to nixpkgs
       "pango"
       # "pastel" # moved to nixpkgs
       "pdf2svg"
@@ -261,9 +261,9 @@ in
       "redis"
       "ripgrep"
       "samba"
-      "sbcl"
-      "sbt"
-      "scala"
+      # "sbcl" # moved to nixpkgs
+      # "sbt" # moved to nixpkgs
+      # "scala" # moved to nixpkgs
       "shpotify"
       "skaffold"
       "sketchybar"
@@ -275,13 +275,13 @@ in
       "streamlink"
       # "tart" # cirruslabs/cli/tart
       "telnet"
-      "tenv"
+      # "tenv" # moved to nixpkgs
       "testdisk"
       # "tldr" # moved to nixpkgs (tealdeer)
       "tnftp"
       # "tokei" # moved to nixpkgs
-      "tor" # restart_service: true
-      "tree-sitter"
+      # "tor" # moved to nixpkgs
+      # "tree-sitter" # moved to nixpkgs
       # "tree" # moved to nixpkgs (kept in brew: ansible dependency)
       "ttyd" # args: ["HEAD"]
       # "vhs" # moved to nixpkgs
