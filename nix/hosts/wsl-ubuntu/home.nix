@@ -28,7 +28,6 @@ in
     ../../programs/direnv.nix
     ../../programs/fish.nix
     ../../programs/fzf.nix
-    # ../../programs/gh.nix
     ../../programs/ghostty.nix
     ../../programs/git.nix
     ../../programs/helix.nix
