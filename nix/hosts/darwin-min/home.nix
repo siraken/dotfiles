@@ -6,7 +6,6 @@
   ...
 }:
 let
-  username = "siraken";
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
 in
 {
