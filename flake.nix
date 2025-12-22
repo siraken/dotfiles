@@ -1,23 +1,39 @@
 {
-  description = "siraken's Nix configuration";
+  description = "siraken's dotfiles configuration";
+
+  nixConfig = { };
 
   inputs = {
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    droid = {
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
     op-shell-plugins = {
       url = "github:1Password/shell-plugins";
     };
@@ -27,17 +43,16 @@
     inputs@{
       self,
       nixpkgs,
-      home-manager,
       nix-darwin,
-      droid,
+      nix-index-database,
+      home-manager,
+      treefmt-nix,
+      nix-on-droid,
       op-shell-plugins,
       ...
     }:
     let
-      whoami = {
-        username = "siraken";
-        fullName = "Kento Shirasawa";
-      };
+      username = "siraken";
 
       darwinSystem = "aarch64-darwin";
       linuxSystem = "x86_64-linux";
@@ -106,9 +121,9 @@
             home-manager.darwinModules.home-manager
             {
               users.users = {
-                "${whoami.username}" = {
-                  name = "${whoami.username}";
-                  home = "/Users/${whoami.username}";
+                "${username}" = {
+                  name = "${username}";
+                  home = "/Users/${username}";
                 };
               };
               home-manager.useGlobalPkgs = true;
@@ -126,9 +141,9 @@
             home-manager.darwinModules.home-manager
             {
               users.users = {
-                "${whoami.username}" = {
-                  name = "${whoami.username}";
-                  home = "/Users/${whoami.username}";
+                "${username}" = {
+                  name = "${username}";
+                  home = "/Users/${username}";
                 };
               };
               home-manager.useGlobalPkgs = true;
@@ -143,7 +158,7 @@
       nixosConfigurations = {
         "your-linux-machine-name" = mkNixosSystem {
           system = linuxSystem;
-          username = whoami.username;
+          username = username;
           modules = [
             ./nix/hosts/nixos/configuration.nix
           ];
@@ -152,8 +167,8 @@
 
       homeConfigurations = {
         "wsl-ubuntu" = mkHomeConfiguration {
-          username = whoami.username;
-          homeDirectory = "/home/${whoami.username}";
+          username = username;
+          homeDirectory = "/home/${username}";
           pkgs = nixpkgs.legacyPackages.${linuxSystem};
         };
       };
