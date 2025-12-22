@@ -38,10 +38,10 @@ config.use_ime = true
 config.default_prog = { "/bin/bash", "-l" }
 if is_mac then
   config.default_prog = { "bash", "-l" }
-  config.font_size = 14
+  config.font_size = 16
   config.line_height = 1.2
   config.window_background_opacity = 0.85
-  config.macos_window_background_blur = 20
+  config.macos_window_background_blur = 10
   -- config.macos_window_dragging_behavior = "all"
 elseif is_win then
   config.default_prog = { "pwsh.exe" }
