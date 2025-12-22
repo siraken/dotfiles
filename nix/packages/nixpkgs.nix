@@ -99,7 +99,6 @@ let
   ];
 
   textEditors = [
-    vim
     neovim
   ];
 in
