@@ -78,38 +78,7 @@
         directory = "*";
       };
 
-      # OS-specific credential and GPG configuration
-      credential = lib.mkMerge [
-        {
-          "https://github.com" = {
-            helper = lib.mkIf pkgs.stdenv.isDarwin "!/opt/homebrew/bin/gh auth git-credential";
-          };
-          "https://gist.github.com" = {
-            helper = lib.mkIf pkgs.stdenv.isDarwin "!/opt/homebrew/bin/gh auth git-credential";
-          };
-        }
-        (lib.mkIf pkgs.stdenv.isLinux {
-          "https://github.com".helper = "!gh auth git-credential";
-          "https://gist.github.com".helper = "!gh auth git-credential";
-        })
-        # Windows support can be added when needed
-        # Windows:
-        # [credential "https://github.com"]
-        #   helper = !'C:\\Program Files\\GitHub CLI\\gh.exe' auth git-credential
-        # [credential "https://gist.github.com"]
-        #   helper = !'C:\\Program Files\\GitHub CLI\\gh.exe' auth git-credential
-        # [gpg]
-        #   format = ssh
-        #   # program = !'C:\\Program Files\\Git\\usr\\bin\\gpg.exe'
-        # [gpg "ssh"]
-        #   program = "C:/Program Files/1Password/app/8/op-ssh-sign.exe"
-        # WSL:
-        # [gpg]
-        #   format = ssh
-        # [gpg "ssh"]
-        #   program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl"
-      ];
-
+      # OS-specific GPG configuration for 1Password SSH signing
       gpg = {
         format = "ssh";
       }
@@ -194,12 +163,10 @@
 
   programs.gh = {
     enable = true;
-    gitCredentialHelper = {
-      hosts = [
-        "https://github.com"
-        "https://gist.github.com"
-      ];
-    };
+    gitCredentialHelper.hosts = [
+      "https://github.com"
+      "https://gist.github.com"
+    ];
     settings = {
       aliases = {
         co = "pr checkout";

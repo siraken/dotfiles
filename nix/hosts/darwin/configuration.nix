@@ -186,7 +186,6 @@ in
       # "fx" # moved to nixpkgs
       # "genact" # moved to nixpkgs
       "ggshield"
-      "gh"
       "ghcup"
       "gibo"
       "giflib"
