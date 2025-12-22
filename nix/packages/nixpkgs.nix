@@ -63,6 +63,7 @@ let
     kotlin
     lua
     nim
+    pnpm # Node.js package manager
     sbcl # Common Lisp
     scala
   ];
