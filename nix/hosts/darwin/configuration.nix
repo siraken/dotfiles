@@ -156,11 +156,11 @@ in
       "ansible"
       "apktool"
       "arduino-cli"
-      "aria2"
+      # "aria2" # moved to nixpkgs
       "azure-cli"
-      "bandwhich"
+      # "bandwhich" # moved to nixpkgs
       "bats-core"
-      "broot"
+      # "broot" # moved to nixpkgs
       "cabextract"
       "cairo"
       "cdrtools"
@@ -173,47 +173,47 @@ in
       "coursier"
       "dart"
       "duck"
-      "duf"
-      "dust"
+      # "duf" # moved to nixpkgs
+      # "dust" # moved to nixpkgs
       "earthly"
       "elm"
       "emacs"
       "ethereum"
-      "eza"
-      "fd"
+      # "eza" # moved to nixpkgs
+      # "fd" # moved to nixpkgs
       "ffmpeg"
       "flyctl"
-      "fx"
-      "genact"
+      # "fx" # moved to nixpkgs
+      # "genact" # moved to nixpkgs
       "ggshield"
       "gh"
       "ghcup"
       "gibo"
       "giflib"
-      "git-delta"
+      # "git-delta" # moved to nixpkgs
       "git-filter-repo"
       "git-secrets"
       "gitui"
-      "glow"
+      # "glow" # moved to nixpkgs
       "gnucobol"
       "goreleaser"
       "gpg"
       "gradle"
       "graphviz"
       "grpc"
-      "gum"
+      # "gum" # moved to nixpkgs
       "hashcat"
-      "httpie"
-      "hugo"
+      # "httpie" # moved to nixpkgs
+      # "hugo" # moved to nixpkgs
       "hydra"
-      "hyperfine"
+      # "hyperfine" # moved to nixpkgs
       "imagemagick"
       "invoice"
       "ios-deploy"
-      "jless"
+      # "jless" # moved to nixpkgs
       "jmeter"
       "jpeg"
-      "jq"
+      # "jq" # moved to nixpkgs
       "kompose"
       "kotlin"
       "leiningen"
@@ -238,22 +238,22 @@ in
       "mplayer"
       "mpv"
       "mysql"
-      "navi"
-      "neofetch"
+      # "navi" # moved to nixpkgs
+      # "neofetch" # moved to nixpkgs
       "neovim"
       "nim"
       "ninja"
-      "onefetch"
+      # "onefetch" # moved to nixpkgs
       "openssl"
       "pandoc"
       "pango"
-      "pastel"
+      # "pastel" # moved to nixpkgs
       "pdf2svg"
       "pdfcrack"
       "pixman"
       "pkg-config"
       "portaudio"
-      "procs"
+      # "procs" # moved to nixpkgs
       "pure"
       "putty"
       "pwgen"
@@ -277,18 +277,18 @@ in
       "telnet"
       "tenv"
       "testdisk"
-      "tldr"
+      # "tldr" # moved to nixpkgs (tealdeer)
       "tnftp"
-      "tokei"
+      # "tokei" # moved to nixpkgs
       "tor" # restart_service: true
       "tree-sitter"
-      "tree"
+      # "tree" # moved to nixpkgs
       "ttyd" # args: ["HEAD"]
-      "vhs"
+      # "vhs" # moved to nixpkgs
       "w3m"
       "watchman"
       "wego"
-      "wget"
+      # "wget" # moved to nixpkgs
       "whalebrew"
       "wimlib"
       "xsv"

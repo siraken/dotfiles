@@ -69,14 +69,12 @@ in
       enableShellIntegration = true;
     };
 
-    packages = [
-      pkgs.eza
-      pkgs.bat
-      pkgs.neovim
+    packages = import ../../packages/nixpkgs.nix { inherit pkgs; } ++ [
+      # wsl-ubuntu specific
       pkgs.gcc
       pkgs.libgcc
       pkgs.xdg-utils
-      pkgs.jq
+      pkgs.neovim
       pkgs.nixfmt-rfc-style
     ];
   };

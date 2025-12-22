@@ -76,7 +76,7 @@ in
       enableShellIntegration = true;
     };
 
-    packages = [
+    packages = import ../../packages/nixpkgs.nix { inherit pkgs; } ++ [
       pkgs.nixfmt-rfc-style
     ];
   };
