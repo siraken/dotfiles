@@ -282,7 +282,7 @@ in
       # "tokei" # moved to nixpkgs
       "tor" # restart_service: true
       "tree-sitter"
-      # "tree" # moved to nixpkgs
+      # "tree" # moved to nixpkgs (kept in brew: ansible dependency)
       "ttyd" # args: ["HEAD"]
       # "vhs" # moved to nixpkgs
       "w3m"
