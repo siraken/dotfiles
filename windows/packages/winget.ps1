@@ -42,7 +42,6 @@ $wingetPackages = @(
   "Microsoft.VisualStudioCode"
   "GoLang.Go"
   "WinMerge.WinMerge"
-  "Neovim.Neovim"
   "sharkdp.bat"
   "Zeit.Hyper"
   "MAMP.MAMP" # Install Fails

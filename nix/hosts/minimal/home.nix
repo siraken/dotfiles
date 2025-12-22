@@ -34,7 +34,6 @@ in
       pkgs.gcc
       pkgs.libgcc
       pkgs.xdg-utils
-      pkgs.neovim
       pkgs.nixfmt-rfc-style
     ];
   };

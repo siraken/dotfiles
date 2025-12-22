@@ -97,6 +97,11 @@ let
     tor # anonymous network
     tree-sitter # parser
   ];
+
+  textEditors = [
+    vim
+    neovim
+  ];
 in
 fileTools
 ++ jsonTools
@@ -108,3 +113,4 @@ fileTools
 ++ buildTools
 ++ cloudTools
 ++ devUtilTools
+++ textEditors

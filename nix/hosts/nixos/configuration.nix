@@ -11,8 +11,6 @@
     # gh
     # tmux
     # sudo
-    # vim
-    # neovim
     # emacs
     # eza
     # neofetch
@@ -39,11 +37,9 @@
     # git
     # go
     # neofetch
-    # neovim
     # nodejs-lts -> not found
     # tmux
     # tree
-    # vim
     # wget
     # yarn
     # openssh
@@ -58,8 +54,6 @@
     # sudo
     # neofetch
     # onefetch
-    # vim
-    # neovim
     # emacs
     # gh
     # deno

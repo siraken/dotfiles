@@ -240,7 +240,6 @@ in
       "mysql"
       # "navi" # moved to nixpkgs
       # "neofetch" # moved to nixpkgs
-      "neovim"
       # "nim" # moved to nixpkgs
       # "ninja" # moved to nixpkgs
       # "onefetch" # moved to nixpkgs
@@ -395,7 +394,6 @@ in
       "min"
       "minecraft"
       "mjml-app"
-      "neovide-app"
       "notion"
       "numi"
       "obs"
