@@ -25,6 +25,7 @@ let
     bandwhich # network bandwidth monitor
     httpie # curl replacement
     wget # downloader
+    whois # domain info
   ];
 
   # System information and benchmarks
