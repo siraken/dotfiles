@@ -9,12 +9,15 @@ let
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
 in
 {
-  nixpkgs.config = {
-    allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "1password-cli"
-      ];
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (lib.getName pkg) [
+          "1password-cli"
+        ];
+    };
   };
 
   imports = [
