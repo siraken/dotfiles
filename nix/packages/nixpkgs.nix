@@ -110,3 +110,4 @@ fileTools
 ++ buildTools
 ++ cloudTools
 ++ devUtilTools
+++ textEditors

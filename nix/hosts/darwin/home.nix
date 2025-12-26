@@ -34,7 +34,7 @@ in
     ../../programs/neovide.nix
     ../../programs/starship.nix
     ../../programs/tmux.nix
-    ../../programs/nixvim
+    ../../programs/vim.nix
     # ../../programs/vscode.nix
     ../../programs/yazi.nix
     ../../programs/yt-dlp.nix
@@ -62,8 +62,8 @@ in
 
     activation.mutableSymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       # Mutable symlinks (not managed by Nix store)
-      # Note: nvim config is now managed by nixvim
       mkdir -p $HOME/.claude $HOME/.gemini
+      ln -sfn ${dotfilesPath}/.config/nvim $HOME/.config/nvim
       ln -sfn ${dotfilesPath}/.agents/claude/settings.json $HOME/.claude/settings.json
       ln -sfn ${dotfilesPath}/.agents/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
       ln -sfn ${dotfilesPath}/.agents/gemini/settings.json $HOME/.gemini/settings.json
