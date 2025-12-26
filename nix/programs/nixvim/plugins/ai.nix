@@ -1,6 +1,7 @@
 # AI assistance plugins (Claude Code)
-{ pkgs, ... }:
+{ ... }:
 # TODO: Re-enable when hash is updated
+# { pkgs, ... }:
 # let
 #   claudecode-nvim = pkgs.vimUtils.buildVimPlugin {
 #     pname = "claudecode-nvim";

@@ -1,6 +1,7 @@
 # Common Lisp development
-{ pkgs, ... }:
+{ ... }:
 # TODO: Re-enable when hash is updated
+# { pkgs, ... }:
 # let
 #   vlime = pkgs.vimUtils.buildVimPlugin {
 #     pname = "vlime";

@@ -1,6 +1,7 @@
 # .NET/C# development
-{ pkgs, ... }:
+{ ... }:
 # TODO: Re-enable when hash is updated
+# { pkgs, ... }:
 # let
 #   omnisharp-extended-lsp = pkgs.vimUtils.buildVimPlugin {
 #     pname = "omnisharp-extended-lsp-nvim";

@@ -1,6 +1,7 @@
 # Python development
-{ pkgs, ... }:
+{ ... }:
 # TODO: Re-enable when hash is updated
+# { pkgs, ... }:
 # let
 #   venv-selector-nvim = pkgs.vimUtils.buildVimPlugin {
 #     pname = "venv-selector-nvim";

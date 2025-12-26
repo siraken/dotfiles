@@ -1,6 +1,7 @@
 # Web development (templates, tailwind)
-{ pkgs, ... }:
+{ ... }:
 # TODO: Re-enable when hash is updated
+# { pkgs, ... }:
 # let
 #   vim-slim = pkgs.vimUtils.buildVimPlugin {
 #     pname = "vim-slim";

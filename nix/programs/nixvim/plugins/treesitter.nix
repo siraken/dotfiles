@@ -1,6 +1,7 @@
 # Treesitter configuration
-{ pkgs, ... }:
+{ ... }:
 # TODO: Re-enable when hash is updated
+# { pkgs, ... }:
 # let
 #   ts-comments-nvim = pkgs.vimUtils.buildVimPlugin {
 #     pname = "ts-comments-nvim";
@@ -17,16 +18,14 @@
   programs.nixvim = {
     plugins.treesitter = {
       enable = true;
+      nixGrammars = true;
       settings = {
         highlight.enable = true;
         indent.enable = true;
         auto_install = false;
-        ensure_installed = [
-          "bash" "c" "css" "dockerfile" "go" "gomod" "gosum" "gowork"
-          "html" "java" "javascript" "jsdoc" "json" "jsonc" "lua" "luadoc"
-          "luap" "markdown" "markdown_inline" "nix" "python" "query" "regex"
-          "ruby" "rust" "toml" "tsx" "typescript" "vim" "vimdoc" "yaml"
-        ];
+        sync_install = false;
+        # Parsers managed by Nix, so parser_install_dir points to writable location
+        parser_install_dir.__raw = "vim.fn.stdpath('data') .. '/treesitter'";
       };
     };
 
