@@ -99,6 +99,11 @@ let
     tor # anonymous network
     tree-sitter # parser
   ];
+
+  textEditors = [
+    emacs # extensible editor
+    neovim # vim-based editor
+  ];
 in
 fileTools
 ++ jsonTools
