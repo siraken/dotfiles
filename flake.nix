@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +50,7 @@
       nixpkgs,
       nix-darwin,
       nix-index-database,
+      nixvim,
       home-manager,
       treefmt-nix,
       nix-on-droid,
@@ -128,10 +134,13 @@
                   home = "/Users/${username}";
                 };
               };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.siraken = ./nix/hosts/darwin/home.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.siraken = ./nix/hosts/darwin/home.nix;
+                sharedModules = [ nixvim.homeModules.nixvim ];
+                extraSpecialArgs = { inherit inputs; };
+              };
             }
           ];
         };
@@ -148,10 +157,14 @@
                   home = "/Users/${username}";
                 };
               };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.siraken = ./nix/hosts/darwin-min/home.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.siraken = ./nix/hosts/darwin-min/home.nix;
+                sharedModules = [ nixvim.homeModules.nixvim ];
+                extraSpecialArgs = { inherit inputs; };
+              };
             }
           ];
         };

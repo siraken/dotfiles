@@ -23,7 +23,6 @@
     # wget
     # libfuse2 -> not found
     tree
-    neovim
     # bat
     neofetch
     # luajit
