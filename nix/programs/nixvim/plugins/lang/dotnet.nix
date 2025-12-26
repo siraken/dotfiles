@@ -1,22 +1,19 @@
 # .NET/C# development
-{ ... }:
-# TODO: Re-enable when hash is updated
-# { pkgs, ... }:
-# let
-#   omnisharp-extended-lsp = pkgs.vimUtils.buildVimPlugin {
-#     pname = "omnisharp-extended-lsp-nvim";
-#     version = "2024-12-26";
-#     src = pkgs.fetchFromGitHub {
-#       owner = "Hoffs";
-#       repo = "omnisharp-extended-lsp.nvim";
-#       rev = "5b667daab948090931de0b31e4d58c6a6b0dce2f";
-#       hash = "sha256-YBJkW4ycKSWdB3lqZJKOCaieUt7xWyYw5kqN8RZxn90=";
-#     };
-#   };
-# in
+{ pkgs, ... }:
+let
+  omnisharp-extended-lsp = pkgs.vimUtils.buildVimPlugin {
+    pname = "omnisharp-extended-lsp-nvim";
+    version = "2024-12-26";
+    src = pkgs.fetchFromGitHub {
+      owner = "Hoffs";
+      repo = "omnisharp-extended-lsp.nvim";
+      rev = "a47388e5417e7f1cfa6962cc441a23c4c5fb2151";
+      hash = "sha256-0cRngH9BFuBbEu7007Xqr5zVJSBUowni7jxaMxGwnzU=";
+    };
+  };
+in
 {
   programs.nixvim = {
-    # TODO: Re-enable omnisharp-extended-lsp when hash is updated
-    # extraPlugins = [ omnisharp-extended-lsp ];
+    extraPlugins = [ omnisharp-extended-lsp ];
   };
 }
