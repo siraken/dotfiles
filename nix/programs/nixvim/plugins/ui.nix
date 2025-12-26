@@ -111,6 +111,23 @@
       enable = true;
     };
 
+    plugins.indent-blankline = {
+      enable = true;
+      settings = {
+        indent = {
+          char = "│";
+        };
+        scope = {
+          enabled = true;
+          show_start = false;
+          show_end = false;
+        };
+        exclude = {
+          filetypes = [ "help" "neo-tree" "Trouble" "trouble" "lazy" "mason" "notify" "toggleterm" "lazyterm" ];
+        };
+      };
+    };
+
     keymaps = [
       # Trouble
       { mode = "n"; key = "<leader>xx"; action = "<cmd>Trouble diagnostics toggle<cr>"; options.desc = "Diagnostics (Trouble)"; }
