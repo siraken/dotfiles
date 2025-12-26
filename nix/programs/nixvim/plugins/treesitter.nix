@@ -1,19 +1,17 @@
 # Treesitter configuration
-{ ... }:
-# TODO: Re-enable when hash is updated
-# { pkgs, ... }:
-# let
-#   ts-comments-nvim = pkgs.vimUtils.buildVimPlugin {
-#     pname = "ts-comments-nvim";
-#     version = "2024-12-26";
-#     src = pkgs.fetchFromGitHub {
-#       owner = "folke";
-#       repo = "ts-comments.nvim";
-#       rev = "123a9fb12e7229342f807ec9e6de478b1102b041";
-#       hash = "sha256-ORK3XpHANaqvp1bfMG2GJmAiaOsLoGW82ebL/FJtKaA=";
-#     };
-#   };
-# in
+{ pkgs, ... }:
+let
+  ts-comments-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "ts-comments-nvim";
+    version = "2024-12-26";
+    src = pkgs.fetchFromGitHub {
+      owner = "folke";
+      repo = "ts-comments.nvim";
+      rev = "123a9fb12e7229342f807ec9e6de478b1102b041";
+      hash = "sha256-ORK3XpHANaqvp1bfMG2GJmAiaOsLoGW82ebL/FJtKaA=";
+    };
+  };
+in
 {
   programs.nixvim = {
     plugins.treesitter = {
@@ -56,10 +54,10 @@
 
     plugins.ts-autotag.enable = true;
 
-    # TODO: Re-enable ts-comments when hash is updated
-    # extraPlugins = [ ts-comments-nvim ];
-    # extraConfigLua = ''
-    #   require("ts-comments").setup({})
-    # '';
+    extraPlugins = [ ts-comments-nvim ];
+
+    extraConfigLua = ''
+      require("ts-comments").setup({})
+    '';
   };
 }

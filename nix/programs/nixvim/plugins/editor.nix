@@ -1,18 +1,17 @@
 # Editor plugins (file tree, navigation, search)
 { pkgs, ... }:
-# TODO: Re-enable when hash is updated
-# let
-#   grug-far-nvim = pkgs.vimUtils.buildVimPlugin {
-#     pname = "grug-far-nvim";
-#     version = "2024-12-26";
-#     src = pkgs.fetchFromGitHub {
-#       owner = "MagicDuck";
-#       repo = "grug-far.nvim";
-#       rev = "74eef260e1142264ab994fb9c88e4f420e9486d7";
-#       hash = "sha256-7ONjxDI5wy63TpIQyZyKVFTi9tA0QOGmF9iDaPILMyw=";
-#     };
-#   };
-# in
+let
+  grug-far-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "grug-far-nvim";
+    version = "2024-12-26";
+    src = pkgs.fetchFromGitHub {
+      owner = "MagicDuck";
+      repo = "grug-far.nvim";
+      rev = "74eef260e1142264ab994fb9c88e4f420e9486d7";
+      hash = "sha256-7ONjxDI5wy63TpIQyZyKVFTi9tA0QOGmF9iDaPILMyw=";
+    };
+  };
+in
 {
   programs.nixvim = {
     plugins.neo-tree = {
@@ -59,13 +58,12 @@
       vim-quickrun
       vim-dispatch
       editorconfig-vim
-      # grug-far-nvim  # TODO: Re-enable when hash is updated
+      grug-far-nvim
     ];
 
-    # TODO: Re-enable grug-far setup when plugin is enabled
-    # extraConfigLua = ''
-    #   require("grug-far").setup({ headerMaxWidth = 80 })
-    # '';
+    extraConfigLua = ''
+      require("grug-far").setup({ headerMaxWidth = 80 })
+    '';
 
     keymaps = [
       { mode = "n"; key = "<leader>e"; action = "<cmd>Neotree toggle<cr>"; options.desc = "Explorer (Neo-tree)"; }
@@ -90,7 +88,7 @@
         action.__raw = ''function() require("flash").jump({ label = { before = true, after = false } }) end'';
         options.desc = "Flash";
       }
-      # { mode = "n"; key = "<leader>sr"; action = "<cmd>GrugFar<cr>"; options.desc = "Search and Replace"; }  # TODO: Re-enable
+      { mode = "n"; key = "<leader>sr"; action = "<cmd>GrugFar<cr>"; options.desc = "Search and Replace"; }
       { mode = "n"; key = "<leader>qs"; action.__raw = "function() require('persistence').load() end"; options.desc = "Restore Session"; }
       { mode = "n"; key = "<leader>ql"; action.__raw = "function() require('persistence').load({ last = true }) end"; options.desc = "Restore Last Session"; }
       { mode = "n"; key = "<leader>qd"; action.__raw = "function() require('persistence').stop() end"; options.desc = "Don't Save Current Session"; }
