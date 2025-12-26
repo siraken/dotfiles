@@ -7,8 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "max397574";
       repo = "better-escape.nvim";
-      rev = "7031f5fce9e1c950289f85029e74c0605d8cc6d4";
-      hash = "sha256-Lx4mnSp/Xew1Y13dOBvJ1kPVzgZLnCCIBYZGoeY7DDI=";
+      rev = "19a38aab94961016430905ebec30d272a01e9742";
+      hash = "sha256-OmCZQN9qMSSEBmZaRR5QoJ+RRm13pnu+0uAUoz6X7oA=";
     };
   };
 in

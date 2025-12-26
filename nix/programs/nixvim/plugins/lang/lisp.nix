@@ -7,8 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "vlime";
       repo = "vlime";
-      rev = "d3e2c1e65e32e30c05bdc54c05728a4ecfef6ed0";
-      hash = "sha256-PBOD6AaRMXu8bw9cxPU/fZtNmZbEQm3q30OPE6NWwko=";
+      rev = "e276e9a6f37d2699a3caa63be19314f5a19a1481";
+      hash = "sha256-tCqN80lgj11ggzGmuGF077oqL5ByjUp6jVmRUTrIWJA=";
     };
   };
 in

@@ -7,8 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "MagicDuck";
       repo = "grug-far.nvim";
-      rev = "1a615a066d5546cebb22bb0cc90dc29d92546b7f";
-      hash = "sha256-uDBDpFD97CnC1YXHf65Y/w5iXV3U4X7SPRVmT9dSLIE=";
+      rev = "74eef260e1142264ab994fb9c88e4f420e9486d7";
+      hash = "sha256-7ONjxDI5wy63TpIQyZyKVFTi9tA0QOGmF9iDaPILMyw=";
     };
   };
 in

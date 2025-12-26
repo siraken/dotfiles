@@ -7,8 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "ts-comments.nvim";
-      rev = "5262536a69c0403ca5ab3b34eba0665d0526065e";
-      hash = "sha256-HHLUVGr7QbOkj/m/wIjPt5tHjRPNdoMb/+0xMq7vQOw=";
+      rev = "123a9fb12e7229342f807ec9e6de478b1102b041";
+      hash = "sha256-ORK3XpHANaqvp1bfMG2GJmAiaOsLoGW82ebL/FJtKaA=";
     };
   };
 in

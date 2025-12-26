@@ -8,7 +8,7 @@ let
       owner = "clojure-vim";
       repo = "vim-jack-in";
       rev = "45e5293cff0802a51dbed31a9b0141b0f80e2952";
-      hash = "sha256-gG/67mXVzKRqR/yfbPxwg9JxLGw7NJBtHxV5SZD++tk=";
+      hash = "sha256-4kYY0jUv5U2i+G/29vPOZHqUX/cEQTWBo9pghRg9gIw=";
     };
   };
 in

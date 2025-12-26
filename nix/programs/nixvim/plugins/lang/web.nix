@@ -7,8 +7,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "slim-template";
       repo = "vim-slim";
-      rev = "df26386b46b455f0c6c0c0c3f2d218014e7b82d1";
-      hash = "sha256-CSffvQZ0V/PNxvVMPotNj4vTXbSgFx8V11+wePVJxZ0=";
+      rev = "a0a57f75f20a03d5fa798484743e98f4af623926";
+      hash = "sha256-mPv0tiggGExEZNshDlHtT4ipv/5Q0ahkcVw4irJ8l3o=";
     };
   };
   tailwindcss-colorizer-cmp = pkgs.vimUtils.buildVimPlugin {
