@@ -24,7 +24,9 @@ in
     ];
 
     extraConfigLua = ''
-      require("nvim-paredit").setup({})
+      require("nvim-paredit").setup({
+        filetypes = { "clojure", "lisp", "scheme", "fennel" },
+      })
     '';
   };
 }

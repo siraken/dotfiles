@@ -18,6 +18,17 @@ in
 
     extraConfigLua = ''
       require("claudecode").setup({})
+
+      -- ft-specific keymap for adding files from file explorers
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "neo-tree", "oil", "minifiles", "netrw" },
+        callback = function(args)
+          vim.keymap.set("n", "<leader>as", "<cmd>ClaudeCodeTreeAdd<cr>", {
+            buffer = args.buf,
+            desc = "Add file",
+          })
+        end,
+      })
     '';
 
     keymaps = [
