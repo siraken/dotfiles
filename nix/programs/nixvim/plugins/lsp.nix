@@ -18,7 +18,7 @@
           };
         };
         ts_ls.enable = true;
-        gopls.enable = true;
+        # gopls.enable = true;  # TODO: Re-enable after nixpkgs version check issue is fixed
         pyright.enable = true;
         # rust_analyzer is handled by rustaceanvim
         ruby_lsp.enable = true;

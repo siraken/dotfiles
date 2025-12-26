@@ -1,17 +1,18 @@
 # Treesitter configuration
 { pkgs, ... }:
-let
-  ts-comments-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "ts-comments-nvim";
-    version = "2024-12-26";
-    src = pkgs.fetchFromGitHub {
-      owner = "folke";
-      repo = "ts-comments.nvim";
-      rev = "123a9fb12e7229342f807ec9e6de478b1102b041";
-      hash = "sha256-ORK3XpHANaqvp1bfMG2GJmAiaOsLoGW82ebL/FJtKaA=";
-    };
-  };
-in
+# TODO: Re-enable when hash is updated
+# let
+#   ts-comments-nvim = pkgs.vimUtils.buildVimPlugin {
+#     pname = "ts-comments-nvim";
+#     version = "2024-12-26";
+#     src = pkgs.fetchFromGitHub {
+#       owner = "folke";
+#       repo = "ts-comments.nvim";
+#       rev = "123a9fb12e7229342f807ec9e6de478b1102b041";
+#       hash = "sha256-ORK3XpHANaqvp1bfMG2GJmAiaOsLoGW82ebL/FJtKaA=";
+#     };
+#   };
+# in
 {
   programs.nixvim = {
     plugins.treesitter = {
@@ -19,39 +20,12 @@ in
       settings = {
         highlight.enable = true;
         indent.enable = true;
-        auto_install = false; # Nix handles grammar installation
+        auto_install = false;
         ensure_installed = [
-          "bash"
-          "c"
-          "css"
-          "dockerfile"
-          "go"
-          "gomod"
-          "gosum"
-          "gowork"
-          "html"
-          "java"
-          "javascript"
-          "jsdoc"
-          "json"
-          "jsonc"
-          "lua"
-          "luadoc"
-          "luap"
-          "markdown"
-          "markdown_inline"
-          "nix"
-          "python"
-          "query"
-          "regex"
-          "ruby"
-          "rust"
-          "toml"
-          "tsx"
-          "typescript"
-          "vim"
-          "vimdoc"
-          "yaml"
+          "bash" "c" "css" "dockerfile" "go" "gomod" "gosum" "gowork"
+          "html" "java" "javascript" "jsdoc" "json" "jsonc" "lua" "luadoc"
+          "luap" "markdown" "markdown_inline" "nix" "python" "query" "regex"
+          "ruby" "rust" "toml" "tsx" "typescript" "vim" "vimdoc" "yaml"
         ];
       };
     };
@@ -73,32 +47,20 @@ in
         };
         move = {
           enable = true;
-          goto_next_start = {
-            "]f" = "@function.outer";
-            "]c" = "@class.outer";
-          };
-          goto_next_end = {
-            "]F" = "@function.outer";
-            "]C" = "@class.outer";
-          };
-          goto_previous_start = {
-            "[f" = "@function.outer";
-            "[c" = "@class.outer";
-          };
-          goto_previous_end = {
-            "[F" = "@function.outer";
-            "[C" = "@class.outer";
-          };
+          goto_next_start = { "]f" = "@function.outer"; "]c" = "@class.outer"; };
+          goto_next_end = { "]F" = "@function.outer"; "]C" = "@class.outer"; };
+          goto_previous_start = { "[f" = "@function.outer"; "[c" = "@class.outer"; };
+          goto_previous_end = { "[F" = "@function.outer"; "[C" = "@class.outer"; };
         };
       };
     };
 
     plugins.ts-autotag.enable = true;
 
-    extraPlugins = [ ts-comments-nvim ];
-
-    extraConfigLua = ''
-      require("ts-comments").setup({})
-    '';
+    # TODO: Re-enable ts-comments when hash is updated
+    # extraPlugins = [ ts-comments-nvim ];
+    # extraConfigLua = ''
+    #   require("ts-comments").setup({})
+    # '';
   };
 }
