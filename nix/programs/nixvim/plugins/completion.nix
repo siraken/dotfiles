@@ -1,17 +1,18 @@
 # Completion configuration (blink.cmp, copilot, snippets)
 { pkgs, ... }:
-let
-  blink-copilot = pkgs.vimUtils.buildVimPlugin {
-    pname = "blink-copilot";
-    version = "2024-12-26";
-    src = pkgs.fetchFromGitHub {
-      owner = "fang2hou";
-      repo = "blink-copilot";
-      rev = "7ad8209b2f880a2840c94cdcd80ab4dc511d4f39";
-      hash = "sha256-cDvbUmnFZbPmU/HPISNV8zJV8WsH3COl3nGqgT5CbVQ=";
-    };
-  };
-in
+# TODO: Re-enable when hash is updated
+# let
+#   blink-copilot = pkgs.vimUtils.buildVimPlugin {
+#     pname = "blink-copilot";
+#     version = "2024-12-26";
+#     src = pkgs.fetchFromGitHub {
+#       owner = "fang2hou";
+#       repo = "blink-copilot";
+#       rev = "7ad8209b2f880a2840c94cdcd80ab4dc511d4f39";
+#       hash = "sha256-cDvbUmnFZbPmU/HPISNV8zJV8WsH3COl3nGqgT5CbVQ=";
+#     };
+#   };
+# in
 {
   programs.nixvim = {
     plugins.blink-cmp = {
@@ -34,15 +35,17 @@ in
           nerd_font_variant = "mono";
         };
         sources = {
-          default = [ "lsp" "path" "snippets" "buffer" "copilot" ];
-          providers = {
-            copilot = {
-              name = "copilot";
-              module = "blink-copilot";
-              score_offset = 100;
-              async = true;
-            };
-          };
+          default = [ "lsp" "path" "snippets" "buffer" ];
+          # TODO: Re-enable copilot source when blink-copilot is enabled
+          # default = [ "lsp" "path" "snippets" "buffer" "copilot" ];
+          # providers = {
+          #   copilot = {
+          #     name = "copilot";
+          #     module = "blink-copilot";
+          #     score_offset = 100;
+          #     async = true;
+          #   };
+          # };
         };
         completion = {
           accept.auto_brackets.enabled = true;
@@ -66,7 +69,7 @@ in
 
     extraPlugins = with pkgs.vimPlugins; [
       friendly-snippets
-      blink-copilot
+      # blink-copilot  # TODO: Re-enable when hash is updated
     ];
   };
 }
