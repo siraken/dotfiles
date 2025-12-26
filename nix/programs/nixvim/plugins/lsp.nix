@@ -18,6 +18,7 @@
           };
         };
         ts_ls.enable = true;
+        # gopls.enable = true;  # TODO: Re-enable after nixpkgs version check issue is fixed
         pyright.enable = true;
         # rust_analyzer is handled by rustaceanvim
         ruby_lsp.enable = true;
@@ -75,12 +76,6 @@
     };
 
     extraConfigLua = ''
-      -- gopls setup (manual config to bypass nixpkgs version check issue)
-      require("lspconfig").gopls.setup({
-        cmd = { "${pkgs.gopls}/bin/gopls" },
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
-      })
-
       -- Diagnostics config
       vim.diagnostic.config({
         underline = true,
@@ -102,9 +97,8 @@
     '';
   };
 
-  # Install formatters and LSP servers via Nix (replaces Mason)
+  # Install formatters via Nix (replaces Mason)
   home.packages = with pkgs; [
-    gopls  # Go LSP (installed separately to bypass nixpkgs build check)
     stylua
     shfmt
     prettierd
