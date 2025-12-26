@@ -91,3 +91,19 @@ Manages 100+ tool configurations across multiple categories:
 - Use imperative mood (e.g., "Add feature" not "Added feature")
 - Keep subject line under 50 characters
 - Separate subject from body with blank line if needed
+
+## Agent Rules
+
+### Command Execution
+
+- **Never pipe nix-darwin or home-manager commands**: Commands like `darwin-rebuild`, `home-manager switch`, and `nix run home-manager/...` must NOT be piped to other commands. Piping causes these commands to terminate prematurely without completing properly.
+
+```bash
+# Bad - Do NOT do this
+darwin-rebuild switch --flake .#darwin --impure | tee output.log
+home-manager switch --flake .#wsl-ubuntu --impure | cat
+
+# Good - Run commands directly
+darwin-rebuild switch --flake .#darwin --impure
+home-manager switch --flake .#wsl-ubuntu --impure
+```
