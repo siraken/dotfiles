@@ -11,7 +11,6 @@
     # gh
     # tmux
     # sudo
-    # emacs
     # eza
     # neofetch
     # docker
@@ -53,7 +52,6 @@
     # sudo
     # neofetch
     # onefetch
-    # emacs
     # gh
     # deno
     # starship

@@ -177,7 +177,6 @@ in
       # "dust" # moved to nixpkgs
       "earthly"
       # "elm" # moved to nixpkgs
-      "emacs"
       "ethereum"
       # "eza" # moved to nixpkgs
       # "fd" # moved to nixpkgs
