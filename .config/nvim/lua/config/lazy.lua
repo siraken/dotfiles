@@ -25,6 +25,7 @@ vim.opt.rtp:prepend(lazy_path)
 
 require("lazy").setup({
   spec = {
+    -- ** plugins **
     { import = "plugins.avante" },
     -- { import = "plugins.coding" },
     { import = "plugins.colorscheme" },
@@ -37,6 +38,17 @@ require("lazy").setup({
     -- { import = "plugins.misc" },
     -- { import = "plugins.treesitter" },
     -- { import = "plugins.ui" },
+
+    -- ** language-specific plugins **
+    -- { import = "plugins.lang.clojure.lua" },
+    -- { import = "plugins.lang.dotnet.lua" },
+    -- { import = "plugins.lang.java.lua" },
+    -- { import = "plugins.lang.lisp.lua" },
+    -- { import = "plugins.lang.markdown.lua" },
+    -- { import = "plugins.lang.python.lua" },
+    -- { import = "plugins.lang.ruby.lua" },
+    -- { import = "plugins.lang.rust.lua" },
+    { import = "plugins.lang.typescript.lua" },
   },
   defaults = {
     lazy = false,
