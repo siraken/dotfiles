@@ -34,17 +34,4 @@ return {
       end,
     },
   },
-  -- GitHub integration
-  {
-    "pwntester/octo.nvim",
-    cmd = "Octo",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "ibhagwan/fzf-lua",
-      "echasnovski/mini.icons",
-    },
-    opts = {
-      picker = "fzf-lua",
-    },
-  },
 }

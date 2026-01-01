@@ -32,7 +32,7 @@ require("lazy").setup({
     -- { import = "plugins.completion" },
     { import = "plugins.core" },
     -- { import = "plugins.editor" },
-    -- { import = "plugins.git" },
+    { import = "plugins.git" },
     -- { import = "plugins.lang" },
     -- { import = "plugins.lsp" },
     -- { import = "plugins.misc" },
@@ -46,7 +46,7 @@ require("lazy").setup({
     -- { import = "plugins.lang.lisp" },
     -- { import = "plugins.lang.markdown" },
     -- { import = "plugins.lang.python" },
-    -- { import = "plugins.lang.ruby" },
+    { import = "plugins.lang.ruby" },
     -- { import = "plugins.lang.rust" },
     { import = "plugins.lang.typescript" },
   },
@@ -56,15 +56,4 @@ require("lazy").setup({
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
   checker = { enabled = true },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
 })
