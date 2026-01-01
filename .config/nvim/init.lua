@@ -1,18 +1,17 @@
--- Load core configuration
 require("config.options")
 -- require("config.lazy")
 require("config.keymaps")
 require("config.autocmds")
 
--- Platform-specific settings
 local has = vim.fn.has
+local opt = vim.opt
 
 if has("macunix") == 1 then
-  require("config.macos")
+  opt.clipboard:append { 'unnamedplus' }
 end
 
 if has("win32") == 1 then
-  require("config.windows")
+  opt.clipboard:append { 'unnamed', 'unnamedplus' }
 end
 
 -- Neovide GUI settings
