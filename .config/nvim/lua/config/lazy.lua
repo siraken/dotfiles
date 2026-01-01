@@ -31,7 +31,6 @@ require("lazy").setup({
     -- { import = "plugins.completion" },
     { import = "plugins.core" },
     -- { import = "plugins.editor" },
-    -- { import = "plugins.escape" },
     -- { import = "plugins.git" },
     -- { import = "plugins.lang" },
     -- { import = "plugins.lsp" },

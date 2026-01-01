@@ -1,6 +1,5 @@
 -- AI assistance plugins (Claude Code, Copilot)
 return {
-  -- https://github.com/coder/claudecode.nvim
   {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
