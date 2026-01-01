@@ -1,1 +1,9 @@
 /result
+foo.*
+*.log
+debug
+tt.*
+.tests
+doc/tags
+.repro
+.config/nvim/**/data

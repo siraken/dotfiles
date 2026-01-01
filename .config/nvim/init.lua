@@ -1,6 +1,6 @@
 -- Load core configuration
 require("config.options")
-require("config.lazy")
+-- require("config.lazy")
 require("config.keymaps")
 require("config.autocmds")
 
@@ -19,3 +19,11 @@ end
 if vim.g.neovide then
   require("config.neovide")
 end
+
+-- if vim.g.exists(':GuiFont') then
+--   GuiFont! Hack Nerd Font Mono:h16
+-- end
+
+-- if vim.g.exists(':GuiWindowOpacity') then
+--   GuiWindowOpacity .85
+-- end
