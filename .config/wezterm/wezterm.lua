@@ -84,6 +84,7 @@ config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 32
 -- config.show_close_tab_button_in_tabs = false
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"

@@ -16,21 +16,21 @@ local function UpdateRight(window, pane)
   local project = utils.get_project_name(cwd)
   local branch = utils.get_git_branch(cwd)
 
-  -- Project name
+  -- Project name (max 20 chars)
   if project then
     utils.add_element(
       elems,
       { Foreground = { Color = colors.TOKYO_NIGHT_BLUE.Color }, Text = wezterm.nerdfonts.md_folder },
-      project
+      utils.truncate(project, 20)
     )
   end
 
-  -- Git branch
+  -- Git branch (max 24 chars)
   if branch then
     utils.add_element(
       elems,
       { Foreground = { Color = colors.TOKYO_NIGHT_PURPLE.Color }, Text = wezterm.nerdfonts.dev_git_branch },
-      branch
+      utils.truncate(branch, 24)
     )
   end
 

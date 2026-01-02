@@ -3,6 +3,17 @@ local colors = require("colors")
 
 local M = {}
 
+-- Truncate string to max length with ellipsis
+function M.truncate(str, max_len)
+  if not str or max_len <= 0 then
+    return str
+  end
+  if #str > max_len then
+    return str:sub(1, max_len - 1) .. "…"
+  end
+  return str
+end
+
 local DEFAULT_FG = colors.DEFAULT_FG
 local DEFAULT_BG = colors.TRANSPARENT
 
