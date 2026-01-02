@@ -64,6 +64,7 @@ config.colors = {
   scrollbar_thumb = "white",
   tab_bar = {
     background = "none",
+    inactive_tab_edge = "none",
   },
 }
 config.color_scheme = "Tokyo Night"
@@ -91,6 +92,10 @@ config.window_padding = {
   right = 0,
   top = 0,
   bottom = 0,
+}
+config.window_frame = {
+  inactive_titlebar_bg = "none",
+  active_titlebar_bg = "none",
 }
 
 return config
