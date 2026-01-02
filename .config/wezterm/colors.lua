@@ -1,8 +1,13 @@
 return {
   DEFAULT_FG = { Color = "#ffffff" },
   DEFAULT_BG = { Color = "#1F2433" },
+  TRANSPARENT = { Color = "none" },
   WHITE = { Color = "#ffffff" },
   YELLOW = { Color = "#dfe166" },
   TOKYO_NIGHT_BLUE = { Color = "#5AC9FB" },
   TOKYO_NIGHT_GREEN = { Color = "#8FC668" },
+  TOKYO_NIGHT_ORANGE = { Color = "#FF9E64" },
+  TOKYO_NIGHT_PINK = { Color = "#FF75A0" },
+  TOKYO_NIGHT_PURPLE = { Color = "#BB9AF7" },
+  TOKYO_NIGHT_RED = { Color = "#F7768E" },
 }
