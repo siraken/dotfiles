@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local colors = require("colors")
 
 local DEFAULT_FG = colors.DEFAULT_FG
-local DEFAULT_BG = colors.DEFAULT_BG
+local DEFAULT_BG = colors.TRANSPARENT
 
 local function AddIcon(elems, icon)
   table.insert(elems, { Foreground = icon.Foreground })
@@ -45,13 +45,8 @@ local function UpdateRight(window, pane)
   -- DateTime
   AddElement(
     elems,
-    { Foreground = { Color = colors.TOKYO_NIGHT_BLUE.Color }, Text = "󱪺" },
-    wezterm.strftime("%b %-d")
-  )
-  AddElement(
-    elems,
     { Foreground = { Color = colors.TOKYO_NIGHT_GREEN.Color }, Text = "" },
-    wezterm.strftime("%H:%M:%S")
+    wezterm.strftime("%Y-%m-%d %H:%M:%S")
   )
 
   -- Battery (only full screen)
