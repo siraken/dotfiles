@@ -32,8 +32,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     { Foreground = { Color = FONT_COLOR[index] } },
     { Background = { Color = bg } },
     { Text = " " },
-    { Text = tab.active_pane.title },
-    -- { Text = BaseName(tab.active_pane.foreground_process_name) },
+    { Text = BaseName(tab.active_pane.foreground_process_name) },
     { Text = " " },
   }
 end)
