@@ -22,7 +22,10 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
   local zoomed = tab.active_pane.is_zoomed and "🔎 " or " "
 
+  local intensity = tab.is_active and "Bold" or "Normal"
+
   return {
+    { Attribute = { Intensity = intensity } },
     { Foreground = { Color = SYMBOL_COLOR[index] } },
     { Background = { Color = bg } },
 
