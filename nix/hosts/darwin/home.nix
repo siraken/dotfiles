@@ -64,6 +64,7 @@ in
       # Mutable symlinks (not managed by Nix store)
       mkdir -p $HOME/.claude $HOME/.gemini
       ln -sfn ${dotfilesPath}/.config/nvim $HOME/.config/nvim
+      ln -sfn ${dotfilesPath}/.config/wezterm $HOME/.config/wezterm
       ln -sfn ${dotfilesPath}/.agents/claude/settings.json $HOME/.claude/settings.json
       ln -sfn ${dotfilesPath}/.agents/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
       ln -sfn ${dotfilesPath}/.agents/gemini/settings.json $HOME/.gemini/settings.json
