@@ -39,6 +39,8 @@ elif [[ "$FRONT_APP" =~ ^(IntelliJ|RubyMine|PhpStorm|WebStorm|GoLand)$ ]]; then
   ICON=""
 elif [[ "$FRONT_APP" = "Xcode" ]]; then
   ICON=""
+elif [[ "$FRONT_APP" =~ ^(Terminal|Kitty|Ghostty|Alacritty|WezTerm)$ ]]; then
+  ICON=""
 else
   ICON_DRAWING=off
 fi
