@@ -101,7 +101,6 @@ let
   ];
 
   textEditors = [
-    emacs # extensible editor
     neovim # vim-based editor
   ];
 in

@@ -21,6 +21,7 @@ in
     ../../programs/coding-agents.nix
     # ../../programs/difftastic.nix
     ../../programs/direnv.nix
+    ../../programs/emacs.nix
     ../../programs/fish.nix
     ../../programs/fzf.nix
     ../../programs/ghostty.nix
