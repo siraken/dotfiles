@@ -107,7 +107,6 @@ in
       "cloudflared"
     ];
     casks = [
-      "alfred"
       "alt-tab"
       "appcleaner"
       "arc"
@@ -116,6 +115,7 @@ in
       "google-chrome"
       "visual-studio-code"
       "vivaldi"
+      "raycast"
     ];
     masApps = {
     };
