@@ -11,7 +11,6 @@ in
 {
   imports = [
     inputs.op-shell-plugins.hmModules.default
-    # ../../environment/system-packages.nix
     # programs
     ../../programs/1password-shell-plugins.nix
     ../../programs/alacritty.nix
