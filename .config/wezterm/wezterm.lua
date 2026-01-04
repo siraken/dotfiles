@@ -1,9 +1,3 @@
---
--- Configuration
---
--- https://wezfurlong.org/wezterm/config/files.html
---
-
 require("status")
 require("event")
 require("format")
