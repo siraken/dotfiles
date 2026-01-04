@@ -22,7 +22,7 @@ git clone --depth 1 \
 
 ```bash
 cd dotfiles
-sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darwin --impure
+sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#darwin --impure
 ```
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
@@ -41,10 +41,10 @@ sudo darwin-rebuild switch --flake .#darwin --impure
 or
 
 ```bash
-nix run home-manager/release-25.05 -- switch --flake .#THE_NAME --impure
+nix run home-manager -- switch --flake .#THE_NAME --impure
 
 # ex)
-nix run home-manager/release-25.05 -- switch --flake .#wsl-ubuntu --impure
+nix run home-manager -- switch --flake .#wsl-ubuntu --impure
 ```
 
 ### Uninstall

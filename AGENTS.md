@@ -10,14 +10,14 @@ curl --proto '=https' --tls-version=1.2 -sSf -L https://install.determinate.syst
 
 # Install nix-darwin (macOS only)
 cd dotfiles
-sudo nix run nix-darwin/nix-darwin-25.05#darwin-rebuild -- switch --flake .#darwin --impure
+sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#darwin --impure
 
 # Build and apply system configuration
 sudo darwin-rebuild build --flake .#darwin --impure
 sudo darwin-rebuild switch --flake .#darwin --impure
 
 # For WSL/Ubuntu (home-manager only, no system-level changes)
-nix run home-manager/release-25.05 -- switch --flake .#wsl-ubuntu --impure
+nix run home-manager -- switch --flake .#wsl-ubuntu --impure
 
 # Garbage collection
 nix store gc
