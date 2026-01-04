@@ -29,7 +29,7 @@ in
 
       };
 
-    packages = import ../../packages/nixpkgs.nix { inherit pkgs; } ++ [
+    packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
       # minimal specific
       pkgs.gcc
       pkgs.libgcc
