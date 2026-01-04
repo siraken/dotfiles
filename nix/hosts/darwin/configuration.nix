@@ -322,7 +322,6 @@ in
       # # "themekit" no available formula
       # # "unixodbc"
       # # "vapor" # requires Xcode installed
-      # # "zed" no available formula
     ];
     casks = [
       # "1password"
@@ -377,7 +376,6 @@ in
       "iterm2"
       "jetbrains-toolbox"
       "keycastr"
-      "kitty"
       "lapce"
       "lm-studio"
       "local"
@@ -431,7 +429,6 @@ in
       "xsplit-vcam"
       "zoom"
       "zulu@17"
-      "zed"
       # # "eclipse" similarly casks are available
       # # "google-japanese-ime" # Failed to install
       # # "mongodb-compass"
