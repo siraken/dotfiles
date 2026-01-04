@@ -45,7 +45,6 @@ $wingetPackages = @(
   "sharkdp.bat"
   "Zeit.Hyper"
   "MAMP.MAMP" # Install Fails
-  "Alacritty.Alacritty"
   "wez.wezterm"
   "tailscale.tailscale"
   "Cloudflare.Warp"
