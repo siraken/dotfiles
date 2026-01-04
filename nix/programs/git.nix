@@ -167,6 +167,9 @@
       "https://github.com"
       "https://gist.github.com"
     ];
+    extensions = with pkgs; [
+      gh-markdown-preview
+    ];
     settings = {
       aliases = {
         co = "pr checkout";
