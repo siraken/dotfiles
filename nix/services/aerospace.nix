@@ -68,7 +68,6 @@ let
       "Sourcetree"
       "Docker Desktop"
       "WebTorrent"
-      # "iTerm2"
       # "Visual Studio"
     ];
 

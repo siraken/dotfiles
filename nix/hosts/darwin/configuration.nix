@@ -373,7 +373,6 @@ in
       "hyper"
       "imageoptim"
       # "ipfs-desktop" # ipfs/ipfs-desktop
-      "iterm2"
       "jetbrains-toolbox"
       "keycastr"
       "lapce"
