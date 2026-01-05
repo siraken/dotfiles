@@ -37,6 +37,7 @@ let
     "@lhci/cli" = "latest";
     "@nestjs/cli" = "latest";
     "@antfu/ni" = "latest";
+    "@typescript/native-preview" = "latest";
     cordova = "latest";
     cordova-res = "latest";
     md-to-pdf = "latest";
