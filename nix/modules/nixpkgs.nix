@@ -65,7 +65,7 @@ let
     lua
     nim
     pnpm # Node.js package manager
-    sbcl # Common Lisp
+    # sbcl # Common Lisp (disabled: ECL build fails on macOS)
     scala
   ];
 
