@@ -18,6 +18,11 @@
     settings = {
       "$schema" = "https://opencode.ai/config.json";
       theme = "tokyonight";
+      formatter = {
+        prettier = {
+          disabled = true;
+        };
+      };
     };
   };
 }
