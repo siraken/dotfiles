@@ -65,7 +65,6 @@ in
       ln -sfn ${dotfilesPath}/.config/nvim $HOME/.config/nvim
       ln -sfn ${dotfilesPath}/.config/wezterm $HOME/.config/wezterm
       ln -sfn ${dotfilesPath}/.agents/claude/settings.json $HOME/.claude/settings.json
-      ln -sfn ${dotfilesPath}/.agents/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
     '';
 
     shell = {
