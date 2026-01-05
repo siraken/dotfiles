@@ -14,6 +14,7 @@
   };
 
   programs.opencode = {
+    enable = true;
     settings = {
       "$schema" = "https://opencode.ai/config.json";
       theme = "tokyonight";
