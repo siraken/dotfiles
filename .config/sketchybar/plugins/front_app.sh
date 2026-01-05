@@ -41,6 +41,8 @@ elif [[ "$FRONT_APP" = "Xcode" ]]; then
   ICON=""
 elif [[ "$FRONT_APP" =~ ^(Terminal|Kitty|Ghostty|Alacritty|WezTerm)$ ]]; then
   ICON=""
+elif [[ "$FRONT_APP" =~ ^(Mail|Spark Desktop|Microsoft Outlook)$ ]]; then
+  ICON=""
 else
   ICON_DRAWING=off
 fi
