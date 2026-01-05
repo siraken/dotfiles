@@ -19,7 +19,7 @@ in
   programs.claude-code = {
     enable = true;
     memory = {
-      source = instructions;
+      text = instructions;
     };
   };
 
