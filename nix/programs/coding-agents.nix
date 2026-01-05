@@ -12,4 +12,11 @@
     enable = true;
     commands = { };
   };
+
+  programs.opencode = {
+    settings = {
+      "$schema" = "https://opencode.ai/config.json";
+      theme = "tokyonight";
+    };
+  };
 }
