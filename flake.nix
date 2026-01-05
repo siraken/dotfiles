@@ -200,10 +200,10 @@
 
       apps = {
         ${darwinSystem} = {
-          setup = darwinApp "setup" ''
+          sw = darwinApp "sw" ''
             sudo darwin-rebuild switch --flake ${self}#darwin --impure
           '';
-          setup-min = darwinApp "setup-min" ''
+          sw-min = darwinApp "sw-min" ''
             sudo darwin-rebuild switch --flake ${self}#darwin-min --impure
           '';
           build = darwinApp "build" ''
