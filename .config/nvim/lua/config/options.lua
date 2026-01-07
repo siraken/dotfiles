@@ -1,4 +1,5 @@
 local opt = vim.opt
+local has = vim.fn.has
 
 vim.scriptencoding = "utf-8"
 vim.g.mapleader = " "
@@ -68,3 +69,11 @@ opt.splitbelow = true
 opt.splitright = true
 opt.splitkeep = "screen"
 opt.mouse = "a"
+
+if has("macunix") == 1 then
+  opt.clipboard:append { 'unnamedplus' }
+end
+
+if has("win32") == 1 then
+  opt.clipboard:append { 'unnamed', 'unnamedplus' }
+end
