@@ -22,7 +22,7 @@ in
       C = "| pbcopy";
     };
 
-    initExtra = ''
+    initContent = ''
       ${optionScript}
     '';
   };
