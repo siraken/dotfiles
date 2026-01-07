@@ -2,6 +2,7 @@
 let
   functionsScript = builtins.readFile ./function.sh;
   messagesScript = builtins.readFile ./messages.sh;
+  aliasesScript = builtins.readFile ./alias.sh;
 in
 {
   programs.bash = {
@@ -93,6 +94,9 @@ in
     initExtra = ''
       # Message functions
       ${messagesScript}
+
+      # Conditional aliases
+      ${aliasesScript}
 
       # Custom functions
       ${functionsScript}
