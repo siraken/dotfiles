@@ -28,12 +28,8 @@ let
     spago = "latest";
     ccmanager = "latest";
     dev3000 = "latest";
-    "@biomejs/biome" = "latest";
     "@google/clasp" = "latest";
-    "@google/gemini-cli" = "latest";
     "@github/copilot" = "latest";
-    "@openai/codex" = "latest";
-    "@anthropic-ai/claude-code" = "latest";
     "@lhci/cli" = "latest";
     "@nestjs/cli" = "latest";
     "@antfu/ni" = "latest";
