@@ -4,11 +4,11 @@
     enable = true;
 
     settings = {
-      theme = "ayu_dark";
+      theme = "tokyonight";
 
       editor = {
-        line-number = "absolute";
-        mouse = false;
+        line-number = "relative";
+        mouse = true;
         idle-timeout = 0;
 
         lsp = {
@@ -18,7 +18,7 @@
         cursor-shape = {
           insert = "bar";
           normal = "block";
-          select = "block";
+          select = "underline";
         };
 
         file-picker = {
