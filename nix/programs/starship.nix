@@ -135,6 +135,7 @@ in
 {
   programs.starship = {
     enable = true;
+    enableBashIntegration = true;
     settings = if useTokyoNight then tokyoNightSettings else defaultSettings;
   };
 }

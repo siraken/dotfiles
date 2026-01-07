@@ -80,6 +80,7 @@ in
 {
   programs.mise = {
     enable = true;
+    enableBashIntegration = true;
     globalConfig = {
       tools = {
         usage = "latest";
