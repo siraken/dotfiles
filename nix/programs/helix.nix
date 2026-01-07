@@ -53,6 +53,7 @@
     };
 
     themes = {
+      # ofunato-night: tokyonight-inspired dark theme (with transparency support)
       ofunato-night =
         let
           # Main colors
