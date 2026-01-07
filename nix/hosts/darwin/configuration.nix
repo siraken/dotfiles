@@ -4,6 +4,9 @@ let
   networkingHostName = "Kentos-MacBook-Pro";
 in
 {
+  imports = [
+    ../../services/sketchybar
+  ];
   nix = {
     # Necessary for using flakes on this system.
     settings.experimental-features = "nix-command flakes";
@@ -262,7 +265,6 @@ in
       # "scala" # moved to nixpkgs
       "shpotify"
       "skaffold"
-      "sketchybar"
       "sl"
       "smartmontools"
       "solidity"

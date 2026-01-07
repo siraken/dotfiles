@@ -12,5 +12,4 @@
   ".config/husky".source = "${dotfilesPath}/.config/husky";
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
   ".config/nano".source = "${dotfilesPath}/.config/nano";
-  ".config/sketchybar".source = "${dotfilesPath}/.config/sketchybar";
 }
