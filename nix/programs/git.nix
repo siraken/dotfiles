@@ -66,7 +66,15 @@
         clean = "git-lfs clean -- %f";
       };
 
+      column = {
+        ui = "auto";
+      };
+
       diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        renames = true;
         tool = "difftastic";
       };
 
@@ -114,6 +122,8 @@
 
       fetch = {
         prune = true;
+        pruneTags = true;
+        all = true;
       };
 
       rebase = {
