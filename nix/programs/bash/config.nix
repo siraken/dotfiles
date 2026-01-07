@@ -3,6 +3,7 @@ let
   functionsScript = builtins.readFile ./function.sh;
   messagesScript = builtins.readFile ./messages.sh;
   aliasesScript = builtins.readFile ./alias.sh;
+  evalScript = builtins.readFile ./eval.sh;
 in
 {
   programs.bash = {
@@ -100,6 +101,9 @@ in
 
       # Custom functions
       ${functionsScript}
+
+      # External tools (GCP, Angular CLI)
+      ${evalScript}
     '';
   };
 }
