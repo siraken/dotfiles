@@ -1,6 +1,0 @@
-# ignored files for fish
-completions/
-conf.d/
-fish_variables
-functions/
-fishd.tmp.*

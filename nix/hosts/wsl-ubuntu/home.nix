@@ -32,7 +32,7 @@ in
     # ../../programs/difftastic.nix
     ../../programs/direnv.nix
     ../../programs/emacs.nix
-    ../../programs/fish.nix
+    ../../programs/fish
     ../../programs/fzf.nix
     ../../programs/ghostty.nix
     ../../programs/git.nix
