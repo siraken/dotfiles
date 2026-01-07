@@ -4,7 +4,7 @@
     enable = true;
     config = {
       colorScheme = "solarized-dark";
-      autoComplete = "prompt";
+      # autoComplete = "prompt";
       autoReload = "yes";
       numberLines = {
         enable = true;
