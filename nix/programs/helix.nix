@@ -2,6 +2,7 @@
 {
   programs.helix = {
     enable = true;
+    defaultEditor = false;
 
     settings = {
       theme = "tokyonight";
@@ -29,16 +30,33 @@
           render = true;
           character = "╎";
         };
+
+        keys = { };
       };
     };
+
+    ignores = [ ];
 
     languages = {
       language = [
         {
           name = "php";
           language-servers = [ "intelephense" ];
+          auto-format = true;
+        }
+        {
+          name = "rust";
+          language-servers = [ "rust-analyzer" ];
+          auto-format = true;
         }
       ];
+    };
+
+    themes = {
+      ofunato-night =
+        let
+        in
+        { };
     };
   };
 }
