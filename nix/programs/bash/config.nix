@@ -1,9 +1,13 @@
 { pkgs, lib, ... }:
+let
+  functionsScript = builtins.readFile ./function.sh;
+  messagesScript = builtins.readFile ./messages.sh;
+in
 {
   programs.bash = {
     enable = true;
     package = pkgs.bashInteractive;
-    enableCompletion = true;
+    enableCompletion = false;
 
     historyControl = [
       "ignoredups"
@@ -85,10 +89,13 @@
       lisp-server = "sbcl --load $HOME/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp";
     };
 
-    bashrcExtra = ''
-      if [[ -z BASH_COMPLETION_VERSINFO ]]; then
-        . "${pkgs.bash-completion}/etc/profile.d/bash_completion.sh"
-      fi
+    # Extra configuration for .bashrc
+    initExtra = ''
+      # Message functions
+      ${messagesScript}
+
+      # Custom functions
+      ${functionsScript}
     '';
   };
 }

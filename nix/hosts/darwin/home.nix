@@ -15,7 +15,7 @@ in
     ../../programs/1password-shell-plugins.nix
     ../../programs/alacritty.nix
     ../../programs/atuin.nix
-    # ../../programs/bash.nix
+    ../../programs/bash/config.nix
     ../../programs/bat.nix
     ../../programs/bottom.nix
     ../../programs/coding-agents.nix
