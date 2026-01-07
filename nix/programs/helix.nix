@@ -5,7 +5,7 @@
     defaultEditor = false;
 
     settings = {
-      theme = "tokyonight";
+      theme = "ofunato-night";
 
       editor = {
         line-number = "relative";
@@ -98,60 +98,124 @@
         in
         {
           # Syntax highlighting
-          "attribute" = { fg = cyan; };
+          "attribute" = {
+            fg = cyan;
+          };
           "comment" = {
             fg = comment;
             modifiers = [ "italic" ];
           };
-          "comment.block.documentation" = { fg = yellow; };
-          "comment.line.documentation" = { fg = yellow; };
-          "constant" = { fg = orange; };
-          "constant.builtin" = { fg = aqua; };
-          "constant.character" = { fg = light-green; };
-          "constant.character.escape" = { fg = magenta; };
-          "constructor" = { fg = aqua; };
+          "comment.block.documentation" = {
+            fg = yellow;
+          };
+          "comment.line.documentation" = {
+            fg = yellow;
+          };
+          "constant" = {
+            fg = orange;
+          };
+          "constant.builtin" = {
+            fg = aqua;
+          };
+          "constant.character" = {
+            fg = light-green;
+          };
+          "constant.character.escape" = {
+            fg = magenta;
+          };
+          "constructor" = {
+            fg = aqua;
+          };
           "function" = {
             fg = blue;
             modifiers = [ "italic" ];
           };
-          "function.builtin" = { fg = aqua; };
-          "function.macro" = { fg = cyan; };
-          "function.special" = { fg = cyan; };
+          "function.builtin" = {
+            fg = aqua;
+          };
+          "function.macro" = {
+            fg = cyan;
+          };
+          "function.special" = {
+            fg = cyan;
+          };
           "keyword" = {
             fg = purple;
             modifiers = [ "italic" ];
           };
-          "keyword.control" = { fg = magenta; };
-          "keyword.control.import" = { fg = cyan; };
+          "keyword.control" = {
+            fg = magenta;
+          };
+          "keyword.control.import" = {
+            fg = cyan;
+          };
           "keyword.control.return" = {
             fg = purple;
             modifiers = [ "italic" ];
           };
-          "keyword.directive" = { fg = cyan; };
-          "keyword.function" = { fg = magenta; };
-          "keyword.operator" = { fg = magenta; };
-          "label" = { fg = blue; };
-          "namespace" = { fg = cyan; };
-          "operator" = { fg = turquoise; };
-          "punctuation" = { fg = turquoise; };
-          "special" = { fg = aqua; };
-          "string" = { fg = light-green; };
-          "string.regexp" = { fg = light-cyan; };
-          "string.special" = { fg = aqua; };
-          "tag" = { fg = magenta; };
-          "type" = { fg = aqua; };
-          "type.builtin" = { fg = aqua; };
-          "type.enum.variant" = { fg = orange; };
-          "variable" = { fg = fg; };
-          "variable.builtin" = { fg = red; };
-          "variable.other.member" = { fg = green; };
+          "keyword.directive" = {
+            fg = cyan;
+          };
+          "keyword.function" = {
+            fg = magenta;
+          };
+          "keyword.operator" = {
+            fg = magenta;
+          };
+          "label" = {
+            fg = blue;
+          };
+          "namespace" = {
+            fg = cyan;
+          };
+          "operator" = {
+            fg = turquoise;
+          };
+          "punctuation" = {
+            fg = turquoise;
+          };
+          "special" = {
+            fg = aqua;
+          };
+          "string" = {
+            fg = light-green;
+          };
+          "string.regexp" = {
+            fg = light-cyan;
+          };
+          "string.special" = {
+            fg = aqua;
+          };
+          "tag" = {
+            fg = magenta;
+          };
+          "type" = {
+            fg = aqua;
+          };
+          "type.builtin" = {
+            fg = aqua;
+          };
+          "type.enum.variant" = {
+            fg = orange;
+          };
+          "variable" = {
+            fg = fg;
+          };
+          "variable.builtin" = {
+            fg = red;
+          };
+          "variable.other.member" = {
+            fg = green;
+          };
           "variable.parameter" = {
             fg = yellow;
             modifiers = [ "italic" ];
           };
 
           # Markup
-          "markup.bold" = { modifiers = [ "bold" ]; };
+          "markup.bold" = {
+            modifiers = [ "bold" ];
+          };
           "markup.heading" = {
             fg = blue;
             modifiers = [ "bold" ];
@@ -160,39 +224,77 @@
             bg = bg-menu;
             fg = fg;
           };
-          "markup.heading.hover" = { bg = fg-selected; };
-          "markup.italic" = { modifiers = [ "italic" ]; };
+          "markup.heading.hover" = {
+            bg = fg-selected;
+          };
+          "markup.italic" = {
+            modifiers = [ "italic" ];
+          };
           "markup.link" = {
             fg = blue;
-            underline = { style = "line"; };
+            underline = {
+              style = "line";
+            };
           };
-          "markup.link.label" = { fg = teal; };
-          "markup.link.text" = { fg = teal; };
-          "markup.link.url" = { underline = { style = "line"; }; };
+          "markup.link.label" = {
+            fg = teal;
+          };
+          "markup.link.text" = {
+            fg = teal;
+          };
+          "markup.link.url" = {
+            underline = {
+              style = "line";
+            };
+          };
           "markup.list" = {
             fg = orange;
             modifiers = [ "bold" ];
           };
-          "markup.normal.completion" = { fg = comment; };
-          "markup.normal.hover" = { fg = fg-dark; };
-          "markup.raw" = { fg = teal; };
+          "markup.normal.completion" = {
+            fg = comment;
+          };
+          "markup.normal.hover" = {
+            fg = fg-dark;
+          };
+          "markup.raw" = {
+            fg = teal;
+          };
           "markup.raw.inline" = {
             bg = black;
             fg = blue;
           };
-          "markup.strikethrough" = { modifiers = [ "crossed_out" ]; };
+          "markup.strikethrough" = {
+            modifiers = [ "crossed_out" ];
+          };
 
           # Diff
-          "diff.delta" = { fg = change; };
-          "diff.delta.moved" = { fg = blue; };
-          "diff.minus" = { fg = delete; };
-          "diff.plus" = { fg = add; };
+          "diff.delta" = {
+            fg = change;
+          };
+          "diff.delta.moved" = {
+            fg = blue;
+          };
+          "diff.minus" = {
+            fg = delete;
+          };
+          "diff.plus" = {
+            fg = add;
+          };
 
           # Diagnostics
-          "error" = { fg = error; };
-          "warning" = { fg = yellow; };
-          "info" = { fg = info; };
-          "hint" = { fg = hint; };
+          "error" = {
+            fg = error;
+          };
+          "warning" = {
+            fg = yellow;
+          };
+          "info" = {
+            fg = info;
+          };
+          "hint" = {
+            fg = hint;
+          };
           "diagnostic.error" = {
             underline = {
               style = "curl";
@@ -217,37 +319,55 @@
               color = hint;
             };
           };
-          "diagnostic.unnecessary" = { modifiers = [ "dim" ]; };
-          "diagnostic.deprecated" = { modifiers = [ "crossed_out" ]; };
+          "diagnostic.unnecessary" = {
+            modifiers = [ "dim" ];
+          };
+          "diagnostic.deprecated" = {
+            modifiers = [ "crossed_out" ];
+          };
 
           # UI
           "ui.background" = {
             bg = "none";
             fg = fg;
           };
-          "ui.cursor" = { modifiers = [ "reversed" ]; };
+          "ui.cursor" = {
+            modifiers = [ "reversed" ];
+          };
           "ui.cursor.match" = {
             fg = orange;
             modifiers = [ "bold" ];
           };
-          "ui.cursorline.primary" = { bg = bg-menu; };
+          "ui.cursorline.primary" = {
+            bg = bg-menu;
+          };
           "ui.help" = {
             bg = bg-menu;
             fg = fg;
           };
-          "ui.linenr" = { fg = fg-gutter; };
-          "ui.linenr.selected" = { fg = fg-linenr; };
+          "ui.linenr" = {
+            fg = fg-gutter;
+          };
+          "ui.linenr.selected" = {
+            fg = fg-linenr;
+          };
           "ui.menu" = {
             bg = bg-menu;
             fg = fg;
           };
-          "ui.menu.selected" = { bg = fg-selected; };
+          "ui.menu.selected" = {
+            bg = fg-selected;
+          };
           "ui.popup" = {
             bg = bg-menu;
             fg = border-highlight;
           };
-          "ui.selection" = { bg = bg-selection; };
-          "ui.selection.primary" = { bg = bg-selection; };
+          "ui.selection" = {
+            bg = bg-selection;
+          };
+          "ui.selection.primary" = {
+            bg = bg-selection;
+          };
           "ui.statusline" = {
             bg = bg-menu;
             fg = fg-dark;
@@ -271,8 +391,12 @@
             fg = bg;
             modifiers = [ "bold" ];
           };
-          "ui.text" = { fg = fg; };
-          "ui.text.focus" = { bg = bg-focus; };
+          "ui.text" = {
+            fg = fg;
+          };
+          "ui.text.focus" = {
+            bg = bg-focus;
+          };
           "ui.text.inactive" = {
             fg = comment;
             modifiers = [ "italic" ];
@@ -281,9 +405,15 @@
             bg = bg-menu;
             fg = fg;
           };
-          "ui.text.directory" = { fg = cyan; };
-          "ui.virtual.ruler" = { bg = fg-gutter; };
-          "ui.virtual.whitespace" = { fg = fg-gutter; };
+          "ui.text.directory" = {
+            fg = cyan;
+          };
+          "ui.virtual.ruler" = {
+            bg = fg-gutter;
+          };
+          "ui.virtual.whitespace" = {
+            fg = fg-gutter;
+          };
           "ui.virtual.inlay-hint" = {
             bg = bg-inlay;
             fg = teal;
