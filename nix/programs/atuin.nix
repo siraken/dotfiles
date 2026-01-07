@@ -8,6 +8,6 @@
     # daemon = {
     #   enable = true;
     # };
-    settings = { };
+    # settings = { };
   };
 }
