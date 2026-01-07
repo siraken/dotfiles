@@ -1,21 +1,5 @@
-##################################################
-# > Functions
-##################################################
-# Docker upload
-function docker-upload
-  echo $1
-  # docker build -t $1 .
-  # docker save -o $1.tar $1
-end
-
-# Docker init
-function docker-init
-  printf "version: \"3\"\nservices:\n" > docker-compose.yml
-  printf "FROM IMAGE\n\n" > Dockerfile
-end
-
 # Weather
-function weather
+function vetero
   curl wttr.in/$argv
 end
 
@@ -25,12 +9,6 @@ function goinit
   mkdir -p $package && cd $package
   go mod init github.com/$dirname/$package
   git init && touch main.go README.md
-end
-
-# Initialize Laravel app
-function laravelinit
-  echo "Enter the project name:" && read projName;
-  curl -s "https://laravel.build/$projName" | bash
 end
 
 # gau - Git Add URL
@@ -43,13 +21,6 @@ function gau
   else
     echo "Please provide the username you want to use."
   end
-end
-
-# ggl
-# Google Search
-function ggl
-  echo "Searching for $argv on Google..."
-  open "https://www.google.com/search?q=$argv"
 end
 
 # meme
