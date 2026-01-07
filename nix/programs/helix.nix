@@ -222,7 +222,7 @@
 
           # UI
           "ui.background" = {
-            bg = bg;
+            bg = "none";
             fg = fg;
           };
           "ui.cursor" = { modifiers = [ "reversed" ]; };
