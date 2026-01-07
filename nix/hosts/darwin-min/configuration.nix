@@ -23,6 +23,7 @@ in
   };
 
   environment = {
+    shells = import ../../modules/shells.nix;
     systemPackages = [
       pkgs.nil
     ];
