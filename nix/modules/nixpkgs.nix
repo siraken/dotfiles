@@ -47,6 +47,7 @@ let
     pastel # color tool
     tealdeer # man replacement (brew: tldr)
     vhs # terminal recording
+    blesh # line editor written in pure Bash
   ];
 
   # Miscellaneous CLI tools
