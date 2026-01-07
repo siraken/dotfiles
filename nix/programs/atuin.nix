@@ -2,9 +2,9 @@
 {
   programs.atuin = {
     enable = true;
-    enableZshIntegration = true;
-    enableFishIntegration = false;
     enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
     # daemon = {
     #   enable = true;
     # };

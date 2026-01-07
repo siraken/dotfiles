@@ -137,6 +137,7 @@ in
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
+    enableZshIntegration = true;
     settings = if useTokyoNight then tokyoNightSettings else defaultSettings;
   };
 }

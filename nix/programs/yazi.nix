@@ -3,8 +3,8 @@
   programs.yazi = {
     enable = true;
     enableBashIntegration = true;
-    enableZshIntegration = true;
     enableFishIntegration = true;
+    enableZshIntegration = true;
     settings = {
       mgr = {
         ratio = [
