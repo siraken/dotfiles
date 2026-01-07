@@ -1,5 +1,3 @@
-#!/bin/sh
-
 if [ "$SENDER" = "volume_change" ]; then
   VOLUME="$INFO"
 

@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # Musicが起動しているか確認
 if ! pgrep -x "Music" >/dev/null; then
   exit 0

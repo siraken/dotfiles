@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # Spotifyが起動しているか確認
 if ! pgrep -x "Spotify" >/dev/null; then
   exit 0

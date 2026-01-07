@@ -1,5 +1,3 @@
-#!/bin/sh
-
 sketchybar --set "$NAME" \
   icon=󰃰 \
   icon.color=0xffff9e64 \

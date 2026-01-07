@@ -1,5 +1,3 @@
-#!/bin/sh
-
 _COLOR_DEFAULT_BACKGROUND=0xff1a1b26
 _COLOR_BRAND=0xffff4e6b
 
