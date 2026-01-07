@@ -23,7 +23,7 @@ in
   };
 
   environment = {
-    shells = import ../../modules/shells.nix;
+    shells = import ../../modules/shells.nix { inherit pkgs; };
     systemPackages = [
       pkgs.nil
     ];
