@@ -9,11 +9,6 @@ function goinit() {
   git init && touch main.go README.md
 }
 
-function laravelinit() {
-  echo "Enter the project name:" && read projName;
-  curl -s "https://laravel.build/$projName" | bash
-}
-
 function gau() {
   echo "Enter the username:" && read username;
   if [[ -n "$username" ]]; then
@@ -38,11 +33,6 @@ function gco() {
   if [[ -n "$branch" ]]; then
     git checkout "$(echo $branch | sed 's#remotes/origin/##')"
   fi
-}
-
-function ggl() {
-  echo "Searching for $argv on Google..."
-  open "https://www.google.com/search?q=$argv"
 }
 
 function meme() {
