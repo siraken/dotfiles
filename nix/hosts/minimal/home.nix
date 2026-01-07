@@ -12,7 +12,7 @@ in
   imports = [
     ../../programs/zoxide.nix
     ../../programs/git.nix
-    ../../programs/zsh.nix
+    ../../programs/zsh
     ../../programs/tmux.nix
     ../../programs/yazi.nix
     ../../programs/starship.nix

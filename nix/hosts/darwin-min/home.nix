@@ -41,7 +41,7 @@ in
     ../../programs/yt-dlp.nix
     ../../programs/zed.nix
     ../../programs/zoxide.nix
-    ../../programs/zsh.nix
+    ../../programs/zsh
     # services
     ../../services/aerospace.nix
     ../../services/jankyborders.nix
