@@ -19,7 +19,7 @@
         cursor-shape = {
           insert = "bar";
           normal = "block";
-          select = "underline";
+          select = "block";
         };
 
         file-picker = {
