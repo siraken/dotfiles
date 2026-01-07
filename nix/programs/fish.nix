@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.fish = {
-    enable = false;
+    enable = true;
     # vendor = {
     #   completions.enable = true;
     #   config.enable = true;
