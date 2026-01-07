@@ -2,7 +2,7 @@
 {
   programs.bash = {
     enable = true;
-    package = null;
+    package = pkgs.bashInteractive;
     enableCompletion = true;
 
     historyControl = [
@@ -30,7 +30,7 @@
       CLICOLOR = "true";
       TERM = "xterm-256color";
       EDITOR = "nvim";
-      # GH_URL = "https://github.com";
+      GH_URL = "https://github.com";
       AWS_PROFILE = "default";
       AWS_DEFAULT_REGION = "ap-northeast-1";
 
@@ -84,5 +84,11 @@
       mamp-htdocs = "cd /Applications/MAMP/htdocs";
       lisp-server = "sbcl --load $HOME/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp";
     };
+
+    bashrcExtra = ''
+      if [[ -z BASH_COMPLETION_VERSINFO ]]; then
+        . "${pkgs.bash-completion}/etc/profile.d/bash_completion.sh"
+      fi
+    '';
   };
 }
