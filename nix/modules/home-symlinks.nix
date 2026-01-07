@@ -8,9 +8,6 @@
   # Vim
   ".ideavimrc".source = "${dotfilesPath}/.config/idea/.ideavimrc";
 
-  # Hyper
-  ".hyper.js".source = "${dotfilesPath}/.config/hyper/.hyper.js";
-
   # XDG config directories
   ".config/husky".source = "${dotfilesPath}/.config/husky";
   ".config/git/hooks".source = "${dotfilesPath}/.config/git/hooks";
