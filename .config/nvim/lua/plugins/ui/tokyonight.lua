@@ -1,10 +1,8 @@
--- Colorschemes
 return {
   "folke/tokyonight.nvim",
   lazy = false,
   branch = "main",
   opts = {
-    -- style = "night",
     transparent = true,
     terminal_colors = true,
     styles = {
