@@ -173,10 +173,13 @@
 
   programs.gh = {
     enable = true;
-    gitCredentialHelper.hosts = [
-      "https://github.com"
-      "https://gist.github.com"
-    ];
+    gitCredentialHelper = {
+      enable = true;
+      hosts = [
+        "https://github.com"
+        "https://gist.github.com"
+      ];
+    };
     extensions = with pkgs; [
       gh-markdown-preview
     ];
