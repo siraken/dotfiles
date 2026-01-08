@@ -392,6 +392,7 @@ in
       "numi"
       "obs"
       "obsidian"
+      "onedrive"
       "onyx"
       "podman-desktop"
       "poedit"
