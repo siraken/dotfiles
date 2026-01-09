@@ -28,6 +28,11 @@
 
       confirm-close-surface = false;
       quit-after-last-window-closed = true;
+
+      keybind = [
+        "alt+d=new_split:right"
+        "alt+shift+d=new_split:down"
+      ];
     };
   };
 }
