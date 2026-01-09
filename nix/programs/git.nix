@@ -75,7 +75,6 @@
         colorMoved = "plain";
         mnemonicPrefix = true;
         renames = true;
-        tool = "difftastic";
       };
 
       pager = {
@@ -133,7 +132,6 @@
       difftool = {
         prompt = false;
         sourcetree.cmd = "opendiff \"$LOCAL\" \"$REMOTE\"";
-        difftastic.cmd = "difft \"$LOCAL\" \"$REMOTE\"";
         nvimdiff.cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";
       };
 
