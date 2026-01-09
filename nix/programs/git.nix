@@ -158,6 +158,8 @@
       ".DS_Store"
       "Thumbs.db"
       "desktop.ini"
+      ".clj-kondo/.cache/"
+      ".lsp/.cache/"
       ".idea/"
       ".vscode/"
       "**/.claude/settings.local.json"
