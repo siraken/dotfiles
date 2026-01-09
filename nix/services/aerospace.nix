@@ -207,9 +207,17 @@ in
         ];
       };
 
-      # Window rules for unmanaged applications
-      # これらのアプリはタイリングではなくフローティングになります
-      on-window-detected = map mkWindowRule allUnmanagedApps;
+      # Window detection rules
+      # - unmanagedApps: フローティングレイアウトを適用
+      # - Ghostty: タイリングレイアウトを適用
+      on-window-detected = (map mkWindowRule allUnmanagedApps) ++ [
+        {
+          "if" = {
+            app-id = "com.mitchellh.ghostty";
+          };
+          run = [ "layout tiling" ];
+        }
+      ];
 
       workspace-to-monitor-force-assignment = {
         "1" = "main";
