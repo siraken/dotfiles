@@ -2,6 +2,7 @@
 let
   functionsScript = builtins.readFile ./function.fish;
   completionScript = builtins.readFile ./completion.fish;
+  sharedAliases = import ../../modules/aliases.nix { };
 in
 {
   programs.fish = {
@@ -28,12 +29,8 @@ in
       }
     ];
 
-    shellAliases = {
-      # macOS specific
-      ii = "open";
-      mamp-htdocs = "cd /Applications/MAMP/htdocs";
-      lisp-server = "sbcl --load $HOME/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp";
-    };
+    # Shell aliases (import shared)
+    shellAliases = sharedAliases;
 
     interactiveShellInit = ''
       # Disable greeting

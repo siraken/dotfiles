@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   optionScript = builtins.readFile ./option.zsh;
+  sharedAliases = import ../../modules/aliases.nix { };
 in
 {
   programs.zsh = {
@@ -14,6 +15,9 @@ in
       ignoreAllDups = true;
       share = true;
     };
+
+    # Shell aliases (import shared)
+    shellAliases = sharedAliases;
 
     shellGlobalAliases = {
       G = "| grep";

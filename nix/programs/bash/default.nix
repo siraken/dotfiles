@@ -4,6 +4,7 @@ let
   messagesScript = builtins.readFile ./messages.sh;
   aliasesScript = builtins.readFile ./alias.sh;
   evalScript = builtins.readFile ./eval.sh;
+  sharedAliases = import ../../modules/aliases.nix { };
 in
 {
   programs.bash = {
@@ -49,47 +50,8 @@ in
       JAVA_HOME = "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home";
     };
 
-    # Shell aliases
-    shellAliases = {
-      g = "git";
-      gs = "git status";
-      lzg = "lazygit";
-      lzd = "lazydocker";
-      fzf = "fzf --preview 'bat --color=always --style=numbers {}'";
-      cls = "clear";
-      md = "mkdir";
-      e = "emacs";
-      ee = "emacsclient -nw";
-      emacsd = "emacs --daemon";
-      vim = "nvim";
-      datetime = "date '+%Y-%m-%d %H:%M:%S'";
-      sail = "[ -f sail ] && sh sail || sh vendor/bin/sail";
-      dep = "[ -f dep ] && sh dep || sh vendor/bin/dep";
-      mrm = "touch README.md";
-      rb = "ruby";
-      py = "python";
-      n = "node";
-      gpp = "g++";
-      gopj = "cd $GOPATH/src/github.com/";
-      rustrepl = "evcxr";
-      tf = "terraform";
-      spt = "spotify_player";
-      act = "act --container-architecture linux/amd64";
-      wez = "wezterm";
-      mr = "mise run";
-      cc = "claude";
-      ccd = "claude --dangerously-skip-permissions";
-      ccu = "bunx ccusage@latest";
-      cculv = "bunx ccusage@latest blocks --live";
-      cx = "codex";
-      di = "bunx difit";
-      ccm = "bunx ccmanager";
-
-      # macOS specific
-      ii = "open";
-      mamp-htdocs = "cd /Applications/MAMP/htdocs";
-      lisp-server = "sbcl --load $HOME/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp";
-    };
+    # Shell aliases (import shared + bash-specific)
+    shellAliases = sharedAliases;
 
     # Extra configuration for .bashrc
     initExtra = ''
