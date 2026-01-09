@@ -18,8 +18,8 @@
 
       # Appearance
       theme = "TokyoNight";
-      background-opacity = 0.75;
-      background-blur-radius = 20;
+      background-opacity = 0.85;
+      background-blur-radius = 10;
 
       # Window settings
       window-padding-x = 0;
