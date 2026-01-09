@@ -10,7 +10,7 @@
       auto_sync = true;
       search_mode = "fuzzy";
       style = "full";
-      invert = true;
+      invert = false;
       show_preview = true;
       exit_mode = "return-query"; # return-original or return-query
       secrets_filter = true;
