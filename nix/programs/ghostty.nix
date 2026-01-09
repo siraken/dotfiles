@@ -13,7 +13,7 @@
 
       # Font settings
       font-family = "Hack Nerd Font Mono";
-      font-size = 14;
+      font-size = 16;
       adjust-cell-height = "20%";
 
       # Appearance
