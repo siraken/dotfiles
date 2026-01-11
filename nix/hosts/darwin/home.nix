@@ -27,7 +27,6 @@ in
     ../../programs/ghostty.nix
     ../../programs/git.nix
     ../../programs/helix.nix
-    ../../programs/kakoune.nix
     ../../programs/kitty.nix
     ../../programs/lazydocker.nix
     ../../programs/lazygit.nix

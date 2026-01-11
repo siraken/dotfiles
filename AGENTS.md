@@ -66,7 +66,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 Manages 100+ tool configurations across multiple categories:
 
-- **Editors**: Neovim, Vim, Emacs, Helix, Kakoune
+- **Editors**: Neovim, Vim, Emacs, Helix
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, Alacritty, WezTerm, Ghostty, Hyper
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
