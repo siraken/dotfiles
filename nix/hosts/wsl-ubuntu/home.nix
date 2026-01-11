@@ -36,7 +36,6 @@ in
     ../../programs/fzf.nix
     ../../programs/git.nix
     ../../programs/helix.nix
-    ../../programs/kitty.nix
     ../../programs/lazydocker.nix
     ../../programs/lazygit.nix
     ../../programs/mise.nix
@@ -46,7 +45,6 @@ in
     ../../programs/vim.nix
     ../../programs/yazi.nix
     ../../programs/yt-dlp.nix
-    ../../programs/zed.nix
     ../../programs/zoxide.nix
     ../../programs/zsh
   ];
