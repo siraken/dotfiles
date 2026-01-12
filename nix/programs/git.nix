@@ -197,4 +197,14 @@ in
       git_protocol = "https";
     };
   };
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        email = email;
+        name = name;
+      };
+    };
+  };
 }
