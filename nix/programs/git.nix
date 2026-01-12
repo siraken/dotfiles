@@ -1,4 +1,9 @@
 { pkgs, lib, ... }:
+let
+  name = "Kento Shirasawa";
+  email = "shirasawa@novalumo.com";
+  username = "siraken";
+in
 {
   programs.git = {
     enable = true;
@@ -10,9 +15,9 @@
       };
 
       user = {
-        name = "Kento Shirasawa";
-        email = "shirasawa@novalumo.com";
-        username = "siraken";
+        name = name;
+        email = email;
+        username = username;
         signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL";
       };
 
@@ -52,7 +57,7 @@
       };
 
       github = {
-        user = "siraken";
+        user = username;
       };
 
       init = {
