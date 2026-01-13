@@ -69,8 +69,8 @@ in
 
     shell = {
       enableBashIntegration = true;
-      enableZshIntegration = true;
       enableFishIntegration = true;
+      enableZshIntegration = true;
       enableShellIntegration = true;
     };
 
