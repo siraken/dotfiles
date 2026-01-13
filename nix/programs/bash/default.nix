@@ -4,7 +4,6 @@ let
   messagesScript = builtins.readFile ./messages.sh;
   aliasesScript = builtins.readFile ./alias.sh;
   evalScript = builtins.readFile ./eval.sh;
-  sharedAliases = import ../../modules/aliases.nix { };
 in
 {
   programs.bash = {
@@ -49,9 +48,6 @@ in
       BUN_INSTALL = "$HOME/.bun";
       JAVA_HOME = "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home";
     };
-
-    # Shell aliases (import shared + bash-specific)
-    shellAliases = sharedAliases;
 
     # Extra configuration for .bashrc
     initExtra = ''

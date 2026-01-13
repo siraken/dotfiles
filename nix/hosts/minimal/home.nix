@@ -20,6 +20,7 @@ in
 
   home = {
     stateVersion = "25.11";
+    shellAliases = import ../../modules/aliases.nix { };
 
     file =
       import ../../modules/symlinks.nix {

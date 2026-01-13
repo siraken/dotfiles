@@ -2,7 +2,6 @@
 let
   functionsScript = builtins.readFile ./function.fish;
   completionScript = builtins.readFile ./completion.fish;
-  sharedAliases = import ../../modules/aliases.nix { };
 in
 {
   programs.fish = {
@@ -28,9 +27,6 @@ in
         };
       }
     ];
-
-    # Shell aliases (import shared)
-    shellAliases = sharedAliases;
 
     interactiveShellInit = ''
       # Disable greeting

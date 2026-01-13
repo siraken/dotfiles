@@ -54,6 +54,7 @@ in
     # preferXdgDirectories = true; # to be enabled
     # sessionVariables = import ../../modules/variable.nix;
     sessionPath = import ../../modules/path.nix { };
+    shellAliases = import ../../modules/aliases.nix { };
 
     file =
       import ../../modules/home-symlinks.nix {
