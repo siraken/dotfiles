@@ -160,6 +160,7 @@ in
     };
 
     ignores = [
+      "!.env.example"
       ".DS_Store"
       "Thumbs.db"
       "desktop.ini"
@@ -171,8 +172,7 @@ in
       "mise.local.toml"
       ".direnv/"
       ".envrc"
-      ".env.development"
-      ".env.production"
+      ".env.*"
       "**/node_modules"
     ];
   };
