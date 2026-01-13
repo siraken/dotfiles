@@ -3,6 +3,34 @@ let
   name = "Kento Shirasawa";
   email = "shirasawa@novalumo.com";
   username = "siraken";
+
+  dotenvEnvironments = [
+    "local"
+    "development"
+    "staging"
+    "production"
+  ];
+
+  dotenvFiles = lib.concatMap (env: [
+    ".env.${env}"
+    ".dev.vars.${env}"
+  ]) dotenvEnvironments;
+
+  ignoreFiles = [
+    ".DS_Store"
+    "Thumbs.db"
+    "desktop.ini"
+    ".clj-kondo/.cache/"
+    ".lsp/.cache/"
+    ".idea/"
+    ".vscode/"
+    "**/.claude/settings.local.json"
+    "mise.local.toml"
+    ".direnv/"
+    ".envrc"
+    "**/node_modules"
+  ]
+  ++ dotenvFiles;
 in
 {
   programs.git = {
@@ -159,22 +187,7 @@ in
       };
     };
 
-    ignores = [
-      "!.env.example"
-      ".DS_Store"
-      "Thumbs.db"
-      "desktop.ini"
-      ".clj-kondo/.cache/"
-      ".lsp/.cache/"
-      ".idea/"
-      ".vscode/"
-      "**/.claude/settings.local.json"
-      "mise.local.toml"
-      ".direnv/"
-      ".envrc"
-      ".env.*"
-      "**/node_modules"
-    ];
+    ignores = ignoreFiles;
   };
 
   programs.gh = {
