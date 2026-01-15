@@ -13,12 +13,9 @@ in
 
     historyControl = [
       "ignoredups"
-      "erasedups"
+      "ignorespace"
     ];
     historyIgnore = [
-      "ls *"
-      "cd *"
-      "pwd"
       "exit"
     ];
     historySize = 10000;
