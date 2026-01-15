@@ -24,6 +24,7 @@ let
     ".lsp/.cache/"
     ".idea/"
     ".vscode/"
+    ".playwright-mcp/"
     "**/.claude/settings.local.json"
     "mise.local.toml"
     ".direnv/"
