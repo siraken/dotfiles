@@ -377,6 +377,7 @@ in
       "jetbrains-toolbox"
       "keycastr"
       "lapce"
+      "linear-linear"
       "lm-studio"
       "local"
       # FIXME: "logi-options+"
