@@ -9,31 +9,17 @@ let
       "Activity Monitor"
       "Console"
       "Screen Sharing"
-      "Preview"
       "Photos"
       "QuickTime Player"
       "Messages"
       "Feedback Assistant"
-      "Xcode"
       "Final Cut Pro"
       "Motion"
       "Logic Pro"
       "Disk Utility"
     ];
 
-    iWork = [
-      "Pages"
-      "Numbers"
-      "Keynote"
-    ];
-
     microsoftOffice = [
-      "Word"
-      "Excel"
-      "PowerPoint"
-      # "OneNote"
-      # "Outlook"
-      # "Microsoft Teams"
       "Microsoft Remote Desktop"
     ];
 
