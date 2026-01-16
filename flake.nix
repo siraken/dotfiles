@@ -162,6 +162,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = "hm-backup";
                 users.siraken = ./nix/hosts/darwin-min/home.nix;
                 sharedModules = [ nixvim.homeModules.nixvim ];
                 extraSpecialArgs = { inherit inputs; };
