@@ -3,6 +3,22 @@
   programs.tmux = {
     enable = true;
 
+    # Tokyo Night theme plugin
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = tokyo-night-tmux;
+        extraConfig = ''
+          set -g @tokyo-night-tmux_window_id_style none
+          set -g @tokyo-night-tmux_pane_id_style hide
+          set -g @tokyo-night-tmux_show_music 0
+          set -g @tokyo-night-tmux_show_netspeed 0
+          set -g @tokyo-night-tmux_show_path 1
+          set -g @tokyo-night-tmux_path_format relative
+          set -g @tokyo-night-tmux_show_git 1
+        '';
+      }
+    ];
+
     # Custom configuration
     extraConfig = ''
       set -s escape-time 50
@@ -36,9 +52,6 @@
       bind -n C-S-Left swap-window -t -1 \; previous-window
       bind -n C-S-Right swap-window -t +1 \; next-window
 
-      # Clock mode color
-      setw -g clock-mode-colour colour64
-
       # Window titles
       set -g set-titles on
       set -g set-titles-string "#T"
@@ -46,46 +59,6 @@
       # Status bar
       set -g status-interval 1
       set -g status-justify 'left'
-      set -g status-left '#{actual_song}'
-      set -g status-right '#{actual_song}'
-      set -g status-bg default
-
-      # Import macOS config
-      # if-shell 'uname -s | grep -q Darwin' 'source $HOME/.config/tmux/tmux.darwin.conf'
     '';
-
-    # tmuxOptions = {
-    #   # Terminal settings
-    #   terminal = "tmux-256color";
-    #   escapeTime = 1;
-    #   historyLimit = 64096;
-
-    #   # Mouse support
-
-    #   # Prefix key
-    #   prefix = "C-t";
-    # };
-
-    # Plugins
-    # plugins = with pkgs.tmuxPlugins; [
-    #   {
-    #     plugin = tpm;
-    #     extraConfig = "";
-    #   }
-    #   {
-    #     plugin = logging;
-    #     extraConfig = "";
-    #   }
-    #   {
-    #     plugin = pain-control;
-    #     extraConfig = "";
-    #   }
-    #   {
-    #     plugin = prefix-highlight;
-    #     extraConfig = "";
-    #   }
-    #   # Note: tmux-spotify-tui and tmux-keyboard-layout may need to be added manually
-    #   # as they might not be available in nixpkgs
-    # ];
   };
 }
