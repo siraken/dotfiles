@@ -22,8 +22,8 @@
     # Custom configuration
     extraConfig = ''
       set -s escape-time 50
-      set-option -g default-shell "bash"
-      set -g default-command "bash"
+      set-option -g default-shell "${pkgs.bash}/bin/bash"
+      set -g default-command "${pkgs.bash}/bin/bash"
       set -g mouse on
 
       # Terminal overrides
