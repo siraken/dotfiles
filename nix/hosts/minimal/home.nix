@@ -35,7 +35,7 @@ in
       pkgs.gcc
       pkgs.libgcc
       pkgs.xdg-utils
-      pkgs.nixfmt-rfc-style
+      pkgs.nixfmt
     ];
   };
 
