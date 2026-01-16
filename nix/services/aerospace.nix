@@ -122,13 +122,13 @@ in
       gaps = {
         inner.horizontal = 6;
         inner.vertical = 6;
-        outer.left = 12;
-        outer.bottom = 12;
+        outer.left = 10;
+        outer.bottom = 10;
         outer.top = [
-          { monitor.main = 12; }
-          44 # 32 (external bar) + 12 (top_padding)
+          { monitor.main = 10; }
+          42 # 32 (external bar) + 10 (top_padding)
         ];
-        outer.right = 12;
+        outer.right = 10;
       };
 
       # Mode configuration
