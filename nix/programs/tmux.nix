@@ -15,6 +15,7 @@
           set -g @tokyo-night-tmux_show_path 1
           set -g @tokyo-night-tmux_path_format relative
           set -g @tokyo-night-tmux_show_git 1
+          set -g @tokyo-night-tmux_show_datetime 0
         '';
       }
     ];
