@@ -45,7 +45,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude Codeが許可を求めています\" with title \"Claude Code\" subtitle \"確認待ち\" sound name \"Glass\"'"
+            "command": "osascript -e 'display notification \"Claude Codeが許可を求めています\" with title \"Claude Code\" subtitle \"hooks: Notification\" sound name \"Glass\"'"
           }
         ]
       },
@@ -54,7 +54,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude Codeがユーザー入力を待機しています\" with title \"Claude Code\" subtitle \"確認待ち\" sound name \"Glass\"'"
+            "command": "osascript -e 'display notification \"Claude Codeがユーザー入力を待機しています\" with title \"Claude Code\" subtitle \"hooks: Notification\" sound name \"Glass\"'"
           }
         ]
       },
@@ -63,7 +63,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude CodeがMCPツール抽出のための入力を求めています\" with title \"Claude Code\" subtitle \"確認待ち\" sound name \"Glass\"'"
+            "command": "osascript -e 'display notification \"Claude CodeがMCPツール抽出のための入力を求めています\" with title \"Claude Code\" subtitle \"hooks: Notification\" sound name \"Glass\"'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"タスクが終了しました\" with title \"Claude Code\" subtitle \"hooks: Stop\"'"
           }
         ]
       }
