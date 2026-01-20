@@ -16,11 +16,27 @@ let
   '';
 in
 {
+  programs.mcp = {
+    enable = true;
+    # servers = { };
+  };
+
   programs.claude-code = {
     enable = true;
+    enableMcpIntegration = true;
     memory = {
       text = instructions;
     };
+    agents = {
+      # SOME_AGENT = '''';
+    };
+    # settings = {
+    #   hooks = {
+    #     PostToolUse = [ ];
+    #     PreToolUse = [ ];
+    #   };
+    #   includeCoAuthoredBy = true;
+    # };
   };
 
   programs.codex = {
