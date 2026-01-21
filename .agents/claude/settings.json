@@ -103,5 +103,6 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "php-lsp@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "language": "日本語"
 }
