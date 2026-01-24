@@ -20,7 +20,7 @@ in
 
   home = {
     stateVersion = "25.11";
-    shellAliases = import ../../modules/aliases.nix { };
+    shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
     file =
       import ../../modules/symlinks.nix {

@@ -1,5 +1,6 @@
-{ }:
-{
+{ pkgs }:
+let
+  commonAliases = {
   # Git
   g = "git";
   gs = "git status";
@@ -61,9 +62,13 @@
   cx = "codex";
   di = "bunx difit";
   ccm = "bunx ccmanager";
+  };
 
-  # macOS specific
-  ii = "open";
-  mamp-htdocs = "cd /Applications/MAMP/htdocs";
-  lisp-server = "sbcl --load $HOME/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp";
-}
+  darwinAliases = pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+    # macOS specific
+    ii = "open";
+    mamp-htdocs = "cd /Applications/MAMP/htdocs";
+    lisp-server = "sbcl --load $HOME/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp";
+  };
+in
+commonAliases // darwinAliases
