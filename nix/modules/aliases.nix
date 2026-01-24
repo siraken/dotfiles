@@ -1,67 +1,67 @@
 { pkgs }:
 let
   commonAliases = {
-  # Git
-  g = "git";
-  gs = "git status";
-  lzg = "lazygit";
+    # Git
+    g = "git";
+    gs = "git status";
+    lzg = "lazygit";
 
-  # Docker
-  lzd = "lazydocker";
+    # Docker
+    lzd = "lazydocker";
 
-  # File operations
-  fzf = "fzf --preview 'bat --color=always --style=numbers {}'";
-  cls = "clear";
-  md = "mkdir";
+    # File operations
+    fzf = "fzf --preview 'bat --color=always --style=numbers {}'";
+    cls = "clear";
+    md = "mkdir";
 
-  # Editors
-  e = "emacs";
-  ee = "emacsclient -nw";
-  emacsd = "emacs --daemon";
-  vim = "nvim";
+    # Editors
+    e = "emacs";
+    ee = "emacsclient -nw";
+    emacsd = "emacs --daemon";
+    vim = "nvim";
 
-  # Date/Time
-  datetime = "date '+%Y-%m-%d %H:%M:%S'";
+    # Date/Time
+    datetime = "date '+%Y-%m-%d %H:%M:%S'";
 
-  # PHP/Laravel
-  sail = "[ -f sail ] && sh sail || sh vendor/bin/sail";
-  dep = "[ -f dep ] && sh dep || sh vendor/bin/dep";
+    # PHP/Laravel
+    sail = "[ -f sail ] && sh sail || sh vendor/bin/sail";
+    dep = "[ -f dep ] && sh dep || sh vendor/bin/dep";
 
-  # Misc
-  mrm = "touch README.md";
+    # Misc
+    mrm = "touch README.md";
 
-  # Language shortcuts
-  rb = "ruby";
-  py = "python";
-  n = "node";
-  gpp = "g++";
+    # Language shortcuts
+    rb = "ruby";
+    py = "python";
+    n = "node";
+    gpp = "g++";
 
-  # Go
-  gopj = "cd $GOPATH/src/github.com/";
+    # Go
+    gopj = "cd $GOPATH/src/github.com/";
 
-  # Rust
-  rustrepl = "evcxr";
+    # Rust
+    rustrepl = "evcxr";
 
-  # DevOps
-  tf = "terraform";
-  act = "act --container-architecture linux/amd64";
+    # DevOps
+    tf = "terraform";
+    act = "act --container-architecture linux/amd64";
 
-  # Applications
-  spt = "spotify_player";
-  wez = "wezterm";
+    # Applications
+    spt = "spotify_player";
+    wez = "wezterm";
 
-  # Mise
-  mr = "mise run";
+    # Mise
+    mr = "mise run";
 
-  # AI tools
-  cc = "claude";
-  ccd = "claude --dangerously-skip-permissions";
-  oc = "opencode";
-  ccu = "bunx ccusage@latest";
-  cculv = "bunx ccusage@latest blocks --live";
-  cx = "codex";
-  di = "bunx difit";
-  ccm = "bunx ccmanager";
+    # AI tools
+    cc = "claude";
+    ccd = "claude --dangerously-skip-permissions";
+    oc = "opencode";
+    ccu = "bunx ccusage@latest";
+    cculv = "bunx ccusage@latest blocks --live";
+    cx = "codex";
+    di = "bunx difit";
+    ccm = "bunx ccmanager";
   };
 
   darwinAliases = pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
