@@ -1,0 +1,33 @@
+name: Flake Updater
+
+on:
+  schedule:
+    # Every Monday at 06:00 JST (21:00 UTC Sunday)
+    - cron: "0 21 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    name: Update Flake
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - uses: DeterminateSystems/determinate-nix-action@v3
+
+      - name: Update flake.lock
+        run: nix flake update --commit-lock-file
+
+      - name: Run nix flake check
+        run: nix flake check --no-build --impure
+
+      - name: Push changes
+        run: git push
