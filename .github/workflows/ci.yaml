@@ -1,15 +1,21 @@
+name: CI
+
 on:
   push:
     branches:
+      - main
       - ci/*
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
-    name: Build
+  check:
+    name: Nix Flake Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/determinate-nix-action@v3
-      # TODO: implement
-      - name: Run `nix build`
-        run: nix build .
+
+      - name: Run nix flake check
+        run: nix flake check --no-build --impure

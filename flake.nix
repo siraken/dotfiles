@@ -173,13 +173,13 @@
       };
 
       nixosConfigurations = {
-        "your-linux-machine-name" = mkNixosSystem {
-          system = linuxSystem;
-          username = username;
-          modules = [
-            ./nix/hosts/nixos/configuration.nix
-          ];
-        };
+        # Placeholder for future NixOS configuration
+        # "your-linux-machine-name" = mkNixosSystem {
+        #   system = linuxSystem;
+        #   modules = [
+        #     ./nix/hosts/nixos/configuration.nix
+        #   ];
+        # };
       };
 
       nixOnDroidConfigurations = {
@@ -196,6 +196,16 @@
           username = username;
           homeDirectory = "/home/${username}";
           pkgs = nixpkgs.legacyPackages.${linuxSystem};
+        };
+      };
+
+      checks = {
+        ${darwinSystem} = {
+          darwin = self.darwinConfigurations.darwin.system;
+          darwin-min = self.darwinConfigurations.darwin-min.system;
+        };
+        ${linuxSystem} = {
+          wsl-ubuntu = self.homeConfigurations.wsl-ubuntu.activationPackage;
         };
       };
 
