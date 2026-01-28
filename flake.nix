@@ -204,9 +204,6 @@
           darwin = self.darwinConfigurations.darwin.system;
           darwin-min = self.darwinConfigurations.darwin-min.system;
         };
-        ${linuxSystem} = {
-          wsl-ubuntu = self.homeConfigurations.wsl-ubuntu.activationPackage;
-        };
       };
 
       apps = {
