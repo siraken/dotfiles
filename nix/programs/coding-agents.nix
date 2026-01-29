@@ -47,7 +47,9 @@ in
     enable = true;
     commands = { };
     settings = {
-      contextFileName = "AGENTS.md";
+      context = {
+        fileName = "AGENTS.md";
+      };
       general = {
         preferredEditor = "nvim";
       };
