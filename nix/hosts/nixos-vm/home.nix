@@ -5,59 +5,62 @@
   inputs,
   ...
 }:
+let
+  dotfilesPath = "${config.home.homeDirectory}/dotfiles";
+in
 {
   imports = [
-    ../../programs/git.nix
+    # programs (cross-platform)
+    ../../programs/atuin.nix
+    ../../programs/bash
+    ../../programs/bat.nix
+    ../../programs/bottom.nix
+    ../../programs/direnv.nix
+    ../../programs/fish
+    ../../programs/fzf.nix
     ../../programs/ghostty.nix
+    ../../programs/git.nix
+    ../../programs/helix.nix
+    ../../programs/kitty.nix
+    ../../programs/lazydocker.nix
+    ../../programs/lazygit.nix
+    ../../programs/mise.nix
+    ../../programs/starship.nix
+    ../../programs/tmux.nix
+    ../../programs/vim.nix
+    ../../programs/yazi.nix
+    ../../programs/yt-dlp.nix
+    ../../programs/zoxide.nix
+    ../../programs/zsh
   ];
 
   home = {
     stateVersion = "25.11";
+    sessionPath = import ../../modules/path.nix { };
+    shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
-    packages = with pkgs; [
-      # Basic tools
-      eza
-      bat
-      ripgrep
-      fd
-      fzf
-      htop
-      neofetch
-      tmux
-      lazygit
-      # Polybar dependencies
-      playerctl
+    packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
+      # nixos-vm specific
+      pkgs.playerctl
+      pkgs.neofetch
     ];
+
+    shell = {
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+      enableShellIntegration = true;
+    };
   };
 
   programs = {
     home-manager.enable = true;
-
-    zsh = {
-      enable = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-    };
-
-    kitty = {
-      enable = true;
-      settings = {
-        font_family = "JetBrainsMono Nerd Font";
-        font_size = 12;
-        background_opacity = "0.9";
-        confirm_os_window_close = 0;
-      };
-    };
 
     rofi = {
       enable = true;
       theme = "gruvbox-dark";
       terminal = "${pkgs.ghostty}/bin/ghostty";
     };
-
-    starship.enable = true;
-    zoxide.enable = true;
-    direnv.enable = true;
   };
 
   # Polybar
