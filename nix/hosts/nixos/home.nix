@@ -46,207 +46,191 @@
       };
     };
 
+    rofi = {
+      enable = true;
+      theme = "gruvbox-dark";
+      terminal = "${pkgs.kitty}/bin/kitty";
+    };
+
     starship.enable = true;
     zoxide.enable = true;
     direnv.enable = true;
   };
 
-  # Hyprland config
-  wayland.windowManager.hyprland = {
+  # i3 config
+  xsession.windowManager.i3 = {
     enable = true;
-    settings = {
-      "$mod" = "SUPER";
-      "$terminal" = "kitty";
-      "$menu" = "wofi --show drun";
+    config = {
+      modifier = "Mod4"; # Super key
+      terminal = "kitty";
+      menu = "rofi -show drun";
 
-      monitor = ",preferred,auto,1";
-
-      general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        layout = "dwindle";
+      fonts = {
+        names = [ "JetBrainsMono Nerd Font" ];
+        size = 10.0;
       };
 
-      decoration = {
-        rounding = 10;
-        blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
-        };
-        shadow = {
-          enabled = true;
-          range = 4;
-          render_power = 3;
-        };
+      gaps = {
+        inner = 8;
+        outer = 4;
       };
 
-      animations = {
-        enabled = true;
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
-      };
+      bars = [
+        {
+          position = "top";
+          statusCommand = "${pkgs.i3status}/bin/i3status";
+          fonts = {
+            names = [ "JetBrainsMono Nerd Font" ];
+            size = 10.0;
+          };
+          colors = {
+            background = "#1e1e2e";
+            statusline = "#cdd6f4";
+            separator = "#45475a";
+            focusedWorkspace = {
+              border = "#89b4fa";
+              background = "#89b4fa";
+              text = "#1e1e2e";
+            };
+            inactiveWorkspace = {
+              border = "#1e1e2e";
+              background = "#1e1e2e";
+              text = "#6c7086";
+            };
+          };
+        }
+      ];
 
-      input = {
-        kb_layout = "us";
-        follow_mouse = 1;
-        touchpad = {
-          natural_scroll = true;
-        };
-      };
+      keybindings = let
+        mod = "Mod4";
+      in {
+        "${mod}+Return" = "exec kitty";
+        "${mod}+d" = "exec rofi -show drun";
+        "${mod}+q" = "kill";
+        "${mod}+Shift+e" = "exec i3-msg exit";
+        "${mod}+Shift+r" = "restart";
 
-      dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-      };
+        # Focus
+        "${mod}+h" = "focus left";
+        "${mod}+j" = "focus down";
+        "${mod}+k" = "focus up";
+        "${mod}+l" = "focus right";
+        "${mod}+Left" = "focus left";
+        "${mod}+Down" = "focus down";
+        "${mod}+Up" = "focus up";
+        "${mod}+Right" = "focus right";
 
-      bind = [
-        "$mod, Return, exec, $terminal"
-        "$mod, Q, killactive,"
-        "$mod, M, exit,"
-        "$mod, E, exec, thunar"
-        "$mod, V, togglefloating,"
-        "$mod, D, exec, $menu"
-        "$mod, P, pseudo,"
-        "$mod, J, togglesplit,"
+        # Move
+        "${mod}+Shift+h" = "move left";
+        "${mod}+Shift+j" = "move down";
+        "${mod}+Shift+k" = "move up";
+        "${mod}+Shift+l" = "move right";
 
-        # Move focus
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
-        "$mod, H, movefocus, l"
-        "$mod, L, movefocus, r"
-        "$mod, K, movefocus, u"
-        # Note: $mod+J is used for togglesplit
+        # Split
+        "${mod}+b" = "split h";
+        "${mod}+v" = "split v";
+
+        # Layout
+        "${mod}+f" = "fullscreen toggle";
+        "${mod}+s" = "layout stacking";
+        "${mod}+w" = "layout tabbed";
+        "${mod}+e" = "layout toggle split";
+        "${mod}+Shift+space" = "floating toggle";
+        "${mod}+space" = "focus mode_toggle";
 
         # Workspaces
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-        "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
-        "$mod, 0, workspace, 10"
+        "${mod}+1" = "workspace 1";
+        "${mod}+2" = "workspace 2";
+        "${mod}+3" = "workspace 3";
+        "${mod}+4" = "workspace 4";
+        "${mod}+5" = "workspace 5";
+        "${mod}+6" = "workspace 6";
+        "${mod}+7" = "workspace 7";
+        "${mod}+8" = "workspace 8";
+        "${mod}+9" = "workspace 9";
+        "${mod}+0" = "workspace 10";
 
         # Move to workspace
-        "$mod SHIFT, 1, movetoworkspace, 1"
-        "$mod SHIFT, 2, movetoworkspace, 2"
-        "$mod SHIFT, 3, movetoworkspace, 3"
-        "$mod SHIFT, 4, movetoworkspace, 4"
-        "$mod SHIFT, 5, movetoworkspace, 5"
-        "$mod SHIFT, 6, movetoworkspace, 6"
-        "$mod SHIFT, 7, movetoworkspace, 7"
-        "$mod SHIFT, 8, movetoworkspace, 8"
-        "$mod SHIFT, 9, movetoworkspace, 9"
-        "$mod SHIFT, 0, movetoworkspace, 10"
+        "${mod}+Shift+1" = "move container to workspace 1";
+        "${mod}+Shift+2" = "move container to workspace 2";
+        "${mod}+Shift+3" = "move container to workspace 3";
+        "${mod}+Shift+4" = "move container to workspace 4";
+        "${mod}+Shift+5" = "move container to workspace 5";
+        "${mod}+Shift+6" = "move container to workspace 6";
+        "${mod}+Shift+7" = "move container to workspace 7";
+        "${mod}+Shift+8" = "move container to workspace 8";
+        "${mod}+Shift+9" = "move container to workspace 9";
+        "${mod}+Shift+0" = "move container to workspace 10";
 
         # Screenshot
-        ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
-        "$mod, Print, exec, grim - | wl-copy"
-      ];
+        "Print" = "exec maim -s | xclip -selection clipboard -t image/png";
+      };
 
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+      window = {
+        border = 2;
+        titlebar = false;
+      };
 
-      exec-once = [
-        "waybar"
-        "mako"
-        "fcitx5 -d"
-      ];
-    };
-  };
-
-  # Waybar config
-  programs.waybar = {
-    enable = true;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        height = 30;
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "network" "cpu" "memory" "tray" ];
-
-        clock = {
-          format = "{:%Y-%m-%d %H:%M}";
+      colors = {
+        focused = {
+          border = "#89b4fa";
+          background = "#1e1e2e";
+          text = "#cdd6f4";
+          indicator = "#89b4fa";
+          childBorder = "#89b4fa";
         };
-
-        cpu = {
-          format = " {usage}%";
-        };
-
-        memory = {
-          format = " {}%";
-        };
-
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = " muted";
-          format-icons = {
-            default = [ "" "" "" ];
-          };
-        };
-
-        network = {
-          format-wifi = " {essid}";
-          format-ethernet = " {ifname}";
-          format-disconnected = "⚠ Disconnected";
+        unfocused = {
+          border = "#45475a";
+          background = "#1e1e2e";
+          text = "#6c7086";
+          indicator = "#45475a";
+          childBorder = "#45475a";
         };
       };
+
+      startup = [
+        { command = "picom -b"; notification = false; }
+        { command = "dunst"; notification = false; }
+        { command = "feh --bg-fill ~/.wallpaper.jpg || feh --bg-scale /run/current-system/sw/share/backgrounds/gnome/adwaita-l.jpg"; notification = false; }
+        { command = "fcitx5 -d"; notification = false; }
+      ];
     };
-    style = ''
-      * {
-        font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP";
-        font-size: 13px;
-      }
-
-      window#waybar {
-        background-color: rgba(30, 30, 46, 0.9);
-        color: #cdd6f4;
-      }
-
-      #workspaces button {
-        padding: 0 5px;
-        color: #cdd6f4;
-      }
-
-      #workspaces button.active {
-        background-color: #89b4fa;
-        color: #1e1e2e;
-      }
-
-      #clock, #cpu, #memory, #pulseaudio, #network, #tray {
-        padding: 0 10px;
-      }
-    '';
   };
 
-  # Mako notification
-  services.mako = {
+  # Dunst notification
+  services.dunst = {
     enable = true;
     settings = {
-      font = "Noto Sans CJK JP 11";
-      backgroundColor = "#1e1e2e";
-      textColor = "#cdd6f4";
-      borderColor = "#89b4fa";
-      borderRadius = 8;
-      defaultTimeout = 5000;
+      global = {
+        font = "Noto Sans CJK JP 11";
+        frame_color = "#89b4fa";
+        separator_color = "frame";
+        corner_radius = 8;
+      };
+      urgency_low = {
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+      };
+      urgency_normal = {
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+      };
+      urgency_critical = {
+        background = "#1e1e2e";
+        foreground = "#f38ba8";
+        frame_color = "#f38ba8";
+      };
+    };
+  };
+
+  # Picom compositor
+  services.picom = {
+    enable = true;
+    fade = true;
+    shadow = true;
+    fadeDelta = 4;
+    settings = {
+      corner-radius = 8;
     };
   };
 }

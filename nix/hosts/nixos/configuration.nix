@@ -57,21 +57,19 @@ in
     initialPassword = "nixos";
   };
 
-  # Hyprland
-  programs.hyprland = {
+  # X11 & i3
+  services.xserver = {
     enable = true;
-    xwayland.enable = true;
-  };
-
-  # Login manager
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
-        user = "greeter";
-      };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        i3status
+        i3lock
+        dmenu
+        rofi
+      ];
     };
+    displayManager.lightdm.enable = true;
   };
 
   # Audio
@@ -83,12 +81,6 @@ in
 
   # VMware guest tools
   virtualisation.vmware.guest.enable = true;
-
-  # XDG portal for screen sharing etc.
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-  };
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -113,19 +105,18 @@ in
     ripgrep
     fd
     jq
-    # Hyprland essentials
-    waybar
-    wofi
+    # i3 essentials
     kitty
-    mako
-    swww
-    grim
-    slurp
-    wl-clipboard
-    brightnessctl
-    pamixer
-    thunar
+    feh
+    picom
+    dunst
+    maim
+    xclip
+    arandr
+    pavucontrol
     networkmanagerapplet
+    thunar
+    lxappearance
   ];
 
   # Enable SSH
