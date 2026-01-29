@@ -1,9 +1,12 @@
 { pkgs, ... }:
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+in
 {
   programs.ghostty = {
     enable = true;
     package =
-      if pkgs.stdenv.isDarwin then
+      if isDarwin then
         # TODO: use package for macOS (for now, set `null` to use brew-installed version)
         null
       else
@@ -13,7 +16,7 @@
 
       # Font settings
       font-family = "Hack Nerd Font Mono";
-      font-size = 16;
+      font-size = if isDarwin then 16 else 12;
       adjust-cell-height = "20%";
 
       # Appearance
