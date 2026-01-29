@@ -86,7 +86,7 @@ in
       services = {
         sudo_local = {
           touchIdAuth = true;
-          watchIdAuth = true;
+          watchIdAuth = false; # TODO: nixpkgs Swift build issue
         };
       };
     };
