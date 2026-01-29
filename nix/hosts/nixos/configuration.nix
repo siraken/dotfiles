@@ -68,7 +68,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
         user = "greeter";
       };
     };
@@ -94,7 +94,7 @@ in
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     nerd-fonts.hack
     nerd-fonts.jetbrains-mono
   ];

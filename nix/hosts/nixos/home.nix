@@ -6,6 +6,10 @@
   ...
 }:
 {
+  imports = [
+    ../../programs/git.nix
+  ];
+
   home = {
     stateVersion = "25.11";
 
@@ -25,16 +29,6 @@
 
   programs = {
     home-manager.enable = true;
-
-    git = {
-      enable = true;
-      extraConfig = {
-        user = {
-          name = "siraken";
-          email = "sirakensbl@gmail.com";
-        };
-      };
-    };
 
     zsh = {
       enable = true;
