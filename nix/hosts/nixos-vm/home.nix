@@ -16,7 +16,7 @@ in
     ../../programs/bat.nix
     ../../programs/bottom.nix
     ../../programs/direnv.nix
-    ../../programs/fish
+    # ../../programs/fish # disabled due to fisher hash mismatch
     ../../programs/fzf.nix
     ../../programs/ghostty.nix
     ../../programs/git.nix
@@ -47,7 +47,7 @@ in
 
     shell = {
       enableBashIntegration = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false; # fish disabled
       enableZshIntegration = true;
       enableShellIntegration = true;
     };
