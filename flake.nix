@@ -177,14 +177,14 @@
         "nixos-vm" = mkNixosSystem {
           system = linuxSystem;
           modules = [
-            ./nix/hosts/nixos/configuration.nix
+            ./nix/hosts/nixos-vm/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "hm-backup";
-                users.${username} = ./nix/hosts/nixos/home.nix;
+                users.${username} = ./nix/hosts/nixos-vm/home.nix;
                 sharedModules = [ nixvim.homeModules.nixvim ];
                 extraSpecialArgs = { inherit inputs; };
               };
