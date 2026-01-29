@@ -126,6 +126,7 @@
           system = darwinSystem;
           modules = [
             ./nix/hosts/darwin/configuration.nix
+            nix-index-database.darwinModules.nix-index
             home-manager.darwinModules.home-manager
             {
               users.users = {
