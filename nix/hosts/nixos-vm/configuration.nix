@@ -70,6 +70,7 @@ in
     # X11 & i3
     xserver = {
       enable = true;
+      videoDrivers = [ "vmware" ];
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
@@ -104,7 +105,10 @@ in
   };
 
   # VMware guest tools
-  virtualisation.vmware.guest.enable = true;
+  virtualisation.vmware.guest = {
+    enable = true;
+    headless = false; # Enable GUI support
+  };
 
   # Fonts
   fonts.packages = with pkgs; [
