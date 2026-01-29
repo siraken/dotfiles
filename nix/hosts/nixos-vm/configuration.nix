@@ -87,6 +87,16 @@ in
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
+      # Reduce audio stuttering in VM
+      extraConfig.pipewire = {
+        "99-vm-latency" = {
+          "context.properties" = {
+            "default.clock.rate" = 48000;
+            "default.clock.quantum" = 2048;
+            "default.clock.min-quantum" = 1024;
+          };
+        };
+      };
     };
 
     # SSH
