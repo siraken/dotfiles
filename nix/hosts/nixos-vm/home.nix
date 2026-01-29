@@ -24,6 +24,8 @@
       neofetch
       tmux
       lazygit
+      # Polybar dependencies
+      playerctl
     ];
   };
 
@@ -57,6 +59,123 @@
     direnv.enable = true;
   };
 
+  # Polybar
+  services.polybar = {
+    enable = true;
+    package = pkgs.polybar.override {
+      i3Support = true;
+      pulseSupport = true;
+    };
+    script = "polybar main &";
+    settings = {
+      "bar/main" = {
+        width = "100%";
+        height = "28pt";
+        radius = 0;
+        background = "#00000000";
+        foreground = "#cdd6f4";
+        padding-left = 1;
+        padding-right = 1;
+        module-margin = 1;
+        font-0 = "JetBrainsMono Nerd Font:size=10;2";
+        font-1 = "JetBrainsMono Nerd Font:size=12;2";
+        font-2 = "Noto Sans CJK JP:size=10;2";
+        modules-left = "i3";
+        modules-center = "";
+        modules-right = "pulseaudio network date";
+        cursor-click = "pointer";
+        cursor-scroll = "ns-resize";
+        enable-ipc = true;
+        tray-position = "right";
+        tray-padding = 4;
+      };
+
+      "module/i3" = {
+        type = "internal/i3";
+        pin-workspaces = true;
+        show-urgent = true;
+        strip-wsnumbers = true;
+        index-sort = true;
+        format = "<label-state> <label-mode>";
+
+        label-mode = "%mode%";
+        label-mode-padding = 2;
+        label-mode-background = "#89b4fa";
+        label-mode-foreground = "#1e1e2e";
+
+        label-focused = "%index%";
+        label-focused-background = "#89b4fa";
+        label-focused-foreground = "#1e1e2e";
+        label-focused-padding = 2;
+
+        label-unfocused = "%index%";
+        label-unfocused-background = "#313244";
+        label-unfocused-foreground = "#cdd6f4";
+        label-unfocused-padding = 2;
+
+        label-visible = "%index%";
+        label-visible-background = "#45475a";
+        label-visible-foreground = "#cdd6f4";
+        label-visible-padding = 2;
+
+        label-urgent = "%index%";
+        label-urgent-background = "#f38ba8";
+        label-urgent-foreground = "#1e1e2e";
+        label-urgent-padding = 2;
+      };
+
+      "module/date" = {
+        type = "internal/date";
+        interval = 1;
+        date = "%a %b %d";
+        time = "%H:%M";
+        format = "<label>";
+        format-background = "#313244";
+        format-foreground = "#cdd6f4";
+        format-padding = 2;
+        label = "  %date%  %time%";
+      };
+
+      "module/pulseaudio" = {
+        type = "internal/pulseaudio";
+        use-ui-max = true;
+        interval = 5;
+        format-volume = "<ramp-volume> <label-volume>";
+        format-volume-background = "#313244";
+        format-volume-padding = 2;
+        label-volume = "%percentage%%";
+        label-muted = "  muted";
+        label-muted-background = "#313244";
+        label-muted-foreground = "#6c7086";
+        label-muted-padding = 2;
+        ramp-volume-0 = "";
+        ramp-volume-1 = "";
+        ramp-volume-2 = "";
+        click-right = "pavucontrol";
+      };
+
+      "module/network" = {
+        type = "internal/network";
+        interface-type = "wired";
+        interval = 3;
+        format-connected = "<label-connected>";
+        format-connected-background = "#313244";
+        format-connected-padding = 2;
+        format-disconnected = "<label-disconnected>";
+        format-disconnected-background = "#313244";
+        format-disconnected-padding = 2;
+        label-connected = "  %local_ip%";
+        label-disconnected = "  disconnected";
+        label-disconnected-foreground = "#6c7086";
+      };
+
+      "settings" = {
+        screenchange-reload = true;
+        pseudo-transparency = true;
+      };
+    };
+  };
+
   # i3 config
   xsession.windowManager.i3 = {
     enable = true;
@@ -75,31 +194,8 @@
         outer = 4;
       };
 
-      bars = [
-        {
-          position = "top";
-          statusCommand = "${pkgs.i3status}/bin/i3status";
-          fonts = {
-            names = [ "JetBrainsMono Nerd Font" ];
-            size = 10.0;
-          };
-          colors = {
-            background = "#1e1e2e";
-            statusline = "#cdd6f4";
-            separator = "#45475a";
-            focusedWorkspace = {
-              border = "#89b4fa";
-              background = "#89b4fa";
-              text = "#1e1e2e";
-            };
-            inactiveWorkspace = {
-              border = "#1e1e2e";
-              background = "#1e1e2e";
-              text = "#6c7086";
-            };
-          };
-        }
-      ];
+      # Disable i3bar, use polybar instead
+      bars = [ ];
 
       keybindings = let
         mod = "Mod4";
@@ -193,6 +289,7 @@
         { command = "dunst"; notification = false; }
         { command = "feh --bg-fill ~/.wallpaper.jpg || feh --bg-scale /run/current-system/sw/share/backgrounds/gnome/adwaita-l.jpg"; notification = false; }
         { command = "fcitx5 -d"; notification = false; }
+        { command = "systemctl --user restart polybar"; notification = false; always = true; }
       ];
     };
   };
