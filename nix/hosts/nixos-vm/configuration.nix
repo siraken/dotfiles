@@ -70,7 +70,6 @@ in
     # X11 & i3
     xserver = {
       enable = true;
-      videoDrivers = [ "vmware" ];
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [

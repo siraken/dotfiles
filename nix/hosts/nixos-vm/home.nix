@@ -289,6 +289,7 @@ in
       };
 
       startup = [
+        { command = "xrandr --output Virtual-1 --mode 1920x1080"; notification = false; }
         { command = "picom -b"; notification = false; }
         { command = "dunst"; notification = false; }
         { command = "feh --bg-fill ~/.wallpaper.jpg || feh --bg-scale /run/current-system/sw/share/backgrounds/gnome/adwaita-l.jpg"; notification = false; }
