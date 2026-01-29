@@ -15,6 +15,7 @@ in
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5; # Keep only 5 boot entries
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
