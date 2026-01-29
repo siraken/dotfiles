@@ -131,6 +131,9 @@ in
     networkmanagerapplet
     thunar
     lxappearance
+    # Browser & Media
+    firefox
+    spotify
   ];
 
   # System version
