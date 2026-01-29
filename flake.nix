@@ -174,13 +174,24 @@
       };
 
       nixosConfigurations = {
-        # Placeholder for future NixOS configuration
-        # "your-linux-machine-name" = mkNixosSystem {
-        #   system = linuxSystem;
-        #   modules = [
-        #     ./nix/hosts/nixos/configuration.nix
-        #   ];
-        # };
+        "nixos-vm" = mkNixosSystem {
+          system = linuxSystem;
+          modules = [
+            ./nix/hosts/nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-backup";
+                users.${username} = ./nix/hosts/nixos/home.nix;
+                sharedModules = [ nixvim.homeModules.nixvim ];
+                extraSpecialArgs = { inherit inputs; };
+              };
+            }
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
 
       nixOnDroidConfigurations = {

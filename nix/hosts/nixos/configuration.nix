@@ -1,87 +1,69 @@
-{ pkgs, modulePath, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    # uv
-    # ===== from `apk` =====
-    # bash
-    # git
-    # go
-    # openssh
-    # openssl
-    # gh
-    # tmux
-    # sudo
-    # eza
-    # neofetch
-    # docker
-    # nginx
-    # php81
-    # ===== from `apt` =====
-    git
-    # curl
-    # wget
-    # libfuse2 -> not found
-    tree
-    # bat
-    neofetch
-    # luajit
-    # eza
-    # # hhvm -> not found
-    # # powershell
-    # ===== from `pkg` =====
-    # bat
-    # eza
-    # gh
-    # git
-    # go
-    # neofetch
-    # nodejs-lts -> not found
-    # tmux
-    # tree
-    # wget
-    # yarn
-    # openssh
-    # ===== from `snap` =====
-    # spt -> not found
-    # ===== from `pacman` =====
-    # base-devel -> not found
-    # libyaml
-    # curl
-    # wget
-    # git
-    # sudo
-    # neofetch
-    # onefetch
-    # gh
-    # deno
-    # starship
-    # tmux
-    # jq
-    # rust
-    # go
-    # lua
-    # luajit
-    # luarocks -> not found?
-    # eza
-    # bat
-    # ffmpeg
-    # inetutils
-    # mkcert
-    # yt-dlp
-    # lazygit
-    # jless
-    # cloudflared
-    # httpie
-    # lua-language-server
-    # dart
-    # jdk-openjdk -> should be specified
-    # gradle
-    # maven
-    # kotlin
-    # clojure
-    # leiningen
-    # sbcl
-    # tree-sitter
-    # openssh
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+let
+  username = "siraken";
+in
+{
+  imports = [
+    ./hardware-configuration.nix
   ];
+
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Networking
+  networking.hostName = "nixos-vm";
+  networking.networkmanager.enable = true;
+
+  # Timezone and locale
+  time.timeZone = "Asia/Tokyo";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Nix settings
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # User account
+  users.users.${username} = {
+    isNormalUser = true;
+    description = username;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+    initialPassword = "nixos";
+  };
+
+  # System packages
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    curl
+    wget
+    tree
+    neofetch
+    htop
+    eza
+    bat
+    ripgrep
+    fd
+    jq
+  ];
+
+  # Enable SSH
+  services.openssh.enable = true;
+
+  # System version
+  system.stateVersion = "25.11";
 }
