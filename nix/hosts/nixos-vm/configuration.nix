@@ -133,7 +133,7 @@ in
     lxappearance
     # Browser & Media
     firefox
-    spotify
+    vlc
   ];
 
   # System version
