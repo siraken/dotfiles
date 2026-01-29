@@ -8,6 +8,7 @@
 {
   imports = [
     ../../programs/git.nix
+    ../../programs/ghostty.nix
   ];
 
   home = {
@@ -51,7 +52,7 @@
     rofi = {
       enable = true;
       theme = "gruvbox-dark";
-      terminal = "${pkgs.kitty}/bin/kitty";
+      terminal = "${pkgs.ghostty}/bin/ghostty";
     };
 
     starship.enable = true;
@@ -181,7 +182,7 @@
     enable = true;
     config = {
       modifier = "Mod4"; # Super key
-      terminal = "kitty";
+      terminal = "ghostty";
       menu = "rofi -show drun";
 
       fonts = {
@@ -200,7 +201,7 @@
       keybindings = let
         mod = "Mod4";
       in {
-        "${mod}+Return" = "exec kitty";
+        "${mod}+Return" = "exec ghostty";
         "${mod}+d" = "exec rofi -show drun";
         "${mod}+q" = "kill";
         "${mod}+Shift+e" = "exec i3-msg exit";
