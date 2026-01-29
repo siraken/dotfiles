@@ -11,8 +11,7 @@ in
 {
   imports = [
     inputs.op-shell-plugins.hmModules.default
-    # programs
-    ../../programs/1password-shell-plugins.nix
+    # programs (cross-platform)
     ../../programs/alacritty.nix
     ../../programs/atuin.nix
     ../../programs/bash
@@ -31,19 +30,21 @@ in
     ../../programs/lazydocker.nix
     ../../programs/lazygit.nix
     ../../programs/mise.nix
-    ../../programs/neovide.nix
     ../../programs/starship.nix
     ../../programs/tmux.nix
     ../../programs/vim.nix
     # ../../programs/vscode.nix
     ../../programs/yazi.nix
     ../../programs/yt-dlp.nix
-    ../../programs/zed.nix
     ../../programs/zoxide.nix
     ../../programs/zsh
-    # services
-    ../../services/aerospace.nix
-    ../../services/jankyborders.nix
+    # programs (darwin-only)
+    ../../programs/darwin/1password-shell-plugins.nix
+    ../../programs/darwin/neovide.nix
+    ../../programs/darwin/zed.nix
+    # services (darwin-only)
+    ../../services/darwin/aerospace.nix
+    ../../services/darwin/jankyborders.nix
   ];
 
   home = {

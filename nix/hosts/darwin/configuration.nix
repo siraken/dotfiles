@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    ../../services/sketchybar
+    ../../services/darwin/sketchybar
   ];
   nix = {
     # Necessary for using flakes on this system.
