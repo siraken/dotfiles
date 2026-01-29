@@ -14,26 +14,33 @@ in
   ];
 
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5; # Keep only 5 boot entries
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 5; # Keep only 5 boot entries
+    };
+    efi.canTouchEfiVariables = true;
+  };
 
   # Networking
-  networking.hostName = "nixos-vm";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos-vm";
+    networkmanager.enable = true;
+  };
 
   # Timezone and locale
   time.timeZone = "Asia/Tokyo";
-  i18n.defaultLocale = "en_US.UTF-8";
 
-  # Japanese input
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-gtk
-    ];
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
+    };
   };
 
   # Nix settings
@@ -58,26 +65,32 @@ in
     initialPassword = "nixos";
   };
 
-  # X11 & i3
-  services.xserver = {
-    enable = true;
-    windowManager.i3 = {
+  # Services
+  services = {
+    # X11 & i3
+    xserver = {
       enable = true;
-      extraPackages = with pkgs; [
-        i3status
-        i3lock
-        dmenu
-        rofi
-      ];
+      windowManager.i3 = {
+        enable = true;
+        extraPackages = with pkgs; [
+          i3status
+          i3lock
+          dmenu
+          rofi
+        ];
+      };
+      displayManager.lightdm.enable = true;
     };
-    displayManager.lightdm.enable = true;
-  };
 
-  # Audio
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
+    # Audio
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
+
+    # SSH
+    openssh.enable = true;
   };
 
   # VMware guest tools
@@ -119,9 +132,6 @@ in
     thunar
     lxappearance
   ];
-
-  # Enable SSH
-  services.openssh.enable = true;
 
   # System version
   system.stateVersion = "25.11";
