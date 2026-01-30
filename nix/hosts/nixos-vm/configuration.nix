@@ -172,8 +172,7 @@ in
   # Environment variables for Wayland
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1"; # Firefox Wayland mode
-    WLR_NO_HARDWARE_CURSORS = "1"; # Avoid cursor issues in VM
-    WLR_RENDERER_ALLOW_SOFTWARE = "1"; # Allow software rendering in VM
+    WLR_NO_HARDWARE_CURSORS = "1"; # Avoid software rendering issues
   };
 
   # System packages
