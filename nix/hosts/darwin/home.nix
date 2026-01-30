@@ -38,9 +38,10 @@ in
     ../../programs/yt-dlp.nix
     ../../programs/zoxide.nix
     ../../programs/zsh
+    # programs (cross-platform but optional)
+    ../../programs/1password-shell-plugins.nix
+    ../../programs/neovide.nix
     # programs (darwin-only)
-    ../../programs/darwin/1password-shell-plugins.nix
-    ../../programs/darwin/neovide.nix
     ../../programs/darwin/zed.nix
     # services (darwin-only)
     ../../services/darwin/aerospace.nix
