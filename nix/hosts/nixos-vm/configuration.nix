@@ -61,6 +61,7 @@ in
       "networkmanager"
       "video"
       "input"
+      "docker"
     ];
     initialPassword = "nixos";
   };
@@ -103,10 +104,19 @@ in
     openssh.enable = true;
   };
 
-  # VMware guest tools
-  virtualisation.vmware.guest = {
-    enable = true;
-    headless = false; # Enable GUI support
+  # Virtualisation
+  virtualisation = {
+    # VMware guest tools
+    vmware.guest = {
+      enable = true;
+      headless = false; # Enable GUI support
+    };
+
+    # Docker
+    docker = {
+      enable = true;
+      autoPrune.enable = true; # Automatically clean up unused images/containers
+    };
   };
 
   # Fonts
