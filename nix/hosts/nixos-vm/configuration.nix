@@ -171,7 +171,7 @@ in
     lxappearance
     # Browser & Media
     firefox
-    google-chrome
+    chromium
     vlc
   ];
 
