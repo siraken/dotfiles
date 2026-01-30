@@ -70,22 +70,51 @@ in
     initialPassword = "nixos";
   };
 
+  # Programs
+  programs = {
+    # Sway (Wayland)
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      extraPackages = with pkgs; [
+        swaylock
+        swayidle
+        waybar
+        wofi
+        mako # notification daemon
+        grim # screenshot
+        slurp # region selection
+        wl-clipboard
+        wdisplays # display configuration
+        swaybg # wallpaper
+      ];
+    };
+  };
+
+  # XDG portal for Wayland
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  # Security (required for Sway)
+  security.polkit.enable = true;
+
   # Services
   services = {
-    # X11 & i3
-    xserver = {
+    # Video drivers
+    xserver.videoDrivers = [ "virtio" ];
+
+    # greetd (Wayland display manager)
+    greetd = {
       enable = true;
-      windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [
-          i3status
-          i3lock
-          dmenu
-          rofi
-        ];
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          user = "greeter";
+        };
       };
-      displayManager.lightdm.enable = true;
-      videoDrivers = [ "virtio" ];
     };
 
     # Audio
@@ -140,6 +169,12 @@ in
     nerd-fonts.jetbrains-mono
   ];
 
+  # Environment variables for Wayland
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1"; # Firefox Wayland mode
+    WLR_NO_HARDWARE_CURSORS = "1"; # Avoid software rendering issues
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
     vim
@@ -154,18 +189,11 @@ in
     ripgrep
     fd
     jq
-    # i3 essentials
+    # Desktop essentials
     kitty
-    feh
-    picom
-    dunst
-    maim
-    xclip
-    arandr
     pavucontrol
     networkmanagerapplet
     thunar
-    lxappearance
     # Browser & Media
     firefox
     chromium
