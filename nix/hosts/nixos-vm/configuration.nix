@@ -115,7 +115,7 @@ in
   hardware = {
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [ mesa.drivers ];
+      extraPackages = with pkgs; [ mesa ];
     };
   };
 
