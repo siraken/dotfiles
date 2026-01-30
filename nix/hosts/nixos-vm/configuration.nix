@@ -13,13 +13,17 @@ in
     ./hardware-configuration.nix
   ];
 
-  # Bootloader
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 5; # Keep only 5 boot entries
+  boot = {
+    # Bootloader
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 5; # Keep only 5 boot entries
+      };
+      efi.canTouchEfiVariables = true;
     };
-    efi.canTouchEfiVariables = true;
+
+    kernelParams = [ "video=1920x1080" ];
   };
 
   # Networking
@@ -81,6 +85,10 @@ in
         ];
       };
       displayManager.lightdm.enable = true;
+      videoDrivers = [
+        "vmware"
+        "virtio"
+      ];
     };
 
     # Audio
@@ -102,6 +110,13 @@ in
 
     # SSH
     openssh.enable = true;
+  };
+
+  hardware = {
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [ mesa.drivers ];
+    };
   };
 
   # Virtualisation
