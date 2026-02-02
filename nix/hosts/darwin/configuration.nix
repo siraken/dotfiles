@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ../../modules/darwin/launchd-services.nix
     ../../services/darwin/sketchybar
   ];
   nix = {
@@ -151,6 +152,33 @@ in
         backend = "portaudio";
         initial_volume = 100;
         volume_controller = "softvol";
+      };
+    };
+  };
+
+  # Custom launchd services (managed by nix/modules/darwin/launchd-services.nix)
+  customServices = {
+    ollama = {
+      enable = true;
+      package = pkgs.ollama;
+      command = [ "${pkgs.ollama}/bin/ollama" "serve" ];
+      environment = {
+        OLLAMA_HOST = "127.0.0.1:11434";
+        # OLLAMA_MODELS = "/path/to/models";  # Optional: custom model path
+      };
+    };
+
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_14;
+      command = [
+        "${pkgs.postgresql_14}/bin/postgres"
+        "-D"
+        "/Users/siraken/.local/share/postgresql"
+      ];
+      environment = {
+        LC_ALL = "en_US.UTF-8";
+        LANG = "en_US.UTF-8";
       };
     };
   };
