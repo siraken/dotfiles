@@ -41,8 +41,6 @@ in
     # programs (cross-platform but optional)
     ../../programs/1password-shell-plugins.nix
     ../../programs/neovide.nix
-    # programs (darwin-only)
-    ../../programs/darwin/zed.nix
     # services (darwin-only)
     ../../services/darwin/aerospace.nix
     ../../services/darwin/jankyborders.nix
