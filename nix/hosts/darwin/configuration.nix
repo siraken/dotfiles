@@ -449,14 +449,11 @@ in
       "Logic Pro" = 634148309;
       "MainStage" = 634159523;
       "Motion" = 434290957;
-      # # "Sequel Ace" = 1518036000;
-      # # "Trello" = 1278508951;
       "DaisyDisk" = 411643860;
       "KakaoTalk" = 869223134;
       "Kindle" = 302584613;
       "LanScan" = 472226235;
       "LINE" = 539883307;
-      # "Magnet" = 441258766;
       "Messenger" = 1480068668;
       "Microsoft Excel" = 462058435;
       "Microsoft Outlook" = 985367838;
@@ -467,7 +464,6 @@ in
       # "Spark" = 1176895641;
       # "Tailscale" = 1475387142;
       "The Unarchiver" = 425424353;
-      # "Twitter" = 1482454543;
     };
   };
 
