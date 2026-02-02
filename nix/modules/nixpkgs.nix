@@ -9,6 +9,7 @@ let
     dust # du replacement
     eza # ls replacement
     fd # find replacement
+    ripgrep # grep replacement
     tree # directory tree
   ];
 

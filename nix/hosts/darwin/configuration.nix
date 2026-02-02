@@ -116,106 +116,45 @@ in
       cleanup = "none";
     };
     taps = [
-      # "homebrew/bundle"
-      # "homebrew/services"
       "siraken/homebrew-tap"
       "novalumo/homebrew-tap"
-      # "cirruslabs/cli"
-      # "mongodb/brew"
-      # "shopify/shopify"
-      # "ethereum/ethereum"
-      # "dart-lang/dart"
-      # "heroku/brew"
-      # "sidneys/homebrew"
-      # "tgotwig/linux-dust"
-      # "leoafarias/fvm"
-      # "clojure/tools"
-      # "supabase/tap"
-      # "planetscale/tap"
-      # "planetscale/tap"
-      # "tako8ki/tap"
-      # "jesseduffield/lazygit"
-      # "jesseduffield/lazydocker"
-      # "coursier/formulas"
-      # "charmbracelet/tap"
-      # "cloudflare/cloudflare"
-      # "borkdude/brew"
-      # "arrow2nd/tap"
-      # "teamookla/speedtest"
-      # "d12frosted/emacs-plus"
-      # "borkdude/brew"
-      # "ngrok/ngrok"
-      # "earthly/earthly"
-      # "grishka/grishka"
-      # "modularml/packages"
-      # "symfony-cli/tap"
-      # "FelixKratz/formulae"
       "VOICEVOX/voicevox"
     ];
     brews = [
-      # "act" # moved to nixpkgs
       "aircrack-ng"
-      # "ansible" # moved to nixpkgs
       "apktool"
       "arduino-cli"
-      # "aria2" # moved to nixpkgs
       "azure-cli"
-      # "bandwhich" # moved to nixpkgs
       "bats-core"
-      # "broot" # moved to nixpkgs
       "cabextract"
       "cairo"
       "cdrtools"
       "cfonts"
-      # "clojure" # moved to nixpkgs
-      # "cloudflared" # moved to nixpkgs
-      # "cmake" # moved to nixpkgs
       "cocoapods"
       "composer"
       "coursier"
-      # "dart" # moved to nixpkgs
       "duck"
-      # "duf" # moved to nixpkgs
-      # "dust" # moved to nixpkgs
       "earthly"
-      # "elm" # moved to nixpkgs
       "ethereum"
-      # "eza" # moved to nixpkgs
-      # "fd" # moved to nixpkgs
       "ffmpeg"
-      # "flyctl" # moved to nixpkgs
-      # "fx" # moved to nixpkgs
-      # "genact" # moved to nixpkgs
       "ggshield"
       "ghcup"
       "gibo"
       "giflib"
-      # "git-delta" # moved to nixpkgs
       "git-filter-repo"
       "git-secrets"
       "gitui"
-      # "glow" # moved to nixpkgs
       "gnucobol"
       "goreleaser"
       "gpg"
-      # "gradle" # moved to nixpkgs
-      # "graphviz" # moved to nixpkgs
       "grpc"
-      # "gum" # moved to nixpkgs
       "hashcat"
-      # "httpie" # moved to nixpkgs
-      # "hugo" # moved to nixpkgs
       "hydra"
-      # "hyperfine" # moved to nixpkgs
       "imagemagick"
       "invoice"
       "ios-deploy"
-      # "jless" # moved to nixpkgs
       "jmeter"
       "jpeg"
-      # "jq" # moved to nixpkgs
-      # "kompose" # moved to nixpkgs
-      # "kotlin" # moved to nixpkgs
       "leiningen"
       "libffi"
       "libiconv"
@@ -224,45 +163,26 @@ in
       "librsvg"
       "libxslt"
       "llvm"
-      # "lua-language-server" # moved to nixpkgs
-      # "lua" # moved to nixpkgs
-      "luajit" # args: ["HEAD"]
-      # "luarocks" # moved to nixpkgs
+      "luajit"
       "mas"
-      # "maven" # moved to nixpkgs
-      # "minikube" # moved to nixpkgs
       "mist"
-      # "mkcert" # moved to nixpkgs
       "certbot"
       "monolith"
       "mplayer"
-      "mpv"
       "mysql"
-      # "navi" # moved to nixpkgs
-      # "neofetch" # moved to nixpkgs
-      # "nim" # moved to nixpkgs
-      # "ninja" # moved to nixpkgs
-      # "onefetch" # moved to nixpkgs
       "openssl"
-      # "pandoc" # moved to nixpkgs
       "pango"
-      # "pastel" # moved to nixpkgs
       "pdf2svg"
       "pdfcrack"
       "pixman"
       "pkg-config"
       "portaudio"
-      # "procs" # moved to nixpkgs
       "pure"
       "putty"
       "pwgen"
       "qemu"
       "redis"
-      "ripgrep"
       "samba"
-      # "sbcl" # moved to nixpkgs
-      # "sbt" # moved to nixpkgs
-      # "scala" # moved to nixpkgs
       "shpotify"
       "skaffold"
       "sl"
@@ -271,62 +191,22 @@ in
       "sqlite"
       "stack"
       "streamlink"
-      # "tart" # cirruslabs/cli/tart
       "telnet"
-      # "tenv" # moved to nixpkgs
       "testdisk"
-      # "tldr" # moved to nixpkgs (tealdeer)
       "tnftp"
-      # "tokei" # moved to nixpkgs
-      # "tor" # moved to nixpkgs
-      # "tree-sitter" # moved to nixpkgs
-      # "tree" # moved to nixpkgs (kept in brew: ansible dependency)
-      "ttyd" # args: ["HEAD"]
-      # "vhs" # moved to nixpkgs
+      "ttyd"
       "w3m"
       "watchman"
       "wego"
-      # "wget" # moved to nixpkgs
       "whalebrew"
       "wimlib"
       "xsv"
-      "yt-dlp"
       "zola"
       "zplug"
       "pinact"
       "svn"
-      # "aws/tap/lightsailctl"
-      # "cloudflare/cloudflare/cf-terraforming"
-      # "ipfs" # ipfs/kubo
-      # # "babashka" no available formula
-      # # "clj-kondo" no available formula
-      # # "dog" installation failed
-      # # "emacs-plus" args: ["with-spacemacs-icon" "with-native-comp"]
-      # # "fig"
-      # # "fvm" no available formula
-      # # "getsentry/tools/sentry-cli" please tap
-      # # "gobang" no available formula
-      # # "heroku" no available formula
-      # # "modular" no available formula
-      # # "mongodb-community" no available formula
-      # # "mono"
-      # # "neardrop" installation failed
-      # # "nekome" no available formula
-      # # "ngrok" # install with cask
-      # # "pscale" no available formula
-      # # "sapling"
-      # # "shopify-cli" no available formula
-      # # "sidneys/homebrew/chntpw" installation failed
-      # # "speedtest" no available formula
-      # # "supabase" no available formula
-      # # "symfony-cli" no available formula
-      # # "themekit" no available formula
-      # # "unixodbc"
-      # # "vapor" # requires Xcode installed
     ];
     casks = [
-      # "1password"
-      # "1password/tap/1password-cli"
       "alt-tab"
       "appcleaner"
       "arc"
@@ -373,17 +253,13 @@ in
       "handbrake-app"
       "hyper"
       "imageoptim"
-      # "ipfs-desktop" # ipfs/ipfs-desktop
       "jetbrains-toolbox"
       "keycastr"
       "lapce"
       "linear-linear"
       "lm-studio"
       "local"
-      # FIXME: "logi-options+"
-      # FIXME: "logi-options-plus"
       "logitech-g-hub"
-      # "macfuse"
       "mamp"
       "microsoft-teams"
       "min"
@@ -410,13 +286,11 @@ in
       "steam"
       "streamlabs"
       "sublime-text"
-      # "surge-xt"
       "tableplus"
       "termius"
       "tor-browser"
       "transmit"
       "ngrok"
-      # "ubersicht"
       "unity-hub"
       "vagrant"
       "visual-studio-code"
@@ -431,10 +305,6 @@ in
       "xsplit-vcam"
       "zoom"
       "zulu@17"
-      # # "eclipse" similarly casks are available
-      # # "google-japanese-ime" # Failed to install
-      # # "mongodb-compass"
-      # # "native-access"
       {
         name = "voicevox";
         args = {
