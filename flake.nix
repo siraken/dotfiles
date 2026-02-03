@@ -48,6 +48,10 @@
     op-shell-plugins = {
       url = "github:1Password/shell-plugins";
     };
+
+    # dotfiles-private = {
+    #   url = "github:siraken/dotfiles-private";
+    # };
   };
 
   outputs =
