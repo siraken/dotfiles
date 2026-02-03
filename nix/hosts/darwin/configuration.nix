@@ -1,7 +1,14 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
-{ pkgs, modulePath, ... }:
+{
+  config,
+  pkgs,
+  modulePath,
+  ...
+}:
 let
   networkingHostName = "Kentos-MacBook-Pro";
+  homeDir = config.users.users.siraken.home;
+  userPaths = import ../../modules/user-paths.nix { inherit homeDir; };
 in
 {
   imports = [
@@ -161,7 +168,10 @@ in
     ollama = {
       enable = true;
       package = pkgs.ollama;
-      command = [ "${pkgs.ollama}/bin/ollama" "serve" ];
+      command = [
+        "${pkgs.ollama}/bin/ollama"
+        "serve"
+      ];
       environment = {
         OLLAMA_HOST = "127.0.0.1:11434";
         # OLLAMA_MODELS = "/path/to/models";  # Optional: custom model path
@@ -174,7 +184,7 @@ in
       command = [
         "${pkgs.postgresql_14}/bin/postgres"
         "-D"
-        "/Users/siraken/.local/share/postgresql"
+        (userPaths.dataDir "postgresql")
       ];
       environment = {
         LC_ALL = "en_US.UTF-8";
