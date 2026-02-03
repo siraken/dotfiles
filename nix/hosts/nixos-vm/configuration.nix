@@ -139,7 +139,6 @@ in
       enable = true;
       rootless = {
         enable = true;
-        setSocketVariables = true;
       };
       autoPrune.enable = true; # Automatically clean up unused images/containers
     };
