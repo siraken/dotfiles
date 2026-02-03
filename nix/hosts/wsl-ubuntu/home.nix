@@ -25,6 +25,7 @@ in
     # programs
     ../../programs/1password-shell-plugins
     ../../programs/atuin
+    ../../programs/awscli
     ../../programs/bash
     ../../programs/bat
     ../../programs/bottom

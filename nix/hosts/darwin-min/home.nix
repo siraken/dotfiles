@@ -14,6 +14,7 @@ in
     # programs (cross-platform)
     ../../programs/alacritty
     ../../programs/atuin
+    ../../programs/awscli
     ../../programs/bash
     ../../programs/bat
     ../../programs/bottom
