@@ -49,9 +49,9 @@
       url = "github:1Password/shell-plugins";
     };
 
-    # dotfiles-private = {
-    #   url = "git+ssh://git@github.com/siraken/dotfiles-private";
-    # };
+    dotfiles-private = {
+      url = "github:siraken/dotfiles-private";
+    };
   };
 
   outputs =
@@ -66,7 +66,7 @@
       llm-agents,
       nix-on-droid,
       op-shell-plugins,
-      # dotfiles-private,
+      dotfiles-private,
       ...
     }:
     let
