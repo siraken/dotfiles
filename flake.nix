@@ -87,6 +87,8 @@
           pkgs = pkgs;
           modules = [
             ./nix/hosts/wsl-ubuntu/home.nix
+            nix-index-database.hmModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
             {
               home = {
                 username = username;
@@ -136,6 +138,7 @@
           modules = [
             ./nix/hosts/darwin/configuration.nix
             nix-index-database.darwinModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
             home-manager.darwinModules.home-manager
             {
               users.users = {
@@ -160,6 +163,8 @@
           system = darwinSystem;
           modules = [
             ./nix/hosts/darwin-min/configuration.nix
+            nix-index-database.darwinModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
             home-manager.darwinModules.home-manager
             {
               users.users = {
@@ -187,6 +192,8 @@
           system = linuxSystem;
           modules = [
             ./nix/hosts/nixos-vm/configuration.nix
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
             home-manager.nixosModules.home-manager
             {
               home-manager = {
