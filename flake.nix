@@ -70,6 +70,8 @@
       darwinSystem = "aarch64-darwin";
       linuxSystem = "x86_64-linux";
 
+      backupFileExtension = "hm-backup";
+
       mkDarwinSystem = nix-darwin.lib.darwinSystem;
       mkNixosSystem = nixpkgs.lib.nixosSystem;
       mkNixOnDroidSystem = nix-on-droid.lib.nixOnDroidConfiguration;
@@ -145,7 +147,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                backupFileExtension = "hm-backup";
+                backupFileExtension = backupFileExtension;
                 users.siraken = ./nix/hosts/darwin/home.nix;
                 sharedModules = [ nixvim.homeModules.nixvim ];
                 extraSpecialArgs = { inherit inputs; };
@@ -170,7 +172,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                backupFileExtension = "hm-backup";
+                backupFileExtension = backupFileExtension;
                 users.siraken = ./nix/hosts/darwin-min/home.nix;
                 sharedModules = [ nixvim.homeModules.nixvim ];
                 extraSpecialArgs = { inherit inputs; };
@@ -190,7 +192,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                backupFileExtension = "hm-backup";
+                backupFileExtension = backupFileExtension;
                 users.${username} = ./nix/hosts/nixos-vm/home.nix;
                 sharedModules = [ nixvim.homeModules.nixvim ];
                 extraSpecialArgs = { inherit inputs; };
