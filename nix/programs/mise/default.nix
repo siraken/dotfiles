@@ -92,7 +92,6 @@ in
         elixir = "latest";
         ruby = "latest";
         zig = "latest";
-        ghq = "latest";
         uv = "latest";
         go = "latest";
         rust = "latest";

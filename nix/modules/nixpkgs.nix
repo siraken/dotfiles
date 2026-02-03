@@ -93,6 +93,7 @@ let
 
   # Development utilities
   devUtilTools = [
+    ghq # repository manager
     graphviz # graph visualization
     lua-language-server # LSP
     luarocks # Lua packages
