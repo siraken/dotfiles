@@ -33,6 +33,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,6 +59,7 @@
       nixvim,
       home-manager,
       treefmt-nix,
+      llm-agents,
       nix-on-droid,
       op-shell-plugins,
       ...
