@@ -22,6 +22,7 @@ in
 
   imports = [
     inputs.op-shell-plugins.hmModules.default
+    inputs.dotfiles-private.homeManagerModules.default
     # programs
     ../../programs/1password-shell-plugins
     ../../programs/atuin
