@@ -24,11 +24,6 @@ in
 
     initContent = ''
       ${optionScript}
-
-      # Set GitHub token for Nix to access private repositories
-      if command -v gh &> /dev/null && gh auth status &> /dev/null 2>&1; then
-        export NIX_CONFIG="access-tokens = github.com=$(gh auth token)"
-      fi
     '';
   };
 }
