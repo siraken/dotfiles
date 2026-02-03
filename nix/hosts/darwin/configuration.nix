@@ -16,8 +16,18 @@ in
     ../../services/darwin/sketchybar
   ];
   nix = {
-    # Necessary for using flakes on this system.
-    settings.experimental-features = "nix-command flakes";
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
   nixpkgs = {

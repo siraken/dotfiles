@@ -48,10 +48,20 @@ in
   };
 
   # Nix settings
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -127,6 +137,10 @@ in
     # Docker
     docker = {
       enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariables = true;
+      };
       autoPrune.enable = true; # Automatically clean up unused images/containers
     };
   };
