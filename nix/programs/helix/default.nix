@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  colors = import ../colors/tokyonight.nix;
+  colors = import ../../colors/tokyonight.nix;
   c = colors;
   ui = colors.uiTransparent; # Use transparent variant
 in

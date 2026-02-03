@@ -23,29 +23,29 @@ in
   imports = [
     inputs.op-shell-plugins.hmModules.default
     # programs
-    ../../programs/1password-shell-plugins.nix
-    ../../programs/atuin.nix
+    ../../programs/1password-shell-plugins
+    ../../programs/atuin
     ../../programs/bash
-    ../../programs/bat.nix
-    ../../programs/bottom.nix
-    ../../programs/coding-agents.nix
-    # ../../programs/difftastic.nix
-    ../../programs/direnv.nix
-    ../../programs/emacs.nix
+    ../../programs/bat
+    ../../programs/bottom
+    ../../programs/coding-agents
+    # ../../programs/difftastic
+    ../../programs/direnv
+    ../../programs/emacs
     ../../programs/fish
-    ../../programs/fzf.nix
-    ../../programs/git.nix
-    ../../programs/helix.nix
-    ../../programs/lazydocker.nix
-    ../../programs/lazygit.nix
-    ../../programs/mise.nix
-    ../../programs/neovide.nix
-    ../../programs/starship.nix
-    ../../programs/tmux.nix
-    ../../programs/vim.nix
-    ../../programs/yazi.nix
-    ../../programs/yt-dlp.nix
-    ../../programs/zoxide.nix
+    ../../programs/fzf
+    ../../programs/git
+    ../../programs/helix
+    ../../programs/lazydocker
+    ../../programs/lazygit
+    ../../programs/mise
+    ../../programs/neovide
+    ../../programs/starship
+    ../../programs/tmux
+    ../../programs/vim
+    ../../programs/yazi
+    ../../programs/yt-dlp
+    ../../programs/zoxide
     ../../programs/zsh
   ];
 

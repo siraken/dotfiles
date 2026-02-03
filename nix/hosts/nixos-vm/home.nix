@@ -11,26 +11,26 @@ in
 {
   imports = [
     # programs (cross-platform)
-    ../../programs/atuin.nix
+    ../../programs/atuin
     ../../programs/bash
-    ../../programs/bat.nix
-    ../../programs/bottom.nix
-    ../../programs/direnv.nix
+    ../../programs/bat
+    ../../programs/bottom
+    ../../programs/direnv
     # ../../programs/fish # disabled due to fisher hash mismatch
-    ../../programs/fzf.nix
-    ../../programs/ghostty.nix
-    ../../programs/git.nix
-    ../../programs/helix.nix
-    ../../programs/kitty.nix
-    ../../programs/lazydocker.nix
-    ../../programs/lazygit.nix
-    ../../programs/mise.nix
-    ../../programs/starship.nix
-    ../../programs/tmux.nix
-    ../../programs/vim.nix
-    ../../programs/yazi.nix
-    ../../programs/yt-dlp.nix
-    ../../programs/zoxide.nix
+    ../../programs/fzf
+    ../../programs/ghostty
+    ../../programs/git
+    ../../programs/helix
+    ../../programs/kitty
+    ../../programs/lazydocker
+    ../../programs/lazygit
+    ../../programs/mise
+    ../../programs/starship
+    ../../programs/tmux
+    ../../programs/vim
+    ../../programs/yazi
+    ../../programs/yt-dlp
+    ../../programs/zoxide
     ../../programs/zsh
   ];
 

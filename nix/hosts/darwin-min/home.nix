@@ -12,35 +12,35 @@ in
   imports = [
     inputs.op-shell-plugins.hmModules.default
     # programs (cross-platform)
-    ../../programs/alacritty.nix
-    ../../programs/atuin.nix
+    ../../programs/alacritty
+    ../../programs/atuin
     ../../programs/bash
-    ../../programs/bat.nix
-    ../../programs/bottom.nix
-    ../../programs/coding-agents.nix
-    # ../../programs/difftastic.nix
-    ../../programs/direnv.nix
-    ../../programs/emacs.nix
+    ../../programs/bat
+    ../../programs/bottom
+    ../../programs/coding-agents
+    # ../../programs/difftastic
+    ../../programs/direnv
+    ../../programs/emacs
     ../../programs/fish
-    ../../programs/fzf.nix
-    ../../programs/ghostty.nix
-    ../../programs/git.nix
-    ../../programs/helix.nix
-    ../../programs/kitty.nix
-    ../../programs/lazydocker.nix
-    ../../programs/lazygit.nix
-    ../../programs/mise.nix
-    ../../programs/starship.nix
-    ../../programs/tmux.nix
-    ../../programs/vim.nix
-    # ../../programs/vscode.nix
-    ../../programs/yazi.nix
-    ../../programs/yt-dlp.nix
-    ../../programs/zoxide.nix
+    ../../programs/fzf
+    ../../programs/ghostty
+    ../../programs/git
+    ../../programs/helix
+    ../../programs/kitty
+    ../../programs/lazydocker
+    ../../programs/lazygit
+    ../../programs/mise
+    ../../programs/starship
+    ../../programs/tmux
+    ../../programs/vim
+    # ../../programs/vscode
+    ../../programs/yazi
+    ../../programs/yt-dlp
+    ../../programs/zoxide
     ../../programs/zsh
     # programs (cross-platform but optional)
-    ../../programs/1password-shell-plugins.nix
-    ../../programs/neovide.nix
+    ../../programs/1password-shell-plugins
+    ../../programs/neovide
     # services (darwin-only)
     ../../services/darwin/aerospace.nix
     ../../services/darwin/jankyborders.nix

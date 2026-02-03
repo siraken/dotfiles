@@ -10,12 +10,12 @@ let
 in
 {
   imports = [
-    ../../programs/zoxide.nix
-    ../../programs/git.nix
+    ../../programs/zoxide
+    ../../programs/git
     ../../programs/zsh
-    ../../programs/tmux.nix
-    ../../programs/yazi.nix
-    ../../programs/starship.nix
+    ../../programs/tmux
+    ../../programs/yazi
+    ../../programs/starship
   ];
 
   home = {

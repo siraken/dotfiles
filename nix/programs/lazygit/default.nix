@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  colors = import ../colors/tokyonight.nix;
+  colors = import ../../colors/tokyonight.nix;
 in
 {
   programs.lazygit = {
