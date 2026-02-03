@@ -215,14 +215,14 @@
         };
       };
 
-      nixOnDroidConfigurations = {
-        # "nixondroid-device" = mkNixOnDroidSystem {
-        #   system = "aarch64-linux";
-        #   modules = [
-        #     ./nix/hosts/nixondroid/configuration.nix
-        #   ];
-        # };
-      };
+      # nixOnDroidConfigurations = {
+      #   "pixel10" = mkNixOnDroidSystem {
+      #     system = "aarch64-linux";
+      #     modules = [
+      #       ./nix/hosts/pixel10/configuration.nix
+      #     ];
+      #   };
+      # };
 
       homeConfigurations = {
         "wsl-ubuntu" = mkHomeConfiguration {
