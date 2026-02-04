@@ -209,7 +209,7 @@ in
         co = "pr checkout";
         pv = "pr view";
       };
-      git_protocol = "ssh";
+      git_protocol = "https";
     };
   };
 
