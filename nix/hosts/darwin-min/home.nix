@@ -12,7 +12,6 @@ in
   imports = [
     inputs.op-shell-plugins.hmModules.default
     # programs (cross-platform)
-    ../../programs/alacritty
     ../../programs/atuin
     ../../programs/awscli
     ../../programs/bash

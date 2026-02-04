@@ -13,7 +13,6 @@ in
     inputs.op-shell-plugins.hmModules.default
     # inputs.dotfiles-private.homeManagerModules.default
     # programs (cross-platform)
-    ../../programs/alacritty
     ../../programs/atuin
     ../../programs/awscli
     ../../programs/bash
