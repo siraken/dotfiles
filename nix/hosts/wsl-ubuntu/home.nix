@@ -47,6 +47,7 @@ in
     ../../programs/vim
     ../../programs/yazi
     ../../programs/yt-dlp
+    ../../programs/zellij
     ../../programs/zoxide
     ../../programs/zsh
   ];

@@ -38,6 +38,7 @@ in
     # ../../programs/vscode
     ../../programs/yazi
     ../../programs/yt-dlp
+    ../../programs/zellij
     ../../programs/zoxide
     ../../programs/zsh
     # programs (cross-platform but optional)
