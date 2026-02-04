@@ -153,7 +153,7 @@ in
 
   power = {
     sleep = {
-      computer = 1;
+      computer = "never";
       display = 5;
       harddisk = 10;
     };
