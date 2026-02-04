@@ -127,7 +127,14 @@ in
         EnableStandardClickToShowDesktop = false;
         EnableTiledWindowMargins = false;
       };
+      screensaver = {
+        askForPassword = true;
+        askForPasswordDelay = 0;
+      };
       CustomUserPreferences = {
+        "com.apple.screensaver" = {
+          idleTime = 180;
+        };
         "com.microsoft.VSCode" = {
           ApplePressAndHoldEnabled = false;
         };
@@ -141,6 +148,14 @@ in
           ApplePressAndHoldEnabled = false;
         };
       };
+    };
+  };
+
+  power = {
+    sleep = {
+      computer = 1;
+      display = 5;
+      harddisk = 10;
     };
   };
 
