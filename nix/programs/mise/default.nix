@@ -6,7 +6,6 @@ let
 
   # npm パッケージ
   npm = {
-    typescript = "latest";
     # nativescript = "latest";
     # "@ionic/cli" = "latest";
     # native-run = "latest";
@@ -33,7 +32,6 @@ let
     "@lhci/cli" = "latest";
     "@nestjs/cli" = "latest";
     "@antfu/ni" = "latest";
-    "@typescript/native-preview" = "latest";
     cordova = "latest";
     cordova-res = "latest";
     md-to-pdf = "latest";
