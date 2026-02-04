@@ -12,7 +12,7 @@ in
       else
         pkgs.ghostty;
     settings = {
-      shell-integration = "zsh";
+      shell-integration = "detect";
 
       # Font settings
       font-family = "Hack Nerd Font Mono";
@@ -25,10 +25,15 @@ in
       background-blur-radius = 13;
 
       # Window settings
+      window-vsync = true;
       window-padding-x = 0;
       window-padding-y = 0;
+      window-padding-color = "background";
+      window-decoration = "none";
+      window-inherit-working-directory = true;
       macos-titlebar-style = "tabs";
 
+      focus-follows-mouse = false;
       confirm-close-surface = false;
       quit-after-last-window-closed = true;
 
