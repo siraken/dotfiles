@@ -7,7 +7,7 @@
     enableZshIntegration = true;
     layouts = { };
     settings = {
-      theme = "tokyo-night-dark";
+      theme = "tokyo-night";
       show_startup_tips = false;
       show_release_notes = true;
     };
