@@ -171,6 +171,8 @@ in
   };
 
   services = {
+    openssh.enable = true;
+
     spotifyd = {
       enable = true;
       settings = {
