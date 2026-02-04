@@ -9,12 +9,6 @@
         live_config_reload = true;
       };
 
-      # Environment variables
-      env = {
-        GITHUB_USERNAME = "siraken";
-        TERM = "xterm-256color";
-      };
-
       # Terminal settings
       terminal = {
         shell = {
