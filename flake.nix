@@ -8,6 +8,10 @@
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +61,7 @@
   outputs =
     inputs@{
       self,
+      flake-parts,
       nixpkgs,
       nix-darwin,
       nix-index-database,
@@ -71,10 +76,8 @@
     }:
     let
       username = "siraken";
-
       darwinSystem = "aarch64-darwin";
       linuxSystem = "x86_64-linux";
-
       backupFileExtension = "hm-backup";
 
       mkDarwinSystem = nix-darwin.lib.darwinSystem;
@@ -106,153 +109,149 @@
         };
 
       # Function for creating app entries
-      mkApp = system: name: script: {
+      mkApp = pkgs: name: script: {
         type = "app";
-        program = toString (nixpkgs.legacyPackages.${system}.writeShellScript name script);
+        program = toString (pkgs.writeShellScript name script);
       };
-
-      darwinApp = mkApp darwinSystem;
     in
-    {
-      formatter = {
-        ${darwinSystem} = nixpkgs.legacyPackages.${darwinSystem}.nixfmt-tree;
-      };
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        darwinSystem
+        linuxSystem
+      ];
 
-      devShells = {
-        ${darwinSystem} = {
-          default = nixpkgs.legacyPackages.${darwinSystem}.mkShell {
+      perSystem =
+        { pkgs, system, ... }:
+        {
+          formatter = pkgs.nixfmt-tree;
+
+          devShells.default = pkgs.mkShell {
             buildInputs = [
-              nixpkgs.legacyPackages.${darwinSystem}.nixfmt
-              nixpkgs.legacyPackages.${darwinSystem}.nixpkgs-fmt
+              pkgs.nixfmt
+              pkgs.nixpkgs-fmt
+            ];
+          };
+        }
+        // nixpkgs.lib.optionalAttrs (system == darwinSystem) {
+          apps =
+            let
+              darwinApp = mkApp pkgs;
+            in
+            {
+              sw = darwinApp "sw" ''
+                sudo darwin-rebuild switch --flake ${self}#darwin --impure
+              '';
+              sw-min = darwinApp "sw-min" ''
+                sudo darwin-rebuild switch --flake ${self}#darwin-min --impure
+              '';
+              build = darwinApp "build" ''
+                darwin-rebuild build --flake ${self}#darwin --impure
+              '';
+              gc = darwinApp "gc" ''
+                nix store gc
+              '';
+            };
+
+          checks = {
+            darwin = self.darwinConfigurations.darwin.system;
+            darwin-min = self.darwinConfigurations.darwin-min.system;
+          };
+        };
+
+      flake = {
+        darwinConfigurations = {
+          "darwin" = mkDarwinSystem {
+            system = darwinSystem;
+            modules = [
+              ./nix/hosts/darwin/configuration.nix
+              nix-index-database.darwinModules.nix-index
+              { programs.nix-index-database.comma.enable = true; }
+              home-manager.darwinModules.home-manager
+              {
+                users.users = {
+                  "${username}" = {
+                    name = "${username}";
+                    home = "/Users/${username}";
+                  };
+                };
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = backupFileExtension;
+                  users.siraken = ./nix/hosts/darwin/home.nix;
+                  sharedModules = [ nixvim.homeModules.nixvim ];
+                  extraSpecialArgs = { inherit inputs; };
+                };
+              }
+            ];
+          };
+
+          "darwin-min" = mkDarwinSystem {
+            system = darwinSystem;
+            modules = [
+              ./nix/hosts/darwin-min/configuration.nix
+              nix-index-database.darwinModules.nix-index
+              { programs.nix-index-database.comma.enable = true; }
+              home-manager.darwinModules.home-manager
+              {
+                users.users = {
+                  "${username}" = {
+                    name = "${username}";
+                    home = "/Users/${username}";
+                  };
+                };
+
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = backupFileExtension;
+                  users.siraken = ./nix/hosts/darwin-min/home.nix;
+                  sharedModules = [ nixvim.homeModules.nixvim ];
+                  extraSpecialArgs = { inherit inputs; };
+                };
+              }
             ];
           };
         };
-        ${linuxSystem} = {
-          default = nixpkgs.legacyPackages.${linuxSystem}.mkShell {
-            buildInputs = [
-              nixpkgs.legacyPackages.${linuxSystem}.nixfmt
-              nixpkgs.legacyPackages.${linuxSystem}.nixpkgs-fmt
+
+        nixosConfigurations = {
+          "nixos-vm" = mkNixosSystem {
+            system = linuxSystem;
+            modules = [
+              ./nix/hosts/nixos-vm/configuration.nix
+              nix-index-database.nixosModules.nix-index
+              { programs.nix-index-database.comma.enable = true; }
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = backupFileExtension;
+                  users.${username} = ./nix/hosts/nixos-vm/home.nix;
+                  sharedModules = [ nixvim.homeModules.nixvim ];
+                  extraSpecialArgs = { inherit inputs; };
+                };
+              }
             ];
+            specialArgs = { inherit inputs; };
           };
         };
-      };
 
-      darwinConfigurations = {
-        "darwin" = mkDarwinSystem {
-          system = darwinSystem;
-          modules = [
-            ./nix/hosts/darwin/configuration.nix
-            nix-index-database.darwinModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-            home-manager.darwinModules.home-manager
-            {
-              users.users = {
-                "${username}" = {
-                  name = "${username}";
-                  home = "/Users/${username}";
-                };
-              };
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = backupFileExtension;
-                users.siraken = ./nix/hosts/darwin/home.nix;
-                sharedModules = [ nixvim.homeModules.nixvim ];
-                extraSpecialArgs = { inherit inputs; };
-              };
-            }
-          ];
-        };
+        # nixOnDroidConfigurations = {
+        #   "pixel10" = mkNixOnDroidSystem {
+        #     system = "aarch64-linux";
+        #     modules = [
+        #       ./nix/hosts/pixel10/configuration.nix
+        #     ];
+        #   };
+        # };
 
-        "darwin-min" = mkDarwinSystem {
-          system = darwinSystem;
-          modules = [
-            ./nix/hosts/darwin-min/configuration.nix
-            nix-index-database.darwinModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-            home-manager.darwinModules.home-manager
-            {
-              users.users = {
-                "${username}" = {
-                  name = "${username}";
-                  home = "/Users/${username}";
-                };
-              };
-
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = backupFileExtension;
-                users.siraken = ./nix/hosts/darwin-min/home.nix;
-                sharedModules = [ nixvim.homeModules.nixvim ];
-                extraSpecialArgs = { inherit inputs; };
-              };
-            }
-          ];
-        };
-      };
-
-      nixosConfigurations = {
-        "nixos-vm" = mkNixosSystem {
-          system = linuxSystem;
-          modules = [
-            ./nix/hosts/nixos-vm/configuration.nix
-            nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = backupFileExtension;
-                users.${username} = ./nix/hosts/nixos-vm/home.nix;
-                sharedModules = [ nixvim.homeModules.nixvim ];
-                extraSpecialArgs = { inherit inputs; };
-              };
-            }
-          ];
-          specialArgs = { inherit inputs; };
-        };
-      };
-
-      # nixOnDroidConfigurations = {
-      #   "pixel10" = mkNixOnDroidSystem {
-      #     system = "aarch64-linux";
-      #     modules = [
-      #       ./nix/hosts/pixel10/configuration.nix
-      #     ];
-      #   };
-      # };
-
-      homeConfigurations = {
-        "wsl-ubuntu" = mkHomeConfiguration {
-          username = username;
-          homeDirectory = "/home/${username}";
-          pkgs = nixpkgs.legacyPackages.${linuxSystem};
-        };
-      };
-
-      checks = {
-        ${darwinSystem} = {
-          darwin = self.darwinConfigurations.darwin.system;
-          darwin-min = self.darwinConfigurations.darwin-min.system;
-        };
-      };
-
-      apps = {
-        ${darwinSystem} = {
-          sw = darwinApp "sw" ''
-            sudo darwin-rebuild switch --flake ${self}#darwin --impure
-          '';
-          sw-min = darwinApp "sw-min" ''
-            sudo darwin-rebuild switch --flake ${self}#darwin-min --impure
-          '';
-          build = darwinApp "build" ''
-            darwin-rebuild build --flake ${self}#darwin --impure
-          '';
-          gc = darwinApp "gc" ''
-            nix store gc
-          '';
+        homeConfigurations = {
+          "wsl-ubuntu" = mkHomeConfiguration {
+            username = username;
+            homeDirectory = "/home/${username}";
+            pkgs = nixpkgs.legacyPackages.${linuxSystem};
+          };
         };
       };
     };
