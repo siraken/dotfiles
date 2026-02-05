@@ -49,6 +49,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     op-shell-plugins = {
       url = "github:1Password/shell-plugins";
     };
@@ -68,6 +73,7 @@
       nixvim,
       home-manager,
       treefmt-nix,
+      git-hooks,
       llm-agents,
       nix-on-droid,
       op-shell-plugins,
@@ -115,7 +121,10 @@
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ inputs.treefmt-nix.flakeModule ];
+      imports = [
+        inputs.treefmt-nix.flakeModule
+        inputs.git-hooks.flakeModule
+      ];
 
       systems = [
         darwinSystem
@@ -123,7 +132,12 @@
       ];
 
       perSystem =
-        { pkgs, system, ... }:
+        {
+          pkgs,
+          system,
+          config,
+          ...
+        }:
         {
           treefmt = {
             projectRootFile = "flake.nix";
@@ -139,7 +153,12 @@
             programs.fish_indent.enable = true;
           };
 
+          pre-commit.settings.hooks = {
+            treefmt.enable = true;
+          };
+
           devShells.default = pkgs.mkShell {
+            shellHook = config.pre-commit.installationScript;
             buildInputs = [
               pkgs.nixfmt
               pkgs.nixpkgs-fmt
