@@ -37,9 +37,9 @@ in
     ../../programs/fish
     ../../programs/fzf
     ../../programs/git
+    ../../programs/gitui
     ../../programs/helix
     ../../programs/lazydocker
-    ../../programs/lazygit
     ../../programs/mise
     ../../programs/neovide
     ../../programs/starship

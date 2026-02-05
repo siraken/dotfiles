@@ -26,10 +26,10 @@ in
     ../../programs/fzf
     ../../programs/ghostty
     ../../programs/git
+    ../../programs/gitui
     ../../programs/helix
     ../../programs/kitty
     ../../programs/lazydocker
-    ../../programs/lazygit
     ../../programs/mise
     ../../programs/starship
     ../../programs/tmux
