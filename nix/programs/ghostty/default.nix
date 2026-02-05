@@ -29,7 +29,7 @@ in
       window-padding-x = 0;
       window-padding-y = 0;
       window-padding-color = "background";
-      window-decoration = "none";
+      # window-decoration = "none";
       window-inherit-working-directory = true;
       macos-titlebar-style = "tabs";
 
