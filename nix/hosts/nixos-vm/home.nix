@@ -19,6 +19,7 @@ in
     ../../programs/direnv
     # ../../programs/fish # disabled due to fisher hash mismatch
     ../../programs/fzf
+    ../../programs/gh-dash
     ../../programs/ghostty
     ../../programs/git
     ../../programs/gitui

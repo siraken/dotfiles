@@ -36,6 +36,7 @@ in
     ../../programs/emacs
     ../../programs/fish
     ../../programs/fzf
+    ../../programs/gh-dash
     ../../programs/git
     ../../programs/gitui
     ../../programs/helix

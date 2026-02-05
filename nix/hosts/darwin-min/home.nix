@@ -23,6 +23,7 @@ in
     ../../programs/emacs
     ../../programs/fish
     ../../programs/fzf
+    ../../programs/gh-dash
     ../../programs/ghostty
     ../../programs/git
     ../../programs/gitui
