@@ -25,7 +25,9 @@ keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease wi
 keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase width" })
 
 -- Close buffer
-keymap.set("n", "<leader>bd", function() require("snacks").bufdelete() end, { desc = "Delete buffer" })
+keymap.set("n", "<leader>bd", function()
+  require("snacks").bufdelete()
+end, { desc = "Delete buffer" })
 keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete buffer and window" })
 
 -- Use Shift + U as redo
@@ -74,7 +76,12 @@ keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line diagnost
 
 -- File tree (also defined in editor.lua with <leader>e)
 if vscode then
-  keymap.set("n", "<leader>e", "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>", { desc = "Toggle sidebar" })
+  keymap.set(
+    "n",
+    "<leader>e",
+    "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>",
+    { desc = "Toggle sidebar" }
+  )
 end
 
 -- UI toggles

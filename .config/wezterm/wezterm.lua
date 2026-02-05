@@ -65,11 +65,11 @@ config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
   { family = "Hack Nerd Font Mono", weight = "Regular", style = "Normal", stretch = "Normal" },
   -- { family = "Hack NF", weight = "Regular", style = "Normal", stretch = "Normal" },
-  { family = "Consolas",            weight = "Regular", style = "Normal", stretch = "Normal" },
-  { family = "Courier New",         weight = "Regular", style = "Normal", stretch = "Normal" },
-  { family = "JetBrains Mono",      weight = "Regular", style = "Normal", stretch = "Normal" },
-  { family = "Hiragino Sans",       weight = "Regular", style = "Normal", stretch = "Normal" },
-  { family = "Noto Sans JP",        weight = "Regular", style = "Normal", stretch = "Normal" },
+  { family = "Consolas", weight = "Regular", style = "Normal", stretch = "Normal" },
+  { family = "Courier New", weight = "Regular", style = "Normal", stretch = "Normal" },
+  { family = "JetBrains Mono", weight = "Regular", style = "Normal", stretch = "Normal" },
+  { family = "Hiragino Sans", weight = "Regular", style = "Normal", stretch = "Normal" },
+  { family = "Noto Sans JP", weight = "Regular", style = "Normal", stretch = "Normal" },
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false

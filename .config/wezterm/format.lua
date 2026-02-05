@@ -17,7 +17,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   local bg = "none"
 
   if tab.is_active then
-    bg = colors.TOKYO_NIGHT_GREEN.Color
+    bg = colors.TOKYO_NIGHT_BLUE.Color
   end
 
   local zoomed = tab.active_pane.is_zoomed and "🔎 " or " "

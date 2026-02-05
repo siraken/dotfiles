@@ -2,7 +2,13 @@ return {
   "gbprod/yanky.nvim",
   event = "VeryLazy",
   keys = {
-    { "<leader>p", function() require("fzf-lua").registers() end, desc = "Paste from registers" },
+    {
+      "<leader>p",
+      function()
+        require("fzf-lua").registers()
+      end,
+      desc = "Paste from registers",
+    },
     { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank" },
     { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put after" },
     { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put before" },

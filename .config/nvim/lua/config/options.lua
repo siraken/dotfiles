@@ -71,9 +71,9 @@ opt.splitkeep = "screen"
 opt.mouse = "a"
 
 if has("macunix") == 1 then
-  opt.clipboard:append { 'unnamedplus' }
+  opt.clipboard:append({ "unnamedplus" })
 end
 
 if has("win32") == 1 then
-  opt.clipboard:append { 'unnamed', 'unnamedplus' }
+  opt.clipboard:append({ "unnamed", "unnamedplus" })
 end
