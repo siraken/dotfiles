@@ -168,7 +168,7 @@ in
         alt-shift-b = "balance-sizes";
 
         # Launch terminal
-        cmd-enter = "exec-and-forget open -na Ghostty";
+        ctrl-alt-enter = "exec-and-forget open -na Ghostty";
 
         # Reload config
         alt-shift-r = "reload-config";
