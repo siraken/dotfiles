@@ -115,6 +115,8 @@
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ inputs.treefmt-nix.flakeModule ];
+
       systems = [
         darwinSystem
         linuxSystem
@@ -123,7 +125,19 @@
       perSystem =
         { pkgs, system, ... }:
         {
-          formatter = pkgs.nixfmt-tree;
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs.nixfmt.enable = true;
+            programs.stylua.enable = true;
+            programs.shfmt.enable = true;
+            programs.biome = {
+              enable = true;
+              excludes = [ "**/lazy-lock.json" ];
+            };
+            programs.yamlfmt.enable = true;
+            programs.mdformat.enable = true;
+            programs.fish_indent.enable = true;
+          };
 
           devShells.default = pkgs.mkShell {
             buildInputs = [
