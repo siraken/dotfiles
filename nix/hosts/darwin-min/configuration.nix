@@ -4,6 +4,9 @@ let
   networkingHostName = "Kentos-Darwin-Min";
 in
 {
+  imports = [
+    ../../modules/darwin/nix-caches.nix
+  ];
   nix = {
     settings = {
       experimental-features = [

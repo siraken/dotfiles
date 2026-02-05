@@ -13,6 +13,7 @@ in
 {
   imports = [
     ../../modules/darwin/launchd-services.nix
+    ../../modules/darwin/nix-caches.nix
     ../../services/darwin/sketchybar
   ];
   nix = {
