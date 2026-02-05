@@ -191,6 +191,8 @@ in
     ignores = ignoreFiles;
   };
 
+  home.file.".config/git/hooks".source = ./hooks;
+
   programs.gh = {
     enable = true;
     gitCredentialHelper = {

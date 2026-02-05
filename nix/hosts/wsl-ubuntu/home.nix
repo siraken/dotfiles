@@ -1,13 +1,9 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
   ...
 }:
-let
-  dotfilesPath = "${config.home.homeDirectory}/dotfiles";
-in
 {
   nixpkgs = {
     config = {
@@ -40,8 +36,11 @@ in
     ../../programs/git
     ../../programs/gitui
     ../../programs/helix
+    ../../programs/husky
+    ../../programs/idea
     ../../programs/lazydocker
     ../../programs/mise
+    ../../programs/nano
     ../../programs/neovide
     ../../programs/starship
     ../../programs/tmux
@@ -60,13 +59,9 @@ in
     sessionPath = import ../../modules/path.nix { };
     shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
-    file =
-      import ../../modules/home-symlinks.nix {
-        inherit config dotfilesPath;
-      }
-      // {
+    file = {
 
-      };
+    };
 
     shell = {
       enableBashIntegration = true;

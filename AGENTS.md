@@ -54,8 +54,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Modular Configuration**:
 
-- `nix/modules/home-symlinks.nix` - Declarative symlink mappings for dotfiles (immutable, copied to Nix store)
-- `nix/programs/*.nix` - Individual program configurations (git, zsh, tmux, yazi, etc.)
+- `nix/programs/` - Individual program configurations with colocated config files (git, zsh, tmux, yazi, etc.)
 
 **Code Quality**:
 
@@ -64,8 +63,8 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Symlink Management**:
 
-- Immutable symlinks are managed by home-manager via `home-symlinks.nix` (copied to Nix store)
-- Mutable symlinks (AI agents, nvim) are created via `home.activation` scripts for direct file access
+- Immutable symlinks are managed by home-manager via `home.file` in each program module (copied to Nix store)
+- Mutable symlinks (AI agents, nvim, wezterm) are created via `home.activation` scripts using `config/` subdirectories for direct file access
 
 ### Configuration Coverage
 
@@ -85,7 +84,7 @@ Manages 100+ tool configurations across multiple categories:
 
 ## Important Files
 
-- `.config/` - Application configurations (managed as symlinks)
+- `nix/programs/` - Program modules with colocated config files (e.g., `nix/programs/nvim/config/`, `nix/programs/wezterm/config/`)
 - `.agents/` - AI agent configurations (Claude, Gemini)
 
 ## Git Commit Guidelines

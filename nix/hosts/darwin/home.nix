@@ -29,9 +29,12 @@ in
     ../../programs/git
     ../../programs/gitui
     ../../programs/helix
+    ../../programs/husky
+    ../../programs/idea
     ../../programs/kitty
     ../../programs/lazydocker
     ../../programs/mise
+    ../../programs/nano
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim
@@ -56,18 +59,14 @@ in
     sessionPath = import ../../modules/path.nix { };
     shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
-    file =
-      import ../../modules/home-symlinks.nix {
-        inherit config dotfilesPath;
-      }
-      // {
+    file = {
 
-      };
+    };
 
     activation.mutableSymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       # Mutable symlinks (not managed by Nix store)
-      ln -sfn ${dotfilesPath}/.config/nvim $HOME/.config/nvim
-      ln -sfn ${dotfilesPath}/.config/wezterm $HOME/.config/wezterm
+      ln -sfn ${dotfilesPath}/nix/programs/nvim/config $HOME/.config/nvim
+      ln -sfn ${dotfilesPath}/nix/programs/wezterm/config $HOME/.config/wezterm
       ln -sfn ${dotfilesPath}/.agents/claude/settings.json $HOME/.claude/settings.json
     '';
 

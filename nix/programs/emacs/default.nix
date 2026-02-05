@@ -49,6 +49,6 @@
         doom-themes
       ];
 
-    extraConfig = builtins.readFile ../../../.config/emacs/init.el;
+    extraConfig = builtins.readFile ./config/init.el;
   };
 }
