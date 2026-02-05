@@ -29,7 +29,6 @@ let
     "**/.claude/settings.local.json"
     "mise.local.toml"
     ".direnv/"
-    ".envrc"
     "**/node_modules"
   ]
   ++ dotenvFiles;
