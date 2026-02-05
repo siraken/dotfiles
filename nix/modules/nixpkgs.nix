@@ -90,7 +90,6 @@ let
     kompose # K8s conversion
     minikube # K8s local
     tenv # Terraform version manager
-    wrangler # Cloudflare Workers CLI
   ];
 
   # Development utilities
