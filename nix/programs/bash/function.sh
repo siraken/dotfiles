@@ -3,15 +3,15 @@ function vetero() {
 }
 
 function goinit() {
-  echo "Enter the package name:" && read package;
+  echo "Enter the package name:" && read package
   mkdir -p $package && cd $package
   go mod init github.com/$dirname/$package
   git init && touch main.go README.md
 }
 
 function gau() {
-  echo "Enter the username:" && read username;
-  if [[ -n "$username" ]]; then
+  echo "Enter the username:" && read username
+  if [[ -n $username ]]; then
     git remote add origin "$GH_URL/$username/$(basename $(pwd)).git"
     git remote -v
   else
@@ -22,7 +22,7 @@ function gau() {
 function gd() {
   local dir
   dir=$(ghq list -p | fzf)
-  if [[ -n "$dir" ]]; then
+  if [[ -n $dir ]]; then
     cd "$dir"
   fi
 }
@@ -30,7 +30,7 @@ function gd() {
 function gco() {
   local branch
   branch=$(git branch --all | sed 's/^[* ]*//' | fzf)
-  if [[ -n "$branch" ]]; then
+  if [[ -n $branch ]]; then
     git checkout "$(echo $branch | sed 's#remotes/origin/##')"
   fi
 }
@@ -56,14 +56,14 @@ function ide() {
 }
 
 function ccc() {
-  tmux split-window -h && \
-  tmux split-window -v && \
-  tmux select-pane -t 0 && \
-  tmux split-window -v && \
-  tmux select-pane -t 2 && \
-  tmux split-window -v && \
-  tmux select-pane -t 4 && \
-  tmux split-window -v
+  tmux split-window -h &&
+    tmux split-window -v &&
+    tmux select-pane -t 0 &&
+    tmux split-window -v &&
+    tmux select-pane -t 2 &&
+    tmux split-window -v &&
+    tmux select-pane -t 4 &&
+    tmux split-window -v
 }
 
 function cccw() {

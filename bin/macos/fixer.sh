@@ -4,7 +4,10 @@ DEBUG=1
 
 OS=$(uname)
 SCRIPT_NAME=$(basename $0)
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
+SCRIPT_DIR=$(
+  cd $(dirname $0)
+  pwd
+)
 
 if [ $OS != 'Darwin' ]; then
   echo "This script only runs on macOS"
@@ -19,19 +22,18 @@ fi
 COMMAND=$1
 
 case $1 in
-  audio)
-    sudo launchctl stop com.apple.audio.coreaudiod
-    sudo launchctl start com.apple.audio.coreaudiod
-    ;;
-  bluetooth)
-    sudo launchctl stop com.apple.bluetoothd
-    sudo launchctl start com.apple.bluetoothd
-    ;;
-  dns)
-    # TODO: implement
-    ;;
-  *)
-    echo "Unexpected command."
-    ;;
+audio)
+  sudo launchctl stop com.apple.audio.coreaudiod
+  sudo launchctl start com.apple.audio.coreaudiod
+  ;;
+bluetooth)
+  sudo launchctl stop com.apple.bluetoothd
+  sudo launchctl start com.apple.bluetoothd
+  ;;
+dns)
+  # TODO: implement
+  ;;
+*)
+  echo "Unexpected command."
+  ;;
 esac
-

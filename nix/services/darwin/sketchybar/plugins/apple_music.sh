@@ -15,24 +15,24 @@ ARTIST_NAME=$(osascript -e 'tell application "Music" to artist of current track 
 
 # 再生状態に応じてアイコンを設定
 case "$PLAYER_STATE" in
-  "playing")
-    ICON=󰐊
-    ICON_COLOR=0xffffffff
-    LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=$_COLOR_BRAND
-    ;;
-  "paused")
-    ICON=󰏤
-    ICON_COLOR=0xfffa233f
-    LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=$_COLOR_DEFAULT_BACKGROUND
-    ;;
-  *)
-    ICON=󰓛
-    ICON_COLOR=0xfffa233f
-    LABEL_COLOR=0xffffffff
-    BACKGROUND_COLOR=$_COLOR_DEFAULT_BACKGROUND
-    ;;
+"playing")
+  ICON=󰐊
+  ICON_COLOR=0xffffffff
+  LABEL_COLOR=0xffffffff
+  BACKGROUND_COLOR=$_COLOR_BRAND
+  ;;
+"paused")
+  ICON=󰏤
+  ICON_COLOR=0xfffa233f
+  LABEL_COLOR=0xffffffff
+  BACKGROUND_COLOR=$_COLOR_DEFAULT_BACKGROUND
+  ;;
+*)
+  ICON=󰓛
+  ICON_COLOR=0xfffa233f
+  LABEL_COLOR=0xffffffff
+  BACKGROUND_COLOR=$_COLOR_DEFAULT_BACKGROUND
+  ;;
 esac
 
 # 曲名とアーティスト名を結合して文字数を制限

@@ -8,18 +8,18 @@ PLAYER_STATE=$(osascript -e 'tell application "Spotify" to player state as strin
 
 # 再生状態に応じてトグル
 case "$PLAYER_STATE" in
-  "playing")
-    # 再生中の場合は一時停止
-    osascript -e 'tell application "Spotify" to pause'
-    ;;
-  "paused")
-    # 一時停止中の場合は再生
-    osascript -e 'tell application "Spotify" to play'
-    ;;
-  *)
-    # その他の状態（停止中など）の場合は再生
-    osascript -e 'tell application "Spotify" to play'
-    ;;
+"playing")
+  # 再生中の場合は一時停止
+  osascript -e 'tell application "Spotify" to pause'
+  ;;
+"paused")
+  # 一時停止中の場合は再生
+  osascript -e 'tell application "Spotify" to play'
+  ;;
+*)
+  # その他の状態（停止中など）の場合は再生
+  osascript -e 'tell application "Spotify" to play'
+  ;;
 esac
 
 # SketchyBarを更新
