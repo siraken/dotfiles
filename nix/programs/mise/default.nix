@@ -18,12 +18,10 @@ let
     yo = "latest";
     # json-server = "latest";
     # typeorm = "latest";
-    wrangler = "latest";
     # terminalizer = "latest";
     # dredd = "latest";
     # neovim = "latest";
     # web-push = "latest";
-    purescript = "latest";
     spago = "latest";
     ccmanager = "latest";
     dev3000 = "latest";
@@ -31,7 +29,6 @@ let
     "@github/copilot" = "latest";
     "@lhci/cli" = "latest";
     "@nestjs/cli" = "latest";
-    "@antfu/ni" = "latest";
     cordova = "latest";
     cordova-res = "latest";
     md-to-pdf = "latest";

@@ -67,6 +67,7 @@ let
     lua
     nim
     pnpm # Node.js package manager
+    purescript # PureScript compiler
     # sbcl # Common Lisp (disabled: ECL build fails on macOS)
     scala
   ];
@@ -89,6 +90,7 @@ let
     kompose # K8s conversion
     minikube # K8s local
     tenv # Terraform version manager
+    wrangler # Cloudflare Workers CLI
   ];
 
   # Development utilities
@@ -98,6 +100,7 @@ let
     lua-language-server # LSP
     luarocks # Lua packages
     mkcert # local certificates
+    ni # @antfu/ni - use the right package manager
     pandoc # document conversion
     tor # anonymous network
     tree-sitter # parser
