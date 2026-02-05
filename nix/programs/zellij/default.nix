@@ -2,9 +2,9 @@
 {
   programs.zellij = {
     enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
+    enableZshIntegration = false;
     layouts = { };
     settings = {
       default_shell = "bash";
