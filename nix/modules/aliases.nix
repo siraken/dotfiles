@@ -4,10 +4,6 @@ let
     # Git
     g = "git";
     gs = "git status";
-    lzg = "lazygit";
-
-    # Docker
-    lzd = "lazydocker";
 
     # File operations
     fzf = "fzf --preview 'bat --color=always --style=numbers {}'";
