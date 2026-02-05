@@ -26,10 +26,10 @@ nix store gc
 ### Development
 
 ```bash
-# Format Nix files
+# Format all files (Nix, Lua, Shell, JSON, YAML, Markdown, Fish)
 nix fmt
 
-# Enter development shell with formatters
+# Enter development shell (also installs pre-commit hooks via git-hooks.nix)
 nix develop
 ```
 
@@ -39,7 +39,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 ### Flake Structure
 
-- `flake.nix` - Main flake configuration with multiple system profiles:
+- `flake.nix` - Main flake configuration using flake-parts with multiple system profiles:
   - `darwin` - Full macOS configuration (primary)
   - `darwin-min` - Minimal macOS configuration
   - `wsl-ubuntu` - WSL/Ubuntu home-manager configuration
@@ -56,6 +56,11 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 - `nix/modules/home-symlinks.nix` - Declarative symlink mappings for dotfiles (immutable, copied to Nix store)
 - `nix/programs/*.nix` - Individual program configurations (git, zsh, tmux, yazi, etc.)
+
+**Code Quality**:
+
+- treefmt-nix with flake-parts module for multi-language formatting (nixfmt, stylua, shfmt, biome, yamlfmt, mdformat, fish_indent)
+- git-hooks.nix for pre-commit hook that runs treefmt on staged files
 
 **Symlink Management**:
 

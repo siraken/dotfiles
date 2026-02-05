@@ -47,6 +47,16 @@ nix run home-manager -- switch --flake .#THE_NAME --impure
 nix run home-manager -- switch --flake .#wsl-ubuntu --impure
 ```
 
+### Development
+
+```bash
+# Format all files (Nix, Lua, Shell, JSON, YAML, Markdown, Fish)
+nix fmt
+
+# Enter development shell (also installs pre-commit hooks)
+nix develop
+```
+
 ### Uninstall
 
 To uninstall Nix, run the command below:
