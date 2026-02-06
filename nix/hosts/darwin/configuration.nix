@@ -319,7 +319,6 @@ in
     casks = [
       "alt-tab"
       "appcleaner"
-      "arc"
       "audacity"
       "azure-data-studio"
       "background-music"
@@ -398,6 +397,7 @@ in
       "sublime-text"
       "tableplus"
       "termius"
+      "thebrowsercompany-dia"
       "tor-browser"
       "transmit"
       "ngrok"

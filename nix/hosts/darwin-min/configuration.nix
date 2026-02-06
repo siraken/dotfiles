@@ -126,10 +126,11 @@ in
     casks = [
       "alt-tab"
       "appcleaner"
-      "arc"
-      "brave-browser"
       "drivedx"
+      "ghostty"
+      "github"
       "google-chrome"
+      "thebrowsercompany-dia"
       "visual-studio-code"
       "vivaldi"
       "raycast"
