@@ -1,4 +1,3 @@
-# https://nix-darwin.github.io/nix-darwin/manual/index.html
 {
   config,
   pkgs,

@@ -1,11 +1,17 @@
-# https://nix-darwin.github.io/nix-darwin/manual/index.html
-{ pkgs, modulePath, ... }:
+{
+  config,
+  pkgs,
+  modulePath,
+  ...
+}:
 let
   networkingHostName = "Kentos-Darwin-Min";
 in
 {
   imports = [
+    ../../modules/darwin/launchd-services.nix
     ../../modules/darwin/nix-caches.nix
+    ../../services/darwin/sketchybar
   ];
   nix = {
     settings = {
