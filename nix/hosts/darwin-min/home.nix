@@ -63,8 +63,8 @@ in
     };
 
     activation.mutableSymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      # Mutable symlinks (not managed by Nix store)
       ln -sfn ${dotfilesPath}/nix/programs/nvim/config $HOME/.config/nvim
+      ln -sfn ${dotfilesPath}/nix/programs/wezterm/config $HOME/.config/wezterm
       ln -sfn ${dotfilesPath}/.agents/claude/settings.json $HOME/.claude/settings.json
     '';
 
