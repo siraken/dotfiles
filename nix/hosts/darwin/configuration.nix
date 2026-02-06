@@ -2,11 +2,11 @@
   config,
   pkgs,
   user,
+  hostName,
   modulePath,
   ...
 }:
 let
-  networkingHostName = "Kentos-MacBook-Pro";
   homeDir = config.users.users.${user.username}.home;
   userPaths = import ../../modules/user-paths.nix { inherit homeDir; };
 in
@@ -38,10 +38,7 @@ in
     config.allowUnfree = true;
   };
 
-  networking = {
-    hostName = networkingHostName;
-    localHostName = networkingHostName;
-  };
+  networking.hostName = hostName;
 
   environment = {
     shells = import ../../modules/shells.nix { inherit pkgs; };

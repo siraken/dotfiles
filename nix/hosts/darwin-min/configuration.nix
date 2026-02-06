@@ -2,12 +2,10 @@
   config,
   pkgs,
   user,
+  hostName,
   modulePath,
   ...
 }:
-let
-  networkingHostName = "Kentos-Darwin-Min";
-in
 {
   imports = [
     ../../modules/darwin/launchd-services.nix
@@ -36,10 +34,7 @@ in
     config.allowUnfree = true;
   };
 
-  networking = {
-    hostName = networkingHostName;
-    localHostName = networkingHostName;
-  };
+  networking.hostName = hostName;
 
   environment = {
     shells = import ../../modules/shells.nix { inherit pkgs; };

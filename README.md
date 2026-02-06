@@ -22,7 +22,7 @@ git clone --depth 1 \
 
 ```bash
 cd dotfiles
-sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#darwin --impure
+sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#siraken-mbp --impure
 ```
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
@@ -35,7 +35,7 @@ sudo darwin-rebuild build --flake .#THE_NAME --impure
 sudo darwin-rebuild switch --flake .#THE_NAME --impure
 
 # ex)
-sudo darwin-rebuild switch --flake .#darwin --impure
+sudo darwin-rebuild switch --flake .#siraken-mbp --impure
 ```
 
 or

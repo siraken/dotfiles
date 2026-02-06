@@ -10,11 +10,11 @@ curl --proto '=https' --tls-version=1.2 -sSf -L https://install.determinate.syst
 
 # Install nix-darwin (macOS only)
 cd dotfiles
-sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#darwin --impure
+sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#siraken-mbp --impure
 
 # Build and apply system configuration
-sudo darwin-rebuild build --flake .#darwin --impure
-sudo darwin-rebuild switch --flake .#darwin --impure
+sudo darwin-rebuild build --flake .#siraken-mbp --impure
+sudo darwin-rebuild switch --flake .#siraken-mbp --impure
 
 # For WSL/Ubuntu (home-manager only, no system-level changes)
 nix run home-manager -- switch --flake .#wsl-ubuntu --impure
@@ -40,8 +40,8 @@ Personal dotfiles management system combining Nix and declarative configuration 
 ### Flake Structure
 
 - `flake.nix` - Main flake configuration using flake-parts with multiple system profiles:
-  - `darwin` - Full macOS configuration (primary)
-  - `darwin-min` - Minimal macOS configuration
+  - `siraken-mbp` - Full macOS configuration (MacBook Pro, primary)
+  - `siraken-macmini` - Minimal macOS configuration (Mac mini)
   - `wsl-ubuntu` - WSL/Ubuntu home-manager configuration
   - `nixos` - NixOS system configuration (placeholder)
 
@@ -104,10 +104,10 @@ Manages 100+ tool configurations across multiple categories:
 
 ```bash
 # Bad - Do NOT do this
-darwin-rebuild switch --flake .#darwin --impure | tee output.log
+darwin-rebuild switch --flake .#siraken-mbp --impure | tee output.log
 home-manager switch --flake .#wsl-ubuntu --impure | cat
 
 # Good - Run commands directly
-darwin-rebuild switch --flake .#darwin --impure
+darwin-rebuild switch --flake .#siraken-mbp --impure
 home-manager switch --flake .#wsl-ubuntu --impure
 ```

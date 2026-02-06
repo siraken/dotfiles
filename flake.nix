@@ -177,14 +177,11 @@
               darwinApp = mkApp pkgs;
             in
             {
-              sw = darwinApp "sw" ''
-                sudo darwin-rebuild switch --flake ${self}#darwin --impure
+              mbp = darwinApp "mbp" ''
+                sudo darwin-rebuild switch --flake ${self}#siraken-mbp --impure
               '';
-              sw-min = darwinApp "sw-min" ''
-                sudo darwin-rebuild switch --flake ${self}#darwin-min --impure
-              '';
-              build = darwinApp "build" ''
-                darwin-rebuild build --flake ${self}#darwin --impure
+              macmini = darwinApp "macmini" ''
+                sudo darwin-rebuild switch --flake ${self}#siraken-macmini --impure
               '';
               gc = darwinApp "gc" ''
                 nix store gc
@@ -192,16 +189,19 @@
             };
 
           checks = {
-            darwin = self.darwinConfigurations.darwin.system;
-            darwin-min = self.darwinConfigurations.darwin-min.system;
+            siraken-mbp = self.darwinConfigurations.siraken-mbp.system;
+            siraken-macmini = self.darwinConfigurations.siraken-macmini.system;
           };
         };
 
       flake = {
         darwinConfigurations = {
-          "darwin" = mkDarwinSystem {
+          "siraken-mbp" = mkDarwinSystem {
             system = darwinSystem;
-            specialArgs = { inherit inputs user; };
+            specialArgs = {
+              inherit inputs user;
+              hostName = "siraken-mbp";
+            };
             modules = [
               ./nix/hosts/darwin/configuration.nix
               nix-index-database.darwinModules.nix-index
@@ -227,9 +227,12 @@
             ];
           };
 
-          "darwin-min" = mkDarwinSystem {
+          "siraken-macmini" = mkDarwinSystem {
             system = darwinSystem;
-            specialArgs = { inherit inputs user; };
+            specialArgs = {
+              inherit inputs user;
+              hostName = "siraken-macmini";
+            };
             modules = [
               ./nix/hosts/darwin-min/configuration.nix
               nix-index-database.darwinModules.nix-index
