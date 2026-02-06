@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  user,
   modulePath,
   ...
 }:
@@ -51,7 +52,7 @@ in
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 5;
-    primaryUser = "siraken";
+    primaryUser = user.username;
     defaults = {
       dock = {
         orientation = "bottom";

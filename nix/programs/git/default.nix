@@ -1,9 +1,10 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  user,
+  ...
+}:
 let
-  name = "Kento Shirasawa";
-  email = "shirasawa@novalumo.com";
-  username = "siraken";
-
   dotenvEnvironments = [
     "local"
     "development"
@@ -44,10 +45,10 @@ in
       };
 
       user = {
-        name = name;
-        email = email;
-        username = username;
-        signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL";
+        name = user.name;
+        email = user.email;
+        username = user.username;
+        signingkey = user.signingKey;
       };
 
       alias = {
@@ -86,7 +87,7 @@ in
       };
 
       github = {
-        user = username;
+        user = user.username;
       };
 
       init = {
@@ -218,8 +219,8 @@ in
     enable = true;
     settings = {
       user = {
-        email = email;
-        name = name;
+        email = user.email;
+        name = user.name;
       };
     };
   };

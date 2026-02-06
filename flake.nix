@@ -81,7 +81,13 @@
       ...
     }:
     let
-      username = "siraken";
+      user = {
+        username = "siraken";
+        name = "Kento Shirasawa";
+        email = "shirasawa@novalumo.com";
+        org = "novalumo";
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL";
+      };
       darwinSystem = "aarch64-darwin";
       linuxSystem = "x86_64-linux";
       backupFileExtension = "hm-backup";
@@ -111,7 +117,7 @@
               };
             }
           ];
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs user; };
         };
 
       # Function for creating app entries
@@ -195,6 +201,7 @@
         darwinConfigurations = {
           "darwin" = mkDarwinSystem {
             system = darwinSystem;
+            specialArgs = { inherit inputs user; };
             modules = [
               ./nix/hosts/darwin/configuration.nix
               nix-index-database.darwinModules.nix-index
@@ -203,18 +210,18 @@
               home-manager.darwinModules.home-manager
               {
                 users.users = {
-                  "${username}" = {
-                    name = "${username}";
-                    home = "/Users/${username}";
+                  "${user.username}" = {
+                    name = "${user.username}";
+                    home = "/Users/${user.username}";
                   };
                 };
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
-                  users.siraken = ./nix/hosts/darwin/home.nix;
+                  users.${user.username} = ./nix/hosts/darwin/home.nix;
                   sharedModules = [ nixvim.homeModules.nixvim ];
-                  extraSpecialArgs = { inherit inputs; };
+                  extraSpecialArgs = { inherit inputs user; };
                 };
               }
             ];
@@ -222,6 +229,7 @@
 
           "darwin-min" = mkDarwinSystem {
             system = darwinSystem;
+            specialArgs = { inherit inputs user; };
             modules = [
               ./nix/hosts/darwin-min/configuration.nix
               nix-index-database.darwinModules.nix-index
@@ -230,9 +238,9 @@
               home-manager.darwinModules.home-manager
               {
                 users.users = {
-                  "${username}" = {
-                    name = "${username}";
-                    home = "/Users/${username}";
+                  "${user.username}" = {
+                    name = "${user.username}";
+                    home = "/Users/${user.username}";
                   };
                 };
 
@@ -240,9 +248,9 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
-                  users.siraken = ./nix/hosts/darwin-min/home.nix;
+                  users.${user.username} = ./nix/hosts/darwin-min/home.nix;
                   sharedModules = [ nixvim.homeModules.nixvim ];
-                  extraSpecialArgs = { inherit inputs; };
+                  extraSpecialArgs = { inherit inputs user; };
                 };
               }
             ];
@@ -263,13 +271,13 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
-                  users.${username} = ./nix/hosts/nixos-vm/home.nix;
+                  users.${user.username} = ./nix/hosts/nixos-vm/home.nix;
                   sharedModules = [ nixvim.homeModules.nixvim ];
-                  extraSpecialArgs = { inherit inputs; };
+                  extraSpecialArgs = { inherit inputs user; };
                 };
               }
             ];
-            specialArgs = { inherit inputs; };
+            specialArgs = { inherit inputs user; };
           };
         };
 
@@ -284,8 +292,8 @@
 
         homeConfigurations = {
           "wsl-ubuntu" = mkHomeConfiguration {
-            username = username;
-            homeDirectory = "/home/${username}";
+            username = user.username;
+            homeDirectory = "/home/${user.username}";
             pkgs = import nixpkgs {
               system = linuxSystem;
               overlays = [ llm-agents.overlays.default ];

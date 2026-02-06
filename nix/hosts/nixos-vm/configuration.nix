@@ -3,11 +3,9 @@
   pkgs,
   lib,
   inputs,
+  user,
   ...
 }:
-let
-  username = "siraken";
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -67,9 +65,9 @@ in
   nixpkgs.config.allowUnfree = true;
 
   # User account
-  users.users.${username} = {
+  users.users.${user.username} = {
     isNormalUser = true;
-    description = username;
+    description = user.username;
     extraGroups = [
       "wheel"
       "networkmanager"

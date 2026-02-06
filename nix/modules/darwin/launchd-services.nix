@@ -4,6 +4,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }:
 
@@ -11,7 +12,7 @@ with lib;
 
 let
   cfg = config.customServices;
-  homeDir = config.users.users.siraken.home;
+  homeDir = config.users.users.${user.username}.home;
   userPaths = import ../user-paths.nix { inherit homeDir; };
   logDir = userPaths.logBase;
 

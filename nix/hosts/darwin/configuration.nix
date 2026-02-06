@@ -1,12 +1,13 @@
 {
   config,
   pkgs,
+  user,
   modulePath,
   ...
 }:
 let
   networkingHostName = "Kentos-MacBook-Pro";
-  homeDir = config.users.users.siraken.home;
+  homeDir = config.users.users.${user.username}.home;
   userPaths = import ../../modules/user-paths.nix { inherit homeDir; };
 in
 {
@@ -53,7 +54,7 @@ in
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 5;
-    primaryUser = "siraken";
+    primaryUser = user.username;
     defaults = {
       dock = {
         orientation = "bottom";
@@ -176,7 +177,7 @@ in
     spotifyd = {
       enable = true;
       settings = {
-        username = "siraken";
+        username = user.username;
         use_keyring = true;
         device_name = "spotifyd @ Kento's MacBook Pro";
         device_type = "computer";
