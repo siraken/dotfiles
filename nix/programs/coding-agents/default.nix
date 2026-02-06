@@ -23,6 +23,7 @@ in
 
   programs.claude-code = {
     enable = true;
+    package = pkgs.llm-agents.claude-code;
     enableMcpIntegration = true;
     memory = {
       text = instructions;
@@ -41,10 +42,12 @@ in
 
   programs.codex = {
     enable = true;
+    package = pkgs.llm-agents.codex;
   };
 
   programs.gemini-cli = {
     enable = true;
+    package = pkgs.llm-agents.gemini-cli;
     commands = { };
     settings = {
       context = {
@@ -72,6 +75,7 @@ in
 
   programs.opencode = {
     enable = true;
+    package = pkgs.llm-agents.opencode;
     rules = instructions;
     settings = {
       "$schema" = "https://opencode.ai/config.json";

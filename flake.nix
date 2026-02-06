@@ -199,6 +199,7 @@
               ./nix/hosts/darwin/configuration.nix
               nix-index-database.darwinModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
+              { nixpkgs.overlays = [ llm-agents.overlays.default ]; }
               home-manager.darwinModules.home-manager
               {
                 users.users = {
@@ -225,6 +226,7 @@
               ./nix/hosts/darwin-min/configuration.nix
               nix-index-database.darwinModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
+              { nixpkgs.overlays = [ llm-agents.overlays.default ]; }
               home-manager.darwinModules.home-manager
               {
                 users.users = {
@@ -254,6 +256,7 @@
               ./nix/hosts/nixos-vm/configuration.nix
               nix-index-database.nixosModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
+              { nixpkgs.overlays = [ llm-agents.overlays.default ]; }
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -283,7 +286,10 @@
           "wsl-ubuntu" = mkHomeConfiguration {
             username = username;
             homeDirectory = "/home/${username}";
-            pkgs = nixpkgs.legacyPackages.${linuxSystem};
+            pkgs = import nixpkgs {
+              system = linuxSystem;
+              overlays = [ llm-agents.overlays.default ];
+            };
           };
         };
       };
