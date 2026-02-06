@@ -2,8 +2,6 @@
   config,
   pkgs,
   user,
-  hostName,
-  modulePath,
   ...
 }:
 let
@@ -12,139 +10,65 @@ let
 in
 {
   imports = [
-    ../../modules/darwin/launchd-services.nix
-    ../../modules/darwin/nix-caches.nix
-    ../../services/darwin/sketchybar
+    ../../modules/darwin/common.nix
   ];
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+
+  system.defaults = {
+    # TODO:
+    # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+    NSGlobalDomain = {
+      # Keyboard
+      InitialKeyRepeat = 15; # Key repeat delay (default: 25)
+      KeyRepeat = 2; # Key repeat speed (default: 6, lower = faster)
+      ApplePressAndHoldEnabled = false; # Disable press-and-hold for keys (enables key repeat)
+
+      # Appearance
+      AppleInterfaceStyle = "Dark";
+      _HIHideMenuBar = true; # Auto-hide menu bar
+
+      # Disable auto-correction features
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
+
+      # Trackpad (in NSGlobalDomain)
+      "com.apple.trackpad.forceClick" = true;
     };
 
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 7d";
+    # Trackpad settings
+    trackpad = {
+      Clicking = true; # Tap to click
+      TrackpadRightClick = true; # Two-finger right click
+      TrackpadThreeFingerDrag = false;
+      TrackpadPinch = true; # Pinch to zoom
+      TrackpadRotate = true; # Two-finger rotate
+      TrackpadMomentumScroll = true;
+      FirstClickThreshold = 1; # Click pressure (0=light, 1=medium, 2=firm)
+      SecondClickThreshold = 1;
     };
-  };
 
-  nixpkgs = {
-    # The platform the configuration will be used on.
-    hostPlatform = "aarch64-darwin";
+    # Menu bar clock
+    menuExtraClock = {
+      ShowAMPM = true;
+      ShowDate = 0; # 0=hide, 1=show, 2=show with day of week
+      ShowDayOfWeek = true;
+    };
 
-    # Allow unfree packages
-    config.allowUnfree = true;
-  };
-
-  networking.hostName = hostName;
-
-  environment = {
-    shells = import ../../modules/shells.nix { inherit pkgs; };
-    systemPackages = [
-      pkgs.nil
-    ];
-  };
-
-  system = {
-    # Used for backwards compatibility, please read the changelog before changing.
-    # $ darwin-rebuild changelog
-    stateVersion = 5;
-    primaryUser = user.username;
-    defaults = {
-      dock = {
-        orientation = "bottom";
-        tilesize = 40;
-        magnification = false;
-        largesize = 64;
-        autohide = true;
-        autohide-time-modifier = 0.5;
-        autohide-delay = 0.2;
-        show-recents = true;
-        mineffect = "scale";
-        static-only = false;
-        scroll-to-open = false;
-        launchanim = true;
-      };
-      finder = {
-        AppleShowAllExtensions = false;
-        AppleShowAllFiles = false;
-        ShowPathbar = true;
-        ShowStatusBar = true;
-      };
-      # TODO:
-      # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
-      NSGlobalDomain = {
-        # Window behavior
-        NSWindowShouldDragOnGesture = true;
-
-        # Keyboard
-        InitialKeyRepeat = 15; # Key repeat delay (default: 25)
-        KeyRepeat = 2; # Key repeat speed (default: 6, lower = faster)
-        ApplePressAndHoldEnabled = false; # Disable press-and-hold for keys (enables key repeat)
-
-        # Appearance
-        AppleInterfaceStyle = "Dark";
-        _HIHideMenuBar = true; # Auto-hide menu bar
-
-        # Disable auto-correction features
-        NSAutomaticCapitalizationEnabled = false;
-        NSAutomaticDashSubstitutionEnabled = false;
-        NSAutomaticPeriodSubstitutionEnabled = false;
-        NSAutomaticQuoteSubstitutionEnabled = false;
-        NSAutomaticSpellingCorrectionEnabled = false;
-
-        # Trackpad (in NSGlobalDomain)
-        "com.apple.mouse.tapBehavior" = 1; # Tap to click
-        "com.apple.trackpad.forceClick" = true;
-      };
-
-      # Trackpad settings
-      trackpad = {
-        Clicking = true; # Tap to click
-        TrackpadRightClick = true; # Two-finger right click
-        TrackpadThreeFingerDrag = false;
-        TrackpadPinch = true; # Pinch to zoom
-        TrackpadRotate = true; # Two-finger rotate
-        TrackpadMomentumScroll = true;
-        FirstClickThreshold = 1; # Click pressure (0=light, 1=medium, 2=firm)
-        SecondClickThreshold = 1;
-      };
-
-      # Menu bar clock
-      menuExtraClock = {
-        ShowAMPM = true;
-        ShowDate = 0; # 0=hide, 1=show, 2=show with day of week
-        ShowDayOfWeek = true;
-      };
-
-      # Window Manager (Stage Manager)
-      WindowManager = {
-        GloballyEnabled = false; # Stage Manager disabled
-        EnableStandardClickToShowDesktop = false;
-        EnableTiledWindowMargins = false;
-      };
-      screensaver = {
-        askForPassword = true;
-        askForPasswordDelay = 0;
-      };
-      CustomUserPreferences = {
-        "com.apple.screensaver" = {
-          idleTime = 180;
-        };
-        "com.microsoft.VSCode" = {
-          ApplePressAndHoldEnabled = false;
-        };
-        "com.jetbrains.PhpStorm" = {
-          ApplePressAndHoldEnabled = false;
-        };
-        "com.jetbrains.WebStorm" = {
-          ApplePressAndHoldEnabled = false;
-        };
-        "com.jetbrains.rubymine" = {
-          ApplePressAndHoldEnabled = false;
-        };
+    # Window Manager (Stage Manager)
+    WindowManager = {
+      GloballyEnabled = false; # Stage Manager disabled
+      EnableStandardClickToShowDesktop = false;
+      EnableTiledWindowMargins = false;
+    };
+    screensaver = {
+      askForPassword = true;
+      askForPasswordDelay = 0;
+    };
+    CustomUserPreferences = {
+      "com.apple.screensaver" = {
+        idleTime = 180;
       };
     };
   };
@@ -154,17 +78,6 @@ in
       computer = "never";
       display = 5;
       harddisk = 10;
-    };
-  };
-
-  security = {
-    pam = {
-      services = {
-        sudo_local = {
-          touchIdAuth = true;
-          watchIdAuth = true;
-        };
-      };
     };
   };
 
@@ -218,14 +131,7 @@ in
   };
 
   homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "none";
-    };
     taps = [
-      "siraken/homebrew-tap"
-      "novalumo/homebrew-tap"
       "VOICEVOX/voicevox"
     ];
     brews = [
@@ -443,14 +349,5 @@ in
       # "Tailscale" = 1475387142;
       "The Unarchiver" = 425424353;
     };
-  };
-
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.hack
-      source-code-pro
-      monocraft
-      udev-gothic
-    ];
   };
 }
