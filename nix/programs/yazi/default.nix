@@ -13,11 +13,11 @@ in
     settings = {
       mgr = {
         ratio = [
+          0
           2
           3
-          3
         ];
-        sort_by = "none";
+        sort_by = "extension";
         sort_sensitive = false;
         sort_reverse = false;
         sort_dir_first = true;
