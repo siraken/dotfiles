@@ -2,15 +2,19 @@
 {
   programs.tmux = {
     enable = true;
+    baseIndex = 0;
     clock24 = true;
     customPaneNavigationAndResize = false;
     escapeTime = 500;
+    focusEvents = false;
     historyLimit = 2000;
     keyMode = "vi";
     mouse = false;
+    newSession = false;
     prefix = null;
     resizeAmount = 5;
     reverseSplit = false;
+    shell = "${pkgs.bash}/bin/bash";
     shortcut = "b";
     terminal = "screen-256color";
 
@@ -33,9 +37,6 @@
 
     # Custom configuration
     extraConfig = ''
-      set-option -g default-shell "${pkgs.bash}/bin/bash"
-      set -g default-command "${pkgs.bash}/bin/bash"
-
       # Display settings
       set -g display-time 2000
       set -g repeat-time 0
