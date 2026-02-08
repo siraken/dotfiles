@@ -114,7 +114,8 @@ let
     neovim # vim-based editor
   ];
 in
-fileTools
+agentTools
+++ fileTools
 ++ jsonTools
 ++ networkTools
 ++ systemInfoTools
