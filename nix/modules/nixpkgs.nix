@@ -2,6 +2,11 @@
 { pkgs }:
 with pkgs;
 let
+  # AI agent tools
+  agentTools = [
+    llm-agents.openclaw
+  ];
+
   # File operations and browsing
   fileTools = [
     broot # file manager
