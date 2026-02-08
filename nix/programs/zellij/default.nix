@@ -5,7 +5,11 @@
     enableBashIntegration = false;
     enableFishIntegration = false;
     enableZshIntegration = false;
-    layouts = { };
+    layouts = {
+      vscode = import ./layouts/vscode.nix;
+      quad = import ./layouts/quad.nix;
+      hex = import ./layouts/hex.nix;
+    };
     settings = {
       default_shell = "bash";
       theme = "tokyo-night";
