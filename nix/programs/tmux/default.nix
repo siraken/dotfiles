@@ -2,6 +2,17 @@
 {
   programs.tmux = {
     enable = true;
+    clock24 = true;
+    customPaneNavigationAndResize = false;
+    escapeTime = 500;
+    historyLimit = 2000;
+    keyMode = "vi";
+    mouse = false;
+    prefix = null;
+    resizeAmount = 5;
+    reverseSplit = false;
+    shortcut = "b";
+    terminal = "screen-256color";
 
     # Tokyo Night theme plugin
     plugins = with pkgs.tmuxPlugins; [
@@ -22,13 +33,8 @@
 
     # Custom configuration
     extraConfig = ''
-      set -s escape-time 50
       set-option -g default-shell "${pkgs.bash}/bin/bash"
       set -g default-command "${pkgs.bash}/bin/bash"
-      set -g mouse on
-
-      # Terminal overrides
-      set -ag terminal-overrides ',xterm-256color:RGB'
 
       # Display settings
       set -g display-time 2000
