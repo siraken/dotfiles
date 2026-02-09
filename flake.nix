@@ -43,6 +43,10 @@
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
+    openclaw = {
+      url = "github:openclaw/nix-openclaw";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
