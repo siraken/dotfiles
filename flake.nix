@@ -45,6 +45,7 @@
 
     openclaw = {
       url = "github:openclaw/nix-openclaw";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-on-droid = {
