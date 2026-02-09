@@ -218,7 +218,6 @@
                   openclaw.overlays.default
                 ];
               }
-              openclaw.darwinModules.openclaw
               home-manager.darwinModules.home-manager
               {
                 users.users = {
@@ -258,7 +257,6 @@
                   openclaw.overlays.default
                 ];
               }
-              openclaw.darwinModules.openclaw
               home-manager.darwinModules.home-manager
               {
                 users.users = {
