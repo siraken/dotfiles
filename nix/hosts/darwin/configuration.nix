@@ -1,89 +1,13 @@
 {
-  config,
-  pkgs,
   user,
   ...
 }:
-let
-  homeDir = config.users.users.${user.username}.home;
-  userPaths = import ../../modules/user-paths.nix { inherit homeDir; };
-in
 {
   imports = [
     ../../modules/darwin/common.nix
   ];
 
-  system.defaults = {
-    # TODO:
-    # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
-    NSGlobalDomain = {
-      # Keyboard
-      InitialKeyRepeat = 15; # Key repeat delay (default: 25)
-      KeyRepeat = 2; # Key repeat speed (default: 6, lower = faster)
-      ApplePressAndHoldEnabled = false; # Disable press-and-hold for keys (enables key repeat)
-
-      # Appearance
-      AppleInterfaceStyle = "Dark";
-      _HIHideMenuBar = true; # Auto-hide menu bar
-
-      # Disable auto-correction features
-      NSAutomaticCapitalizationEnabled = false;
-      NSAutomaticDashSubstitutionEnabled = false;
-      NSAutomaticPeriodSubstitutionEnabled = false;
-      NSAutomaticQuoteSubstitutionEnabled = false;
-      NSAutomaticSpellingCorrectionEnabled = false;
-
-      # Trackpad (in NSGlobalDomain)
-      "com.apple.trackpad.forceClick" = true;
-    };
-
-    # Trackpad settings
-    trackpad = {
-      Clicking = true; # Tap to click
-      TrackpadRightClick = true; # Two-finger right click
-      TrackpadThreeFingerDrag = false;
-      TrackpadPinch = true; # Pinch to zoom
-      TrackpadRotate = true; # Two-finger rotate
-      TrackpadMomentumScroll = true;
-      FirstClickThreshold = 1; # Click pressure (0=light, 1=medium, 2=firm)
-      SecondClickThreshold = 1;
-    };
-
-    # Menu bar clock
-    menuExtraClock = {
-      ShowAMPM = true;
-      ShowDate = 0; # 0=hide, 1=show, 2=show with day of week
-      ShowDayOfWeek = true;
-    };
-
-    # Window Manager (Stage Manager)
-    WindowManager = {
-      GloballyEnabled = false; # Stage Manager disabled
-      EnableStandardClickToShowDesktop = false;
-      EnableTiledWindowMargins = false;
-    };
-    screensaver = {
-      askForPassword = true;
-      askForPasswordDelay = 0;
-    };
-    CustomUserPreferences = {
-      "com.apple.screensaver" = {
-        idleTime = 180;
-      };
-    };
-  };
-
-  power = {
-    sleep = {
-      computer = "never";
-      display = 5;
-      harddisk = 10;
-    };
-  };
-
   services = {
-    openssh.enable = true;
-
     spotifyd = {
       enable = true;
       settings = {
@@ -96,36 +20,6 @@ in
         backend = "portaudio";
         initial_volume = 100;
         volume_controller = "softvol";
-      };
-    };
-  };
-
-  # Custom launchd services (managed by nix/modules/darwin/launchd-services.nix)
-  customServices = {
-    ollama = {
-      enable = true;
-      package = pkgs.ollama;
-      command = [
-        "${pkgs.ollama}/bin/ollama"
-        "serve"
-      ];
-      environment = {
-        OLLAMA_HOST = "127.0.0.1:11434";
-        # OLLAMA_MODELS = "/path/to/models";  # Optional: custom model path
-      };
-    };
-
-    postgresql = {
-      enable = true;
-      package = pkgs.postgresql_14;
-      command = [
-        "${pkgs.postgresql_14}/bin/postgres"
-        "-D"
-        (userPaths.dataDir "postgresql")
-      ];
-      environment = {
-        LC_ALL = "en_US.UTF-8";
-        LANG = "en_US.UTF-8";
       };
     };
   };

@@ -6,8 +6,6 @@
     ../../modules/darwin/common.nix
   ];
 
-  services = { };
-
   homebrew = {
     brews = [
       "ansible"
