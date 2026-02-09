@@ -2,11 +2,6 @@
 { pkgs }:
 with pkgs;
 let
-  # AI agent tools
-  agentTools = [
-    llm-agents.openclaw
-  ];
-
   # File operations and browsing
   fileTools = [
     broot # file manager
@@ -114,8 +109,7 @@ let
     neovim # vim-based editor
   ];
 in
-agentTools
-++ fileTools
+fileTools
 ++ jsonTools
 ++ networkTools
 ++ systemInfoTools

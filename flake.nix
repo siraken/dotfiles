@@ -79,6 +79,7 @@
       treefmt-nix,
       git-hooks,
       llm-agents,
+      openclaw,
       nix-on-droid,
       op-shell-plugins,
       # dotfiles-private,
@@ -112,6 +113,7 @@
           modules = [
             ./nix/hosts/wsl-ubuntu/home.nix
             nix-index-database.hmModules.nix-index
+            openclaw.homeManagerModules.openclaw
             { programs.nix-index-database.comma.enable = true; }
             {
               home = {
@@ -210,7 +212,13 @@
               ./nix/hosts/darwin/configuration.nix
               nix-index-database.darwinModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
-              { nixpkgs.overlays = [ llm-agents.overlays.default ]; }
+              {
+                nixpkgs.overlays = [
+                  llm-agents.overlays.default
+                  openclaw.overlays.default
+                ];
+              }
+              openclaw.darwinModules.openclaw
               home-manager.darwinModules.home-manager
               {
                 users.users = {
@@ -224,7 +232,10 @@
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
                   users.${user.username} = ./nix/hosts/darwin/home.nix;
-                  sharedModules = [ nixvim.homeModules.nixvim ];
+                  sharedModules = [
+                    nixvim.homeModules.nixvim
+                    openclaw.homeManagerModules.openclaw
+                  ];
                   extraSpecialArgs = { inherit inputs user; };
                 };
               }
@@ -241,7 +252,13 @@
               ./nix/hosts/darwin-min/configuration.nix
               nix-index-database.darwinModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
-              { nixpkgs.overlays = [ llm-agents.overlays.default ]; }
+              {
+                nixpkgs.overlays = [
+                  llm-agents.overlays.default
+                  openclaw.overlays.default
+                ];
+              }
+              openclaw.darwinModules.openclaw
               home-manager.darwinModules.home-manager
               {
                 users.users = {
@@ -256,7 +273,10 @@
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
                   users.${user.username} = ./nix/hosts/darwin-min/home.nix;
-                  sharedModules = [ nixvim.homeModules.nixvim ];
+                  sharedModules = [
+                    nixvim.homeModules.nixvim
+                    openclaw.homeManagerModules.openclaw
+                  ];
                   extraSpecialArgs = { inherit inputs user; };
                 };
               }
@@ -271,7 +291,12 @@
               ./nix/hosts/nixos-vm/configuration.nix
               nix-index-database.nixosModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
-              { nixpkgs.overlays = [ llm-agents.overlays.default ]; }
+              {
+                nixpkgs.overlays = [
+                  llm-agents.overlays.default
+                  openclaw.overlays.default
+                ];
+              }
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -279,7 +304,10 @@
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
                   users.${user.username} = ./nix/hosts/nixos-vm/home.nix;
-                  sharedModules = [ nixvim.homeModules.nixvim ];
+                  sharedModules = [
+                    nixvim.homeModules.nixvim
+                    openclaw.homeManagerModules.openclaw
+                  ];
                   extraSpecialArgs = { inherit inputs user; };
                 };
               }
@@ -303,7 +331,10 @@
             homeDirectory = "/home/${user.username}";
             pkgs = import nixpkgs {
               system = linuxSystem;
-              overlays = [ llm-agents.overlays.default ];
+              overlays = [
+                llm-agents.overlays.default
+                openclaw.overlays.default
+              ];
             };
           };
         };

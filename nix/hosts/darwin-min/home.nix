@@ -34,6 +34,7 @@ in
     ../../programs/lazydocker
     ../../programs/mise
     ../../programs/nano
+    ../../programs/openclaw
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim
