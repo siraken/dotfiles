@@ -10,10 +10,6 @@ let
 in
 {
   imports = [
-    # modules
-    ../../modules/aliases.nix
-    ../../modules/path.nix
-    ../../modules/nixpkgs.nix
     # programs (cross-platform)
     ../../programs/atuin
     ../../programs/awscli
@@ -41,19 +37,16 @@ in
     ../../programs/zsh
   ];
 
-  dotfiles.aliases.enable = true;
-  dotfiles.path.enable = true;
-  dotfiles.packages = {
-    enable = true;
-    extraPackages = with pkgs; [
-      # nixos-vm specific
-      playerctl
-      neofetch
-    ];
-  };
-
   home = {
     stateVersion = "25.11";
+    sessionPath = import ../../modules/path.nix { };
+    shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
+
+    packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
+      # nixos-vm specific
+      pkgs.playerctl
+      pkgs.neofetch
+    ];
 
     shell = {
       enableBashIntegration = true;
