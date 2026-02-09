@@ -9,7 +9,7 @@ in
   programs.bash = {
     enable = true;
     package = pkgs.bashInteractive;
-    enableCompletion = true;
+    enableCompletion = false;
 
     historyControl = [
       "ignoredups"
