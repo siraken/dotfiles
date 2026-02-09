@@ -42,7 +42,6 @@
     ../../programs/mise
     ../../programs/nano
     ../../programs/neovide
-    ../../programs/openclaw
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim

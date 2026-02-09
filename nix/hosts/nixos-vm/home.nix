@@ -27,7 +27,6 @@ in
     ../../programs/kitty
     ../../programs/lazydocker
     ../../programs/mise
-    ../../programs/openclaw
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim
