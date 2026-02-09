@@ -11,6 +11,11 @@ in
 {
   imports = [
     inputs.op-shell-plugins.hmModules.default
+    # modules
+    ../../modules/aliases.nix
+    ../../modules/variable.nix
+    ../../modules/path.nix
+    ../../modules/nixpkgs.nix
     # programs (cross-platform)
     ../../programs/atuin
     ../../programs/awscli
@@ -51,12 +56,19 @@ in
     ../../services/darwin/jankyborders.nix
   ];
 
+  dotfiles.aliases.enable = true;
+  dotfiles.variables.enable = true;
+  dotfiles.path.enable = true;
+  dotfiles.packages = {
+    enable = true;
+    extraPackages = with pkgs; [
+      nixfmt
+    ];
+  };
+
   home = {
     stateVersion = "25.11";
     # preferXdgDirectories = true; # to be enabled
-    sessionVariables = import ../../modules/variable.nix { };
-    sessionPath = import ../../modules/path.nix { };
-    shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
     file = {
 
@@ -74,10 +86,6 @@ in
       enableZshIntegration = true;
       enableShellIntegration = true;
     };
-
-    packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
-      pkgs.nixfmt
-    ];
   };
 
   programs.home-manager.enable = true;

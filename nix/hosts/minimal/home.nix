@@ -10,6 +10,10 @@ let
 in
 {
   imports = [
+    # modules
+    ../../modules/aliases.nix
+    ../../modules/nixpkgs.nix
+    # programs
     ../../programs/zoxide
     ../../programs/git
     ../../programs/zsh
@@ -18,9 +22,20 @@ in
     ../../programs/starship
   ];
 
+  dotfiles.aliases.enable = true;
+  dotfiles.packages = {
+    enable = true;
+    extraPackages = with pkgs; [
+      # minimal specific
+      gcc
+      libgcc
+      xdg-utils
+      nixfmt
+    ];
+  };
+
   home = {
     stateVersion = "25.11";
-    shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
     file =
       import ../../modules/symlinks.nix {
@@ -29,14 +44,6 @@ in
       // {
 
       };
-
-    packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
-      # minimal specific
-      pkgs.gcc
-      pkgs.libgcc
-      pkgs.xdg-utils
-      pkgs.nixfmt
-    ];
   };
 
   programs.home-manager.enable = true;
