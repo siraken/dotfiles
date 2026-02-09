@@ -209,7 +209,7 @@
               hostName = "siraken-mbp";
             };
             modules = [
-              ./nix/hosts/darwin/configuration.nix
+              ./nix/hosts/siraken-mbp/configuration.nix
               nix-index-database.darwinModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
               {
@@ -230,7 +230,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
-                  users.${user.username} = ./nix/hosts/darwin/home.nix;
+                  users.${user.username} = ./nix/hosts/siraken-mbp/home.nix;
                   sharedModules = [
                     nixvim.homeModules.nixvim
                     openclaw.homeManagerModules.openclaw
@@ -248,7 +248,7 @@
               hostName = "siraken-macmini";
             };
             modules = [
-              ./nix/hosts/darwin-min/configuration.nix
+              ./nix/hosts/siraken-macmini/configuration.nix
               nix-index-database.darwinModules.nix-index
               { programs.nix-index-database.comma.enable = true; }
               {
@@ -270,7 +270,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   backupFileExtension = backupFileExtension;
-                  users.${user.username} = ./nix/hosts/darwin-min/home.nix;
+                  users.${user.username} = ./nix/hosts/siraken-macmini/home.nix;
                   sharedModules = [
                     nixvim.homeModules.nixvim
                     openclaw.homeManagerModules.openclaw
