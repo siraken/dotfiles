@@ -9,6 +9,7 @@
     ./launchd-services.nix
     ./nix-caches.nix
     ../../services/darwin/sketchybar
+    ../../services/tailscale.nix
   ];
 
   nix = {
