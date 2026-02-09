@@ -162,7 +162,7 @@ flake = {
 | --- | --- | --- |
 | **High** | Export `homeManagerModules` from flake | Cannot use from other flakes without this |
 | **High** | Eliminate home.nix duplication via profiles | High maintenance cost |
-| ~~**Medium**~~ | ~~Convert modules/ to proper HM modules~~ | ~~Needed for overridability~~ ✅ Done ([#60](https://github.com/siraken/dotfiles/pull/60)) |
+| **Medium** | Convert modules/ to proper HM modules | Needed for overridability |
 | **Medium** | Add `mkEnableOption` to programs/ | Needed for conditional activation |
 | **Low** | Convert `user` to options | Needed for external use but can be incremental |
 | **Low** | Export darwinModules | HM modules come first |
