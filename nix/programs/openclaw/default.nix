@@ -34,6 +34,7 @@ let
         groupPolicy = "allowlist";
         channels = {
           "#dev-openclaw" = {
+            id = "$SLACK_DEV_CHANNEL_ID";
             allow = true;
           };
         };
