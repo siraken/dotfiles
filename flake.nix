@@ -97,9 +97,6 @@
       linuxSystem = "x86_64-linux";
       backupFileExtension = "hm-backup";
 
-      mkNixosSystem = nixpkgs.lib.nixosSystem;
-      mkNixOnDroidSystem = nix-on-droid.lib.nixOnDroidConfiguration;
-
       # Function for home-manager configuration
       mkHomeConfiguration =
         {
@@ -210,43 +207,14 @@
         };
 
         nixosConfigurations = {
-          "nixos-vm" = mkNixosSystem {
-            system = linuxSystem;
-            modules = [
-              ./nix/hosts/nixos-vm/configuration.nix
-              nix-index-database.nixosModules.nix-index
-              { programs.nix-index-database.comma.enable = true; }
-              {
-                nixpkgs.overlays = [
-                  llm-agents.overlays.default
-                  openclaw.overlays.default
-                ];
-              }
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = backupFileExtension;
-                  users.${user.username} = ./nix/hosts/nixos-vm/home.nix;
-                  sharedModules = [
-                    nixvim.homeModules.nixvim
-                    openclaw.homeManagerModules.openclaw
-                  ];
-                  extraSpecialArgs = { inherit inputs user; };
-                };
-              }
-            ];
-            specialArgs = { inherit inputs user; };
+          "nixos-vm" = import ./nix/hosts/nixos-vm {
+            inherit inputs user backupFileExtension;
           };
         };
 
         # nixOnDroidConfigurations = {
-        #   "pixel10" = mkNixOnDroidSystem {
-        #     system = "aarch64-linux";
-        #     modules = [
-        #       ./nix/hosts/pixel10/configuration.nix
-        #     ];
+        #   "pixel10" = import ./nix/hosts/pixel10 {
+        #     inherit inputs user backupFileExtension;
         #   };
         # };
 
