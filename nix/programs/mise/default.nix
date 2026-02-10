@@ -88,7 +88,6 @@ in
         ruby = "latest";
         zig = "latest";
         uv = "latest";
-        go = "latest";
         rust = "latest";
       }
       // prefixTools "npm" npm
