@@ -94,7 +94,6 @@
         org = "novalumo";
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL";
       };
-      linuxSystem = "x86_64-linux";
       backupFileExtension = "hm-backup";
 
       # Function for creating app entries
@@ -111,7 +110,7 @@
 
       systems = [
         "aarch64-darwin"
-        linuxSystem
+        "x86_64-linux"
       ];
 
       perSystem =
