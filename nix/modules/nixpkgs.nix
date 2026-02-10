@@ -58,12 +58,6 @@ let
 
   # Programming languages
   languages = [
-    bun # JavaScript/TypeScript runtime
-    clojure
-    dart
-    deno # JavaScript/TypeScript runtime
-    elmPackages.elm
-    kotlin
     lua
     nim
     pnpm # Node.js package manager
@@ -94,6 +88,7 @@ let
 
   # Development utilities
   devUtilTools = [
+    devenv # composable dev environments
     ghq # repository manager
     graphviz # graph visualization
     lua-language-server # LSP
