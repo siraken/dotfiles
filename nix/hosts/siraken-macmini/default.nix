@@ -10,7 +10,28 @@ inputs.nix-darwin.lib.darwinSystem {
     hostName = "siraken-macmini";
   };
   modules = [
-    ./configuration.nix
+    ../../modules/darwin/common.nix
+    {
+      homebrew = {
+        brews = [
+          "ansible"
+          "cloudflared"
+        ];
+        casks = [
+          "alt-tab"
+          "appcleaner"
+          "drivedx"
+          "ghostty"
+          "github"
+          "google-chrome"
+          "thebrowsercompany-dia"
+          "visual-studio-code"
+          "vivaldi"
+          "raycast"
+        ];
+        masApps = { };
+      };
+    }
     inputs.nix-index-database.darwinModules.nix-index
     { programs.nix-index-database.comma.enable = true; }
     {
