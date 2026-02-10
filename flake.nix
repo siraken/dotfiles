@@ -97,31 +97,6 @@
       linuxSystem = "x86_64-linux";
       backupFileExtension = "hm-backup";
 
-      # Function for home-manager configuration
-      mkHomeConfiguration =
-        {
-          username,
-          homeDirectory,
-          pkgs,
-        }:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
-          modules = [
-            ./nix/hosts/wsl-ubuntu/home.nix
-            nix-index-database.hmModules.nix-index
-            openclaw.homeManagerModules.openclaw
-            { programs.nix-index-database.comma.enable = true; }
-            {
-              home = {
-                username = username;
-                homeDirectory = homeDirectory;
-                stateVersion = "25.11";
-              };
-            }
-          ];
-          extraSpecialArgs = { inherit inputs user; };
-        };
-
       # Function for creating app entries
       mkApp = pkgs: name: script: {
         type = "app";
@@ -219,16 +194,8 @@
         # };
 
         homeConfigurations = {
-          "wsl-ubuntu" = mkHomeConfiguration {
-            username = user.username;
-            homeDirectory = "/home/${user.username}";
-            pkgs = import nixpkgs {
-              system = linuxSystem;
-              overlays = [
-                llm-agents.overlays.default
-                openclaw.overlays.default
-              ];
-            };
+          "wsl-ubuntu" = import ./nix/hosts/wsl-ubuntu {
+            inherit inputs user backupFileExtension;
           };
         };
       };
