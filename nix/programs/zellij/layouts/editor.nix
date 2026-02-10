@@ -39,7 +39,8 @@
                   {
                     pane = {
                       size = "20%";
-                      name = "sidebar";
+                      name = "explorer";
+                      command = "yazi";
                     };
                   }
                   {

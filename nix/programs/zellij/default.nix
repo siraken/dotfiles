@@ -6,7 +6,7 @@
     enableFishIntegration = false;
     enableZshIntegration = false;
     layouts = {
-      vscode = import ./layouts/vscode.nix;
+      editor = import ./layouts/editor.nix;
       quad = import ./layouts/quad.nix;
       hex = import ./layouts/hex.nix;
     };
