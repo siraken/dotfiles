@@ -94,11 +94,9 @@
         org = "novalumo";
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL";
       };
-      darwinSystem = "aarch64-darwin";
       linuxSystem = "x86_64-linux";
       backupFileExtension = "hm-backup";
 
-      mkDarwinSystem = nix-darwin.lib.darwinSystem;
       mkNixosSystem = nixpkgs.lib.nixosSystem;
       mkNixOnDroidSystem = nix-on-droid.lib.nixOnDroidConfiguration;
 
@@ -140,7 +138,7 @@
       ];
 
       systems = [
-        darwinSystem
+        "aarch64-darwin"
         linuxSystem
       ];
 
@@ -178,7 +176,7 @@
             ];
           };
         }
-        // nixpkgs.lib.optionalAttrs (system == darwinSystem) {
+        // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
           apps =
             let
               darwinApp = mkApp pkgs;
@@ -203,83 +201,11 @@
 
       flake = {
         darwinConfigurations = {
-          "siraken-mbp" = mkDarwinSystem {
-            system = darwinSystem;
-            specialArgs = {
-              inherit inputs user;
-              hostName = "siraken-mbp";
-            };
-            modules = [
-              ./nix/hosts/siraken-mbp/configuration.nix
-              nix-index-database.darwinModules.nix-index
-              { programs.nix-index-database.comma.enable = true; }
-              {
-                nixpkgs.overlays = [
-                  llm-agents.overlays.default
-                  openclaw.overlays.default
-                ];
-              }
-              home-manager.darwinModules.home-manager
-              {
-                users.users = {
-                  "${user.username}" = {
-                    name = "${user.username}";
-                    home = "/Users/${user.username}";
-                  };
-                };
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = backupFileExtension;
-                  users.${user.username} = ./nix/hosts/siraken-mbp/home.nix;
-                  sharedModules = [
-                    nixvim.homeModules.nixvim
-                    openclaw.homeManagerModules.openclaw
-                  ];
-                  extraSpecialArgs = { inherit inputs user; };
-                };
-              }
-            ];
+          "siraken-mbp" = import ./nix/hosts/siraken-mbp {
+            inherit inputs user backupFileExtension;
           };
-
-          "siraken-macmini" = mkDarwinSystem {
-            system = darwinSystem;
-            specialArgs = {
-              inherit inputs user;
-              hostName = "siraken-macmini";
-            };
-            modules = [
-              ./nix/hosts/siraken-macmini/configuration.nix
-              nix-index-database.darwinModules.nix-index
-              { programs.nix-index-database.comma.enable = true; }
-              {
-                nixpkgs.overlays = [
-                  llm-agents.overlays.default
-                  openclaw.overlays.default
-                ];
-              }
-              home-manager.darwinModules.home-manager
-              {
-                users.users = {
-                  "${user.username}" = {
-                    name = "${user.username}";
-                    home = "/Users/${user.username}";
-                  };
-                };
-
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = backupFileExtension;
-                  users.${user.username} = ./nix/hosts/siraken-macmini/home.nix;
-                  sharedModules = [
-                    nixvim.homeModules.nixvim
-                    openclaw.homeManagerModules.openclaw
-                  ];
-                  extraSpecialArgs = { inherit inputs user; };
-                };
-              }
-            ];
+          "siraken-macmini" = import ./nix/hosts/siraken-macmini {
+            inherit inputs user backupFileExtension;
           };
         };
 
