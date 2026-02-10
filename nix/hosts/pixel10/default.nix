@@ -1,6 +1,6 @@
 {
   inputs,
-  user,
+  userProfile,
   backupFileExtension,
 }:
 inputs.nix-on-droid.lib.nixOnDroidConfiguration {

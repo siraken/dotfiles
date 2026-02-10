@@ -1,6 +1,6 @@
 {
   inputs,
-  user,
+  userProfile,
   backupFileExtension,
 }:
 inputs.nixpkgs.lib.nixosSystem {
@@ -21,14 +21,14 @@ inputs.nixpkgs.lib.nixosSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = backupFileExtension;
-        users.${user.username} = ./home.nix;
+        users.${userProfile.username} = ./home.nix;
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
           inputs.openclaw.homeManagerModules.openclaw
         ];
-        extraSpecialArgs = { inherit inputs user; };
+        extraSpecialArgs = { inherit inputs userProfile; };
       };
     }
   ];
-  specialArgs = { inherit inputs user; };
+  specialArgs = { inherit inputs userProfile; };
 }

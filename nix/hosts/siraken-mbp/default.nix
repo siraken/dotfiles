@@ -1,12 +1,12 @@
 {
   inputs,
-  user,
+  userProfile,
   backupFileExtension,
 }:
 inputs.nix-darwin.lib.darwinSystem {
   system = "aarch64-darwin";
   specialArgs = {
-    inherit inputs user;
+    inherit inputs userProfile;
     hostName = "siraken-mbp";
   };
   modules = [
@@ -16,7 +16,7 @@ inputs.nix-darwin.lib.darwinSystem {
         spotifyd = {
           enable = true;
           settings = {
-            username = user.username;
+            username = userProfile.username;
             use_keyring = true;
             device_name = "spotifyd @ Kento's MacBook Pro";
             device_type = "computer";
@@ -261,21 +261,21 @@ inputs.nix-darwin.lib.darwinSystem {
     inputs.home-manager.darwinModules.home-manager
     {
       users.users = {
-        "${user.username}" = {
-          name = "${user.username}";
-          home = "/Users/${user.username}";
+        "${userProfile.username}" = {
+          name = "${userProfile.username}";
+          home = "/Users/${userProfile.username}";
         };
       };
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = backupFileExtension;
-        users.${user.username} = ./home.nix;
+        users.${userProfile.username} = ./home.nix;
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
           inputs.openclaw.homeManagerModules.openclaw
         ];
-        extraSpecialArgs = { inherit inputs user; };
+        extraSpecialArgs = { inherit inputs userProfile; };
       };
     }
   ];

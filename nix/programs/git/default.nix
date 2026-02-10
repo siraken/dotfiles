@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  user,
+  userProfile,
   ...
 }:
 let
@@ -45,10 +45,10 @@ in
       };
 
       user = {
-        name = user.name;
-        email = user.email;
-        username = user.username;
-        signingkey = user.signingKey;
+        name = userProfile.name;
+        email = userProfile.email;
+        username = userProfile.username;
+        signingkey = userProfile.signingKey;
       };
 
       alias = {
@@ -87,7 +87,7 @@ in
       };
 
       github = {
-        user = user.username;
+        user = userProfile.username;
       };
 
       init = {
@@ -219,8 +219,8 @@ in
     enable = true;
     settings = {
       user = {
-        email = user.email;
-        name = user.name;
+        email = userProfile.email;
+        name = userProfile.name;
       };
     };
   };

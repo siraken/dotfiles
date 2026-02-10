@@ -1,6 +1,6 @@
 {
   inputs,
-  user,
+  userProfile,
   backupFileExtension,
 }:
 inputs.home-manager.lib.homeManagerConfiguration {
@@ -16,11 +16,11 @@ inputs.home-manager.lib.homeManagerConfiguration {
     ./home.nix
     {
       home = {
-        username = user.username;
-        homeDirectory = "/home/${user.username}";
+        username = userProfile.username;
+        homeDirectory = "/home/${userProfile.username}";
         stateVersion = "25.11";
       };
     }
   ];
-  extraSpecialArgs = { inherit inputs user; };
+  extraSpecialArgs = { inherit inputs userProfile; };
 }

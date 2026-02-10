@@ -87,7 +87,7 @@
       ...
     }:
     let
-      user = {
+      userProfile = {
         username = "siraken";
         name = "Kento Shirasawa";
         email = "shirasawa@novalumo.com";
@@ -173,28 +173,28 @@
       flake = {
         darwinConfigurations = {
           "siraken-mbp" = import ./nix/hosts/siraken-mbp {
-            inherit inputs user backupFileExtension;
+            inherit inputs userProfile backupFileExtension;
           };
           "siraken-macmini" = import ./nix/hosts/siraken-macmini {
-            inherit inputs user backupFileExtension;
+            inherit inputs userProfile backupFileExtension;
           };
         };
 
         nixosConfigurations = {
           "nixos-vm" = import ./nix/hosts/nixos-vm {
-            inherit inputs user backupFileExtension;
+            inherit inputs userProfile backupFileExtension;
           };
         };
 
         # nixOnDroidConfigurations = {
         #   "pixel10" = import ./nix/hosts/pixel10 {
-        #     inherit inputs user backupFileExtension;
+        #     inherit inputs userProfile backupFileExtension;
         #   };
         # };
 
         homeConfigurations = {
           "wsl-ubuntu" = import ./nix/hosts/wsl-ubuntu {
-            inherit inputs user backupFileExtension;
+            inherit inputs userProfile backupFileExtension;
           };
         };
       };

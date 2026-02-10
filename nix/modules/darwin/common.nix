@@ -1,12 +1,12 @@
 {
   config,
   pkgs,
-  user,
+  userProfile,
   hostName,
   ...
 }:
 let
-  homeDir = config.users.users.${user.username}.home;
+  homeDir = config.users.users.${userProfile.username}.home;
   userPaths = import ../user-paths.nix { inherit homeDir; };
 in
 {
@@ -47,7 +47,7 @@ in
 
   system = {
     stateVersion = 5;
-    primaryUser = user.username;
+    primaryUser = userProfile.username;
     defaults = {
       dock = {
         orientation = "bottom";

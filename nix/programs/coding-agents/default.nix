@@ -1,8 +1,8 @@
-{ pkgs, user, ... }:
+{ pkgs, userProfile, ... }:
 let
   instructions = ''
     - Unless otherwise specified, always respond in 日本語.
-    - `${user.username}` is my username and `${user.org}` is my primary organization name.
+    - `${userProfile.username}` is my username and `${userProfile.org}` is my primary organization name.
     - When using current date/time, always reference accurate date/time using `date` command or similar methods.
     - If you don't know something or if something is unclear, don't force yourself to proceed with the task and communicate that to me clearly.
     - When working with projects, determine which package manager to use by checking lock files (package-lock.json, yarn.lock, pnpm-lock.yaml, etc.) and project configuration files first.

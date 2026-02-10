@@ -3,7 +3,7 @@
   pkgs,
   lib,
   inputs,
-  user,
+  userProfile,
   ...
 }:
 {
@@ -65,9 +65,9 @@
   nixpkgs.config.allowUnfree = true;
 
   # User account
-  users.users.${user.username} = {
+  users.users.${userProfile.username} = {
     isNormalUser = true;
-    description = user.username;
+    description = userProfile.username;
     extraGroups = [
       "wheel"
       "networkmanager"

@@ -4,7 +4,7 @@
   config,
   lib,
   pkgs,
-  user,
+  userProfile,
   ...
 }:
 
@@ -12,7 +12,7 @@ with lib;
 
 let
   cfg = config.customServices;
-  homeDir = config.users.users.${user.username}.home;
+  homeDir = config.users.users.${userProfile.username}.home;
   userPaths = import ../user-paths.nix { inherit homeDir; };
   logDir = userPaths.logBase;
 
