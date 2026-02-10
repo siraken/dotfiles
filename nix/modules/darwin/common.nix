@@ -198,6 +198,7 @@ in
     enable = true;
     onActivation = {
       autoUpdate = true;
+      upgrade = true;
       cleanup = "none";
     };
     taps = [
