@@ -29,8 +29,12 @@ let
     ".playwright-mcp/"
     "**/.claude/settings.local.json"
     "mise.local.toml"
-    ".direnv/"
     "**/node_modules"
+    ".direnv"
+    ".devenv*"
+    "devenv.local.nix"
+    "devenv.local.yaml"
+    ".pre-commit-config.yaml"
   ]
   ++ dotenvFiles;
 in
