@@ -1,11 +1,17 @@
 { pkgs, ... }:
 {
-  # programs.nixvim = {
-  #   enable = true;
-
-  #   colorschemes.catppuccin.enable = true;
-  #   plugins.lualine.enable = true;
-  # };
+  programs.nixvim = {
+    enable = true;
+    colorschemes = {
+      tokyonight = {
+        enable = true;
+        style = "night";
+        transparent = true;
+        terminal_colors = true;
+      };
+    };
+    plugins.lualine.enable = true;
+  };
 
   programs.vim = {
     enable = true;
