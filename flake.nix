@@ -124,7 +124,15 @@
           treefmt = {
             projectRootFile = "flake.nix";
             programs.nixfmt.enable = true;
-            programs.stylua.enable = true;
+            programs.stylua = {
+              enable = true;
+              excludes = [
+                # Lua fragments for nixvim __raw (not valid standalone Lua)
+                "nix/programs/vim/git/gitsigns-on-attach.lua"
+                "nix/programs/vim/lang/rustaceanvim-on-attach.lua"
+                "nix/programs/vim/lua/keymap-file-info.lua"
+              ];
+            };
             programs.shfmt.enable = true;
             programs.biome = {
               enable = true;
