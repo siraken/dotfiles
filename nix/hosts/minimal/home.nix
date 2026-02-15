@@ -19,7 +19,7 @@ in
   ];
 
   home = {
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
     file =

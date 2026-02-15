@@ -18,7 +18,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       home = {
         username = userProfile.username;
         homeDirectory = "/home/${userProfile.username}";
-        stateVersion = "25.11";
+        stateVersion = "26.05";
       };
     }
   ];
