@@ -23,6 +23,10 @@ in
         "nix-command"
         "flakes"
       ];
+      trusted-users = [
+        "root"
+        userProfile.username
+      ];
       substituters = [
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
