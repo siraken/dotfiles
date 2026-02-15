@@ -13,7 +13,7 @@
   ];
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
 
     # Plugins NOT available in Nixvim (need extraPlugins if desired):
     # - nvim-paredit (julienvincent/nvim-paredit) - S-expression editing
