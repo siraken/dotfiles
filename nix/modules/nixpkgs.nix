@@ -90,6 +90,7 @@ let
   devUtilTools = [
     devenv # composable dev environments
     ghq # repository manager
+    gibo # .gitignore generator
     graphviz # graph visualization
     lua-language-server # LSP
     luarocks # Lua packages
