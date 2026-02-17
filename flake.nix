@@ -201,7 +201,7 @@
         # };
 
         homeConfigurations = {
-          "wsl-ubuntu" = import ./nix/hosts/wsl-ubuntu {
+          "wsl-ubuntu" = import ./nix/home/wsl-ubuntu {
             inherit inputs userProfile backupFileExtension;
           };
         };
