@@ -13,14 +13,28 @@ inputs.home-manager.lib.homeManagerConfiguration {
   };
   modules = [
     ../../modules/home/common.nix
-    ./home.nix
-    {
-      home = {
-        username = userProfile.username;
-        homeDirectory = "/home/${userProfile.username}";
-        stateVersion = "26.05";
-      };
-    }
+    ../main.nix
+    (
+      { lib, ... }:
+      {
+        nixpkgs.config = {
+          allowUnfree = true;
+          allowUnfreePredicate =
+            pkg:
+            builtins.elem (lib.getName pkg) [
+              "1password-cli"
+            ];
+        };
+        home = {
+          username = userProfile.username;
+          homeDirectory = "/home/${userProfile.username}";
+          stateVersion = "26.05";
+        };
+      }
+    )
   ];
-  extraSpecialArgs = { inherit inputs userProfile; };
+  extraSpecialArgs = {
+    inherit inputs userProfile;
+    isDarwin = false;
+  };
 }
