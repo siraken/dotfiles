@@ -34,13 +34,6 @@ local function UpdateRight(window, pane)
     )
   end
 
-  -- DateTime
-  utils.add_element(
-    elems,
-    { Foreground = { Color = colors.TOKYO_NIGHT_GREEN.Color }, Text = wezterm.nerdfonts.md_clock_outline },
-    wezterm.strftime("%H:%M")
-  )
-
   -- Battery (only full screen)
   if window:get_dimensions().is_full_screen then
     for _, b in ipairs(wezterm.battery_info()) do
