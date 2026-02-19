@@ -3,17 +3,35 @@ _COLOR_DEFAULT_GREEN=0xff9ece6a
 _COLOR_BRAND=0xff1ed760
 _COLOR_WHITE=0xffffffff
 
-# Spotifyが起動しているか確認
-if ! pgrep -x "Spotify" >/dev/null; then
+# AppleScript内で起動確認と情報取得を一括で行う
+# - `application "Spotify" is not running` はSpotifyを起動させない安全な確認方法
+# - 1回のosascript呼び出しに統合し、プロセス増殖とレースコンディションを防止
+# - `with timeout` でSpotifyが応答しない場合のハングを防止
+SPOTIFY_INFO=$(osascript -e '
+if application "Spotify" is not running then
+  return "NOT_RUNNING"
+end if
+with timeout 5 seconds
+  tell application "Spotify"
+    set playerState to player state as string
+    set trackName to name of current track as string
+    set artistName to artist of current track as string
+    return playerState & "|" & trackName & "|" & artistName
+  end tell
+end timeout
+' 2>/dev/null)
+
+# Spotifyが起動していない、またはosascriptが失敗した場合
+if [ -z "$SPOTIFY_INFO" ] || [ "$SPOTIFY_INFO" = "NOT_RUNNING" ]; then
   sketchybar --set "$NAME" \
     drawing=off
   exit 0
 fi
 
-# AppleScriptを使用してSpotifyの情報を取得
-PLAYER_STATE=$(osascript -e 'tell application "Spotify" to player state as string')
-TRACK_NAME=$(osascript -e 'tell application "Spotify" to name of current track as string')
-ARTIST_NAME=$(osascript -e 'tell application "Spotify" to artist of current track as string')
+# パイプ区切りで分割
+PLAYER_STATE=$(echo "$SPOTIFY_INFO" | cut -d'|' -f1)
+TRACK_NAME=$(echo "$SPOTIFY_INFO" | cut -d'|' -f2)
+ARTIST_NAME=$(echo "$SPOTIFY_INFO" | cut -d'|' -f3)
 
 # 再生状態に応じてアイコンを設定
 case "$PLAYER_STATE" in
@@ -29,7 +47,7 @@ case "$PLAYER_STATE" in
   ;;
 *)
   ICON_COLOR=$_COLOR_WHITE
-  LABEL_COLOR=$_WHITE_COLOR
+  LABEL_COLOR=$_COLOR_WHITE
   BACKGROUND_COLOR=$_COLOR_DEFAULT_BACKGROUND
   ;;
 esac
