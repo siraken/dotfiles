@@ -6,17 +6,19 @@ _COLOR_WHITE=0xffffffff
 # AppleScript内で起動確認と情報取得を一括で行う
 # - `application "Spotify" is not running` はSpotifyを起動させない安全な確認方法
 # - 1回のosascript呼び出しに統合し、プロセス増殖とレースコンディションを防止
-# - timeout で応答しないosascriptがハングし続けるのを防止
-SPOTIFY_INFO=$(timeout 5 osascript -e '
+# - `with timeout` でSpotifyが応答しない場合のハングを防止
+SPOTIFY_INFO=$(osascript -e '
 if application "Spotify" is not running then
   return "NOT_RUNNING"
 end if
-tell application "Spotify"
-  set playerState to player state as string
-  set trackName to name of current track as string
-  set artistName to artist of current track as string
-  return playerState & "|" & trackName & "|" & artistName
-end tell
+with timeout 5 seconds
+  tell application "Spotify"
+    set playerState to player state as string
+    set trackName to name of current track as string
+    set artistName to artist of current track as string
+    return playerState & "|" & trackName & "|" & artistName
+  end tell
+end timeout
 ' 2>/dev/null)
 
 # Spotifyが起動していない、またはosascriptが失敗した場合
