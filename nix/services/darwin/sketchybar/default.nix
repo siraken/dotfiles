@@ -11,8 +11,11 @@ let
     green = "0xff9ece6a";
     spotifyGreen = "0xff1ed760";
     appleMusicPink = "0xffff4e6b";
-    workspaceActive = "0x44ffffff";
+    workspaceActive = "0xff9d7cd8";
   };
+
+  # Binaries
+  aerospace = "${pkgs.aerospace}/bin/aerospace";
 
   # Create plugin scripts using writeShellScript
   aerospacePlugin = pkgs.writeShellScript "aerospace.sh" (builtins.readFile ./plugins/aerospace.sh);
@@ -54,39 +57,87 @@ in
       sketchybar --default "''${default[@]}"
 
       ##### Left Items #####
-      sketchybar \
-        --add item front_app left \
-        --set front_app script="${frontAppPlugin}" \
-        --subscribe front_app front_app_switched
 
+      # AeroSpace workspaces
       sketchybar --add event aerospace_workspace_change
-      for sid in $(aerospace list-workspaces --all); do
+      SPACE_SIDS=()
+      for sid in $(${aerospace} list-workspaces --all); do
         sketchybar --add item space.$sid left \
           --subscribe space.$sid aerospace_workspace_change \
           --set space.$sid \
             background.color=${colors.workspaceActive} \
             background.corner_radius=5 \
-            background.height=20 \
+            background.height=22 \
             background.drawing=off \
+            icon.drawing=off \
             label="$sid" \
-            click_script="aerospace workspace $sid" \
+            label.font="Hack Nerd Font:bold:12.0" \
+            label.padding_left=10 \
+            label.padding_right=10 \
+            padding_left=3 \
+            padding_right=3 \
+            click_script="${aerospace} workspace $sid" \
             script="${aerospacePlugin} $sid"
+        SPACE_SIDS+=("space.$sid")
       done
+      sketchybar --add bracket spaces "''${SPACE_SIDS[@]}" \
+        --set spaces \
+          background.color=${colors.background} \
+          background.corner_radius=6 \
+          background.height=30 \
+          background.drawing=on
+
+      # Spacer between workspaces and front app
+      sketchybar --add item spacer.left left \
+        --set spacer.left \
+          label.drawing=off \
+          icon.drawing=off \
+          background.drawing=off \
+          padding_left=6 \
+          padding_right=0 \
+          width=6
+
+      # Front app
+      sketchybar \
+        --add item front_app left \
+        --set front_app script="${frontAppPlugin}" \
+        --subscribe front_app front_app_switched
 
       ##### Right Items #####
+      # Note: right items are rendered right-to-left (first added = rightmost)
       sketchybar \
         --add item clock right \
-        --set clock update_freq=10 padding_left=5 script="${clockPlugin}" \
+        --set clock update_freq=10 script="${clockPlugin}"
+
+      sketchybar --add item spacer.r1 right \
+        --set spacer.r1 label.drawing=off icon.drawing=off background.drawing=off width=6
+
+      sketchybar \
         --add item volume right \
-        --set volume padding_left=5 script="${volumePlugin}" \
-        --subscribe volume volume_change \
+        --set volume script="${volumePlugin}" \
+        --subscribe volume volume_change
+
+      sketchybar --add item spacer.r2 right \
+        --set spacer.r2 label.drawing=off icon.drawing=off background.drawing=off width=6
+
+      sketchybar \
         --add item battery right \
-        --set battery update_freq=120 padding_left=5 script="${batteryPlugin}" \
-        --subscribe battery system_woke power_source_change \
+        --set battery update_freq=120 script="${batteryPlugin}" \
+        --subscribe battery system_woke power_source_change
+
+      sketchybar --add item spacer.r3 right \
+        --set spacer.r3 label.drawing=off icon.drawing=off background.drawing=off width=6
+
+      sketchybar \
         --add item spotify right \
-        --set spotify update_freq=1 padding_left=5 script="${spotifyPlugin}" click_script="${spotifyClickPlugin}" \
+        --set spotify update_freq=1 script="${spotifyPlugin}" click_script="${spotifyClickPlugin}"
+
+      sketchybar --add item spacer.r4 right \
+        --set spacer.r4 label.drawing=off icon.drawing=off background.drawing=off width=6
+
+      sketchybar \
         --add item apple_music right \
-        --set apple_music update_freq=1 padding_left=5 script="${appleMusicPlugin}" click_script="${appleMusicClickPlugin}"
+        --set apple_music update_freq=1 script="${appleMusicPlugin}" click_script="${appleMusicClickPlugin}"
 
       sketchybar --update
     '';

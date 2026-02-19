@@ -10,26 +10,13 @@ wezterm.on("format-window-title", function(tab)
 end)
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local SYMBOL_COLOR = { "#ffb2cc", "#a4a4a4" }
-  local FONT_COLOR = { "#dddddd", "#888888" }
-
-  local index = tab.is_active and 1 or 2
+  local fg = tab.is_active and "#ffffff" or "#888888"
   local bg = "none"
-
-  if tab.is_active then
-    bg = colors.TOKYO_NIGHT_BLUE.Color
-  end
-
-  local zoomed = tab.active_pane.is_zoomed and "🔎 " or " "
-
   local intensity = tab.is_active and "Bold" or "Normal"
 
   return {
     { Attribute = { Intensity = intensity } },
-    { Foreground = { Color = SYMBOL_COLOR[index] } },
-    { Background = { Color = bg } },
-
-    { Foreground = { Color = FONT_COLOR[index] } },
+    { Foreground = { Color = fg } },
     { Background = { Color = bg } },
     { Text = " " },
     { Text = BaseName(tab.active_pane.foreground_process_name) },
