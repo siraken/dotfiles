@@ -8,6 +8,32 @@
 let
   homeDir = config.users.users.${userProfile.username}.home;
   userPaths = import ../user-paths.nix { inherit homeDir; };
+
+  # HID key codes for keyboard remapping (used with hidutil)
+  # Reference: https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+  hidKeys = {
+    # Modifier keys (Usage Page 0x07)
+    capsLock = "0x700000039";
+    leftControl = "0x7000000E0";
+    leftShift = "0x7000000E1";
+    leftOption = "0x7000000E2";
+    leftCommand = "0x7000000E3";
+    rightControl = "0x7000000E4";
+    rightShift = "0x7000000E5";
+    rightOption = "0x7000000E6";
+    rightCommand = "0x7000000E7";
+    # Special keys
+    fn = "0xFF00000003";
+  };
+
+  mkKeyMapping =
+    let
+      hexToInt = s: pkgs.lib.trivial.fromHexString s;
+    in
+    src: dst: {
+      HIDKeyboardModifierMappingSrc = hexToInt src;
+      HIDKeyboardModifierMappingDst = hexToInt dst;
+    };
 in
 {
   imports = [
@@ -64,6 +90,12 @@ in
   system = {
     stateVersion = 5;
     primaryUser = userProfile.username;
+    keyboard = {
+      enableKeyMapping = true;
+      userKeyMapping = [
+        (mkKeyMapping hidKeys.rightOption hidKeys.fn)
+      ];
+    };
     defaults = {
       dock = {
         orientation = "bottom";
