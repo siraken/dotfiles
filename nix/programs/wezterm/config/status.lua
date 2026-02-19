@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local colors = require("colors")
 local utils = require("utils")
-local spotify = require("spotify")
 
 -- Left
 local function UpdateLeft(window, pane)
@@ -12,16 +11,6 @@ end
 -- Right
 local function UpdateRight(window, pane)
   local elems = {}
-
-  -- Spotify status
-  local spotify_info = spotify.get_status_element()
-  if spotify_info then
-    utils.add_element(
-      elems,
-      { Foreground = { Color = spotify_info.color }, Text = spotify_info.icon },
-      spotify_info.text
-    )
-  end
 
   local cwd = utils.get_cwd(pane)
   local project = utils.get_project_name(cwd)
@@ -45,8 +34,17 @@ local function UpdateRight(window, pane)
     )
   end
 
-  -- Battery (only full screen)
+  -- Full screen only: Spotify status, Battery
   if window:get_dimensions().is_full_screen then
+    local spotify_info = require("spotify").get_status_element()
+    if spotify_info then
+      utils.add_element(
+        elems,
+        { Foreground = { Color = spotify_info.color }, Text = spotify_info.icon },
+        spotify_info.text
+      )
+    end
+
     for _, b in ipairs(wezterm.battery_info()) do
       utils.add_element(
         elems,
