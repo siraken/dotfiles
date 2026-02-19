@@ -1,17 +1,35 @@
 _COLOR_DEFAULT_BACKGROUND=0xff1a1b26
 _COLOR_BRAND=0xffff4e6b
 
-# Apple Musicが起動しているか確認
-if ! pgrep -x "Music" >/dev/null; then
-  sketchybar -m --set "$NAME" \
+# AppleScript内で起動確認と情報取得を一括で行う
+# - `application "Music" is not running` はApple Musicを起動させない安全な確認方法
+# - 1回のosascript呼び出しに統合し、プロセス増殖とレースコンディションを防止
+# - `with timeout` でApple Musicが応答しない場合のハングを防止
+MUSIC_INFO=$(osascript -e '
+if application "Music" is not running then
+  return "NOT_RUNNING"
+end if
+with timeout 5 seconds
+  tell application "Music"
+    set playerState to player state as string
+    set trackName to name of current track as string
+    set artistName to artist of current track as string
+    return playerState & "|" & trackName & "|" & artistName
+  end tell
+end timeout
+' 2>/dev/null)
+
+# Apple Musicが起動していない、またはosascriptが失敗した場合
+if [ -z "$MUSIC_INFO" ] || [ "$MUSIC_INFO" = "NOT_RUNNING" ]; then
+  sketchybar --set "$NAME" \
     drawing=off
   exit 0
 fi
 
-# AppleScriptを使用してApple Musicの情報を取得
-PLAYER_STATE=$(osascript -e 'tell application "Music" to player state as string')
-TRACK_NAME=$(osascript -e 'tell application "Music" to name of current track as string')
-ARTIST_NAME=$(osascript -e 'tell application "Music" to artist of current track as string')
+# パイプ区切りで分割
+PLAYER_STATE=$(echo "$MUSIC_INFO" | cut -d'|' -f1)
+TRACK_NAME=$(echo "$MUSIC_INFO" | cut -d'|' -f2)
+ARTIST_NAME=$(echo "$MUSIC_INFO" | cut -d'|' -f3)
 
 # 再生状態に応じてアイコンを設定
 case "$PLAYER_STATE" in
