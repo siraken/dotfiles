@@ -35,6 +35,7 @@ in
     ../../programs/lazydocker
     ../../programs/mise
     ../../programs/nano
+    ../../programs/spotify-player
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim

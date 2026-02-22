@@ -42,6 +42,7 @@
     ../../programs/mise
     ../../programs/nano
     ../../programs/neovide
+    ../../programs/spotify-player
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim
