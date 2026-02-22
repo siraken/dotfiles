@@ -104,6 +104,10 @@ let
   textEditors = [
     neovim # vim-based editor
   ];
+
+  mediaTools = [
+    spotify-player
+  ];
 in
 fileTools
 ++ jsonTools
@@ -116,3 +120,4 @@ fileTools
 ++ cloudTools
 ++ devUtilTools
 ++ textEditors
+++ mediaTools
