@@ -239,12 +239,15 @@ inputs.nix-darwin.lib.darwinSystem {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = backupFileExtension;
-        users.${userProfile.username} = ./home.nix;
+        users.${userProfile.username} = ../../home/main.nix;
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
           inputs.openclaw.homeManagerModules.openclaw
         ];
-        extraSpecialArgs = { inherit inputs userProfile; };
+        extraSpecialArgs = {
+          inherit inputs userProfile;
+          isDarwin = true;
+        };
       };
     }
   ];
