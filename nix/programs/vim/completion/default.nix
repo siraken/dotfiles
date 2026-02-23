@@ -3,8 +3,6 @@
   programs.nixvim.plugins = {
     friendly-snippets.enable = true;
 
-    blink-copilot.enable = true;
-
     blink-cmp = {
       enable = true;
       settings = {
@@ -52,14 +50,7 @@
             "path"
             "snippets"
             "buffer"
-            "copilot"
           ];
-          providers.copilot = {
-            name = "copilot";
-            module = "blink-copilot";
-            score_offset = 100;
-            async = true;
-          };
         };
         completion = {
           accept.auto_brackets.enabled = true;
