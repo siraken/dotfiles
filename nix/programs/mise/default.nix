@@ -25,7 +25,6 @@ let
     solargraph = "latest";
     slim = "latest";
     htmlbeautifier = "latest";
-    # neovim = "latest";
   };
 in
 {
