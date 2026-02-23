@@ -33,6 +33,7 @@ in
       window-inherit-working-directory = true;
       macos-titlebar-style = "tabs";
 
+      unfocused-split-opacity = 0.3;
       focus-follows-mouse = false;
       confirm-close-surface = false;
       quit-after-last-window-closed = true;

@@ -92,5 +92,9 @@ config.window_frame = {
   inactive_titlebar_bg = "none",
   active_titlebar_bg = "none",
 }
+config.inactive_pane_hsb = {
+  saturation = 0.8,
+  brightness = 0.3,
+}
 
 return config
