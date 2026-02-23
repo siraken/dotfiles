@@ -75,7 +75,9 @@ in
 
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+    };
   };
 
   networking.hostName = hostName;
