@@ -5,6 +5,10 @@
       # Rust
       rustaceanvim = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.ft = [ "rust" ];
+        };
         settings.server = {
           on_attach.__raw = builtins.readFile ./rustaceanvim-on-attach.lua;
           default_settings = {
@@ -30,17 +34,46 @@
 
       crates = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.ft = [ "toml" ];
+        };
         settings.completion.crates.enabled = true;
       };
 
       # Python
-      venv-selector.enable = true;
+      venv-selector = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.cmd = [ "VenvSelect" ];
+        };
+      };
 
       # Markdown
-      markdown-preview.enable = true;
+      markdown-preview = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.cmd = [
+            "MarkdownPreview"
+            "MarkdownPreviewStop"
+            "MarkdownPreviewToggle"
+          ];
+        };
+      };
 
       render-markdown = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.ft = [
+            "markdown"
+            "norg"
+            "rmd"
+            "org"
+          ];
+        };
         settings = {
           code = {
             sign = false;
@@ -61,10 +94,27 @@
       };
 
       # Java
-      jdtls.enable = true;
+      jdtls = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.ft = [ "java" ];
+        };
+      };
 
       # Clojure/Lisp
-      conjure.enable = true;
+      conjure = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.ft = [
+            "clojure"
+            "fennel"
+            "lisp"
+            "scheme"
+          ];
+        };
+      };
     };
 
     globals."conjure#mapping#doc_word" = "K";

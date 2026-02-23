@@ -1,10 +1,20 @@
 { ... }:
 {
   programs.nixvim.plugins = {
-    friendly-snippets.enable = true;
+    friendly-snippets = {
+      enable = true;
+      lazyLoad = {
+        enable = true;
+        settings.event = [ "InsertEnter" ];
+      };
+    };
 
     blink-cmp = {
       enable = true;
+      lazyLoad = {
+        enable = true;
+        settings.event = [ "InsertEnter" ];
+      };
       settings = {
         keymap = {
           preset = "default";

@@ -69,6 +69,10 @@
 
       lazydev = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.ft = [ "lua" ];
+        };
         settings.library = [
           {
             path = "\${3rd}/luv/library";

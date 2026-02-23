@@ -15,6 +15,8 @@
   programs.nixvim = {
     enable = true;
 
+    plugins.lz-n.enable = true;
+
     # Plugins NOT available in Nixvim (need extraPlugins if desired):
     # - nvim-paredit (julienvincent/nvim-paredit) - S-expression editing
     # - vim-dispatch (tpope/vim-dispatch) - Async command execution

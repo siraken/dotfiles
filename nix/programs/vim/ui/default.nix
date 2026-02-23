@@ -77,6 +77,10 @@
 
       which-key = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.event = [ "DeferredUIEnter" ];
+        };
         settings = {
           plugins.spelling = true;
           spec = [
@@ -226,6 +230,10 @@
 
       trouble = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.cmd = [ "Trouble" ];
+        };
         settings.use_diagnostic_signs = true;
       };
 

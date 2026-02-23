@@ -141,7 +141,7 @@
       {
         mode = "n";
         key = "<leader>p";
-        action.__raw = ''function() require("fzf-lua").registers() end'';
+        action = "<cmd>FzfLua registers<cr>";
         options.desc = "Paste from registers";
       }
     ];
