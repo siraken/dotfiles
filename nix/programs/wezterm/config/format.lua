@@ -14,11 +14,15 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   local bg = "none"
   local intensity = tab.is_active and "Bold" or "Normal"
 
+  local index = tab.tab_index + 1
+  local index_text = index <= 9 and tostring(index) .. ":" or ""
+
   return {
     { Attribute = { Intensity = intensity } },
     { Foreground = { Color = fg } },
     { Background = { Color = bg } },
     { Text = " " },
+    { Text = index_text },
     { Text = BaseName(tab.active_pane.foreground_process_name) },
     { Text = " " },
   }
