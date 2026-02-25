@@ -93,7 +93,7 @@
         ];
       };
       displayManager.lightdm.enable = true;
-      videoDrivers = [ "virtio" ];
+      videoDrivers = [ "modesetting" ];
     };
 
     # Audio
