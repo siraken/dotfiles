@@ -43,11 +43,6 @@
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
-    openclaw = {
-      url = "github:openclaw/nix-openclaw";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,7 +75,6 @@
       treefmt-nix,
       git-hooks,
       llm-agents,
-      openclaw,
       nix-on-droid,
       op-shell-plugins,
       # dotfiles-private,

@@ -12,7 +12,6 @@ inputs.nixpkgs.lib.nixosSystem {
     {
       nixpkgs.overlays = [
         inputs.llm-agents.overlays.default
-        inputs.openclaw.overlays.default
       ];
     }
     inputs.home-manager.nixosModules.home-manager
@@ -24,7 +23,6 @@ inputs.nixpkgs.lib.nixosSystem {
         users.${userProfile.username} = ./home.nix;
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
-          inputs.openclaw.homeManagerModules.openclaw
         ];
         extraSpecialArgs = { inherit inputs userProfile; };
       };

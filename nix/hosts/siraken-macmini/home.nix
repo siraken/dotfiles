@@ -34,7 +34,6 @@ in
     ../../programs/lazydocker
     ../../programs/mise
     ../../programs/nano
-    ../../programs/openclaw
     ../../programs/spotify-player
     ../../programs/starship
     ../../programs/tmux

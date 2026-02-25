@@ -8,7 +8,6 @@ inputs.home-manager.lib.homeManagerConfiguration {
     system = "x86_64-linux";
     overlays = [
       inputs.llm-agents.overlays.default
-      inputs.openclaw.overlays.default
     ];
   };
   modules = [

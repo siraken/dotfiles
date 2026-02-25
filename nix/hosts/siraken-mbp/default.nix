@@ -224,7 +224,6 @@ inputs.nix-darwin.lib.darwinSystem {
     {
       nixpkgs.overlays = [
         inputs.llm-agents.overlays.default
-        inputs.openclaw.overlays.default
       ];
     }
     inputs.home-manager.darwinModules.home-manager
@@ -242,7 +241,6 @@ inputs.nix-darwin.lib.darwinSystem {
         users.${userProfile.username} = ./home.nix;
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
-          inputs.openclaw.homeManagerModules.openclaw
         ];
         extraSpecialArgs = { inherit inputs userProfile; };
       };
