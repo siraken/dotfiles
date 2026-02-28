@@ -3,6 +3,11 @@
   userProfile,
   backupFileExtension,
 }:
+let
+  pkgs-stable = import inputs.nixpkgs-stable {
+    system = "x86_64-linux";
+  };
+in
 inputs.home-manager.lib.homeManagerConfiguration {
   pkgs = import inputs.nixpkgs {
     system = "x86_64-linux";
@@ -21,5 +26,5 @@ inputs.home-manager.lib.homeManagerConfiguration {
       };
     }
   ];
-  extraSpecialArgs = { inherit inputs userProfile; };
+  extraSpecialArgs = { inherit inputs userProfile pkgs-stable; };
 }

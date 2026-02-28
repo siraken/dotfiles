@@ -3,6 +3,11 @@
   userProfile,
   backupFileExtension,
 }:
+let
+  pkgs-stable = import inputs.nixpkgs-stable {
+    system = "aarch64-darwin";
+  };
+in
 inputs.nix-darwin.lib.darwinSystem {
   system = "aarch64-darwin";
   specialArgs = {
@@ -242,7 +247,7 @@ inputs.nix-darwin.lib.darwinSystem {
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
         ];
-        extraSpecialArgs = { inherit inputs userProfile; };
+        extraSpecialArgs = { inherit inputs userProfile pkgs-stable; };
       };
     }
   ];

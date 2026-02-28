@@ -3,6 +3,11 @@
   userProfile,
   backupFileExtension,
 }:
+let
+  pkgs-stable = import inputs.nixpkgs-stable {
+    system = "x86_64-linux";
+  };
+in
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = [
@@ -24,7 +29,7 @@ inputs.nixpkgs.lib.nixosSystem {
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
         ];
-        extraSpecialArgs = { inherit inputs userProfile; };
+        extraSpecialArgs = { inherit inputs userProfile pkgs-stable; };
       };
     }
   ];

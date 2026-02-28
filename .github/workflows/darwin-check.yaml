@@ -1,0 +1,15 @@
+name: Darwin Build Check
+on:
+  schedule:
+    # Every Monday at 09:00 JST (00:00 UTC)
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+jobs:
+  check:
+    name: Nix Darwin Build Check
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: DeterminateSystems/determinate-nix-action@89ab342bd48ff7318caf8d39d6a330c7b1df8f2f # v3.15.2
+      - name: Run nix flake check
+        run: nix flake check --impure
