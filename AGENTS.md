@@ -17,7 +17,7 @@ sudo darwin-rebuild build --flake .#siraken-mbp --impure
 sudo darwin-rebuild switch --flake .#siraken-mbp --impure
 
 # For WSL/Ubuntu (home-manager only, no system-level changes)
-nix run home-manager -- switch --flake .#wsl-ubuntu --impure
+home-manager -- switch --flake .#wsl-ubuntu --impure
 
 # Garbage collection
 nix store gc
@@ -100,7 +100,7 @@ Manages 100+ tool configurations across multiple categories:
 
 ### Command Execution
 
-- **Never pipe nix-darwin or home-manager commands**: Commands like `darwin-rebuild`, `home-manager switch`, and `nix run home-manager/...` must NOT be piped to other commands. Piping causes these commands to terminate prematurely without completing properly.
+- **Never pipe nix-darwin or home-manager commands**: Commands like `darwin-rebuild`, `home-manager switch`, and `home-manager/...` must NOT be piped to other commands. Piping causes these commands to terminate prematurely without completing properly.
 
 ```bash
 # Bad - Do NOT do this

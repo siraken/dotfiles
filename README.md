@@ -41,10 +41,10 @@ sudo darwin-rebuild switch --flake .#siraken-mbp --impure
 or
 
 ```bash
-nix run home-manager -- switch --flake .#THE_NAME --impure
+home-manager -- switch --flake .#THE_NAME --impure
 
 # ex)
-nix run home-manager -- switch --flake .#wsl-ubuntu --impure
+home-manager -- switch --flake .#wsl-ubuntu --impure
 ```
 
 ### Development
