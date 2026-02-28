@@ -22,29 +22,31 @@ git clone --depth 1 \
 
 ```bash
 cd dotfiles
-sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#siraken-mbp --impure
+sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#THE_NAME --impure
 ```
 
 After the installation, you may need to restart your terminal. The `darwin-*` commands are available in your shell.
 
 4. Run `darwin-rebuild` or `home-manager`
 
-```bash
-# Build darwin flake using:
-sudo darwin-rebuild build --flake .#THE_NAME --impure
-sudo darwin-rebuild switch --flake .#THE_NAME --impure
+To build:
 
-# ex)
-sudo darwin-rebuild switch --flake .#siraken-mbp --impure
+```bash
+# nix-darwin
+sudo darwin-rebuild build --flake .#THE_NAME --impure
+
+# home-manager
+home-manager -- build --flake .#THE_NAME --impure
 ```
 
-or
+To switch:
 
 ```bash
-home-manager -- switch --flake .#THE_NAME --impure
+# nix-darwin
+sudo darwin-rebuild switch --flake .#THE_NAME --impure
 
-# ex)
-home-manager -- switch --flake .#wsl-ubuntu --impure
+# home-manager
+home-manager -- switch --flake .#THE_NAME --impure
 ```
 
 ### Development
