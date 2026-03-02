@@ -19,6 +19,9 @@ sudo darwin-rebuild switch --flake .#siraken-mbp --impure
 # For WSL/Ubuntu (home-manager only, no system-level changes)
 home-manager -- switch --flake .#wsl-ubuntu --impure
 
+# For WSL/NixOS (full NixOS system configuration)
+sudo nixos-rebuild switch --flake .#wsl-nixos --impure
+
 # Garbage collection
 nix store gc
 ```
@@ -43,7 +46,8 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `siraken-mbp` - Full macOS configuration (MacBook Pro, primary)
   - `siraken-macmini` - Minimal macOS configuration (Mac mini)
   - `wsl-ubuntu` - WSL/Ubuntu home-manager configuration
-  - `nixos` - NixOS system configuration (placeholder)
+  - `wsl-nixos` - WSL/NixOS system configuration
+  - `nixos-vm` - NixOS VM system configuration
 
 ### Key Components
 
