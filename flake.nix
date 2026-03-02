@@ -58,6 +58,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     op-shell-plugins = {
       url = "github:1Password/shell-plugins";
     };
@@ -80,6 +85,7 @@
       git-hooks,
       llm-agents,
       nix-on-droid,
+      nixos-wsl,
       op-shell-plugins,
       # dotfiles-private,
       ...
@@ -188,6 +194,9 @@
 
         nixosConfigurations = {
           "nixos-vm" = import ./nix/hosts/nixos-vm {
+            inherit inputs userProfile backupFileExtension;
+          };
+          "wsl-nixos" = import ./nix/hosts/wsl-nixos {
             inherit inputs userProfile backupFileExtension;
           };
         };
