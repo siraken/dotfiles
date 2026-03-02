@@ -18,7 +18,7 @@
     ../../programs/coding-agents
     ../../programs/direnv
     ../../programs/emacs
-    ../../programs/fish
+    # ../../programs/fish # disabled due to fisher hash mismatch
     ../../programs/fzf
     ../../programs/gh-dash
     ../../programs/git
@@ -49,7 +49,7 @@
 
     shell = {
       enableBashIntegration = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false; # fish disabled
       enableZshIntegration = true;
       enableShellIntegration = true;
     };
