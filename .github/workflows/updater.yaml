@@ -20,6 +20,6 @@ jobs:
       - name: Update flake.lock
         run: nix flake update --commit-lock-file
       - name: Run nix flake check
-        run: nix flake check --no-build --impure
+        run: nix flake check --impure
       - name: Push changes
         run: git push
