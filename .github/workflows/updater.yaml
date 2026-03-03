@@ -1,8 +1,8 @@
 name: Flake Updater
 on:
   schedule:
-    # Every day at 06:00 JST (21:00 UTC previous day)
-    - cron: "0 21 * * *"
+    # Every day at 06:00 and 18:00 JST (21:00 and 09:00 UTC)
+    - cron: "0 9,21 * * *"
   workflow_dispatch:
 permissions:
   contents: write
