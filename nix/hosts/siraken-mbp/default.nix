@@ -50,7 +50,6 @@ inputs.nix-darwin.lib.darwinSystem {
           "cfonts"
           "cocoapods"
           "coursier"
-          "duck"
           "earthly"
           "ethereum"
           "ffmpeg"
