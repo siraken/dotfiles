@@ -164,6 +164,23 @@ return {
     { key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
     { key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
 
+    -- Toggle background transparency (peek behind window)
+    {
+      key = "b",
+      mods = "CMD|SHIFT",
+      action = wezterm.action_callback(function(window, pane)
+        local overrides = window:get_config_overrides() or {}
+        if overrides.window_background_opacity then
+          overrides.window_background_opacity = nil
+          overrides.macos_window_background_blur = nil
+        else
+          overrides.window_background_opacity = 0.3
+          overrides.macos_window_background_blur = 0
+        end
+        window:set_config_overrides(overrides)
+      end),
+    },
+
     -- Spotify controls (Cmd+Shift+S prefix)
     { key = "s", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.play_pause) },
     { key = "n", mods = "CMD|SHIFT", action = wezterm.action_callback(spotify_controls.next_track) },
