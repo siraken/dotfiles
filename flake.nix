@@ -8,10 +8,6 @@
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
-    nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-25.11";
-    };
-
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
@@ -43,7 +39,7 @@
 
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
 

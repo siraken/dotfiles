@@ -1,8 +1,8 @@
-{ pkgs-stable, ... }:
+{ pkgs, ... }:
 {
   programs.yt-dlp = {
     enable = true;
-    package = pkgs-stable.yt-dlp;
+    package = pkgs.yt-dlp;
 
     settings = {
       cookies-from-browser = "vivaldi";
