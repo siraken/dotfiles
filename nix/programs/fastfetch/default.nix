@@ -6,103 +6,112 @@ in
   programs.fastfetch = {
     enable = true;
     settings = {
-      logo = {
-        type = "small";
-        padding = {
-          top = 1;
-        };
-      };
-
-      display = {
-        separator = "  ";
-        key.width = 12;
-      };
-
       modules = [
         "title"
         "separator"
         {
           type = "os";
-          key = "OS";
           keyColor = "blue";
         }
         {
           type = "host";
-          key = "Host";
           keyColor = "blue";
         }
         {
           type = "kernel";
-          key = "Kernel";
           keyColor = "blue";
         }
         {
           type = "uptime";
-          key = "Uptime";
           keyColor = "green";
         }
         {
           type = "packages";
-          key = "Packages";
           keyColor = "green";
         }
         {
           type = "shell";
-          key = "Shell";
           keyColor = "green";
         }
         {
-          type = "terminal";
-          key = "Terminal";
+          type = "display";
           keyColor = "cyan";
         }
         {
           type = "de";
-          key = "DE";
           keyColor = "cyan";
         }
         {
           type = "wm";
-          key = "WM";
+          keyColor = "cyan";
+        }
+        {
+          type = "wmtheme";
+          keyColor = "cyan";
+        }
+        {
+          type = "theme";
+          keyColor = "cyan";
+        }
+        {
+          type = "icons";
+          keyColor = "cyan";
+        }
+        {
+          type = "font";
+          keyColor = "cyan";
+        }
+        {
+          type = "cursor";
+          keyColor = "cyan";
+        }
+        {
+          type = "terminal";
+          keyColor = "cyan";
+        }
+        {
+          type = "terminalfont";
           keyColor = "cyan";
         }
         "separator"
         {
           type = "cpu";
-          key = "CPU";
           keyColor = "magenta";
         }
         {
           type = "gpu";
-          key = "GPU";
           keyColor = "magenta";
         }
         {
           type = "memory";
-          key = "Memory";
+          keyColor = "magenta";
+        }
+        {
+          type = "swap";
           keyColor = "magenta";
         }
         {
           type = "disk";
-          key = "Disk";
+          keyColor = "yellow";
+        }
+        {
+          type = "localip";
           keyColor = "yellow";
         }
         {
           type = "battery";
-          key = "Battery";
+          keyColor = "yellow";
+        }
+        {
+          type = "poweradapter";
           keyColor = "yellow";
         }
         {
           type = "locale";
-          key = "Locale";
           keyColor = "yellow";
         }
         "break"
-        {
-          type = "colors";
-          paddingLeft = 2;
-          symbol = "circle";
-        }
+        "colors"
       ];
     };
   };
