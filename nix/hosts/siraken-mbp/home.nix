@@ -83,4 +83,5 @@ in
   };
 
   programs.home-manager.enable = true;
+  programs.man.generateCaches = false;
 }
