@@ -45,7 +45,7 @@ in
     packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
       # nixos-vm specific
       pkgs.playerctl
-      pkgs.neofetch
+      pkgs.fastfetch
     ];
 
     shell = {

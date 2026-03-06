@@ -32,7 +32,7 @@ let
   # System information and benchmarks
   systemInfoTools = [
     hyperfine # benchmark tool
-    neofetch # system info
+    fastfetch # system info
     onefetch # git repo info
     procs # ps replacement
     tokei # code line counter

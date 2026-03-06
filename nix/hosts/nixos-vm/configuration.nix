@@ -158,7 +158,7 @@
     curl
     wget
     tree
-    neofetch
+    fastfetch
     htop
     eza
     bat
