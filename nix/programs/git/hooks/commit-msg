@@ -2,15 +2,18 @@
 
 BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null) || exit 0
 
+FIRST_LINE=$(head -n 1 "$1")
+
+# Skip merge commits
+if [[ "$FIRST_LINE" =~ ^Merge\ ]]; then
+    exit 0
+fi
+
 TICKET_ID_REGEX='(d|b)/([0-9]+)'
 
 if [[ $BRANCH_NAME =~ $TICKET_ID_REGEX ]]; then
     TICKET_ID=$(echo "${BASH_REMATCH[2]}" | sed 's/0*\([0-9]*[0-9]$\)/\1/g')
     EXPECTED_PREFIX="TK-${TICKET_ID}"
-    COMMIT_MSG=$(cat "$1")
-
-    FIRST_LINE=$(head -n 1 "$1")
-
     # Check: first line must start with the correct TK-XXXX
     if [[ "$FIRST_LINE" != "$EXPECTED_PREFIX"* ]]; then
         echo "ERROR: Commit message must start with '$EXPECTED_PREFIX' (branch: '$BRANCH_NAME')."
