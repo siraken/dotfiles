@@ -7,6 +7,7 @@ inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = [
     ./configuration.nix
+    ../../modules/nix-caches.nix
     inputs.nixos-wsl.nixosModules.default
     inputs.nix-index-database.nixosModules.nix-index
     { programs.nix-index-database.comma.enable = true; }
