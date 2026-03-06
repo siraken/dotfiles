@@ -1,0 +1,25 @@
+#!/bin/bash
+
+BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null) || exit 0
+
+TICKET_ID_REGEX='(d|b)/([0-9]+)'
+
+if [[ $BRANCH_NAME =~ $TICKET_ID_REGEX ]]; then
+    TICKET_ID=$(echo "${BASH_REMATCH[2]}" | sed 's/0*\([0-9]*[0-9]$\)/\1/g')
+    EXPECTED_PREFIX="TK-${TICKET_ID}"
+    COMMIT_MSG=$(cat "$1")
+
+    # Check: TK-XXXX must be present
+    if [[ "$COMMIT_MSG" != *"TK-"* ]]; then
+        echo "ERROR: Branch '$BRANCH_NAME' requires '$EXPECTED_PREFIX' in the commit message."
+        echo "Please include '$EXPECTED_PREFIX' in your commit message."
+        exit 1
+    fi
+
+    # Check: TK-XXXX must match the current branch
+    if [[ "$COMMIT_MSG" != *"$EXPECTED_PREFIX"* ]]; then
+        echo "ERROR: Commit message contains a ticket ID that does not match branch '$BRANCH_NAME'."
+        echo "Expected '$EXPECTED_PREFIX' but found a different TK-XXXX."
+        exit 1
+    fi
+fi
