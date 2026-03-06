@@ -5,7 +5,8 @@ BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null) || exit 0
 FIRST_LINE=$(head -n 1 "$1")
 
 # Skip merge commits
-if [[ "$FIRST_LINE" =~ ^Merge\ ]]; then
+MERGE_REGEX='^Merge '
+if [[ "$FIRST_LINE" =~ $MERGE_REGEX ]]; then
     exit 0
 fi
 
