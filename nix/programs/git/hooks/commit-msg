@@ -9,17 +9,12 @@ if [[ $BRANCH_NAME =~ $TICKET_ID_REGEX ]]; then
     EXPECTED_PREFIX="TK-${TICKET_ID}"
     COMMIT_MSG=$(cat "$1")
 
-    # Check: TK-XXXX must be present
-    if [[ "$COMMIT_MSG" != *"TK-"* ]]; then
-        echo "ERROR: Branch '$BRANCH_NAME' requires '$EXPECTED_PREFIX' in the commit message."
-        echo "Please include '$EXPECTED_PREFIX' in your commit message."
-        exit 1
-    fi
+    FIRST_LINE=$(head -n 1 "$1")
 
-    # Check: TK-XXXX must match the current branch
-    if [[ "$COMMIT_MSG" != *"$EXPECTED_PREFIX"* ]]; then
-        echo "ERROR: Commit message contains a ticket ID that does not match branch '$BRANCH_NAME'."
-        echo "Expected '$EXPECTED_PREFIX' but found a different TK-XXXX."
+    # Check: first line must start with the correct TK-XXXX
+    if [[ "$FIRST_LINE" != "$EXPECTED_PREFIX"* ]]; then
+        echo "ERROR: Commit message must start with '$EXPECTED_PREFIX' (branch: '$BRANCH_NAME')."
+        echo "Example: $EXPECTED_PREFIX fix something"
         exit 1
     fi
 fi
