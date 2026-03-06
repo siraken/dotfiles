@@ -158,7 +158,6 @@
     curl
     wget
     tree
-    fastfetch
     htop
     eza
     bat

@@ -17,6 +17,7 @@ in
     ../../programs/bat
     ../../programs/bottom
     ../../programs/direnv
+    ../../programs/fastfetch
     # ../../programs/fish # disabled due to fisher hash mismatch
     ../../programs/fzf
     ../../programs/gh-dash
@@ -45,7 +46,6 @@ in
     packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
       # nixos-vm specific
       pkgs.playerctl
-      pkgs.fastfetch
     ];
 
     shell = {

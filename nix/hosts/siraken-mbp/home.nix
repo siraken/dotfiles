@@ -21,6 +21,7 @@ in
     ../../programs/coding-agents
     ../../programs/difftastic
     ../../programs/direnv
+    ../../programs/fastfetch
     ../../programs/emacs
     ../../programs/fish
     ../../programs/fzf
