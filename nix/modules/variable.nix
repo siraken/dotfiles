@@ -4,9 +4,6 @@
   CLICOLOR = "true";
   TERM = "xterm-256color";
   EDITOR = "nvim";
-  GH_URL = "https://github.com";
-  AWS_PROFILE = "default";
-  AWS_DEFAULT_REGION = "ap-northeast-1";
 
   XDG_CONFIG_HOME = "$HOME/.config";
   SSH_AUTH_SOCK = "$HOME/.1password/agent.sock";
