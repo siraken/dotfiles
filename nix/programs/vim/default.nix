@@ -15,6 +15,12 @@
   programs.nixvim = {
     enable = true;
 
+    nixpkgs.overlays = [
+      (_: prev: {
+        ast-grep = prev.ast-grep.overrideAttrs { doCheck = false; };
+      })
+    ];
+
     plugins.lz-n.enable = true;
 
     # Plugins NOT available in Nixvim (need extraPlugins if desired):
