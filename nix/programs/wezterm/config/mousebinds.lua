@@ -17,4 +17,10 @@ return {
     mods = "NONE",
     action = act.CompleteSelection("ClipboardAndPrimarySelection"),
   },
+  -- Cmd+ドラッグによるウィンドウ移動を無効化
+  {
+    event = { Drag = { streak = 1, button = "Left" } },
+    mods = link_mods,
+    action = act.DisableDefaultAssignment,
+  },
 }
