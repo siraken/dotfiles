@@ -26,6 +26,7 @@ end)
 
 config.automatically_reload_config = true
 config.audible_bell = "SystemBeep"
+config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.mouse_bindings = mouse_bindings
