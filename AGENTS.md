@@ -74,7 +74,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 Manages 30+ tool configurations across multiple categories:
 
-- **Editors**: Neovim, Vim, Emacs, Helix
+- **Editors**: Neovim (via [Nixvim](https://github.com/nix-community/nixvim)), Vim, Emacs, Helix
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, WezTerm, Ghostty
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
@@ -88,7 +88,7 @@ Manages 30+ tool configurations across multiple categories:
 
 ## Important Files
 
-- `nix/programs/` - Program modules with colocated config files (e.g., `nix/programs/nvim/config/`, `nix/programs/wezterm/config/`)
+- `nix/programs/` - Program modules with colocated config files (e.g., `nix/programs/vim/`, `nix/programs/wezterm/config/`)
 - `.agents/` - AI agent configurations (Claude)
 - `nix/programs/coding-agents/` - Coding agent configurations (Claude, Gemini, Codex, OpenCode)
 
