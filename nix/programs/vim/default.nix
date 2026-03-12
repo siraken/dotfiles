@@ -111,7 +111,7 @@
       splitbelow = true;
       splitright = true;
       splitkeep = "screen";
-      mouse = "a";
+      mouse = "";
     };
 
     # ── Global keymaps (from keymaps.lua) ──
