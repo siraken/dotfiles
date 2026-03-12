@@ -53,8 +53,8 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **System Management (macOS)**:
 
-- `nix/hosts/darwin/configuration.nix` - System-level settings (Homebrew, macOS preferences, security)
-- `nix/hosts/darwin/home.nix` - User environment configuration
+- `nix/hosts/<hostname>/default.nix` - System-level settings per host (e.g., `siraken-mbp`, `siraken-macmini`)
+- `nix/hosts/<hostname>/home.nix` - User environment configuration per host
 
 **Modular Configuration**:
 
@@ -72,14 +72,14 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 ### Configuration Coverage
 
-Manages 100+ tool configurations across multiple categories:
+Manages 30+ tool configurations across multiple categories:
 
 - **Editors**: Neovim, Vim, Emacs, Helix
 - **Shells**: Bash, Zsh, Fish
-- **Terminals**: Kitty, Alacritty, WezTerm, Ghostty, Hyper
+- **Terminals**: Kitty, WezTerm, Ghostty
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
 - **Dev Tools**: Git, Tmux, Yazi, Direnv, Starship, Mise
-- **AI Agents**: Claude, Gemini
+- **AI Agents**: Claude, Gemini, Codex, OpenCode
 
 ### Target Architectures
 
@@ -89,7 +89,8 @@ Manages 100+ tool configurations across multiple categories:
 ## Important Files
 
 - `nix/programs/` - Program modules with colocated config files (e.g., `nix/programs/nvim/config/`, `nix/programs/wezterm/config/`)
-- `.agents/` - AI agent configurations (Claude, Gemini)
+- `.agents/` - AI agent configurations (Claude)
+- `nix/programs/coding-agents/` - Coding agent configurations (Claude, Gemini, Codex, OpenCode)
 
 ## Git Commit Guidelines
 
