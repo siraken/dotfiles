@@ -29,7 +29,6 @@ inputs.nix-darwin.lib.darwinSystem {
           "vivaldi"
           "raycast"
         ];
-        masApps = { };
       };
     }
     inputs.nix-index-database.darwinModules.nix-index
