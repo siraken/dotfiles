@@ -75,6 +75,7 @@ in
     shells = import ../shells.nix { inherit pkgs; };
     systemPackages = [
       pkgs.nil
+      pkgs.bun
     ];
   };
 
