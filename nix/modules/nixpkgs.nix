@@ -57,6 +57,7 @@ let
 
   # Programming languages
   languages = [
+    bun
     lua
     nim
     pnpm # Node.js package manager
@@ -95,6 +96,8 @@ let
     luarocks # Lua packages
     mkcert # local certificates
     ni # @antfu/ni - use the right package manager
+    nil # Nix LSP
+    nixfmt # Nix formatter
     pandoc # document conversion
     tor # anonymous network
     tree-sitter # parser

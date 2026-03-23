@@ -73,10 +73,6 @@ in
 
   environment = {
     shells = import ../shells.nix { inherit pkgs; };
-    systemPackages = [
-      pkgs.nil
-      pkgs.bun
-    ];
   };
 
   system = {
