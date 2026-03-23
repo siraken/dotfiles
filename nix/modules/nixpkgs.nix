@@ -53,10 +53,12 @@ let
   # Miscellaneous CLI tools
   miscCliTools = [
     hugo # static site generator
+    xdg-utils # XDG utilities
   ];
 
   # Programming languages
   languages = [
+    bun # JavaScript runtime
     lua
     nim
     pnpm # Node.js package manager
@@ -68,7 +70,9 @@ let
   # Build systems
   buildTools = [
     cmake
+    gcc
     gradle
+    libgcc
     maven
     ninja
     sbt # Scala build
@@ -95,6 +99,8 @@ let
     luarocks # Lua packages
     mkcert # local certificates
     ni # @antfu/ni - use the right package manager
+    nil # Nix LSP
+    nixfmt-rfc-style # Nix formatter
     pandoc # document conversion
     tor # anonymous network
     tree-sitter # parser

@@ -74,10 +74,6 @@
 
     packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
       # wsl-ubuntu specific
-      pkgs.gcc
-      pkgs.libgcc
-      pkgs.xdg-utils
-      pkgs.nixfmt
     ];
   };
 
