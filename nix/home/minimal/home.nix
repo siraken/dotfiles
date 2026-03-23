@@ -32,6 +32,10 @@ in
 
     packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
       # minimal specific
+      pkgs.gcc
+      pkgs.libgcc
+      pkgs.xdg-utils
+      pkgs.nixfmt
     ];
   };
 

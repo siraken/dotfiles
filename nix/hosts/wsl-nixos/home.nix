@@ -56,6 +56,9 @@
 
     packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
       # wsl-nixos specific
+      pkgs.gcc
+      pkgs.libgcc
+      pkgs.xdg-utils
     ];
   };
 

@@ -78,6 +78,7 @@ in
     };
 
     packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
+      pkgs.nixfmt
     ];
   };
 
