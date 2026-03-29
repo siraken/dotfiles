@@ -84,6 +84,10 @@
 					{
 						"type": "command",
 						"command": "osascript -e 'display notification \"Claude Codeが許可を求めています\" with title \"Claude Code\" subtitle \"hooks: Notification\" sound name \"Glass\"'"
+					},
+					{
+						"type": "command",
+						"command": "[ -n \"$WEZTERM_PANE\" ] && echo permission > $TMPDIR/wezterm-claude-status-$WEZTERM_PANE"
 					}
 				]
 			},
@@ -93,6 +97,10 @@
 					{
 						"type": "command",
 						"command": "osascript -e 'display notification \"Claude Codeがユーザー入力を待機しています\" with title \"Claude Code\" subtitle \"hooks: Notification\" sound name \"Glass\"'"
+					},
+					{
+						"type": "command",
+						"command": "[ -n \"$WEZTERM_PANE\" ] && echo idle > $TMPDIR/wezterm-claude-status-$WEZTERM_PANE"
 					}
 				]
 			},
@@ -102,6 +110,32 @@
 					{
 						"type": "command",
 						"command": "osascript -e 'display notification \"Claude CodeがMCPツール抽出のための入力を求めています\" with title \"Claude Code\" subtitle \"hooks: Notification\" sound name \"Glass\"'"
+					},
+					{
+						"type": "command",
+						"command": "[ -n \"$WEZTERM_PANE\" ] && echo permission > $TMPDIR/wezterm-claude-status-$WEZTERM_PANE"
+					}
+				]
+			}
+		],
+		"UserPromptSubmit": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "[ -n \"$WEZTERM_PANE\" ] && rm -f $TMPDIR/wezterm-claude-status-$WEZTERM_PANE"
+					}
+				]
+			}
+		],
+		"SessionEnd": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "[ -n \"$WEZTERM_PANE\" ] && rm -f $TMPDIR/wezterm-claude-status-$WEZTERM_PANE"
 					}
 				]
 			}
@@ -140,7 +174,8 @@
 		"slack@claude-plugins-official": true,
 		"rust-analyzer-lsp@claude-plugins-official": true,
 		"php-lsp@claude-plugins-official": true,
-		"supabase@claude-plugins-official": true
+		"supabase@claude-plugins-official": true,
+		"act-basic-plugins@act-claude-plugins": true
 	},
 	"language": "日本語",
 	"alwaysThinkingEnabled": true,

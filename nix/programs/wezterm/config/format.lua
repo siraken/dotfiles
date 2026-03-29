@@ -16,6 +16,17 @@ local function Truncate(s, max)
   return s
 end
 
+local function GetClaudeStatus(pane)
+  local tmpdir = os.getenv("TMPDIR") or "/tmp/"
+  local f = io.open(tmpdir .. "wezterm-claude-status-" .. tostring(pane.pane_id))
+  if not f then
+    return nil
+  end
+  local status = f:read("*l")
+  f:close()
+  return status
+end
+
 local git_repo_cache = {}
 
 local function GetRepoName(pane)
@@ -74,9 +85,23 @@ wezterm.on("format-tab-title", function(tab)
   local index = tab.tab_index + 1
   local prefix = index <= 9 and "[" .. tostring(index) .. "]" or ""
 
+  local claude_status = GetClaudeStatus(tab.active_pane)
+  local badge = ""
+  local badge_fg = nil
+  local badge_display_width = 0
+  if claude_status == "idle" then
+    badge = "● "
+    badge_fg = "#9ece6a"
+    badge_display_width = 2
+  elseif claude_status == "permission" then
+    badge = "● "
+    badge_fg = "#e0af68"
+    badge_display_width = 2
+  end
+
   local title = GetRepoName(tab.active_pane) or BaseName(tab.active_pane.foreground_process_name)
 
-  local available = TAB_MAX_WIDTH - 2 - #prefix
+  local available = TAB_MAX_WIDTH - 2 - #prefix - badge_display_width
   title = Truncate(title, available)
 
   -- "…" is 3 bytes UTF-8 but 1 display column
@@ -84,6 +109,19 @@ wezterm.on("format-tab-title", function(tab)
   local display_width = has_ellipsis and (#title - 2) or #title
   local pad = available - display_width
   local padding = pad > 0 and string.rep(" ", pad) or ""
+
+  if badge_fg then
+    return {
+      { Attribute = { Intensity = intensity } },
+      { Background = { Color = "none" } },
+      { Foreground = { Color = fg } },
+      { Text = " " .. prefix },
+      { Foreground = { Color = badge_fg } },
+      { Text = badge },
+      { Foreground = { Color = fg } },
+      { Text = title .. padding .. " " },
+    }
+  end
 
   return {
     { Attribute = { Intensity = intensity } },
