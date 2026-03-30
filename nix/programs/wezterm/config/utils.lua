@@ -14,8 +14,16 @@ function M.truncate(str, max_len)
   return str
 end
 
+-- Extract basename from path
+function M.basename(s)
+  return s:gsub("(.*[/\\])(.*)", "%2")
+end
+
 local DEFAULT_FG = colors.DEFAULT_FG
 local DEFAULT_BG = colors.TRANSPARENT
+
+-- Cache for git repo lookups (cwd -> repo name or false)
+local git_repo_cache = {}
 
 -- Get git branch name for the given directory
 function M.get_git_branch(cwd)
@@ -38,13 +46,18 @@ function M.get_git_branch(cwd)
   return nil
 end
 
--- Get project name (git repository root directory name)
+-- Get project name (git repository root directory name, with cache)
 function M.get_project_name(cwd)
   if not cwd then
     return nil
   end
 
-  local success, stdout, stderr = wezterm.run_child_process({
+  local cached = git_repo_cache[cwd]
+  if cached ~= nil then
+    return cached or nil
+  end
+
+  local success, stdout = wezterm.run_child_process({
     "git",
     "-C",
     cwd,
@@ -52,18 +65,33 @@ function M.get_project_name(cwd)
     "--show-toplevel",
   })
 
-  if success then
-    local path = stdout:gsub("%s+", "")
-    -- Extract directory name from path
-    return path:match("([^/]+)$")
+  if success and stdout then
+    local path = stdout:gsub("%s+$", "")
+    local name = path:match("([^/\\]+)$")
+    git_repo_cache[cwd] = name or false
+    return name
   end
+
+  git_repo_cache[cwd] = false
   return nil
 end
 
--- Get current working directory from pane
+-- Get current working directory from pane (supports both Pane and PaneInformation)
 function M.get_cwd(pane)
-  local cwd_uri = pane:get_current_working_dir()
-  if cwd_uri then
+  local ok, cwd_uri = pcall(function()
+    if type(pane.get_current_working_dir) == "function" then
+      return pane:get_current_working_dir()
+    end
+    return pane.current_working_dir
+  end)
+
+  if not ok or not cwd_uri then
+    return nil
+  end
+
+  if type(cwd_uri) == "string" then
+    return cwd_uri:gsub("^file://[^/]*", "")
+  elseif cwd_uri.file_path then
     return cwd_uri.file_path
   end
   return nil
