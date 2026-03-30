@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local utils = require("utils")
 local spotify_controls = require("spotify-controls")
 
 return {
@@ -165,15 +166,7 @@ return {
       key = "b",
       mods = "CMD|SHIFT",
       action = wezterm.action_callback(function(window, pane)
-        local overrides = window:get_config_overrides() or {}
-        if overrides.window_background_opacity then
-          overrides.window_background_opacity = nil
-          overrides.macos_window_background_blur = nil
-        else
-          overrides.window_background_opacity = 0.3
-          overrides.macos_window_background_blur = 0
-        end
-        window:set_config_overrides(overrides)
+        utils.toggle_transparency(window)
       end),
     },
 

@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local utils = require("utils")
 
 local DPI_CHANGE_NUM = 140
 local DPI_CHANGE_FONT_SIZE = 16.0
@@ -18,4 +19,23 @@ wezterm.on("window-focus-changed", function(window, pane)
   window:set_config_overrides(overrides)
 
   prev_dpi = dpi
+end)
+
+wezterm.on("augment-command-palette", function(window, pane)
+  return {
+    {
+      brief = "Toggle Background Transparency",
+      icon = "md_circle_opacity",
+      action = wezterm.action_callback(function(win, p)
+        utils.toggle_transparency(win)
+      end),
+    },
+    {
+      brief = "Set Fully Opaque Background",
+      icon = "md_circle",
+      action = wezterm.action_callback(function(win, p)
+        utils.set_opaque(win)
+      end),
+    },
+  }
 end)

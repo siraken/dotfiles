@@ -98,4 +98,25 @@ function M.add_element(elems, header, str)
   table.insert(elems, { Text = " " })
 end
 
+-- Toggle background transparency (peek behind window)
+function M.toggle_transparency(window)
+  local overrides = window:get_config_overrides() or {}
+  if overrides.window_background_opacity then
+    overrides.window_background_opacity = nil
+    overrides.macos_window_background_blur = nil
+  else
+    overrides.window_background_opacity = 0.3
+    overrides.macos_window_background_blur = 0
+  end
+  window:set_config_overrides(overrides)
+end
+
+-- Set fully opaque background
+function M.set_opaque(window)
+  local overrides = window:get_config_overrides() or {}
+  overrides.window_background_opacity = 1.0
+  overrides.macos_window_background_blur = 0
+  window:set_config_overrides(overrides)
+end
+
 return M
