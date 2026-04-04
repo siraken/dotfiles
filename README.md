@@ -69,7 +69,7 @@ sudo darwin-rebuild switch --flake .#THE_NAME --impure
 <summary><b>WSL/Ubuntu (home-manager)</b></summary>
 
 ```bash
-home-manager -- switch --flake .#wsl-ubuntu --impure
+home-manager switch --flake .#wsl-ubuntu --impure
 ```
 
 </details>
