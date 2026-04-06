@@ -40,6 +40,7 @@ in
     ../../programs/vim
     # ../../programs/vscode
     ../../programs/yazi
+    ../../programs/zed
     ../../programs/yt-dlp
     ../../programs/zellij
     ../../programs/zoxide
