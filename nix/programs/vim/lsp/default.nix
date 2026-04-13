@@ -85,7 +85,7 @@
     };
 
     extraPackages = with pkgs; [
-      nodePackages.eslint_d
+      eslint_d
     ];
 
     extraConfigLua = builtins.readFile ./diagnostics.lua;
