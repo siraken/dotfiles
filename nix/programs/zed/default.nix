@@ -4,11 +4,17 @@
     enable = true;
 
     userSettings = {
-      features = {
-        edit_prediction_provider = "zed";
+      edit_predictions = {
+        provider = "zed";
       };
-      vim_mode = false;
-      ui_font_size = 16;
+      disable_ai = true;
+      telemetry = {
+        diagnostics = false;
+        metrics = false;
+      };
+      vim_mode = true;
+      ui_font_size = 18;
+      agent_ui_font_size = 16;
       buffer_font_size = 14;
       buffer_font_family = "Hack Nerd Font Mono";
       theme = {
@@ -28,9 +34,16 @@
       indent_guides = {
         background_coloring = "indent_aware";
       };
-      relative_line_numbers = true;
+      relative_line_numbers = "enabled";
       tabs = {
         git_status = true;
+      };
+      git_panel = {
+        dock = "left";
+      };
+      project_panel = {
+        dock = "left";
+        folder_icons = true;
       };
       lsp = {
         biome = {
