@@ -13,6 +13,9 @@
         metrics = false;
       };
       vim_mode = true;
+      vim = {
+        toggle_relative_line_numbers = true;
+      };
       ui_font_size = 18;
       agent_ui_font_size = 16;
       buffer_font_size = 14;
