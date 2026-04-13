@@ -25,9 +25,7 @@ in
     enable = true;
     package = pkgs.llm-agents.claude-code;
     enableMcpIntegration = true;
-    memory = {
-      text = instructions;
-    };
+    context = instructions;
     agents = {
       # SOME_AGENT = '''';
     };
@@ -76,10 +74,12 @@ in
   programs.opencode = {
     enable = true;
     package = pkgs.llm-agents.opencode;
-    rules = instructions;
+    context = instructions;
+    tui = {
+      theme = "tokyonight";
+    };
     settings = {
       "$schema" = "https://opencode.ai/config.json";
-      theme = "tokyonight";
       formatter = {
         prettier = {
           disabled = true;
