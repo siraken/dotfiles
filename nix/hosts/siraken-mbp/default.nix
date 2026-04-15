@@ -171,6 +171,7 @@ inputs.nix-darwin.lib.darwinSystem {
           "tableplus"
           "termius"
           "thebrowsercompany-dia"
+          "thunderbird"
           "tor-browser"
           "transmit"
           "unity-hub"
