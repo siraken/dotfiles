@@ -28,6 +28,7 @@ let
     ".ignore/"
     ".playwright-mcp/"
     "**/.claude/settings.local.json"
+    "**/.claude/worktrees/"
     "mise.local.toml"
     "**/node_modules"
     ".direnv"
