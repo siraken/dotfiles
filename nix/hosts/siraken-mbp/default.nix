@@ -106,7 +106,6 @@ inputs.nix-darwin.lib.darwinSystem {
           "alt-tab"
           "appcleaner"
           "audacity"
-          "azure-data-studio"
           "background-music"
           "balenaetcher"
           "bitcoin-core"
