@@ -5,7 +5,7 @@
     package = pkgs.yt-dlp;
 
     settings = {
-      cookies-from-browser = "vivaldi";
+      cookies-from-browser = "firefox";
     };
   };
 }
