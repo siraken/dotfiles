@@ -53,6 +53,7 @@ let
   # Miscellaneous CLI tools
   miscCliTools = [
     hugo # static site generator
+    imapsync # IMAP mailbox synchronization
   ];
 
   # Programming languages
