@@ -5,6 +5,6 @@ if type bat >/dev/null; then
 fi
 
 if type eza >/dev/null; then
-  alias ll="eza -l -g --icons"
+  alias ll="eza -l -g --icons --sort=type"
   alias lla="ll -a"
 fi
