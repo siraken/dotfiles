@@ -144,7 +144,7 @@ inputs.nix-darwin.lib.darwinSystem {
           "imageoptim"
           "jetbrains-toolbox"
           "keycastr"
-          "linear-linear"
+          "linear"
           "lm-studio"
           "local"
           "logitech-g-hub"
