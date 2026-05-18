@@ -136,6 +136,8 @@ inputs.nix-darwin.lib.darwinSystem {
           "ghostty"
           "github"
           "google-chrome"
+          "google-chrome@beta"
+          "google-chrome@canary"
           "google-drive"
           "hammerspoon"
           "handbrake-app"
