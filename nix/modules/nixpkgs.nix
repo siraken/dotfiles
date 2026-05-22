@@ -54,6 +54,7 @@ let
   miscCliTools = [
     hugo # static site generator
     imapsync # IMAP mailbox synchronization
+    powershell # cross-platform shell
   ];
 
   # Programming languages

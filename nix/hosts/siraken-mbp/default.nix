@@ -158,7 +158,6 @@ inputs.nix-darwin.lib.darwinSystem {
           "onyx"
           "poedit"
           "postman"
-          "powershell"
           "raspberry-pi-imager"
           "raycast"
           "sdformatter"
