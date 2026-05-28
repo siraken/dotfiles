@@ -16,6 +16,9 @@ let
   '';
 in
 {
+  # apm: Agent Package Manager (Microsoft) - dependency manager for AI agents
+  home.packages = [ pkgs.llm-agents.apm ];
+
   programs.mcp = {
     enable = true;
     # servers = { };
