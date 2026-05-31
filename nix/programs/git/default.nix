@@ -188,7 +188,6 @@ in
       ghq = {
         root = [
           "~/repos"
-          "~/go/src"
         ];
       };
     };
