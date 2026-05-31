@@ -46,7 +46,6 @@ in
       core = {
         autocrlf = "input";
         editor = "nvim";
-        hooksPath = "~/.config/git/hooks";
       };
 
       user = {
@@ -196,8 +195,6 @@ in
 
     ignores = ignoreFiles;
   };
-
-  home.file.".config/git/hooks".source = ./hooks;
 
   programs.gh = {
     enable = true;
