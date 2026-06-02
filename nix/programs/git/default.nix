@@ -79,6 +79,8 @@ in
         bg = "log --graph --simplify-by-decoration --pretty=format:'%d' --all";
         cp = "cherry-pick";
         dt = "difftool";
+        # difftastic を明示的に使う diff（現状の git diff と同じ出力を一時的に再現）
+        dft = "-c diff.external=difft diff";
         undo = "reset --soft HEAD^";
         sp = "stash pop";
         ss = "stash save";
@@ -114,6 +116,8 @@ in
         colorMoved = "plain";
         mnemonicPrefix = true;
         renames = true;
+        # `git difftool` のデフォルト diff ツール（明示的に呼んだときのみ使う）
+        tool = "difftastic";
       };
 
       pager = {
@@ -170,6 +174,7 @@ in
 
       difftool = {
         prompt = false;
+        difftastic.cmd = "difft \"$LOCAL\" \"$REMOTE\"";
         sourcetree.cmd = "opendiff \"$LOCAL\" \"$REMOTE\"";
         nvimdiff.cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";
       };
