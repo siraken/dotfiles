@@ -499,11 +499,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1779899208,
-        "narHash": "sha256-2LN9997pFL+b1FWA0375mm6/THvIq7okQy+Mc49/Uq0=",
+        "lastModified": 1780499098,
+        "narHash": "sha256-AAUAO+0O20dbK2vzXUg4OU7f9xW29MaSV4q2DqLO2mw=",
         "owner": "1Password",
         "repo": "shell-plugins",
-        "rev": "17d290441359204fc6df8de252698f52cbd87047",
+        "rev": "ba4a16f881d53b43a829e72a8260144f31c3f4e4",
         "type": "github"
       },
       "original": {
