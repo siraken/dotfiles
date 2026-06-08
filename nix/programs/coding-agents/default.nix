@@ -47,9 +47,9 @@ in
     context = instructions;
   };
 
-  programs.gemini-cli = {
+  programs.antigravity-cli = {
     enable = true;
-    package = pkgs.llm-agents.gemini-cli;
+    package = pkgs.llm-agents.antigravity-cli;
     commands = { };
     settings = {
       context = {
