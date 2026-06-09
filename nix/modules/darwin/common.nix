@@ -192,18 +192,6 @@ in
 
   # Custom launchd services (managed by nix/modules/darwin/launchd-services.nix)
   customServices = {
-    ollama = {
-      enable = true;
-      package = pkgs.ollama;
-      command = [
-        "${pkgs.ollama}/bin/ollama"
-        "serve"
-      ];
-      environment = {
-        OLLAMA_HOST = "127.0.0.1:11434";
-      };
-    };
-
     postgresql = {
       enable = true;
       package = pkgs.postgresql_14;
