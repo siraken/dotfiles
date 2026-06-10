@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.emacs = {
     enable = true;
@@ -50,6 +50,11 @@
         doom-themes
       ];
 
-    extraConfig = builtins.readFile ./config/init.el;
+    # Load init.el directly from the repo checkout so it is editable in place
+    # (next emacs start picks up edits — no rebuild). The generated default.el
+    # now loads the repo file instead of inlining it; same load timing. See #70.
+    extraConfig = ''
+      (load-file "${config.home.homeDirectory}/dotfiles/nix/programs/emacs/config/init.el")
+    '';
   };
 }
