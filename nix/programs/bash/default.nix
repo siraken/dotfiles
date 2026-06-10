@@ -1,10 +1,9 @@
-{ pkgs, lib, ... }:
-let
-  functionsScript = builtins.readFile ./function.sh;
-  messagesScript = builtins.readFile ./messages.sh;
-  aliasesScript = builtins.readFile ./alias.sh;
-  evalScript = builtins.readFile ./eval.sh;
-in
+{
+  pkgs,
+  config,
+  mkRepoLink,
+  ...
+}:
 {
   programs.bash = {
     enable = true;
@@ -27,19 +26,28 @@ in
       "checkwinsize"
     ];
 
-    # Extra configuration for .bashrc
+    # Source the fragments from out-of-store symlinks so they are editable in
+    # place (a new shell picks up edits — no rebuild). Same order as before.
+    # See #70.
     initExtra = ''
       # Message functions
-      ${messagesScript}
+      source ${config.home.homeDirectory}/.config/bash/messages.sh
 
       # Conditional aliases
-      ${aliasesScript}
+      source ${config.home.homeDirectory}/.config/bash/alias.sh
 
       # Custom functions
-      ${functionsScript}
+      source ${config.home.homeDirectory}/.config/bash/function.sh
 
       # External tools (GCP, Angular CLI)
-      ${evalScript}
+      source ${config.home.homeDirectory}/.config/bash/eval.sh
     '';
+  };
+
+  home.file = {
+    ".config/bash/messages.sh".source = mkRepoLink "nix/programs/bash/messages.sh";
+    ".config/bash/alias.sh".source = mkRepoLink "nix/programs/bash/alias.sh";
+    ".config/bash/function.sh".source = mkRepoLink "nix/programs/bash/function.sh";
+    ".config/bash/eval.sh".source = mkRepoLink "nix/programs/bash/eval.sh";
   };
 }
