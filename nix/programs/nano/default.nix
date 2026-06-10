@@ -1,4 +1,4 @@
 { mkRepoLink, ... }:
 {
-  home.file.".config/nano/nanorc".source = mkRepoLink "nix/programs/nano/nanorc";
+  home.file.".config/nano/nanorc".source = mkRepoLink "config/nano/nanorc";
 }

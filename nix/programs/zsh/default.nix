@@ -26,5 +26,5 @@
     '';
   };
 
-  home.file.".config/zsh/option.zsh".source = mkRepoLink "nix/programs/zsh/option.zsh";
+  home.file.".config/zsh/option.zsh".source = mkRepoLink "config/zsh/option.zsh";
 }

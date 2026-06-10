@@ -73,7 +73,7 @@ in
     };
 
     includes = [
-      { path = "${config.home.homeDirectory}/dotfiles/nix/programs/git/config"; }
+      { path = "${config.home.homeDirectory}/dotfiles/config/git/config"; }
     ];
 
     ignores = ignoreFiles;

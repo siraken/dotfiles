@@ -1,4 +1,4 @@
 { mkRepoLink, ... }:
 {
-  home.file.".config/husky/init.sh".source = mkRepoLink "nix/programs/husky/init.sh";
+  home.file.".config/husky/init.sh".source = mkRepoLink "config/husky/init.sh";
 }
