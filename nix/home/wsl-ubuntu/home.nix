@@ -17,6 +17,7 @@
   };
 
   imports = [
+    ../../modules/home/mk-repo-link.nix
     inputs.op-shell-plugins.hmModules.default
     inputs.nixvim.homeModules.nixvim
     # inputs.dotfiles-private.homeManagerModules.default

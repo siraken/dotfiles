@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    ../../modules/home/mk-repo-link.nix
     inputs.op-shell-plugins.hmModules.default
     # programs (cross-platform)
     ../../programs/1password-shell-plugins

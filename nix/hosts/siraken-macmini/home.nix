@@ -1,21 +1,12 @@
 {
-  config,
   pkgs,
   inputs,
+  mkRepoLink,
   ...
 }:
-let
-  dotfilesPath = "${config.home.homeDirectory}/dotfiles";
-  # Out-of-store symlink helper: links the repo checkout directly into place so
-  # the target is editable without a rebuild. The argument must be a string path
-  # (a path literal would be copied into the store). See #70.
-  mkRepoLink = rel: config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/${rel}";
-in
 {
-  # Expose the helper to imported program modules (see #71).
-  _module.args.mkRepoLink = mkRepoLink;
-
   imports = [
+    ../../modules/home/mk-repo-link.nix
     inputs.op-shell-plugins.hmModules.default
     # programs (cross-platform)
     ../../programs/atuin
