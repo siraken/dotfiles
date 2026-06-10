@@ -1,0 +1,113 @@
+[alias]
+	ad = "add"
+	bD = "branch -D"
+	bg = "log --graph --simplify-by-decoration --pretty=format:'%d' --all"
+	bm = "branch -m"
+	br = "branch"
+	cm = "commit"
+	co = "checkout"
+	cp = "cherry-pick"
+	cz = "!cz"
+	dft = "-c diff.external=difft diff"
+	dt = "difftool"
+	ecm = "commit --allow-empty"
+	fe = "fetch"
+	gh = "!gh repo view --web"
+	l = "log"
+	lg = "log --graph"
+	lol = "log --oneline"
+	mg = "merge --no-ff"
+	mgff = "merge --ff"
+	pl = "pull"
+	ps = "push"
+	ps-f = "push --force-with-lease"
+	rb = "rebase"
+	rhh = "reset --hard HEAD"
+	sa = "stash apply"
+	sl = "stash list"
+	sp = "stash pop"
+	ss = "stash save"
+	st = "status"
+	undo = "reset --soft HEAD^"
+	update-from = "!f(){ echo \"Update from $1...\" && git checkout $1 && git pull && git checkout - && git merge -; };f"
+	us = "reset HEAD"
+	wt = "worktree"
+
+[color]
+	branch = "auto"
+	diff = "auto"
+	grep = "auto"
+	interactive = "auto"
+	status = "auto"
+	ui = "auto"
+
+[column]
+	ui = "auto"
+
+[commit]
+	gpgsign = true
+	verbose = true
+
+[core]
+	autocrlf = "input"
+	editor = "nvim"
+
+[diff]
+	algorithm = "histogram"
+	colorMoved = "plain"
+	mnemonicPrefix = true
+	renames = true
+	tool = "difftastic"
+
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = "difft \"$LOCAL\" \"$REMOTE\""
+
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[difftool "sourcetree"]
+	cmd = "opendiff \"$LOCAL\" \"$REMOTE\""
+
+[fetch]
+	all = true
+	prune = true
+	pruneTags = true
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[ghq]
+	root = "~/repos"
+
+[init]
+	defaultBranch = "main"
+
+[mergetool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\""
+	trustExitCode = true
+
+[mergetool "sourcetree"]
+	cmd = "/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\""
+	trustExitCode = true
+
+[pager]
+	difftool = true
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+	default = "simple"
+
+[rebase]
+	autostash = true
+
+[safe]
+	directory = "*"
