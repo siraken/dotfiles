@@ -136,7 +136,11 @@
             programs.shfmt.enable = true;
             programs.biome = {
               enable = true;
-              excludes = [ "**/lazy-lock.json" ];
+              excludes = [
+                "**/lazy-lock.json"
+                # Claude Code owns this file's format (tab-indented); let it manage it.
+                "**/.claude/settings.json"
+              ];
             };
             programs.yamlfmt.enable = true;
             programs.mdformat.enable = true;

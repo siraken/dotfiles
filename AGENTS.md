@@ -94,8 +94,7 @@ Manages 30+ tool configurations across multiple categories:
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
 - `config/` - Native config files mirroring `~/.config` (out-of-store linked)
-- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`)
-- `.agents/` - AI agent configurations (Claude); `settings.json` is still linked from here
+- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`, `home/.claude/settings.json`)
 - `nix/programs/coding-agents/` - Coding agent configurations (Claude, Gemini, Codex, OpenCode)
 
 ## Git Commit Guidelines

@@ -184,7 +184,8 @@ dotfiles/
 │       ├── zsh/               #   Zsh
 │       ├── coding-agents/     #   AI coding agents
 │       └── ...                #   30+ more programs
-└── .agents/                   # AI agent configurations
+├── config/                   # Native config files (mirrors ~/.config)
+└── home/                      # Native config files (mirrors ~, e.g. .ideavimrc, .claude/)
 ```
 
 ## Flake Inputs
