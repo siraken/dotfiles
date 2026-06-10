@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   isDarwin = pkgs.stdenv.isDarwin;
 in
@@ -12,36 +12,12 @@ in
       else
         pkgs.ghostty;
     settings = {
-      shell-integration = "detect";
-
-      # Font settings
-      font-family = "Hack Nerd Font Mono";
+      # Static settings live in a repo file read directly by ghostty via the
+      # `config-file` directive, so they are editable in place (ghostty reloads
+      # without a rebuild). Only the host-varying `font-size` stays in Nix,
+      # alongside the darwin/linux `package` choice. See #70.
+      config-file = "${config.home.homeDirectory}/dotfiles/nix/programs/ghostty/config";
       font-size = if isDarwin then 16 else 12;
-      adjust-cell-height = "20%";
-
-      # Appearance
-      theme = "TokyoNight";
-      background-opacity = 0.7;
-      background-blur-radius = 13;
-
-      # Window settings
-      window-vsync = true;
-      window-padding-x = 0;
-      window-padding-y = 0;
-      window-padding-color = "background";
-      # window-decoration = "none";
-      window-inherit-working-directory = true;
-      macos-titlebar-style = "tabs";
-
-      unfocused-split-opacity = 0.3;
-      focus-follows-mouse = false;
-      confirm-close-surface = false;
-      quit-after-last-window-closed = true;
-
-      keybind = [
-        "alt+d=new_split:right"
-        "alt+shift+d=new_split:down"
-      ];
     };
   };
 }
