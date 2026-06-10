@@ -1,14 +1,20 @@
 {
   config,
   pkgs,
-  lib,
   inputs,
   ...
 }:
 let
   dotfilesPath = "${config.home.homeDirectory}/dotfiles";
+  # Out-of-store symlink helper: links the repo checkout directly into place so
+  # the target is editable without a rebuild. The argument must be a string path
+  # (a path literal would be copied into the store). See #70.
+  mkRepoLink = rel: config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/${rel}";
 in
 {
+  # Expose the helper to imported program modules (see #71).
+  _module.args.mkRepoLink = mkRepoLink;
+
   imports = [
     inputs.op-shell-plugins.hmModules.default
     # inputs.dotfiles-private.homeManagerModules.default
@@ -62,14 +68,11 @@ in
     sessionPath = import ../../modules/path.nix { };
     shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
+    # Mutable (out-of-store) symlinks: edited in place, no rebuild required.
     file = {
-
+      ".config/wezterm".source = mkRepoLink "nix/programs/wezterm/config";
+      ".claude/settings.json".source = mkRepoLink ".agents/claude/settings.json";
     };
-
-    activation.mutableSymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ln -sfn ${dotfilesPath}/nix/programs/wezterm/config $HOME/.config/wezterm
-      ln -sfn ${dotfilesPath}/.agents/claude/settings.json $HOME/.claude/settings.json
-    '';
 
     shell = {
       enableBashIntegration = true;
