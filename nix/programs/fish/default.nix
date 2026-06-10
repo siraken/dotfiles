@@ -56,7 +56,7 @@
   };
 
   home.file = {
-    ".config/fish/function.fish".source = mkRepoLink "nix/programs/fish/function.fish";
-    ".config/fish/completion.fish".source = mkRepoLink "nix/programs/fish/completion.fish";
+    ".config/fish/function.fish".source = mkRepoLink "config/fish/function.fish";
+    ".config/fish/completion.fish".source = mkRepoLink "config/fish/completion.fish";
   };
 }

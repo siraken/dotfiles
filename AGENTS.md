@@ -58,7 +58,9 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Modular Configuration**:
 
-- `nix/programs/` - Individual program configurations with colocated config files (git, zsh, tmux, yazi, etc.)
+- `nix/programs/` - Per-program Nix modules (one `default.nix` each)
+- `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
+- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`)
 
 **Code Quality**:
 
@@ -67,8 +69,10 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Symlink Management**:
 
-- Immutable symlinks are managed by home-manager via `home.file` in each program module (copied to Nix store)
-- Mutable symlinks (AI agents, nvim, wezterm) are created via `home.activation` scripts using `config/` subdirectories for direct file access
+- Native config files in `config/` and `home/` are linked into place as **out-of-store symlinks** via the shared `mkRepoLink` helper (`nix/modules/home/mk-repo-link.nix`), so they are editable in place without a rebuild (assumes the repo is checked out at `~/dotfiles`).
+- Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, tmux `source-file`, git `includes`, shells `source`, emacs `load-file`.
+- Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
+- nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
 
 ### Configuration Coverage
 
@@ -88,8 +92,10 @@ Manages 30+ tool configurations across multiple categories:
 
 ## Important Files
 
-- `nix/programs/` - Program modules with colocated config files (e.g., `nix/programs/vim/`, `nix/programs/wezterm/config/`)
-- `.agents/` - AI agent configurations (Claude)
+- `nix/programs/` - Per-program Nix modules (one `default.nix` each)
+- `config/` - Native config files mirroring `~/.config` (out-of-store linked)
+- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`)
+- `.agents/` - AI agent configurations (Claude); `settings.json` is still linked from here
 - `nix/programs/coding-agents/` - Coding agent configurations (Claude, Gemini, Codex, OpenCode)
 
 ## Git Commit Guidelines

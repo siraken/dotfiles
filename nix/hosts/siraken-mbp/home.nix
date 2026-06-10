@@ -61,7 +61,7 @@
 
     # Mutable (out-of-store) symlinks: edited in place, no rebuild required.
     file = {
-      ".config/wezterm".source = mkRepoLink "nix/programs/wezterm/config";
+      ".config/wezterm".source = mkRepoLink "config/wezterm";
       ".claude/settings.json".source = mkRepoLink ".agents/claude/settings.json";
     };
 

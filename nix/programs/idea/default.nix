@@ -1,4 +1,4 @@
 { mkRepoLink, ... }:
 {
-  home.file.".ideavimrc".source = mkRepoLink "nix/programs/idea/.ideavimrc";
+  home.file.".ideavimrc".source = mkRepoLink "home/.ideavimrc";
 }

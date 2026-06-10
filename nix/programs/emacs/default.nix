@@ -54,7 +54,7 @@
     # (next emacs start picks up edits — no rebuild). The generated default.el
     # now loads the repo file instead of inlining it; same load timing. See #70.
     extraConfig = ''
-      (load-file "${config.home.homeDirectory}/dotfiles/nix/programs/emacs/config/init.el")
+      (load-file "${config.home.homeDirectory}/dotfiles/config/emacs/init.el")
     '';
   };
 }

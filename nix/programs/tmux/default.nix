@@ -40,7 +40,7 @@
     # options above, the shell, and plugins stay in Nix because they resolve
     # store paths. See #70.
     extraConfig = ''
-      source-file ${config.home.homeDirectory}/dotfiles/nix/programs/tmux/tmux.conf
+      source-file ${config.home.homeDirectory}/dotfiles/config/tmux/tmux.conf
     '';
   };
 }

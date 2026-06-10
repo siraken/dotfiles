@@ -45,9 +45,9 @@
   };
 
   home.file = {
-    ".config/bash/messages.sh".source = mkRepoLink "nix/programs/bash/messages.sh";
-    ".config/bash/alias.sh".source = mkRepoLink "nix/programs/bash/alias.sh";
-    ".config/bash/function.sh".source = mkRepoLink "nix/programs/bash/function.sh";
-    ".config/bash/eval.sh".source = mkRepoLink "nix/programs/bash/eval.sh";
+    ".config/bash/messages.sh".source = mkRepoLink "config/bash/messages.sh";
+    ".config/bash/alias.sh".source = mkRepoLink "config/bash/alias.sh";
+    ".config/bash/function.sh".source = mkRepoLink "config/bash/function.sh";
+    ".config/bash/eval.sh".source = mkRepoLink "config/bash/eval.sh";
   };
 }

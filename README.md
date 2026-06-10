@@ -105,7 +105,7 @@ nix store gc
 
 ## Configuration
 
-All program configurations are managed as Nix modules under [`nix/programs/`](nix/programs/).
+All program configurations are managed as Nix modules under [`nix/programs/`](nix/programs/). Each tool's native config files live under [`config/`](config/) (mirroring `~/.config`) and [`home/`](home/) (mirroring `~` for non-XDG paths), and are linked into place as out-of-store symlinks so they are editable without a rebuild.
 
 ### Editors
 
