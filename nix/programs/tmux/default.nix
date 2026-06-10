@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -35,38 +35,12 @@
       }
     ];
 
-    # Custom configuration
+    # Custom config lives in a repo file sourced directly, so it is editable in
+    # place (reload with `tmux source-file` — no rebuild). The structured
+    # options above, the shell, and plugins stay in Nix because they resolve
+    # store paths. See #70.
     extraConfig = ''
-      # Display settings
-      set -g display-time 2000
-      set -g repeat-time 0
-
-      # Pane navigation
-      bind -r h select-pane -L
-      bind -r j select-pane -D
-      bind -r k select-pane -U
-      bind -r l select-pane -R
-
-      # Pane resizing
-      bind -r C-k resize-pane -U 5
-      bind -r C-j resize-pane -D 5
-      bind -r C-h resize-pane -L 5
-      bind -r C-l resize-pane -R 5
-
-      # Kill all other panes
-      bind -r e kill-pane -a
-
-      # Window swapping
-      bind -n C-S-Left swap-window -t -1 \; previous-window
-      bind -n C-S-Right swap-window -t +1 \; next-window
-
-      # Window titles
-      set -g set-titles on
-      set -g set-titles-string "#T"
-
-      # Status bar
-      set -g status-interval 1
-      set -g status-justify 'left'
+      source-file ${config.home.homeDirectory}/dotfiles/nix/programs/tmux/tmux.conf
     '';
   };
 }
