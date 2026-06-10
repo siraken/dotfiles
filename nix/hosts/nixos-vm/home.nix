@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ../../modules/home/mk-repo-link.nix
     # programs (cross-platform)
     ../../programs/atuin
     ../../programs/awscli
