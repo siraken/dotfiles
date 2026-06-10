@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   userProfile,
   ...
 }:
@@ -42,12 +43,12 @@ in
 {
   programs.git = {
     enable = true;
-    settings = {
-      core = {
-        autocrlf = "input";
-        editor = "nvim";
-      };
 
+    # Identity, signing, and OS-specific GPG stay in Nix (userProfile-derived and
+    # host-varying). The static config (aliases, diff, color, ...) lives in a repo
+    # file included directly by git, so it is editable in place without a rebuild.
+    # See #70.
+    settings = {
       user = {
         name = userProfile.name;
         email = userProfile.email;
@@ -55,77 +56,8 @@ in
         signingkey = userProfile.signingKey;
       };
 
-      alias = {
-        br = "branch";
-        ad = "add";
-        us = "reset HEAD";
-        bm = "branch -m";
-        bD = "branch -D";
-        cm = "commit";
-        ecm = "commit --allow-empty";
-        co = "checkout";
-        st = "status";
-        wt = "worktree";
-        ps-f = "push --force-with-lease";
-        ps = "push";
-        pl = "pull";
-        rb = "rebase";
-        mg = "merge --no-ff";
-        mgff = "merge --ff";
-        fe = "fetch";
-        l = "log";
-        lg = "log --graph";
-        lol = "log --oneline";
-        bg = "log --graph --simplify-by-decoration --pretty=format:'%d' --all";
-        cp = "cherry-pick";
-        dt = "difftool";
-        # difftastic を明示的に使う diff（現状の git diff と同じ出力を一時的に再現）
-        dft = "-c diff.external=difft diff";
-        undo = "reset --soft HEAD^";
-        sp = "stash pop";
-        ss = "stash save";
-        sl = "stash list";
-        sa = "stash apply";
-        rhh = "reset --hard HEAD";
-        gh = "!gh repo view --web";
-        cz = "!cz";
-        update-from = "!f(){ echo \"Update from $1...\" && git checkout $1 && git pull && git checkout - && git merge -; };f";
-      };
-
       github = {
         user = userProfile.username;
-      };
-
-      init = {
-        defaultBranch = "main";
-      };
-
-      filter.lfs = {
-        smudge = "git-lfs smudge -- %f";
-        process = "git-lfs filter-process";
-        required = true;
-        clean = "git-lfs clean -- %f";
-      };
-
-      column = {
-        ui = "auto";
-      };
-
-      diff = {
-        algorithm = "histogram";
-        colorMoved = "plain";
-        mnemonicPrefix = true;
-        renames = true;
-        # `git difftool` のデフォルト diff ツール（明示的に呼んだときのみ使う）
-        tool = "difftastic";
-      };
-
-      pager = {
-        difftool = true;
-      };
-
-      safe = {
-        directory = "*";
       };
 
       # OS-specific GPG configuration for 1Password SSH signing
@@ -138,64 +70,11 @@ in
       // (lib.optionalAttrs pkgs.stdenv.isLinux {
         ssh.program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
       });
-
-      color = {
-        status = "auto";
-        diff = "auto";
-        branch = "auto";
-        interactive = "auto";
-        grep = "auto";
-        ui = "auto";
-      };
-
-      commit = {
-        verbose = true;
-        gpgsign = true;
-      };
-
-      push = {
-        default = "simple";
-        autoSetupRemote = true;
-      };
-
-      pull = {
-        rebase = true;
-      };
-
-      fetch = {
-        prune = true;
-        pruneTags = true;
-        all = true;
-      };
-
-      rebase = {
-        autostash = true;
-      };
-
-      difftool = {
-        prompt = false;
-        difftastic.cmd = "difft \"$LOCAL\" \"$REMOTE\"";
-        sourcetree.cmd = "opendiff \"$LOCAL\" \"$REMOTE\"";
-        nvimdiff.cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";
-      };
-
-      mergetool = {
-        nvimdiff = {
-          cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"";
-          trustExitCode = true;
-        };
-        sourcetree = {
-          cmd = "/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"";
-          trustExitCode = true;
-        };
-      };
-
-      ghq = {
-        root = [
-          "~/repos"
-        ];
-      };
     };
+
+    includes = [
+      { path = "${config.home.homeDirectory}/dotfiles/nix/programs/git/config"; }
+    ];
 
     ignores = ignoreFiles;
   };
