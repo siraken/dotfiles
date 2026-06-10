@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-  optionScript = builtins.readFile ./option.zsh;
-in
+{ config, mkRepoLink, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -22,8 +19,12 @@ in
       C = "| pbcopy";
     };
 
+    # Source option.zsh from an out-of-store symlink so it is editable in place
+    # (a new shell picks up edits — no rebuild). See #70.
     initContent = ''
-      ${optionScript}
+      source ${config.home.homeDirectory}/.config/zsh/option.zsh
     '';
   };
+
+  home.file.".config/zsh/option.zsh".source = mkRepoLink "nix/programs/zsh/option.zsh";
 }
