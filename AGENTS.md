@@ -48,6 +48,8 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `wsl-ubuntu` - WSL/Ubuntu home-manager configuration
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
+  - `pixel10` - Android (nix-on-droid) configuration (currently commented out in flake.nix)
+  - `minimal` - Lightweight home-manager profile (standalone, not registered in flake.nix)
 
 ### Key Components
 
@@ -59,6 +61,9 @@ Personal dotfiles management system combining Nix and declarative configuration 
 **Modular Configuration**:
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
+- `nix/services/` - Service modules (e.g. `darwin/aerospace.nix`, `darwin/sketchybar/`, `tailscale.nix`)
+- `nix/home/` - Standalone home-manager profiles (e.g. `wsl-ubuntu`, `minimal`)
+- `nix/modules/` - Shared modules (aliases, nixpkgs, shells, paths, variables, darwin common, home common, mk-repo-link)
 - `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
 - `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`)
 
@@ -76,26 +81,31 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 ### Configuration Coverage
 
-Manages 30+ tool configurations across multiple categories:
+Manages 40+ tool configurations across multiple categories:
 
-- **Editors**: Neovim (via [Nixvim](https://github.com/nix-community/nixvim)), Vim, Emacs, Helix
+- **Editors**: Neovim (via [Nixvim](https://github.com/nix-community/nixvim)), Vim, Emacs, Helix, Zed
+- **IDEs**: VS Code, IntelliJ IDEA
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, WezTerm, Ghostty
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
-- **Dev Tools**: Git, Tmux, Yazi, Direnv, Starship, Mise
-- **AI Agents**: Claude, Gemini, Codex, OpenCode
+- **Dev Tools**: Git, GitUI, Tmux, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI
+- **Security**: 1Password Shell Plugins
+- **Media**: Spotify-player, Twitch-TUI, yt-dlp, Neovide
+- **AI Agents**: Claude Code, Antigravity CLI, Codex, OpenCode, APM
+- **Networking**: Tailscale
 
 ### Target Architectures
 
 - `aarch64-darwin` - Apple Silicon Macs (primary)
 - `x86_64-linux` - WSL/Ubuntu and NixOS
+- `aarch64-linux` - Android (nix-on-droid, pixel10)
 
 ## Important Files
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
 - `config/` - Native config files mirroring `~/.config` (out-of-store linked)
 - `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`, `home/.claude/settings.json`)
-- `nix/programs/coding-agents/` - Coding agent configurations (Claude, Gemini, Codex, OpenCode)
+- `nix/programs/coding-agents/` - Coding agent configurations (Claude Code, Antigravity CLI, Codex, OpenCode, APM)
 
 ## Git Commit Guidelines
 
