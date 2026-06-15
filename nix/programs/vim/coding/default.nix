@@ -4,7 +4,7 @@
     plugins = {
       comment.enable = true;
 
-      conform = {
+      conform-nvim = {
         enable = true;
         settings = {
           formatters_by_ft = {
