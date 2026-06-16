@@ -69,6 +69,18 @@ let
       "Minecraft Launcher"
       "java"
     ];
+
+    browsers = [
+      "Safari"
+      "Google Chrome"
+      "Google Chrome Beta"
+      "Google Chrome Canary"
+      "Firefox"
+      "Arc"
+      "Brave Browser"
+      "Vivaldi"
+      "Dia"
+    ];
   };
 
   # すべてのアプリを1つのリストに結合
