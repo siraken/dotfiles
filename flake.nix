@@ -92,7 +92,7 @@
         name = "Kento Shirasawa";
         email = "shirasawa@novalumo.com";
         org = "novalumo";
-        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjyytl+QL/ikAdL+f/xIl4/QeT/Pic9I+r/+nW7lAIL";
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILlD3C6lBO9hb+JO/odNgS6D/jOqU4Bse4pvMd3VdZGL";
       };
       backupFileExtension = "hm-backup";
 
