@@ -53,11 +53,7 @@ let
     cc = "claude";
     ccd = "claude --dangerously-skip-permissions";
     oc = "opencode";
-    ccu = "bunx ccusage@latest";
-    cculv = "bunx ccusage@latest blocks --live";
     cx = "codex";
-    di = "bunx difit";
-    ccm = "bunx ccmanager";
   };
 
   darwinAliases = pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
