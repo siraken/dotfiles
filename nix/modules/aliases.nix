@@ -49,6 +49,15 @@ let
     # Mise
     mr = "mise run";
 
+    # Package managers (via Socket Firewall)
+    npm = "sfw npm";
+    npx = "sfw npx";
+    yarn = "sfw yarn";
+    pnpm = "sfw pnpm";
+    pnpx = "sfw pnpx";
+    bun = "sfw bun";
+    bunx = "sfw bunx";
+
     # AI tools
     cc = "claude";
     ccd = "claude --dangerously-skip-permissions";
