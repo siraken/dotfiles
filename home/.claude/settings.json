@@ -19,6 +19,13 @@
       "Bash(rm -rf:*)",
       "Bash(curl:*)",
       "Bash(wget:*)",
+      "Bash(npx:*)",
+      "Bash(bunx:*)",
+      "Bash(pnpx:*)",
+      "Bash(pnpm dlx:*)",
+      "Bash(yarn dlx:*)",
+      "Bash(pipx:*)",
+      "Bash(deno run:*)",
       "Bash(psql:*)",
       "Bash(mysql:*)",
       "Bash(mongod:*)"
