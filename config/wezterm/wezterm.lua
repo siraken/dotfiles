@@ -40,10 +40,10 @@ if is_mac then
   config.macos_window_background_blur = 13
   -- config.macos_window_dragging_behavior = "all"
 elseif is_win then
-  config.default_prog = { "pwsh.exe" }
+  config.default_prog = { "wsl.exe" }
   config.font_size = 12
-  config.window_background_opacity = 0.85
-  config.win32_system_backdrop = "Acrylic"
+  config.window_background_opacity = 0.7
+  config.win32_system_backdrop = "Mica"
 elseif is_linux then
   config.font_size = 14
   config.line_height = 1.2
