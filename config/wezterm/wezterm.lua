@@ -85,7 +85,9 @@ config.command_palette_font_size = config.font_size * 1.5
 config.command_palette_rows = 10
 config.command_palette_bg_color = "#16161e"
 config.window_close_confirmation = "NeverPrompt"
-config.window_decorations = "RESIZE"
+if not is_win then
+  config.window_decorations = "RESIZE"
+end
 config.window_padding = {
   left = 0,
   right = 0,
