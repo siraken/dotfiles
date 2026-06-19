@@ -7,8 +7,8 @@ local keybinds = require("keybinds")
 local mouse_bindings = require("mousebinds")
 local config = {}
 
-local is_mac = string.find(wezterm.target_triple, "apple")
-local is_win = wezterm.target_triple == "x86_64-pc-windows-msvc"
+local is_darwin = string.find(wezterm.target_triple, "apple")
+local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 local is_linux = wezterm.target_triple == "x86_64-unknown-linux-gnu"
 
 local act = wezterm.action
@@ -32,17 +32,18 @@ config.key_tables = keybinds.key_tables
 config.mouse_bindings = mouse_bindings
 config.use_ime = true
 config.default_prog = { "bash", "-l" }
-if is_mac then
+if is_darwin then
   config.default_prog = { "bash", "-l" }
   config.font_size = 16
   config.line_height = 1.2
   config.window_background_opacity = 0.7
   config.macos_window_background_blur = 13
   -- config.macos_window_dragging_behavior = "all"
-elseif is_win then
+elseif is_windows then
   config.default_prog = { "wsl.exe" }
+  config.default_cwd = ""
   config.font_size = 12
-  config.window_background_opacity = 0.7
+  config.window_background_opacity = 0.85
   config.win32_system_backdrop = "Mica"
 elseif is_linux then
   config.font_size = 14
@@ -85,7 +86,7 @@ config.command_palette_font_size = config.font_size * 1.5
 config.command_palette_rows = 10
 config.command_palette_bg_color = "#16161e"
 config.window_close_confirmation = "NeverPrompt"
-if not is_win then
+if not is_windows then
   config.window_decorations = "RESIZE"
 end
 config.window_padding = {
