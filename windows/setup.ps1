@@ -1,5 +1,3 @@
-#Requires -RunAsAdministrator
-
 $ErrorActionPreference = "Stop"
 
 $dotfilesDir = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
@@ -40,8 +38,14 @@ foreach ($link in $links) {
         continue
     }
 
-    New-Item -ItemType SymbolicLink -Path $target -Target $source | Out-Null
-    Write-Host "Created symlink: $target -> $source"
+    try {
+        New-Item -ItemType SymbolicLink -Path $target -Target $source | Out-Null
+        Write-Host "Created symlink: $target -> $source"
+    }
+    catch {
+        Write-Error "Failed to create symlink. Run as Administrator or enable Developer Mode in Windows Settings."
+        exit 1
+    }
 }
 
 Write-Host "`nSetup complete."
