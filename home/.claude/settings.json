@@ -31,6 +31,7 @@
       "Bash(mongod:*)"
     ]
   },
+  "model": "claude-opus-4-6[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -105,7 +106,7 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "preferredNotifChannel": "terminal_bell",
-  "voiceEnabled": true,
-  "model": "claude-opus-4-7[1m]"
+  "voiceEnabled": true
 }
