@@ -8,27 +8,6 @@
   programs.fish = {
     enable = true;
 
-    plugins = [
-      {
-        name = "fisher";
-        src = pkgs.fetchFromGitHub {
-          owner = "jorgebucaran";
-          repo = "fisher";
-          rev = "main";
-          sha256 = "0mcpn4iqq7f005gk98ppxwi7r1j0fqybwfj69g1bw8dk9wlm27m5";
-        };
-      }
-      {
-        name = "fish-plugin-template";
-        src = pkgs.fetchFromGitHub {
-          owner = "yo-goto";
-          repo = "fish-plugin-template";
-          rev = "master";
-          sha256 = "1w2wpmxxmh5y187dkxpswnr3gcmri6slk80s8cb4kkzm7hn4pq8j";
-        };
-      }
-    ];
-
     # Source the fragments from out-of-store symlinks (same order as before) so
     # they are editable in place — a new shell picks up edits without a rebuild.
     # Sourced explicitly rather than via conf.d/ autoload to preserve the
