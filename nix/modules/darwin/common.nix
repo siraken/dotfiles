@@ -101,7 +101,10 @@ in
         persistent-apps = [
           "/Applications/Google Chrome.app"
           "/Applications/Google Chrome Canary.app"
+          "/Applications/Spark Desktop.app"
+          "/Applications/Slack.app"
           "/Applications/Discord.app"
+          "/Applications/Spotify.app"
         ];
         persistent-others = [
           {
