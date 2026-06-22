@@ -5,7 +5,7 @@
     package = pkgs.yt-dlp;
 
     settings = {
-      cookies-from-browser = "firefox";
+      cookies-from-browser = "chrome_canary";
     };
   };
 }
