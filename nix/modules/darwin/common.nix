@@ -226,8 +226,6 @@ in
       cleanup = "none";
     };
     taps = [
-      "siraken/homebrew-tap"
-      "novalumo/homebrew-tap"
     ];
   };
 

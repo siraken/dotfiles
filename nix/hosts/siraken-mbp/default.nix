@@ -31,7 +31,6 @@ inputs.nix-darwin.lib.darwinSystem {
 
       homebrew = {
         taps = [
-          "VOICEVOX/voicevox"
         ];
         brews = [
           "aircrack-ng"
@@ -187,12 +186,6 @@ inputs.nix-darwin.lib.darwinSystem {
           "xsplit-vcam"
           "zoom"
           "zulu@17"
-          {
-            name = "voicevox";
-            args = {
-              "no_quarantine" = true;
-            };
-          }
         ];
       };
     }
