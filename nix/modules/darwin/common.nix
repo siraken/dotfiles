@@ -160,8 +160,8 @@ in
       };
       CustomUserPreferences = {
         "com.apple.inputmethod.Kotoeri" = {
-          JIMPrefCorrectSpellingKey = false;
-          JIMPrefWindowsLikeShortcutKey = true;
+          JIMPrefAutocorrectionKey = false;
+          JIMPrefWindowsModeKey = true;
         };
         "com.apple.screensaver" = {
           idleTime = 180;
