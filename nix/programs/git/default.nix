@@ -18,6 +18,11 @@ let
     ".dev.vars.${env}"
   ]) dotenvEnvironments;
 
+  secretsPath = "${config.home.homeDirectory}/dotfiles/secrets.json";
+  secrets =
+    if builtins.pathExists secretsPath then builtins.fromJSON (builtins.readFile secretsPath) else { };
+  gitClients = secrets.gitClients or [ ];
+
   ignoreFiles = [
     ".DS_Store"
     "Thumbs.db"
@@ -74,7 +79,11 @@ in
 
     includes = [
       { path = "${config.home.homeDirectory}/dotfiles/config/git/config"; }
-    ];
+    ]
+    ++ map (c: {
+      condition = "gitdir:~/repos/${c.dir}/";
+      path = "~/.config/git.custom/${c.configFile}";
+    }) gitClients;
 
     ignores = ignoreFiles;
   };

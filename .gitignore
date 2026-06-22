@@ -1,4 +1,5 @@
 /result
+/secrets.json
 .pre-commit-config.yaml
 foo.*
 *.log
