@@ -122,6 +122,7 @@ in
         AppleShowAllFiles = false;
         ShowPathbar = true;
         ShowStatusBar = true;
+        NewWindowTarget = "Home";
       };
       NSGlobalDomain = {
         NSWindowShouldDragOnGesture = true;
