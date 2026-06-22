@@ -159,6 +159,10 @@ in
         askForPasswordDelay = 0;
       };
       CustomUserPreferences = {
+        "com.apple.inputmethod.Kotoeri" = {
+          JIMPrefCorrectSpellingKey = false;
+          JIMPrefWindowsLikeShortcutKey = true;
+        };
         "com.apple.screensaver" = {
           idleTime = 180;
         };
