@@ -98,6 +98,21 @@ in
         static-only = false;
         scroll-to-open = false;
         launchanim = true;
+        persistent-apps = [
+          "/Applications/Google Chrome.app"
+          "/Applications/Google Chrome Canary.app"
+          "/Applications/Discord.app"
+        ];
+        persistent-others = [
+          {
+            folder = {
+              path = "${homeDir}/Downloads";
+              arrangement = "kind";
+              displayas = "folder";
+              showas = "grid";
+            };
+          }
+        ];
       };
       finder = {
         AppleShowAllExtensions = false;
