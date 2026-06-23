@@ -105,6 +105,7 @@
   "language": "日本語",
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "preferredNotifChannel": "terminal_bell",
