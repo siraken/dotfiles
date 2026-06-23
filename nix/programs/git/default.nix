@@ -102,8 +102,10 @@ in
     ];
     settings = {
       aliases = {
+        as = "auth status";
         co = "pr checkout";
         pv = "pr view";
+        sw = "auth switch";
       };
       git_protocol = "https";
     };
