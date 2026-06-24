@@ -227,11 +227,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782248541,
-        "narHash": "sha256-jeX5yuYkep2DvR4i6SGOzCBAxQYcG5gzON1SQSbTslc=",
+        "lastModified": 1782263994,
+        "narHash": "sha256-6bhUwnv9EbIXi7x1uMAf01gqvu1IherPyy8Wu6cErBg=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "77f1dbe82a2c27f79b6ae0672f23b39e611ffe71",
+        "rev": "31dc02699e4ad2b9b53252212538f67c0ab9c686",
         "type": "github"
       },
       "original": {
@@ -442,11 +442,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1782238479,
-        "narHash": "sha256-EQ87PD8OuJIngS1iDRja/r96mS19Mzz4vgDqzjQNTBs=",
+        "lastModified": 1782254890,
+        "narHash": "sha256-kjsEECqhpPnJWqhooXp6tWh2qGQftCPAo2G1GvZtKdw=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "c02fd3edc6c30324d729e9af1e66e4f1719f51d9",
+        "rev": "dbf9550dba8448b03e11d58e5695d6c44a464554",
         "type": "github"
       },
       "original": {
@@ -499,11 +499,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1782159582,
-        "narHash": "sha256-CpfORGcg9VPaL8EYZp0Ugr5ZKoe+TC6Joq9Aqm1G4B0=",
+        "lastModified": 1782254667,
+        "narHash": "sha256-YqydjqRqS8wINsUvH0T+12G9V+jrPK5VhuL2+14IaSI=",
         "owner": "1Password",
         "repo": "shell-plugins",
-        "rev": "81dce5cb4aac9dbae0205ab632bcc718e0a448da",
+        "rev": "991b41701d4e07eb36bb4edf5984799550c9ed34",
         "type": "github"
       },
       "original": {
