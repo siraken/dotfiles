@@ -171,6 +171,12 @@ inputs.nix-darwin.lib.darwinSystem {
     {
       nixpkgs.overlays = [
         inputs.llm-agents.overlays.default
+        # mise 2026.6.11: OCI layer setuid test fails in Nix sandbox
+        (final: prev: {
+          mise = prev.mise.overrideAttrs (old: {
+            doCheck = false;
+          });
+        })
       ];
     }
     inputs.home-manager.darwinModules.home-manager
