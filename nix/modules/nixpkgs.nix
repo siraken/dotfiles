@@ -2,6 +2,7 @@
 { pkgs }:
 with pkgs;
 let
+  isDarwin = stdenv.hostPlatform.isDarwin;
   # File operations and browsing
   fileTools = [
     broot # file manager
@@ -115,3 +116,6 @@ fileTools
 ++ buildTools
 ++ cloudTools
 ++ devUtilTools
+++ lib.optionals isDarwin [
+  container # container platform for macOS
+]
