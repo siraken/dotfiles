@@ -84,6 +84,7 @@ let
     ansible # configuration management
     cloudflared # Cloudflare tunnel
     flyctl # Fly.io CLI
+    rclone # cloud storage sync
     kompose # K8s conversion
     minikube # K8s local
     tenv # Terraform version manager
