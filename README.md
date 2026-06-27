@@ -38,10 +38,10 @@ Personal dotfiles management system combining [Nix Flakes](https://nixos.wiki/wi
 
 ### Prerequisites
 
-Install [Determinate Nix](https://github.com/DeterminateSystems/nix-installer):
+Install [Nix](https://nix.dev/install-nix):
 
 ```sh
-curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
 ```
 
 ### Installation

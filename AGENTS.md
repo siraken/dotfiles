@@ -6,7 +6,7 @@
 
 ```bash
 # Install Nix
-curl --proto '=https' --tls-version=1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
 
 # Install nix-darwin (macOS only)
 cd dotfiles
