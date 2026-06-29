@@ -31,7 +31,11 @@
       "Write(.env)",
       "Write(.env.local)",
       "Write(.env.production)",
-      "Write(.dev.vars)"
+      "Write(.dev.vars)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python -m pip install:*)",
+      "Bash(python3 -m pip install:*)"
     ],
     "ask": [
       "Bash(sudo:*)",
