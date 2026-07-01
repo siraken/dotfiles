@@ -9,51 +9,12 @@
         settings = {
           formatters_by_ft = {
             lua = [ "stylua" ];
-            javascript = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            typescript = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            javascriptreact = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            typescriptreact = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            json = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            yaml = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            markdown = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            html = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
-            css = {
-              "__unkeyed-1" = "prettierd";
-              "__unkeyed-2" = "prettier";
-              stop_after_first = true;
-            };
+            javascript = [ "biome" ];
+            typescript = [ "biome" ];
+            javascriptreact = [ "biome" ];
+            typescriptreact = [ "biome" ];
+            json = [ "biome" ];
+            css = [ "biome" ];
             sh = [ "shfmt" ];
           };
           format_on_save = {
@@ -81,7 +42,7 @@
 
     extraPackages = with pkgs; [
       stylua
-      prettierd
+      biome
       shfmt
     ];
 
