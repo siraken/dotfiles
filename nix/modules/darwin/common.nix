@@ -40,7 +40,7 @@ in
     ./launchd-services.nix
     ../nix-caches.nix
     ../../services/darwin/sketchybar
-    ../../services/tailscale.nix
+
   ];
 
   nix = {
@@ -245,7 +245,7 @@ in
     enable = true;
     onActivation = {
       autoUpdate = true;
-      upgrade = true;
+      upgrade = false;
       cleanup = "none";
     };
     taps = [
