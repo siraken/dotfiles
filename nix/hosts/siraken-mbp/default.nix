@@ -105,7 +105,7 @@ inputs.nix-darwin.lib.darwinSystem {
           "burp-suite"
           "chatgpt"
           "claude"
-          "cloudflare-warp"
+
           "cyberduck"
           "discord"
           "docker-desktop"
