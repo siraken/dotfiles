@@ -9,6 +9,7 @@ in
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
+    historyWidget.command = "";
     colors = {
       fg = c.fg;
       bg = c.bg;
