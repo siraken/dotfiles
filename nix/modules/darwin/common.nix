@@ -104,13 +104,14 @@ in
           "/Applications/Spark Desktop.app"
           "/Applications/Slack.app"
           "/Applications/Discord.app"
+          "/Applications/Obsidian.app"
           "/Applications/Spotify.app"
         ];
         persistent-others = [
           {
             folder = {
               path = "${homeDir}/Downloads";
-              arrangement = "kind";
+              arrangement = "dateadded";
               displayas = "folder";
               showas = "grid";
             };
