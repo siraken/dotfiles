@@ -111,7 +111,7 @@ in
           {
             folder = {
               path = "${homeDir}/Downloads";
-              arrangement = "dateadded";
+              arrangement = "date-added";
               displayas = "folder";
               showas = "grid";
             };
