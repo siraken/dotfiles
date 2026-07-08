@@ -68,6 +68,7 @@ let
       "League Of Legends"
       "Minecraft Launcher"
       "java"
+      "Godot"
     ];
 
     browsers = [
