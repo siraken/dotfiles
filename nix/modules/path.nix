@@ -20,4 +20,5 @@
   "$COMPOSER_HOME/vendor/bin"
   "$HOME/go/bin"
   "$HOME/.bun/bin"
+  "$HOME/Library/pnpm/bin"
 ]
