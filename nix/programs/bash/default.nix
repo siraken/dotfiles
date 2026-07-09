@@ -30,9 +30,6 @@
     # place (a new shell picks up edits — no rebuild). Same order as before.
     # See #70.
     initExtra = ''
-      # Message functions
-      source ${config.home.homeDirectory}/.config/bash/messages.sh
-
       # Conditional aliases
       source ${config.home.homeDirectory}/.config/bash/alias.sh
 
@@ -45,7 +42,6 @@
   };
 
   home.file = {
-    ".config/bash/messages.sh".source = mkRepoLink "config/bash/messages.sh";
     ".config/bash/alias.sh".source = mkRepoLink "config/bash/alias.sh";
     ".config/bash/function.sh".source = mkRepoLink "config/bash/function.sh";
     ".config/bash/eval.sh".source = mkRepoLink "config/bash/eval.sh";
