@@ -17,7 +17,12 @@ let
 in
 {
   # apm: Agent Package Manager (Microsoft) - dependency manager for AI agents
-  home.packages = [ pkgs.llm-agents.apm ];
+  home.packages = [
+    pkgs.llm-agents.apm
+    pkgs.llm-agents.copilot-cli
+    pkgs.llm-agents.cursor-agent
+    pkgs.llm-agents.grok
+  ];
 
   programs.mcp = {
     enable = true;
