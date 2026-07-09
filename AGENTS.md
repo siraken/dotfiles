@@ -65,7 +65,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - `nix/home/` - Standalone home-manager profiles (e.g. `wsl-ubuntu`, `minimal`)
 - `nix/modules/` - Shared modules (aliases, nixpkgs, shells, paths, variables, darwin common, home common, mk-repo-link)
 - `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
-- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`)
+- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.claude/settings.json`)
 
 **Code Quality**:
 
@@ -84,7 +84,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 Manages 40+ tool configurations across multiple categories:
 
 - **Editors**: Neovim (via [Nixvim](https://github.com/nix-community/nixvim)), Vim, Emacs, Helix, Zed
-- **IDEs**: VS Code, IntelliJ IDEA
+- **IDEs**: VS Code
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, WezTerm, Ghostty
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
@@ -104,7 +104,7 @@ Manages 40+ tool configurations across multiple categories:
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
 - `config/` - Native config files mirroring `~/.config` (out-of-store linked)
-- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.ideavimrc`, `home/.claude/settings.json`)
+- `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.claude/settings.json`)
 - `nix/programs/coding-agents/` - Coding agent configurations (Claude Code, Antigravity CLI, Codex, OpenCode, APM)
 
 ## Git Commit Guidelines

@@ -28,7 +28,6 @@
     ../../programs/gitui
     ../../programs/helix
     ../../programs/husky
-    ../../programs/idea
     ../../programs/kitty
     ../../programs/lazydocker
     ../../programs/mise

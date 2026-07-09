@@ -117,7 +117,6 @@ All program configurations are managed as Nix modules under [`nix/programs/`](ni
 | Helix | [`nix/programs/helix/`](nix/programs/helix/) | |
 | Neovide | [`nix/programs/neovide/`](nix/programs/neovide/) | Neovim GUI frontend |
 | VS Code | [`nix/programs/vscode/`](nix/programs/vscode/) | |
-| IntelliJ IDEA | [`nix/programs/idea/`](nix/programs/idea/) | |
 
 ### Shells
 
@@ -185,7 +184,7 @@ dotfiles/
 │       ├── coding-agents/     #   AI coding agents
 │       └── ...                #   30+ more programs
 ├── config/                   # Native config files (mirrors ~/.config)
-└── home/                      # Native config files (mirrors ~, e.g. .ideavimrc, .claude/)
+└── home/                      # Native config files (mirrors ~, e.g. .claude/)
 ```
 
 ## Flake Inputs
