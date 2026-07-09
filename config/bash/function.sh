@@ -21,18 +21,7 @@ function gau() {
 
 function gd() {
   local dir
-  dir=$(ghq list -p | fzf)
-  if [[ -n $dir ]]; then
-    cd "$dir"
-  fi
-}
-
-function gco() {
-  local branch
-  branch=$(git branch --all | sed 's/^[* ]*//' | fzf)
-  if [[ -n $branch ]]; then
-    git checkout "$(echo $branch | sed 's#remotes/origin/##')"
-  fi
+  dir=$(gd-select) && [ -n "$dir" ] && cd "$dir"
 }
 
 function meme() {

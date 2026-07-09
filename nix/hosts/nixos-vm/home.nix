@@ -29,6 +29,7 @@ in
     ../../programs/kitty
     ../../programs/lazydocker
     ../../programs/mise
+    ../../programs/scripts
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim
