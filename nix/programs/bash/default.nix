@@ -35,15 +35,11 @@
 
       # Custom functions
       source ${config.home.homeDirectory}/.config/bash/function.sh
-
-      # External tools (GCP, Angular CLI)
-      source ${config.home.homeDirectory}/.config/bash/eval.sh
     '';
   };
 
   home.file = {
     ".config/bash/alias.sh".source = mkRepoLink "config/bash/alias.sh";
     ".config/bash/function.sh".source = mkRepoLink "config/bash/function.sh";
-    ".config/bash/eval.sh".source = mkRepoLink "config/bash/eval.sh";
   };
 }
