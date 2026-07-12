@@ -14,6 +14,7 @@
 
   programs.nixvim = {
     enable = true;
+    enableMan = false;
 
     # Pin Nixvim to the same nixpkgs we follow to suppress the
     # `programs.nixvim.nixpkgs.source` follows warning.
