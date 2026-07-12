@@ -44,6 +44,8 @@ in
   ];
 
   nix = {
+    nixPath = [ ];
+
     settings = {
       experimental-features = [
         "nix-command"
