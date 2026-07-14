@@ -24,23 +24,59 @@ let
   gitClients = secrets.gitClients or [ ];
 
   ignoreFiles = [
+    # macOS
     ".DS_Store"
+    ".AppleDouble"
+    ".LSOverride"
+    ".DocumentRevisions-V100"
+    ".fseventsd"
+    ".Spotlight-V100"
+    ".TemporaryItems"
+    ".Trashes"
+    ".VolumeIcon.icns"
+    ".com.apple.timemachine.donotpresent"
+
+    # Windows
     "Thumbs.db"
     "desktop.ini"
+
+    # Editors / IDEs
     ".clj-kondo/.cache/"
     ".lsp/.cache/"
     ".idea/"
     ".vscode/"
-    ".ignore/"
-    ".playwright-mcp/"
-    "**/.claude/settings.local.json"
-    "**/.claude/worktrees/"
-    "mise.local.toml"
+
+    # Node.js
     "**/node_modules"
+    "npm-debug.log*"
+    "yarn-debug.log*"
+    "yarn-error.log*"
+    "lerna-debug.log*"
+    ".pnpm-debug.log*"
+    "pids"
+    "*.pid"
+    "*.seed"
+    "*.pid.lock"
+    "*.tsbuildinfo"
+    ".yarn/cache"
+    ".yarn/unplugged"
+    ".yarn/build-state.yml"
+    ".yarn/install-state.gz"
+    ".pnp.*"
+
+    # Nix / Devenv
     ".direnv"
     ".devenv*"
     "devenv.local.nix"
     "devenv.local.yaml"
+
+    # Misc
+    ".ignore/"
+    ".playwright-mcp/"
+    "**/.claude/settings.local.json"
+    "**/.claude/worktrees/"
+    "AGENTS.local.md"
+    "mise.local.toml"
     ".pre-commit-config.yaml"
   ]
   ++ dotenvFiles;
