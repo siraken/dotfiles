@@ -105,6 +105,8 @@ in
     };
 
     settings = {
+      config-version = 2;
+
       # Normalizations
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
@@ -216,6 +218,16 @@ in
           run = [ "layout tiling" ];
         }
       ];
+
+      persistent-workspaces = {
+        "1" = [ ];
+        "2" = [ ];
+        "3" = [ ];
+        "4" = [ ];
+        "5" = [ ];
+        "6" = [ ];
+        "7" = [ ];
+      };
 
       workspace-to-monitor-force-assignment = { };
 
