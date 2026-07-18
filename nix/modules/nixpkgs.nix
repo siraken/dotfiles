@@ -86,7 +86,7 @@ let
     flyctl # Fly.io CLI
     rclone # cloud storage sync
     kompose # K8s conversion
-    minikube # K8s local
+    # minikube # K8s local — disabled: nixpkgs build failure (makeShellWrapper API change)
     tenv # Terraform version manager
   ];
 
