@@ -33,7 +33,7 @@
     ../../programs/mise
     ../../programs/nano
     ../../programs/scripts
-    ../../programs/spotify-player
+    # ../../programs/spotify-player # disabled: nixpkgs linker crash (cctools-binutils-darwin)
     ../../programs/starship
     ../../programs/tmux
     ../../programs/vim
