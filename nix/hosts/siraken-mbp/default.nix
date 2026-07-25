@@ -173,7 +173,9 @@ inputs.nix-darwin.lib.darwinSystem {
     { programs.nix-index-database.comma.enable = true; }
     {
       nixpkgs.overlays = [
-        inputs.llm-agents.overlays.shared-nixpkgs
+        (final: _prev: {
+          llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
+        })
         # mise 2026.6.11: OCI layer setuid test fails in Nix sandbox
         (final: prev: {
           mise = prev.mise.overrideAttrs (old: {

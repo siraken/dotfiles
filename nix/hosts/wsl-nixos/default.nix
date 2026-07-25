@@ -13,7 +13,9 @@ inputs.nixpkgs.lib.nixosSystem {
     { programs.nix-index-database.comma.enable = true; }
     {
       nixpkgs.overlays = [
-        inputs.llm-agents.overlays.shared-nixpkgs
+        (final: _prev: {
+          llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
+        })
       ];
     }
     inputs.home-manager.nixosModules.home-manager
