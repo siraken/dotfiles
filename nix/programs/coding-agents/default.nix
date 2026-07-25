@@ -1,4 +1,9 @@
-{ pkgs, userProfile, ... }:
+{
+  pkgs,
+  userProfile,
+  mkRepoLink,
+  ...
+}:
 let
   instructions = ''
     - Unless otherwise specified, always respond in 日本語.
@@ -23,6 +28,11 @@ in
     pkgs.llm-agents.cursor-agent
     pkgs.llm-agents.grok
   ];
+
+  # Mutable (out-of-store) symlink: edited in place, no rebuild required.
+  # Kept out of `programs.claude-code.settings` on purpose - Claude Code writes
+  # back to this file at runtime, which a nix-store copy could not accept.
+  home.file.".claude/settings.json".source = mkRepoLink "home/.claude/settings.json";
 
   programs.mcp = {
     enable = true;

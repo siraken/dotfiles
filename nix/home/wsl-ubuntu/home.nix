@@ -62,10 +62,6 @@
     sessionPath = import ../../modules/path.nix { };
     shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
 
-    file = {
-
-    };
-
     shell = {
       enableBashIntegration = true;
       enableFishIntegration = true;

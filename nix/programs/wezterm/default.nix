@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, mkRepoLink, ... }:
 {
   programs.wezterm = {
-    enable = true;
+    # On darwin wezterm comes from the Homebrew cask, so only pull the nixpkgs
+    # build on other platforms.
+    enable = !pkgs.stdenv.isDarwin;
   };
+
+  # Mutable (out-of-store) symlink: edited in place, no rebuild required.
+  home.file.".config/wezterm".source = mkRepoLink "config/wezterm";
 }
