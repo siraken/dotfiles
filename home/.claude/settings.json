@@ -6,16 +6,13 @@
       "WebFetch(domain:cloud.google.com)",
       "WebFetch(domain:docs.docker.com)",
       "WebFetch(domain:developers.cloudflare.com)",
-
       "WebFetch(domain:react.dev)",
       "WebFetch(domain:nextjs.org)",
       "WebFetch(domain:vuejs.org)",
       "WebFetch(domain:svelte.dev)",
       "WebFetch(domain:php.net)",
-
       "WebFetch(domain:nixos.org)",
       "WebFetch(domain:developer.mozilla.org)",
-
       "WebFetch(domain:www.xserver.ne.jp)",
       "WebFetch(domain:www.xdomain.ne.jp)",
       "WebFetch(domain:bizmw.jp)",
@@ -55,7 +52,6 @@
       "Bash(mongod:*)"
     ]
   },
-  "model": "claude-opus-4-6[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -131,6 +127,7 @@
   "effortLevel": "xhigh",
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "preferredNotifChannel": "terminal_bell",
   "voiceEnabled": true
