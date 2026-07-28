@@ -57,10 +57,10 @@ git clone --depth 1 \
 cd ~/repos/github.com/siraken/dotfiles
 
 # First-time install
-sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#THE_NAME --impure
+sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#THE_NAME
 
 # After initial setup
-sudo darwin-rebuild switch --flake .#THE_NAME --impure
+sudo darwin-rebuild switch --flake .#THE_NAME
 ```
 
 </details>
@@ -69,7 +69,7 @@ sudo darwin-rebuild switch --flake .#THE_NAME --impure
 <summary><b>WSL/Ubuntu (home-manager)</b></summary>
 
 ```bash
-home-manager switch --flake .#wsl-ubuntu --impure
+home-manager switch --flake .#wsl-ubuntu
 ```
 
 </details>
@@ -78,7 +78,7 @@ home-manager switch --flake .#wsl-ubuntu --impure
 <summary><b>WSL/NixOS</b></summary>
 
 ```bash
-sudo nixos-rebuild switch --flake .#wsl-nixos --impure
+sudo nixos-rebuild switch --flake .#wsl-nixos
 ```
 
 </details>

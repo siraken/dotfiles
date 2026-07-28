@@ -10,17 +10,17 @@ curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable
 
 # Install nix-darwin (macOS only)
 cd dotfiles
-sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#siraken-mbp --impure
+sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#siraken-mbp
 
 # Build and apply system configuration
-sudo darwin-rebuild build --flake .#siraken-mbp --impure
-sudo darwin-rebuild switch --flake .#siraken-mbp --impure
+sudo darwin-rebuild build --flake .#siraken-mbp
+sudo darwin-rebuild switch --flake .#siraken-mbp
 
 # For WSL/Ubuntu (home-manager only, no system-level changes)
-home-manager -- switch --flake .#wsl-ubuntu --impure
+home-manager -- switch --flake .#wsl-ubuntu
 
 # For WSL/NixOS (full NixOS system configuration)
-sudo nixos-rebuild switch --flake .#wsl-nixos --impure
+sudo nixos-rebuild switch --flake .#wsl-nixos
 
 # Garbage collection
 nix store gc
@@ -79,6 +79,13 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
 - nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
 
+**Per-client git config (`secrets.json`)**:
+
+- `secrets.json` (git-ignored, schema in `secrets.example.json`) lists `gitClients` entries of `{ dir, configFile }`.
+- It is **never read during evaluation**. A home-manager activation script regenerates `~/.config/git.custom/clients.gitconfig` from it on every switch, and `programs.git.includes` pulls that file in unconditionally — git ignores a missing include path.
+- Evaluation therefore stays pure: **no `--impure` flag is needed anywhere**. Do not reintroduce `builtins.readFile` / `builtins.pathExists` on paths outside the flake; under pure evaluation they fail silently and produce a different system than the one CI checked.
+- The per-client bodies (`~/.config/git.custom/<configFile>`) are maintained by hand outside the repo.
+
 ### Configuration Coverage
 
 Manages 40+ tool configurations across multiple categories:
@@ -124,10 +131,10 @@ Manages 40+ tool configurations across multiple categories:
 
 ```bash
 # Bad - Do NOT do this
-darwin-rebuild switch --flake .#siraken-mbp --impure | tee output.log
-home-manager switch --flake .#wsl-ubuntu --impure | cat
+darwin-rebuild switch --flake .#siraken-mbp | tee output.log
+home-manager switch --flake .#wsl-ubuntu | cat
 
 # Good - Run commands directly
-darwin-rebuild switch --flake .#siraken-mbp --impure
-home-manager switch --flake .#wsl-ubuntu --impure
+darwin-rebuild switch --flake .#siraken-mbp
+home-manager switch --flake .#wsl-ubuntu
 ```
