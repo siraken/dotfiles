@@ -3,33 +3,9 @@
   userProfile,
   backupFileExtension,
 }:
-inputs.nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
+(import ../../lib/mk-nixos-host.nix { inherit inputs userProfile backupFileExtension; }) {
+  homeModule = ./home.nix;
   modules = [
     ./configuration.nix
-    ../../modules/nix-caches.nix
-    inputs.nix-index-database.nixosModules.nix-index
-    { programs.nix-index-database.comma.enable = true; }
-    {
-      nixpkgs.overlays = [
-        (final: _prev: {
-          llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
-        })
-      ];
-    }
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = backupFileExtension;
-        users.${userProfile.username} = ./home.nix;
-        sharedModules = [
-          inputs.nixvim.homeModules.nixvim
-        ];
-        extraSpecialArgs = { inherit inputs userProfile; };
-      };
-    }
   ];
-  specialArgs = { inherit inputs userProfile; };
 }

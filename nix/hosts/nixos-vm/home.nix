@@ -1,66 +1,29 @@
 {
-  config,
   pkgs,
-  lib,
-  inputs,
   ...
 }:
-let
-  dotfilesPath = "${config.home.homeDirectory}/dotfiles";
-in
 {
   imports = [
-    ../../modules/home/mk-repo-link.nix
-    # programs (cross-platform)
-    ../../programs/atuin
-    ../../programs/awscli
-    ../../programs/bash
-    ../../programs/bat
-    ../../programs/bottom
-    ../../programs/direnv
+    # This VM stays on the core profile: no coding agents, emacs, or 1Password
+    # tooling. It only adds a graphical desktop on top.
+    ../../modules/home/profile-core.nix
+    # host-specific programs
     ../../programs/fastfetch
-    # ../../programs/fish # disabled due to fisher hash mismatch
-    ../../programs/fzf
-    ../../programs/gh-dash
     ../../programs/ghostty
-    ../../programs/git
-    ../../programs/gitui
-    ../../programs/helix
     ../../programs/kitty
-    ../../programs/lazydocker
-    ../../programs/mise
-    ../../programs/scripts
-    ../../programs/starship
-    ../../programs/tmux
-    ../../programs/vim
-    ../../programs/yazi
-    ../../programs/yt-dlp
-    ../../programs/zellij
-    ../../programs/zoxide
-    ../../programs/zsh
+    # ../../programs/fish # disabled due to fisher hash mismatch
   ];
 
   home = {
-    stateVersion = "26.05";
-    sessionPath = import ../../modules/path.nix { };
-    shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
-
-    packages = import ../../modules/nixpkgs.nix { inherit pkgs; } ++ [
-      # nixos-vm specific
+    packages = [
       pkgs.playerctl
     ];
 
-    shell = {
-      enableBashIntegration = true;
-      enableFishIntegration = false; # fish disabled
-      enableZshIntegration = true;
-      enableShellIntegration = true;
-    };
+    # fish is not installed on this host (see above).
+    shell.enableFishIntegration = false;
   };
 
   programs = {
-    home-manager.enable = true;
-
     rofi = {
       enable = true;
       theme = "gruvbox-dark";
