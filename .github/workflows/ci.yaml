@@ -1,9 +1,11 @@
 name: CI
 on:
+  # Only main. A branch also covered by a push trigger runs this workflow twice
+  # while it has an open pull request; push a branch and open a draft PR to try
+  # CI on it instead.
   push:
     branches:
       - main
-      - ci/*
   pull_request:
     branches:
       - main
