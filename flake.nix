@@ -164,10 +164,10 @@
             in
             {
               mbp = darwinApp "mbp" ''
-                sudo darwin-rebuild switch --flake ${self}#siraken-mbp --impure
+                sudo darwin-rebuild switch --flake ${self}#siraken-mbp
               '';
               macmini = darwinApp "macmini" ''
-                sudo darwin-rebuild switch --flake ${self}#siraken-macmini --impure
+                sudo darwin-rebuild switch --flake ${self}#siraken-macmini
               '';
               gc = darwinApp "gc" ''
                 nix store gc
