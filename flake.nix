@@ -156,6 +156,33 @@
               pkgs.nixpkgs-fmt
             ];
           };
+
+          checks = {
+            # Forces a full, pure evaluation of every configuration in this
+            # flake. Producing the derivation paths is what does the work; the
+            # string context is discarded so building this check never builds a
+            # profile. It costs seconds and runs on every system, so a broken
+            # module or a typo in any host fails CI even though the runner
+            # cannot build the profiles themselves.
+            eval-all = pkgs.writeText "eval-all-configurations" (
+              nixpkgs.lib.concatMapStringsSep "\n" builtins.unsafeDiscardStringContext [
+                self.darwinConfigurations.siraken-mbp.system.drvPath
+                self.darwinConfigurations.siraken-macmini.system.drvPath
+                self.nixosConfigurations.nixos-vm.config.system.build.toplevel.drvPath
+                self.nixosConfigurations.wsl-nixos.config.system.build.toplevel.drvPath
+                self.homeConfigurations.wsl-ubuntu.activationPackage.drvPath
+              ]
+            );
+          }
+          // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
+            # Real system builds. A GitHub-hosted runner has 14 GB of disk and
+            # one system closure is 12.4 GiB, so these only ever run locally
+            # (`nix flake check` on the Mac); CI stops at `eval-all`. Once the
+            # package set is split per role, or a personal binary cache exists,
+            # this can move into CI.
+            siraken-mbp = self.darwinConfigurations.siraken-mbp.system;
+            siraken-macmini = self.darwinConfigurations.siraken-macmini.system;
+          };
         }
         // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
           apps =
@@ -173,11 +200,6 @@
                 nix store gc
               '';
             };
-
-          checks = {
-            siraken-mbp = self.darwinConfigurations.siraken-mbp.system;
-            siraken-macmini = self.darwinConfigurations.siraken-macmini.system;
-          };
         };
 
       flake = {

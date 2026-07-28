@@ -1,11 +1,13 @@
 name: Flake Updater
 on:
   schedule:
-    # Every 6 hours at 00:00, 06:00, 12:00, 18:00 JST (15:00, 21:00, 03:00, 09:00 UTC)
-    - cron: "0 3,9,15,21 * * *"
+    # 06:00 JST daily (21:00 UTC). nixpkgs-unstable only advances a few times a
+    # week, so the previous 6-hourly schedule was mostly empty runs.
+    - cron: "0 21 * * *"
   workflow_dispatch:
 permissions:
   contents: write
+  pull-requests: write
 jobs:
   update:
     name: Update Flake
@@ -18,8 +20,44 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - uses: DeterminateSystems/determinate-nix-action@131015bad844610e5e6300f8a143bf625d3e74f4 # v3.17.0
       - name: Update flake.lock
-        run: nix flake update --commit-lock-file
+        id: update
+        run: |
+          nix flake update 2>&1 | tee /tmp/flake-update.log
+          if git diff --quiet -- flake.lock; then
+            echo "changed=false" >>"$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >>"$GITHUB_OUTPUT"
+          fi
+      # This is the validation for the update: a pull request opened with
+      # GITHUB_TOKEN does not start a workflow run, so CI will not re-run on the
+      # PR itself. It runs again on main once the PR is merged by a human.
       - name: Run nix flake check
-        run: nix flake check
-      - name: Push changes
-        run: git push
+        if: steps.update.outputs.changed == 'true'
+        run: nix flake check --print-build-logs
+      - name: Open pull request
+        if: steps.update.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch=flake-update
+          git switch -c "$branch"
+          git commit -am "flake.lock: Update"
+          git push --force -u origin "$branch"
+
+          # The backticks below are markdown, not command substitution.
+          # shellcheck disable=SC2016
+          {
+            printf 'Automated `nix flake update`.\n\n```\n'
+            cat /tmp/flake-update.log
+            printf '```\n\n'
+            printf '`nix flake check` passed in the updater job (treefmt, pre-commit, and a pure evaluation of all five profiles).\n'
+            printf 'A pull request opened with `GITHUB_TOKEN` does not start a workflow run, so CI runs again on `main` after this is merged.\n'
+          } >/tmp/pr-body.md
+
+          existing=$(gh pr list --head "$branch" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --body-file /tmp/pr-body.md
+          else
+            gh pr create --base main --head "$branch" \
+              --title "flake.lock: Update" --body-file /tmp/pr-body.md
+          fi
