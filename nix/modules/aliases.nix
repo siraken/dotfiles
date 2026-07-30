@@ -45,6 +45,7 @@ let
     # Applications
     spt = "spotify_player";
     wez = "wezterm";
+    hr = "herdr";
 
     # Mise
     mr = "mise run";
