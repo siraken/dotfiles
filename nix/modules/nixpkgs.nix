@@ -56,6 +56,7 @@ let
     hugo # static site generator
     imapsync # IMAP mailbox synchronization
     powershell # cross-platform shell
+    qsv # CSV toolkit (successor to xsv)
   ];
 
   # Programming languages
@@ -72,6 +73,7 @@ let
   # Build systems
   buildTools = [
     cmake
+    earthbuild # community fork of earthly (brew: earthly, upstream discontinued)
     gradle
     maven
     ninja

@@ -37,7 +37,6 @@
           "cdrtools"
           "cocoapods"
           "coursier"
-          "earthly"
           "ethereum"
           "ffmpeg"
           "giflib"
@@ -86,7 +85,6 @@
           "watchman"
           "wego"
           "wimlib"
-          "xsv"
           "zola"
           "pinact"
         ];
@@ -158,7 +156,6 @@
           "visual-studio-code"
           "vlc"
           "wezterm"
-          "whisky"
           "wireshark-app"
           "xquartz"
           "zoom"
