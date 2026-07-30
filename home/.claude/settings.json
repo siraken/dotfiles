@@ -35,17 +35,6 @@
         ],
         "matcher": "*"
       }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "osascript -e 'display notification \"タスクが終了しました\" with title \"Claude Code\" subtitle \"hooks: Stop\"'",
-            "type": "command"
-          }
-        ],
-        "matcher": ""
-      }
     ]
   },
   "includeCoAuthoredBy": true,
