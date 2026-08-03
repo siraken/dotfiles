@@ -158,11 +158,33 @@ JDK は `gradle`/`maven`/`sbt`/`scala` 経由の zulu21 + homebrew `openjdk@21`�
 
 あわせて `nix.optimise.automatic = true`（現状 `auto-optimise-store = false`）でストア重複排除、gc の `--delete-older-than 7d` の見直しも。
 
-### 8. 自前バイナリキャッシュが無い（「ビルドせずキャッシュ」の本命）
+### 8. 自前バイナリキャッシュが無い（「ビルドせずキャッシュ」の本命）— 対応済み
 
 上流に無い派生（fish補完、nixvim ラッパー、override 済みパッケージ、sketchybar スクリプト等）は必ずローカルビルドになる。**public リポジトリなので Cachix 無料枠 / FlakeHub Cache が使える**。macOS runner で `.#darwinConfigurations.siraken-mbp.system` をビルドして push すれば、手元の `darwin-rebuild switch` はダウンロードのみになる（closure 全体ではなく「上流に無いパスだけ」を push すれば容量は小さく収まる）。
 
 補足: eval 自体は暖機後 **約8秒**（pure/impure ともほぼ同じ）でボトルネックではない。効くのは上記のビルド側。なお `cache.numtide.com` の鍵 `niks3.numtide.com-1:…` は narinfo の Sig と一致しており**正しい**ことを確認済み。
+
+**対応**（2026-08-03）:
+
+まず実測した。`siraken-mbp` の system closure の全 1174 パスについて、設定済み substituter 全てに narinfo を問い合わせた結果:
+
+| | パス数 |
+| --- | --- |
+| closure 全体 | 1174（12.6 GiB） |
+| `cache.nixos.org` に無い | 295 |
+| うち `nix-community.cachix.org` にあった | 71 |
+| うち `cache.numtide.com` にあった | 10 |
+| **どこにも無い＝毎回ローカルビルド** | **214（286 MiB）** |
+
+内訳は `mise` 105 MiB・`1password-cli` 77 MiB・emacs パッケージ 77 パス 99 MiB・home-manager 生成物 35 パス・sketchybar 等のスクリプト 22 パス。`mise` は override を除去済み（P1-4）でも素の nixpkgs のまま `cache.nixos.org` が 404 で、上流が aarch64-darwin をビルドしていないだけだった。`1password-cli` は unfree なので Hydra が元々ビルドしない。つまりこの 182 MiB は自前キャッシュ以外に回避手段が無い。
+
+- `siraken-dotfiles.cachix.org`（public）を substituters と trusted-public-keys に追加
+- push は `nix-cache-push` スクリプトで行う。closure を丸ごと渡すと 12.6 GiB になり無料枠を使い切るため、上流の substituter に narinfo を並列問い合わせして**どこにも無いパスだけ**に絞る。実測 214 パス / 13 秒
+- 認証は 1Password Shell Plugin に載せた。ただしあれはシェル関数なのでスクリプトからは効かず、`op plugin run -- cachix push` 経由で呼んでいる
+- `post-build-hook` は採らなかった。nix daemon（root）側にトークンを置く必要があり、宣言的管理と相性が悪い
+- 新規スクリプトなので `writeShellApplication` + `runtimeInputs` で書いた（P2-15 の方針を新規分から適用）
+
+**CI からの push は見送り**: CI は `ubuntu-latest` なので aarch64-darwin をビルドできない。macOS runner 案はディスク 14 GB に対し closure 12.6 GiB で成立しない（P0-2 の結論を今回の実測が裏付けた）。当面は手元の Mac から push する運用とし、`siraken-macmini` 側がその恩恵を受ける。
 
 ### 9. flake input の重複と未使用 input
 
