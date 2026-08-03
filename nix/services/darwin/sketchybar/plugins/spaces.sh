@@ -2,13 +2,16 @@
 #
 # 引数には設定時に確定したワークスペース ID（アイテム space.<id> と 1:1 対応）を渡す。
 # ワークスペースごとに個別スクリプトを走らせず、この 1 本で全アイテムを更新することで
-# aerospace CLI の呼び出しを 3 回に抑えている。
+# aerospace CLI の呼び出しを 4 回に抑えている。
 
 # aerospace_workspace_change から渡る FOCUSED_WORKSPACE があればそれを使う
 FOCUSED="${FOCUSED_WORKSPACE:-$(aerospace list-workspaces --focused)}"
 # 各モニタで表示中のワークスペース（マルチモニタでフォーカス外の面も控えめに強調する）
 VISIBLE=" $(aerospace list-workspaces --monitor all --visible | tr '\n' ' ') "
 WINDOWS="$(aerospace list-windows --all --format '%{workspace}|%{app-name}')"
+# ワークスペースが乗っているモニタ。NSScreen の番号は sketchybar の display 番号と
+# 一致するのでそのまま使える（aerospace の monitor-id とは並び順が異なる）。
+DISPLAYS="$(aerospace list-workspaces --all --format '%{workspace}|%{monitor-appkit-nsscreen-screens-id}')"
 
 args=()
 
@@ -73,6 +76,13 @@ for sid in "$@"; do
     label.padding_left="$label_padding_left"
     label.padding_right="$label_padding_right"
   )
+
+  # そのワークスペースが属するモニタのバーにだけ出す。
+  # 割り当てが読めなかった場合は今の設定を触らない。
+  display="$(printf '%s\n' "$DISPLAYS" | awk -F'|' -v ws="$sid" '$1 == ws { print $2; exit }')"
+  if [ -n "$display" ]; then
+    args+=(display="$display")
+  fi
 done
 
 sketchybar "${args[@]}"

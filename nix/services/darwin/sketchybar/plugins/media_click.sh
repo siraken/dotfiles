@@ -1,36 +1,14 @@
-# 再生/一時停止をトグルする。
+# バーのメディアアイテムのクリック操作。
 #
-# - 再生中のアプリがあればそれを止める。無ければ起動中のアプリを再生する（Spotify 優先）
-# - 起動していないアプリは触らない（自動起動を防止）
-osascript <<'APPLESCRIPT' 2>/dev/null
-with timeout of 5 seconds
-	if application "Spotify" is running then
-		tell application "Spotify"
-			if player state is playing then
-				pause
-				return
-			end if
-		end tell
-	end if
-	if application "Music" is running then
-		tell application "Music"
-			if player state is playing then
-				pause
-				return
-			end if
-		end tell
-	end if
-	if application "Spotify" is running then
-		tell application "Spotify" to play
-		return
-	end if
-	if application "Music" is running then
-		tell application "Music" to play
-	end if
-end timeout
-APPLESCRIPT
+# - 左クリック: 再生 / 一時停止
+# - 右クリック: popup（前へ・再生・次へ）の開閉
+#
+# $BUTTON が渡らない環境でも左クリック相当の動作に落ちるようにしている。
+CONTROL_PLUGIN="$1"
 
-# アプリ側の状態が切り替わるのを待ってから再描画する
-# （ポーリング間隔を伸ばしているため、クリック時は明示的に更新する）
-sleep 0.2
-sketchybar --trigger media_update
+if [ "$BUTTON" = "right" ]; then
+  sketchybar --set "$NAME" popup.drawing=toggle
+  exit 0
+fi
+
+"$CONTROL_PLUGIN" toggle

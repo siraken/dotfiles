@@ -95,6 +95,9 @@ let
     run = "layout floating";
   };
 
+  # Sketchybar のアイテム生成と共有するワークスペース一覧
+  workspaces = import ./workspaces.nix;
+
   # ウィンドウを別ワークスペースへ移してもフォーカス中のワークスペースは変わらないため
   # exec-on-workspace-change は発火しない。Sketchybar 側のアプリアイコン表示を
   # 追従させるために、移動系のバインドから明示的にイベントを投げる。
@@ -121,8 +124,11 @@ in
       default-root-container-orientation = "auto";
 
       automatically-unhide-macos-hidden-apps = false;
-      on-focus-changed = [ ];
-      on-focused-monitor-changed = [ ];
+
+      # ウィンドウの開閉はフォーカス移動を伴うので、これを拾えば Sketchybar の
+      # アプリアイコン表示が追従する。定期ポーリングの保険を持たずに済む。
+      on-focus-changed = [ sketchybarRefresh ];
+      on-focused-monitor-changed = [ sketchybarRefresh ];
 
       # Gaps and padding
       gaps = {
@@ -245,15 +251,7 @@ in
         }
       ];
 
-      persistent-workspaces = [
-        "1"
-        "2"
-        "3"
-        "4"
-        "5"
-        "6"
-        "7"
-      ];
+      persistent-workspaces = workspaces;
 
       workspace-to-monitor-force-assignment = { };
 

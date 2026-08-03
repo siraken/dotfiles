@@ -23,11 +23,16 @@ let
   # ワークスペースのアプリアイコン用フォント（`:app_name:` のリガチャで描画される）
   appFont = pkgs.sketchybar-app-font;
 
+  # AeroSpace の persistent-workspaces と共有するワークスペース一覧。
+  # 実行時に aerospace へ問い合わせるとウィンドウがあるものしか拾えないため、
+  # アイテムの集合はこちらから決める。
+  workspaces = import ../workspaces.nix;
+
   # 全プラグインの先頭に差し込む共通定義。
   # 色は Nix 側の 1 箇所で管理し、PATH も明示して起動環境に依存しないようにする。
   # (GNU 版で挙動が変わる grep / date などを拾わないよう、システムのパスのみを足している)
   prelude = ''
-    export PATH="${pkgs.sketchybar}/bin:${pkgs.aerospace}/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    export PATH="${pkgs.sketchybar}/bin:${pkgs.aerospace}/bin:${pkgs.switchaudio-osx}/bin:${pkgs.gh}/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
     COLOR_TRANSPARENT=${colors.transparent}
     COLOR_BG=${colors.background}
@@ -61,9 +66,18 @@ let
   batteryPlugin = mkPlugin { name = "battery.sh"; };
   batteryClickPlugin = mkPlugin { name = "battery_click.sh"; };
   volumePlugin = mkPlugin { name = "volume.sh"; };
+  volumeClickPlugin = mkPlugin { name = "volume_click.sh"; };
+  volumeSliderPlugin = mkPlugin { name = "volume_slider.sh"; };
+  volumeDevicePlugin = mkPlugin { name = "volume_device.sh"; };
   frontAppPlugin = mkPlugin { name = "front_app.sh"; };
   mediaPlugin = mkPlugin { name = "media.sh"; };
   mediaClickPlugin = mkPlugin { name = "media_click.sh"; };
+  mediaControlPlugin = mkPlugin { name = "media_control.sh"; };
+  inputSourcePlugin = mkPlugin { name = "input_source.sh"; };
+  cpuPlugin = mkPlugin { name = "cpu.sh"; };
+  memoryPlugin = mkPlugin { name = "memory.sh"; };
+  githubPlugin = mkPlugin { name = "github.sh"; };
+  githubClickPlugin = mkPlugin { name = "github_click.sh"; };
 in
 {
   services.sketchybar = {
@@ -133,7 +147,7 @@ in
 
       SPACE_SIDS=()
       SPACE_IDS=()
-      for sid in $(${aerospace} list-workspaces --all); do
+      for sid in ${lib.concatStringsSep " " workspaces}; do
         sketchybar --add item space.$sid left \
           --set space.$sid \
             background.color=${colors.transparent} \
@@ -164,12 +178,12 @@ in
           background.drawing=on
 
       # ワークスペース表示は 1 本のドライバでまとめて更新する（自身は描画しない）。
-      # update_freq は取りこぼし用の保険で、通常はイベントで更新される。
+      # AeroSpace 側の on-focus-changed / on-focused-monitor-changed からも
+      # aerospace_workspace_change が飛ぶため、定期ポーリングは持たせていない。
       sketchybar --add item spaces_watcher left \
         --set spaces_watcher \
           drawing=off \
           updates=on \
-          update_freq=15 \
           script="${spacesPlugin} ''${SPACE_IDS[*]}" \
         --subscribe spaces_watcher \
           aerospace_workspace_change \
@@ -208,9 +222,38 @@ in
         label.font="Hack Nerd Font:bold:12.0"
       sketchybar --set clock.popup.1 label.color=${colors.muted}
 
+      # 音量: バー上のスクロールで上下、クリックで popup（スライダーと出力デバイス）
+      sketchybar --add event volume_update
       sketchybar --add item volume right \
-        --set volume "''${island[@]}" script="${volumePlugin}" \
-        --subscribe volume volume_change
+        --set volume \
+          "''${island[@]}" \
+          "''${popup_style[@]}" \
+          script="${volumePlugin}" \
+          click_script="${volumeClickPlugin} ${volumeDevicePlugin}" \
+        --subscribe volume volume_change volume_update mouse.scrolled mouse.exited.global
+
+      sketchybar --add slider volume.popup.slider popup.volume 130 \
+        --set volume.popup.slider \
+          script="${volumeSliderPlugin}" \
+          icon.drawing=off \
+          label.drawing=off \
+          background.drawing=off \
+          padding_left=12 \
+          padding_right=12 \
+          slider.background.height=6 \
+          slider.background.corner_radius=3 \
+          slider.background.color=${colors.surface} \
+          slider.highlight_color=${colors.pink} \
+          slider.knob="●" \
+          slider.knob.font="Hack Nerd Font:Bold:14.0" \
+          slider.knob.color=${colors.white} \
+        --subscribe volume.popup.slider mouse.clicked
+
+      # 出力デバイスの選択肢。数は接続状況で変わるのでスロットを固定数用意しておく。
+      for i in ${lib.concatStringsSep " " (map toString (lib.range 0 15))}; do
+        sketchybar --add item volume.popup.device.$i popup.volume \
+          --set volume.popup.device.$i "''${popup_item[@]}" drawing=off
+      done
 
       sketchybar --add item battery right \
         --set battery \
@@ -230,17 +273,77 @@ in
       sketchybar --add item battery.popup.health popup.battery \
         --set battery.popup.health "''${popup_item[@]}" icon=󰋑 icon.color=${colors.pink}
 
-      # Spotify と Apple Music を 1 つのアイテムに統合し、クリック時は即時更新する
+      # 入力ソース。専用イベントは無いが、システムが配信する通知を購読できるので
+      # ポーリングせずに済む。
+      sketchybar --add event input_source_change AppleSelectedInputSourcesChangedNotification
+      sketchybar --add item input_source right \
+        --set input_source "''${island[@]}" script="${inputSourcePlugin}" \
+        --subscribe input_source input_source_change
+
+      # GitHub の未読通知。ネットワークを叩くので間隔は長め、0 件なら隠す。
+      sketchybar --add event github_update
+      sketchybar --add item github right \
+        --set github \
+          "''${island[@]}" \
+          update_freq=300 \
+          script="${githubPlugin}" \
+          click_script="${githubClickPlugin}" \
+        --subscribe github github_update
+
+      sketchybar --add item memory right \
+        --set memory \
+          "''${island[@]}" \
+          update_freq=5 \
+          script="${memoryPlugin}"
+
+      sketchybar --add graph cpu right 40 \
+        --set cpu \
+          "''${island[@]}" \
+          update_freq=3 \
+          script="${cpuPlugin}" \
+          icon=󰍛 \
+          graph.line_width=2 \
+          label.padding_left=6
+
+      # Spotify と Apple Music を 1 つのアイテムに統合し、操作時は即時更新する。
+      # 左クリックで再生/一時停止、右クリックで曲送りの popup を開く。
       sketchybar --add event media_update
       sketchybar --add item media right \
         --set media \
           "''${island[@]}" \
+          "''${popup_style[@]}" \
+          popup.horizontal=on \
           update_freq=3 \
           scroll_texts=on \
           label.max_chars=28 \
           script="${mediaPlugin}" \
-          click_script="${mediaClickPlugin}" \
-        --subscribe media media_update
+          click_script="${mediaClickPlugin} ${mediaControlPlugin}" \
+        --subscribe media media_update mouse.exited.global
+
+      sketchybar --add item media.popup.prev popup.media \
+        --set media.popup.prev \
+          "''${popup_item[@]}" \
+          icon=󰒮 \
+          icon.padding_left=14 \
+          icon.padding_right=14 \
+          label.drawing=off \
+          click_script="${mediaControlPlugin} previous"
+      sketchybar --add item media.popup.play popup.media \
+        --set media.popup.play \
+          "''${popup_item[@]}" \
+          icon=󰐊 \
+          icon.padding_left=14 \
+          icon.padding_right=14 \
+          label.drawing=off \
+          click_script="${mediaControlPlugin} toggle"
+      sketchybar --add item media.popup.next popup.media \
+        --set media.popup.next \
+          "''${popup_item[@]}" \
+          icon=󰒭 \
+          icon.padding_left=14 \
+          icon.padding_right=14 \
+          label.drawing=off \
+          click_script="${mediaControlPlugin} next"
 
       sketchybar --update
       sketchybar --trigger aerospace_workspace_change
