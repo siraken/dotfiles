@@ -1,3 +1,9 @@
+# バーの外にカーソルが出たら popup を閉じる
+if [ "$SENDER" = "mouse.exited.global" ]; then
+  sketchybar --set "$NAME" popup.drawing=off
+  exit 0
+fi
+
 # Spotify と Apple Music を 1 回の osascript でまとめて問い合わせる。
 #
 # - `application "X" is running` はアプリを起動させずに状態を確認できる安全な判定方法
@@ -77,9 +83,11 @@ esac
 if [ "$STATE" = "playing" ]; then
   ICON_COLOR="$BRAND_COLOR"
   LABEL_COLOR="$COLOR_WHITE"
+  PLAY_ICON="󰏤"
 else
   ICON_COLOR="$COLOR_MUTED"
   LABEL_COLOR="$COLOR_MUTED"
+  PLAY_ICON="󰐊"
 fi
 
 # 長い曲名の切り詰めは label.max_chars + scroll_texts に任せる。
@@ -100,4 +108,5 @@ sketchybar --set "$NAME" \
   label="$LABEL" \
   label.color="$LABEL_COLOR" \
   background.color="$COLOR_BG" \
-  background.drawing=on
+  background.drawing=on \
+  --set media.popup.play icon="$PLAY_ICON"
