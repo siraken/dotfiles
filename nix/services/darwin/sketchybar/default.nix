@@ -10,9 +10,10 @@ let
     white = "0xffffffff";
     muted = "0xff565f89";
     purple = "0xff9d7cd8";
-    # ワークスペースのフォーカス表示は塗りつぶしなので、同じ色相のまま
-    # 明度を落として文字色として使う purple と同じくらいの濃さに見せる
-    purpleFill = "0xff7446c8";
+    # ワークスペースのフォーカス表示。塗りつぶしなので、細い文字として置くのとは
+    # 濃さの見え方が変わる。palette 外の色を作らず、TokyoNight 自身が lualine 等で
+    # 使っている「アクセント色を塗って文字を地の色にする」形にしている。
+    focusFill = "0xff7aa2f7"; # palette の blue
     pink = "0xfff7768e";
     orange = "0xffff9e64";
     green = "0xff9ece6a";
@@ -44,7 +45,7 @@ let
     COLOR_WHITE=${colors.white}
     COLOR_MUTED=${colors.muted}
     COLOR_PURPLE=${colors.purple}
-    COLOR_PURPLE_FILL=${colors.purpleFill}
+    COLOR_FOCUS_FILL=${colors.focusFill}
     COLOR_PINK=${colors.pink}
     COLOR_ORANGE=${colors.orange}
     COLOR_GREEN=${colors.green}

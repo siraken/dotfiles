@@ -30,9 +30,10 @@ for sid in "$@"; do
   esac
 
   if [ "$sid" = "$FOCUSED" ]; then
+    # 塗りつぶしの上なので、文字は島の地の色にして輪郭を立たせる
     drawing=on
-    background="$COLOR_PURPLE_FILL"
-    foreground="$COLOR_WHITE"
+    background="$COLOR_FOCUS_FILL"
+    foreground="$COLOR_BG"
   elif [ "$visible" = yes ]; then
     # 他モニタで表示中のワークスペースは一段暗い面で示す
     drawing=on
