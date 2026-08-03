@@ -149,6 +149,9 @@ in
       # label には sketchybar-app-font のアプリアイコンが入る。このフォントの
       # グリフは icon 側の Hack より 1pt ほど高い位置に乗り、画素で測ると数字の
       # 中心より 1.5px (retina) 上にずれるので y_offset で下げている。
+      #
+      # ハイライトの周囲の余白は上下が (30 - 22) / 2 - 1(枠線) = 3px。左右も揃える
+      # には padding からブラケットの枠線 1px を引いた値が 3 になればよいので 4 にする。
       SPACE_SIDS=()
       SPACE_IDS=()
       for sid in ${lib.concatStringsSep " " workspaces}; do
@@ -167,8 +170,8 @@ in
             label.color=${colors.muted} \
             label.drawing=off \
             label.y_offset=-1 \
-            padding_left=2 \
-            padding_right=2 \
+            padding_left=4 \
+            padding_right=4 \
             click_script="${aerospace} workspace $sid"
         SPACE_SIDS+=("space.$sid")
         SPACE_IDS+=("$sid")
