@@ -10,6 +10,9 @@ let
     white = "0xffffffff";
     muted = "0xff565f89";
     purple = "0xff9d7cd8";
+    # ワークスペースのフォーカス表示は塗りつぶしなので、同じ色相のまま
+    # 明度を落として文字色として使う purple と同じくらいの濃さに見せる
+    purpleFill = "0xff7446c8";
     pink = "0xfff7768e";
     orange = "0xffff9e64";
     green = "0xff9ece6a";
@@ -41,6 +44,7 @@ let
     COLOR_WHITE=${colors.white}
     COLOR_MUTED=${colors.muted}
     COLOR_PURPLE=${colors.purple}
+    COLOR_PURPLE_FILL=${colors.purpleFill}
     COLOR_PINK=${colors.pink}
     COLOR_ORANGE=${colors.orange}
     COLOR_GREEN=${colors.green}
@@ -150,8 +154,8 @@ in
       # グリフは icon 側の Hack より 1pt ほど高い位置に乗り、画素で測ると数字の
       # 中心より 1.5px (retina) 上にずれるので y_offset で下げている。
       #
-      # ハイライトの周囲の余白は上下が (30 - 22) / 2 - 1(枠線) = 3px。左右も揃える
-      # には padding からブラケットの枠線 1px を引いた値が 3 になればよいので 4 にする。
+      # ハイライトの周囲の余白は上下が (30 - 24) / 2 - 1(枠線) = 2px。左右も揃える
+      # には padding からブラケットの枠線 1px を引いた値が 2 になればよいので 3 にする。
       SPACE_SIDS=()
       SPACE_IDS=()
       for sid in ${lib.concatStringsSep " " workspaces}; do
@@ -159,7 +163,7 @@ in
           --set space.$sid \
             background.color=${colors.transparent} \
             background.corner_radius=5 \
-            background.height=22 \
+            background.height=24 \
             background.drawing=on \
             icon="$sid" \
             icon.font="Hack Nerd Font:bold:12.0" \
@@ -170,8 +174,8 @@ in
             label.color=${colors.muted} \
             label.drawing=off \
             label.y_offset=-1 \
-            padding_left=4 \
-            padding_right=4 \
+            padding_left=3 \
+            padding_right=3 \
             click_script="${aerospace} workspace $sid"
         SPACE_SIDS+=("space.$sid")
         SPACE_IDS+=("$sid")

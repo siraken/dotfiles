@@ -31,7 +31,7 @@ for sid in "$@"; do
 
   if [ "$sid" = "$FOCUSED" ]; then
     drawing=on
-    background="$COLOR_PURPLE"
+    background="$COLOR_PURPLE_FILL"
     foreground="$COLOR_WHITE"
   elif [ "$visible" = yes ]; then
     # 他モニタで表示中のワークスペースは一段暗い面で示す
