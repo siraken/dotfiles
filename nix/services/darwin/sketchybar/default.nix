@@ -146,6 +146,9 @@ in
       # AeroSpace workspaces
       sketchybar --add event aerospace_workspace_change
 
+      # label には sketchybar-app-font のアプリアイコンが入る。このフォントの
+      # グリフは icon 側の Hack より 1pt ほど高い位置に乗り、画素で測ると数字の
+      # 中心より 1.5px (retina) 上にずれるので y_offset で下げている。
       SPACE_SIDS=()
       SPACE_IDS=()
       for sid in ${lib.concatStringsSep " " workspaces}; do
@@ -163,6 +166,7 @@ in
             label.font="sketchybar-app-font:Regular:14.0" \
             label.color=${colors.muted} \
             label.drawing=off \
+            label.y_offset=-1 \
             padding_left=2 \
             padding_right=2 \
             click_script="${aerospace} workspace $sid"
