@@ -1,7 +1,13 @@
+# バーの外にカーソルが出たら popup を閉じる
+if [ "$SENDER" = "mouse.exited.global" ]; then
+  sketchybar --set "$NAME" popup.drawing=off
+  exit 0
+fi
+
 sketchybar --set "$NAME" \
   icon=󰃰 \
-  icon.color=0xffff9e64 \
-  label.color=0xffff9e64 \
-  background.color=0xff1a1b26 \
-  background.drawing=on \
-  label="$(date '+%a %b %d %H:%M')"
+  icon.color="$COLOR_ORANGE" \
+  label="$(date '+%a %b %d %H:%M')" \
+  label.color="$COLOR_ORANGE" \
+  background.color="$COLOR_BG" \
+  background.drawing=on
