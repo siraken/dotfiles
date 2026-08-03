@@ -23,7 +23,7 @@
   ];
 
   home = {
-    sessionVariables = import ../variable.nix { };
+    sessionVariables = import ../variable.nix { inherit lib pkgs; };
 
     packages = lib.optionals pkgs.stdenv.isLinux [
       pkgs.gcc

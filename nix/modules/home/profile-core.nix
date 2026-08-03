@@ -40,7 +40,7 @@
   home = {
     stateVersion = "26.05";
     # preferXdgDirectories = true; # to be enabled
-    sessionPath = import ../path.nix { };
+    sessionPath = import ../path.nix { inherit lib pkgs; };
     shellAliases = import ../aliases.nix { inherit pkgs; };
     packages = import ../nixpkgs.nix { inherit pkgs; };
 

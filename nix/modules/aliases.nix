@@ -50,14 +50,9 @@ let
     # Mise
     mr = "mise run";
 
-    # Package managers (via Socket Firewall)
-    npm = "sfw npm";
-    npx = "sfw npx";
-    yarn = "sfw yarn";
-    pnpm = "sfw pnpm";
-    pnpx = "sfw pnpx";
-    bun = "sfw bun";
-    bunx = "sfw bunx";
+    # Socket Firewall 経由のパッケージマネージャ (npm/pnpm/bun など) は、`sfw` が
+    # Nix 管理外で入っていない環境だとコマンドごと壊れてしまうため、ここでは定義せず
+    # 各シェルの条件付きエイリアス側に置いている。
 
     # AI tools
     cc = "claude";
