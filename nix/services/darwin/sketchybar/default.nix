@@ -32,7 +32,7 @@ let
   # 色は Nix 側の 1 箇所で管理し、PATH も明示して起動環境に依存しないようにする。
   # (GNU 版で挙動が変わる grep / date などを拾わないよう、システムのパスのみを足している)
   prelude = ''
-    export PATH="${pkgs.sketchybar}/bin:${pkgs.aerospace}/bin:${pkgs.switchaudio-osx}/bin:${pkgs.gh}/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    export PATH="${pkgs.sketchybar}/bin:${pkgs.aerospace}/bin:${pkgs.switchaudio-osx}/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
     COLOR_TRANSPARENT=${colors.transparent}
     COLOR_BG=${colors.background}
@@ -74,10 +74,6 @@ let
   mediaClickPlugin = mkPlugin { name = "media_click.sh"; };
   mediaControlPlugin = mkPlugin { name = "media_control.sh"; };
   inputSourcePlugin = mkPlugin { name = "input_source.sh"; };
-  cpuPlugin = mkPlugin { name = "cpu.sh"; };
-  memoryPlugin = mkPlugin { name = "memory.sh"; };
-  githubPlugin = mkPlugin { name = "github.sh"; };
-  githubClickPlugin = mkPlugin { name = "github_click.sh"; };
 in
 {
   services.sketchybar = {
@@ -285,33 +281,12 @@ in
         --set input_source "''${island[@]}" script="${inputSourcePlugin}" \
         --subscribe input_source input_source_change
 
-      # GitHub の未読通知。ネットワークを叩くので間隔は長め、0 件なら隠す。
-      sketchybar --add event github_update
-      sketchybar --add item github right \
-        --set github \
-          "''${island[@]}" \
-          update_freq=300 \
-          script="${githubPlugin}" \
-          click_script="${githubClickPlugin}" \
-        --subscribe github github_update
-
-      sketchybar --add item memory right \
-        --set memory \
-          "''${island[@]}" \
-          update_freq=5 \
-          script="${memoryPlugin}"
-
-      sketchybar --add graph cpu right 40 \
-        --set cpu \
-          "''${island[@]}" \
-          update_freq=3 \
-          script="${cpuPlugin}" \
-          icon=󰍛 \
-          graph.line_width=2 \
-          label.padding_left=6
-
       # Spotify と Apple Music を 1 つのアイテムに統合し、操作時は即時更新する。
       # 左クリックで再生/一時停止、右クリックで曲送りの popup を開く。
+      #
+      # label.width で幅を固定しているのは、曲名の長さでアイテムが左へ伸びると
+      # 内蔵ディスプレイのノッチ (x=663..848 と実測) に潜り込んでしまうため。
+      # 220 にすると右端 1142 から左端が 896 で固定され、ノッチまで 48px 残る。
       sketchybar --add event media_update
       sketchybar --add item media right \
         --set media \
@@ -321,6 +296,7 @@ in
           update_freq=3 \
           scroll_texts=on \
           label.max_chars=28 \
+          label.width=220 \
           script="${mediaPlugin}" \
           click_script="${mediaClickPlugin} ${mediaControlPlugin}" \
         --subscribe media media_update mouse.exited.global
