@@ -48,11 +48,9 @@
 
         nix config show substituters | tr ' ' '\n' | sed '/^$/d; s:/*$::' | sort -u > "$tmp/hosts"
 
+        # 自前のキャッシュも問い合わせ対象に含める。既に載っているパスが落ちるので、
+        # 2 回目以降は差分だけが push 対象になる。
         while read -r host; do
-          # 自分のキャッシュに問い合わせても意味がない
-          case "$host" in
-          *"$CACHE".cachix.org) continue ;;
-          esac
           [ -s "$tmp/todo" ] || break
 
           # curl の -o は URL ごとの指定なので、設定ファイル側に書く必要がある
@@ -68,7 +66,7 @@
         done < "$tmp/hosts"
 
         if [ ! -s "$tmp/todo" ]; then
-          echo '上流に無いパスはありませんでした'
+          echo 'どのキャッシュにも無いパスはありませんでした'
           exit 0
         fi
 
