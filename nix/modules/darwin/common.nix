@@ -261,6 +261,8 @@ in
       source-code-pro
       monocraft
       udev-gothic
+      # Sketchybar のワークスペース表示でアプリアイコンを描画するために使う
+      sketchybar-app-font
     ];
   };
 }

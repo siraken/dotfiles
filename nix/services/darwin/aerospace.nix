@@ -94,6 +94,11 @@ let
     };
     run = "layout floating";
   };
+
+  # ウィンドウを別ワークスペースへ移してもフォーカス中のワークスペースは変わらないため
+  # exec-on-workspace-change は発火しない。Sketchybar 側のアプリアイコン表示を
+  # 追従させるために、移動系のバインドから明示的にイベントを投げる。
+  sketchybarRefresh = "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change";
 in
 {
   programs.aerospace = {
@@ -162,13 +167,34 @@ in
         alt-7 = [ "workspace 7" ];
 
         # Move windows to workspaces
-        alt-shift-1 = [ "move-node-to-workspace 1" ];
-        alt-shift-2 = [ "move-node-to-workspace 2" ];
-        alt-shift-3 = [ "move-node-to-workspace 3" ];
-        alt-shift-4 = [ "move-node-to-workspace 4" ];
-        alt-shift-5 = [ "move-node-to-workspace 5" ];
-        alt-shift-6 = [ "move-node-to-workspace 6" ];
-        alt-shift-7 = [ "move-node-to-workspace 7" ];
+        alt-shift-1 = [
+          "move-node-to-workspace 1"
+          sketchybarRefresh
+        ];
+        alt-shift-2 = [
+          "move-node-to-workspace 2"
+          sketchybarRefresh
+        ];
+        alt-shift-3 = [
+          "move-node-to-workspace 3"
+          sketchybarRefresh
+        ];
+        alt-shift-4 = [
+          "move-node-to-workspace 4"
+          sketchybarRefresh
+        ];
+        alt-shift-5 = [
+          "move-node-to-workspace 5"
+          sketchybarRefresh
+        ];
+        alt-shift-6 = [
+          "move-node-to-workspace 6"
+          sketchybarRefresh
+        ];
+        alt-shift-7 = [
+          "move-node-to-workspace 7"
+          sketchybarRefresh
+        ];
 
         # Toggle layout modes
         alt-shift-space = "layout tiles horizontal vertical";
