@@ -1,14 +1,5 @@
 # Conditional aliases (require command existence check)
 
-if type bat >/dev/null 2>&1; then
-  alias cat="bat"
-fi
-
-if type eza >/dev/null 2>&1; then
-  alias ll="eza -l -g --icons --sort=type"
-  alias lla="ll -a"
-fi
-
 # Package managers (via Socket Firewall).
 # sfw は Nix 管理外なので、入っていない環境では素のコマンドをそのまま使う。
 if type sfw >/dev/null 2>&1; then
