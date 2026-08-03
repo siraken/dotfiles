@@ -136,9 +136,13 @@ in
         inner.vertical = 6;
         outer.left = 10;
         outer.bottom = 10;
+        # Sketchybar の島は画面上端から 36px までに収まる（y_offset 2 + バー内の余白 4
+        # + 島の高さ 30）。ウィンドウ上端を 42 にすることで島との間に 6px 空く。
+        # 内蔵ディスプレイはノッチのぶん 32 が最初から使用不可なので差分の 10 でよい
+        # （NSScreen の visibleFrame を実測して確認: 内蔵 topReserved=32 / 外部 0）。
         outer.top = [
           { monitor.main = 10; }
-          42 # 32 (external bar) + 10 (top_padding)
+          42
         ];
         outer.right = 10;
       };
