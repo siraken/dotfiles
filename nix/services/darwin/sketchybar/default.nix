@@ -83,9 +83,14 @@ in
   services.sketchybar = {
     enable = true;
     config = ''
+      # バー自体は透明で、島だけが浮いて見える構成。
+      # 島は 30px の背景が 38px のバーの中央に置かれるので、バー内で上下に 4px ずつ
+      # 余白がある。y_offset=2 を足すと画面上端から島まで 6px、島の下端 (36) から
+      # ウィンドウ上端 (42, AeroSpace の outer.top) までも 6px となり上下が揃う。
       sketchybar --bar \
         position=top \
         height=38 \
+        y_offset=2 \
         blur_radius=0 \
         font_smoothing=on \
         color=${colors.transparent}
