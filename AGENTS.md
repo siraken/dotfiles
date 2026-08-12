@@ -81,8 +81,11 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Per-client git config (`secrets.json`)**:
 
-- `secrets.json` (git-ignored, schema in `secrets.example.json`) lists `gitClients` entries of `{ dir, configFile }`.
-- It is **never read during evaluation**. A home-manager activation script regenerates `~/.config/git.custom/clients.gitconfig` from it on every switch, and `programs.git.includes` pulls that file in unconditionally — git ignores a missing include path.
+- The mechanism itself lives in [git-clients.nix](https://github.com/siraken/git-clients.nix), a flake input exposing a home-manager module. `nix/programs/git/default.nix` only imports it and sets `programs.gitClients.clientsFile`; do not add generator scripts back here.
+- `secrets.json` (git-ignored, schema in `secrets.example.json`) lists `gitClients` entries of `{ dir, configFile }` plus the optional `credentialHosts` and `env`.
+- It is **never read during evaluation**. Activation scripts regenerate `~/.config/git.custom/clients.gitconfig` and the per-client `.envrc` files on every switch; the generated include is appended with `mkAfter` so client overrides win over the shared config — git ignores a missing include path.
+- `credentialHosts` empties the credential helper list for those hosts globally, and the per-client body puts it back, so a stored token is reachable only from `~/repos/<dir>/`. Cloning *into* that directory still works (git re-reads its config once the repository exists); cloning from anywhere else prompts.
+- `env` is written to `~/repos/<dir>/.envrc` for tools that key off a host, such as `GITLAB_HOST` for glab. An `.envrc` the module did not write is never overwritten.
 - Evaluation therefore stays pure: **no `--impure` flag is needed anywhere**. Do not reintroduce `builtins.readFile` / `builtins.pathExists` on paths outside the flake; under pure evaluation they fail silently and produce a different system than the one CI checked.
 - The per-client bodies (`~/.config/git.custom/<configFile>`) are maintained by hand outside the repo.
 

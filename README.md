@@ -197,6 +197,7 @@ dotfiles/
 | [nixvim](https://github.com/nix-community/nixvim) | Neovim configuration in Nix |
 | [treefmt-nix](https://github.com/numtide/treefmt-nix) | Multi-language formatting |
 | [nix-index-database](https://github.com/nix-community/nix-index-database) | Pre-built nix-index database |
+| [git-clients.nix](https://github.com/siraken/git-clients.nix) | Per-client git identity, credential confinement, and `.envrc` |
 
 ## License
 
