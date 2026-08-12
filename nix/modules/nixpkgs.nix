@@ -97,6 +97,7 @@ let
     devenv # composable dev environments
     ghq # repository manager
     gibo # .gitignore generator
+    glab # GitLab CLI
     graphviz # graph visualization
     lua-language-server # LSP
     luarocks # Lua packages
