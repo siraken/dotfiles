@@ -181,6 +181,9 @@ in
         askForPasswordDelay = 0;
       };
       CustomUserPreferences = {
+        "com.apple.desktopservices" = {
+          DSDontWriteNetworkStores = true; # Don't leave .DS_Store files on network shares
+        };
         "com.apple.inputmethod.Kotoeri" = {
           JIMPrefAutocorrectionKey = false;
           JIMPrefWindowsModeKey = true;
