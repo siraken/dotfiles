@@ -78,7 +78,7 @@ let
   ++ dotenvFiles;
 in
 {
-  imports = [ inputs.git-clients.homeModules.default ];
+  imports = [ inputs.git-personas.homeModules.default ];
 
   programs.git = {
     enable = true;
@@ -113,8 +113,8 @@ in
 
     includes = [
       { path = "${config.home.homeDirectory}/dotfiles/config/git/config"; }
-      # git-clients.nix appends its generated include after this one, so client
-      # overrides win over the shared config.
+      # git-personas.nix appends its generated include after this one, so
+      # persona overrides win over the shared config.
     ];
 
     ignores = ignoreFiles;
@@ -123,9 +123,9 @@ in
   # Per-client identity, credential confinement and `.envrc` files. secrets.toml
   # is read at *activation* time, never during evaluation, so the flake stays
   # pure and a machine without the file simply gets no client configuration.
-  programs.gitClients = {
+  programs.gitPersonas = {
     enable = true;
-    clientsFile = "${config.home.homeDirectory}/dotfiles/secrets.toml";
+    personasFile = "${config.home.homeDirectory}/dotfiles/secrets.toml";
   };
 
   programs.gh = {

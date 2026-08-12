@@ -125,29 +125,6 @@
         "type": "github"
       }
     },
-    "git-clients": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1786528564,
-        "narHash": "sha256-+Fc2Ol2sFjzBywELyluJ0JJ8YNVrf0kiJLglvtkh018=",
-        "owner": "siraken",
-        "repo": "git-clients.nix",
-        "rev": "13edebf60b05a87802e63fc5636401fe5fddbf92",
-        "type": "github"
-      },
-      "original": {
-        "owner": "siraken",
-        "repo": "git-clients.nix",
-        "type": "github"
-      }
-    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -166,6 +143,29 @@
       "original": {
         "owner": "cachix",
         "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
+    "git-personas": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786529253,
+        "narHash": "sha256-ZwrJPXzDa16qF2KbUrMuwtnVbv/JG6TYcvtLh5wpYro=",
+        "owner": "siraken",
+        "repo": "git-personas.nix",
+        "rev": "31bd711ca607c0f5c3456a5bce3779d4e49db1b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "siraken",
+        "repo": "git-personas.nix",
         "type": "github"
       }
     },
@@ -502,8 +502,8 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "git-clients": "git-clients",
         "git-hooks": "git-hooks",
+        "git-personas": "git-personas",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",

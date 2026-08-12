@@ -79,15 +79,15 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
 - nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
 
-**Per-client git config (`secrets.toml`)**:
+**Per-persona git config (`secrets.toml`)**:
 
-- The mechanism itself lives in [git-clients.nix](https://github.com/siraken/git-clients.nix), a flake input exposing a home-manager module. `nix/programs/git/default.nix` only imports it and sets `programs.gitClients.clientsFile`; do not add generator scripts back here.
-- `secrets.toml` (git-ignored, schema in `secrets.example.toml`) lists `gitClients` entries of `{ dir, configFile }` plus the optional `credentialHosts` and `env`. The file is TOML; JSON is not accepted.
-- It is **never read during evaluation**. Activation scripts regenerate `~/.config/git.custom/clients.gitconfig` and the per-client `.envrc` files on every switch; the generated include is appended with `mkAfter` so client overrides win over the shared config — git ignores a missing include path.
-- `credentialHosts` empties the credential helper list for those hosts globally, and the per-client body puts it back, so a stored token is reachable only from `~/repos/<dir>/`. Cloning *into* that directory still works (git re-reads its config once the repository exists); cloning from anywhere else prompts.
+- The mechanism itself lives in [git-personas.nix](https://github.com/siraken/git-personas.nix), a flake input exposing a home-manager module. `nix/programs/git/default.nix` only imports it and sets `programs.gitPersonas.personasFile`; do not add generator scripts back here.
+- `secrets.toml` (git-ignored, schema in `secrets.example.toml`) lists `gitPersonas` entries of `{ dir, configFile }` plus the optional `credentialHosts` and `env`. The file is TOML; JSON is not accepted.
+- It is **never read during evaluation**. Activation scripts regenerate `~/.config/git.custom/personas.gitconfig` and the per-persona `.envrc` files on every switch; the generated include is appended with `mkAfter` so persona overrides win over the shared config — git ignores a missing include path.
+- `credentialHosts` empties the credential helper list for those hosts globally, and the per-persona body puts it back, so a stored token is reachable only from `~/repos/<dir>/`. Cloning *into* that directory still works (git re-reads its config once the repository exists); cloning from anywhere else prompts.
 - `env` is written to `~/repos/<dir>/.envrc` for tools that key off a host, such as `GITLAB_HOST` for glab. An `.envrc` the module did not write is never overwritten.
 - Evaluation therefore stays pure: **no `--impure` flag is needed anywhere**. Do not reintroduce `builtins.readFile` / `builtins.pathExists` on paths outside the flake; under pure evaluation they fail silently and produce a different system than the one CI checked.
-- The per-client bodies (`~/.config/git.custom/<configFile>`) are maintained by hand outside the repo.
+- The per-persona bodies (`~/.config/git.custom/<configFile>`) are maintained by hand outside the repo.
 
 ### Configuration Coverage
 

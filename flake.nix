@@ -52,8 +52,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    git-clients = {
-      url = "github:siraken/git-clients.nix";
+    git-personas = {
+      url = "github:siraken/git-personas.nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
