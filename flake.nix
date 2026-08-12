@@ -149,6 +149,7 @@
             programs.yamlfmt.enable = true;
             programs.mdformat.enable = true;
             programs.fish_indent.enable = true;
+            programs.taplo.enable = true;
           };
 
           pre-commit.settings.hooks = {
