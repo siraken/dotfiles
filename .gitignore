@@ -1,4 +1,6 @@
 /result
+/secrets.toml
+# Superseded by secrets.toml; kept so a stale file cannot be committed.
 /secrets.json
 .pre-commit-config.yaml
 foo.*

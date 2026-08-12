@@ -120,12 +120,12 @@ in
     ignores = ignoreFiles;
   };
 
-  # Per-client identity, credential confinement and `.envrc` files. secrets.json
+  # Per-client identity, credential confinement and `.envrc` files. secrets.toml
   # is read at *activation* time, never during evaluation, so the flake stays
   # pure and a machine without the file simply gets no client configuration.
   programs.gitClients = {
     enable = true;
-    clientsFile = "${config.home.homeDirectory}/dotfiles/secrets.json";
+    clientsFile = "${config.home.homeDirectory}/dotfiles/secrets.toml";
   };
 
   programs.gh = {

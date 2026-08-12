@@ -79,10 +79,10 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
 - nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
 
-**Per-client git config (`secrets.json`)**:
+**Per-client git config (`secrets.toml`)**:
 
 - The mechanism itself lives in [git-clients.nix](https://github.com/siraken/git-clients.nix), a flake input exposing a home-manager module. `nix/programs/git/default.nix` only imports it and sets `programs.gitClients.clientsFile`; do not add generator scripts back here.
-- `secrets.json` (git-ignored, schema in `secrets.example.json`) lists `gitClients` entries of `{ dir, configFile }` plus the optional `credentialHosts` and `env`.
+- `secrets.toml` (git-ignored, schema in `secrets.example.toml`) lists `gitClients` entries of `{ dir, configFile }` plus the optional `credentialHosts` and `env`. TOML is read when the file name ends in `.toml`, JSON otherwise.
 - It is **never read during evaluation**. Activation scripts regenerate `~/.config/git.custom/clients.gitconfig` and the per-client `.envrc` files on every switch; the generated include is appended with `mkAfter` so client overrides win over the shared config — git ignores a missing include path.
 - `credentialHosts` empties the credential helper list for those hosts globally, and the per-client body puts it back, so a stored token is reachable only from `~/repos/<dir>/`. Cloning *into* that directory still works (git re-reads its config once the repository exists); cloning from anywhere else prompts.
 - `env` is written to `~/repos/<dir>/.envrc` for tools that key off a host, such as `GITLAB_HOST` for glab. An `.envrc` the module did not write is never overwritten.
