@@ -135,11 +135,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786527335,
-        "narHash": "sha256-RhAe8qpM/rnCCj5QL59zQZ5Zs6L72qsaMi0Sh/NeSP8=",
+        "lastModified": 1786527648,
+        "narHash": "sha256-a+Mn/BTGeQ0tkbIvpcfomHwyOaAzngHw9bth/UtJijM=",
         "owner": "siraken",
         "repo": "git-clients.nix",
-        "rev": "904d87d9f659ba566c42160a3b06e11b4d0bc6d7",
+        "rev": "d1711e871f76609c8ff7a05d453ec37018af6a4f",
         "type": "github"
       },
       "original": {
