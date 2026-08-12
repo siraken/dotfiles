@@ -125,6 +125,29 @@
         "type": "github"
       }
     },
+    "git-clients": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786524272,
+        "narHash": "sha256-OdMI4PUOsO/b7edWzrslGB8wUSCwqTy9HQ1qGj82IYI=",
+        "owner": "siraken",
+        "repo": "git-clients.nix",
+        "rev": "0d0843315519ddfaa0854972e8710554bc545d96",
+        "type": "github"
+      },
+      "original": {
+        "owner": "siraken",
+        "repo": "git-clients.nix",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -479,6 +502,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "git-clients": "git-clients",
         "git-hooks": "git-hooks",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
