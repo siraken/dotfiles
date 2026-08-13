@@ -1,15 +1,19 @@
-# herdr 本体は Homebrew 管理 (nix/hosts/siraken-mbp/default.nix の `brews`)。
-# `package = null` で nixpkgs 版の導入だけを止め、home-manager には
-# `$XDG_CONFIG_HOME/herdr/config.toml` の生成を任せる。設定が変わると
-# activation で `herdr server reload-config` が走る (下の onChange)。
+# macOS では herdr 本体を Homebrew で入れている (nix/hosts/siraken-mbp/default.nix の
+# `brews`) ので `package = null` で nixpkgs 版の導入だけを止め、home-manager には
+# `$XDG_CONFIG_HOME/herdr/config.toml` の生成を任せる。それ以外 (WSL など) は
+# nixpkgs の herdr をそのまま使うため、両方とも既定のままでよい。
 #
 # 設定キーの一覧: https://herdr.dev/docs/config-reference/
 # 手元のデフォルト値: `herdr --default-config`
 { pkgs, lib, ... }:
+let
+  # macOS だけ brew 管理。この分岐が `package` と onChange の両方を決める。
+  useBrew = pkgs.stdenv.isDarwin;
+in
 {
   programs.herdr = {
     enable = true;
-    package = null;
+    package = lib.mkIf useBrew null;
 
     settings = {
       onboarding = false;
@@ -29,7 +33,7 @@
       };
 
       update = {
-        # 更新は brew 側で行うので herdr 自身のバージョンチェックは止める。
+        # 更新は brew / nixpkgs 側で行うので herdr 自身のバージョンチェックは止める。
         # エージェント検出マニフェストの更新だけは残す。
         version_check = false;
         manifest_check = true;
@@ -64,12 +68,13 @@
         # いるが、herdr はサイドバー自体がマウス UI で、init.el の xterm-mouse-mode
         # や gitui / bottom もマウスを使うため、ここだけ流儀を合わせない。
 
-        # 既存の config.toml を踏襲して macOS の通知センターへ出す。
+        # 既存の config.toml を踏襲して OS の通知サービスへ出す (macOS なら通知センター)。
         toast.delivery = "system";
       };
 
       experimental = {
-        # 日本語入力対策 (macOS 限定・best-effort)。prefix 中だけ ASCII 入力へ
+        # 日本語入力対策。herdr 側の実装が macOS/Windows 限定なので Linux では
+        # no-op になるだけ。プラットフォームで分けずそのまま渡す。prefix 中だけ ASCII 入力へ
         # 切り替え、自前でカーソルを描く TUI エージェントでも変換候補が追従するようにする。
         # 副作用 (vim のノーマルモードで余分なカーソルが出る) を避けるため、
         # 対象は coding-agents で使っているエージェントのみに絞る。
@@ -88,7 +93,10 @@
   # `launchctl asuser … sudo -u siraken --set-home` 経由で PATH に /opt/homebrew/bin を
   # 含まないため `command not found` になり、`|| true` に飲まれて reload が黙って飛ぶ。
   # brew の絶対パス指定に差し替える (variable.nix の JAVA_HOME と同じ macOS 前提)。
-  xdg.configFile."herdr/config.toml".onChange = lib.mkForce ''
-    /opt/homebrew/bin/herdr server reload-config || true
-  '';
+  # nixpkgs 版を使う環境では `lib.getExe` が store の絶対パスを埋めるので上書き不要。
+  xdg.configFile."herdr/config.toml".onChange = lib.mkIf useBrew (
+    lib.mkForce ''
+      /opt/homebrew/bin/herdr server reload-config || true
+    ''
+  );
 }
