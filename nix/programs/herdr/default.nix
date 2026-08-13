@@ -1,11 +1,11 @@
 # herdr 本体は Homebrew 管理 (nix/hosts/siraken-mbp/default.nix の `brews`)。
 # `package = null` で nixpkgs 版の導入だけを止め、home-manager には
 # `$XDG_CONFIG_HOME/herdr/config.toml` の生成を任せる。設定が変わると
-# activation で `herdr server reload-config` が走る (home-manager 側の onChange)。
+# activation で `herdr server reload-config` が走る (下の onChange)。
 #
 # 設定キーの一覧: https://herdr.dev/docs/config-reference/
 # 手元のデフォルト値: `herdr --default-config`
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.herdr = {
     enable = true;
@@ -83,4 +83,12 @@
       };
     };
   };
+
+  # home-manager の onChange は `package = null` のとき裸の `herdr` を呼ぶ。activation は
+  # `launchctl asuser … sudo -u siraken --set-home` 経由で PATH に /opt/homebrew/bin を
+  # 含まないため `command not found` になり、`|| true` に飲まれて reload が黙って飛ぶ。
+  # brew の絶対パス指定に差し替える (variable.nix の JAVA_HOME と同じ macOS 前提)。
+  xdg.configFile."herdr/config.toml".onChange = lib.mkForce ''
+    /opt/homebrew/bin/herdr server reload-config || true
+  '';
 }
