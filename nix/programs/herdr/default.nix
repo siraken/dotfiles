@@ -46,6 +46,31 @@ in
         # 入れ子で使うようになったら別のキーに変える。
         prefix = "ctrl+b";
 
+        # herdr の workspace は tmux の *session* 相当で、tab は window 相当
+        # (https://herdr.dev/docs/concepts/)。「1 リポジトリ = 1 workspace、tab は
+        # agent / server / logs / review のような用途で切る」が herdr の想定なので、
+        # 操作の主役は tab 切り替えではなく workspace 移動になる。ところが移動系のキーは
+        # herdr の既定では軒並み未バインドなので、ここで埋める。
+        #
+        # tab 側の既定 (prefix+p / prefix+n / prefix+1..9) と対称になるよう、workspace は
+        # ctrl と shift を足した形にする。alt は Ghostty の macos-option-as-alt が未設定
+        # (レイアウトが ABC) で Option が Alt として届かないため使わない。
+        switch_workspace = "prefix+shift+1..9";
+        previous_workspace = "prefix+ctrl+p";
+        next_workspace = "prefix+ctrl+n";
+
+        # ui.agent_panel_sort = "priority" が作る待ち行列を順に辿る。workspace をまたいで
+        # 「次に手を入れるべきエージェント」へ直接飛べるので、複数プロジェクトを並行で
+        # 回すときは workspace 移動そのものよりこちらを使う。
+        next_agent = "prefix+a";
+        previous_agent = "prefix+shift+a";
+
+        # worktree はリポジトリの親 workspace から作り、チェックアウトごとに workspace が
+        # 生えてサイドバーで同じリポのグループにまとまる。作成 (prefix+shift+g) だけは
+        # 既定でバインド済みなので、開く側を足す。削除は確認ダイアログが出るとはいえ
+        # チェックアウト自体を消すので、誤爆を避けて未バインドのままにする。
+        open_worktree = "prefix+shift+o";
+
         command = [
           {
             # programs.gitui をポップアップで開く。alt+ を含む組み合わせは Ghostty の
