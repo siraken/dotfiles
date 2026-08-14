@@ -1,6 +1,71 @@
 {
-  "alwaysThinkingEnabled": true,
-  "effortLevel": "xhigh",
+  "includeCoAuthoredBy": true,
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.aws.amazon.com)",
+      "WebFetch(domain:cloud.google.com)",
+      "WebFetch(domain:docs.docker.com)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "WebFetch(domain:react.dev)",
+      "WebFetch(domain:nextjs.org)",
+      "WebFetch(domain:vuejs.org)",
+      "WebFetch(domain:svelte.dev)",
+      "WebFetch(domain:php.net)",
+      "WebFetch(domain:nixos.org)",
+      "WebFetch(domain:developer.mozilla.org)",
+      "WebFetch(domain:www.xserver.ne.jp)",
+      "WebFetch(domain:www.xdomain.ne.jp)",
+      "WebFetch(domain:bizmw.jp)",
+      "WebFetch(domain:www.ntt.com)"
+    ],
+    "deny": [
+      "Read(id_rsa)",
+      "Read(id_ed25519)",
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.env.production)",
+      "Read(.dev.vars)",
+      "Edit(.env)",
+      "Edit(.env.local)",
+      "Edit(.env.production)",
+      "Edit(.dev.vars)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python -m pip install:*)",
+      "Bash(python3 -m pip install:*)"
+    ],
+    "ask": [
+      "Bash(sudo:*)",
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(npx:*)",
+      "Bash(bunx:*)",
+      "Bash(pnpx:*)",
+      "Bash(pnpm dlx:*)",
+      "Bash(yarn dlx:*)",
+      "Bash(pipx:*)",
+      "Bash(deno run:*)",
+      "Bash(psql:*)",
+      "Bash(mysql:*)",
+      "Bash(mongod:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/Users/siraken/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
+  },
   "enabledPlugins": {
     "agent-sdk-dev@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
@@ -23,79 +88,17 @@
     "supabase@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash '/Users/siraken/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
-  },
-  "includeCoAuthoredBy": true,
   "language": "日本語",
-  "model": "claude-opus-4-7[1m]",
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:docs.aws.amazon.com)",
-      "WebFetch(domain:cloud.google.com)",
-      "WebFetch(domain:docs.docker.com)",
-      "WebFetch(domain:developers.cloudflare.com)",
-      "WebFetch(domain:react.dev)",
-      "WebFetch(domain:nextjs.org)",
-      "WebFetch(domain:vuejs.org)",
-      "WebFetch(domain:svelte.dev)",
-      "WebFetch(domain:php.net)",
-      "WebFetch(domain:nixos.org)",
-      "WebFetch(domain:developer.mozilla.org)",
-      "WebFetch(domain:www.xserver.ne.jp)",
-      "WebFetch(domain:www.xdomain.ne.jp)",
-      "WebFetch(domain:bizmw.jp)",
-      "WebFetch(domain:www.ntt.com)"
-    ],
-    "ask": [
-      "Bash(sudo:*)",
-      "Bash(rm:*)",
-      "Bash(rm -rf:*)",
-      "Bash(curl:*)",
-      "Bash(wget:*)",
-      "Bash(npx:*)",
-      "Bash(bunx:*)",
-      "Bash(pnpx:*)",
-      "Bash(pnpm dlx:*)",
-      "Bash(yarn dlx:*)",
-      "Bash(pipx:*)",
-      "Bash(deno run:*)",
-      "Bash(psql:*)",
-      "Bash(mysql:*)",
-      "Bash(mongod:*)"
-    ],
-    "deny": [
-      "Read(id_rsa)",
-      "Read(id_ed25519)",
-      "Read(.env)",
-      "Read(.env.local)",
-      "Read(.env.production)",
-      "Read(.dev.vars)",
-      "Edit(.env)",
-      "Edit(.env.local)",
-      "Edit(.env.production)",
-      "Edit(.dev.vars)",
-      "Bash(pip install:*)",
-      "Bash(pip3 install:*)",
-      "Bash(python -m pip install:*)",
-      "Bash(python3 -m pip install:*)"
-    ]
-  },
-  "preferredNotifChannel": "terminal_bell",
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
   "theme": "dark",
-  "tui": "default",
-  "voiceEnabled": true
+  "preferredNotifChannel": "terminal_bell",
+  "voiceEnabled": true,
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/siraken/.claude/xirp-statusline-wrapper.sh"
+  }
 }
