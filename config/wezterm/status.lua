@@ -42,26 +42,6 @@ local function UpdateRight(window, pane)
     )
   end
 
-  -- Full screen only: Spotify status, Battery
-  if window:get_dimensions().is_full_screen then
-    local spotify_info = require("spotify").get_status_element()
-    if spotify_info then
-      utils.add_element(
-        elems,
-        { Foreground = { Color = spotify_info.color }, Text = spotify_info.icon },
-        spotify_info.text
-      )
-    end
-
-    for _, b in ipairs(wezterm.battery_info()) do
-      utils.add_element(
-        elems,
-        { Foreground = { Color = colors.YELLOW.Color }, Text = "" },
-        string.format("%.0f%%", b.state_of_charge * 100)
-      )
-    end
-  end
-
   window:set_right_status(wezterm.format(elems))
 end
 

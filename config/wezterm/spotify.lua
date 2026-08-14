@@ -125,19 +125,4 @@ function M.get_spotify_info()
   }
 end
 
--- Get Spotify status for status bar
-function M.get_status_element()
-  local info = M.get_spotify_info()
-
-  if not info then
-    return nil
-  end
-
-  return {
-    icon = info.icon,
-    text = info.display_text,
-    color = info.is_playing and "#1DB954" or "#B3B3B3",
-  }
-end
-
 return M
