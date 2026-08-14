@@ -89,6 +89,29 @@ in
         # エージェントの状態順に並べる (待ち行列)。space ごとに並べたいなら "spaces"。
         agent_panel_sort = "priority";
 
+        # `ui.prompt_new_tab_name` は既定 (true) のまま。tab は用途で切るものなので、
+        # 作成時に名前を聞かれる既定の挙動が正しい。名前を付けなかったときのラベルは
+        # 並び順に追従して振り直される連番で、既定名を決める設定キーは無い (0.8.0 時点)。
+
+        # 既定の rows ([["state_icon" "workspace"] ["branch" "git_status"]]) に $num を
+        # 足したもの。keys.switch_workspace ("prefix+shift+1..9") で押す番号は
+        # サイドバーに描かれないので、config/herdr/plugins/workspace-numbers が
+        # workspace.report_metadata で push した値をここで表示する。
+        # プラグインは herdr の .plugins.lock への登録が必要で宣言的にできないため、
+        # 初回だけ手で叩く:
+        #   herdr plugin link ~/dotfiles/config/herdr/plugins/workspace-numbers
+        sidebar.spaces.rows = [
+          [
+            "state_icon"
+            "$num"
+            "workspace"
+          ]
+          [
+            "branch"
+            "git_status"
+          ]
+        ];
+
         # `ui.mouse_capture` は既定 (true) のまま。tmux / zellij ではマウスを切って
         # いるが、herdr はサイドバー自体がマウス UI で、init.el の xterm-mouse-mode
         # や gitui / bottom もマウスを使うため、ここだけ流儀を合わせない。

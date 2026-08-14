@@ -1,0 +1,39 @@
+# keys.switch_workspace ("prefix+shift+1..9") で押せる番号をサイドバーに出すための
+# プラグイン。herdr のサイドバーには番号を描く組み込みトークンが無く
+# (state_icon / state_text / workspace / branch / git_status のみ)、自前の $name
+# トークンとして外から push するしかないため。
+#
+# 番号は workspace の並び順に追従して振り直されるので、workspace が増減・移動した
+# タイミングで全件を push し直す。metadata は表示専用なので herdr の状態は変えない。
+#
+# 登録: herdr plugin link ~/dotfiles/config/herdr/plugins/workspace-numbers
+# 確認: herdr plugin list / herdr plugin log
+id = "siraken.workspace-numbers"
+name = "Workspace Numbers"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Publish each workspace's switch number as a $num sidebar token"
+# 宣言しないと plugin list に「platform support unknown」の警告が出る。
+# bash + jq だけなので windows 以外。
+platforms = ["macos", "linux"]
+
+# サーバ起動時に一度揃える。
+[[startup]]
+command = ["bash", "renumber.sh"]
+
+# workspace.metadata_updated は自分の push で発火して無限ループになるので購読しない。
+[[events]]
+on = "workspace.created"
+command = ["bash", "renumber.sh"]
+
+[[events]]
+on = "workspace.closed"
+command = ["bash", "renumber.sh"]
+
+[[events]]
+on = "workspace.moved"
+command = ["bash", "renumber.sh"]
+
+[[events]]
+on = "workspace.reordered"
+command = ["bash", "renumber.sh"]
