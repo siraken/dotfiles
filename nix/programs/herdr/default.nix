@@ -9,6 +9,10 @@
 let
   # macOS だけ brew 管理。この分岐が `package` と onChange の両方を決める。
   useBrew = pkgs.stdenv.isDarwin;
+
+  # activation から herdr を呼ぶための絶対パス。PATH に頼れない事情は下の
+  # `onChange` のコメントを参照。
+  herdrBin = if useBrew then "/opt/homebrew/bin/herdr" else lib.getExe pkgs.herdr;
 in
 {
   programs.herdr = {
@@ -147,4 +151,34 @@ in
       /opt/homebrew/bin/herdr server reload-config || true
     ''
   );
+
+  # herdr はエージェント用のスキルを SKILL.md 形式でバイナリに同梱していて
+  # `herdr --skill` で取り出せるが、配置までは面倒を見ない。置かないとエージェントに
+  # 毎回使い方を教えることになる。
+  #
+  # 中身は入っている herdr のバージョンに追従するため、リポジトリにコミットすると
+  # herdr を更新した時点でスキルだけ古くなる。switch のたびにバイナリから吐き直す。
+  #
+  # 配布先は apm (~/.apm/apm.yml) が materialize するのと同じランタイムのディレクトリ。
+  # apm 自身の依存には載せない。apm が配るのは公開パッケージで、こちらは手元のバイナリ
+  # から生成する派生物なので、載せると herdr 更新のたびに再生成と `apm install` の
+  # 2 手が要る。apm は自分の管理外のファイルを既定では上書きしないので共存できる。
+  home.activation.herdrAgentSkill = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ -x ${herdrBin} ]; then
+      skill=$(mktemp)
+      if ${herdrBin} --skill > "$skill" 2>/dev/null && [ -s "$skill" ]; then
+        for runtime in \
+          "$HOME/.claude/skills" \
+          "$HOME/.codex/skills" \
+          "$HOME/.gemini/skills" \
+          "$HOME/.config/opencode/skills"; do
+          # そのエージェントを入れていないホストに skills ディレクトリを作らない
+          [ -d "$runtime" ] || continue
+          $DRY_RUN_CMD mkdir -p "$runtime/herdr"
+          $DRY_RUN_CMD cp -f "$skill" "$runtime/herdr/SKILL.md"
+        done
+      fi
+      rm -f "$skill"
+    fi
+  '';
 }
