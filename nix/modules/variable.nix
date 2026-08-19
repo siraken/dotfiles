@@ -13,7 +13,7 @@
   COMPOSER_HOME = "$XDG_CONFIG_HOME/composer";
   BUN_INSTALL = "$HOME/.bun";
 }
-// lib.optionalAttrs pkgs.stdenv.isDarwin {
+// lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
   # 1Password の SSH エージェント。WSL では別の経路 (npiperelay) を使うため、
   # このソケットのパスは macOS でしか通用しない。
   SSH_AUTH_SOCK = "$HOME/.1password/agent.sock";
