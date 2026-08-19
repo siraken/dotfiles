@@ -4,6 +4,9 @@ if [ "$SENDER" = "mouse.exited.global" ]; then
   exit 0
 fi
 
+# ラベルの上限幅（ピクセル）。ノッチを避けるための値で default.nix から渡される。
+LABEL_MAX_WIDTH="${1:-204}"
+
 # Spotify と Apple Music を 1 回の osascript でまとめて問い合わせる。
 #
 # - `application "X" is running` はアプリを起動させずに状態を確認できる安全な判定方法
@@ -90,7 +93,6 @@ else
   PLAY_ICON="󰐊"
 fi
 
-# 長い曲名の切り詰めは label.max_chars + scroll_texts に任せる。
 # Apple Music はライブラリに入っていないストリーミング曲だと current track が
 # 取得できず（-1728）、曲名が空で返る。その場合はアプリ名にフォールバックする。
 if [ -z "$TRACK" ]; then
@@ -100,6 +102,47 @@ elif [ -n "$ARTIST" ]; then
 else
   LABEL="$TRACK"
 fi
+
+# ラベルの幅は sketchybar 側では固定していない（label.width は既定の dynamic）。
+# 短い曲名で島が間延びしないよう文字に合わせて縮ませ、代わりに上限幅を超えた分を
+# ここで「…」に置き換える。
+#
+# 1 文字の幅は Hack Nerd Font 12pt での実測値による近似で、
+# 全角（East Asian Wide / Fullwidth）12px、絵文字 16px、それ以外 7.2px。
+# フォールバック先のフォント次第で数 px ずれるが、上限に対しては無視できる。
+LABEL="$(
+  printf '%s' "$LABEL" | perl -CS -e '
+    use utf8;
+
+    sub char_width {
+      my ($c) = @_;
+      return 16 if $c =~ /\p{Emoji_Presentation}/; # 既定で絵文字として描かれる文字
+      return 8.8 if $c eq "\x{FE0F}";              # 絵文字にする異体字セレクタの差分
+      return 0 if $c =~ /\p{Mn}|\p{Cf}/;          # 合成用の記号や ZWJ
+      return 12 if $c =~ /\p{Ea=W}|\p{Ea=F}/;     # 全角
+      return 7.2;                                  # 半角
+    }
+
+    my $budget = $ARGV[0];
+    my @chars = split //, do { local $/; <STDIN> };
+
+    my $total = 0;
+    $total += char_width($_) for @chars;
+    if ($total <= $budget) { print @chars; exit }
+
+    # 末尾の「…」の分を空けてから詰める。切れ目が単語の区切りに当たったときに
+    # 「…」の前が空くのを避けるため、末尾の空白は落とす。
+    my $limit = $budget - char_width("…");
+    my ($width, $truncated) = (0, "");
+    for my $c (@chars) {
+      last if $width + char_width($c) > $limit;
+      $width += char_width($c);
+      $truncated .= $c;
+    }
+    $truncated =~ s/\s+$//;
+    print $truncated, "…";
+  ' "$LABEL_MAX_WIDTH"
+)"
 
 sketchybar --set "$NAME" \
   drawing=on \

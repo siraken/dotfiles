@@ -296,9 +296,14 @@ in
       # Spotify と Apple Music を 1 つのアイテムに統合し、操作時は即時更新する。
       # 左クリックで再生/一時停止、右クリックで曲送りの popup を開く。
       #
-      # label.width で幅を固定しているのは、曲名の長さでアイテムが左へ伸びると
-      # 内蔵ディスプレイのノッチ (x=663..848 と実測) に潜り込んでしまうため。
-      # 220 にすると右端 1142 から左端が 896 で固定され、ノッチまで 48px 残る。
+      # 幅は曲名に合わせて伸縮させる（label.width は既定の dynamic）。固定にすると
+      # 曲名が短いときに島の右側が間延びするため、代わりに上限をプラグイン側に持たせ、
+      # 超えた分を「…」に置き換えている。
+      #
+      # 上限が要るのは、曲名の長さでアイテムが左へ伸びると内蔵ディスプレイの
+      # ノッチ (x=663..848 と実測) に潜り込んでしまうため。ラベルの上限幅 204px に
+      # 左右の padding 8px ずつを足した 220px が最大で、このとき右端 1142 に対して
+      # 左端は 896 までしか伸びず、ノッチまで 48px 残る。
       sketchybar --add event media_update
       sketchybar --add item media right \
         --set media \
@@ -306,10 +311,7 @@ in
           "''${popup_style[@]}" \
           popup.horizontal=on \
           update_freq=3 \
-          scroll_texts=on \
-          label.max_chars=28 \
-          label.width=220 \
-          script="${mediaPlugin}" \
+          script="${mediaPlugin} 204" \
           click_script="${mediaClickPlugin} ${mediaControlPlugin}" \
         --subscribe media media_update mouse.exited.global
 
