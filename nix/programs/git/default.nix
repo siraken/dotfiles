@@ -103,10 +103,10 @@ in
       gpg = {
         format = "ssh";
       }
-      // (lib.optionalAttrs pkgs.stdenv.isDarwin {
+      // (lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
         ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       })
-      // (lib.optionalAttrs pkgs.stdenv.isLinux {
+      // (lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
         ssh.program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
       });
     };

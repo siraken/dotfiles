@@ -8,7 +8,7 @@
 { pkgs, lib, ... }:
 let
   # macOS だけ brew 管理。この分岐が `package` と onChange の両方を決める。
-  useBrew = pkgs.stdenv.isDarwin;
+  useBrew = pkgs.stdenv.hostPlatform.isDarwin;
 
   # activation から herdr を呼ぶための絶対パス。PATH に頼れない事情は下の
   # `onChange` のコメントを参照。

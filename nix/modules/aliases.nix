@@ -61,7 +61,7 @@ let
     cx = "codex";
   };
 
-  darwinAliases = pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+  darwinAliases = pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
     # macOS specific
     ii = "open";
     mamp-htdocs = "cd /Applications/MAMP/htdocs";

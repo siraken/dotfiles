@@ -1,7 +1,7 @@
 { lib, pkgs }:
 # homebrew の prefix と ~/Library 以下は macOS にしか無いので、
 # Linux (WSL/NixOS) の PATH には入れない。
-lib.optionals pkgs.stdenv.isDarwin [
+lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
   "/opt/homebrew/opt/openssl@3/bin" # Use openssl installed by homebrew
   "/opt/homebrew/sbin"
   "/opt/homebrew/bin"
