@@ -106,6 +106,7 @@ let
     nil # Nix LSP
     nixfmt # Nix formatter
     pandoc # document conversion
+    tea # Gitea CLI
     tor # anonymous network
     tree-sitter # parser
   ];
