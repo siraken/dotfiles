@@ -16,7 +16,20 @@
       "WebFetch(domain:www.xserver.ne.jp)",
       "WebFetch(domain:www.xdomain.ne.jp)",
       "WebFetch(domain:bizmw.jp)",
-      "WebFetch(domain:www.ntt.com)"
+      "WebFetch(domain:www.ntt.com)",
+      "Bash(npx vitest:*)",
+      "Bash(npx prettier:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx biome:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx svelte-check:*)",
+      "Bash(npx playwright:*)",
+      "Bash(npx vite:*)",
+      "Bash(npx svelte-kit:*)",
+      "Bash(npx wrangler dev:*)",
+      "Bash(npx wrangler types:*)",
+      "Bash(npx wrangler tail:*)",
+      "Bash(npx wrangler whoami:*)"
     ],
     "deny": [
       "Read(id_rsa)",
@@ -40,7 +53,6 @@
       "Bash(rm -rf:*)",
       "Bash(curl:*)",
       "Bash(wget:*)",
-      "Bash(npx:*)",
       "Bash(bunx:*)",
       "Bash(pnpx:*)",
       "Bash(pnpm dlx:*)",
@@ -100,5 +112,11 @@
   "statusLine": {
     "type": "command",
     "command": "/Users/siraken/.claude/xirp-statusline-wrapper.sh"
+  },
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Untrusted Package Runner [named+specifics — **must name:** the runner and the package it executes]: Fetching and executing a package through a package runner — `npx` including its `-y` / `--yes` / `--package=<pkg>` forms, `npm exec`, `npm init <pkg>`, `npm create <pkg>`, `bunx`, `bun x`, `bun create`, `pnpm dlx`, `pnpx`, `pnpm create`, `yarn dlx`, `yarn create`, `uvx`, `uv tool run`, `uv run --with <pkg>`, `pipx run`, `deno run` against a remote URL, `composer create-project`, and equivalent fetch-and-execute runners. The blanket coverage is deliberate: the user keeps a short allowlist of vetted runner invocations as `permissions.allow` rules, and the harness resolves those before this classifier is consulted, so a runner invocation that reaches this rule is by construction one the user has not vetted. The package name is the entire security boundary, and a familiar-looking name is not evidence the package is the one it appears to be. The built-in Declared Dependencies exception covers installs that read a manifest, such as `npm install` or `composer install`; it does not name fetch-and-execute runner invocations, so it does not reach this rule's territory — presence in package.json is not the bar here, having been allowlisted is. This rule governs runner invocations specifically and is narrower than the general external-code rules. Clears when the user's own message names the package to run, such as \"run npx create-next-app@latest my-app\" or \"use npx shadcn add button\". Does not apply to `npx --no-install <bin>` or `npx --offline <bin>`, which cannot reach the registry."
+    ]
   }
 }
