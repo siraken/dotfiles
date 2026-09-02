@@ -7,6 +7,7 @@
 let
   instructions = ''
     - Unless otherwise specified, always respond in 日本語.
+    - My name is ${userProfile.nameJa} (${userProfile.nameKana}), or ${userProfile.name} in English.
     - `${userProfile.username}` is my username and `${userProfile.org}` is my primary organization name.
     - When using current date/time, always reference accurate date/time using `date` command or similar methods.
     - If you don't know something or if something is unclear, don't force yourself to proceed with the task and communicate that to me clearly.

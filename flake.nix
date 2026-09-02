@@ -94,6 +94,8 @@
       userProfile = {
         username = "siraken";
         name = "Kento Shirasawa";
+        nameJa = "白澤 賢斗";
+        nameKana = "しらさわ けんと";
         email = "shirasawa@novalumo.com";
         org = "novalumo";
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILlD3C6lBO9hb+JO/odNgS6D/jOqU4Bse4pvMd3VdZGL";
