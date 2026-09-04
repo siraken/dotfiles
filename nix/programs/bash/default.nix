@@ -30,16 +30,12 @@
     # place (a new shell picks up edits — no rebuild). Same order as before.
     # See #70.
     initExtra = ''
-      # Conditional aliases
-      source ${config.home.homeDirectory}/.config/bash/alias.sh
-
       # Custom functions
       source ${config.home.homeDirectory}/.config/bash/function.sh
     '';
   };
 
   home.file = {
-    ".config/bash/alias.sh".source = mkRepoLink "config/bash/alias.sh";
     ".config/bash/function.sh".source = mkRepoLink "config/bash/function.sh";
   };
 }

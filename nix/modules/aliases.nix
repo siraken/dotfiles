@@ -6,6 +6,9 @@ let
     gs = "git status";
 
     # File operations
+    cat = "bat";
+    ll = "eza -l -g --icons --sort=type";
+    lla = "ll -a";
     fzf = "fzf --preview 'bat --color=always --style=numbers {}'";
     cls = "clear";
     md = "mkdir";

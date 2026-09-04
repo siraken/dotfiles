@@ -23,14 +23,10 @@
     # (a new shell picks up edits — no rebuild). See #70.
     initContent = ''
       source ${config.home.homeDirectory}/.config/zsh/option.zsh
-
-      # Conditional aliases
-      source ${config.home.homeDirectory}/.config/zsh/alias.zsh
     '';
   };
 
   home.file = {
     ".config/zsh/option.zsh".source = mkRepoLink "config/zsh/option.zsh";
-    ".config/zsh/alias.zsh".source = mkRepoLink "config/zsh/alias.zsh";
   };
 }

@@ -28,16 +28,6 @@
 
       # Completions
       source ${config.home.homeDirectory}/.config/fish/completion.fish
-
-      # Conditional aliases
-      if type -q bat
-        alias cat="bat"
-      end
-
-      if type -q eza
-        alias ll="eza -l -g --icons --sort=type"
-        alias lla="ll -a"
-      end
     '';
   };
 

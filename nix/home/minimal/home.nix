@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ../../programs/bat
     ../../programs/zoxide
     ../../programs/git
     ../../programs/zsh
