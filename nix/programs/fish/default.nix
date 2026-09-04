@@ -38,15 +38,6 @@
         alias ll="eza -l -g --icons --sort=type"
         alias lla="ll -a"
       end
-
-      # Package managers (via Socket Firewall).
-      # sfw は Nix 管理外なので、入っていない環境では素のコマンドをそのまま使う。
-      if type -q sfw
-        for _pm in npm npx yarn pnpm pnpx bun bunx
-          alias $_pm="sfw $_pm"
-        end
-        set -e _pm
-      end
     '';
   };
 
