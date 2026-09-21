@@ -39,6 +39,7 @@
 
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-on-droid = {
@@ -65,6 +66,7 @@
 
     op-shell-plugins = {
       url = "github:1Password/shell-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # dotfiles-private = {
