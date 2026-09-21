@@ -8,7 +8,7 @@
   <a href="https://nixos.org"><img src="https://img.shields.io/badge/Nix-flakes-blue?logo=nixos&logoColor=white" alt="Nix Flakes"></a>
   <a href="https://github.com/nix-darwin/nix-darwin"><img src="https://img.shields.io/badge/nix--darwin-macOS-black?logo=apple&logoColor=white" alt="nix-darwin"></a>
   <a href="https://github.com/nix-community/home-manager"><img src="https://img.shields.io/badge/home--manager-latest-green?logo=nixos&logoColor=white" alt="home-manager"></a>
-  <img src="https://img.shields.io/badge/platform-aarch64--darwin%20%7C%20x86__64--linux-lightgrey" alt="Platform">
+  <img src="https://img.shields.io/badge/platform-aarch64--darwin%20%7C%20aarch64--linux%20%7C%20x86__64--linux-lightgrey" alt="Platform">
 </p>
 
 ______________________________________________________________________
@@ -25,7 +25,7 @@ Personal dotfiles management system combining [Nix Flakes](https://nixos.wiki/wi
 | `siraken-macmini` | macOS (aarch64) | nix-darwin | Mac mini — minimal configuration |
 | `wsl-ubuntu` | Linux (x86_64) | home-manager | WSL/Ubuntu — user environment only |
 | `wsl-nixos` | Linux (x86_64) | NixOS | WSL/NixOS — full system configuration |
-| `nixos-vm` | Linux (x86_64) | NixOS | NixOS VM — virtual machine |
+| `nixos-vm` | Linux (aarch64) | NixOS | NixOS VM — virtual machine |
 
 ### Key Features
 
