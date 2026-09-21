@@ -73,9 +73,7 @@
       "networkmanager"
       "video"
       "input"
-      "docker"
     ];
-    initialPassword = "nixos";
   };
 
   # Services
@@ -112,9 +110,6 @@
         };
       };
     };
-
-    # SSH
-    openssh.enable = true;
   };
 
   hardware = {
@@ -134,11 +129,10 @@
 
     # Docker
     docker = {
-      enable = true;
       rootless = {
         enable = true;
+        setSocketVariable = true;
       };
-      autoPrune.enable = true; # Automatically clean up unused images/containers
     };
   };
 

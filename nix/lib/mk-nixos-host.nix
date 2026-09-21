@@ -20,6 +20,7 @@
 {
   homeModule,
   system ? "x86_64-linux",
+  isWSL ? false,
   modules ? [ ],
 }:
 inputs.nixpkgs.lib.nixosSystem {
@@ -42,7 +43,7 @@ inputs.nixpkgs.lib.nixosSystem {
         sharedModules = [
           inputs.nixvim.homeModules.nixvim
         ];
-        extraSpecialArgs = { inherit inputs userProfile; };
+        extraSpecialArgs = { inherit inputs userProfile isWSL; };
       };
     }
   ]

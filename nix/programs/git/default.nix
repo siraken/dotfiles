@@ -4,6 +4,7 @@
   config,
   inputs,
   userProfile,
+  isWSL ? false,
   ...
 }:
 let
@@ -99,16 +100,19 @@ in
         user = userProfile.username;
       };
 
-      # OS-specific GPG configuration for 1Password SSH signing
+      commit.gpgsign = pkgs.stdenv.hostPlatform.isDarwin || isWSL;
+    }
+    // lib.optionalAttrs (pkgs.stdenv.hostPlatform.isDarwin || isWSL) {
+      # 1Password SSH signing is available on macOS and WSL, but not on a
+      # regular NixOS host.
       gpg = {
         format = "ssh";
-      }
-      // (lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
-        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      })
-      // (lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
-        ssh.program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
-      });
+        ssh.program =
+          if pkgs.stdenv.hostPlatform.isDarwin then
+            "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+          else
+            "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl";
+      };
     };
 
     includes = [

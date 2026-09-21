@@ -158,13 +158,7 @@
             treefmt.enable = true;
           };
 
-          devShells.default = pkgs.mkShell {
-            shellHook = config.pre-commit.installationScript;
-            buildInputs = [
-              pkgs.nixfmt
-              pkgs.nixpkgs-fmt
-            ];
-          };
+          devShells.default = config.pre-commit.devShell;
 
           checks = {
             # Forces a full, pure evaluation of every configuration in this

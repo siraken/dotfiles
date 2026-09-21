@@ -22,7 +22,6 @@ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
   "$HOME/.deno/bin"
   "$HOME/.cargo/bin"
   "$HOME/.rye/shims"
-  "$COMPOSER_HOME/vendor/bin"
   "$HOME/go/bin"
   "$HOME/.bun/bin"
 ]

@@ -7,6 +7,7 @@
   hostName = "siraken-macmini";
   homeModule = ./home.nix;
   modules = [
+    ../../modules/darwin/workstation.nix
     {
       homebrew = {
         brews = [

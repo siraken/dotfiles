@@ -259,10 +259,6 @@ in
 
       workspace-to-monitor-force-assignment = { };
 
-      after-startup-command = [
-        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar"
-      ];
-
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"

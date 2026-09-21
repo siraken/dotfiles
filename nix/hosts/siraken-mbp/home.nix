@@ -10,4 +10,6 @@
     # ../../programs/spotify-player # disabled: nixpkgs linker crash (cctools-binutils-darwin)
     # ../../programs/vscode
   ];
+
+  home.stateVersion = "26.05";
 }

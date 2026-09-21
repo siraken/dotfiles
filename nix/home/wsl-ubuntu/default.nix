@@ -18,5 +18,8 @@ inputs.home-manager.lib.homeManagerConfiguration {
       };
     }
   ];
-  extraSpecialArgs = { inherit inputs userProfile; };
+  extraSpecialArgs = {
+    inherit inputs userProfile;
+    isWSL = true;
+  };
 }

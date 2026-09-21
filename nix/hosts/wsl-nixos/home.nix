@@ -7,6 +7,10 @@
     # ../../programs/fish # disabled due to fisher hash mismatch
   ];
 
-  # fish is not installed on this host (see above).
-  home.shell.enableFishIntegration = false;
+  home = {
+    stateVersion = "26.05";
+
+    # fish is not installed on this host (see above).
+    shell.enableFishIntegration = false;
+  };
 }

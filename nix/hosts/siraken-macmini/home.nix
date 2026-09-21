@@ -8,4 +8,6 @@
     ../../programs/spotify-player
     # ../../programs/vscode
   ];
+
+  home.stateVersion = "26.05";
 }

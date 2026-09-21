@@ -7,6 +7,8 @@
   hostName = "siraken-mbp";
   homeModule = ./home.nix;
   modules = [
+    ../../modules/darwin/workstation.nix
+    ./system.nix
     {
       services = {
         spotifyd = {

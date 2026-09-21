@@ -23,6 +23,7 @@
   ];
 
   home = {
+    sessionPath = [ "$COMPOSER_HOME/vendor/bin" ];
     sessionVariables = import ../variable.nix { inherit lib pkgs; };
 
     packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [

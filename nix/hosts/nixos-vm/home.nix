@@ -15,6 +15,8 @@
   ];
 
   home = {
+    stateVersion = "26.05";
+
     packages = [
       pkgs.playerctl
     ];
@@ -27,7 +29,7 @@
     rofi = {
       enable = true;
       theme = "gruvbox-dark";
-      terminal = "${pkgs.ghostty}/bin/ghostty";
+      settings.terminal = "${pkgs.ghostty}/bin/ghostty";
     };
   };
 

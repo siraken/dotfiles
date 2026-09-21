@@ -5,6 +5,10 @@
     enableCompletion = true;
     autocd = true;
     defaultKeymap = "emacs";
+    setOptions = [
+      "LIST_PACKED"
+      "CORRECT"
+    ];
 
     history = {
       ignoreDups = true;

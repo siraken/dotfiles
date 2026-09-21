@@ -47,21 +47,15 @@
     description = userProfile.username;
     extraGroups = [
       "wheel"
-      "docker"
     ];
-    initialPassword = "nixos";
-  };
-
-  # Services
-  services = {
-    openssh.enable = true;
   };
 
   # Virtualisation
   virtualisation.docker = {
-    enable = true;
-    rootless.enable = true;
-    autoPrune.enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   # System packages
