@@ -12,4 +12,6 @@
   ];
 
   home.stateVersion = "26.05";
+
+  programs.yt-dlp.settings.cookies-from-browser = "chrome_canary";
 }
