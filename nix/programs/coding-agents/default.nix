@@ -1,7 +1,6 @@
 {
   pkgs,
   userProfile,
-  mkRepoLink,
   ...
 }:
 let
@@ -30,10 +29,11 @@ in
     pkgs.llm-agents.grok
   ];
 
-  # Mutable (out-of-store) symlink: edited in place, no rebuild required.
-  # Kept out of `programs.claude-code.settings` on purpose - Claude Code writes
-  # back to this file at runtime, which a nix-store copy could not accept.
-  home.file.".claude/settings.json".source = mkRepoLink "home/.claude/settings.json";
+  # ~/.claude/settings.json is merged from home/.claude/settings.json on every
+  # switch rather than linked, so Claude Code's runtime writes stay out of the
+  # repo. Kept out of `programs.claude-code.settings` on purpose - Claude Code
+  # writes back to this file at runtime, which a nix-store copy could not accept.
+  imports = [ ./claude-settings.nix ];
 
   programs.mcp = {
     enable = true;
