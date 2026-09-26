@@ -9,7 +9,6 @@
 {
   imports = [
     # programs (macOS only)
-    ../../programs/difftastic
     ../../programs/ghostty
     ../../programs/kitty
     ../../programs/wezterm

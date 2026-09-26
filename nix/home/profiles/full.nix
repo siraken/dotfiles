@@ -16,6 +16,7 @@
     # programs (cross-platform)
     ../../programs/1password-shell-plugins
     ../../programs/coding-agents
+    ../../programs/difftastic
     ../../programs/emacs
     ../../programs/husky
     ../../programs/nano

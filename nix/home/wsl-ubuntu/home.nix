@@ -9,6 +9,5 @@
     # host-specific programs
     ../../programs/fish
     ../../programs/spotify-player
-    # ../../programs/difftastic
   ];
 }
