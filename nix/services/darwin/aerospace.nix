@@ -169,6 +169,8 @@ in
         alt-5 = [ "workspace 5" ];
         alt-6 = [ "workspace 6" ];
         alt-7 = [ "workspace 7" ];
+        alt-8 = [ "workspace 8" ];
+        alt-9 = [ "workspace 9" ];
 
         # Move windows to workspaces
         alt-shift-1 = [
@@ -197,6 +199,14 @@ in
         ];
         alt-shift-7 = [
           "move-node-to-workspace 7"
+          sketchybarRefresh
+        ];
+        alt-shift-8 = [
+          "move-node-to-workspace 8"
+          sketchybarRefresh
+        ];
+        alt-shift-9 = [
+          "move-node-to-workspace 9"
           sketchybarRefresh
         ];
 
