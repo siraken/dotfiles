@@ -103,6 +103,13 @@ in
 
       commit.gpgsign = pkgs.stdenv.hostPlatform.isDarwin || isWSL;
     }
+    // lib.optionalAttrs isWSL {
+      # Repositories on the Windows drives (/mnt/c, /mnt/d, ...) are owned by a
+      # different uid under WSL, which git's dubious-ownership check rejects.
+      # Trust only those mounts; every other path keeps the default protection.
+      # (A trailing `/*` matches everything below the prefix, git >= 2.46.)
+      safe.directory = "/mnt/*";
+    }
     // lib.optionalAttrs (pkgs.stdenv.hostPlatform.isDarwin || isWSL) {
       # 1Password SSH signing is available on macOS and WSL, but not on a
       # regular NixOS host.

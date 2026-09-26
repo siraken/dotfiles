@@ -86,6 +86,15 @@ nix run home-manager/master -- switch --flake github:siraken/dotfiles#siraken@ba
 
 Profiles: `base` ⊂ `standard` ⊂ `full`; systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
+On a non-NixOS Linux host, home-manager does not configure Nix itself. To use this repo's binary caches, add them to the system nix.conf once (`/etc/nix/nix.conf`, or `/etc/nix/nix.custom.conf` when nix.conf includes it) and restart the daemon:
+
+```bash
+nix run github:siraken/dotfiles#nix-cache-conf | sudo tee -a /etc/nix/nix.conf
+sudo systemctl restart nix-daemon
+```
+
+Writing them to the user's nix.conf instead does not work unless the user is in `trusted-users`: Nix ignores each substituter with a warning on every call.
+
 </details>
 
 <details>

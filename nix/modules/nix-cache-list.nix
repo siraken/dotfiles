@@ -1,6 +1,6 @@
-# Binary caches this repo relies on, shared by the OS-level module
-# (`nix-caches.nix`, nix-darwin / NixOS) and the home-manager module
-# (`home/nix-caches.nix`, standalone home-manager on a non-NixOS Linux).
+# Binary caches this repo relies on. Applied by the OS-level module
+# (`nix-caches.nix`, nix-darwin / NixOS); on a non-NixOS Linux host, print the
+# matching system nix.conf lines with `nix run .#nix-cache-conf`.
 {
   substituters = [
     "https://cache.nixos.org/"

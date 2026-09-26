@@ -53,14 +53,15 @@ let
   ];
 
   # A generic profile knows nothing about the host, so on Linux it assumes a
-  # non-NixOS distribution: Nix is not managed by the OS, hence the user-level
-  # caches and `targets.genericLinux`.
+  # non-NixOS distribution (`targets.genericLinux`). Binary caches are not
+  # set here: a user-level nix.conf is ignored with a warning per substituter
+  # unless the user is trusted, so they go in the system nix.conf instead
+  # (`nix run .#nix-cache-conf`, see README).
   genericModule = profile: system: {
     imports = [
       (./profiles + "/${profile}.nix")
     ]
     ++ lib.optionals (lib.hasSuffix "-linux" system) [
-      ../modules/home/nix-caches.nix
       { targets.genericLinux.enable = true; }
     ];
     home.stateVersion = "26.05";
