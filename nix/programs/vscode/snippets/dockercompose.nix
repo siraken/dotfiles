@@ -1,0 +1,22 @@
+# Docker Compose snippets
+{
+  Compose = {
+    prefix = [ "dc" ];
+    body = [
+      "version: '3'"
+      "services:"
+      "\t\${1:serviceName}:"
+      "\t\tbuild:"
+      "\t\t\tcontext: ."
+      "\t\t\tdockerfile: Dockerfile"
+      "\t\tvolumes:"
+      "\t\t\t- .:/app"
+      "\t\tports:"
+      "\t\t\t- '\\\${PORT}:\\\${PORT}'"
+      ""
+      "volumes:"
+      "\tsome-volume:"
+    ];
+    description = "";
+  };
+}

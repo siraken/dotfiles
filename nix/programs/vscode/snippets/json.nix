@@ -1,0 +1,23 @@
+# JSON snippets
+{
+  "Create a new snippet" = {
+    prefix = [ "sn_new_snippet" ];
+    body = [
+      "\"\${1:snippetName}\": {"
+      "\t\"prefix\": \"\","
+      "\t\"body\": [\"\"],"
+      "\t\"description\": \"\""
+      "},"
+    ];
+    description = "Create a new snippet";
+  };
+  "Initialize package.json" = {
+    prefix = [ "sn_package" ];
+    body = [
+      "{"
+      "\t\"description\": \"\""
+      "}"
+    ];
+    description = "Initialize package.json";
+  };
+}

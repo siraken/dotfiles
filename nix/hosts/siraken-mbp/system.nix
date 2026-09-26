@@ -53,7 +53,7 @@ in
     command = [
       "${pkgs.postgresql_14}/bin/postgres"
       "-D"
-      (userPaths.dataDir "postgresql")
+      (userPaths.data "postgresql")
     ];
     environment = {
       LC_ALL = "en_US.UTF-8";
