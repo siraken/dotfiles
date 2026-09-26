@@ -192,7 +192,7 @@
             siraken-macmini = self.darwinConfigurations.siraken-macmini.system;
           };
         }
-        // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
+        // {
           apps =
             let
               darwinApp = mkApp pkgs;
@@ -206,6 +206,19 @@
               '';
             in
             {
+              # Prints the binary cache settings for a system nix.conf. Used on a
+              # non-NixOS Linux host, where home-manager does not touch Nix's
+              # configuration (see README).
+              nix-cache-conf =
+                let
+                  caches = import ./nix/modules/nix-cache-list.nix;
+                in
+                mkApp pkgs "nix-cache-conf" ''
+                  echo "extra-substituters = ${nixpkgs.lib.concatStringsSep " " caches.substituters}"
+                  echo "extra-trusted-public-keys = ${nixpkgs.lib.concatStringsSep " " caches.trusted-public-keys}"
+                '';
+            }
+            // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
               mbp = darwinApp "mbp" (switchHost "siraken-mbp");
               macmini = darwinApp "macmini" (switchHost "siraken-macmini");
               gc = darwinApp "gc" ''
