@@ -171,21 +171,30 @@
             # module or a typo in any host fails CI even though the runner
             # cannot build the profiles themselves.
             eval-all = pkgs.writeText "eval-all-configurations" (
-              nixpkgs.lib.concatMapStringsSep "\n" builtins.unsafeDiscardStringContext [
-                self.darwinConfigurations.siraken-mbp.system.drvPath
-                self.darwinConfigurations.siraken-macmini.system.drvPath
-                self.nixosConfigurations.nixos-vm.config.system.build.toplevel.drvPath
-                self.nixosConfigurations.wsl-nixos.config.system.build.toplevel.drvPath
-                self.homeConfigurations.wsl-ubuntu.activationPackage.drvPath
-              ]
+              nixpkgs.lib.concatMapStringsSep "\n" builtins.unsafeDiscardStringContext (
+                [
+                  self.darwinConfigurations.siraken-mbp.system.drvPath
+                  self.darwinConfigurations.siraken-macmini.system.drvPath
+                  self.nixosConfigurations.nixos-vm.config.system.build.toplevel.drvPath
+                  self.nixosConfigurations.wsl-nixos.config.system.build.toplevel.drvPath
+                ]
+                ++ nixpkgs.lib.mapAttrsToList (_: home: home.activationPackage.drvPath) self.homeConfigurations
+              )
             );
+
+            # Real builds of the two small generic profiles for this system.
+            # Unlike the full host closures below they fit on a GitHub-hosted
+            # runner, so CI proves that `base` / `standard` actually build and
+            # not only evaluate.
+            home-base = self.homeConfigurations."${userProfile.username}@base-${system}".activationPackage;
+            home-standard =
+              self.homeConfigurations."${userProfile.username}@standard-${system}".activationPackage;
           }
           // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
             # Real system builds. A GitHub-hosted runner has 14 GB of disk and
             # one system closure is 12.4 GiB, so these only ever run locally
-            # (`nix flake check` on the Mac); CI stops at `eval-all`. Once the
-            # package set is split per role, or a personal binary cache exists,
-            # this can move into CI.
+            # (`nix flake check` on the Mac); CI builds only the generic `base` /
+            # `standard` home profiles above.
             siraken-mbp = self.darwinConfigurations.siraken-mbp.system;
             siraken-macmini = self.darwinConfigurations.siraken-macmini.system;
           };
@@ -233,11 +242,9 @@
         #   };
         # };
 
-        homeConfigurations = {
-          "wsl-ubuntu" = import ./nix/home/wsl-ubuntu {
-            inherit inputs userProfile backupFileExtension;
-          };
-        };
+        # Standalone home-manager: known hosts (`siraken@<host>`) and generic
+        # profiles (`siraken@<profile>-<system>`). See nix/home/default.nix.
+        homeConfigurations = import ./nix/home { inherit inputs userProfile; };
       };
     };
 }

@@ -25,9 +25,12 @@
   extraSpecialArgs ? { },
 }:
 inputs.home-manager.lib.homeManagerConfiguration {
+  # Same nixpkgs settings the nix-darwin / NixOS hosts apply globally
+  # (`useGlobalPkgs`), so a profile evaluates identically either way.
   pkgs = import inputs.nixpkgs {
     inherit system;
     overlays = import ./overlays.nix { inherit inputs; };
+    config.allowUnfree = true;
   };
 
   modules = [

@@ -1,22 +1,6 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}:
+{ ... }:
 {
   home.stateVersion = "26.05";
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate =
-        pkg:
-        builtins.elem (lib.getName pkg) [
-          "1password-cli"
-        ];
-    };
-  };
 
   imports = [
     ../profiles/full.nix
