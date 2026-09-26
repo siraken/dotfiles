@@ -1,11 +1,9 @@
 {
   inputs,
   userProfile,
-  backupFileExtension,
 }:
-(import ../../lib/mk-darwin-host.nix { inherit inputs userProfile backupFileExtension; }) {
+(import ../../lib/mk-darwin-host.nix { inherit inputs userProfile; }) {
   hostName = "siraken-mbp";
-  homeModule = ./home.nix;
   modules = [
     ../../modules/darwin/workstation.nix
     ./system.nix

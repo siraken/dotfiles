@@ -8,19 +8,32 @@
 # Install Nix
 curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
 
+# The OS layer (nix-darwin / NixOS) and the user environment (standalone
+# home-manager) are applied separately, OS first.
+
 # Install nix-darwin (macOS only)
 cd dotfiles
 sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#siraken-mbp
 
-# Build and apply system configuration
-sudo darwin-rebuild build --flake .#siraken-mbp
+# macOS: both layers at once (`nix run .#macmini` for the Mac mini)
+nix run .#mbp
+
+# macOS: one layer at a time
 sudo darwin-rebuild switch --flake .#siraken-mbp
+home-manager switch -b hm-backup --flake .#siraken@siraken-mbp
+
+# NixOS (wsl-nixos, nixos-vm)
+sudo nixos-rebuild switch --flake .#wsl-nixos
+home-manager switch -b hm-backup --flake .#siraken@wsl-nixos
+
+# First run on a host without the home-manager CLI yet
+nix run home-manager/master -- switch -b hm-backup --flake .#siraken@wsl-nixos
 
 # For WSL/Ubuntu (home-manager only, no system-level changes)
-home-manager -- switch --flake .#wsl-ubuntu
+home-manager switch -b hm-backup --flake .#siraken@wsl-ubuntu
 
-# For WSL/NixOS (full NixOS system configuration)
-sudo nixos-rebuild switch --flake .#wsl-nixos
+# Any other host, without cloning (generic profile: base / standard / full)
+nix run home-manager/master -- switch --flake github:siraken/dotfiles#siraken@base-x86_64-linux
 
 # Garbage collection
 nix store gc
@@ -45,11 +58,10 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - `flake.nix` - Main flake configuration using flake-parts with multiple system profiles:
   - `siraken-mbp` - Full macOS configuration (MacBook Pro, primary)
   - `siraken-macmini` - Minimal macOS configuration (Mac mini)
-  - `wsl-ubuntu` - WSL/Ubuntu home-manager configuration
+  - `siraken@<host>` / `siraken@<profile>-<system>` - standalone home-manager configurations (see `nix/home/default.nix`)
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
   - `pixel10` - Android (nix-on-droid) configuration (currently commented out in flake.nix)
-  - `minimal` - Lightweight home-manager profile (standalone, not registered in flake.nix)
 
 ### Key Components
 
@@ -61,9 +73,12 @@ Personal dotfiles management system combining Nix and declarative configuration 
 **Modular Configuration**:
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
-- `nix/services/` - Service modules (e.g. `darwin/aerospace.nix`, `darwin/sketchybar/`, `tailscale.nix`)
-- `nix/home/` - Standalone home-manager profiles (e.g. `wsl-ubuntu`, `minimal`)
-- `nix/modules/` - Shared modules (aliases, nixpkgs, shells, paths, variables, darwin common, home common, mk-repo-link)
+- `nix/services/` - Service modules. Everything under `nix/services/darwin/` (AeroSpace, JankyBorders, Sketchybar) is a nix-darwin module imported by `nix/modules/darwin/workstation.nix`; home-manager never manages the window manager.
+- `nix/home/profiles/` - Layered home-manager profiles: `base` (production / SSH-only hosts) ⊂ `standard` ⊂ `full` (daily drivers), plus `darwin` (macOS-only additions). Hosts import one of them instead of listing programs.
+- `nix/home/default.nix` - Registry of every standalone home-manager configuration: `siraken@<host>` for known hosts and `siraken@<profile>-<system>` for generic ones, all built with `nix/lib/mk-home.nix`. nix-darwin / NixOS hosts do not embed home-manager; their user environment is always this standalone entry.
+- `nix/home/<name>/` - Home module of a host that has no system configuration here (e.g. `wsl-ubuntu`)
+- `nix/lib/` - Configuration builders: `mk-darwin-host.nix`, `mk-nixos-host.nix`, `mk-home.nix` (standalone home-manager)
+- `nix/modules/` - Shared modules: `packages.nix` and `aliases.nix` (split into `base` / `standard` / `full` tiers, each consumed by the matching profile), shells, paths, variables, binary caches (`nix-cache-list.nix`, used by both the OS-level `nix-caches.nix` and `home/nix-caches.nix`), `darwin/base.nix` (every Mac: nix, SSH, no sleep) and `darwin/workstation.nix` (a Mac you sit in front of: macOS defaults, keyboard, fonts, window manager), `home/nixos-host.nix` (what home-manager used to inherit from NixOS), mk-repo-link. nix-index + comma belong to the `standard` home-manager profile, not the OS layer.
 - `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
 - `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.claude/settings.json`)
 
@@ -74,8 +89,10 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Symlink Management**:
 
-- Native config files in `config/` and `home/` are linked into place as **out-of-store symlinks** via the shared `mkRepoLink` helper (`nix/modules/home/mk-repo-link.nix`), so they are editable in place without a rebuild (assumes the repo is checked out at `~/dotfiles`).
-- Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, tmux `source-file`, git `includes`, shells `source`, emacs `load-file`.
+- Native config files in `config/` and `home/` are linked into place via the shared `mkRepoLink` helper (`nix/modules/home/mk-repo-link.nix`). Where they point is set by `dotfiles.linkMode`:
+  - `outOfStore` (set by the `full` profile): symlinks into the checkout at `~/dotfiles`, editable in place without a rebuild.
+  - `store` (the default, used by `base` / `standard`): the copy of the flake source in the Nix store, so a host can apply the flake straight from GitHub without cloning it.
+- Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, tmux `source-file`, git `includes`, shells `source`, emacs `load-file`, vim `source`. They take the path from the `repoPath` helper, never a hard-coded `~/dotfiles/...`, so they follow `dotfiles.linkMode` too.
 - Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
 - nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
 
@@ -135,9 +152,9 @@ Manages 40+ tool configurations across multiple categories:
 ```bash
 # Bad - Do NOT do this
 darwin-rebuild switch --flake .#siraken-mbp | tee output.log
-home-manager switch --flake .#wsl-ubuntu | cat
+home-manager switch --flake .#siraken@wsl-ubuntu | cat
 
 # Good - Run commands directly
 darwin-rebuild switch --flake .#siraken-mbp
-home-manager switch --flake .#wsl-ubuntu
+home-manager switch --flake .#siraken@wsl-ubuntu
 ```

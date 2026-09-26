@@ -4,15 +4,19 @@
 }:
 {
   imports = [
-    # This VM stays on the core profile: no coding agents, emacs, or 1Password
+    # This VM stays on the standard profile: no coding agents, emacs, or 1Password
     # tooling. It only adds a graphical desktop on top.
-    ../../modules/home/profile-core.nix
+    ../../home/profiles/standard.nix
+    ../../modules/home/nixos-host.nix
     # host-specific programs
     ../../programs/fastfetch
     ../../programs/ghostty
     ../../programs/kitty
     # ../../programs/fish # disabled due to fisher hash mismatch
   ];
+
+  # Keep the out-of-store links this VM has always used (needs ~/dotfiles).
+  dotfiles.linkMode = "outOfStore";
 
   home = {
     stateVersion = "26.05";

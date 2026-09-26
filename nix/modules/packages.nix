@@ -1,66 +1,82 @@
-# CLI tools migrated from Homebrew
+# CLI tools migrated from Homebrew, split by home-manager profile.
+#
+# Each profile adds its own tier on top of the tiers below it
+# (`base` ⊂ `standard` ⊂ `full`), so a tool belongs to the smallest profile
+# that needs it:
+#
+# - base:     what you reach for on a production server over SSH
+# - standard: interactive tooling for a host that is worked on
+# - full:     language toolchains, build systems, cloud CLIs, and toys that
+#             only a daily-driver workstation needs
 { pkgs }:
 with pkgs;
-let
-  isDarwin = stdenv.hostPlatform.isDarwin;
-  # File operations and browsing
-  fileTools = [
-    broot # file manager
+{
+  base = [
+    # File operations and browsing
     duf # df replacement
     dust # du replacement
     eza # ls replacement
     fd # find replacement
     ripgrep # grep replacement
     tree # directory tree
-  ];
 
-  # JSON processing
-  jsonTools = [
-    fx # JSON viewer
-    jless # JSON pager
+    # JSON processing
     jq # JSON processor
-  ];
 
-  # Network utilities
-  networkTools = [
-    aria2 # downloader
-    bandwhich # network bandwidth monitor
-    httpie # curl replacement
+    # Network utilities
     wget # downloader
     whois # domain info
   ];
 
-  # System information and benchmarks
-  systemInfoTools = [
+  standard = [
+    # File operations and browsing
+    broot # file manager
+
+    # JSON processing
+    fx # JSON viewer
+    jless # JSON pager
+
+    # Network utilities
+    aria2 # downloader
+    bandwhich # network bandwidth monitor
+    httpie # curl replacement
+
+    # System information and benchmarks
     hyperfine # benchmark tool
     onefetch # git repo info
     procs # ps replacement
     tokei # code line counter
-  ];
 
-  # Terminal UI and productivity
-  terminalTools = [
+    # Terminal UI and productivity
     delta # git diff enhancement (brew: git-delta)
-    genact # fake build animation
     glow # Markdown viewer
-    gum # shell script UI
     navi # cheatsheet
-    pastel # color tool
     tealdeer # man replacement (brew: tldr)
-    vhs # terminal recording
     blesh # line editor written in pure Bash
+
+    # Development utilities
+    ghq # repository manager
+    gibo # .gitignore generator
+    lua-language-server # LSP
+    nil # Nix LSP
+    nixfmt # Nix formatter
+    tree-sitter # parser
   ];
 
-  # Miscellaneous CLI tools
-  miscCliTools = [
+  full = [
+    # Terminal UI and productivity
+    genact # fake build animation
+    gum # shell script UI
+    pastel # color tool
+    vhs # terminal recording
+
+    # Miscellaneous CLI tools
     hugo # static site generator
     imapsync # IMAP mailbox synchronization
     powershell # cross-platform shell
     qsv # CSV toolkit (successor to xsv)
-  ];
 
-  # Programming languages
-  languages = [
+    # Programming languages
     bun
     lua
     nim
@@ -68,20 +84,16 @@ let
     purescript # PureScript compiler
     # sbcl # Common Lisp (disabled: ECL build fails on macOS)
     scala
-  ];
 
-  # Build systems
-  buildTools = [
+    # Build systems
     cmake
     earthbuild # community fork of earthly (brew: earthly, upstream discontinued)
     gradle
     maven
     ninja
     sbt # Scala build
-  ];
 
-  # Cloud and infrastructure
-  cloudTools = [
+    # Cloud and infrastructure
     act # GitHub Actions local runner
     ansible # configuration management
     cloudflared # Cloudflare tunnel
@@ -90,37 +102,19 @@ let
     kompose # K8s conversion
     # minikube # K8s local — disabled: nixpkgs build failure (makeShellWrapper API change)
     tenv # Terraform version manager
-  ];
 
-  # Development utilities
-  devUtilTools = [
+    # Development utilities
     devenv # composable dev environments
-    ghq # repository manager
-    gibo # .gitignore generator
     glab # GitLab CLI
     graphviz # graph visualization
-    lua-language-server # LSP
     luarocks # Lua packages
     mkcert # local certificates
     ni # @antfu/ni - use the right package manager
-    nil # Nix LSP
-    nixfmt # Nix formatter
     pandoc # document conversion
     tea # Gitea CLI
     tor # anonymous network
-    tree-sitter # parser
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [
+    container # container platform for macOS
   ];
-in
-fileTools
-++ jsonTools
-++ networkTools
-++ systemInfoTools
-++ terminalTools
-++ miscCliTools
-++ languages
-++ buildTools
-++ cloudTools
-++ devUtilTools
-++ lib.optionals isDarwin [
-  container # container platform for macOS
-]
+}

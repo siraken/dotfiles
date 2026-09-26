@@ -171,21 +171,30 @@
             # module or a typo in any host fails CI even though the runner
             # cannot build the profiles themselves.
             eval-all = pkgs.writeText "eval-all-configurations" (
-              nixpkgs.lib.concatMapStringsSep "\n" builtins.unsafeDiscardStringContext [
-                self.darwinConfigurations.siraken-mbp.system.drvPath
-                self.darwinConfigurations.siraken-macmini.system.drvPath
-                self.nixosConfigurations.nixos-vm.config.system.build.toplevel.drvPath
-                self.nixosConfigurations.wsl-nixos.config.system.build.toplevel.drvPath
-                self.homeConfigurations.wsl-ubuntu.activationPackage.drvPath
-              ]
+              nixpkgs.lib.concatMapStringsSep "\n" builtins.unsafeDiscardStringContext (
+                [
+                  self.darwinConfigurations.siraken-mbp.system.drvPath
+                  self.darwinConfigurations.siraken-macmini.system.drvPath
+                  self.nixosConfigurations.nixos-vm.config.system.build.toplevel.drvPath
+                  self.nixosConfigurations.wsl-nixos.config.system.build.toplevel.drvPath
+                ]
+                ++ nixpkgs.lib.mapAttrsToList (_: home: home.activationPackage.drvPath) self.homeConfigurations
+              )
             );
+
+            # Real builds of the two small generic profiles for this system.
+            # Unlike the full host closures below they fit on a GitHub-hosted
+            # runner, so CI proves that `base` / `standard` actually build and
+            # not only evaluate.
+            home-base = self.homeConfigurations."${userProfile.username}@base-${system}".activationPackage;
+            home-standard =
+              self.homeConfigurations."${userProfile.username}@standard-${system}".activationPackage;
           }
           // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
             # Real system builds. A GitHub-hosted runner has 14 GB of disk and
             # one system closure is 12.4 GiB, so these only ever run locally
-            # (`nix flake check` on the Mac); CI stops at `eval-all`. Once the
-            # package set is split per role, or a personal binary cache exists,
-            # this can move into CI.
+            # (`nix flake check` on the Mac); CI builds only the generic `base` /
+            # `standard` home profiles above.
             siraken-mbp = self.darwinConfigurations.siraken-mbp.system;
             siraken-macmini = self.darwinConfigurations.siraken-macmini.system;
           };
@@ -194,14 +203,18 @@
           apps =
             let
               darwinApp = mkApp pkgs;
+              homeManager = "${home-manager.packages.${system}.home-manager}/bin/home-manager";
+              # nix-darwin owns the OS layer and home-manager the user
+              # environment; apply both, OS first.
+              switchHost = host: ''
+                set -e
+                sudo darwin-rebuild switch --flake ${self}#${host}
+                ${homeManager} switch -b ${backupFileExtension} --flake ${self}#${userProfile.username}@${host}
+              '';
             in
             {
-              mbp = darwinApp "mbp" ''
-                sudo darwin-rebuild switch --flake ${self}#siraken-mbp
-              '';
-              macmini = darwinApp "macmini" ''
-                sudo darwin-rebuild switch --flake ${self}#siraken-macmini
-              '';
+              mbp = darwinApp "mbp" (switchHost "siraken-mbp");
+              macmini = darwinApp "macmini" (switchHost "siraken-macmini");
               gc = darwinApp "gc" ''
                 nix store gc
               '';
@@ -211,33 +224,31 @@
       flake = {
         darwinConfigurations = {
           "siraken-mbp" = import ./nix/hosts/siraken-mbp {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
           "siraken-macmini" = import ./nix/hosts/siraken-macmini {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
         };
 
         nixosConfigurations = {
           "nixos-vm" = import ./nix/hosts/nixos-vm {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
           "wsl-nixos" = import ./nix/hosts/wsl-nixos {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
         };
 
         # nixOnDroidConfigurations = {
         #   "pixel10" = import ./nix/hosts/pixel10 {
-        #     inherit inputs userProfile backupFileExtension;
+        #     inherit inputs userProfile;
         #   };
         # };
 
-        homeConfigurations = {
-          "wsl-ubuntu" = import ./nix/home/wsl-ubuntu {
-            inherit inputs userProfile backupFileExtension;
-          };
-        };
+        # Standalone home-manager: known hosts (`siraken@<host>`) and generic
+        # profiles (`siraken@<profile>-<system>`). See nix/home/default.nix.
+        homeConfigurations = import ./nix/home { inherit inputs userProfile; };
       };
     };
 }

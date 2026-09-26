@@ -21,6 +21,8 @@ let
 in
 {
   imports = [
+    ../../services/darwin/aerospace.nix
+    ../../services/darwin/jankyborders.nix
     ../../services/darwin/sketchybar
   ];
 
@@ -106,16 +108,8 @@ in
   };
 
   power.sleep = {
-    computer = "never";
     display = 5;
     harddisk = 10;
-  };
-
-  services.openssh.enable = true;
-
-  security.pam.services.sudo_local = {
-    touchIdAuth = true;
-    watchIdAuth = true;
   };
 
   fonts.packages = with pkgs; [

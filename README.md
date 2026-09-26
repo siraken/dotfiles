@@ -22,10 +22,12 @@ Personal dotfiles management system combining [Nix Flakes](https://nixos.wiki/wi
 | Profile | Platform | Type | Description |
 | --- | --- | --- | --- |
 | `siraken-mbp` | macOS (aarch64) | nix-darwin | MacBook Pro — full configuration (primary) |
-| `siraken-macmini` | macOS (aarch64) | nix-darwin | Mac mini — minimal configuration |
-| `wsl-ubuntu` | Linux (x86_64) | home-manager | WSL/Ubuntu — user environment only |
+| `siraken-macmini` | macOS (aarch64) | nix-darwin | Mac mini — base OS layer, reached over SSH |
+| `siraken@wsl-ubuntu` | Linux (x86_64) | home-manager | WSL/Ubuntu — user environment only |
+| `siraken@<profile>-<system>` | any | home-manager | Generic `base` / `standard` / `full` profile for hosts without an entry (e.g. production servers) |
 | `wsl-nixos` | Linux (x86_64) | NixOS | WSL/NixOS — full system configuration |
 | `nixos-vm` | Linux (aarch64) | NixOS | NixOS VM — virtual machine |
+| `siraken@<host>` | same as the host | home-manager | User environment of each host above, applied separately from the OS layer |
 
 ### Key Features
 
@@ -58,9 +60,10 @@ cd ~/repos/github.com/siraken/dotfiles
 
 # First-time install
 sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#THE_NAME
+nix run home-manager/master -- switch -b hm-backup --flake .#siraken@THE_NAME
 
-# After initial setup
-sudo darwin-rebuild switch --flake .#THE_NAME
+# After initial setup: OS layer (nix-darwin), then user environment (home-manager)
+nix run .#mbp   # or .#macmini
 ```
 
 </details>
@@ -69,8 +72,19 @@ sudo darwin-rebuild switch --flake .#THE_NAME
 <summary><b>WSL/Ubuntu (home-manager)</b></summary>
 
 ```bash
-home-manager switch --flake .#wsl-ubuntu
+home-manager switch --flake .#siraken@wsl-ubuntu
 ```
+
+</details>
+
+<details>
+<summary><b>Any host without cloning (generic home-manager profile)</b></summary>
+
+```bash
+nix run home-manager/master -- switch --flake github:siraken/dotfiles#siraken@base-x86_64-linux
+```
+
+Profiles: `base` ⊂ `standard` ⊂ `full`; systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
 </details>
 
@@ -78,7 +92,9 @@ home-manager switch --flake .#wsl-ubuntu
 <summary><b>WSL/NixOS</b></summary>
 
 ```bash
+# OS layer, then user environment
 sudo nixos-rebuild switch --flake .#wsl-nixos
+home-manager switch -b hm-backup --flake .#siraken@wsl-nixos
 ```
 
 </details>
@@ -174,7 +190,9 @@ dotfiles/
 │   │   ├── siraken-macmini/   #   Mac mini
 │   │   ├── wsl-nixos/         #   WSL/NixOS
 │   │   └── nixos-vm/          #   NixOS VM
-│   ├── home/                  # Per-host home-manager configurations
+│   ├── home/                  # Standalone home-manager configurations
+│   │   ├── default.nix        #   Registry (siraken@<host>, siraken@<profile>-<system>)
+│   │   ├── profiles/          #   base ⊂ standard ⊂ full (+ darwin)
 │   │   └── wsl-ubuntu/        #   WSL/Ubuntu
 │   ├── modules/               # Shared Nix modules
 │   └── programs/              # Program-specific configurations

@@ -95,23 +95,17 @@ let
     run = "layout floating";
   };
 
-  # Sketchybar のアイテム生成と共有するワークスペース一覧
-  workspaces = import ./workspaces.nix;
-
   # ウィンドウを別ワークスペースへ移してもフォーカス中のワークスペースは変わらないため
   # exec-on-workspace-change は発火しない。Sketchybar 側のアプリアイコン表示を
   # 追従させるために、移動系のバインドから明示的にイベントを投げる。
   sketchybarRefresh = "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change";
 in
 {
-  programs.aerospace = {
+  services.aerospace = {
     enable = true;
 
-    # launchdで自動起動を管理
-    launchd = {
-      enable = true;
-    };
-
+    # 起動は nix-darwin の launchd agent が持つ (start-at-login は使わない)。
+    # 設定ファイルは store に生成され、`--config-path` で渡される。
     settings = {
       config-version = 2;
 
@@ -255,7 +249,12 @@ in
         }
       ];
 
-      persistent-workspaces = workspaces;
+      # Sketchybar はアイテムを起動時に作るため、実行時に
+      # `aerospace list-workspaces --all` を引くと「そのときウィンドウがある
+      # ワークスペース」しか拾えない。Sketchybar はこの値を
+      # `config.services.aerospace.settings.persistent-workspaces` から読んで
+      # 同じ集合のアイテムを作る。
+      persistent-workspaces = map toString (lib.range 1 9);
 
       workspace-to-monitor-force-assignment = { };
 
@@ -265,5 +264,11 @@ in
         "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
       ];
     };
+  };
+
+  # home-manager の agent が出していたログの出力先を引き継ぐ。
+  launchd.user.agents.aerospace.serviceConfig = {
+    StandardOutPath = "/tmp/aerospace.log";
+    StandardErrorPath = "/tmp/aerospace.err.log";
   };
 }

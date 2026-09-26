@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  repoPath,
+  ...
+}:
 {
   imports = [
     ./ai
@@ -404,6 +409,6 @@
     # Static vim config lives in a repo file sourced directly by vim, so it
     # is editable in place without a rebuild. home-manager still owns the
     # generated vimrc (settings, plugins). See #70.
-    extraConfig = "source ${config.home.homeDirectory}/dotfiles/config/vim/vimrc";
+    extraConfig = "source ${repoPath "config/vim/vimrc"}";
   };
 }

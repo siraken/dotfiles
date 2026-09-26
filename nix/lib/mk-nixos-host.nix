@@ -1,27 +1,26 @@
 # NixOS host builder.
 #
 # The counterpart to `mk-darwin-host.nix`: holds the wiring that `nixos-vm` and
-# `wsl-nixos` had duplicated (binary caches, nix-index, overlays, home-manager).
-# `./configuration.nix` and any platform module (e.g. NixOS-WSL) are passed in
-# through `modules`.
+# `wsl-nixos` had duplicated (binary caches, overlays). `./configuration.nix`
+# and any platform module (e.g. NixOS-WSL) are passed in through `modules`.
+#
+# NixOS owns the OS layer only. The user environment is standalone
+# home-manager (`homeConfigurations."siraken@<host>"`, see nix/home/default.nix),
+# applied separately with `home-manager switch`.
 #
 # Usage (from `nix/hosts/<host>/default.nix`):
 #
-#   { inputs, userProfile, backupFileExtension }:
-#   (import ../../lib/mk-nixos-host.nix { inherit inputs userProfile backupFileExtension; }) {
-#     homeModule = ./home.nix;
+#   { inputs, userProfile }:
+#   (import ../../lib/mk-nixos-host.nix { inherit inputs userProfile; }) {
 #     system = "x86_64-linux";
 #     modules = [ ./configuration.nix inputs.nixos-wsl.nixosModules.default ];
 #   }
 {
   inputs,
   userProfile,
-  backupFileExtension,
 }:
 {
-  homeModule,
   system,
-  isWSL ? false,
   modules ? [ ],
 }:
 inputs.nixpkgs.lib.nixosSystem {
@@ -32,22 +31,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     { nixpkgs.hostPlatform = system; }
     ../modules/nix-caches.nix
-    inputs.nix-index-database.nixosModules.nix-index
-    { programs.nix-index-database.comma.enable = true; }
     { nixpkgs.overlays = import ./overlays.nix { inherit inputs; }; }
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        inherit backupFileExtension;
-        users.${userProfile.username} = homeModule;
-        sharedModules = [
-          inputs.nixvim.homeModules.nixvim
-        ];
-        extraSpecialArgs = { inherit inputs userProfile isWSL; };
-      };
-    }
   ]
   ++ modules;
 }

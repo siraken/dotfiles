@@ -1,7 +1,8 @@
 { ... }:
 {
   imports = [
-    ../../modules/home/profile-full.nix
+    ../../home/profiles/full.nix
+    ../../modules/home/nixos-host.nix
     # host-specific programs
     ../../programs/spotify-player
     # ../../programs/fish # disabled due to fisher hash mismatch

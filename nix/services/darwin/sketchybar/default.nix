@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   # Colors (Tokyo Night theme)
   colors = {
@@ -27,10 +32,10 @@ let
   # ワークスペースのアプリアイコン用フォント（`:app_name:` のリガチャで描画される）
   appFont = pkgs.sketchybar-app-font;
 
-  # AeroSpace の persistent-workspaces と共有するワークスペース一覧。
+  # AeroSpace の persistent-workspaces と同じ集合のアイテムを作る。
   # 実行時に aerospace へ問い合わせるとウィンドウがあるものしか拾えないため、
-  # アイテムの集合はこちらから決める。
-  workspaces = import ../workspaces.nix;
+  # 設定値のほうを読む。
+  workspaces = config.services.aerospace.settings.persistent-workspaces;
 
   # 全プラグインの先頭に差し込む共通定義。
   # 色は Nix 側の 1 箇所で管理し、PATH も明示して起動環境に依存しないようにする。

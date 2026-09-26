@@ -1,13 +1,12 @@
 {
   inputs,
   userProfile,
-  backupFileExtension,
 }:
-(import ../../lib/mk-darwin-host.nix { inherit inputs userProfile backupFileExtension; }) {
+(import ../../lib/mk-darwin-host.nix { inherit inputs userProfile; }) {
   hostName = "siraken-macmini";
-  homeModule = ./home.nix;
+  # Reached mostly over SSH: base nix-darwin only (no macOS defaults, fonts or
+  # window manager). The casks stay for the occasional session at the screen.
   modules = [
-    ../../modules/darwin/workstation.nix
     {
       homebrew = {
         brews = [

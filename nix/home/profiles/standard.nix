@@ -1,0 +1,48 @@
+# `base` plus the interactive tooling for a host that is worked on but is not a
+# daily driver (nixos-vm).
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    ./base.nix
+    # nix-index + comma live in the user environment, not the OS layer, so the
+    # same profile brings them on macOS, NixOS, and plain Linux alike.
+    inputs.nix-index-database.homeModules.nix-index
+    ../../programs/atuin
+    ../../programs/awscli
+    ../../programs/direnv
+    ../../programs/gh
+    ../../programs/gh-dash
+    ../../programs/gitui
+    ../../programs/helix
+    ../../programs/jujutsu
+    ../../programs/lazydocker
+    ../../programs/mise
+    ../../programs/scripts
+    ../../programs/tmux
+    ../../programs/vim
+    ../../programs/yazi
+    ../../programs/yt-dlp
+    ../../programs/zellij
+  ];
+
+  programs.nix-index-database.comma.enable = true;
+
+  programs.git = {
+    # Overrides base's `gitMinimal`: interactive hosts keep the full git
+    # (send-email, svn, p4, …).
+    package = pkgs.git;
+
+    # Set here rather than in config/git/config, which `base` also includes:
+    # base has no nvim, so git there falls back to $EDITOR / vi.
+    settings.core.editor = "nvim";
+  };
+
+  home = {
+    shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).standard;
+    packages = (import ../../modules/packages.nix { inherit pkgs; }).standard;
+  };
+}

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, repoPath, ... }:
 {
   programs.emacs = {
     enable = true;
@@ -54,7 +54,7 @@
     # (next emacs start picks up edits — no rebuild). The generated default.el
     # now loads the repo file instead of inlining it; same load timing. See #70.
     extraConfig = ''
-      (load-file "${config.home.homeDirectory}/dotfiles/config/emacs/init.el")
+      (load-file "${repoPath "config/emacs/init.el"}")
     '';
   };
 }
