@@ -21,6 +21,8 @@ let
 in
 {
   imports = [
+    ../../services/darwin/aerospace.nix
+    ../../services/darwin/jankyborders.nix
     ../../services/darwin/sketchybar
   ];
 

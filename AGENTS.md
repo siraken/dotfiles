@@ -60,7 +60,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 **Modular Configuration**:
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
-- `nix/services/` - Service modules (e.g. `darwin/aerospace.nix`, `darwin/sketchybar/`, `tailscale.nix`)
+- `nix/services/` - Service modules. Everything under `nix/services/darwin/` (AeroSpace, JankyBorders, Sketchybar) is a nix-darwin module imported by `nix/modules/darwin/workstation.nix`; home-manager never manages the window manager.
 - `nix/home/profiles/` - Layered home-manager profiles: `base` (production / SSH-only hosts) ⊂ `standard` ⊂ `full` (daily drivers), plus `darwin` (macOS-only additions). Hosts import one of them instead of listing programs.
 - `nix/home/<name>/` - Standalone home-manager configurations (e.g. `wsl-ubuntu`), built with `nix/lib/mk-home.nix`
 - `nix/lib/` - Configuration builders: `mk-darwin-host.nix`, `mk-nixos-host.nix`, `mk-home.nix` (standalone home-manager)

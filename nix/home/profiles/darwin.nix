@@ -14,8 +14,5 @@
     ../../programs/kitty
     ../../programs/wezterm
     ../../programs/zed
-    # services (macOS only)
-    ../../services/darwin/aerospace.nix
-    ../../services/darwin/jankyborders.nix
   ];
 }
