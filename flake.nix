@@ -42,12 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -86,7 +80,6 @@
       treefmt-nix,
       git-hooks,
       llm-agents,
-      nix-on-droid,
       nixos-wsl,
       op-shell-plugins,
       # dotfiles-private,
@@ -239,12 +232,6 @@
             inherit inputs userProfile;
           };
         };
-
-        # nixOnDroidConfigurations = {
-        #   "pixel10" = import ./nix/hosts/pixel10 {
-        #     inherit inputs userProfile;
-        #   };
-        # };
 
         # Standalone home-manager: known hosts (`siraken@<host>`) and generic
         # profiles (`siraken@<profile>-<system>`). See nix/home/default.nix.

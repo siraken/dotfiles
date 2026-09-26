@@ -61,7 +61,6 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `siraken@<host>` / `siraken@<profile>-<system>` - standalone home-manager configurations (see `nix/home/default.nix`)
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
-  - `pixel10` - Android (nix-on-droid) configuration (currently commented out in flake.nix)
 
 ### Key Components
 
@@ -125,7 +124,7 @@ Manages 40+ tool configurations across multiple categories:
 
 - `aarch64-darwin` - Apple Silicon Macs (primary)
 - `x86_64-linux` - WSL/Ubuntu and NixOS
-- `aarch64-linux` - Android (nix-on-droid, pixel10)
+- `aarch64-linux` - NixOS VM (nixos-vm)
 
 ## Important Files
 
