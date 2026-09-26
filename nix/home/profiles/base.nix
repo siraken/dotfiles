@@ -41,6 +41,11 @@
   programs = {
     home-manager.enable = true;
 
+    # The full git pulls in Python (git-p4 and friends), which on darwin drags
+    # clang, llvm and the Apple SDK into the closure: ~1.2 GiB for a profile
+    # meant for production servers. `standard` restores the full package.
+    git.package = lib.mkDefault pkgs.gitMinimal;
+
     # Building the man page cache is expensive and it is regenerated whenever a
     # package changes. Previously set on siraken-mbp only, which left every
     # other host paying for it.

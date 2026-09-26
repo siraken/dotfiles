@@ -49,7 +49,6 @@
 
 [core]
 	autocrlf = "input"
-	editor = "nvim"
 
 [diff]
 	algorithm = "histogram"

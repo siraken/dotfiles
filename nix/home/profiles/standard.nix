@@ -14,9 +14,11 @@
     ../../programs/atuin
     ../../programs/awscli
     ../../programs/direnv
+    ../../programs/gh
     ../../programs/gh-dash
     ../../programs/gitui
     ../../programs/helix
+    ../../programs/jujutsu
     ../../programs/lazydocker
     ../../programs/mise
     ../../programs/scripts
@@ -28,6 +30,16 @@
   ];
 
   programs.nix-index-database.comma.enable = true;
+
+  programs.git = {
+    # Overrides base's `gitMinimal`: interactive hosts keep the full git
+    # (send-email, svn, p4, …).
+    package = pkgs.git;
+
+    # Set here rather than in config/git/config, which `base` also includes:
+    # base has no nvim, so git there falls back to $EDITOR / vi.
+    settings.core.editor = "nvim";
+  };
 
   home = {
     shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).standard;
