@@ -25,6 +25,8 @@
   home = {
     # preferXdgDirectories = true; # to be enabled
     sessionPath = import ../../modules/path.nix { inherit lib pkgs; };
+    shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).base;
+    packages = (import ../../modules/packages.nix { inherit pkgs; }).base;
 
     # `mkDefault` so a host that leaves a shell out (fish on wsl-nixos and
     # nixos-vm) can switch its integration off.

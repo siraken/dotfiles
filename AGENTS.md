@@ -64,7 +64,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - `nix/home/profiles/` - Layered home-manager profiles: `base` (production / SSH-only hosts) ⊂ `standard` ⊂ `full` (daily drivers), plus `darwin` (macOS-only additions). Hosts import one of them instead of listing programs.
 - `nix/home/<name>/` - Standalone home-manager configurations (e.g. `wsl-ubuntu`), built with `nix/lib/mk-home.nix`
 - `nix/lib/` - Configuration builders: `mk-darwin-host.nix`, `mk-nixos-host.nix`, `mk-home.nix` (standalone home-manager)
-- `nix/modules/` - Shared modules (aliases, nixpkgs, shells, paths, variables, darwin common, home common, mk-repo-link)
+- `nix/modules/` - Shared modules: `packages.nix` and `aliases.nix` (split into `base` / `standard` / `full` tiers, each consumed by the matching profile), shells, paths, variables, binary caches (`nix-cache-list.nix`, used by both the OS-level `nix-caches.nix` and `home/nix-caches.nix`), darwin common, mk-repo-link. nix-index + comma belong to the `standard` home-manager profile, not the OS layer.
 - `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
 - `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.claude/settings.json`)
 

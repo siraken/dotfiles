@@ -30,10 +30,13 @@
     sessionPath = [ "$COMPOSER_HOME/vendor/bin" ];
     sessionVariables = import ../../modules/variable.nix { inherit lib pkgs; };
 
-    packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-      pkgs.gcc
-      pkgs.libgcc
-      pkgs.xdg-utils
-    ];
+    shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).full;
+    packages =
+      (import ../../modules/packages.nix { inherit pkgs; }).full
+      ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+        pkgs.gcc
+        pkgs.libgcc
+        pkgs.xdg-utils
+      ];
   };
 }

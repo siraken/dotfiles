@@ -1,16 +1,16 @@
 # `base` plus the interactive tooling for a host that is worked on but is not a
 # daily driver (nixos-vm).
-#
-# The shell aliases and the package list still assume the tools of a full
-# workstation (`vim = nvim`, `ll = eza`, language toolchains); they stay here
-# until the package set is split per profile.
 {
   pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
     ./base.nix
+    # nix-index + comma live in the user environment, not the OS layer, so the
+    # same profile brings them on macOS, NixOS, and plain Linux alike.
+    inputs.nix-index-database.homeModules.nix-index
     ../../programs/atuin
     ../../programs/awscli
     ../../programs/direnv
@@ -27,8 +27,10 @@
     ../../programs/zellij
   ];
 
+  programs.nix-index-database.comma.enable = true;
+
   home = {
-    shellAliases = import ../../modules/aliases.nix { inherit pkgs; };
-    packages = import ../../modules/nixpkgs.nix { inherit pkgs; };
+    shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).standard;
+    packages = (import ../../modules/packages.nix { inherit pkgs; }).standard;
   };
 }

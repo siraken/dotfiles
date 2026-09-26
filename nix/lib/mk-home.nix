@@ -31,7 +31,6 @@ inputs.home-manager.lib.homeManagerConfiguration {
   };
 
   modules = [
-    ../modules/home/common.nix
     homeModule
     # Wired in through `sharedModules` by the nix-darwin / NixOS builders.
     inputs.nixvim.homeModules.nixvim

@@ -1,7 +1,7 @@
 # nix-darwin host builder.
 #
 # Everything that used to be duplicated in each `nix/hosts/*/default.nix`
-# (nix-index, overlays, home-manager wiring, the user record) lives here. A host
+# (overlays, home-manager wiring, the user record) lives here. A host
 # only declares its `hostName`, its home profile, and its own modules — homebrew
 # lists, host-local services, and so on.
 #
@@ -33,8 +33,6 @@ inputs.nix-darwin.lib.darwinSystem {
 
   modules = [
     ../modules/darwin/common.nix
-    inputs.nix-index-database.darwinModules.nix-index
-    { programs.nix-index-database.comma.enable = true; }
     { nixpkgs.overlays = import ./overlays.nix { inherit inputs; }; }
     inputs.home-manager.darwinModules.home-manager
     {

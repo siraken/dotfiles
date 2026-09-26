@@ -1,7 +1,7 @@
 # NixOS host builder.
 #
 # The counterpart to `mk-darwin-host.nix`: holds the wiring that `nixos-vm` and
-# `wsl-nixos` had duplicated (binary caches, nix-index, overlays, home-manager).
+# `wsl-nixos` had duplicated (binary caches, overlays, home-manager).
 # `./configuration.nix` and any platform module (e.g. NixOS-WSL) are passed in
 # through `modules`.
 #
@@ -32,8 +32,6 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     { nixpkgs.hostPlatform = system; }
     ../modules/nix-caches.nix
-    inputs.nix-index-database.nixosModules.nix-index
-    { programs.nix-index-database.comma.enable = true; }
     { nixpkgs.overlays = import ./overlays.nix { inherit inputs; }; }
     inputs.home-manager.nixosModules.home-manager
     {
