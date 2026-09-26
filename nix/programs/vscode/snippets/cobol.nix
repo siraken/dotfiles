@@ -1,0 +1,14 @@
+# COBOL snippets
+{
+  Initialize = {
+    prefix = [ "init" ];
+    body = [
+      "PROGRAM-ID. HELLO."
+      "PROCEDURE DIVISION."
+      "MAIN SECTION."
+      "\tDISPLAY \"HELLO WORLD\"."
+      "STOP RUN."
+    ];
+    description = "";
+  };
+}

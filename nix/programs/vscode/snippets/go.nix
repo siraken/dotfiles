@@ -1,0 +1,16 @@
+# Go snippets
+{
+  "Create main function" = {
+    prefix = [ "main" ];
+    body = [
+      "package main$1\n"
+      "import ("
+      "\t\"fmt\""
+      ")\n"
+      "func main() {"
+      "\tfmt.Println(\"Hello World\")"
+      "}"
+    ];
+    description = "";
+  };
+}
