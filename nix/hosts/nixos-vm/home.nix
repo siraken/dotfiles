@@ -7,6 +7,7 @@
     # This VM stays on the standard profile: no coding agents, emacs, or 1Password
     # tooling. It only adds a graphical desktop on top.
     ../../home/profiles/standard.nix
+    ../../modules/home/nixos-host.nix
     # host-specific programs
     ../../programs/fastfetch
     ../../programs/ghostty

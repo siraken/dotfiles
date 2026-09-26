@@ -203,14 +203,18 @@
           apps =
             let
               darwinApp = mkApp pkgs;
+              homeManager = "${home-manager.packages.${system}.home-manager}/bin/home-manager";
+              # nix-darwin owns the OS layer and home-manager the user
+              # environment; apply both, OS first.
+              switchHost = host: ''
+                set -e
+                sudo darwin-rebuild switch --flake ${self}#${host}
+                ${homeManager} switch -b ${backupFileExtension} --flake ${self}#${userProfile.username}@${host}
+              '';
             in
             {
-              mbp = darwinApp "mbp" ''
-                sudo darwin-rebuild switch --flake ${self}#siraken-mbp
-              '';
-              macmini = darwinApp "macmini" ''
-                sudo darwin-rebuild switch --flake ${self}#siraken-macmini
-              '';
+              mbp = darwinApp "mbp" (switchHost "siraken-mbp");
+              macmini = darwinApp "macmini" (switchHost "siraken-macmini");
               gc = darwinApp "gc" ''
                 nix store gc
               '';
@@ -220,25 +224,25 @@
       flake = {
         darwinConfigurations = {
           "siraken-mbp" = import ./nix/hosts/siraken-mbp {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
           "siraken-macmini" = import ./nix/hosts/siraken-macmini {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
         };
 
         nixosConfigurations = {
           "nixos-vm" = import ./nix/hosts/nixos-vm {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
           "wsl-nixos" = import ./nix/hosts/wsl-nixos {
-            inherit inputs userProfile backupFileExtension;
+            inherit inputs userProfile;
           };
         };
 
         # nixOnDroidConfigurations = {
         #   "pixel10" = import ./nix/hosts/pixel10 {
-        #     inherit inputs userProfile backupFileExtension;
+        #     inherit inputs userProfile;
         #   };
         # };
 

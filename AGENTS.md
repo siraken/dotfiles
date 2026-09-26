@@ -8,22 +8,32 @@
 # Install Nix
 curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
 
+# The OS layer (nix-darwin / NixOS) and the user environment (standalone
+# home-manager) are applied separately, OS first.
+
 # Install nix-darwin (macOS only)
 cd dotfiles
 sudo nix run nix-darwin#darwin-rebuild -- switch --flake .#siraken-mbp
 
-# Build and apply system configuration
-sudo darwin-rebuild build --flake .#siraken-mbp
+# macOS: both layers at once (`nix run .#macmini` for the Mac mini)
+nix run .#mbp
+
+# macOS: one layer at a time
 sudo darwin-rebuild switch --flake .#siraken-mbp
+home-manager switch -b hm-backup --flake .#siraken@siraken-mbp
+
+# NixOS (wsl-nixos, nixos-vm)
+sudo nixos-rebuild switch --flake .#wsl-nixos
+home-manager switch -b hm-backup --flake .#siraken@wsl-nixos
+
+# First run on a host without the home-manager CLI yet
+nix run home-manager/master -- switch -b hm-backup --flake .#siraken@wsl-nixos
 
 # For WSL/Ubuntu (home-manager only, no system-level changes)
-home-manager switch --flake .#siraken@wsl-ubuntu
+home-manager switch -b hm-backup --flake .#siraken@wsl-ubuntu
 
 # Any other host, without cloning (generic profile: base / standard / full)
 nix run home-manager/master -- switch --flake github:siraken/dotfiles#siraken@base-x86_64-linux
-
-# For WSL/NixOS (full NixOS system configuration)
-sudo nixos-rebuild switch --flake .#wsl-nixos
 
 # Garbage collection
 nix store gc
@@ -65,10 +75,10 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
 - `nix/services/` - Service modules. Everything under `nix/services/darwin/` (AeroSpace, JankyBorders, Sketchybar) is a nix-darwin module imported by `nix/modules/darwin/workstation.nix`; home-manager never manages the window manager.
 - `nix/home/profiles/` - Layered home-manager profiles: `base` (production / SSH-only hosts) ⊂ `standard` ⊂ `full` (daily drivers), plus `darwin` (macOS-only additions). Hosts import one of them instead of listing programs.
-- `nix/home/default.nix` - Registry of every standalone home-manager configuration: `siraken@<host>` for known hosts and `siraken@<profile>-<system>` for generic ones, all built with `nix/lib/mk-home.nix`. The `siraken@<host>` entries of nix-darwin / NixOS hosts must not be applied while those hosts still embed home-manager.
+- `nix/home/default.nix` - Registry of every standalone home-manager configuration: `siraken@<host>` for known hosts and `siraken@<profile>-<system>` for generic ones, all built with `nix/lib/mk-home.nix`. nix-darwin / NixOS hosts do not embed home-manager; their user environment is always this standalone entry.
 - `nix/home/<name>/` - Home module of a host that has no system configuration here (e.g. `wsl-ubuntu`)
 - `nix/lib/` - Configuration builders: `mk-darwin-host.nix`, `mk-nixos-host.nix`, `mk-home.nix` (standalone home-manager)
-- `nix/modules/` - Shared modules: `packages.nix` and `aliases.nix` (split into `base` / `standard` / `full` tiers, each consumed by the matching profile), shells, paths, variables, binary caches (`nix-cache-list.nix`, used by both the OS-level `nix-caches.nix` and `home/nix-caches.nix`), darwin common, mk-repo-link. nix-index + comma belong to the `standard` home-manager profile, not the OS layer.
+- `nix/modules/` - Shared modules: `packages.nix` and `aliases.nix` (split into `base` / `standard` / `full` tiers, each consumed by the matching profile), shells, paths, variables, binary caches (`nix-cache-list.nix`, used by both the OS-level `nix-caches.nix` and `home/nix-caches.nix`), `darwin/base.nix` (every Mac: nix, SSH, no sleep) and `darwin/workstation.nix` (a Mac you sit in front of: macOS defaults, keyboard, fonts, window manager), `home/nixos-host.nix` (what home-manager used to inherit from NixOS), mk-repo-link. nix-index + comma belong to the `standard` home-manager profile, not the OS layer.
 - `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
 - `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.claude/settings.json`)
 

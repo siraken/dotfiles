@@ -1,3 +1,6 @@
+# nix-darwin settings every Mac gets, including one that is only reached over
+# SSH (siraken-macmini). Anything for a Mac you sit in front of — macOS
+# defaults, keyboard, fonts, the window manager — belongs in `workstation.nix`.
 {
   pkgs,
   userProfile,
@@ -38,6 +41,15 @@
   };
 
   networking.hostName = hostName;
+
+  # Reachable over SSH at any time.
+  services.openssh.enable = true;
+  power.sleep.computer = "never";
+
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    watchIdAuth = true;
+  };
 
   environment = {
     shells = import ../shells.nix { inherit pkgs; };
