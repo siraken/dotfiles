@@ -42,12 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -86,7 +80,6 @@
       treefmt-nix,
       git-hooks,
       llm-agents,
-      nix-on-droid,
       nixos-wsl,
       op-shell-plugins,
       # dotfiles-private,
@@ -199,7 +192,7 @@
             siraken-macmini = self.darwinConfigurations.siraken-macmini.system;
           };
         }
-        // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
+        // {
           apps =
             let
               darwinApp = mkApp pkgs;
@@ -213,6 +206,19 @@
               '';
             in
             {
+              # Prints the binary cache settings for a system nix.conf. Used on a
+              # non-NixOS Linux host, where home-manager does not touch Nix's
+              # configuration (see README).
+              nix-cache-conf =
+                let
+                  caches = import ./nix/modules/nix-cache-list.nix;
+                in
+                mkApp pkgs "nix-cache-conf" ''
+                  echo "extra-substituters = ${nixpkgs.lib.concatStringsSep " " caches.substituters}"
+                  echo "extra-trusted-public-keys = ${nixpkgs.lib.concatStringsSep " " caches.trusted-public-keys}"
+                '';
+            }
+            // nixpkgs.lib.optionalAttrs (system == "aarch64-darwin") {
               mbp = darwinApp "mbp" (switchHost "siraken-mbp");
               macmini = darwinApp "macmini" (switchHost "siraken-macmini");
               gc = darwinApp "gc" ''
@@ -239,12 +245,6 @@
             inherit inputs userProfile;
           };
         };
-
-        # nixOnDroidConfigurations = {
-        #   "pixel10" = import ./nix/hosts/pixel10 {
-        #     inherit inputs userProfile;
-        #   };
-        # };
 
         # Standalone home-manager: known hosts (`siraken@<host>`) and generic
         # profiles (`siraken@<profile>-<system>`). See nix/home/default.nix.

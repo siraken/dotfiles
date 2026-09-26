@@ -1,0 +1,12 @@
+# Shell script snippets
+{
+  Initialize = {
+    prefix = [ "init" ];
+    body = [
+      "#!/bin/bash\n"
+      "CMD=$1"
+      "ARGS=\${@:2}"
+    ];
+    description = "";
+  };
+}

@@ -1,0 +1,18 @@
+# Git commit snippets
+{
+  feat = {
+    prefix = [ "feat" ];
+    body = [ "feat(\${1:scope}): \${2:message}" ];
+    description = "";
+  };
+  fix = {
+    prefix = [ "fix" ];
+    body = [ "fix(\${1:scope}): \${2:message}" ];
+    description = "";
+  };
+  chore = {
+    prefix = [ "chore" ];
+    body = [ "chore(\${1:scope}): \${2:message}" ];
+    description = "";
+  };
+}

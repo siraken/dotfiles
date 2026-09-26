@@ -1,0 +1,18 @@
+# C snippets
+{
+  "Hello World" = {
+    prefix = [ "helloworld" ];
+    body = [
+      "#include <stdio.h>"
+      ""
+      "int main(void) {"
+      "    "
+      "  char text[] = \"Hello, World\";"
+      "  printf(\"%s\\n\", text);"
+      ""
+      "  return 0;"
+      "}"
+    ];
+    description = "";
+  };
+}

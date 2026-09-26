@@ -1,0 +1,12 @@
+# TypeScript snippets
+{
+  "Create an arrow function" = {
+    prefix = [ "af" ];
+    body = [
+      "const \${1:functionName} = () => {"
+      "\t$2"
+      "}"
+    ];
+    description = "";
+  };
+}

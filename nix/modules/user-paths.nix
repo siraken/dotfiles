@@ -38,12 +38,4 @@ in
   state = app: mkPath stateBase app;
   cache = app: mkPath cacheBase app;
   log = app: mkPath logBase app;
-
-  # Convenience aliases for common patterns
-  # Usage: userPaths.dataDir "postgresql" -> ~/.local/share/postgresql
-  configDir = app: mkPath configBase app;
-  dataDir = app: mkPath dataBase app;
-  stateDir = app: mkPath stateBase app;
-  cacheDir = app: mkPath cacheBase app;
-  logDir = app: mkPath logBase app;
 }

@@ -1,12 +1,10 @@
 {
   config,
-  pkgs,
   userProfile,
   ...
 }:
 let
   homeDir = config.users.users.${userProfile.username}.home;
-  userPaths = import ../../modules/user-paths.nix { inherit homeDir; };
 in
 {
   imports = [
@@ -45,19 +43,5 @@ in
         };
       }
     ];
-  };
-
-  customServices.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_14;
-    command = [
-      "${pkgs.postgresql_14}/bin/postgres"
-      "-D"
-      (userPaths.dataDir "postgresql")
-    ];
-    environment = {
-      LC_ALL = "en_US.UTF-8";
-      LANG = "en_US.UTF-8";
-    };
   };
 }

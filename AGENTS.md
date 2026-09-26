@@ -61,7 +61,6 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `siraken@<host>` / `siraken@<profile>-<system>` - standalone home-manager configurations (see `nix/home/default.nix`)
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
-  - `pixel10` - Android (nix-on-droid) configuration (currently commented out in flake.nix)
 
 ### Key Components
 
@@ -78,7 +77,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - `nix/home/default.nix` - Registry of every standalone home-manager configuration: `siraken@<host>` for known hosts and `siraken@<profile>-<system>` for generic ones, all built with `nix/lib/mk-home.nix`. nix-darwin / NixOS hosts do not embed home-manager; their user environment is always this standalone entry.
 - `nix/home/<name>/` - Home module of a host that has no system configuration here (e.g. `wsl-ubuntu`)
 - `nix/lib/` - Configuration builders: `mk-darwin-host.nix`, `mk-nixos-host.nix`, `mk-home.nix` (standalone home-manager)
-- `nix/modules/` - Shared modules: `packages.nix` and `aliases.nix` (split into `base` / `standard` / `full` tiers, each consumed by the matching profile), shells, paths, variables, binary caches (`nix-cache-list.nix`, used by both the OS-level `nix-caches.nix` and `home/nix-caches.nix`), `darwin/base.nix` (every Mac: nix, SSH, no sleep) and `darwin/workstation.nix` (a Mac you sit in front of: macOS defaults, keyboard, fonts, window manager), `home/nixos-host.nix` (what home-manager used to inherit from NixOS), mk-repo-link. nix-index + comma belong to the `standard` home-manager profile, not the OS layer.
+- `nix/modules/` - Shared modules: `packages.nix` and `aliases.nix` (split into `base` / `standard` / `full` tiers, each consumed by the matching profile), shells, paths, variables, binary caches (`nix-cache-list.nix`, applied by the OS-level `nix-caches.nix`; home-manager never writes Nix's configuration — on a non-NixOS Linux host the caches go in the system nix.conf via `nix run .#nix-cache-conf`), `darwin/base.nix` (every Mac: nix, SSH, no sleep) and `darwin/workstation.nix` (a Mac you sit in front of: macOS defaults, keyboard, fonts, window manager), `home/nixos-host.nix` (what home-manager used to inherit from NixOS), mk-repo-link. nix-index + comma belong to the `standard` home-manager profile, not the OS layer.
 - `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
 - `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.claude/settings.json`)
 
@@ -126,7 +125,7 @@ Manages 40+ tool configurations across multiple categories:
 
 - `aarch64-darwin` - Apple Silicon Macs (primary)
 - `x86_64-linux` - WSL/Ubuntu and NixOS
-- `aarch64-linux` - Android (nix-on-droid, pixel10)
+- `aarch64-linux` - NixOS VM (nixos-vm)
 
 ## Important Files
 
