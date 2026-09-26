@@ -14,6 +14,9 @@
     # ../../programs/fish # disabled due to fisher hash mismatch
   ];
 
+  # Keep the out-of-store links this VM has always used (needs ~/dotfiles).
+  dotfiles.linkMode = "outOfStore";
+
   home = {
     stateVersion = "26.05";
 

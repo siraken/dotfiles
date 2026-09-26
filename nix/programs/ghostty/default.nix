@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, repoPath, ... }:
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
 in
@@ -16,7 +16,7 @@ in
       # `config-file` directive, so they are editable in place (ghostty reloads
       # without a rebuild). Only the host-varying `font-size` stays in Nix,
       # alongside the darwin/linux `package` choice. See #70.
-      config-file = "${config.home.homeDirectory}/dotfiles/config/ghostty/config";
+      config-file = "${repoPath "config/ghostty/config"}";
       font-size = if isDarwin then 16 else 12;
     };
   };

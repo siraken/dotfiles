@@ -75,8 +75,10 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Symlink Management**:
 
-- Native config files in `config/` and `home/` are linked into place as **out-of-store symlinks** via the shared `mkRepoLink` helper (`nix/modules/home/mk-repo-link.nix`), so they are editable in place without a rebuild (assumes the repo is checked out at `~/dotfiles`).
-- Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, tmux `source-file`, git `includes`, shells `source`, emacs `load-file`.
+- Native config files in `config/` and `home/` are linked into place via the shared `mkRepoLink` helper (`nix/modules/home/mk-repo-link.nix`). Where they point is set by `dotfiles.linkMode`:
+  - `outOfStore` (set by the `full` profile): symlinks into the checkout at `~/dotfiles`, editable in place without a rebuild.
+  - `store` (the default, used by `base` / `standard`): the copy of the flake source in the Nix store, so a host can apply the flake straight from GitHub without cloning it.
+- Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, tmux `source-file`, git `includes`, shells `source`, emacs `load-file`, vim `source`. They take the path from the `repoPath` helper, never a hard-coded `~/dotfiles/...`, so they follow `dotfiles.linkMode` too.
 - Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
 - nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
 

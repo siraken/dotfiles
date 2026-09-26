@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, repoPath, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -40,7 +40,7 @@
     # options above, the shell, and plugins stay in Nix because they resolve
     # store paths. See #70.
     extraConfig = ''
-      source-file ${config.home.homeDirectory}/dotfiles/config/tmux/tmux.conf
+      source-file ${repoPath "config/tmux/tmux.conf"}
     '';
   };
 }

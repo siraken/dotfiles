@@ -5,6 +5,7 @@
   inputs,
   userProfile,
   isWSL ? false,
+  repoPath,
   ...
 }:
 let
@@ -116,7 +117,7 @@ in
     };
 
     includes = [
-      { path = "${config.home.homeDirectory}/dotfiles/config/git/config"; }
+      { path = "${repoPath "config/git/config"}"; }
       # git-personas.nix appends its generated include after this one, so
       # persona overrides win over the shared config.
     ];
@@ -129,7 +130,7 @@ in
   # pure and a machine without the file simply gets no client configuration.
   programs.gitPersonas = {
     enable = true;
-    personasFile = "${config.home.homeDirectory}/dotfiles/secrets.toml";
+    personasFile = "${config.dotfiles.path}/secrets.toml";
   };
 
   programs.gh = {

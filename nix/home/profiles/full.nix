@@ -22,6 +22,10 @@
     ../../programs/neovide
   ];
 
+  # Daily drivers always have the repo checked out at ~/dotfiles, so link repo
+  # files out of the store and keep them editable in place.
+  dotfiles.linkMode = lib.mkDefault "outOfStore";
+
   home = {
     sessionPath = [ "$COMPOSER_HOME/vendor/bin" ];
     sessionVariables = import ../../modules/variable.nix { inherit lib pkgs; };
