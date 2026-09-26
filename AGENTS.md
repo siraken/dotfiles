@@ -94,6 +94,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, tmux `source-file`, git `includes`, shells `source`, emacs `load-file`, vim `source`. They take the path from the `repoPath` helper, never a hard-coded `~/dotfiles/...`, so they follow `dotfiles.linkMode` too.
 - Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
 - nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
+- Exception: `home/.claude/settings.json` is **not** linked. It is the declarative base that `nix/programs/coding-agents/claude-settings.nix` merges into a regular `~/.claude/settings.json` on every switch (three-way, `merge-settings.jq`), so what Claude Code and other tools write at runtime (auto mode notes, hooks, `/config` changes, backups) stays in `~/.claude` and never reaches this public repo. Edit the repo file and switch to change a declared setting.
 
 **Per-persona git config (`secrets.toml`)**:
 
