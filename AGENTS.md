@@ -49,7 +49,6 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
   - `pixel10` - Android (nix-on-droid) configuration (currently commented out in flake.nix)
-  - `minimal` - Lightweight home-manager profile (standalone, not registered in flake.nix)
 
 ### Key Components
 
@@ -62,7 +61,9 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
 - `nix/services/` - Service modules (e.g. `darwin/aerospace.nix`, `darwin/sketchybar/`, `tailscale.nix`)
-- `nix/home/` - Standalone home-manager profiles (e.g. `wsl-ubuntu`, `minimal`)
+- `nix/home/profiles/` - Layered home-manager profiles: `base` (production / SSH-only hosts) ⊂ `standard` ⊂ `full` (daily drivers), plus `darwin` (macOS-only additions). Hosts import one of them instead of listing programs.
+- `nix/home/<name>/` - Standalone home-manager configurations (e.g. `wsl-ubuntu`), built with `nix/lib/mk-home.nix`
+- `nix/lib/` - Configuration builders: `mk-darwin-host.nix`, `mk-nixos-host.nix`, `mk-home.nix` (standalone home-manager)
 - `nix/modules/` - Shared modules (aliases, nixpkgs, shells, paths, variables, darwin common, home common, mk-repo-link)
 - `config/` - Native config files mirroring `~/.config` (e.g. `config/ghostty/config`, `config/nano/nanorc`)
 - `home/` - Native config files mirroring `~` for non-XDG paths (e.g. `home/.claude/settings.json`)

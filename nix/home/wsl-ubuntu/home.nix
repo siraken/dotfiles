@@ -19,10 +19,7 @@
   };
 
   imports = [
-    ../../modules/home/profile-full.nix
-    # nixvim is wired in through `sharedModules` on the nix-darwin / NixOS hosts;
-    # this profile is standalone home-manager, so it imports the module itself.
-    inputs.nixvim.homeModules.nixvim
+    ../profiles/full.nix
     # inputs.dotfiles-private.homeManagerModules.default
     # host-specific programs
     ../../programs/fish

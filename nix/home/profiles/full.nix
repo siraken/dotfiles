@@ -1,8 +1,8 @@
-# The full workstation profile: `profile-core` plus the interactive tooling that
+# The full workstation profile: `standard` plus the interactive tooling that
 # every daily-driver machine shares (siraken-mbp, siraken-macmini, wsl-ubuntu,
-# wsl-nixos). `nixos-vm` deliberately stays on `profile-core`.
+# wsl-nixos). `nixos-vm` deliberately stays on `standard`.
 #
-# macOS-only additions live in `profile-darwin.nix`.
+# macOS-only additions live in `darwin.nix`.
 {
   pkgs,
   lib,
@@ -11,7 +11,7 @@
 }:
 {
   imports = [
-    ./profile-core.nix
+    ./standard.nix
     inputs.op-shell-plugins.hmModules.default
     # programs (cross-platform)
     ../../programs/1password-shell-plugins
@@ -24,7 +24,7 @@
 
   home = {
     sessionPath = [ "$COMPOSER_HOME/vendor/bin" ];
-    sessionVariables = import ../variable.nix { inherit lib pkgs; };
+    sessionVariables = import ../../modules/variable.nix { inherit lib pkgs; };
 
     packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.gcc

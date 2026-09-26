@@ -30,7 +30,7 @@ in
 
       terminal = {
         # tmux (`programs.tmux.shell`) と zellij (`default_shell`) に合わせて bash。
-        # atuin / starship / zoxide の bash 統合は profile-core で有効なので、
+        # atuin / starship / zoxide の bash 統合は standard プロファイルで有効なので、
         # ログインシェル (zsh) と操作感は変わらない。
         default_shell = "${pkgs.bash}/bin/bash";
         new_cwd = "follow";

@@ -4,9 +4,9 @@
 }:
 {
   imports = [
-    # This VM stays on the core profile: no coding agents, emacs, or 1Password
+    # This VM stays on the standard profile: no coding agents, emacs, or 1Password
     # tooling. It only adds a graphical desktop on top.
-    ../../modules/home/profile-core.nix
+    ../../home/profiles/standard.nix
     # host-specific programs
     ../../programs/fastfetch
     ../../programs/ghostty
