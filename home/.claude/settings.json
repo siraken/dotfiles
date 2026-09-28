@@ -64,20 +64,6 @@
       "Bash(mongod:*)"
     ]
   },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash '/Users/siraken/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
-  },
   "enabledPlugins": {
     "agent-sdk-dev@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
@@ -109,10 +95,6 @@
   "theme": "dark",
   "preferredNotifChannel": "terminal_bell",
   "voiceEnabled": true,
-  "statusLine": {
-    "type": "command",
-    "command": "/Users/siraken/.claude/xirp-statusline-wrapper.sh"
-  },
   "autoMode": {
     "soft_deny": [
       "$defaults",
