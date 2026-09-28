@@ -67,6 +67,8 @@ in
   programs.antigravity-cli = {
     enable = true;
     package = pkgs.llm-agents.antigravity-cli;
+    # Written to ~/.gemini/AGENTS.md, picked up through context.fileName below.
+    context.AGENTS = instructions;
     commands = { };
     settings = {
       context = {
