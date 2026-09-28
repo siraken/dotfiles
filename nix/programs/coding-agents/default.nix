@@ -8,6 +8,7 @@ let
     - Unless otherwise specified, always respond in 日本語.
     - My name is ${userProfile.nameJa} (${userProfile.nameKana}), or ${userProfile.name} in English.
     - `${userProfile.username}` is my username and `${userProfile.org}` is my primary organization name.
+    - My default shell is bash. Assume bash syntax for shell commands, scripts, and one-liners.
     - When using current date/time, always reference accurate date/time using `date` command or similar methods.
     - If you don't know something or if something is unclear, don't force yourself to proceed with the task and communicate that to me clearly.
     - When working with projects, determine which package manager to use by checking lock files (package-lock.json, yarn.lock, pnpm-lock.yaml, etc.) and project configuration files first.
@@ -66,6 +67,8 @@ in
   programs.antigravity-cli = {
     enable = true;
     package = pkgs.llm-agents.antigravity-cli;
+    # Written to ~/.gemini/AGENTS.md, picked up through context.fileName below.
+    context.AGENTS = instructions;
     commands = { };
     settings = {
       context = {
