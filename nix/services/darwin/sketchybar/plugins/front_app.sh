@@ -6,7 +6,17 @@
 # アプリのアイコンはワークスペース側（sketchybar-app-font）で表示しているため、
 # ここではタイトルのみを出す。icon の余白も落として左右対称にする。
 
-FRONT_APP="$(/usr/bin/lsappinfo info -only name $(/usr/bin/lsappinfo front) | cut -d '"' -f4)"
+#
+# $INFO が空になる起動直後 (SENDER=forced) だけ lsappinfo に問い合わせる。
+# macOS 27 から -only が無視され、1 行目が `"LSDisplayName"="Foo"` ではなく
+# `"Foo" ASN:... (in front)` になった上に後続行まで出力されるようになった。
+# どちらの形でも名前は 1 行目の最後の引用符の中にあるので、そこだけを取る。
+if [[ $SENDER == "front_app_switched" ]]; then
+  FRONT_APP="$INFO"
+else
+  FRONT_APP="$(/usr/bin/lsappinfo info -only name "$(/usr/bin/lsappinfo front)" |
+    sed -n '1s/.*"\([^"]*\)".*/\1/p')"
+fi
 
 if [[ $FRONT_APP == "" ]]; then
   FRONT_APP="Desktop"
