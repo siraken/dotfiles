@@ -2,7 +2,12 @@
 {
   programs.nixvim = {
     plugins = {
-      mini-icons.enable = true;
+      # Also serves plugins that only know nvim-web-devicons (neo-tree, …),
+      # so web-devicons itself is not installed.
+      mini-icons = {
+        enable = true;
+        mockDevIcons = true;
+      };
 
       mini-ai = {
         enable = true;
