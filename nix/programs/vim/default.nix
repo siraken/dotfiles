@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ./ai
     ./coding
     ./completion
     ./editor

@@ -85,14 +85,6 @@
           plugins.spelling = true;
           spec = [
             {
-              "__unkeyed-1" = "<leader>a";
-              group = "ai";
-              mode = [
-                "n"
-                "v"
-              ];
-            }
-            {
               "__unkeyed-1" = "<leader>b";
               group = "buffer";
               mode = [
