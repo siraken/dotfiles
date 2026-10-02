@@ -2,8 +2,6 @@
 {
   programs.nixvim = {
     plugins = {
-      comment.enable = true;
-
       conform-nvim = {
         enable = true;
         settings = {
