@@ -25,11 +25,7 @@
             globalstatus = true;
             component_separators = "";
             section_separators = "";
-            disabled_filetypes.statusline = [
-              "dashboard"
-              "alpha"
-              "neo-tree"
-            ];
+            disabled_filetypes.statusline = [ "neo-tree" ];
           };
           sections = {
             lualine_a = [ ];
@@ -68,7 +64,6 @@
           };
           extensions = [
             "neo-tree"
-            "lazy"
             "trouble"
             "fzf"
           ];
