@@ -7,6 +7,16 @@ vim.diagnostic.config({
     prefix = "●",
   },
   severity_sort = true,
+  -- Show the diagnostic in a float after the default ]d / [d jumps, as the
+  -- deprecated goto_next/goto_prev used to (`float` is deprecated in 0.12).
+  jump = {
+    on_jump = function(diagnostic, bufnr)
+      if not diagnostic then
+        return
+      end
+      vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+    end,
+  },
 })
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
