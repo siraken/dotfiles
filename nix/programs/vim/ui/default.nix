@@ -135,14 +135,6 @@
               ];
             }
             {
-              "__unkeyed-1" = "<leader>w";
-              group = "windows";
-              mode = [
-                "n"
-                "v"
-              ];
-            }
-            {
               "__unkeyed-1" = "<leader>x";
               group = "diagnostics/quickfix";
               mode = [
