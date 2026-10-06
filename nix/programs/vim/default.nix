@@ -338,19 +338,7 @@
         action = "<cmd>enew<cr>";
         options.desc = "New file";
       }
-      # Diagnostic navigation
-      {
-        mode = "n";
-        key = "]d";
-        action.__raw = "vim.diagnostic.goto_next";
-        options.desc = "Next diagnostic";
-      }
-      {
-        mode = "n";
-        key = "[d";
-        action.__raw = "vim.diagnostic.goto_prev";
-        options.desc = "Prev diagnostic";
-      }
+      # Diagnostic navigation: ]d / [d are Neovim defaults (see lsp/diagnostics.lua)
       {
         mode = "n";
         key = "<leader>cd";
