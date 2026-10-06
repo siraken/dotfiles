@@ -101,23 +101,7 @@
           settings.ft = [ "java" ];
         };
       };
-
-      # Clojure/Lisp
-      conjure = {
-        enable = true;
-        lazyLoad = {
-          enable = true;
-          settings.ft = [
-            "clojure"
-            "fennel"
-            "lisp"
-            "scheme"
-          ];
-        };
-      };
     };
-
-    globals."conjure#mapping#doc_word" = "K";
 
     keymaps = [
       {
