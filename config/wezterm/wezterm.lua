@@ -14,16 +14,9 @@ local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 -- help provide clearer error messages
 local config = wezterm.config_builder and wezterm.config_builder() or {}
 
--- Events -----------------------------------------------------------------
-
-wezterm.on("bell", function(window, _pane)
-  window:toast_notification("Claude Code", "Task completed", nil, 4000)
-end)
-
 -- General ----------------------------------------------------------------
 
 config.automatically_reload_config = true
-config.audible_bell = "SystemBeep"
 config.default_prog = { "bash", "-l" }
 config.exit_behavior = "Close"
 config.status_update_interval = 1000
