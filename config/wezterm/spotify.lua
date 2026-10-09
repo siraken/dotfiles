@@ -2,46 +2,13 @@ local wezterm = require("wezterm")
 
 local M = {}
 
--- Spotify information cache
-local spotify_cache = {
-  last_update = 0,
-  track = "",
-  artist = "",
-  is_playing = false,
-  is_available = false,
-}
-
 -- Cache duration in seconds
 local CACHE_DURATION = 5
 
--- Get Spotify status using AppleScript (macOS only)
-local function get_spotify_status()
-  local current_time = os.time()
+local IS_RUNNING_SCRIPT = 'tell application "System Events" to (name of processes) contains "Spotify"'
 
-  -- Return cached data if still valid
-  if current_time - spotify_cache.last_update < CACHE_DURATION then
-    return spotify_cache
-  end
-
-  local ok, _ = pcall(function()
-    -- Check if Spotify is running
-    local running_ok, running_stdout, _ = wezterm.run_child_process({
-      "osascript",
-      "-e",
-      'tell application "System Events" to (name of processes) contains "Spotify"',
-    })
-
-    if not running_ok or not running_stdout or running_stdout:match("false") then
-      spotify_cache.is_available = false
-      spotify_cache.last_update = current_time
-      return
-    end
-
-    -- Get current track information with a single AppleScript call
-    local info_ok, info_stdout, _ = wezterm.run_child_process({
-      "osascript",
-      "-e",
-      [[
+-- Prints "<track> by <artist>|<playing|paused|stopped>"
+local TRACK_INFO_SCRIPT = [[
         tell application "Spotify"
           if player state is playing then
             set trackName to name of current track
@@ -55,36 +22,67 @@ local function get_spotify_status()
             return "No track|stopped"
           end if
         end tell
-      ]],
-    })
+      ]]
 
-    if not info_ok or not info_stdout then
-      spotify_cache.is_available = false
-      spotify_cache.last_update = current_time
-      return
-    end
+-- Spotify information cache
+local spotify_cache = {
+  last_update = 0,
+  track = "",
+  artist = "",
+  is_playing = false,
+  is_available = false,
+}
 
-    local output = info_stdout:gsub("%s+$", "")
-    local track_artist, state = output:match("(.+)|(.+)")
+local function osascript(script)
+  return wezterm.run_child_process({ "osascript", "-e", script })
+end
 
-    if track_artist and state then
-      local track, artist = track_artist:match("(.+) by (.+)")
-
-      spotify_cache.track = track or "Unknown Track"
-      spotify_cache.artist = artist or "Unknown Artist"
-      spotify_cache.is_playing = (state == "playing")
-      spotify_cache.is_available = true
-    else
-      spotify_cache.is_available = false
-    end
-
-    spotify_cache.last_update = current_time
-  end)
-
-  if not ok then
-    spotify_cache.is_available = false
-    spotify_cache.last_update = current_time
+-- Query Spotify via AppleScript (macOS only).
+-- Returns { track, artist, is_playing }, or nil when it is unavailable.
+local function fetch_spotify_status()
+  local running_ok, running_stdout = osascript(IS_RUNNING_SCRIPT)
+  if not running_ok or not running_stdout or running_stdout:match("false") then
+    return nil
   end
+
+  local info_ok, info_stdout = osascript(TRACK_INFO_SCRIPT)
+  if not info_ok or not info_stdout then
+    return nil
+  end
+
+  local output = info_stdout:gsub("%s+$", "")
+  local track_artist, state = output:match("(.+)|(.+)")
+  if not (track_artist and state) then
+    return nil
+  end
+
+  local track, artist = track_artist:match("(.+) by (.+)")
+  return {
+    track = track or "Unknown Track",
+    artist = artist or "Unknown Artist",
+    is_playing = (state == "playing"),
+  }
+end
+
+-- Get Spotify status, refreshed at most once per CACHE_DURATION
+local function get_spotify_status()
+  local current_time = os.time()
+
+  -- Return cached data if still valid
+  if current_time - spotify_cache.last_update < CACHE_DURATION then
+    return spotify_cache
+  end
+
+  local ok, status = pcall(fetch_spotify_status)
+  if ok and status then
+    spotify_cache.track = status.track
+    spotify_cache.artist = status.artist
+    spotify_cache.is_playing = status.is_playing
+    spotify_cache.is_available = true
+  else
+    spotify_cache.is_available = false
+  end
+  spotify_cache.last_update = current_time
 
   return spotify_cache
 end

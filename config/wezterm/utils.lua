@@ -3,6 +3,11 @@ local colors = require("colors")
 
 local M = {}
 
+local DEFAULT_FG = colors.DEFAULT_FG
+local DEFAULT_BG = colors.TRANSPARENT
+
+-- Strings ----------------------------------------------------------------
+
 -- Truncate string to max length with ellipsis
 function M.truncate(str, max_len)
   if not str or max_len <= 0 then
@@ -19,11 +24,14 @@ function M.basename(s)
   return s:gsub("(.*[/\\])(.*)", "%2")
 end
 
-local DEFAULT_FG = colors.DEFAULT_FG
-local DEFAULT_BG = colors.TRANSPARENT
+-- Git --------------------------------------------------------------------
 
 -- Cache for git repo lookups (cwd -> repo name or false)
 local git_repo_cache = {}
+
+local function git(cwd, ...)
+  return wezterm.run_child_process({ "git", "-C", cwd, ... })
+end
 
 -- Get git branch name for the given directory
 function M.get_git_branch(cwd)
@@ -31,15 +39,7 @@ function M.get_git_branch(cwd)
     return nil
   end
 
-  local success, stdout, stderr = wezterm.run_child_process({
-    "git",
-    "-C",
-    cwd,
-    "rev-parse",
-    "--abbrev-ref",
-    "HEAD",
-  })
-
+  local success, stdout = git(cwd, "rev-parse", "--abbrev-ref", "HEAD")
   if success then
     return stdout:gsub("%s+", "")
   end
@@ -57,14 +57,7 @@ function M.get_project_name(cwd)
     return cached or nil
   end
 
-  local success, stdout = wezterm.run_child_process({
-    "git",
-    "-C",
-    cwd,
-    "rev-parse",
-    "--show-toplevel",
-  })
-
+  local success, stdout = git(cwd, "rev-parse", "--show-toplevel")
   if success and stdout then
     local path = stdout:gsub("%s+$", "")
     local name = path:match("([^/\\]+)$")
@@ -75,6 +68,8 @@ function M.get_project_name(cwd)
   git_repo_cache[cwd] = false
   return nil
 end
+
+-- Panes ------------------------------------------------------------------
 
 -- Get current working directory from pane (supports both Pane and PaneInformation)
 function M.get_cwd(pane)
@@ -97,14 +92,7 @@ function M.get_cwd(pane)
   return nil
 end
 
--- Add icon element to status bar
-function M.add_icon(elems, icon)
-  table.insert(elems, { Foreground = icon.Foreground })
-  table.insert(elems, { Background = DEFAULT_BG })
-  table.insert(elems, { Text = " " })
-  table.insert(elems, { Text = icon.Text })
-  table.insert(elems, { Text = " " })
-end
+-- Status bar -------------------------------------------------------------
 
 -- Add element with header icon and text to status bar
 function M.add_element(elems, header, str)
@@ -125,6 +113,8 @@ function M.add_element(elems, header, str)
   -- Space: end
   table.insert(elems, { Text = " " })
 end
+
+-- Window overrides -------------------------------------------------------
 
 -- Toggle background transparency (peek behind window)
 function M.toggle_transparency(window)

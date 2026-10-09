@@ -1,26 +1,17 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-local is_mac = string.find(wezterm.target_triple, "apple")
-local link_mods = is_mac and "SUPER" or "CTRL"
+local is_darwin = string.find(wezterm.target_triple, "apple") ~= nil
+local link_mods = is_darwin and "SUPER" or "CTRL"
+
+local LEFT_CLICK = { Up = { streak = 1, button = "Left" } }
+local LEFT_DRAG = { Drag = { streak = 1, button = "Left" } }
 
 return {
   -- macOS: Cmd+Click / other: Ctrl+Click でリンクを開く
-  {
-    event = { Up = { streak = 1, button = "Left" } },
-    mods = link_mods,
-    action = act.OpenLinkAtMouseCursor,
-  },
+  { event = LEFT_CLICK, mods = link_mods, action = act.OpenLinkAtMouseCursor },
   -- 修飾キーなしクリックではリンクを開かない（デフォルト動作を上書き）
-  {
-    event = { Up = { streak = 1, button = "Left" } },
-    mods = "NONE",
-    action = act.CompleteSelection("ClipboardAndPrimarySelection"),
-  },
+  { event = LEFT_CLICK, mods = "NONE", action = act.CompleteSelection("ClipboardAndPrimarySelection") },
   -- Cmd+ドラッグによるウィンドウ移動を無効化
-  {
-    event = { Drag = { streak = 1, button = "Left" } },
-    mods = link_mods,
-    action = act.DisableDefaultAssignment,
-  },
+  { event = LEFT_DRAG, mods = link_mods, action = act.DisableDefaultAssignment },
 }
