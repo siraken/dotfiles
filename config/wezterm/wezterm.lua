@@ -72,8 +72,13 @@ elseif is_windows then
   config.launch_menu = {
     { label = "PowerShell", domain = { DomainName = "local" }, args = { "powershell.exe", "-NoLogo" } },
   }
-  config.font_size = 14
+  -- Points are rendered at 96 dpi here but 72 dpi on macOS, so 12 matches the
+  -- pixel size of the Mac's 16 on the same 1080p display.
+  config.font_size = 12
   config.line_height = 1.2
+  -- The default caps rendering at 60 fps; match the 164 Hz main display
+  config.max_fps = 164
+  config.animation_fps = 164
   config.window_background_opacity = 0.85
   config.win32_system_backdrop = "Mica"
 else

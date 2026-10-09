@@ -30,7 +30,7 @@ wezterm.on("augment-command-palette", function(_window, _pane)
     },
     {
       brief = "Set Fully Opaque Background",
-      icon = "md_circle",
+      icon = "md_circle_slice_8",
       action = wezterm.action_callback(utils.set_opaque),
     },
   }
