@@ -79,8 +79,11 @@ elseif is_windows then
   -- The default caps rendering at 60 fps; match the 164 Hz main display
   config.max_fps = 164
   config.animation_fps = 164
-  config.window_background_opacity = 0.85
-  config.win32_system_backdrop = "Mica"
+  -- Plain see-through without a backdrop: Acrylic blurs far more than the
+  -- Mac's blur of 13 (and its strength is not configurable), while Mica does
+  -- not show what is behind the window at all.
+  config.window_background_opacity = 0.95
+  config.win32_system_backdrop = "Disable"
 else
   config.font_size = 14
   config.line_height = 1.2
