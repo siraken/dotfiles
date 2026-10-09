@@ -3,6 +3,9 @@ local colors = require("colors")
 
 local M = {}
 
+M.is_darwin = string.find(wezterm.target_triple, "apple") ~= nil
+M.is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
+
 local DEFAULT_FG = colors.DEFAULT_FG
 local DEFAULT_BG = colors.TRANSPARENT
 
@@ -26,6 +29,10 @@ end
 
 -- Git --------------------------------------------------------------------
 
+-- On Windows the panes live in WSL, so their cwd is a Linux path that the
+-- Windows git cannot open. Skip the lookups there instead of spawning a
+-- process on every status update for nothing.
+
 -- Cache for git repo lookups (cwd -> repo name or false)
 local git_repo_cache = {}
 
@@ -35,7 +42,7 @@ end
 
 -- Get git branch name for the given directory
 function M.get_git_branch(cwd)
-  if not cwd then
+  if not cwd or M.is_windows then
     return nil
   end
 
@@ -48,7 +55,7 @@ end
 
 -- Get project name (git repository root directory name, with cache)
 function M.get_project_name(cwd)
-  if not cwd then
+  if not cwd or M.is_windows then
     return nil
   end
 

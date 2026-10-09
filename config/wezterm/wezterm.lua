@@ -4,11 +4,30 @@ require("event")
 require("format")
 
 local wezterm = require("wezterm")
+local utils = require("utils")
 local keybinds = require("keybinds")
 local mouse_bindings = require("mousebinds")
 
-local is_darwin = string.find(wezterm.target_triple, "apple") ~= nil
-local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
+local is_darwin = utils.is_darwin
+local is_windows = utils.is_windows
+
+-- WSL distribution new panes open in on Windows. Falls back to the first
+-- distribution that is not Docker Desktop's when it is not installed.
+local PREFERRED_WSL_DISTRO = "Ubuntu"
+
+local function pick_wsl_domain(domains)
+  for _, domain in ipairs(domains) do
+    if domain.distribution == PREFERRED_WSL_DISTRO then
+      return domain.name
+    end
+  end
+  for _, domain in ipairs(domains) do
+    if not domain.distribution:find("^docker%-desktop") then
+      return domain.name
+    end
+  end
+  return nil
+end
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -40,9 +59,21 @@ if is_darwin then
   config.window_decorations = "RESIZE"
   -- config.macos_window_dragging_behavior = "all"
 elseif is_windows then
-  config.default_prog = { "wsl.exe" }
-  config.default_cwd = ""
-  config.font_size = 12
+  -- Open panes in WezTerm's WSL domain instead of running wsl.exe as a Windows
+  -- program: WezTerm then knows the Linux cwd (reported via OSC 7, see
+  -- config/bash/osc7.sh) and new tabs / splits open in the same directory.
+  local wsl_domains = wezterm.default_wsl_domains()
+  for _, domain in ipairs(wsl_domains) do
+    domain.default_prog = { "bash", "-l" }
+  end
+  config.wsl_domains = wsl_domains
+  config.default_domain = pick_wsl_domain(wsl_domains)
+  -- Windows shells stay reachable from the launcher (Alt+L)
+  config.launch_menu = {
+    { label = "PowerShell", domain = { DomainName = "local" }, args = { "powershell.exe", "-NoLogo" } },
+  }
+  config.font_size = 14
+  config.line_height = 1.2
   config.window_background_opacity = 0.85
   config.win32_system_backdrop = "Mica"
 else

@@ -9,6 +9,13 @@ local CTRL_SHIFTED = { "CTRL", "SHIFT|CTRL" }
 local CTRL_SHIFT_OR_SUPER = { "SHIFT|CTRL", "SUPER" }
 local SHIFTED = { "NONE", "SHIFT" }
 
+-- Windows reserves nearly every Win-key shortcut (Win+L, Win+V, Win+1..9,
+-- Win+Shift+S, ...), and the Cmd+Shift Spotify controls call osascript, so
+-- bindings on SUPER / CMD are only registered off Windows.
+local function is_available(mods)
+  return not (utils.is_windows and (mods:find("SUPER") or mods:find("CMD")))
+end
+
 -- Expand { key, mods, action } specs into WezTerm key entries. `mods` may be a
 -- list, in which case the same action is bound once per modifier combination.
 local function bindings(...)
@@ -17,7 +24,9 @@ local function bindings(...)
     for _, spec in ipairs(specs) do
       local key, mods, action = spec[1], spec[2], spec[3]
       for _, m in ipairs(type(mods) == "table" and mods or { mods }) do
-        table.insert(result, { key = key, mods = m, action = action })
+        if is_available(m) then
+          table.insert(result, { key = key, mods = m, action = action })
+        end
       end
     end
   end
