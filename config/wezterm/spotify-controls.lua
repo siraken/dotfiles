@@ -1,51 +1,39 @@
 local wezterm = require("wezterm")
+local spotify = require("spotify")
 
 local M = {}
 
--- Spotify control functions
-function M.play_pause()
+local function tell_spotify(command)
   wezterm.run_child_process({
     "osascript",
     "-e",
-    'tell application "Spotify" to playpause',
+    'tell application "Spotify" to ' .. command,
   })
+end
+
+-- Spotify control functions
+function M.play_pause()
+  tell_spotify("playpause")
 end
 
 function M.next_track()
-  wezterm.run_child_process({
-    "osascript",
-    "-e",
-    'tell application "Spotify" to next track',
-  })
+  tell_spotify("next track")
 end
 
 function M.previous_track()
-  wezterm.run_child_process({
-    "osascript",
-    "-e",
-    'tell application "Spotify" to previous track',
-  })
+  tell_spotify("previous track")
 end
 
 function M.volume_up()
-  wezterm.run_child_process({
-    "osascript",
-    "-e",
-    'tell application "Spotify" to set sound volume to (sound volume + 10)',
-  })
+  tell_spotify("set sound volume to (sound volume + 10)")
 end
 
 function M.volume_down()
-  wezterm.run_child_process({
-    "osascript",
-    "-e",
-    'tell application "Spotify" to set sound volume to (sound volume - 10)',
-  })
+  tell_spotify("set sound volume to (sound volume - 10)")
 end
 
 -- Show current track information
 function M.show_track_info()
-  local spotify = require("spotify")
   local info = spotify.get_spotify_info()
 
   local window = wezterm.mux.get_active_window()
