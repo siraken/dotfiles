@@ -32,10 +32,14 @@
     initExtra = ''
       # Custom functions
       source ${config.home.homeDirectory}/.config/bash/function.sh
+
+      # Report the cwd to the terminal (OSC 7)
+      source ${config.home.homeDirectory}/.config/bash/osc7.sh
     '';
   };
 
   home.file = {
     ".config/bash/function.sh".source = mkRepoLink "config/bash/function.sh";
+    ".config/bash/osc7.sh".source = mkRepoLink "config/bash/osc7.sh";
   };
 }
