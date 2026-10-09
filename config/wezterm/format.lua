@@ -15,8 +15,8 @@ local function display_width(str)
 end
 
 -- Tab label: git project name, falling back to the running process. On Windows
--- every pane's process is wsl.exe (and git lookups are skipped), so use the
--- name of the directory reported by the shell instead.
+-- every WSL pane's process is wslhost.exe (and git lookups are skipped), so use
+-- the name of the directory reported by the shell instead.
 local function tab_label(pane)
   local cwd = utils.get_cwd(pane)
   local project = utils.get_project_name(cwd)
@@ -33,10 +33,15 @@ local function tab_label(pane)
 end
 
 wezterm.on("format-window-title", function(tab)
-  -- Windows shows the title in the OS title bar; wsl.exe tells nothing there,
-  -- so keep the title the program in the pane sets (e.g. Claude Code's task).
+  -- Windows shows the title in the OS title bar. Keep the title the program in
+  -- the pane sets (e.g. Claude Code's task); when nothing set one it is just
+  -- the executable (wslhost.exe), so show the tab label instead.
   if utils.is_windows then
-    return tab.active_pane.title
+    local title = tab.active_pane.title or ""
+    if title == "" or title:lower():match("%.exe$") then
+      return tab_label(tab.active_pane)
+    end
+    return title
   end
   return utils.basename(tab.active_pane.foreground_process_name)
 end)

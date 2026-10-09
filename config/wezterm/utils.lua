@@ -78,14 +78,18 @@ end
 
 -- Panes ------------------------------------------------------------------
 
--- Get current working directory from pane (supports both Pane and PaneInformation)
+-- Get current working directory from pane (supports both Pane and PaneInformation).
+-- Both are userdata that raise on unknown keys: a Pane has the method, a
+-- PaneInformation (format-tab-title) only the field, so try them separately.
 function M.get_cwd(pane)
   local ok, cwd_uri = pcall(function()
-    if type(pane.get_current_working_dir) == "function" then
-      return pane:get_current_working_dir()
-    end
-    return pane.current_working_dir
+    return pane:get_current_working_dir()
   end)
+  if not ok then
+    ok, cwd_uri = pcall(function()
+      return pane.current_working_dir
+    end)
+  end
 
   if not ok or not cwd_uri then
     return nil
