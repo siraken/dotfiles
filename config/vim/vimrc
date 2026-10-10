@@ -1,12 +1,11 @@
 " Static vim config sourced from programs.vim.extraConfig (see #70).
 autocmd!
 
+set encoding=utf-8
 scriptencoding utf-8
 filetype plugin indent on
 syntax enable
 colorscheme industry
-
-set nocompatible
 
 set signcolumn=yes
 set laststatus=2
@@ -24,7 +23,6 @@ set incsearch
 
 set noswapfile
 set nobackup
-set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,euc-jp,sjis,latin1
 set fileformats=unix,dos,mac
 
@@ -48,7 +46,7 @@ nnoremap - <C-x>
 " Select all
 nnoremap <C-a> gg<S-v>G
 
-" Spit window
+" Split window
 nnoremap ss :split<CR><C-W>w
 nnoremap sv :vsplit<CR><C-w>w
 
