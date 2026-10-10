@@ -4,7 +4,7 @@
 #
 # - `mkRepoLink rel` is a `home.file.<name>.source` for a repo file.
 # - `repoPath rel` is the path string to embed in a generated config that pulls
-#   a repo file in (tmux `source-file`, git `includes`, kitty `include`, …).
+#   a repo file in (git `includes`, kitty `include`, …).
 #
 # `rel` is a path string relative to the repo root, e.g.
 # `mkRepoLink "config/nano/nanorc"`. It must be a string (a path literal would

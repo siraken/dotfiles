@@ -22,7 +22,6 @@
     ../../programs/lazydocker
     ../../programs/mise
     ../../programs/scripts
-    ../../programs/tmux
     ../../programs/vim
     ../../programs/yazi
     ../../programs/yt-dlp

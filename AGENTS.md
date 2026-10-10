@@ -91,8 +91,8 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - Native config files in `config/` and `home/` are linked into place via the shared `mkRepoLink` helper (`nix/modules/home/mk-repo-link.nix`). Where they point is set by `dotfiles.linkMode`:
   - `outOfStore` (set by the `full` profile): symlinks into the checkout at `~/dotfiles`, editable in place without a rebuild.
   - `store` (the default, used by `base` / `standard`): the copy of the flake source in the Nix store, so a host can apply the flake straight from GitHub without cloning it.
-- Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, tmux `source-file`, git `includes`, shells `source`, emacs `load-file`, vim `source`. They take the path from the `repoPath` helper, never a hard-coded `~/dotfiles/...`, so they follow `dotfiles.linkMode` too.
-- Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, tmux plugins/shell, lib-generated ignores, shell integration).
+- Tools whose generated file is owned by home-manager pull the repo file in instead of being replaced wholesale: ghostty `config-file`, kitty `include`, git `includes`, shells `source`, emacs `load-file`, vim `source`. They take the path from the `repoPath` helper, never a hard-coded `~/dotfiles/...`, so they follow `dotfiles.linkMode` too.
+- Host-varying / generated bits stay in Nix (identity & signing, gpg, font-size, lib-generated ignores, shell integration).
 - nixvim and shell-integration tools (atuin, direnv, starship, etc.) remain fully Nix-managed.
 - Exception: `home/.claude/settings.json` is **not** linked. It is the declarative base that `nix/programs/coding-agents/claude-settings.nix` merges into a regular `~/.claude/settings.json` on every switch (three-way, `merge-settings.jq`), so what Claude Code and other tools write at runtime (auto mode notes, hooks, `/config` changes, backups) stays in `~/.claude` and never reaches this public repo. Edit the repo file and switch to change a declared setting.
 
@@ -115,7 +115,7 @@ Manages 40+ tool configurations across multiple categories:
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, WezTerm, Ghostty
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
-- **Dev Tools**: Git, GitUI, Tmux, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI
+- **Dev Tools**: Git, GitUI, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI
 - **Security**: 1Password Shell Plugins
 - **Media**: Spotify-player, Twitch-TUI, yt-dlp, Neovide
 - **AI Agents**: Claude Code, Antigravity CLI, Codex, OpenCode, APM
