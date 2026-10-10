@@ -1,7 +1,3 @@
-function vetero() {
-  curl wttr.in/$argv
-}
-
 function goinit() {
   echo "Enter the package name:" && read package
   mkdir -p $package && cd $package
@@ -22,21 +18,6 @@ function gau() {
 function gd() {
   local dir
   dir=$(gd-select) && [ -n "$dir" ] && cd "$dir"
-}
-
-function meme() {
-  echo "Searching for $argv on Know Your Meme..."
-  open "https://knowyourmeme.com/search?q=$argv"
-}
-
-function cani() {
-  echo "Can I use \"$argv\"...?"
-  open "https://caniuse.com?search=$argv"
-}
-
-function caniemail() {
-  echo "Can I email \"$argv\"...?"
-  open "https://caniemail.com/search/?s=$argv"
 }
 
 function ide() {

@@ -3,11 +3,6 @@ function gd
     test -n "$dir"; and cd $dir
 end
 
-# Weather
-function vetero
-    curl wttr.in/$argv
-end
-
 # Initialize Go app
 function goinit
     echo "Enter the package name:" && read package
@@ -28,27 +23,6 @@ function gau
     else
         echo "Please provide the username you want to use."
     end
-end
-
-# meme
-# Find memes on Know Your Meme
-function meme
-    echo "Searching for $argv on Know Your Meme..."
-    open "https://knowyourmeme.com/search?q=$argv"
-end
-
-# cani
-# Can I use
-function cani
-    echo "Can I use \"$argv\"...?"
-    open "https://caniuse.com/?search=$argv"
-end
-
-# caniemail
-# Can I email
-function caniemail
-    echo "Can I email \"$argv\"...?"
-    open "https://caniemail.com/search/?s=$argv"
 end
 
 # Open splitted tmux
