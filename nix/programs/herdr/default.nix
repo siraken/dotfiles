@@ -23,13 +23,13 @@ in
       onboarding = false;
 
       theme = {
-        # tmux (tokyo-night-tmux) / zellij / helix と揃えて TokyoNight。
+        # zellij / helix と揃えて TokyoNight。
         name = "tokyo-night";
         auto_switch = false;
       };
 
       terminal = {
-        # tmux (`programs.tmux.shell`) と zellij (`default_shell`) に合わせて bash。
+        # zellij (`default_shell`) に合わせて bash。
         # atuin / starship / zoxide の bash 統合は standard プロファイルで有効なので、
         # ログインシェル (zsh) と操作感は変わらない。
         default_shell = "${pkgs.bash}/bin/bash";
@@ -44,10 +44,9 @@ in
       };
 
       keys = {
-        # herdr のデフォルトのまま。tmux の prefix (`programs.tmux.shortcut = "b"`)
-        # と同じキーなので、herdr の中で tmux を動かすと内側までイベントが届かない。
-        # nixvim の blink.cmp `<C-b>` (ドキュメント上スクロール) も同様。
-        # 入れ子で使うようになったら別のキーに変える。
+        # herdr のデフォルトのまま。nixvim の blink.cmp `<C-b>` (ドキュメント上
+        # スクロール) と同じキーなので、herdr の中の nvim にはこのキーが届かない。
+        # 困るようになったら別のキーに変える。
         prefix = "ctrl+b";
 
         # herdr の workspace は tmux の *session* 相当で、tab は window 相当
@@ -116,7 +115,7 @@ in
           ]
         ];
 
-        # `ui.mouse_capture` は既定 (true) のまま。tmux / zellij ではマウスを切って
+        # `ui.mouse_capture` は既定 (true) のまま。zellij ではマウスを切って
         # いるが、herdr はサイドバー自体がマウス UI で、init.el の xterm-mouse-mode
         # や gitui / bottom もマウスを使うため、ここだけ流儀を合わせない。
 

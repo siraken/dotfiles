@@ -164,7 +164,6 @@ All program configurations are managed as Nix modules under [`nix/programs/`](ni
 | Program | Module Path | Notes |
 | --- | --- | --- |
 | Git | [`nix/programs/git/`](nix/programs/git/) | |
-| Tmux | [`nix/programs/tmux/`](nix/programs/tmux/) | |
 | Zellij | [`nix/programs/zellij/`](nix/programs/zellij/) | |
 | Yazi | [`nix/programs/yazi/`](nix/programs/yazi/) | File manager |
 | Direnv | [`nix/programs/direnv/`](nix/programs/direnv/) | |
