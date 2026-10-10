@@ -11,11 +11,6 @@ disabled = true
 [gcloud]
 disabled = true
 
-[memory_usage]
-disabled = true
-threshold = -1
-style = "bold dimmed green"
-
 [sudo]
 disabled = false
 
