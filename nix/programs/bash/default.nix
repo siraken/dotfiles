@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  mkRepoLink,
-  ...
-}:
+{ pkgs, repoPath, ... }:
 {
   programs.bash = {
     enable = true;
@@ -26,20 +21,15 @@
       "checkwinsize"
     ];
 
-    # Source the fragments from out-of-store symlinks so they are editable in
-    # place (a new shell picks up edits — no rebuild). Same order as before.
-    # See #70.
+    # Source the repo fragments directly (`repoPath` follows
+    # `dotfiles.linkMode`, so with the checkout a new shell picks up edits
+    # without a rebuild). See #70.
     initExtra = ''
       # Custom functions
-      source ${config.home.homeDirectory}/.config/bash/function.sh
+      source ${repoPath "config/bash/function.sh"}
 
       # Report the cwd to the terminal (OSC 7)
-      source ${config.home.homeDirectory}/.config/bash/osc7.sh
+      source ${repoPath "config/bash/osc7.sh"}
     '';
-  };
-
-  home.file = {
-    ".config/bash/function.sh".source = mkRepoLink "config/bash/function.sh";
-    ".config/bash/osc7.sh".source = mkRepoLink "config/bash/osc7.sh";
   };
 }
