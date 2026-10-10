@@ -1,10 +1,3 @@
-function goinit() {
-  echo "Enter the package name:" && read package
-  mkdir -p $package && cd $package
-  go mod init github.com/$dirname/$package
-  git init && touch main.go README.md
-}
-
 function gau() {
   echo "Enter the username:" && read username
   if [[ -n $username ]]; then
@@ -18,9 +11,4 @@ function gau() {
 function gd() {
   local dir
   dir=$(gd-select) && [ -n "$dir" ] && cd "$dir"
-}
-
-function ide() {
-  tmux split-window -v -p 30
-  tmux split-window -h -p 50
 }
