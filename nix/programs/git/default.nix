@@ -9,18 +9,6 @@
   ...
 }:
 let
-  dotenvEnvironments = [
-    "local"
-    "development"
-    "staging"
-    "production"
-  ];
-
-  dotenvFiles = lib.concatMap (env: [
-    ".env.${env}"
-    ".dev.vars.${env}"
-  ]) dotenvEnvironments;
-
   ignoreFiles = [
     # macOS
     ".DS_Store"
@@ -76,8 +64,45 @@ let
     "AGENTS.local.md"
     "mise.local.toml"
     ".pre-commit-config.yaml"
-  ]
-  ++ dotenvFiles;
+
+    # Secrets / private keys
+    # Ignored everywhere on purpose: a file that really belongs in a repository
+    # is added with `git add -f` (or re-included by that repository's own
+    # .gitignore, which takes precedence). Already tracked files are unaffected.
+    "id_rsa"
+    "id_dsa"
+    "id_ecdsa"
+    "id_ed25519"
+    "id_ecdsa_sk"
+    "id_ed25519_sk"
+    "*.pem"
+    "*.key"
+    "*.ppk"
+    "*.p12"
+    "*.pfx"
+    "*.jks"
+    "*.keystore"
+    "*.p8"
+    "*.kdbx"
+    ".netrc"
+    ".pgpass"
+    ".npmrc"
+    ".pypirc"
+    "*.tfstate"
+    "*.tfstate.*"
+    "credentials.json"
+    "client_secret*.json"
+    "*service-account*.json"
+
+    # dotenv
+    ".env"
+    ".env.*"
+    "!.env.example"
+    "!.env.sample"
+    "!.env.template"
+    ".dev.vars"
+    ".dev.vars.*"
+  ];
 in
 {
   imports = [ inputs.git-personas.homeModules.default ];
@@ -102,6 +127,16 @@ in
       };
 
       commit.gpgsign = pkgs.stdenv.hostPlatform.isDarwin || isWSL;
+
+      # Scan staged changes for secrets in every repository. A config-defined
+      # hook (git >= 2.54) runs in addition to the repository's own
+      # .git/hooks/pre-commit (e.g. git-hooks.nix), which core.hooksPath would
+      # have replaced. Bypass a false positive with `gitleaks:allow` on the line
+      # or `git commit --no-verify`.
+      hook.gitleaks = {
+        event = "pre-commit";
+        command = "${lib.getExe pkgs.gitleaks} git --pre-commit --staged --redact --verbose --no-banner --log-level warn";
+      };
     }
     // lib.optionalAttrs isWSL {
       # Repositories on the Windows drives (/mnt/c, /mnt/d, ...) are owned by a
