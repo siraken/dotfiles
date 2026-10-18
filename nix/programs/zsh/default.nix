@@ -1,4 +1,9 @@
-{ repoPath, ... }:
+{
+  lib,
+  pkgs,
+  repoPath,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
@@ -20,6 +25,9 @@
       G = "| grep";
       L = "| less";
       F = "| fzf";
+    }
+    # pbcopy exists only on macOS.
+    // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
       C = "| pbcopy";
     };
 
