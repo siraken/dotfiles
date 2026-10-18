@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, ... }:
 {
   programs.zellij = {
     enable = true;
@@ -16,7 +16,9 @@
       show_startup_tips = false;
       show_release_notes = true;
       mouse_mode = false;
-      scrollback_editor = "${pkgs.neovim}/bin/nvim";
+      # The nixvim build, not the unconfigured nixpkgs neovim (both modules are
+      # in the `standard` profile).
+      scrollback_editor = lib.getExe config.programs.nixvim.build.package;
     };
   };
 }
