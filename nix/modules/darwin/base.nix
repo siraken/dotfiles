@@ -20,10 +20,8 @@
         "nix-command"
         "flakes"
       ];
-      trusted-users = [
-        "root"
-        userProfile.username
-      ];
+      # nix-darwin already trusts root by default.
+      trusted-users = [ userProfile.username ];
       # substituters and trusted-public-keys are defined in ../nix-caches.nix
     };
 
