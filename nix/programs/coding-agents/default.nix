@@ -1,9 +1,17 @@
 {
+  config,
+  lib,
   pkgs,
   userProfile,
   ...
 }:
 let
+  # A host whose agents are installed elsewhere (Omarchy installs them through
+  # mise and ~/.local/bin wrappers, ahead of ~/.nix-profile on PATH) takes only
+  # the configuration below.
+  installPackages = config.dotfiles.codingAgents.installPackages;
+  agentPackage = pkg: if installPackages then pkg else null;
+
   instructions = ''
     - Unless otherwise specified, always respond in 日本語.
     - My name is ${userProfile.nameJa} (${userProfile.nameKana}), or ${userProfile.name} in English.
@@ -23,90 +31,98 @@ let
   '';
 in
 {
-  # apm: Agent Package Manager (Microsoft) - dependency manager for AI agents
-  home.packages = [
-    pkgs.llm-agents.apm
-    pkgs.llm-agents.copilot-cli
-    pkgs.llm-agents.cursor-agent
-    pkgs.llm-agents.grok
-  ];
-
   # ~/.claude/settings.json is merged from home/.claude/settings.json on every
   # switch rather than linked, so Claude Code's runtime writes stay out of the
   # repo. Kept out of `programs.claude-code.settings` on purpose - Claude Code
   # writes back to this file at runtime, which a nix-store copy could not accept.
   imports = [ ./claude-settings.nix ];
 
-  programs.mcp = {
-    enable = true;
-    # servers = { };
+  options.dotfiles.codingAgents.installPackages = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "Install the coding agents themselves, not only their configuration.";
   };
 
-  programs.claude-code = {
-    enable = true;
-    package = pkgs.llm-agents.claude-code;
-    enableMcpIntegration = true;
-    context = instructions;
-    agents = {
-      # SOME_AGENT = '''';
+  config = {
+    # apm: Agent Package Manager (Microsoft) - dependency manager for AI agents
+    home.packages = lib.optionals installPackages [
+      pkgs.llm-agents.apm
+      pkgs.llm-agents.copilot-cli
+      pkgs.llm-agents.cursor-agent
+      pkgs.llm-agents.grok
+    ];
+
+    programs.mcp = {
+      enable = true;
+      # servers = { };
     };
-    # settings = {
-    #   hooks = {
-    #     PostToolUse = [ ];
-    #     PreToolUse = [ ];
-    #   };
-    #   includeCoAuthoredBy = true;
-    # };
-  };
 
-  programs.codex = {
-    enable = true;
-    package = pkgs.llm-agents.codex;
-    context = instructions;
-  };
+    programs.claude-code = {
+      enable = true;
+      package = agentPackage pkgs.llm-agents.claude-code;
+      enableMcpIntegration = true;
+      context = instructions;
+      agents = {
+        # SOME_AGENT = '''';
+      };
+      # settings = {
+      #   hooks = {
+      #     PostToolUse = [ ];
+      #     PreToolUse = [ ];
+      #   };
+      #   includeCoAuthoredBy = true;
+      # };
+    };
 
-  programs.antigravity-cli = {
-    enable = true;
-    package = pkgs.llm-agents.antigravity-cli;
-    # Written to ~/.gemini/AGENTS.md, picked up through context.fileName below.
-    context.AGENTS = instructions;
-    commands = { };
-    settings = {
-      context = {
-        fileName = "AGENTS.md";
-      };
-      general = {
-        preferredEditor = "nvim";
-      };
-      ide = {
-        enabled = true;
-      };
-      privacy = {
-        usageStatisticsEnabled = false;
-      };
-      security = {
-        auth = {
-          selectedType = "oauth-personal";
+    programs.codex = {
+      enable = true;
+      package = agentPackage pkgs.llm-agents.codex;
+      context = instructions;
+    };
+
+    programs.antigravity-cli = {
+      enable = true;
+      package = agentPackage pkgs.llm-agents.antigravity-cli;
+      # Written to ~/.gemini/AGENTS.md, picked up through context.fileName below.
+      context.AGENTS = instructions;
+      commands = { };
+      settings = {
+        context = {
+          fileName = "AGENTS.md";
+        };
+        general = {
+          preferredEditor = "nvim";
+        };
+        ide = {
+          enabled = true;
+        };
+        privacy = {
+          usageStatisticsEnabled = false;
+        };
+        security = {
+          auth = {
+            selectedType = "oauth-personal";
+          };
+        };
+        ui = {
+          theme = "GitHub";
         };
       };
-      ui = {
-        theme = "GitHub";
-      };
     };
-  };
 
-  programs.opencode = {
-    enable = true;
-    package = pkgs.llm-agents.opencode;
-    context = instructions;
-    tui = {
-      theme = "tokyonight";
-    };
-    settings = {
-      "$schema" = "https://opencode.ai/config.json";
-      formatter = {
-        prettier = {
-          disabled = true;
+    programs.opencode = {
+      enable = true;
+      package = agentPackage pkgs.llm-agents.opencode;
+      context = instructions;
+      tui = {
+        theme = "tokyonight";
+      };
+      settings = {
+        "$schema" = "https://opencode.ai/config.json";
+        formatter = {
+          prettier = {
+            disabled = true;
+          };
         };
       };
     };
