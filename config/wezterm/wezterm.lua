@@ -116,6 +116,8 @@ config.font = wezterm.font_with_fallback({
   font("JetBrains Mono"),
   font("Hiragino Sans"),
   font("Noto Sans JP"),
+  -- Arch の noto-fonts-cjk はこの名前で入る
+  font("Noto Sans CJK JP"),
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false

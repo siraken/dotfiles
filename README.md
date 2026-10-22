@@ -24,6 +24,7 @@ Personal dotfiles management system combining [Nix Flakes](https://nixos.wiki/wi
 | `siraken-mbp` | macOS (aarch64) | nix-darwin | MacBook Pro — full configuration (primary) |
 | `siraken-macmini` | macOS (aarch64) | nix-darwin | Mac mini — base OS layer, reached over SSH |
 | `siraken@wsl-ubuntu` | Linux (x86_64) | home-manager | WSL/Ubuntu — user environment only |
+| `siraken@siraken-mba-omarchy` | Linux (x86_64) | home-manager | MacBook Air on Omarchy — user environment only, adopted incrementally |
 | `siraken@<profile>-<system>` | any | home-manager | Generic `base` / `standard` / `full` profile for hosts without an entry (e.g. production servers) |
 | `wsl-nixos` | Linux (x86_64) | NixOS | WSL/NixOS — full system configuration |
 | `nixos-vm` | Linux (aarch64) | NixOS | NixOS VM — virtual machine |
@@ -73,6 +74,15 @@ nix run .#mbp   # or .#macmini
 
 ```bash
 home-manager switch --flake .#siraken@wsl-ubuntu
+```
+
+</details>
+
+<details>
+<summary><b>Omarchy (home-manager)</b></summary>
+
+```bash
+nix run home-manager/master -- switch -b hm-backup --flake .#siraken@siraken-mba-omarchy
 ```
 
 </details>
@@ -201,6 +211,7 @@ dotfiles/
 │   ├── home/                  # Standalone home-manager configurations
 │   │   ├── default.nix        #   Registry (siraken@<host>, siraken@<profile>-<system>)
 │   │   ├── profiles/          #   base ⊂ standard ⊂ full (+ darwin)
+│   │   ├── siraken-mba-omarchy/ # MacBook Air on Omarchy
 │   │   └── wsl-ubuntu/        #   WSL/Ubuntu
 │   ├── modules/               # Shared Nix modules
 │   └── programs/              # Program-specific configurations
