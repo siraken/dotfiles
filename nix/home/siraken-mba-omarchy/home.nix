@@ -9,6 +9,7 @@
 
   imports = [
     ../../modules/home/mk-repo-link.nix
+    ../../programs/omarchy
     ../../programs/wezterm
   ];
 
