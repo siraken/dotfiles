@@ -39,6 +39,10 @@ let
       homeModule = ./wsl-ubuntu/home.nix;
       isWSL = true;
     };
+    siraken-mba-omarchy = {
+      system = "x86_64-linux";
+      homeModule = ./siraken-mba-omarchy/home.nix;
+    };
   };
 
   profiles = [
