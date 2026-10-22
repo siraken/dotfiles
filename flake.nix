@@ -142,6 +142,9 @@
                 "**/lazy-lock.json"
                 # Claude Code owns this file's format (tab-indented); let it manage it.
                 "**/.claude/settings.json"
+                # Omarchy rewrites shell.json with `jq -S`; keep its format so
+                # `git diff` only shows real changes.
+                "config/omarchy/**"
               ];
             };
             programs.yamlfmt.enable = true;
