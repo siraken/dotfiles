@@ -25,6 +25,10 @@ hl.config({
     -- Turn off mouse acceleration (default: adaptive).
     accel_profile = "flat",
 
+    -- Click to focus: hovering only sends pointer events (scroll, hover),
+    -- keyboard focus moves on click (Omarchy default: 1, focus follows mouse).
+    follow_mouse = 2,
+
     -- Use natural (inverse) scrolling for mice too, matching the touchpad.
     natural_scroll = true,
 
