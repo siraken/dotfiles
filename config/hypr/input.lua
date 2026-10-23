@@ -42,8 +42,9 @@ hl.config({
       -- Control the speed of your scrolling.
       scroll_factor = 0.3,
 
-      -- Enable the touchpad while typing.
-      disable_while_typing = false,
+      -- Ignore the touchpad while typing, so a palm brushing it does not
+      -- tap-click and steal focus (e.g. Chrome's new tab search box).
+      disable_while_typing = true,
 
       -- Left-click-and-drag with three fingers.
       drag_3fg = 0,
