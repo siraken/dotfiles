@@ -9,6 +9,7 @@
 
   imports = [
     ../../modules/home/mk-repo-link.nix
+    ../../programs/bash
     ../../programs/coding-agents
     ../../programs/omarchy
     ../../programs/wezterm
@@ -29,6 +30,25 @@
     # herdr writes its TUI plugin to tui.jsonc; a tui.json next to it would
     # compete with it.
     tui = lib.mkForce { };
+  };
+
+  # Rebuild Omarchy's own ~/.bashrc (/etc/skel/.bashrc) around the repo
+  # fragments. env-bootstrap must run before the interactive guard (OMARCHY_PATH
+  # and PATH for non-interactive shells too). Omarchy's rc runs last: the
+  # nix.sh that `targets.genericLinux` sources prepends ~/.nix-profile/bin, and
+  # only a later `mise activate` puts mise back in front of it. The rc owns
+  # history (HISTSIZE=32768, ignoreboth), bash-completion, mise, starship,
+  # zoxide and fzf, so none of those are enabled here.
+  programs.bash = {
+    # The login shell is pacman's /usr/bin/bash; a nixpkgs bash ahead of it on
+    # PATH would make `bash` a different shell from the one you log in to.
+    package = lib.mkForce null;
+    bashrcExtra = ''
+      [[ -r /usr/share/omarchy/default/bash/env-bootstrap ]] && source /usr/share/omarchy/default/bash/env-bootstrap
+    '';
+    initExtra = lib.mkAfter ''
+      source "$OMARCHY_PATH/default/bash/rc"
+    '';
   };
 
   targets.genericLinux.enable = true;
