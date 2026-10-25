@@ -59,7 +59,7 @@
           "llvm"
           "luajit"
           "mas"
-          "mist"
+          "mist-cli"
           "certbot"
           "monolith"
           "mplayer"
