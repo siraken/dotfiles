@@ -106,6 +106,12 @@ Personal dotfiles management system combining Nix and declarative configuration 
 - Evaluation therefore stays pure: **no `--impure` flag is needed anywhere**. Do not reintroduce `builtins.readFile` / `builtins.pathExists` on paths outside the flake; under pure evaluation they fail silently and produce a different system than the one CI checked.
 - The per-persona bodies (`~/.config/git.custom/<configFile>`) are maintained by hand outside the repo.
 
+**Package registry proxy (Takumi Guard)**:
+
+- `nix/programs/takumi-guard/` (in the `full` profile) points npm / pnpm / bun (`~/.npmrc`), yarn berry (`~/.yarnrc.yml`), pip (`~/.config/pip/pip.conf`), uv (`~/.config/uv/uv.toml`) and Bundler (`~/.bundle/config`) at Takumi Guard.
+- The token is `takumiGuard.token` in `secrets.toml`, read at activation time like git-personas. The files are therefore regular 0600 files written by an activation script, never `home.file` links: those would put the token in the world-readable Nix store. Without a token the same files are written anonymously (blocking only).
+- The module owns those files wholesale. A file it did not write is moved to `<file>.hm-backup` before being replaced, and hand edits are lost on the next switch; add settings to the module instead (e.g. `npmrcExtra`).
+
 ### Configuration Coverage
 
 Manages 40+ tool configurations across multiple categories:
@@ -116,7 +122,7 @@ Manages 40+ tool configurations across multiple categories:
 - **Terminals**: Kitty, WezTerm, Ghostty
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
 - **Dev Tools**: Git, GitUI, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI
-- **Security**: 1Password Shell Plugins
+- **Security**: 1Password Shell Plugins, Takumi Guard (package registry proxy)
 - **Media**: Spotify-player, Twitch-TUI, yt-dlp, Neovide
 - **AI Agents**: Claude Code, Antigravity CLI, Codex, OpenCode, APM
 - **Networking**: Tailscale
