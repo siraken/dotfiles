@@ -50,6 +50,7 @@ in
       pkgs.llm-agents.copilot-cli
       pkgs.llm-agents.cursor-agent
       pkgs.llm-agents.grok
+      pkgs.llm-agents.muse-code
     ];
 
     programs.mcp = {
