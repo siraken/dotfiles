@@ -2,7 +2,7 @@
 #
 # An alias lives in the same tier as the tool it calls, so a smaller profile
 # never gets an alias that points at a command it does not install (e.g.
-# `vim = nvim` without nixvim, or `e = emacs` without emacs).
+# `mr = mise run` without mise).
 { pkgs }:
 let
   inherit (pkgs.lib) optionalAttrs;
@@ -33,16 +33,12 @@ in
   };
 
   standard = {
-    # Editors
-    vim = "nvim";
-
     # Mise
     mr = "mise run";
   };
 
   full = {
     # Editors
-    e = "emacs";
     ee = "emacsclient -nw";
     emacsd = "emacs --daemon";
 
