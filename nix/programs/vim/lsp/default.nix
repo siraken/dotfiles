@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.nixvim = {
     plugins = {
@@ -50,16 +50,15 @@
           tailwindcss.enable = true;
           dockerls.enable = true;
           nil_ls.enable = true;
-        };
-      };
-
-      lint = {
-        enable = true;
-        lintersByFt = {
-          javascript = [ "eslint_d" ];
-          typescript = [ "eslint_d" ];
-          javascriptreact = [ "eslint_d" ];
-          typescriptreact = [ "eslint_d" ];
+          # JS / TS lint, only in projects that opt in (.oxlintrc.json, or
+          # oxlint in package.json), as eslint_d needed an ESLint config.
+          # lspconfig's root_dir passes nil when no marker is found, and
+          # Neovim then starts the server rootless with default rules;
+          # workspace_required keeps it off in that case.
+          oxlint = {
+            enable = true;
+            extraOptions.workspace_required = true;
+          };
         };
       };
 
@@ -79,10 +78,6 @@
 
       schemastore.enable = true;
     };
-
-    extraPackages = with pkgs; [
-      eslint_d
-    ];
 
     extraConfigLua =
       builtins.readFile ./diagnostics.lua + "\n" + builtins.readFile ./document-color.lua;

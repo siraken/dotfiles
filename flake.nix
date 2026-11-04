@@ -136,8 +136,23 @@
               ];
             };
             programs.shfmt.enable = true;
-            programs.biome = {
+            programs.oxfmt = {
               enable = true;
+              # Only what Biome used to cover. oxfmt's own list also takes
+              # Markdown and YAML, which mdformat / yamlfmt already own.
+              includes = [
+                "*.js"
+                "*.ts"
+                "*.mjs"
+                "*.mts"
+                "*.cjs"
+                "*.cts"
+                "*.jsx"
+                "*.tsx"
+                "*.json"
+                "*.jsonc"
+                "*.css"
+              ];
               excludes = [
                 "**/lazy-lock.json"
                 # Claude Code owns this file's format (tab-indented); let it manage it.
