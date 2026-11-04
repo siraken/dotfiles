@@ -5,10 +5,12 @@
       lsp = {
         enable = true;
         keymaps = {
+          # References, rename, code action, implementation and type
+          # definition also have Neovim's default gr* maps (grr, grn, gra,
+          # gri, grt). A plain `gr` here would make those wait timeoutlen.
           lspBuf = {
             "gd" = "definition";
             "gD" = "declaration";
-            "gr" = "references";
             "gI" = "implementation";
             "gy" = "type_definition";
             "K" = "hover";
@@ -34,12 +36,12 @@
         servers = {
           lua_ls = {
             enable = true;
+            # Nixvim nests these under `Lua` itself; writing `Lua = { … }`
+            # here produced `Lua.Lua` and the settings were ignored.
             settings = {
-              Lua = {
-                workspace.checkThirdParty = false;
-                codeLens.enable = true;
-                completion.callSnippet = "Replace";
-              };
+              workspace.checkThirdParty = false;
+              codeLens.enable = true;
+              completion.callSnippet = "Replace";
             };
           };
           ts_ls.enable = true;

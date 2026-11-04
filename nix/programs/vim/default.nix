@@ -50,6 +50,7 @@
     };
 
     # ── Options (from options.lua) ──
+    # Only values that differ from Neovim's defaults (see :h vim-differences).
     opts = {
       # Line numbers
       number = true;
@@ -68,7 +69,6 @@
 
       # Virtual edit & wildmenu
       virtualedit = "block";
-      wildmenu = true;
       wildignorecase = true;
       wildoptions = "pum";
 
@@ -76,36 +76,25 @@
       tabstop = 2;
       expandtab = true;
       shiftwidth = 2;
-      smarttab = true;
-      autoindent = true;
       smartindent = true;
 
       # Search
-      hlsearch = true;
       ignorecase = true;
       smartcase = true;
-      incsearch = true;
 
       # Files
       swapfile = false;
       backup = false;
-      encoding = "utf-8";
-      fileencodings = "utf-8,euc-jp,sjis,latin";
+      fileencodings = "ucs-bom,utf-8,euc-jp,sjis,latin1";
       fileformats = "unix,dos,mac";
 
       # Misc
-      compatible = false;
       langmenu = "en_US";
       title = true;
-      ruler = true;
-      showcmd = true;
       wrap = false;
-      backspace = "start,eol,indent";
-      lazyredraw = false;
       completeopt = "menu,menuone,noselect";
       scrolloff = 10;
       inccommand = "split";
-      signcolumn = "auto";
       clipboard = "unnamedplus";
       undofile = true;
       undolevels = 10000;
