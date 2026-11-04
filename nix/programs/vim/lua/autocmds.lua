@@ -8,14 +8,6 @@ autocmd("TermOpen", {
   end,
 })
 
--- Highlight on yank
-autocmd("TextYankPost", {
-  group = augroup("highlight_yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 -- Resize splits when window resized
 autocmd("VimResized", {
   group = augroup("resize_splits", { clear = true }),
@@ -51,11 +43,9 @@ autocmd("FileType", {
     "checkhealth",
     "gitsigns.blame",
     "help",
-    "lspinfo",
     "notify",
     "qf",
     "query",
-    "spectre_panel",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

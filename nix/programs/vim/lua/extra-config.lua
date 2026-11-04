@@ -5,12 +5,9 @@ end
 
 -- Neovide GUI settings
 if vim.g.neovide then
-  local alpha = function()
-    return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
-  end
-  vim.g.neovide_transparency = 0.5
-  vim.g.transparency = 0.8
-  vim.g.neovide_background_color = "#0f1117" .. alpha()
+  -- neovide_transparency is now an alias of neovide_opacity, and
+  -- neovide_background_color was removed in Neovide 0.16.0.
+  vim.g.neovide_opacity = 0.5
   vim.g.neovide_window_blurred = true
   vim.g.neovide_floating_shadow = true
   vim.g.neovide_light_radius = 5

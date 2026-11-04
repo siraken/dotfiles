@@ -25,7 +25,7 @@ function()
   }
 
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-  vim.api.nvim_buf_set_option(buf, "modifiable", false)
+  vim.bo[buf].modifiable = false
 
   local width = 50
   local height = #lines
