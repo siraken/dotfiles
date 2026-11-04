@@ -35,7 +35,7 @@ Personal dotfiles management system combining [Nix Flakes](https://nixos.wiki/wi
 - **Multi-platform** — Single flake manages macOS (nix-darwin) and Linux (NixOS / home-manager)
 - **Modular** — Each program is an independent Nix module under `nix/programs/`
 - **Reproducible** — Pinned inputs via `flake.lock` ensure consistent builds
-- **Formatted** — [treefmt-nix](https://github.com/numtide/treefmt-nix) with pre-commit hooks (nixfmt, stylua, shfmt, biome, yamlfmt, mdformat, fish_indent)
+- **Formatted** — [treefmt-nix](https://github.com/numtide/treefmt-nix) with pre-commit hooks (nixfmt, stylua, shfmt, oxfmt, yamlfmt, mdformat, fish_indent)
 
 ## Getting Started
 

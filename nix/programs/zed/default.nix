@@ -48,13 +48,6 @@
         dock = "left";
         folder_icons = true;
       };
-      lsp = {
-        biome = {
-          settings = {
-            require_config_file = true;
-          };
-        };
-      };
     };
   };
 }

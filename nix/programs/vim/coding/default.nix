@@ -7,12 +7,12 @@
         settings = {
           formatters_by_ft = {
             lua = [ "stylua" ];
-            javascript = [ "biome" ];
-            typescript = [ "biome" ];
-            javascriptreact = [ "biome" ];
-            typescriptreact = [ "biome" ];
-            json = [ "biome" ];
-            css = [ "biome" ];
+            javascript = [ "oxfmt" ];
+            typescript = [ "oxfmt" ];
+            javascriptreact = [ "oxfmt" ];
+            typescriptreact = [ "oxfmt" ];
+            json = [ "oxfmt" ];
+            css = [ "oxfmt" ];
             sh = [ "shfmt" ];
             # Same formatter as this repo's treefmt; nil_ls does not format
             # unless given a formatting command.
@@ -40,14 +40,14 @@
 
     extraPackages = with pkgs; [
       stylua
-      biome
+      oxfmt
       shfmt
       nixfmt
     ];
 
     keymaps = [
       # Format through conform, like format-on-save, so a manual format and a
-      # save produce the same result (e.g. biome rather than ts_ls).
+      # save produce the same result (e.g. oxfmt rather than ts_ls).
       {
         mode = [
           "n"

@@ -83,7 +83,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Code Quality**:
 
-- treefmt-nix with flake-parts module for multi-language formatting (nixfmt, stylua, shfmt, biome, yamlfmt, mdformat, fish_indent)
+- treefmt-nix with flake-parts module for multi-language formatting (nixfmt, stylua, shfmt, oxfmt, yamlfmt, mdformat, fish_indent)
 - git-hooks.nix for pre-commit hook that runs treefmt on staged files
 
 **Symlink Management**:
