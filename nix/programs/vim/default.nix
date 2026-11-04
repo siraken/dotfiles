@@ -372,6 +372,12 @@
 
   programs.vim = {
     enable = true;
+    # home-manager defaults to vim-full, which is built with X11 and a GTK3
+    # GUI. On macOS it connects to $DISPLAY at startup, which launches
+    # XQuartz. pkgs.vim is the terminal-only build and still has +clipboard
+    # through the native pasteboard there. Linux hosts keep vim-full for the
+    # X11 clipboard.
+    packageConfigurable = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.vim else pkgs.vim-full;
     settings = {
       # Line numbers
       number = true;
