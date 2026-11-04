@@ -399,6 +399,11 @@
       undofile = false;
     };
 
+    # Bracket / quote auto-pairing that matches nvim-autopairs in Nixvim:
+    # typing a closer steps over it, <BS> deletes the pair, <CR> between
+    # brackets opens an indented line.
+    plugins = [ pkgs.vimPlugins.lexima-vim ];
+
     # Static vim config lives in a repo file sourced directly by vim, so it
     # is editable in place without a rebuild. home-manager still owns the
     # generated vimrc (settings, plugins). See #70.
