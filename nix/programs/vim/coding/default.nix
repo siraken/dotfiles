@@ -14,6 +14,9 @@
             json = [ "biome" ];
             css = [ "biome" ];
             sh = [ "shfmt" ];
+            # Same formatter as this repo's treefmt; nil_ls does not format
+            # unless given a formatting command.
+            nix = [ "nixfmt" ];
           };
           format_on_save = {
             timeout_ms = 3000;
@@ -39,13 +42,29 @@
       stylua
       biome
       shfmt
+      nixfmt
     ];
 
     keymaps = [
+      # Format through conform, like format-on-save, so a manual format and a
+      # save produce the same result (e.g. biome rather than ts_ls).
       {
         mode = [
           "n"
-          "v"
+          "x"
+        ];
+        key = "<leader>cf";
+        action.__raw = ''
+          function()
+            require("conform").format({ async = true, lsp_format = "fallback" })
+          end
+        '';
+        options.desc = "Format";
+      }
+      {
+        mode = [
+          "n"
+          "x"
         ];
         key = "<leader>cF";
         action.__raw = ''

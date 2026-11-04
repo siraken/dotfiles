@@ -21,7 +21,9 @@
           dashboard.enabled = false;
           indent.enabled = false;
           input.enabled = true;
-          notifier.enabled = true;
+          # noice owns vim.notify (it also drives the cmdline), so the snacks
+          # notifier would only be overridden.
+          notifier.enabled = false;
           quickfile.enabled = true;
           scroll.enabled = false;
           statuscolumn.enabled = false;
@@ -96,6 +98,9 @@
       fzf
     ];
 
+    # Neo-tree is lazy-loaded on :Neotree, so `nvim <dir>` would open netrw.
+    extraConfigLua = builtins.readFile ./neo-tree-directory.lua;
+
     keymaps = [
       # flash
       {
@@ -136,18 +141,6 @@
         key = "<leader>fb";
         action = "<cmd>FzfLua buffers<cr>";
         options.desc = "Buffers";
-      }
-      {
-        mode = "n";
-        key = "<leader>fg";
-        action = "<cmd>FzfLua live_grep<cr>";
-        options.desc = "Live grep";
-      }
-      {
-        mode = "n";
-        key = "<leader>fw";
-        action = "<cmd>FzfLua grep_cword<cr>";
-        options.desc = "Grep word";
       }
       {
         mode = "n";
@@ -201,12 +194,6 @@
       {
         mode = "n";
         key = "<leader>e";
-        action = "<cmd>Neotree toggle<cr>";
-        options.desc = "Explorer (Neo-tree)";
-      }
-      {
-        mode = "n";
-        key = "<leader>fe";
         action = "<cmd>Neotree toggle<cr>";
         options.desc = "Explorer (Neo-tree)";
       }

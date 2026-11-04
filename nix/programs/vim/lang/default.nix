@@ -1,4 +1,9 @@
 { ... }:
+let
+  # norg / rmd / org were listed too, but there is no tree-sitter grammar for
+  # them in ../treesitter, so render-markdown did nothing there.
+  markdownFileTypes = [ "markdown" ];
+in
 {
   programs.nixvim = {
     plugins = {
@@ -38,7 +43,14 @@
           enable = true;
           settings.ft = [ "toml" ];
         };
-        settings.completion.crates.enabled = true;
+        # The in-process LSP is how crates.nvim feeds blink.cmp (its cmp
+        # source is deprecated); completion.crates.enabled is already the default.
+        settings.lsp = {
+          enabled = true;
+          completion = true;
+          actions = true;
+          hover = true;
+        };
       };
 
       # Python
@@ -63,17 +75,11 @@
         };
       };
 
+      # Not lazy-loaded on `ft`: lz.n re-fires FileType to load it, which runs
+      # the ftplugin's b:undo_ftplugin twice and raises E31 on every markdown
+      # buffer. It only attaches to `file_types` anyway.
       render-markdown = {
         enable = true;
-        lazyLoad = {
-          enable = true;
-          settings.ft = [
-            "markdown"
-            "norg"
-            "rmd"
-            "org"
-          ];
-        };
         settings = {
           code = {
             sign = false;
@@ -84,23 +90,15 @@
             sign = false;
             icons = [ ];
           };
-          file_types = [
-            "markdown"
-            "norg"
-            "rmd"
-            "org"
-          ];
+          file_types = markdownFileTypes;
         };
       };
 
       # Java
-      jdtls = {
-        enable = true;
-        lazyLoad = {
-          enable = true;
-          settings.ft = [ "java" ];
-        };
-      };
+      # Not lazy-loaded on `ft` for the same reason as render-markdown (E216
+      # from the java ftplugin's undo); its setup is empty, so loading it
+      # eagerly costs nothing. The server itself starts via vim.lsp.enable.
+      jdtls.enable = true;
     };
 
     keymaps = [

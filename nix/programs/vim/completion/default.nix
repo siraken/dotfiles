@@ -48,6 +48,14 @@
             "snippets"
             "buffer"
           ];
+          # Nixvim types this as a list, which cannot carry inherit_defaults.
+          per_filetype.lua.__raw = "{ inherit_defaults = true, 'lazydev' }";
+          providers.lazydev = {
+            name = "LazyDev";
+            module = "lazydev.integrations.blink";
+            # Rank lazydev's require() / vim.* items above lua_ls's.
+            score_offset = 100;
+          };
         };
         completion = {
           accept.auto_brackets.enabled = true;

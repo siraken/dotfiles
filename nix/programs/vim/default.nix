@@ -26,17 +26,6 @@
 
     plugins.lz-n.enable = true;
 
-    # Plugins NOT available in Nixvim (need extraPlugins if desired):
-    # - nvim-paredit (julienvincent/nvim-paredit) - S-expression editing
-    # - vim-dispatch (tpope/vim-dispatch) - Async command execution
-    # - vim-quickrun (thinca/vim-quickrun) - Quick script execution
-    # - vim-slim (slim-template/vim-slim) - Slim template language
-    # - vim-jack-in (clojure-vim/vim-jack-in) - Clojure REPL jack-in
-    # - vlime (vlime/vlime) - Common Lisp IDE
-    # - omnisharp-extended-lsp.nvim (Hoffs/omnisharp-extended-lsp.nvim) - C# LSP
-    # - tailwindcss-colorizer-cmp.nvim (roobert/tailwindcss-colorizer-cmp.nvim)
-    # - calendar.vim (itchyny/calendar.vim) - Calendar display
-    #
     # Plugins NOT needed with Nixvim:
     # - lazy.nvim (Nixvim manages plugins)
     # - mason.nvim / mason-lspconfig.nvim (Nix manages LSP servers/tools)
@@ -49,7 +38,7 @@
       maplocalleader = "\\";
     };
 
-    # ── Options (from options.lua) ──
+    # ── Options ──
     # Only values that differ from Neovim's defaults (see :h vim-differences).
     opts = {
       # Line numbers
@@ -60,14 +49,12 @@
       cmdheight = 0;
 
       # Visual
-      visualbell = true;
       cursorline = true;
       termguicolors = true;
-      winblend = 0;
       pumblend = 5;
       background = "dark";
 
-      # Virtual edit & wildmenu
+      # Virtual edit & command-line completion
       virtualedit = "block";
       wildignorecase = true;
       wildoptions = "pum";
@@ -106,7 +93,7 @@
       mouse = "";
     };
 
-    # ── Global keymaps (from keymaps.lua) ──
+    # ── Global keymaps ──
     keymaps = [
       # Increment / decrement
       {
@@ -208,36 +195,39 @@
         action = "<C-r>";
         options.desc = "Redo";
       }
+      # Visual-mode maps use "x", not "v": "v" also covers Select mode, where
+      # snippet placeholders are typed and `<`, `>`, `=` must insert text.
       # Reselect visual block after indents
       {
-        mode = "v";
+        mode = "x";
         key = "<";
         action = "<gv";
       }
       {
-        mode = "v";
+        mode = "x";
         key = ">";
         action = ">gv";
       }
-      # Tab / Shift+Tab
+      # Tab / Shift+Tab (`>gv`, not `>>`: in Visual mode the first `>` already
+      # shifts and leaves Visual mode, so a second one waits for a motion)
       {
         mode = "i";
         key = "<S-Tab>";
         action = "<C-d>";
       }
       {
-        mode = "v";
+        mode = "x";
         key = "<Tab>";
-        action = ">>";
+        action = ">gv";
       }
       {
-        mode = "v";
+        mode = "x";
         key = "<S-Tab>";
-        action = "<<";
+        action = "<gv";
       }
       # Stay visual mode after formatting
       {
-        mode = "v";
+        mode = "x";
         key = "=";
         action = "=gv";
       }
@@ -292,13 +282,13 @@
         options.desc = "Move up";
       }
       {
-        mode = "v";
+        mode = "x";
         key = "<A-j>";
         action = ":m '>+1<cr>gv=gv";
         options.desc = "Move down";
       }
       {
-        mode = "v";
+        mode = "x";
         key = "<A-k>";
         action = ":m '<-2<cr>gv=gv";
         options.desc = "Move up";
@@ -354,7 +344,7 @@
       }
     ];
 
-    # ── Autocommands & extra config (from autocmds.lua) ──
+    # ── Autocommands & extra config ──
     extraConfigLua =
       builtins.readFile ./lua/autocmds.lua + "\n" + builtins.readFile ./lua/extra-config.lua;
   };
