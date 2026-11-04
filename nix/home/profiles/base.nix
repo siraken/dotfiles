@@ -38,6 +38,13 @@
     };
   };
 
+  # XDG に対応したツールは ~/.config などに寄せる。HM が XDG_*_HOME を
+  # export し、xdg.enable を見て配置を変えるモジュール (zsh の dotDir、macOS の
+  # lazydocker など) も ~/Library や ~ 直下ではなく XDG 側に置くようになる。
+  # XDG_CONFIG_HOME を export しつつ xdg.enable を切っていると、読む場所と
+  # 書く場所がずれる (lazydocker の設定が効いていなかった)。
+  xdg.enable = true;
+
   programs = {
     home-manager.enable = true;
 
