@@ -25,12 +25,6 @@
               action.__raw = "vim.lsp.buf.signature_help";
               options.desc = "Signature help";
             }
-            {
-              mode = "n";
-              key = "<leader>cf";
-              action.__raw = "function() vim.lsp.buf.format({ async = true }) end";
-              options.desc = "Format";
-            }
           ];
         };
         servers = {
@@ -90,6 +84,7 @@
       eslint_d
     ];
 
-    extraConfigLua = builtins.readFile ./diagnostics.lua;
+    extraConfigLua =
+      builtins.readFile ./diagnostics.lua + "\n" + builtins.readFile ./document-color.lua;
   };
 }

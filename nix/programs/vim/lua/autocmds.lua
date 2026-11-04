@@ -43,7 +43,6 @@ autocmd("FileType", {
     "checkhealth",
     "gitsigns.blame",
     "help",
-    "notify",
     "qf",
     "query",
   },

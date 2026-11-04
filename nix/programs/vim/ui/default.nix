@@ -33,7 +33,9 @@
               {
                 "__unkeyed-1" = "filename";
                 path = 1;
-                color.fg = "#7aa2f7";
+                # A highlight group rather than a hex value, so it follows the
+                # colorscheme (tokyonight's Directory is its blue).
+                color = "Directory";
               }
             ];
             lualine_x = [ ];
@@ -179,6 +181,8 @@
             enabled = true;
             view = "cmdline_popup";
           };
+          # blink.cmp shows signature help (completion.signature.enabled).
+          lsp.signature.enabled = false;
           lsp.override = {
             "vim.lsp.util.convert_input_to_markdown_lines" = true;
           };
