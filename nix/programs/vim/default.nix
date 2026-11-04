@@ -399,10 +399,19 @@
       undofile = false;
     };
 
-    # Bracket / quote auto-pairing that matches nvim-autopairs in Nixvim:
-    # typing a closer steps over it, <BS> deletes the pair, <CR> between
-    # brackets opens an indented line.
-    plugins = [ pkgs.vimPlugins.lexima-vim ];
+    # Kept minimal: Neovim (Nixvim) is the full editor, this is the light one.
+    # Comment toggling, yank highlight, EditorConfig and auto :nohlsearch come
+    # from Vim's bundled packages, enabled with `packadd!` in config/vim/vimrc.
+    plugins = with pkgs.vimPlugins; [
+      # Bracket / quote auto-pairing that matches nvim-autopairs in Nixvim:
+      # typing a closer steps over it, <BS> deletes the pair, <CR> between
+      # brackets opens an indented line.
+      lexima-vim
+      # cs / ds / ys to change, delete and add surrounding pairs, made
+      # repeatable with `.` by vim-repeat.
+      vim-surround
+      vim-repeat
+    ];
 
     # Static vim config lives in a repo file sourced directly by vim, so it
     # is editable in place without a rebuild. home-manager still owns the

@@ -4,6 +4,13 @@ autocmd!
 set encoding=utf-8
 scriptencoding utf-8
 filetype plugin indent on
+
+" Bundled optional packages (Vim 9.1+)
+packadd! comment
+packadd! hlyank
+packadd! editorconfig
+packadd! nohlsearch
+
 syntax enable
 colorscheme industry
 
