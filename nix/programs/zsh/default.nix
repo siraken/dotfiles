@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   repoPath,
@@ -16,6 +17,9 @@
     ];
 
     history = {
+      # 履歴は設定ではなく状態なので、dotDir (~/.config/zsh) ではなく
+      # XDG_STATE_HOME に置く。
+      path = "${config.xdg.stateHome}/zsh/history";
       ignoreDups = true;
       ignoreAllDups = true;
       share = true;

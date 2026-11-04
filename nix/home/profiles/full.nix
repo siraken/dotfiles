@@ -4,6 +4,7 @@
 #
 # macOS-only additions live in `darwin.nix`.
 {
+  config,
   pkgs,
   lib,
   inputs,
@@ -29,7 +30,7 @@
 
   home = {
     sessionPath = [ "$COMPOSER_HOME/vendor/bin" ];
-    sessionVariables = import ../../modules/variable.nix { inherit lib pkgs; };
+    sessionVariables = import ../../modules/variable.nix { inherit config lib pkgs; };
 
     shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).full;
     packages =
