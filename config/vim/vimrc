@@ -12,7 +12,8 @@ packadd! editorconfig
 packadd! nohlsearch
 
 syntax enable
-colorscheme industry
+set termguicolors
+colorscheme catppuccin
 
 set signcolumn=yes
 set laststatus=2
