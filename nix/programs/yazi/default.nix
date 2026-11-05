@@ -228,54 +228,8 @@ in
 
           # Fallback
           {
-            name = "*";
+            url = "*";
             fg = c.ui.fg;
-          }
-        ];
-      };
-
-      # Icons (optional, requires nerd font)
-      icon = {
-        prepend_rules = [
-          {
-            name = "*.nix";
-            text = "";
-            fg = c.cyan;
-          }
-          {
-            name = "*.lua";
-            text = "";
-            fg = c.blue;
-          }
-          {
-            name = "*.rs";
-            text = "";
-            fg = c.orange;
-          }
-          {
-            name = "*.go";
-            text = "";
-            fg = c.cyan;
-          }
-          {
-            name = "*.ts";
-            text = "";
-            fg = c.blue;
-          }
-          {
-            name = "*.tsx";
-            text = "";
-            fg = c.blue;
-          }
-          {
-            name = "*.js";
-            text = "";
-            fg = c.yellow;
-          }
-          {
-            name = "*.jsx";
-            text = "";
-            fg = c.yellow;
           }
         ];
       };
