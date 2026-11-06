@@ -15,7 +15,6 @@
     ../../programs/awscli
     ../../programs/direnv
     ../../programs/gh
-    ../../programs/gh-dash
     ../../programs/gitui
     ../../programs/helix
     ../../programs/jujutsu
