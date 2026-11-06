@@ -17,8 +17,12 @@
     # repo link below anyway.
     extensions = with pkgs; [
       gh-actions-lock
+      gh-aw
       gh-dash
       gh-markdown-preview
+      gh-poi
+      gh-skyline
+      gh-stack
     ];
     settings = {
       aliases = {
