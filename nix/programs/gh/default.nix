@@ -31,6 +31,9 @@
         pv = "pr view";
         sw = "auth switch";
       };
+      # Ask for a short-lived token that gh refreshes on its own. Only takes
+      # effect on the next `gh auth login`; an existing token is left as is.
+      expiring_credentials = "enabled";
       git_protocol = "https";
     };
   };
