@@ -31,7 +31,6 @@
         brews = [
           "apktool"
           "arduino-cli"
-          "azure-cli"
           "bats-core"
           "cabextract"
           "cdrtools"
@@ -92,6 +91,7 @@
           "alt-tab"
           "appcleaner"
           "audacity"
+          "azure-cli"
           "background-music"
           "blackhole-2ch"
           "blackhole-16ch"
