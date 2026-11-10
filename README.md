@@ -186,7 +186,7 @@ All program configurations are managed as Nix modules under [`nix/programs/`](ni
 | bottom | [`nix/programs/bottom/`](nix/programs/bottom/) | System monitor |
 | Atuin | [`nix/programs/atuin/`](nix/programs/atuin/) | Shell history |
 | GitUI | [`nix/programs/gitui/`](nix/programs/gitui/) | |
-| gh-dash | [`nix/programs/gh-dash/`](nix/programs/gh-dash/) | GitHub dashboard |
+| gh-dash | [`nix/programs/gh/`](nix/programs/gh/) | GitHub dashboard |
 | Lazydocker | [`nix/programs/lazydocker/`](nix/programs/lazydocker/) | |
 | fastfetch | [`nix/programs/fastfetch/`](nix/programs/fastfetch/) | |
 
