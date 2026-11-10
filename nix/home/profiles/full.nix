@@ -21,6 +21,7 @@
     ../../programs/husky
     ../../programs/nano
     ../../programs/neovide
+    ../../programs/takumi-guard
   ];
 
   # Daily drivers always have the repo checked out at ~/dotfiles, so link repo
