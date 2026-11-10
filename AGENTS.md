@@ -117,7 +117,7 @@ Manages 40+ tool configurations across multiple categories:
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders
 - **Dev Tools**: Git, GitUI, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI
 - **Security**: 1Password Shell Plugins
-- **Media**: Spotify-player, Twitch-TUI, yt-dlp, Neovide
+- **Media**: Spotify-player, Twitch-TUI, yt-dlp
 - **AI Agents**: Claude Code, Antigravity CLI, Codex, OpenCode, APM
 - **Networking**: Tailscale
 

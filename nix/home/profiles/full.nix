@@ -20,7 +20,6 @@
     ../../programs/emacs
     ../../programs/husky
     ../../programs/nano
-    ../../programs/neovide
   ];
 
   # Daily drivers always have the repo checked out at ~/dotfiles, so link repo

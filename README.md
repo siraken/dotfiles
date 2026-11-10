@@ -150,7 +150,6 @@ All program configurations are managed as Nix modules under [`nix/programs/`](ni
 | Vim | [`nix/programs/vim/`](nix/programs/vim/) | Shares module with Neovim |
 | Emacs | [`nix/programs/emacs/`](nix/programs/emacs/) | |
 | Helix | [`nix/programs/helix/`](nix/programs/helix/) | |
-| Neovide | [`nix/programs/neovide/`](nix/programs/neovide/) | Neovim GUI frontend |
 | VS Code | [`nix/programs/vscode/`](nix/programs/vscode/) | |
 
 ### Shells
