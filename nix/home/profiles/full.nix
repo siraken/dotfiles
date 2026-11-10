@@ -8,6 +8,7 @@
   pkgs,
   lib,
   inputs,
+  isWSL,
   ...
 }:
 {
@@ -30,7 +31,11 @@
     sessionPath = [ "$COMPOSER_HOME/vendor/bin" ];
     sessionVariables = import ../../modules/variable.nix { inherit config lib pkgs; };
 
-    shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).full;
+    shellAliases =
+      let
+        aliases = import ../../modules/aliases.nix { inherit pkgs; };
+      in
+      aliases.full // lib.optionalAttrs isWSL aliases.wsl;
     packages =
       (import ../../modules/packages.nix { inherit pkgs; }).full
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [

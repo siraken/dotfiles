@@ -1,5 +1,6 @@
 $wingetPackages = @(
   "AgileBits.1Password"
+  "AgileBits.1Password.CLI"
   "Microsoft.VisualStudio.2019.Community"
   "CPUID.CPU-Z"
   "CrystalDewWorld.CrystalDiskInfo"
