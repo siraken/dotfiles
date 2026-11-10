@@ -13,6 +13,9 @@
     inputs.nix-index-database.homeModules.nix-index
     ../../programs/atuin
     ../../programs/awscli
+    # In standard rather than full: config/git/config (shared by every
+    # profile) points `git dft` / `git dt` at `difft`.
+    ../../programs/difftastic
     ../../programs/direnv
     ../../programs/gh
     ../../programs/gitui
