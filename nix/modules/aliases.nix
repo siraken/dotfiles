@@ -77,4 +77,12 @@ in
     mamp-htdocs = "cd /Applications/MAMP/htdocs";
     lisp-server = "sbcl --load $HOME/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp";
   };
+
+  # WSL hosts only (applied by the `full` profile when `isWSL`). The Windows
+  # binaries reach the 1Password desktop app: its SSH agent and CLI
+  # integration, which the Linux side cannot use directly.
+  wsl = {
+    ssh = "ssh.exe";
+    op = "op.exe";
+  };
 }
