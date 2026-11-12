@@ -84,6 +84,7 @@
           "watchman"
           "wego"
           "wimlib"
+          "xcodegen"
           "zola"
           "pinact"
         ];
