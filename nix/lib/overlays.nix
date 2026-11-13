@@ -34,4 +34,21 @@
       else
         prev.purescript;
   })
+
+  # rustaceanvim 9.2.2's integration specs (spec/integration/lsp_spec.lua) fail
+  # on macOS ("E95: Buffer with this name already exists"), so the Darwin build
+  # never reaches the binary cache and nixvim cannot be built. The plugin itself
+  # is fine and the same tests pass on Linux, so skip them on Darwin only. Drop
+  # this once nixpkgs has a cached aarch64-darwin build again.
+  (final: prev: {
+    luajit =
+      if final.stdenv.hostPlatform.isDarwin then
+        prev.luajit.override {
+          packageOverrides = _luaFinal: luaPrev: {
+            rustaceanvim = luaPrev.rustaceanvim.overrideAttrs { doCheck = false; };
+          };
+        }
+      else
+        prev.luajit;
+  })
 ]

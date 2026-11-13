@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   # norg / rmd / org were listed too, but there is no tree-sitter grammar for
   # them in ../treesitter, so render-markdown did nothing there.
@@ -10,6 +10,11 @@ in
       # Rust
       rustaceanvim = {
         enable = true;
+        # Nixvim builds its own pkgs from `nixpkgs.source` without our
+        # overlays, so take the plugin from the overlaid home-manager pkgs to
+        # pick up the Darwin test skip in nix/lib/overlays.nix. Drop together
+        # with that overlay.
+        package = pkgs.vimPlugins.rustaceanvim;
         lazyLoad = {
           enable = true;
           settings.ft = [ "rust" ];
