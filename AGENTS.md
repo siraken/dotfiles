@@ -158,3 +158,7 @@ home-manager switch --flake .#siraken@wsl-ubuntu | cat
 darwin-rebuild switch --flake .#siraken-mbp
 home-manager switch --flake .#siraken@wsl-ubuntu
 ```
+
+### Verifying Changes
+
+- Use the `verify-dotfiles` skill (`.agents/skills/verify-dotfiles/`, linked into `.claude/skills/`) to check that a change reaches the generation and the running machine. Its `scripts/hmcheck` evaluates only; it never builds unless asked and never switches.
