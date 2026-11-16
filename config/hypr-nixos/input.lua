@@ -1,0 +1,44 @@
+-- See https://wiki.hypr.land/Configuring/Basics/Variables/#input
+-- Omarchy's defaults with the overrides from config/hypr/input.lua.
+
+hl.config({
+  input = {
+    kb_layout = "us",
+    -- CapsLock is compose; both Shifts toggle Caps Lock, and a lone Shift
+    -- afterwards releases it.
+    kb_options = "compose:caps,shift:both_capslock_cancel",
+
+    repeat_rate = 40,
+    repeat_delay = 250,
+    numlock_by_default = true,
+
+    sensitivity = 0.35,
+    accel_profile = "flat",
+
+    -- Click to focus: hovering only sends pointer events.
+    follow_mouse = 2,
+
+    natural_scroll = true,
+
+    touchpad = {
+      natural_scroll = true,
+      -- Two-finger click is a right-click.
+      clickfinger_behavior = true,
+      scroll_factor = 0.3,
+      -- Ignore the touchpad while typing, so a palm cannot tap-click.
+      disable_while_typing = true,
+      drag_3fg = 0,
+    },
+  },
+
+  misc = {
+    key_press_enables_dpms = true,
+    mouse_move_enables_dpms = true,
+  },
+})
+
+-- Only the MacBook's own JIS keyboard is jp; external keyboards stay us.
+hl.device({ name = "apple-inc.-apple-internal-keyboard-/-trackpad", kb_layout = "jp" })
+
+-- Scroll speed in terminals.
+o.window("org.wezfurlong.wezterm", { scroll_touchpad = 1.5 })

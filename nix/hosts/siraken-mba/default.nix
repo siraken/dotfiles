@@ -8,6 +8,8 @@
     ./configuration.nix
     ./hardware-configuration.nix
     ./hardware.nix
+    ./desktop.nix
+    ./vm.nix
     inputs.nixos-hardware.nixosModules.apple-macbook-air-6
   ];
 }

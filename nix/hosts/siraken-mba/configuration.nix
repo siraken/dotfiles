@@ -72,19 +72,7 @@
   # Swap in daily use; the swapfile is only for hibernation.
   zramSwap.enable = true;
 
-  # Desktop: Hyprland under UWSM, started from greetd. Its configuration is
-  # home-manager's (config/hypr is still Omarchy's and does not load here).
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-  };
-
   services = {
-    greetd = {
-      enable = true;
-      settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop'";
-    };
-
     pipewire = {
       enable = true;
       alsa.enable = true;
