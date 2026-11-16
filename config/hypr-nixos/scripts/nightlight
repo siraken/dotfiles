@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Toggle the night light (SUPER + CTRL + N).
+if pkill -x hyprsunset; then
+  notify-send -u low "Night light off"
+else
+  # hyprsunset has no --config and would read Omarchy's
+  # ~/.config/hypr/hyprsunset.conf, whose 07:00 identity profile overrides -t.
+  XDG_CONFIG_HOME=/var/empty uwsm-app -- hyprsunset -t 4000 &
+  notify-send -u low "Night light on"
+fi

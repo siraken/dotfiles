@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Clipboard history (SUPER + CTRL + V): pick an entry stored by cliphist and
+# put it back on the clipboard.
+cliphist list | fuzzel --dmenu --prompt 'Clipboard: ' | cliphist decode | wl-copy

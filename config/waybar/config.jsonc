@@ -1,0 +1,101 @@
+// Waybar for Hyprland on NixOS (siraken-mba). Started by
+// config/hypr-nixos/autostart.lua; SUPER + SHIFT + SPACE toggles it.
+// See https://github.com/Alexays/Waybar/wiki
+{
+  "layer": "top",
+  "position": "top",
+  "height": 26,
+  "spacing": 0,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "idle_inhibitor",
+    "bluetooth",
+    "network",
+    "wireplumber",
+    "backlight",
+    "power-profiles-daemon",
+    "cpu",
+    "battery",
+  ],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{name}",
+    "persistent-workspaces": { "*": 5 },
+  },
+
+  "clock": {
+    "format": "{:%a %m/%d %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": { "mode": "month", "weeks-pos": "left" },
+  },
+
+  "tray": { "spacing": 10 },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": { "activated": "", "deactivated": "" },
+    "tooltip-format-activated": "Idle inhibited",
+    "tooltip-format-deactivated": "Idle allowed",
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": " {num_connections}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "uwsm-app -- blueman-manager",
+  },
+
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) {ipaddr}",
+    "on-click": "uwsm-app -- nm-connection-editor",
+  },
+
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": ["", "", ""],
+    "on-click": "uwsm-app -- pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": " {percent}%",
+    "on-scroll-up": "brightnessctl -q set 5%+",
+    "on-scroll-down": "brightnessctl -q set 5%-",
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}",
+    "format-icons": {
+      "performance": "",
+      "balanced": "",
+      "power-saver": "",
+    },
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "on-click": "uwsm-app -- wezterm start --class TUI.float -- btop",
+  },
+
+  "battery": {
+    "interval": 30,
+    "states": { "warning": 20, "critical": 10 },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{timeTo}, {power} W",
+  },
+}

@@ -26,6 +26,9 @@ home-manager switch -b hm-backup --flake .#siraken@siraken-mbp
 sudo nixos-rebuild switch --flake .#wsl-nixos
 home-manager switch -b hm-backup --flake .#siraken@wsl-nixos
 
+# Try the siraken-mba desktop in QEMU (see nix/hosts/siraken-mba/vm.nix)
+nixos-rebuild build-vm --flake .#siraken-mba && ./result/bin/run-siraken-mba-vm
+
 # First run on a host without the home-manager CLI yet
 nix run home-manager/master -- switch -b hm-backup --flake .#siraken@wsl-nixos
 
@@ -73,6 +76,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 **Modular Configuration**:
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
+- `nix/programs/hyprland/` - User side of the `siraken-mba` Hyprland desktop (bar, launcher, notifications and the tools its bindings call); its config is `config/hypr-nixos/`, read through `HYPRLAND_CONFIG` because `config/hypr/` stays Omarchy's until Omarchy is removed (#244). The OS side is `nix/hosts/siraken-mba/desktop.nix`.
 - `nix/services/` - Service modules. Everything under `nix/services/darwin/` (AeroSpace, JankyBorders, Sketchybar) is a nix-darwin module imported by `nix/modules/darwin/workstation.nix`; home-manager never manages the window manager.
 - `nix/home/profiles/` - Layered home-manager profiles: `base` (production / SSH-only hosts) ⊂ `standard` ⊂ `full` (daily drivers), plus `darwin` (macOS-only additions). Hosts import one of them instead of listing programs.
 - `nix/home/default.nix` - Registry of every standalone home-manager configuration: `siraken@<host>` for known hosts and `siraken@<profile>-<system>` for generic ones, all built with `nix/lib/mk-home.nix`. nix-darwin / NixOS hosts do not embed home-manager; their user environment is always this standalone entry.
@@ -115,7 +119,7 @@ Manages 40+ tool configurations across multiple categories:
 - **IDEs**: VS Code
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, WezTerm, Ghostty
-- **Window Managers**: AeroSpace, Sketchybar, JankyBorders
+- **Window Managers**: AeroSpace, Sketchybar, JankyBorders (macOS); Hyprland, Waybar, mako, fuzzel (`siraken-mba`)
 - **Dev Tools**: Git, GitUI, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI
 - **Security**: 1Password Shell Plugins
 - **Media**: Spotify-player, Twitch-TUI, yt-dlp

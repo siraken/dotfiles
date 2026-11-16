@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     # standard rather than full to keep this 8 GB machine light, plus the
@@ -6,8 +6,18 @@
     ../../home/profiles/standard.nix
     ../../modules/home/nixos-host.nix
     ../../programs/coding-agents
+    ../../programs/hyprland
     ../../programs/wezterm
+    # Only home-manager on NixOS is switched once it boots (#243), and /home
+    # is shared with the Omarchy install. Keep its ~/.config/hypr and
+    # ~/.config/omarchy links so Omarchy stays usable as a recovery system;
+    # NixOS's Hyprland reads config/hypr-nixos instead. Drop this when Omarchy
+    # is removed (#244).
+    ../../programs/omarchy
   ];
+
+  # The browser the Hyprland bindings launch.
+  home.packages = [ pkgs.google-chrome ];
 
   # The repo is checked out at ~/dotfiles, as on the daily drivers.
   dotfiles.linkMode = "outOfStore";
