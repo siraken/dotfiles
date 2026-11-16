@@ -145,6 +145,10 @@ Manages 40+ tool configurations across multiple categories:
 
 ## Agent Rules
 
+### Verifying Changes
+
+- Use the `verify-dotfiles` skill (`.agents/skills/verify-dotfiles/`, linked into `.claude/skills/`) to check that a change reaches the generation and the running machine. Its `scripts/hmcheck` evaluates only; it never builds unless asked and never switches.
+
 ### Command Execution
 
 - **Never pipe nix-darwin or home-manager commands**: Commands like `darwin-rebuild`, `home-manager switch`, and `home-manager/...` must NOT be piped to other commands. Piping causes these commands to terminate prematurely without completing properly.
@@ -158,7 +162,3 @@ home-manager switch --flake .#siraken@wsl-ubuntu | cat
 darwin-rebuild switch --flake .#siraken-mbp
 home-manager switch --flake .#siraken@wsl-ubuntu
 ```
-
-### Verifying Changes
-
-- Use the `verify-dotfiles` skill (`.agents/skills/verify-dotfiles/`, linked into `.claude/skills/`) to check that a change reaches the generation and the running machine. Its `scripts/hmcheck` evaluates only; it never builds unless asked and never switches.
