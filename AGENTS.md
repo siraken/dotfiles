@@ -142,6 +142,7 @@ Manages 40+ tool configurations across multiple categories:
 - Use imperative mood (e.g., "Add feature" not "Added feature")
 - Keep subject line under 50 characters
 - Separate subject from body with blank line if needed
+- A `commit-msg` hook (`nix/git-hooks/commit-msg.sh`, installed by `nix develop`) enforces the format, rejects subjects over 72 characters and warns over 50. Merge, revert, `fixup!` / `squash!` / `amend!` and `flake.lock: Update` messages pass unchanged.
 
 ## Agent Rules
 

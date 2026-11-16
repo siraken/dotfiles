@@ -175,6 +175,19 @@
 
           pre-commit.settings.hooks = {
             treefmt.enable = true;
+            # Enforces the Git Commit Guidelines in AGENTS.md. A commit-msg
+            # hook, so `nix flake check` (which runs the pre-commit stage) does
+            # not run it.
+            commit-msg = {
+              enable = true;
+              name = "conventional commit message";
+              entry = toString (
+                pkgs.writeShellScript "commit-msg" (builtins.readFile ./nix/git-hooks/commit-msg.sh)
+              );
+              stages = [ "commit-msg" ];
+              # Show the over-50-characters warning, which does not fail.
+              verbose = true;
+            };
           };
 
           devShells.default = config.pre-commit.devShell;
