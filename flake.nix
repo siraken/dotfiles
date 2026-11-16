@@ -163,7 +163,12 @@
               ];
             };
             programs.yamlfmt.enable = true;
-            programs.mdformat.enable = true;
+            programs.mdformat = {
+              enable = true;
+              # Without it the YAML front matter of a skill (SKILL.md) is read
+              # as a thematic break and a heading, and the metadata is lost.
+              plugins = ps: [ ps.mdformat-frontmatter ];
+            };
             programs.fish_indent.enable = true;
             programs.taplo.enable = true;
           };
