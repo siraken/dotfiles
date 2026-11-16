@@ -11,11 +11,17 @@
 {
   boot = {
     loader = {
-      # Leaves Omarchy's limine on the shared ESP alone, so it stays reachable
-      # from the Mac boot picker (hold Option) during the migration.
+      # Leaves Omarchy's limine on the shared ESP alone. Installing puts
+      # systemd-boot first in the UEFI boot order, so Omarchy is reached through
+      # the entry below (or the Mac boot picker, hold Option) until #244.
       systemd-boot = {
         enable = true;
         configurationLimit = 10;
+        extraEntries."omarchy.conf" = ''
+          title Omarchy (Limine)
+          efi /EFI/limine/limine_x64.efi
+          sort-key z-omarchy
+        '';
       };
       efi.canTouchEfiVariables = true;
     };
