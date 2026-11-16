@@ -1,0 +1,4 @@
+# Compose file on NixOS (XCOMPOSEFILE, nix/hosts/siraken-mba/desktop.nix):
+# the locale's default sequences. ~/.XCompose is Omarchy's and includes a file
+# that only exists there.
+include "%L"
