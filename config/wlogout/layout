@@ -1,0 +1,6 @@
+{"label": "lock", "action": "loginctl lock-session", "text": "  Lock", "keybind": "l"}
+{"label": "logout", "action": "uwsm stop", "text": "  Log out", "keybind": "e"}
+{"label": "suspend", "action": "systemctl suspend", "text": "  Suspend", "keybind": "u"}
+{"label": "hibernate", "action": "systemctl hibernate", "text": "  Hibernate", "keybind": "h"}
+{"label": "reboot", "action": "systemctl reboot", "text": "  Reboot", "keybind": "r"}
+{"label": "shutdown", "action": "systemctl poweroff", "text": "  Power off", "keybind": "s"}

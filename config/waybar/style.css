@@ -83,6 +83,7 @@ tooltip {
 #backlight,
 #power-profiles-daemon,
 #battery,
+#custom-notification,
 #custom-power {
   padding: 0 7px;
 }

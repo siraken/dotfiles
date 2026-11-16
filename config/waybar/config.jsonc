@@ -29,6 +29,7 @@
       "backlight",
       "power-profiles-daemon",
       "battery",
+      "custom/notification",
       "custom/power",
     ],
   },
@@ -150,9 +151,27 @@
     "tooltip-format": "{timeTo}, {power} W",
   },
 
-  "custom/power": {
-    "format": "",
+  // swaync's notification center; the icon shows unread notifications and
+  // do-not-disturb.
+  "custom/notification": {
+    "exec": "swaync-client --subscribe-waybar",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "\uf0f3",
+      "notification": "\uf0f3\u2022",
+      "dnd-none": "\uf1f6",
+      "dnd-notification": "\uf1f6\u2022",
+    },
     "tooltip": false,
-    "on-click": "~/.config/hypr-nixos/scripts/power-menu",
+    "on-click": "swaync-client --toggle-panel --skip-wait",
+    "on-click-right": "swaync-client --toggle-dnd --skip-wait",
+    "escape": true,
+  },
+
+  "custom/power": {
+    "format": "\uf011",
+    "tooltip": false,
+    "on-click": "pkill wlogout || wlogout -b 3 -T 280 -B 280",
   },
 }
