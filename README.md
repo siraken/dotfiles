@@ -28,6 +28,7 @@ Personal dotfiles management system combining [Nix Flakes](https://nixos.wiki/wi
 | `siraken@<profile>-<system>` | any | home-manager | Generic `base` / `standard` / `full` profile for hosts without an entry (e.g. production servers) |
 | `wsl-nixos` | Linux (x86_64) | NixOS | WSL/NixOS — full system configuration |
 | `nixos-vm` | Linux (aarch64) | NixOS | NixOS VM — virtual machine |
+| `siraken-mba` | Linux (x86_64) | NixOS | MacBook Air — replacing its Omarchy install, not installed yet ([#245](https://github.com/siraken/dotfiles/issues/245)) |
 | `siraken@<host>` | same as the host | home-manager | User environment of each host above, applied separately from the OS layer |
 
 ### Key Features
@@ -205,6 +206,7 @@ dotfiles/
 │   ├── hosts/                 # Per-host system configurations
 │   │   ├── siraken-mbp/       #   MacBook Pro
 │   │   ├── siraken-macmini/   #   Mac mini
+│   │   ├── siraken-mba/       #   MacBook Air (NixOS)
 │   │   ├── wsl-nixos/         #   WSL/NixOS
 │   │   └── nixos-vm/          #   NixOS VM
 │   ├── home/                  # Standalone home-manager configurations

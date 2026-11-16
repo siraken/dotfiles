@@ -58,6 +58,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     op-shell-plugins = {
       url = "github:1Password/shell-plugins";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -205,6 +210,7 @@
                   self.darwinConfigurations.siraken-mbp.system.drvPath
                   self.darwinConfigurations.siraken-macmini.system.drvPath
                   self.nixosConfigurations.nixos-vm.config.system.build.toplevel.drvPath
+                  self.nixosConfigurations.siraken-mba.config.system.build.toplevel.drvPath
                   self.nixosConfigurations.wsl-nixos.config.system.build.toplevel.drvPath
                 ]
                 ++ nixpkgs.lib.mapAttrsToList (_: home: home.activationPackage.drvPath) self.homeConfigurations
@@ -278,6 +284,9 @@
             inherit inputs userProfile;
           };
           "wsl-nixos" = import ./nix/hosts/wsl-nixos {
+            inherit inputs userProfile;
+          };
+          "siraken-mba" = import ./nix/hosts/siraken-mba {
             inherit inputs userProfile;
           };
         };
