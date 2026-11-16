@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     # standard rather than full to keep this 8 GB machine light, plus the
@@ -15,6 +15,12 @@
     # is removed (#244).
     ../../programs/omarchy
   ];
+
+  # Not installed for the first switch on NixOS: codex builds from source here
+  # (see the codex WORKAROUND in nix/lib/overlays.nix), which takes about an
+  # hour on this machine. Its config is still written. Drop this once codex
+  # is in the store (#243).
+  programs.codex.package = lib.mkForce null;
 
   # The browser the Hyprland bindings launch.
   home.packages = [ pkgs.google-chrome ];
