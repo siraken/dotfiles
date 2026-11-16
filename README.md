@@ -24,11 +24,11 @@ Personal dotfiles management system combining [Nix Flakes](https://nixos.wiki/wi
 | `siraken-mbp` | macOS (aarch64) | nix-darwin | MacBook Pro — full configuration (primary) |
 | `siraken-macmini` | macOS (aarch64) | nix-darwin | Mac mini — base OS layer, reached over SSH |
 | `siraken@wsl-ubuntu` | Linux (x86_64) | home-manager | WSL/Ubuntu — user environment only |
-| `siraken@siraken-mba-omarchy` | Linux (x86_64) | home-manager | MacBook Air on Omarchy — user environment only, adopted incrementally |
+| `siraken@siraken-mba-omarchy` | Linux (x86_64) | home-manager | MacBook Air on Omarchy — user environment only; Omarchy is kept as a recovery system and this is no longer switched ([#243](https://github.com/siraken/dotfiles/issues/243)) |
 | `siraken@<profile>-<system>` | any | home-manager | Generic `base` / `standard` / `full` profile for hosts without an entry (e.g. production servers) |
 | `wsl-nixos` | Linux (x86_64) | NixOS | WSL/NixOS — full system configuration |
 | `nixos-vm` | Linux (aarch64) | NixOS | NixOS VM — virtual machine |
-| `siraken-mba` | Linux (x86_64) | NixOS | MacBook Air — replacing its Omarchy install, not installed yet ([#245](https://github.com/siraken/dotfiles/issues/245)) |
+| `siraken-mba` | Linux (x86_64) | NixOS | MacBook Air (Early 2014) — Hyprland desktop, installed next to Omarchy until it is removed ([#245](https://github.com/siraken/dotfiles/issues/245)) |
 | `siraken@<host>` | same as the host | home-manager | User environment of each host above, applied separately from the OS layer |
 
 ### Key Features
@@ -76,6 +76,22 @@ nix run .#mbp   # or .#macmini
 ```bash
 home-manager switch --flake .#siraken@wsl-ubuntu
 ```
+
+</details>
+
+<details>
+<summary><b>MacBook Air (NixOS)</b></summary>
+
+```bash
+# OS layer, then user environment
+sudo nixos-rebuild switch --flake .#siraken-mba
+home-manager switch -b hm-backup --flake .#siraken@siraken-mba
+
+# Try the desktop in QEMU first
+nixos-rebuild build-vm --flake .#siraken-mba && ./result/bin/run-siraken-mba-vm
+```
+
+`/home` is shared with the Omarchy install until it is removed, so do not switch `siraken@siraken-mba-omarchy` any more: the two configurations overwrite each other's files.
 
 </details>
 

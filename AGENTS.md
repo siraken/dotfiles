@@ -64,7 +64,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `siraken@<host>` / `siraken@<profile>-<system>` - standalone home-manager configurations (see `nix/home/default.nix`)
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
-  - `siraken-mba` - MacBook Air (Early 2014) system configuration, replacing its Omarchy install (not installed yet)
+  - `siraken-mba` - MacBook Air (Early 2014) system configuration. Installed next to the Omarchy install (`siraken@siraken-mba-omarchy`), which shares `/home` and is kept for recovery until #244; do not switch the Omarchy home configuration any more
 
 ### Key Components
 
