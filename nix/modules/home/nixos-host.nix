@@ -1,8 +1,8 @@
 # What home-manager used to inherit from NixOS while it was embedded as a NixOS
 # module (`nixosConfig`), stated explicitly for standalone home-manager on a
-# NixOS host (wsl-nixos, nixos-vm).
+# NixOS host (wsl-nixos, nixos-vm, siraken-mba).
 #
-# Keep in sync with the host's `configuration.nix`: both hosts only set
+# Keep in sync with the host's `configuration.nix`: all three hosts only set
 # `i18n.defaultLocale = "en_US.UTF-8"` and leave fontconfig enabled.
 { pkgs, ... }:
 {

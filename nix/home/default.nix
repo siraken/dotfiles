@@ -34,6 +34,10 @@ let
       system = "aarch64-linux";
       homeModule = ../hosts/nixos-vm/home.nix;
     };
+    siraken-mba = {
+      system = "x86_64-linux";
+      homeModule = ../hosts/siraken-mba/home.nix;
+    };
     wsl-ubuntu = {
       system = "x86_64-linux";
       homeModule = ./wsl-ubuntu/home.nix;

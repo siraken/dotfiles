@@ -22,7 +22,7 @@ nix run .#mbp
 sudo darwin-rebuild switch --flake .#siraken-mbp
 home-manager switch -b hm-backup --flake .#siraken@siraken-mbp
 
-# NixOS (wsl-nixos, nixos-vm)
+# NixOS (wsl-nixos, nixos-vm, siraken-mba)
 sudo nixos-rebuild switch --flake .#wsl-nixos
 home-manager switch -b hm-backup --flake .#siraken@wsl-nixos
 
@@ -61,6 +61,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `siraken@<host>` / `siraken@<profile>-<system>` - standalone home-manager configurations (see `nix/home/default.nix`)
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
+  - `siraken-mba` - MacBook Air (Early 2014) system configuration, replacing its Omarchy install (not installed yet)
 
 ### Key Components
 
@@ -124,7 +125,7 @@ Manages 40+ tool configurations across multiple categories:
 ### Target Architectures
 
 - `aarch64-darwin` - Apple Silicon Macs (primary)
-- `x86_64-linux` - WSL/Ubuntu and NixOS
+- `x86_64-linux` - WSL/Ubuntu, NixOS and the MacBook Air
 - `aarch64-linux` - NixOS VM (nixos-vm)
 
 ## Important Files
