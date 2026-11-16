@@ -56,4 +56,9 @@
   # Mount removable drives from the file manager.
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
+  # Secret Service for gh, browsers and the like. The keyring itself
+  # (~/.local/share/keyrings) is the one Omarchy created, without a password;
+  # greetd's PAM stack includes login's, which starts the daemon.
+  services.gnome.gnome-keyring.enable = true;
 }
