@@ -6,7 +6,27 @@
 { inputs }:
 [
   (final: _prev: {
-    llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
+    llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system} // {
+      # WORKAROUND: llm-agents follows our nixpkgs, whose aws-lc no longer
+      # installs the compat openssl.pc that codex gives openssl-sys on Linux,
+      # so the build fails with "Could not find directory of OpenSSL
+      # installation". Add the real openssl, as upstream does in
+      # https://github.com/numtide/llm-agents.nix/pull/12320. Drop this once
+      # that is merged and flake.lock picks it up.
+      codex =
+        let
+          codex = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system}.codex;
+        in
+        if
+          final.stdenv.hostPlatform.isLinux
+          && !(final.lib.elem "openssl" (final.aws-lc.meta.pkgConfigModules or [ ]))
+        then
+          codex.overrideAttrs (old: {
+            buildInputs = old.buildInputs ++ [ final.openssl ];
+          })
+        else
+          codex;
+    };
   })
 
   # WORKAROUND: the prebuilt `purs` segfaults inside ld.so (glibc 2.44) once patchelf
