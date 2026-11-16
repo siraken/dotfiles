@@ -13,7 +13,7 @@ o.window({
 }, { no_focus = true })
 
 -- Terminals, for the universal copy/paste bindings.
-o.window("(org\\.wezfurlong\\.wezterm|com\\.mitchellh\\.ghostty|kitty|TUI\\..*)", { tag = "+terminal" })
+o.window("(org\\.wezfurlong\\.wezterm|com\\.mitchellh\\.ghostty|kitty|foot|TUI\\..*)", { tag = "+terminal" })
 
 -- Floating windows.
 o.window({ tag = "floating-window" }, { float = true, center = true, size = { 875, 600 } })

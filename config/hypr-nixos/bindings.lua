@@ -3,6 +3,8 @@
 
 -- Applications.
 o.bind("SUPER + RETURN", "Terminal", o.launch("wezterm"))
+-- foot needs no GPU setup of its own, for when WezTerm does not start.
+o.bind("SUPER + ALT + RETURN", "Terminal (foot)", o.launch("foot"))
 o.bind("SUPER + SHIFT + RETURN", "Browser", o.launch("google-chrome-stable"))
 o.bind("SUPER + SHIFT + B", "Browser", o.launch("google-chrome-stable"))
 o.bind("SUPER + SHIFT + ALT + B", "Browser (private)", o.launch("google-chrome-stable --incognito"))
