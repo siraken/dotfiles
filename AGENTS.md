@@ -158,3 +158,21 @@ home-manager switch --flake .#siraken@wsl-ubuntu | cat
 darwin-rebuild switch --flake .#siraken-mbp
 home-manager switch --flake .#siraken@wsl-ubuntu
 ```
+
+### Public Repository
+
+- This repository is **public**. Never commit information about private projects, clients or other machines' runtime state, not even as file names or locations. When a file is written by tools at runtime, read its diff before committing it (see the `home/.claude/settings.json` exception above).
+
+### Workarounds
+
+- A workaround for an upstream bug (an overlay, `doCheck = false`, a pinned input, a patch) starts its comment with `WORKAROUND:`, says what breaks without it, links the upstream issue or PR when there is one, and says when it can be removed ("Drop this once ..."). `grep -rn WORKAROUND nix` then lists everything that should be revisited after a `flake.lock` update.
+
+### Known Pitfalls
+
+- **Nerd Font glyphs in the Private Use Area (U+E000–U+F8FF) can be silently dropped** when an agent writes a file. Planes 15/16 (U+F0000 and up) survive, so the loss is easy to miss; the build still passes and the icon is just blank at runtime. Write glyphs as escapes instead of literal characters — Lua (LuaJIT 2.1): `"\u{f057}"`, Nix: `builtins.fromJSON ''"\uf0da"''` (see `nix/programs/vim/`). After editing a file that embeds literal glyphs, check that they are still there:
+
+  ```bash
+  python3 -c 'import sys, pathlib; t = pathlib.Path(sys.argv[1]).read_text(); print(sorted({hex(ord(c)) for c in t if 0xe000 <= ord(c) <= 0xf8ff or ord(c) >= 0xf0000}))' path/to/file
+  ```
+
+- **Sketchybar measures a label by its ink**, so characters without ink at either end of a label are dropped: plain spaces, and also NBSP (U+00A0), FIGURE SPACE (U+2007) and the Braille blank (U+2800). Swapping in another blank character does not help. To indent, strip the leading spaces and convert them to `label.padding_left` (Hack is monospaced with a 0.6 em advance: 7.2 px per character at 12 pt). See `nix/services/darwin/sketchybar/plugins/clock_click.sh`.
