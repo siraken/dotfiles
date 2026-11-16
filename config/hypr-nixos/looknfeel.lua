@@ -1,13 +1,16 @@
--- Omarchy's look'n'feel without its themes.
+-- Look'n'feel after siraken-mbp (AeroSpace + JankyBorders): a white rounded
+-- border on the focused window only, 6px between windows, 10px to the edges.
 -- See https://wiki.hypr.land/Configuring/Basics/Variables/
 
-local active_border_color = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 }
-local inactive_border_color = "rgba(595959aa)"
+local active_border_color = "rgba(ffffffff)"
+local inactive_border_color = "rgba(00000000)"
 
 hl.config({
   general = {
-    gaps_in = 5,
-    gaps_out = 10,
+    -- Per window, so 6px between two.
+    gaps_in = 3,
+    -- Waybar's islands already sit 4px below the top edge.
+    gaps_out = { top = 6, right = 10, bottom = 10, left = 10 },
     border_size = 2,
 
     col = {
@@ -21,7 +24,7 @@ hl.config({
   },
 
   decoration = {
-    rounding = 0,
+    rounding = 8,
 
     -- Both cost GPU time the HD 5000 is better off without.
     shadow = {
