@@ -14,7 +14,13 @@
   # /home is shared with Omarchy until it is removed, and ~/.config/hypr is
   # still Omarchy's (config/hypr). Point Hyprland at the NixOS config instead;
   # pam_env sets this for the greetd session only on this system.
-  environment.sessionVariables.HYPRLAND_CONFIG = "$HOME/.config/hypr-nixos/hyprland.lua";
+  environment.sessionVariables = {
+    HYPRLAND_CONFIG = "$HOME/.config/hypr-nixos/hyprland.lua";
+    # Omarchy's ~/.XCompose includes a file under /usr/share/omarchy, which
+    # does not exist here: xkbcommon then has no compose table and WezTerm
+    # panics ("no keymap"). Use the locale's default instead until #244.
+    XCOMPOSEFILE = "$HOME/.config/hypr-nixos/XCompose";
+  };
 
   services.greetd = {
     enable = true;
@@ -50,4 +56,9 @@
   # Mount removable drives from the file manager.
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
+  # Secret Service for gh, browsers and the like. The keyring itself
+  # (~/.local/share/keyrings) is the one Omarchy created, without a password;
+  # greetd's PAM stack includes login's, which starts the daemon.
+  services.gnome.gnome-keyring.enable = true;
 }
