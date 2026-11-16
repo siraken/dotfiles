@@ -67,7 +67,6 @@
   },
 
   "backlight": {
-    "device": "intel_backlight",
     "format": " {percent}%",
     "on-scroll-up": "brightnessctl -q set 5%+",
     "on-scroll-down": "brightnessctl -q set 5%-",
