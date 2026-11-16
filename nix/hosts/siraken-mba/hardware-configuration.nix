@@ -65,10 +65,11 @@ in
     }
   ];
 
-  # Hibernation resumes from the swapfile. Its offset is only known once the
-  # file exists: `btrfs inspect-internal map-swapfile -r /swap/swapfile`.
+  # Hibernation resumes from the swapfile (8 GiB, made with `btrfs filesystem
+  # mkswapfile`). Recreating the file changes the offset: read it again with
+  # `btrfs inspect-internal map-swapfile -r /swap/swapfile`.
   boot.resumeDevice = "/dev/mapper/root";
-  # boot.kernelParams = [ "resume_offset=<offset>" ];
+  boot.kernelParams = [ "resume_offset=9708800" ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
