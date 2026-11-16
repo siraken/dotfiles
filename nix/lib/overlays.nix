@@ -9,7 +9,7 @@
     llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
   })
 
-  # The prebuilt `purs` segfaults inside ld.so (glibc 2.44) once patchelf
+  # WORKAROUND: the prebuilt `purs` segfaults inside ld.so (glibc 2.44) once patchelf
   # rewrites both its interpreter and its rpath in a single call, which breaks
   # the bash-completion step of the build. Running the two edits separately,
   # rpath first, yields a working binary. Drop this once nixpkgs fixes it.
@@ -35,7 +35,7 @@
         prev.purescript;
   })
 
-  # rustaceanvim 9.2.2's integration specs (spec/integration/lsp_spec.lua) fail
+  # WORKAROUND: rustaceanvim 9.2.2's integration specs (spec/integration/lsp_spec.lua) fail
   # on macOS ("E95: Buffer with this name already exists"), so the Darwin build
   # never reaches the binary cache and nixvim cannot be built. The plugin itself
   # is fine and the same tests pass on Linux, so skip them on Darwin only. Drop
