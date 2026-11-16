@@ -42,7 +42,12 @@
     # Bluetooth (BCM20702, btusb) firmware and the rest of linux-firmware.
     enableRedistributableFirmware = true;
 
-    facetimehd.enable = true;
+    facetimehd = {
+      enable = true;
+      # Sensor calibration (1871_01XX.dat), extracted from Apple's Boot Camp
+      # driver: without it the camera works but its colors are off.
+      withCalibration = true;
+    };
 
     # Haswell (HD 5000) is only supported by the i965 VA-API driver;
     # nixos-hardware's generic Intel module would also add intel-media-driver
