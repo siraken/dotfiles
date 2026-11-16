@@ -28,6 +28,9 @@
     adwaita-icon-theme
     xdg-user-dirs
     btop
+    # Fallback terminal (SUPER + ALT + RETURN); reads Omarchy's
+    # ~/.config/foot while /home is shared.
+    foot
   ];
 
   # Read through HYPRLAND_CONFIG, not ~/.config/hypr (still Omarchy's).
