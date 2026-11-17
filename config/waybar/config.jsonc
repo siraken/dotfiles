@@ -1,38 +1,94 @@
 // Waybar for Hyprland on NixOS (siraken-mba). Started by
 // config/hypr-nixos/autostart.lua; SUPER + SHIFT + SPACE toggles it.
 // See https://github.com/Alexays/Waybar/wiki
+//
+// Laid out like siraken-mbp's Sketchybar: a transparent bar with floating
+// "islands" (groups styled in style.css).
 {
   "layer": "top",
   "position": "top",
-  "height": 26,
+  "height": 34,
   "spacing": 0,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": [
-    "tray",
-    "idle_inhibitor",
-    "bluetooth",
-    "network",
-    "wireplumber",
-    "backlight",
-    "power-profiles-daemon",
-    "cpu",
-    "battery",
-  ],
+  "margin-top": 4,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": ["group/spaces", "group/app"],
+  "modules-center": ["group/time"],
+  "modules-right": ["mpris", "group/indicators", "group/system"],
 
+  "group/spaces": { "orientation": "horizontal", "modules": ["hyprland/workspaces"] },
+  "group/app": { "orientation": "horizontal", "modules": ["hyprland/window"] },
+  "group/time": { "orientation": "horizontal", "modules": ["clock"] },
+  "group/indicators": { "orientation": "horizontal", "modules": ["tray", "idle_inhibitor"] },
+  "group/system": {
+    "orientation": "horizontal",
+    "modules": [
+      "bluetooth",
+      "network",
+      "wireplumber",
+      "backlight",
+      "power-profiles-daemon",
+      "battery",
+      "custom/power",
+    ],
+  },
+
+  // The number, then an icon per window, like siraken-mbp's spaces.
   "hyprland/workspaces": {
     "on-click": "activate",
-    "format": "{name}",
+    "format": "{id}{windows}",
+    "format-window-separator": "",
+    "window-rewrite-default": " ",
+    "window-rewrite": {
+      "class<org.wezfurlong.wezterm>": " ",
+      "class<foot>": " ",
+      "class<google-chrome>": " ",
+      "class<org.gnome.Nautilus>": " ",
+      "class<1password>": " ",
+      "class<code>": " ",
+      "class<.*[Ss]lack.*>": " ",
+      "class<.*[Dd]iscord.*>": " ",
+      "class<.*[Ss]potify.*>": " ",
+    },
     "persistent-workspaces": { "*": 5 },
   },
 
-  "clock": {
-    "format": "{:%a %m/%d %H:%M}",
-    "tooltip-format": "<tt>{calendar}</tt>",
-    "calendar": { "mode": "month", "weeks-pos": "left" },
+  "hyprland/window": {
+    "format": "{class}",
+    "max-length": 32,
+    "rewrite": {
+      "org.wezfurlong.wezterm": "WezTerm",
+      "google-chrome": "Chrome",
+      "org.gnome.Nautilus": "Files",
+      "": "Desktop",
+    },
+    "separate-outputs": true,
   },
 
-  "tray": { "spacing": 10 },
+  "clock": {
+    "format": "{:%a %m/%d  %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "left",
+      "format": {
+        "today": "<span color='#7aa2f7'><b>{}</b></span>",
+        "weeks": "<span color='#565f89'>{}</span>",
+      },
+    },
+  },
+
+  "mpris": {
+    "format": "{player_icon} {title}",
+    "format-paused": "{status_icon} {title}",
+    "max-length": 36,
+    "player-icons": { "default": "", "spotify": "", "chromium": "" },
+    "status-icons": { "paused": "" },
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+  },
+
+  "tray": { "spacing": 10, "icon-size": 15 },
 
   "idle_inhibitor": {
     "format": "{icon}",
@@ -51,7 +107,7 @@
   },
 
   "network": {
-    "format-wifi": " {essid}",
+    "format-wifi": "",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({signalStrength}%) {ipaddr}",
@@ -64,8 +120,10 @@
     "format-icons": ["", "", ""],
     "on-click": "uwsm-app -- pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "scroll-step": 5,
   },
 
+  // No device: the panel's backlight is acpi_video0 with acpi_osi=.
   "backlight": {
     "format": " {percent}%",
     "on-scroll-up": "brightnessctl -q set 5%+",
@@ -82,12 +140,6 @@
     },
   },
 
-  "cpu": {
-    "interval": 5,
-    "format": " {usage}%",
-    "on-click": "uwsm-app -- wezterm start --class TUI.float -- btop",
-  },
-
   "battery": {
     "interval": 30,
     "states": { "warning": 20, "critical": 10 },
@@ -96,5 +148,11 @@
     "format-plugged": " {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{timeTo}, {power} W",
+  },
+
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/hypr-nixos/scripts/power-menu",
   },
 }
