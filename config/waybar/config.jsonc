@@ -1,5 +1,5 @@
 // Waybar for Hyprland on NixOS (siraken-mba). Started by
-// config/hypr-nixos/autostart.lua; SUPER + SHIFT + SPACE toggles it.
+// config/hypr/autostart.lua; SUPER + SHIFT + SPACE toggles it.
 // See https://github.com/Alexays/Waybar/wiki
 //
 // Laid out like siraken-mbp's Sketchybar: a transparent bar with floating
@@ -39,18 +39,18 @@
 
   // Shown while scripts/record runs; it refreshes this on signal 8.
   "custom/recording": {
-    "exec": "~/.config/hypr-nixos/scripts/record status",
+    "exec": "~/.config/hypr/scripts/record status",
     "return-type": "json",
     "interval": "once",
     "signal": 8,
-    "on-click": "~/.config/hypr-nixos/scripts/record stop",
+    "on-click": "~/.config/hypr/scripts/record stop",
   },
 
-  // Opens the menus (config/hypr-nixos/scripts/menu), like Omarchy's menu button.
+  // Opens the menus (config/hypr/scripts/menu), like Omarchy's menu button.
   "custom/menu": {
     "format": "\uf313",
     "tooltip": false,
-    "on-click": "pkill fuzzel || ~/.config/hypr-nixos/scripts/menu",
+    "on-click": "pkill fuzzel || ~/.config/hypr/scripts/menu",
     "on-click-right": "pkill fuzzel || fuzzel",
   },
 
@@ -124,7 +124,7 @@
     "format-connected": " {num_connections}",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
-    "on-click": "~/.config/hypr-nixos/scripts/panel bluetooth",
+    "on-click": "~/.config/hypr/scripts/panel bluetooth",
     "on-click-right": "uwsm-app -- blueman-manager",
   },
 
@@ -133,7 +133,7 @@
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({signalStrength}%) {ipaddr}",
-    "on-click": "~/.config/hypr-nixos/scripts/panel wifi",
+    "on-click": "~/.config/hypr/scripts/panel wifi",
     "on-click-right": "uwsm-app -- nm-connection-editor",
   },
 
@@ -141,7 +141,7 @@
     "format": "{icon} {volume}%",
     "format-muted": "󰝟",
     "format-icons": ["", "", ""],
-    "on-click": "~/.config/hypr-nixos/scripts/panel audio",
+    "on-click": "~/.config/hypr/scripts/panel audio",
     "on-click-right": "uwsm-app -- pavucontrol",
     "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5,

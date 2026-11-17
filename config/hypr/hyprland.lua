@@ -1,29 +1,24 @@
--- Learn how to configure Hyprland: https://wiki.hypr.land/Configuring/Start/
+-- Hyprland on NixOS (siraken-mba). Ported from Omarchy's defaults
+-- (/usr/share/omarchy/default/hypr), keeping only what is used.
 
--- Omarchy's bootstrap keeps path setup out of this user config.
-dofile((os.getenv("OMARCHY_PATH") or "/usr/share/omarchy") .. "/default/hypr/bootstrap.lua")
+local home = os.getenv("HOME")
 
--- Disable all Omarchy default bindings. Add your own in hypr/bindings.lua.
--- omarchy_default_bindings = false
---
--- Or disable only bindings for Omarchy's preinstalled apps/web apps while
--- keeping core window-manager bindings:
--- omarchy_preinstalled_bindings = false
+-- Drop the modules loaded by the previous run so `hyprctl reload` picks up
+-- edits to them.
+for module in pairs(package.loaded) do
+  if module:match("^hypr%.") then
+    package.loaded[module] = nil
+  end
+end
 
--- Load Omarchy defaults.
-require("default.hypr.omarchy")
+package.path = home .. "/.config/?.lua;" .. package.path
 
--- Put your personal overrides in these files. They're loaded after Omarchy's
--- defaults so package updates can improve the defaults without rewriting your
--- ~/.config/hypr files.
+require("hypr.lib")
+
+require("hypr.envs")
 require("hypr.monitors")
 require("hypr.input")
-require("hypr.bindings")
 require("hypr.looknfeel")
+require("hypr.windows")
+require("hypr.bindings")
 require("hypr.autostart")
-
--- Toggle config flags dynamically.
-require("default.hypr.toggles")
-
--- Add any other personal Hyprland configuration below.
--- o.window("qemu", { workspace = "5" })

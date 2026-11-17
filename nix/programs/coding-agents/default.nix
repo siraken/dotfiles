@@ -6,8 +6,7 @@
   ...
 }:
 let
-  # A host whose agents are installed elsewhere (Omarchy installs them through
-  # mise and ~/.local/bin wrappers, ahead of ~/.nix-profile on PATH) takes only
+  # A host whose agents are installed elsewhere (e.g. through mise) takes only
   # the configuration below.
   installPackages = config.dotfiles.codingAgents.installPackages;
   agents = config.dotfiles.codingAgents.agents;

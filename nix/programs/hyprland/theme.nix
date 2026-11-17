@@ -1,8 +1,7 @@
 # One look for the toolkits around the Hyprland desktop, matching the Tokyo
 # Night bar: dark GTK and Qt, Papirus icons, the Bibata cursor.
 #
-# GTK reads the color scheme from dconf, which is shared with Omarchy until
-# #244 (Omarchy set the same prefer-dark there).
+# GTK reads the color scheme from dconf.
 { pkgs, ... }:
 let
   cursor = {

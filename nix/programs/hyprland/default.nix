@@ -3,9 +3,8 @@
 # lock screen's PAM service and the polkit agent are the OS layer's
 # (nix/hosts/siraken-mba/desktop.nix).
 #
-# Nothing here is a systemd user unit or a home-manager service module:
-# ~/.config is shared with the Omarchy install until it is removed, so
-# config/hypr-nixos/autostart.lua starts these from Hyprland instead.
+# The session services start from config/hypr/autostart.lua rather than as
+# home-manager units.
 { pkgs, mkRepoLink, ... }:
 {
   imports = [
@@ -46,12 +45,11 @@
     adwaita-icon-theme
     xdg-user-dirs
     btop
-    # Fallback terminal (SUPER + ALT + RETURN); reads Omarchy's
-    # ~/.config/foot while /home is shared.
+    # Fallback terminal (SUPER + ALT + RETURN); ~/.config/foot is the one
+    # Omarchy wrote.
     foot
   ];
 
-  # Read through HYPRLAND_CONFIG, not ~/.config/hypr (still Omarchy's).
   # No blueman or nm-applet in the tray: the bar has Bluetooth and network
   # already, and opens blueman-manager / nm-connection-editor on right-click.
   xdg.configFile = {
@@ -59,7 +57,7 @@
     "autostart/nm-applet.desktop".text = "[Desktop Entry]\nHidden=true\n";
   };
 
-  home.file.".config/hypr-nixos".source = mkRepoLink "config/hypr-nixos";
+  home.file.".config/hypr".source = mkRepoLink "config/hypr";
   home.file.".config/waybar".source = mkRepoLink "config/waybar";
   home.file.".config/swaync".source = mkRepoLink "config/swaync";
   home.file.".config/swayosd".source = mkRepoLink "config/swayosd";

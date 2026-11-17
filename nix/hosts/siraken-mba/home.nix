@@ -9,12 +9,6 @@
     ./cli.nix
     ../../programs/hyprland
     ../../programs/wezterm
-    # Only home-manager on NixOS is switched once it boots (#243), and /home
-    # is shared with the Omarchy install. Keep its ~/.config/hypr and
-    # ~/.config/omarchy links so Omarchy stays usable as a recovery system;
-    # NixOS's Hyprland reads config/hypr-nixos instead. Drop this when Omarchy
-    # is removed (#244).
-    ../../programs/omarchy
   ];
 
   # Only Claude Code is used here; the other agents keep their configuration
