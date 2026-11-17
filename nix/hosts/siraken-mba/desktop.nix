@@ -2,7 +2,12 @@
 # agent. The user side (bar, launcher, notifications, the tools the bindings
 # call) is nix/programs/hyprland, and the Hyprland config itself is
 # config/hypr-nixos.
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  userProfile,
+  ...
+}:
 {
   # Hyprland under UWSM, so each app and session service runs as its own
   # systemd user unit.
@@ -24,7 +29,17 @@
 
   services.greetd = {
     enable = true;
-    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop'";
+    settings = {
+      # The disk is encrypted, so the LUKS passphrase already proves who is at
+      # the machine: log in once after boot without asking again, as Omarchy
+      # did. hyprlock still asks after suspend and idle.
+      initial_session = {
+        user = userProfile.username;
+        command = "uwsm start hyprland-uwsm.desktop";
+      };
+      # After logging out.
+      default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'uwsm start hyprland-uwsm.desktop'";
+    };
   };
 
   # Its PAM service, and hypridle as a NixOS user unit (not in the shared
@@ -58,7 +73,8 @@
   services.udisks2.enable = true;
 
   # Secret Service for gh, browsers and the like. The keyring itself
-  # (~/.local/share/keyrings) is the one Omarchy created, without a password;
-  # greetd's PAM stack includes login's, which starts the daemon.
+  # (~/.local/share/keyrings) is the one Omarchy created, without a password,
+  # so it opens without one after the automatic login too. greetd's PAM stack
+  # includes login's, which starts the daemon.
   services.gnome.gnome-keyring.enable = true;
 }
