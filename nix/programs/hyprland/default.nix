@@ -32,6 +32,10 @@
     rofimoji
     wtype
     playerctl
+    # Panels from the bar (scripts/panel); the GTK apps stay on right-click.
+    wiremix
+    bluetui
+    wifitui
     pavucontrol
     networkmanagerapplet
     nautilus
