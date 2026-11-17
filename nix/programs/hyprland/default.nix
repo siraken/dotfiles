@@ -8,7 +8,10 @@
 # config/hypr-nixos/autostart.lua starts these from Hyprland instead.
 { pkgs, mkRepoLink, ... }:
 {
-  imports = [ ./theme.nix ];
+  imports = [
+    ./colors.nix
+    ./theme.nix
+  ];
 
   home.packages = with pkgs; [
     waybar
