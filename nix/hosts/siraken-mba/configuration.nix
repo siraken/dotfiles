@@ -119,7 +119,11 @@
     };
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    # Started by its socket on first use rather than on every boot (#286).
+    enableOnBoot = false;
+  };
 
   fonts.packages = with pkgs; [
     noto-fonts

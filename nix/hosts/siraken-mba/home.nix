@@ -17,11 +17,12 @@
     ../../programs/omarchy
   ];
 
-  # Not installed for the first switch on NixOS: codex builds from source here
-  # (see the codex WORKAROUND in nix/lib/overlays.nix), which takes about an
-  # hour on this machine. Its config is still written. Drop this once codex
-  # is in the store (#243).
-  programs.codex.package = lib.mkForce null;
+  # Only Claude Code is used here; the other agents keep their configuration
+  # (#286).
+  dotfiles.codingAgents.agents = [ "claude-code" ];
+
+  # Not used on this machine (#286).
+  programs.awscli.enable = lib.mkForce false;
 
   home.packages = with pkgs; [
     # The browser the Hyprland bindings launch, and a second one.
