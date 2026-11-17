@@ -6,6 +6,7 @@
     ../../home/profiles/standard.nix
     ../../modules/home/nixos-host.nix
     ../../programs/coding-agents
+    ./cli.nix
     ../../programs/hyprland
     ../../programs/wezterm
     # Only home-manager on NixOS is switched once it boots (#243), and /home
