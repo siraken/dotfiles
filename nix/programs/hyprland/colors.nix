@@ -4,6 +4,7 @@
 #
 #   colors.css   GTK CSS: Waybar, swaync, swayosd, wlogout (@import)
 #   fuzzel.ini   fuzzel's [colors] section (include)
+#   foot.ini     foot's [colors-dark] section (include)
 #   colors.conf  hyprlang variables: hyprlock (source)
 { lib, ... }:
 let
@@ -47,6 +48,31 @@ let
     border=${strip border}ff
   '';
 
+  # Terminal colours for foot, the fallback terminal the bar's panels open in.
+  foot = ''
+    [colors-dark]
+    foreground=${strip tn.ui.fgDark}
+    background=${strip tn.ui.bg}
+    selection-foreground=${strip tn.white}
+    selection-background=${strip tn.ui.bgSelection}
+    regular0=${strip tn.darkBlack}
+    regular1=${strip tn.red}
+    regular2=${strip tn.lightGreen}
+    regular3=${strip tn.yellow}
+    regular4=${strip tn.blue}
+    regular5=${strip tn.magenta}
+    regular6=${strip tn.cyan}
+    regular7=${strip tn.ui.fgDark}
+    bright0=${strip tn.black}
+    bright1=${strip tn.red}
+    bright2=${strip tn.lightGreen}
+    bright3=${strip tn.yellow}
+    bright4=${strip tn.blue}
+    bright5=${strip tn.magenta}
+    bright6=${strip tn.cyan}
+    bright7=${strip tn.white}
+  '';
+
   header =
     comment:
     "${comment} Generated from nix/colors/tokyonight.nix (nix/programs/hyprland/colors.nix).\n";
@@ -56,5 +82,6 @@ in
     "desktop-theme/colors.css".text = header "/*" + "*/\n" + css;
     "desktop-theme/fuzzel.ini".text = header "#" + fuzzel;
     "desktop-theme/colors.conf".text = header "#" + hyprlang;
+    "desktop-theme/foot.ini".text = header "#" + foot;
   };
 }
