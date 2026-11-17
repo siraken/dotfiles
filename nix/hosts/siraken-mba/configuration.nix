@@ -25,6 +25,19 @@
       };
       efi.canTouchEfiVariables = true;
     };
+
+    # A splash from the LUKS prompt to the desktop, as on Omarchy: Plymouth asks
+    # for the passphrase (i915 is in the initrd for it), and the kernel and
+    # systemd keep their messages off the screen. Esc shows them.
+    plymouth.enable = true;
+    consoleLogLevel = 3;
+    # Plymouth adds "splash" itself.
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "rd.udev.log_level=3"
+      "systemd.show_status=auto"
+    ];
   };
 
   networking = {
@@ -46,8 +59,12 @@
     };
   };
 
-  # JIS internal keyboard on the console (Hyprland sets its own layout).
-  console.keyMap = "jp106";
+  # JIS internal keyboard on the console (Hyprland sets its own layout), from
+  # the initrd on, where the LUKS passphrase is typed.
+  console = {
+    keyMap = "jp106";
+    earlySetup = true;
+  };
 
   nix = {
     settings.experimental-features = [
