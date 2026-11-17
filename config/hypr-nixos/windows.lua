@@ -21,6 +21,9 @@ o.window("(TUI\\..*|org\\.gnome\\.NautilusPreviewer|imv|mpv|org\\.pulseaudio\\.p
   tag = "+floating-window",
 })
 o.window("xdg-desktop-portal-gtk", { tag = "+floating-window" })
+
+-- The screenshot editor (scripts/screenshot), large over the windows.
+o.window("com\\.gabm\\.satty", { float = true, center = true, size = { 1280, 800 } })
 o.window({
   class = "(org\\.gnome\\.Nautilus)",
   title = "^(Open.*Files?|Open [F|f]older.*|Save.*Files?|Save.*As|Save|All Files|.*wants to [open|save].*|[C|c]hoose.*)",

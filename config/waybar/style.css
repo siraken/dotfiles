@@ -22,11 +22,13 @@ tooltip {
   border-radius: 8px;
 }
 
-/* Islands. mpris is one on its own, so it disappears with no player. */
+/* Islands. mpris and the recording indicator are islands on their own, so
+ * they disappear when empty. */
 #spaces,
 #app,
 #time,
 #mpris,
+#custom-recording,
 #indicators,
 #system {
   background: @bg;
@@ -118,4 +120,10 @@ tooltip {
 #bluetooth.disabled,
 #bluetooth.off {
   color: @muted;
+}
+
+#custom-recording {
+  color: @red;
+  font-weight: bold;
+  padding: 0 10px;
 }

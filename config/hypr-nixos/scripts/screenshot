@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Screenshot to ~/Pictures/Screenshots and the clipboard.
+# Screenshot to ~/Pictures/Screenshots and the clipboard. The notification
+# offers to annotate it in satty, which saves over the file and copies again.
 #   screenshot region   pick a region (PRINT)
-#   screenshot window   the focused window (ALT + PRINT)
+#   screenshot window   the focused window (CTRL + PRINT)
 #   screenshot screen   the focused monitor (SHIFT + PRINT)
 set -euo pipefail
 
@@ -30,4 +31,14 @@ case "${1:-region}" in
 esac
 
 wl-copy --type image/png <"$file"
-notify-send -u low -i "$file" "Screenshot saved" "$file"
+
+# The action waits for the notification, so it runs in the background.
+(
+  # 10 s: once the popup is gone, so is its action.
+  action=$(notify-send -t 10000 -i "$file" -A annotate=Annotate "Screenshot saved" "$file") || exit 0
+  if [[ $action == annotate ]]; then
+    satty --filename "$file" --output-filename "$file" \
+      --copy-command wl-copy --early-exit --actions-on-enter save-to-file
+  fi
+) </dev/null >/dev/null 2>&1 &
+disown

@@ -14,7 +14,7 @@
   "margin-right": 10,
   "modules-left": ["group/spaces", "group/app"],
   "modules-center": ["group/time"],
-  "modules-right": ["mpris", "group/indicators", "group/system"],
+  "modules-right": ["custom/recording", "mpris", "group/indicators", "group/system"],
 
   "group/spaces": {
     "orientation": "horizontal",
@@ -35,6 +35,15 @@
       "custom/notification",
       "custom/power",
     ],
+  },
+
+  // Shown while scripts/record runs; it refreshes this on signal 8.
+  "custom/recording": {
+    "exec": "~/.config/hypr-nixos/scripts/record status",
+    "return-type": "json",
+    "interval": "once",
+    "signal": 8,
+    "on-click": "~/.config/hypr-nixos/scripts/record stop",
   },
 
   // Opens the menus (config/hypr-nixos/scripts/menu), like Omarchy's menu button.

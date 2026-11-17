@@ -180,7 +180,8 @@ o.bind("SUPER + CTRL + comma", "Toggle silencing notifications", "swaync-client 
 
 -- Screenshots, colour picker, night light, lock.
 o.bind("PRINT", "Screenshot (region)", o.script("screenshot", "region"))
-o.bind("ALT + PRINT", "Screenshot (window)", o.script("screenshot", "window"))
+o.bind("CTRL + PRINT", "Screenshot (window)", o.script("screenshot", "window"))
+o.bind("ALT + PRINT", "Screen recording (start / stop)", o.script("record", "screen"))
 o.bind("SHIFT + PRINT", "Screenshot (screen)", o.script("screenshot", "screen"))
 o.bind("SUPER + PRINT", "Color picker", "pkill hyprpicker || hyprpicker -a")
 o.bind("SUPER + CTRL + N", "Toggle nightlight", o.script("nightlight"))

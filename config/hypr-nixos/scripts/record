@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# Screen recording to ~/Videos/Recordings with wf-recorder, encoded on the
+# GPU (H.264 through VA-API on the HD 5000).
+#   record region   pick a region, then record it
+#   record screen   the focused monitor (ALT + PRINT)
+#   record stop     stop (ALT + PRINT again, or the bar's REC island)
+#   record status   Waybar's custom/recording (refreshed on signal 8)
+set -euo pipefail
+
+# By process name; nixpkgs' wrapper renames waybar to .waybar-wrapped.
+refresh_bar() { pkill -RTMIN+8 -x '\.?waybar(-wrapped)?' || true; }
+running() { pgrep -x wf-recorder >/dev/null; }
+
+case "${1:-screen}" in
+  status)
+    if running; then
+      printf '{"text": "\\uf111 REC", "tooltip": "Recording; click to stop", "class": "recording"}\n'
+    else
+      printf '{"text": ""}\n'
+    fi
+    exit 0
+    ;;
+  stop)
+    pkill -INT -x wf-recorder || true
+    # It takes a few seconds to finish the file; the bar follows when it exits.
+    for _ in $(seq 50); do
+      running || break
+      sleep 0.2
+    done
+    refresh_bar
+    exit 0
+    ;;
+esac
+
+# The toggle: a second ALT + PRINT stops.
+if running; then
+  exec "$0" stop
+fi
+
+dir="$(xdg-user-dir VIDEOS 2>/dev/null || echo "$HOME/Videos")/Recordings"
+mkdir -p "$dir"
+file="$dir/$(date +%Y-%m-%d_%H-%M-%S).mp4"
+args=(-c h264_vaapi -d /dev/dri/renderD128 -f "$file")
+
+case "$1" in
+  region)
+    geometry=$(slurp -d) || exit 0
+    args+=(-g "$geometry")
+    ;;
+  screen)
+    args+=(-o "$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name')")
+    ;;
+  *)
+    echo "usage: record [region|screen|stop|status]" >&2
+    exit 2
+    ;;
+esac
+
+(
+  wf-recorder "${args[@]}" >/dev/null 2>&1 || true
+  refresh_bar
+  notify-send -u low "Recording saved" "$file"
+) </dev/null &
+disown
+sleep 0.5
+refresh_bar
