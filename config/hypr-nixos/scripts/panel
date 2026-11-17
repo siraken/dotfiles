@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Open a TUI panel from the bar in a floating foot window, like Omarchy's
+# TUI.float windows; run again to close it (windows.lua floats TUI.*).
+#   panel audio       wiremix
+#   panel bluetooth   bluetui
+#   panel wifi        wifitui
+set -euo pipefail
+
+case "${1:-}" in
+  audio) cmd=(wiremix) ;;
+  bluetooth) cmd=(bluetui) ;;
+  wifi) cmd=(wifitui) ;;
+  *)
+    echo "usage: panel audio|bluetooth|wifi" >&2
+    exit 2
+    ;;
+esac
+
+app_id="TUI.$1"
+pid=$(hyprctl -j clients | jq -r --arg c "$app_id" '.[] | select(.class == $c) | .pid' | head -1)
+if [[ -n $pid ]]; then
+  kill "$pid"
+else
+  exec uwsm-app -- foot --app-id "$app_id" "${cmd[@]}"
+fi

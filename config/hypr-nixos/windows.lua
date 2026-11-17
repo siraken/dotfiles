@@ -17,7 +17,7 @@ o.window("(org\\.wezfurlong\\.wezterm|com\\.mitchellh\\.ghostty|kitty|foot|TUI\\
 
 -- Floating windows.
 o.window({ tag = "floating-window" }, { float = true, center = true, size = { 875, 600 } })
-o.window("(TUI\\.float|org\\.gnome\\.NautilusPreviewer|imv|mpv|org\\.pulseaudio\\.pavucontrol|blueman-manager)", {
+o.window("(TUI\\..*|org\\.gnome\\.NautilusPreviewer|imv|mpv|org\\.pulseaudio\\.pavucontrol|blueman-manager)", {
   tag = "+floating-window",
 })
 o.window("xdg-desktop-portal-gtk", { tag = "+floating-window" })

@@ -115,7 +115,8 @@
     "format-connected": " {num_connections}",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
-    "on-click": "uwsm-app -- blueman-manager",
+    "on-click": "~/.config/hypr-nixos/scripts/panel bluetooth",
+    "on-click-right": "uwsm-app -- blueman-manager",
   },
 
   "network": {
@@ -123,15 +124,17 @@
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({signalStrength}%) {ipaddr}",
-    "on-click": "uwsm-app -- nm-connection-editor",
+    "on-click": "~/.config/hypr-nixos/scripts/panel wifi",
+    "on-click-right": "uwsm-app -- nm-connection-editor",
   },
 
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟",
     "format-icons": ["", "", ""],
-    "on-click": "uwsm-app -- pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click": "~/.config/hypr-nixos/scripts/panel audio",
+    "on-click-right": "uwsm-app -- pavucontrol",
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5,
   },
 
