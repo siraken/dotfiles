@@ -28,6 +28,9 @@ in
     # does not exist here: xkbcommon then has no compose table and WezTerm
     # panics ("no keymap"). Use the locale's default instead until #244.
     XCOMPOSEFILE = "$HOME/.config/hypr-nixos/XCompose";
+    # Electron and Chromium apps (Discord, Obsidian, Spotify, …) as native
+    # Wayland windows.
+    NIXOS_OZONE_WL = "1";
   };
 
   services.greetd = {
