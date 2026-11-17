@@ -8,6 +8,8 @@
 # config/hypr-nixos/autostart.lua starts these from Hyprland instead.
 { pkgs, mkRepoLink, ... }:
 {
+  imports = [ ./theme.nix ];
+
   home.packages = with pkgs; [
     waybar
     fuzzel
@@ -27,7 +29,7 @@
     pavucontrol
     networkmanagerapplet
     nautilus
-    # Icons for the tray (fcitx5, nm-applet) and GTK apps.
+    # Symbolic icons swayosd and GTK dialogs ask for by name.
     adwaita-icon-theme
     xdg-user-dirs
     btop
