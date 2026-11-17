@@ -16,7 +16,10 @@
   "modules-center": ["group/time"],
   "modules-right": ["mpris", "group/indicators", "group/system"],
 
-  "group/spaces": { "orientation": "horizontal", "modules": ["hyprland/workspaces"] },
+  "group/spaces": {
+    "orientation": "horizontal",
+    "modules": ["custom/menu", "hyprland/workspaces"],
+  },
   "group/app": { "orientation": "horizontal", "modules": ["hyprland/window"] },
   "group/time": { "orientation": "horizontal", "modules": ["clock"] },
   "group/indicators": { "orientation": "horizontal", "modules": ["tray", "idle_inhibitor"] },
@@ -32,6 +35,14 @@
       "custom/notification",
       "custom/power",
     ],
+  },
+
+  // Opens the menus (config/hypr-nixos/scripts/menu), like Omarchy's menu button.
+  "custom/menu": {
+    "format": "\uf313",
+    "tooltip": false,
+    "on-click": "pkill fuzzel || ~/.config/hypr-nixos/scripts/menu",
+    "on-click-right": "pkill fuzzel || fuzzel",
   },
 
   // The number, then an icon per window, like siraken-mbp's spaces.

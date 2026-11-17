@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+# Keyboard menus in fuzzel, after Omarchy's SUPER + SPACE family.
+#   menu [root]   everything below (SUPER + ALT + SPACE, the bar's menu button)
+#   menu capture  screenshots (SUPER + CTRL + C)
+#   menu toggles  night light, do-not-disturb, idle lock, bar (SUPER + CTRL + O)
+#   menu emoji    type an emoji (SUPER + CTRL + E)
+#   menu keys     the keybindings and what they do (SUPER + K)
+#
+# Icons are Nerd Font glyphs written as $'\u…' escapes.
+set -euo pipefail
+
+scripts=$(dirname "$(readlink -f "$0")")
+
+# pick PROMPT LINES… → the chosen line, or nothing when cancelled.
+pick() {
+  local prompt=$1
+  shift
+  printf '%s\n' "$@" | fuzzel --dmenu --prompt "$prompt " --lines "$#" || true
+}
+
+root() {
+  local apps=$'\uf135  Apps' emoji=$'\uf118  Emoji' capture=$'\uf030  Capture'
+  local toggles=$'\uf204  Toggles' keys=$'\uf11c  Keybindings' clip=$'\uf0ea  Clipboard'
+  local system=$'\uf011  System'
+  case "$(pick $'\uf313' "$apps" "$emoji" "$capture" "$clip" "$toggles" "$keys" "$system")" in
+    "$apps") exec fuzzel ;;
+    "$emoji") emoji ;;
+    "$capture") capture ;;
+    "$clip") exec "$scripts/clipboard-menu" ;;
+    "$toggles") toggles ;;
+    "$keys") keys ;;
+    "$system") exec wlogout -b 3 -T 280 -B 280 ;;
+  esac
+}
+
+capture() {
+  local region=$'\uf125  Region' window=$'\uf2d0  Window' screen=$'\uf108  Screen'
+  local choice
+  choice=$(pick $'\uf030' "$region" "$window" "$screen")
+  # Let fuzzel's surface go before grim captures the screen.
+  sleep 0.2
+  case "$choice" in
+    "$region") exec "$scripts/screenshot" region ;;
+    "$window") exec "$scripts/screenshot" window ;;
+    "$screen") exec "$scripts/screenshot" screen ;;
+  esac
+}
+
+toggles() {
+  local night=$'\uf186  Night light' dnd=$'\uf1f6  Do not disturb' idle bar=$'\uf0c9  Top bar'
+  if systemctl --user -q is-active hypridle; then
+    idle=$'\uf023  Idle lock: on'
+  else
+    idle=$'\uf09c  Idle lock: off'
+  fi
+  case "$(pick $'\uf204' "$night" "$dnd" "$idle" "$bar")" in
+    "$night") exec "$scripts/nightlight" ;;
+    "$dnd") swaync-client --toggle-dnd --skip-wait >/dev/null ;;
+    "$idle")
+      if systemctl --user -q is-active hypridle; then
+        systemctl --user stop hypridle
+        notify-send -u low "Idle lock off"
+      else
+        systemctl --user start hypridle
+        notify-send -u low "Idle lock on"
+      fi
+      ;;
+    "$bar") pkill -SIGUSR1 -x waybar || pkill -SIGUSR1 -f '/bin/waybar' ;;
+  esac
+}
+
+# rofimoji raises when the menu is cancelled; keep that off the journal.
+emoji() {
+  rofimoji --selector fuzzel --typer wtype --clipboarder wl-copy --action type copy \
+    --prompt $'\uf118 ' 2>/dev/null || true
+}
+
+# hyprctl's modmask bits → the names written in bindings.lua.
+keys() {
+  hyprctl -j binds | jq -r '
+    def mods: [
+      (if (.modmask / 64 | floor) % 2 == 1 then "SUPER" else empty end),
+      (if (.modmask / 4 | floor) % 2 == 1 then "CTRL" else empty end),
+      (if (.modmask / 8 | floor) % 2 == 1 then "ALT" else empty end),
+      (if .modmask % 2 == 1 then "SHIFT" else empty end)
+    ] | join(" + ");
+    .[] | select(.description != "")
+      | [((mods | if . == "" then "" else . + " + " end) + .key), .description]
+      | @tsv' |
+    awk -F '\t' '{ printf "%-32s %s\n", $1, $2 }' |
+    fuzzel --dmenu --prompt $'\uf11c ' --width 70 --lines 20 >/dev/null || true
+}
+
+case "${1:-root}" in
+  root) root ;;
+  capture) capture ;;
+  toggles) toggles ;;
+  emoji) emoji ;;
+  keys) keys ;;
+  *)
+    echo "usage: menu [root|capture|toggles|emoji|keys]" >&2
+    exit 2
+    ;;
+esac

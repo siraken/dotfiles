@@ -28,6 +28,9 @@
     jq
     wl-clipboard
     cliphist
+    # Emoji menu (scripts/menu): rofimoji types with wtype.
+    rofimoji
+    wtype
     playerctl
     pavucontrol
     networkmanagerapplet
