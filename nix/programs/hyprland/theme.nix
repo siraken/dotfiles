@@ -43,6 +43,10 @@ in
     icon-theme = "Papirus-Dark";
     cursor-theme = cursor.name;
     cursor-size = cursor.size;
+    # GTK4 / libadwaita apps read these; their default, Adwaita Sans, is not
+    # installed.
+    font-name = "Noto Sans 10";
+    monospace-font-name = "Hack Nerd Font Mono 10";
   };
 
   qt = {
