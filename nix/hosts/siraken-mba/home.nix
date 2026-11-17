@@ -22,8 +22,17 @@
   # is in the store (#243).
   programs.codex.package = lib.mkForce null;
 
-  # The browser the Hyprland bindings launch.
-  home.packages = [ pkgs.google-chrome ];
+  home.packages = with pkgs; [
+    # The browser the Hyprland bindings launch, and a second one.
+    google-chrome
+    firefox
+    discord
+    obsidian
+    spotify
+    # Video and images; windows.lua floats them.
+    mpv
+    imv
+  ];
 
   # The repo is checked out at ~/dotfiles, as on the daily drivers.
   dotfiles.linkMode = "outOfStore";
