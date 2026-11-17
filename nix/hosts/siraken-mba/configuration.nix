@@ -16,7 +16,8 @@
       # the entry below (or the Mac boot picker, hold Option) until #244.
       systemd-boot = {
         enable = true;
-        configurationLimit = 10;
+        # Three NixOS entries; Omarchy's below is extra.
+        configurationLimit = 3;
         extraEntries."omarchy.conf" = ''
           title Omarchy (Limine)
           efi /EFI/limine/limine_x64.efi
@@ -66,15 +67,20 @@
     earlySetup = true;
   };
 
-  nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    gc = {
-      automatic = true;
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  # Keep the last three generations, of the system and of every user's
+  # profiles (home-manager included), and collect the rest weekly. nix.gc can
+  # only keep by age.
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      extraArgs = "--keep 3";
     };
   };
 
