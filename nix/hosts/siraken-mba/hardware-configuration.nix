@@ -1,12 +1,11 @@
 # Disks of the MacBook Air (MacBookAir6,2): one SSD with a 2 GiB ESP and a
 # LUKS2 container holding a single btrfs filesystem.
 #
-# Written by hand from the running Omarchy install, not by
-# nixos-generate-config. NixOS gets its own root subvolume (`@nixos`) next to
-# Omarchy's `@` and shares `@home`, `@nix` and `@log` with it, so Omarchy stays
-# bootable until the migration is done. Once it is, Omarchy's `@` and `@pkg`
-# can be deleted and `@nixos` renamed to `@` (update `subvol=` below in the
-# same step).
+# Written by hand from the Omarchy install it replaced, not by
+# nixos-generate-config. NixOS was installed next to Omarchy into its own root
+# subvolume (`@nixos`), taking over `@home`, `@nix` and `@log`; Omarchy's `@`,
+# `@pkg` and `@factory` were deleted afterwards (#244). The root keeps the name
+# `@nixos`.
 { lib, ... }:
 let
   btrfsDevice = "/dev/disk/by-uuid/b648a331-26bd-4c70-bfcc-22e98c322014";
@@ -44,8 +43,7 @@ in
     "/home" = subvolume "@home";
     "/nix" = subvolume "@nix";
     "/var/log" = subvolume "@log";
-    # Created at install time; Omarchy's swapfile lives in its own `@`, which
-    # goes away after the migration.
+    # Its own subvolume, so the root can be snapshotted without the swapfile.
     "/swap" = subvolume "@swap";
     "/boot" = {
       device = "/dev/disk/by-uuid/69D3-3185";

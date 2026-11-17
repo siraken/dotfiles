@@ -1,4 +1,4 @@
-# MacBook Air (Early 2014) on NixOS, replacing its Omarchy install.
+# MacBook Air (Early 2014) on NixOS, which replaced its Omarchy install.
 #
 # The OS layer only: the user environment is `siraken@siraken-mba` (see
 # ./home.nix). Hardware lives in ./hardware.nix and the disks in
@@ -11,18 +11,9 @@
 {
   boot = {
     loader = {
-      # Leaves Omarchy's limine on the shared ESP alone. Installing puts
-      # systemd-boot first in the UEFI boot order, so Omarchy is reached through
-      # the entry below (or the Mac boot picker, hold Option) until #244.
       systemd-boot = {
         enable = true;
-        # Three NixOS entries; Omarchy's below is extra.
         configurationLimit = 3;
-        extraEntries."omarchy.conf" = ''
-          title Omarchy (Limine)
-          efi /EFI/limine/limine_x64.efi
-          sort-key z-omarchy
-        '';
       };
       efi.canTouchEfiVariables = true;
     };
