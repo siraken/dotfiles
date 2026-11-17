@@ -1,10 +1,51 @@
 #!/usr/bin/env bash
-# Toggle the night light (SUPER + CTRL + N).
-if pkill -x hyprsunset; then
-  notify-send -u low "Night light off"
+# Toggle the night light (SUPER + CTRL + N, the toggle menu) until the next
+# switch of the schedule in ../sunset/hypr/hyprsunset.conf (19:00 warm, 07:00
+# neutral). hyprsunset cannot report whether it is neutral, so the last toggle
+# is remembered, and the clock decides once the schedule has switched since.
+set -euo pipefail
+
+warm_from=1900 # keep in step with hyprsunset.conf
+warm_until=0700
+temperature=4000
+
+state="${XDG_RUNTIME_DIR:-/tmp}/nightlight"
+now=$(date +%H%M)
+now=$((10#$now))
+
+# The epoch second of the schedule's last switch.
+last_switch() {
+  local today_from today_until
+  today_from=$(date -d "today ${warm_from:0:2}:${warm_from:2:2}" +%s)
+  today_until=$(date -d "today ${warm_until:0:2}:${warm_until:2:2}" +%s)
+  if ((now >= 10#$warm_from)); then
+    echo "$today_from"
+  elif ((now >= 10#$warm_until)); then
+    echo "$today_until"
+  else
+    date -d "yesterday ${warm_from:0:2}:${warm_from:2:2}" +%s
+  fi
+}
+
+if ! pgrep -x hyprsunset >/dev/null; then
+  XDG_CONFIG_HOME="$(dirname "$(readlink -f "$0")")/../sunset" uwsm-app -- hyprsunset >/dev/null 2>&1 &
+  sleep 1
+fi
+
+if [[ -f $state ]] && (($(stat -c %Y "$state") > $(last_switch))); then
+  warm=$(<"$state")
+elif ((now >= 10#$warm_from || now < 10#$warm_until)); then
+  warm=on
 else
-  # hyprsunset has no --config and would read Omarchy's
-  # ~/.config/hypr/hyprsunset.conf, whose 07:00 identity profile overrides -t.
-  XDG_CONFIG_HOME=/var/empty uwsm-app -- hyprsunset -t 4000 &
-  notify-send -u low "Night light on"
+  warm=off
+fi
+
+if [[ $warm == on ]]; then
+  hyprctl hyprsunset identity >/dev/null
+  echo off >"$state"
+  notify-send -u low "Night light off" "Until the next switch of the schedule"
+else
+  hyprctl hyprsunset temperature "$temperature" >/dev/null
+  echo on >"$state"
+  notify-send -u low "Night light on" "Until the next switch of the schedule"
 fi

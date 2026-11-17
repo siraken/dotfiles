@@ -11,6 +11,9 @@ o.launch_on_start("waybar")
 o.launch_on_start("env GSK_RENDERER=gl swayosd-server")
 -- -c: hyprpaper would read ~/.config/hypr/hyprpaper.conf, Omarchy's.
 o.launch_on_start("hyprpaper -c " .. o.dir .. "/hyprpaper.conf")
+-- The night light on a schedule; hyprsunset has no --config, and would read
+-- Omarchy's ~/.config/hypr/hyprsunset.conf.
+o.launch_on_start("env XDG_CONFIG_HOME=" .. o.dir .. "/sunset hyprsunset")
 o.launch_on_start("wl-paste --type text --watch cliphist store")
 o.launch_on_start("wl-paste --type image --watch cliphist store")
 
