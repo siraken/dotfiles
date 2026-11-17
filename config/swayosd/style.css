@@ -1,8 +1,10 @@
-/* Tokyo Night island for the volume / brightness OSD (swayosd-server -s). */
+/* Island for the volume / brightness OSD; colours from ~/.config/desktop-theme. */
+@import url("../desktop-theme/colors.css");
+
 window#osd {
   border-radius: 8px;
-  border: 1px solid #2f3549;
-  background: #1a1b26;
+  border: 1px solid @border;
+  background: @bg;
 }
 
 window#osd #container {
@@ -11,7 +13,7 @@ window#osd #container {
 
 window#osd image,
 window#osd label {
-  color: #c0caf5;
+  color: @fg;
 }
 
 window#osd progressbar:disabled,
@@ -32,7 +34,7 @@ window#osd segment {
   min-height: inherit;
   border-radius: inherit;
   border: none;
-  background: #292e42;
+  background: @surface;
 }
 
 window#osd progress,
@@ -40,7 +42,7 @@ window#osd segment.active {
   min-height: inherit;
   border-radius: inherit;
   border: none;
-  background: #7aa2f7;
+  background: @blue;
 }
 
 window#osd segment {
