@@ -13,6 +13,7 @@ let
 in
 {
   home.pointerCursor = cursor // {
+    enable = true;
     gtk.enable = true;
     # Hyprland itself takes XCURSOR_THEME / XCURSOR_SIZE from envs.lua.
     x11.enable = true;
