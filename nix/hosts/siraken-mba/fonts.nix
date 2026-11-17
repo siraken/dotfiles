@@ -1,7 +1,7 @@
 # Fonts, with Japanese first (#289). Left to fontconfig's defaults, sans,
 # serif and monospace were DejaVu, and Japanese fell back to Noto Sans CJK KR,
 # drawing kanji in the Korean forms.
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   fonts = {
     # The graphical-desktop defaults (DejaVu, FreeFont, Liberation, Unifont,
@@ -36,6 +36,34 @@
         ];
         emoji = [ "Noto Color Emoji" ];
       };
+      # NixOS has no option for system-ui, the generic family of UI fonts;
+      # fontconfig's own order for it puts Noto Sans CJK KR before JP. GTK's
+      # UI fonts, Adwaita Sans and Cantarell (neither installed), are mapped to
+      # system-ui by a later conf.d file than this one (51-local.conf), so
+      # they get the same order here directly.
+      localConf =
+        let
+          japaneseFirst = family: ''
+            <alias binding="same">
+              <family>${family}</family>
+              <prefer>
+                <family>Noto Sans</family>
+                <family>Noto Sans CJK JP</family>
+              </prefer>
+            </alias>
+          '';
+        in
+        ''
+          <?xml version="1.0"?>
+          <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+          <fontconfig>
+          ${lib.concatMapStrings japaneseFirst [
+            "system-ui"
+            "Adwaita Sans"
+            "Cantarell"
+          ]}
+          </fontconfig>
+        '';
       # The 1440x900 panel is not HiDPI: keep the glyphs crisp.
       antialias = true;
       hinting = {
