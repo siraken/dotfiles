@@ -52,6 +52,13 @@
   ];
 
   # Read through HYPRLAND_CONFIG, not ~/.config/hypr (still Omarchy's).
+  # No blueman or nm-applet in the tray: the bar has Bluetooth and network
+  # already, and opens blueman-manager / nm-connection-editor on right-click.
+  xdg.configFile = {
+    "autostart/blueman.desktop".text = "[Desktop Entry]\nHidden=true\n";
+    "autostart/nm-applet.desktop".text = "[Desktop Entry]\nHidden=true\n";
+  };
+
   home.file.".config/hypr-nixos".source = mkRepoLink "config/hypr-nixos";
   home.file.".config/waybar".source = mkRepoLink "config/waybar";
   home.file.".config/swaync".source = mkRepoLink "config/swaync";

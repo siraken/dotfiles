@@ -10,7 +10,10 @@ let
   # mise and ~/.local/bin wrappers, ahead of ~/.nix-profile on PATH) takes only
   # the configuration below.
   installPackages = config.dotfiles.codingAgents.installPackages;
-  agentPackage = pkg: if installPackages then pkg else null;
+  agents = config.dotfiles.codingAgents.agents;
+  # The package of agent `name`, or null where it is not installed.
+  agentPackage =
+    name: pkg: if installPackages && (agents == null || lib.elem name agents) then pkg else null;
 
   instructions = ''
     - Unless otherwise specified, always respond in 日本語.
@@ -37,20 +40,33 @@ in
   # writes back to this file at runtime, which a nix-store copy could not accept.
   imports = [ ./claude-settings.nix ];
 
-  options.dotfiles.codingAgents.installPackages = lib.mkOption {
-    type = lib.types.bool;
-    default = true;
-    description = "Install the coding agents themselves, not only their configuration.";
+  options.dotfiles.codingAgents = {
+    installPackages = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Install the coding agents themselves, not only their configuration.";
+    };
+    agents = lib.mkOption {
+      type = lib.types.nullOr (lib.types.listOf lib.types.str);
+      default = null;
+      example = [ "claude-code" ];
+      description = ''
+        The agents to install, by package name (claude-code, codex,
+        antigravity-cli, opencode, apm, copilot-cli, cursor-agent, grok,
+        muse-code); null installs all of them. Their configuration is written
+        either way.
+      '';
+    };
   };
 
   config = {
     # apm: Agent Package Manager (Microsoft) - dependency manager for AI agents
-    home.packages = lib.optionals installPackages [
-      pkgs.llm-agents.apm
-      pkgs.llm-agents.copilot-cli
-      pkgs.llm-agents.cursor-agent
-      pkgs.llm-agents.grok
-      pkgs.llm-agents.muse-code
+    home.packages = lib.filter (p: p != null) [
+      (agentPackage "apm" pkgs.llm-agents.apm)
+      (agentPackage "copilot-cli" pkgs.llm-agents.copilot-cli)
+      (agentPackage "cursor-agent" pkgs.llm-agents.cursor-agent)
+      (agentPackage "grok" pkgs.llm-agents.grok)
+      (agentPackage "muse-code" pkgs.llm-agents.muse-code)
     ];
 
     programs.mcp = {
@@ -60,7 +76,7 @@ in
 
     programs.claude-code = {
       enable = true;
-      package = agentPackage pkgs.llm-agents.claude-code;
+      package = agentPackage "claude-code" pkgs.llm-agents.claude-code;
       enableMcpIntegration = true;
       context = instructions;
       agents = {
@@ -77,13 +93,13 @@ in
 
     programs.codex = {
       enable = true;
-      package = agentPackage pkgs.llm-agents.codex;
+      package = agentPackage "codex" pkgs.llm-agents.codex;
       context = instructions;
     };
 
     programs.antigravity-cli = {
       enable = true;
-      package = agentPackage pkgs.llm-agents.antigravity-cli;
+      package = agentPackage "antigravity-cli" pkgs.llm-agents.antigravity-cli;
       # Written to ~/.gemini/AGENTS.md, picked up through context.fileName below.
       context.AGENTS = instructions;
       commands = { };
@@ -113,7 +129,7 @@ in
 
     programs.opencode = {
       enable = true;
-      package = agentPackage pkgs.llm-agents.opencode;
+      package = agentPackage "opencode" pkgs.llm-agents.opencode;
       context = instructions;
       tui = {
         theme = "tokyonight";
