@@ -29,6 +29,7 @@
     google-chrome
     firefox
     discord
+    slack
     obsidian
     spotify
     # Video and images; windows.lua floats them.
