@@ -28,7 +28,7 @@ last_switch() {
 }
 
 if ! pgrep -x hyprsunset >/dev/null; then
-  uwsm-app -- hyprsunset >/dev/null 2>&1 &
+  systemctl --user start hyprsunset
   sleep 1
 fi
 

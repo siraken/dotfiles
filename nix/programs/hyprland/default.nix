@@ -1,10 +1,11 @@
 # User side of the Hyprland desktop on NixOS (siraken-mba): the tools its
-# bindings call and their native config. Hyprland itself, the greeter, the
-# lock screen's PAM service and the polkit agent are the OS layer's
-# (nix/hosts/siraken-mba/desktop.nix).
+# bindings call, the session services and their native config. Hyprland
+# itself, the greeter, hypridle and the lock screen's PAM service are the OS
+# layer's (nix/hosts/siraken-mba/desktop.nix).
 #
-# The session services start from config/hypr/autostart.lua rather than as
-# home-manager units.
+# The session services are systemd user units under graphical-session.target,
+# which UWSM starts with the session: restarted when they crash, logged with
+# `journalctl --user -u <name>`, and stopped on logout.
 { pkgs, mkRepoLink, ... }:
 {
   imports = [
@@ -13,15 +14,11 @@
   ];
 
   home.packages = with pkgs; [
-    waybar
     fuzzel
     swaynotificationcenter
-    swayosd
     wlogout
-    hyprpaper
     libnotify
     hyprpicker
-    hyprsunset
     grim
     slurp
     # Annotating screenshots and recording (scripts/screenshot, scripts/record).
@@ -29,7 +26,6 @@
     wf-recorder
     jq
     wl-clipboard
-    cliphist
     # Emoji menu (scripts/menu): rofimoji types with wtype.
     rofimoji
     wtype
@@ -49,6 +45,25 @@
     # open in (config/foot).
     foot
   ];
+
+  # Config files are the repo's (config/waybar, config/hypr/hyprpaper.conf,
+  # config/hypr/hyprsunset.conf, config/swayosd): no settings here, so the
+  # modules write none.
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
+  services.swayosd.enable = true;
+  # GTK's Vulkan renderer is incomplete on Haswell; GL draws the OSD fine.
+  systemd.user.services.swayosd.Service.Environment = [ "GSK_RENDERER=gl" ];
+  services.hyprpaper.enable = true;
+  # The night light on a schedule; scripts/nightlight toggles it over IPC.
+  services.hyprsunset.enable = true;
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+  };
+  services.hyprpolkitagent.enable = true;
 
   # No blueman or nm-applet in the tray: the bar has Bluetooth and network
   # already, and opens blueman-manager / nm-connection-editor on right-click.
