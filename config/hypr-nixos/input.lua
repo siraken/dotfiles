@@ -37,6 +37,10 @@ hl.config({
   },
 })
 
+-- Three-finger horizontal swipe switches workspaces, as on the Mac. The
+-- defaults (inverted, 300px per workspace) feel right on this touchpad.
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+
 -- Only the MacBook's own JIS keyboard is jp; external keyboards stay us.
 hl.device({ name = "apple-inc.-apple-internal-keyboard-/-trackpad", kb_layout = "jp" })
 
