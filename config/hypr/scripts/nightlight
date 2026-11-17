@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Toggle the night light (SUPER + CTRL + N, the toggle menu) until the next
-# switch of the schedule in ../sunset/hypr/hyprsunset.conf (19:00 warm, 07:00
+# switch of the schedule in ../hyprsunset.conf (19:00 warm, 07:00
 # neutral). hyprsunset cannot report whether it is neutral, so the last toggle
 # is remembered, and the clock decides once the schedule has switched since.
 set -euo pipefail
@@ -28,7 +28,7 @@ last_switch() {
 }
 
 if ! pgrep -x hyprsunset >/dev/null; then
-  XDG_CONFIG_HOME="$(dirname "$(readlink -f "$0")")/../sunset" uwsm-app -- hyprsunset >/dev/null 2>&1 &
+  uwsm-app -- hyprsunset >/dev/null 2>&1 &
   sleep 1
 fi
 

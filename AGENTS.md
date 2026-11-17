@@ -64,7 +64,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
   - `siraken@<host>` / `siraken@<profile>-<system>` - standalone home-manager configurations (see `nix/home/default.nix`)
   - `wsl-nixos` - WSL/NixOS system configuration
   - `nixos-vm` - NixOS VM system configuration
-  - `siraken-mba` - MacBook Air (Early 2014) system configuration. Installed next to the Omarchy install (`siraken@siraken-mba-omarchy`), which shares `/home` and is kept for recovery until #244; do not switch the Omarchy home configuration any more
+  - `siraken-mba` - MacBook Air (Early 2014) system configuration (replaced its Omarchy install)
 
 ### Key Components
 
@@ -76,7 +76,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 **Modular Configuration**:
 
 - `nix/programs/` - Per-program Nix modules (one `default.nix` each)
-- `nix/programs/hyprland/` - User side of the `siraken-mba` Hyprland desktop (bar, launcher, notifications and the tools its bindings call); its config is `config/hypr-nixos/`, read through `HYPRLAND_CONFIG` because `config/hypr/` stays Omarchy's until Omarchy is removed (#244). The OS side is `nix/hosts/siraken-mba/desktop.nix`.
+- `nix/programs/hyprland/` - User side of the `siraken-mba` Hyprland desktop (bar, launcher, notifications and the tools its bindings call); its config is `config/hypr/`. The OS side is `nix/hosts/siraken-mba/desktop.nix`.
 - `nix/services/` - Service modules. Everything under `nix/services/darwin/` (AeroSpace, JankyBorders, Sketchybar) is a nix-darwin module imported by `nix/modules/darwin/workstation.nix`; home-manager never manages the window manager.
 - `nix/home/profiles/` - Layered home-manager profiles: `base` (production / SSH-only hosts) ⊂ `standard` ⊂ `full` (daily drivers), plus `darwin` (macOS-only additions). Hosts import one of them instead of listing programs.
 - `nix/home/default.nix` - Registry of every standalone home-manager configuration: `siraken@<host>` for known hosts and `siraken@<profile>-<system>` for generic ones, all built with `nix/lib/mk-home.nix`. nix-darwin / NixOS hosts do not embed home-manager; their user environment is always this standalone entry.

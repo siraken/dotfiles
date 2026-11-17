@@ -5,7 +5,7 @@ local home = os.getenv("HOME")
 
 o = {}
 
-o.dir = home .. "/.config/hypr-nixos"
+o.dir = home .. "/.config/hypr"
 
 local function shell_quote(value)
   return "'" .. tostring(value):gsub("'", "'\\''") .. "'"
