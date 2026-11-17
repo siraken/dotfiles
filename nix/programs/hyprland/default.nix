@@ -45,8 +45,8 @@
     adwaita-icon-theme
     xdg-user-dirs
     btop
-    # Fallback terminal (SUPER + ALT + RETURN); ~/.config/foot is the one
-    # Omarchy wrote.
+    # Fallback terminal (SUPER + ALT + RETURN), and the one the bar's panels
+    # open in (config/foot).
     foot
   ];
 
@@ -63,4 +63,5 @@
   home.file.".config/swayosd".source = mkRepoLink "config/swayosd";
   home.file.".config/wlogout".source = mkRepoLink "config/wlogout";
   home.file.".config/fuzzel".source = mkRepoLink "config/fuzzel";
+  home.file.".config/foot".source = mkRepoLink "config/foot";
 }
