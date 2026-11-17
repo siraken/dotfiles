@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Change volume or brightness and show it with swayosd (bindings.lua).
+#   osd volume raise|lower|mute-toggle|raise-fine|lower-fine
+#   osd mic mute-toggle
+#   osd brightness raise|lower|raise-fine|lower-fine
+#   osd keyboard raise|lower
+#
+# Brightness changes go through brightnessctl (logind, no extra udev rules);
+# swayosd only draws the level for them.
+set -euo pipefail
+
+show() { swayosd-client --custom-icon "$1" --custom-progress "$2" >/dev/null 2>&1 || true; }
+
+level() { # device
+  local cur max
+  cur=$(brightnessctl -d "$1" get)
+  max=$(brightnessctl -d "$1" max)
+  awk -v c="$cur" -v m="$max" 'BEGIN { printf "%.2f", c / m }'
+}
+
+case "$1:$2" in
+  volume:raise) swayosd-client --output-volume +5 --max-volume 100 ;;
+  volume:lower) swayosd-client --output-volume -5 ;;
+  volume:raise-fine) swayosd-client --output-volume +1 --max-volume 100 ;;
+  volume:lower-fine) swayosd-client --output-volume -1 ;;
+  volume:mute-toggle) swayosd-client --output-volume mute-toggle ;;
+  mic:mute-toggle) swayosd-client --input-volume mute-toggle ;;
+  brightness:*)
+    dev=acpi_video0
+    case "$2" in
+      raise) brightnessctl -q -d "$dev" set 5%+ ;;
+      lower) brightnessctl -q -d "$dev" set 5%- ;;
+      raise-fine) brightnessctl -q -d "$dev" set 1%+ ;;
+      lower-fine) brightnessctl -q -d "$dev" set 1%- ;;
+    esac
+    show display-brightness-symbolic "$(level "$dev")"
+    ;;
+  keyboard:*)
+    dev=smc::kbd_backlight
+    case "$2" in
+      raise) brightnessctl -q -d "$dev" set 10%+ ;;
+      lower) brightnessctl -q -d "$dev" set 10%- ;;
+    esac
+    show keyboard-brightness-symbolic "$(level "$dev")"
+    ;;
+  *)
+    echo "usage: osd volume|mic|brightness|keyboard ACTION" >&2
+    exit 2
+    ;;
+esac

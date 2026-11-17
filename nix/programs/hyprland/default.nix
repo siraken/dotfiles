@@ -11,7 +11,10 @@
   home.packages = with pkgs; [
     waybar
     fuzzel
-    mako
+    swaynotificationcenter
+    swayosd
+    wlogout
+    hyprpaper
     libnotify
     hyprpicker
     hyprsunset
@@ -36,6 +39,8 @@
   # Read through HYPRLAND_CONFIG, not ~/.config/hypr (still Omarchy's).
   home.file.".config/hypr-nixos".source = mkRepoLink "config/hypr-nixos";
   home.file.".config/waybar".source = mkRepoLink "config/waybar";
-  home.file.".config/mako".source = mkRepoLink "config/mako";
+  home.file.".config/swaync".source = mkRepoLink "config/swaync";
+  home.file.".config/swayosd".source = mkRepoLink "config/swayosd";
+  home.file.".config/wlogout".source = mkRepoLink "config/wlogout";
   home.file.".config/fuzzel".source = mkRepoLink "config/fuzzel";
 }

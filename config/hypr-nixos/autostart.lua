@@ -4,7 +4,11 @@
 -- hypridle and the polkit agent are NixOS user units.
 
 o.launch_on_start("waybar")
-o.launch_on_start("mako")
+o.launch_on_start("swaync")
+-- GTK's Vulkan renderer is incomplete on Haswell; GL draws the OSD fine.
+o.launch_on_start("env GSK_RENDERER=gl swayosd-server")
+-- -c: hyprpaper would read ~/.config/hypr/hyprpaper.conf, Omarchy's.
+o.launch_on_start("hyprpaper -c " .. o.dir .. "/hyprpaper.conf")
 o.launch_on_start("wl-paste --type text --watch cliphist store")
 o.launch_on_start("wl-paste --type image --watch cliphist store")
 

@@ -14,8 +14,8 @@ o.bind("SUPER + CTRL + T", "Activity", o.launch("wezterm start --class TUI.float
 
 -- Launcher and menus.
 o.bind("SUPER + SPACE", "Launcher", "pkill fuzzel || " .. o.launch("fuzzel"))
-o.bind("SUPER + ESCAPE", "System menu", o.script("power-menu"))
-o.bind("XF86PowerOff", "System menu", o.script("power-menu"), { locked = true })
+o.bind("SUPER + ESCAPE", "System menu", "pkill wlogout || wlogout -b 3 -T 280 -B 280")
+o.bind("XF86PowerOff", "System menu", "pkill wlogout || wlogout -b 3 -T 280 -B 280", { locked = true })
 o.bind("SUPER + CTRL + V", "Clipboard history", o.script("clipboard-menu"))
 o.bind("SUPER + SHIFT + SPACE", "Toggle top bar", "pkill -SIGUSR1 waybar")
 
@@ -140,26 +140,24 @@ o.bind("SUPER + SHIFT + ALT + RIGHT", "Move workspace to right monitor", hl.dsp.
 o.bind("CTRL + ALT + TAB", "Focus on next monitor", hl.dsp.focus({ monitor = "+1" }))
 o.bind("CTRL + ALT + SHIFT + TAB", "Focus on previous monitor", hl.dsp.focus({ monitor = "-1" }))
 
--- Volume, brightness and keyboard backlight. With fnmode=2 these are Fn + F1
--- to F12. They work on the lock screen too.
-local volume = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ "
-local brightness = "brightnessctl -q set "
-local keyboard = "brightnessctl -q -d smc::kbd_backlight set "
+-- Volume, brightness and keyboard backlight, shown by swayosd. With fnmode=2
+-- these are Fn + F1 to F12. They work on the lock screen too.
+local osd = o.script("osd") .. " "
 local hardware = { locked = true, repeating = true }
 
-o.bind("XF86AudioRaiseVolume", "Volume up", volume .. "5%+", hardware)
-o.bind("XF86AudioLowerVolume", "Volume down", volume .. "5%-", hardware)
-o.bind("ALT + XF86AudioRaiseVolume", "Volume up precise", volume .. "1%+", hardware)
-o.bind("ALT + XF86AudioLowerVolume", "Volume down precise", volume .. "1%-", hardware)
-o.bind("XF86AudioMute", "Mute", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", { locked = true })
-o.bind("XF86AudioMicMute", "Mute microphone", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", { locked = true })
+o.bind("XF86AudioRaiseVolume", "Volume up", osd .. "volume raise", hardware)
+o.bind("XF86AudioLowerVolume", "Volume down", osd .. "volume lower", hardware)
+o.bind("ALT + XF86AudioRaiseVolume", "Volume up precise", osd .. "volume raise-fine", hardware)
+o.bind("ALT + XF86AudioLowerVolume", "Volume down precise", osd .. "volume lower-fine", hardware)
+o.bind("XF86AudioMute", "Mute", osd .. "volume mute-toggle", { locked = true })
+o.bind("XF86AudioMicMute", "Mute microphone", osd .. "mic mute-toggle", { locked = true })
 
-o.bind("XF86MonBrightnessUp", "Brightness up", brightness .. "5%+", hardware)
-o.bind("XF86MonBrightnessDown", "Brightness down", brightness .. "5%-", hardware)
-o.bind("ALT + XF86MonBrightnessUp", "Brightness up precise", brightness .. "1%+", hardware)
-o.bind("ALT + XF86MonBrightnessDown", "Brightness down precise", brightness .. "1%-", hardware)
-o.bind("XF86KbdBrightnessUp", "Keyboard brightness up", keyboard .. "10%+", hardware)
-o.bind("XF86KbdBrightnessDown", "Keyboard brightness down", keyboard .. "10%-", hardware)
+o.bind("XF86MonBrightnessUp", "Brightness up", osd .. "brightness raise", hardware)
+o.bind("XF86MonBrightnessDown", "Brightness down", osd .. "brightness lower", hardware)
+o.bind("ALT + XF86MonBrightnessUp", "Brightness up precise", osd .. "brightness raise-fine", hardware)
+o.bind("ALT + XF86MonBrightnessDown", "Brightness down precise", osd .. "brightness lower-fine", hardware)
+o.bind("XF86KbdBrightnessUp", "Keyboard brightness up", osd .. "keyboard raise", hardware)
+o.bind("XF86KbdBrightnessDown", "Keyboard brightness down", osd .. "keyboard lower", hardware)
 
 o.bind("XF86AudioNext", "Next track", "playerctl next", { locked = true })
 o.bind("XF86AudioPause", "Pause", "playerctl play-pause", { locked = true })
@@ -167,12 +165,11 @@ o.bind("XF86AudioPlay", "Play", "playerctl play-pause", { locked = true })
 o.bind("XF86AudioPrev", "Previous track", "playerctl previous", { locked = true })
 o.bind("XF86Eject", "Eject media", "eject", { locked = true })
 
--- Notifications (mako).
-o.bind("SUPER + comma", "Dismiss last notification", "makoctl dismiss")
-o.bind("SUPER + SHIFT + comma", "Dismiss all notifications", "makoctl dismiss --all")
-o.bind("SUPER + ALT + comma", "Invoke last notification", "makoctl invoke")
-o.bind("SUPER + SHIFT + ALT + comma", "Restore last notification", "makoctl restore")
-o.bind("SUPER + CTRL + comma", "Toggle silencing notifications", "makoctl mode -t do-not-disturb")
+-- Notifications (swaync).
+o.bind("SUPER + comma", "Dismiss last notification", "swaync-client --close-latest")
+o.bind("SUPER + SHIFT + comma", "Dismiss all notifications", "swaync-client --close-all")
+o.bind("SUPER + SHIFT + ALT + comma", "Notification center", "swaync-client --toggle-panel")
+o.bind("SUPER + CTRL + comma", "Toggle silencing notifications", "swaync-client --toggle-dnd")
 
 -- Screenshots, colour picker, night light, lock.
 o.bind("PRINT", "Screenshot (region)", o.script("screenshot", "region"))

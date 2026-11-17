@@ -1,0 +1,34 @@
+/* Power menu (SUPER + ESCAPE, the power button and Waybar's power island).
+ * Tokyo Night, with Nerd Font glyphs in the labels instead of images. */
+* {
+  font-family: "Hack Nerd Font", sans-serif;
+  font-size: 16px;
+  background-image: none;
+  box-shadow: none;
+}
+
+window {
+  background: rgba(26, 27, 38, 0.85);
+}
+
+button {
+  color: #c0caf5;
+  background: #1a1b26;
+  border: 1px solid #2f3549;
+  border-radius: 8px;
+  margin: 8px;
+}
+
+button:focus,
+button:hover {
+  color: #1a1b26;
+  background: #7aa2f7;
+  border-color: #7aa2f7;
+  outline: none;
+}
+
+#shutdown:focus,
+#shutdown:hover {
+  background: #f7768e;
+  border-color: #f7768e;
+}
