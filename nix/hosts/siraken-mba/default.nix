@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ./hardware.nix
     ./desktop.nix
+    ./fonts.nix
     ./vm.nix
     inputs.nixos-hardware.nixosModules.apple-macbook-air-6
   ];

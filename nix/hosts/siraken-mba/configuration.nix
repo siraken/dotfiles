@@ -125,14 +125,6 @@
     enableOnBoot = false;
   };
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    nerd-fonts.hack
-    nerd-fonts.jetbrains-mono
-  ];
-
   environment.systemPackages = with pkgs; [
     vim
     git
