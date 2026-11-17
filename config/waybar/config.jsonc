@@ -155,6 +155,8 @@
   // do-not-disturb.
   "custom/notification": {
     "exec": "swaync-client --subscribe-waybar",
+    // swaync can come up after Waybar (D-Bus activation); retry until it does.
+    "restart-interval": 2,
     "return-type": "json",
     "format": "{icon}",
     "format-icons": {
