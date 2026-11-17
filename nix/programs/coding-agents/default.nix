@@ -131,7 +131,9 @@ in
       enable = true;
       package = agentPackage "opencode" pkgs.llm-agents.opencode;
       context = instructions;
-      tui = {
+      # Only with a package: without one, home-manager assumes OpenCode 2,
+      # which has no tui.json, and warns on every switch.
+      tui = lib.mkIf (config.programs.opencode.package != null) {
         theme = "tokyonight";
       };
       settings = {
