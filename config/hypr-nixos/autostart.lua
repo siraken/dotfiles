@@ -1,10 +1,12 @@
 -- Session services. They start here rather than as home-manager systemd user
 -- units: ~/.config/systemd/user is shared with Omarchy until it is removed, and
 -- a unit wanted by graphical-session.target would start there as well.
--- hypridle and the polkit agent are NixOS user units.
+-- hypridle and the polkit agent are NixOS user units. swaync is the user unit
+-- its package ships, started by D-Bus on the first notification or when
+-- Waybar's notification button connects; started here as well, the second
+-- copy failed with "already running".
 
 o.launch_on_start("waybar")
-o.launch_on_start("swaync")
 -- GTK's Vulkan renderer is incomplete on Haswell; GL draws the OSD fine.
 o.launch_on_start("env GSK_RENDERER=gl swayosd-server")
 -- -c: hyprpaper would read ~/.config/hypr/hyprpaper.conf, Omarchy's.
