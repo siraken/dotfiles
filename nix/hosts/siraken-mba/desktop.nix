@@ -1,7 +1,7 @@
-# OS side of the Hyprland desktop: compositor, greeter, lock screen, polkit
-# agent. The user side (bar, launcher, notifications, the tools the bindings
-# call) is nix/programs/hyprland, and the Hyprland config itself is
-# config/hypr.
+# OS side of the Hyprland desktop: compositor, greeter, lock screen, idle
+# daemon. The user side (bar, launcher, notifications, session services, the
+# tools the bindings call) is nix/programs/hyprland, and the Hyprland config
+# itself is config/hypr.
 {
   pkgs,
   userProfile,
@@ -98,19 +98,9 @@ in
   };
 
   # Its PAM service, and hypridle as a NixOS user unit reading
-  # ~/.config/hypr/hypridle.conf, which locks with it.
+  # ~/.config/hypr/hypridle.conf, which locks with it. The polkit agent is a
+  # home-manager unit (nix/programs/hyprland).
   programs.hyprlock.enable = true;
-
-  systemd.user.services.hyprpolkitagent = {
-    description = "Hyprland polkit authentication agent";
-    wantedBy = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
-      Restart = "on-failure";
-    };
-  };
 
   # Bluetooth manager (D-Bus service and applet) for the bar's bluetooth module.
   services.blueman.enable = true;
