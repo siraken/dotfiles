@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Keyboard menus in fuzzel, after Omarchy's SUPER + SPACE family.
 #   menu [root]   everything below (SUPER + ALT + SPACE, the bar's menu button)
-#   menu capture  screenshots (SUPER + CTRL + C)
+#   menu capture  screenshots and recording (SUPER + CTRL + C)
 #   menu toggles  night light, do-not-disturb, idle lock, bar (SUPER + CTRL + O)
 #   menu emoji    type an emoji (SUPER + CTRL + E)
 #   menu keys     the keybindings and what they do (SUPER + K)
@@ -35,14 +35,23 @@ root() {
 
 capture() {
   local region=$'\uf125  Region' window=$'\uf2d0  Window' screen=$'\uf108  Screen'
+  local rec_region=$'\uf03d  Record region' rec_screen=$'\uf03d  Record screen'
+  local rec_stop=$'\uf04d  Stop recording'
   local choice
-  choice=$(pick $'\uf030' "$region" "$window" "$screen")
+  if pgrep -x wf-recorder >/dev/null; then
+    choice=$(pick $'\uf030' "$rec_stop" "$region" "$window" "$screen")
+  else
+    choice=$(pick $'\uf030' "$region" "$window" "$screen" "$rec_region" "$rec_screen")
+  fi
   # Let fuzzel's surface go before grim captures the screen.
   sleep 0.2
   case "$choice" in
     "$region") exec "$scripts/screenshot" region ;;
     "$window") exec "$scripts/screenshot" window ;;
     "$screen") exec "$scripts/screenshot" screen ;;
+    "$rec_region") exec "$scripts/record" region ;;
+    "$rec_screen") exec "$scripts/record" screen ;;
+    "$rec_stop") exec "$scripts/record" stop ;;
   esac
 }
 

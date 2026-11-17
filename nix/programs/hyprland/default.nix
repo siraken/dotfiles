@@ -25,6 +25,9 @@
     hyprsunset
     grim
     slurp
+    # Annotating screenshots and recording (scripts/screenshot, scripts/record).
+    satty
+    wf-recorder
     jq
     wl-clipboard
     cliphist
