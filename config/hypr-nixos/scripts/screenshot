@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Screenshot to ~/Pictures/Screenshots and the clipboard.
 #   screenshot region   pick a region (PRINT)
+#   screenshot window   the focused window (ALT + PRINT)
 #   screenshot screen   the focused monitor (SHIFT + PRINT)
 set -euo pipefail
 
@@ -13,12 +14,17 @@ case "${1:-region}" in
     geometry=$(slurp -d) || exit 0
     grim -g "$geometry" "$file"
     ;;
+  window)
+    geometry=$(hyprctl -j activewindow | jq -r 'if .at then "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])" else empty end')
+    [[ -n $geometry ]] || exit 0
+    grim -g "$geometry" "$file"
+    ;;
   screen)
     output=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name')
     grim -o "$output" "$file"
     ;;
   *)
-    echo "usage: screenshot [region|screen]" >&2
+    echo "usage: screenshot [region|window|screen]" >&2
     exit 2
     ;;
 esac

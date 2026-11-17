@@ -81,6 +81,12 @@ tooltip {
   padding: 0 7px;
 }
 
+#custom-menu {
+  color: @blue;
+  font-size: 15px;
+  padding: 0 8px 0 6px;
+}
+
 #window {
   color: @fg;
   font-weight: bold;

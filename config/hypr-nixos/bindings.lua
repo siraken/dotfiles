@@ -14,6 +14,13 @@ o.bind("SUPER + CTRL + T", "Activity", o.launch("wezterm start --class TUI.float
 
 -- Launcher and menus.
 o.bind("SUPER + SPACE", "Launcher", "pkill fuzzel || " .. o.launch("fuzzel"))
+-- Menus (scripts/menu), with Omarchy's keys.
+local menu = "pkill fuzzel || " .. o.script("menu") .. " "
+o.bind("SUPER + ALT + SPACE", "Menu", menu .. "root")
+o.bind("SUPER + CTRL + E", "Emoji", menu .. "emoji")
+o.bind("SUPER + CTRL + C", "Capture menu", menu .. "capture")
+o.bind("SUPER + CTRL + O", "Toggle menu", menu .. "toggles")
+o.bind("SUPER + K", "Keybindings", menu .. "keys")
 o.bind("SUPER + ESCAPE", "System menu", "pkill wlogout || wlogout -b 3 -T 280 -B 280")
 o.bind("XF86PowerOff", "System menu", "pkill wlogout || wlogout -b 3 -T 280 -B 280", { locked = true })
 o.bind("SUPER + CTRL + V", "Clipboard history", o.script("clipboard-menu"))
@@ -173,6 +180,7 @@ o.bind("SUPER + CTRL + comma", "Toggle silencing notifications", "swaync-client 
 
 -- Screenshots, colour picker, night light, lock.
 o.bind("PRINT", "Screenshot (region)", o.script("screenshot", "region"))
+o.bind("ALT + PRINT", "Screenshot (window)", o.script("screenshot", "window"))
 o.bind("SHIFT + PRINT", "Screenshot (screen)", o.script("screenshot", "screen"))
 o.bind("SUPER + PRINT", "Color picker", "pkill hyprpicker || hyprpicker -a")
 o.bind("SUPER + CTRL + N", "Toggle nightlight", o.script("nightlight"))
