@@ -9,7 +9,10 @@ configuration {
   display-drun: "Apps";
   display-run: "Run";
   display-window: "Windows";
-  /* Each app in its own systemd scope, like the rest of the session. */
+  /* run and terminal entries go through uwsm-app. drun starts apps itself and
+     ignores run-command, so rofi is started with uwsm-app instead
+     (bindings.lua, the bar, scripts/menu): each app lands in that rofi's own
+     scope. */
   terminal: "wezterm";
   run-command: "uwsm-app -- {cmd}";
   run-shell-command: "uwsm-app -- {terminal} -e {cmd}";
