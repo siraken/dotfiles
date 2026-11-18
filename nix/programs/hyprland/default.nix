@@ -14,7 +14,7 @@
   ];
 
   home.packages = with pkgs; [
-    fuzzel
+    rofi
     swaynotificationcenter
     wlogout
     libnotify
@@ -77,6 +77,6 @@
   home.file.".config/swaync".source = mkRepoLink "config/swaync";
   home.file.".config/swayosd".source = mkRepoLink "config/swayosd";
   home.file.".config/wlogout".source = mkRepoLink "config/wlogout";
-  home.file.".config/fuzzel".source = mkRepoLink "config/fuzzel";
+  home.file.".config/rofi".source = mkRepoLink "config/rofi";
   home.file.".config/foot".source = mkRepoLink "config/foot";
 }

@@ -3,7 +3,7 @@
 # instead of repeating hex codes:
 #
 #   colors.css   GTK CSS: Waybar, swaync, swayosd, wlogout (@import)
-#   fuzzel.ini   fuzzel's [colors] section (include)
+#   rofi.rasi    rofi's colour variables (@import)
 #   foot.ini     foot's [colors-dark] section (include)
 #   colors.conf  hyprlang variables: hyprlock (source)
 { lib, ... }:
@@ -34,18 +34,22 @@ let
 
   hyprlang = lib.concatStrings (lib.mapAttrsToList (n: v: "\$${n} = rgba(${strip v}ff)\n") palette);
 
-  fuzzel = with palette; ''
-    [colors]
-    background=${strip bg}f2
-    text=${strip fg}ff
-    prompt=${strip blue}ff
-    placeholder=${strip muted}ff
-    input=${strip fg}ff
-    match=${strip green}ff
-    selection=${strip selection}ff
-    selection-text=${strip fg}ff
-    selection-match=${strip green}ff
-    border=${strip border}ff
+  rofi = with palette; ''
+    * {
+      bg: ${bg}f2;
+      bg-alt: ${bgDark};
+      fg: ${fg};
+      muted: ${muted};
+      accent: ${blue};
+      match: ${green};
+      sel: ${selection};
+      border-col: ${border};
+    }
+
+    /* highlight takes no variables. */
+    element-text {
+      highlight: bold ${green};
+    }
   '';
 
   # Terminal colours for foot, the fallback terminal the bar's panels open in.
@@ -80,7 +84,7 @@ in
 {
   xdg.configFile = {
     "desktop-theme/colors.css".text = header "/*" + "*/\n" + css;
-    "desktop-theme/fuzzel.ini".text = header "#" + fuzzel;
+    "desktop-theme/rofi.rasi".text = header "//" + rofi;
     "desktop-theme/colors.conf".text = header "#" + hyprlang;
     "desktop-theme/foot.ini".text = header "#" + foot;
   };

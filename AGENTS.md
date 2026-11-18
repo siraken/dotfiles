@@ -119,7 +119,7 @@ Manages 40+ tool configurations across multiple categories:
 - **IDEs**: VS Code
 - **Shells**: Bash, Zsh, Fish
 - **Terminals**: Kitty, WezTerm, Ghostty
-- **Window Managers**: AeroSpace, Sketchybar, JankyBorders (macOS); Hyprland, Waybar, swaync, swayosd, wlogout, fuzzel (`siraken-mba`)
+- **Window Managers**: AeroSpace, Sketchybar, JankyBorders (macOS); Hyprland, Waybar, swaync, swayosd, wlogout, rofi (`siraken-mba`)
 - **Dev Tools**: Git, GitUI, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI
 - **Security**: 1Password Shell Plugins
 - **Media**: Spotify-player, Twitch-TUI, yt-dlp

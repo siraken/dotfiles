@@ -13,9 +13,9 @@ o.bind("SUPER + SHIFT + SLASH", "Passwords", o.launch("1password"))
 o.bind("SUPER + CTRL + T", "Activity", o.launch("wezterm start --class TUI.float -- btop"))
 
 -- Launcher and menus.
-o.bind("SUPER + SPACE", "Launcher", "pkill fuzzel || " .. o.launch("fuzzel"))
+o.bind("SUPER + SPACE", "Launcher", "pkill -x rofi || " .. o.launch("rofi -show drun"))
 -- Menus (scripts/menu), with Omarchy's keys.
-local menu = "pkill fuzzel || " .. o.script("menu") .. " "
+local menu = "pkill -x rofi || " .. o.script("menu") .. " "
 o.bind("SUPER + ALT + SPACE", "Menu", menu .. "root")
 o.bind("SUPER + CTRL + E", "Emoji", menu .. "emoji")
 o.bind("SUPER + CTRL + C", "Capture menu", menu .. "capture")

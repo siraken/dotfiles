@@ -1,0 +1,90 @@
+/* Launcher and menus for Hyprland on NixOS (siraken-mba).
+   See rofi(1), rofi-theme(5). The menus (config/hypr/scripts) use -dmenu. */
+configuration {
+  modi: "drun,run,window";
+  show-icons: true;
+  icon-theme: "Papirus-Dark";
+  font: "Hack Nerd Font 11";
+  drun-display-format: "{name}";
+  display-drun: "Apps";
+  display-run: "Run";
+  display-window: "Windows";
+  /* Each app in its own systemd scope, like the rest of the session. */
+  terminal: "wezterm";
+  run-command: "uwsm-app -- {cmd}";
+  run-shell-command: "uwsm-app -- {terminal} -e {cmd}";
+}
+
+/* Start from an empty theme: the blocks below would otherwise be merged into
+   rofi's default theme, whose element colours win over `*`. */
+@theme "/dev/null"
+
+/* Colours, generated from nix/colors/tokyonight.nix
+   (nix/programs/hyprland/colors.nix). */
+@import "~/.config/desktop-theme/rofi.rasi"
+
+* {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+window {
+  width: 640px;
+  background-color: @bg;
+  border: 1px;
+  border-color: @border-col;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+mainbox {
+  spacing: 10px;
+  children: [ inputbar, message, listview ];
+}
+
+inputbar {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: @bg-alt;
+  spacing: 8px;
+  children: [ prompt, entry ];
+}
+
+prompt {
+  text-color: @accent;
+}
+
+entry {
+  placeholder: "Search";
+  placeholder-color: @muted;
+}
+
+listview {
+  lines: 12;
+  fixed-height: false;
+  scrollbar: false;
+  spacing: 2px;
+}
+
+element {
+  padding: 6px 10px;
+  border-radius: 6px;
+  spacing: 10px;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: @sel;
+}
+
+element-icon {
+  size: 22px;
+}
+
+element-text {
+  vertical-align: 0.5;
+}
+
+element-text selected {
+  text-color: @fg;
+}
