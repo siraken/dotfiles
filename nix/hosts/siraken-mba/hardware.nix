@@ -61,6 +61,18 @@
   };
 
   services = {
+    # Fans on a quieter curve than NixOS's default (`aggressive`: ramping from
+    # 58 °C, polled every second). Short bursts such as opening a page take
+    # this Haswell CPU past 60 °C at once, so that curve spun the fans up for
+    # every one of them. This one stays at the minimum below 70 °C and reaches
+    # full speed at 92 °C, closer to macOS (TjMax is 100 °C, and thermald and
+    # the CPU's own throttling stay in place). The case runs warmer.
+    mbpfan.settings.general = {
+      low_temp = 70;
+      high_temp = 80;
+      max_temp = 92;
+      polling_interval = 3;
+    };
     power-profiles-daemon.enable = true;
     thermald.enable = true;
     upower.enable = true;
