@@ -23,7 +23,7 @@ root() {
   local toggles=$'\uf204  Toggles' keys=$'\uf11c  Keybindings' clip=$'\uf0ea  Clipboard'
   local system=$'\uf011  System'
   case "$(pick $'\uf313' "$apps" "$emoji" "$capture" "$clip" "$toggles" "$keys" "$system")" in
-    "$apps") exec rofi -show drun ;;
+    "$apps") exec uwsm-app -- rofi -show drun ;;
     "$emoji") emoji ;;
     "$capture") capture ;;
     "$clip") exec "$scripts/clipboard-menu" ;;
