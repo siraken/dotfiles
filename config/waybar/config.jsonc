@@ -50,8 +50,8 @@
   "custom/menu": {
     "format": "\uf313",
     "tooltip": false,
-    "on-click": "pkill fuzzel || ~/.config/hypr/scripts/menu",
-    "on-click-right": "pkill fuzzel || fuzzel",
+    "on-click": "pkill -x rofi || ~/.config/hypr/scripts/menu",
+    "on-click-right": "pkill -x rofi || uwsm-app -- rofi -show drun",
   },
 
   // The number, then an icon per window, like siraken-mbp's spaces.

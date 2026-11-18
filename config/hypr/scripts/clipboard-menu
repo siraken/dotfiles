@@ -1,4 +1,40 @@
 #!/usr/bin/env bash
 # Clipboard history (SUPER + CTRL + V): pick an entry stored by cliphist and
-# put it back on the clipboard.
-cliphist list | fuzzel --dmenu --prompt 'Clipboard: ' | cliphist decode | wl-copy
+# put it back on the clipboard. Images are shown as thumbnails, decoded once
+# into $XDG_RUNTIME_DIR (a tmpfs, emptied at logout).
+set -euo pipefail
+
+thumbs="${XDG_RUNTIME_DIR:-/tmp}/cliphist-thumbs"
+install -d -m 700 "$thumbs"
+
+list=$(cliphist list)
+
+# Drop thumbnails of entries that left the history.
+ids=$(cut -f1 <<<"$list")
+for f in "$thumbs"/*; do
+  [[ -e $f ]] || continue
+  name=${f##*/}
+  grep -qxF "${name%%.*}" <<<"$ids" || rm -f "$f"
+done
+
+# One row per entry: "<id>\t<preview>", plus rofi's icon option for images.
+image='^\[\[ binary data .* (png|jpe?g|bmp|webp|gif) '
+rows() {
+  local id preview ext file
+  while IFS=$'\t' read -r id preview; do
+    [[ -n $id ]] || continue
+    if [[ $preview =~ $image ]]; then
+      ext=${BASH_REMATCH[1]}
+      file="$thumbs/$id.$ext"
+      [[ -s $file ]] || cliphist decode "$id" >"$file" 2>/dev/null || rm -f "$file"
+      printf '%s\t%s\0icon\x1f%s\n' "$id" "$preview" "$file"
+    else
+      printf '%s\t%s\n' "$id" "$preview"
+    fi
+  done <<<"$list"
+}
+
+# -display-columns 2 hides the id; rofi still returns the whole row.
+choice=$(rows | rofi -dmenu -show-icons -display-columns 2 -p $'\uf0ea' \
+  -theme-str 'element-icon { size: 2.5em; } listview { lines: 8; } window { width: 760px; }') || exit 0
+cliphist decode <<<"$choice" | wl-copy

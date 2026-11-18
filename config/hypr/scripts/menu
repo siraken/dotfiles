@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Keyboard menus in fuzzel, after Omarchy's SUPER + SPACE family.
+# Keyboard menus in rofi, after Omarchy's SUPER + SPACE family.
 #   menu [root]   everything below (SUPER + ALT + SPACE, the bar's menu button)
 #   menu capture  screenshots and recording (SUPER + CTRL + C)
 #   menu toggles  night light, do-not-disturb, idle lock, bar (SUPER + CTRL + O)
@@ -15,7 +15,7 @@ scripts=$(dirname "$(readlink -f "$0")")
 pick() {
   local prompt=$1
   shift
-  printf '%s\n' "$@" | fuzzel --dmenu --prompt "$prompt " --lines "$#" || true
+  printf '%s\n' "$@" | rofi -dmenu -p "$prompt" -l "$#" || true
 }
 
 root() {
@@ -23,7 +23,7 @@ root() {
   local toggles=$'\uf204  Toggles' keys=$'\uf11c  Keybindings' clip=$'\uf0ea  Clipboard'
   local system=$'\uf011  System'
   case "$(pick $'\uf313' "$apps" "$emoji" "$capture" "$clip" "$toggles" "$keys" "$system")" in
-    "$apps") exec fuzzel ;;
+    "$apps") exec rofi -show drun ;;
     "$emoji") emoji ;;
     "$capture") capture ;;
     "$clip") exec "$scripts/clipboard-menu" ;;
@@ -43,7 +43,7 @@ capture() {
   else
     choice=$(pick $'\uf030' "$region" "$window" "$screen" "$rec_region" "$rec_screen")
   fi
-  # Let fuzzel's surface go before grim captures the screen.
+  # Let rofi's surface go before grim captures the screen.
   sleep 0.2
   case "$choice" in
     "$region") exec "$scripts/screenshot" region ;;
@@ -80,7 +80,7 @@ toggles() {
 
 # rofimoji raises when the menu is cancelled; keep that off the journal.
 emoji() {
-  rofimoji --selector fuzzel --typer wtype --clipboarder wl-copy --action type copy \
+  rofimoji --selector rofi --typer wtype --clipboarder wl-copy --action type copy \
     --prompt $'\uf118 ' 2>/dev/null || true
 }
 
@@ -97,7 +97,7 @@ keys() {
       | [((mods | if . == "" then "" else . + " + " end) + .key), .description]
       | @tsv' |
     awk -F '\t' '{ printf "%-32s %s\n", $1, $2 }' |
-    fuzzel --dmenu --prompt $'\uf11c ' --width 70 --lines 20 >/dev/null || true
+    rofi -dmenu -p $'\uf11c' -l 20 -theme-str 'window { width: 70%; }' >/dev/null || true
 }
 
 case "${1:-root}" in
