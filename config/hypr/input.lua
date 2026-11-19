@@ -27,6 +27,10 @@ hl.config({
       scroll_factor = 0.3,
       -- Ignore the touchpad while typing, so a palm cannot tap-click.
       disable_while_typing = true,
+      -- Tap-to-click stays, but a tap no longer starts a drag: a stray touch
+      -- right after a tap selected or moved things. Light brushes are kept out
+      -- by the touch size threshold (nix/hosts/siraken-mba/hardware.nix).
+      tap_and_drag = false,
       drag_3fg = 0,
     },
   },
