@@ -24,7 +24,8 @@ hl.config({
       natural_scroll = true,
       -- Two-finger click is a right-click.
       clickfinger_behavior = true,
-      scroll_factor = 0.3,
+      -- Tuned by feel on the machine: 0.3 scrolled a little too far.
+      scroll_factor = 0.22,
       -- Ignore the touchpad while typing, so a palm cannot tap-click.
       disable_while_typing = true,
       -- Tap-to-click stays, but a tap no longer starts a drag: a stray touch
@@ -48,5 +49,6 @@ hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
 -- Only the MacBook's own JIS keyboard is jp; external keyboards stay us.
 hl.device({ name = "apple-inc.-apple-internal-keyboard-/-trackpad", kb_layout = "jp" })
 
--- Scroll speed in terminals.
-o.window("org.wezfurlong.wezterm", { scroll_touchpad = 1.5 })
+-- Scroll speed in terminals. This replaces scroll_factor for the window
+-- rather than multiplying it, so it was lowered by the same ratio.
+o.window("org.wezfurlong.wezterm", { scroll_touchpad = 1.1 })
