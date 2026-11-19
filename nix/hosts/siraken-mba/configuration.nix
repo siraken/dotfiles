@@ -97,7 +97,15 @@
   # Resuming from hibernation asks for the LUKS passphrase and takes about a
   # minute and a half.
   systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
-  services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    # The power key sits above Delete and is easy to press by mistake. A press
+    # only opens wlogout (Hyprland's XF86PowerOff binding); logind would
+    # otherwise power off at once. A long press still powers off a frozen
+    # machine.
+    HandlePowerKey = "ignore";
+    HandlePowerKeyLongPress = "poweroff";
+  };
 
   services = {
     pipewire = {
