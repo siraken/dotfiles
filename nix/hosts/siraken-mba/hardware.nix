@@ -78,6 +78,20 @@
     upower.enable = true;
   };
 
+  # The internal trackpad (bcm5974, 05ac:0291) took light brushes as taps.
+  # With `libinput measure touch-size`, brushes peaked at a touch major of
+  # 122-310 and deliberate taps at 352-512. libinput's Apple default is
+  # 150:130; 300:280 kept the brushes out but made the pointer sluggish, so
+  # this is halfway. Read when the compositor starts: log in again to apply.
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [siraken-mba internal trackpad]
+    MatchUdevType=touchpad
+    MatchBus=usb
+    MatchVendor=0x05AC
+    MatchProduct=0x0291
+    AttrTouchSizeRange=225:205
+  '';
+
   environment.systemPackages = [
     # Display and keyboard backlight (smc::kbd_backlight).
     pkgs.brightnessctl
