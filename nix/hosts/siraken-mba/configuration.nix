@@ -75,6 +75,17 @@
     };
   };
 
+  # Hard-link identical files in the store once a week. Persistent, so a run
+  # missed while asleep happens at the next boot.
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
+  };
+
+  # The journal stays small on this 256 GB SSD (the default cap is 10% of the
+  # filesystem, up to 4 GB).
+  services.journald.settings.Journal.SystemMaxUse = "500M";
+
   nixpkgs.config.allowUnfree = true;
 
   users.users.${userProfile.username} = {
