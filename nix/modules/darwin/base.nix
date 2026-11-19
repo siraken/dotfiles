@@ -53,6 +53,17 @@
     shells = import ../shells.nix { inherit pkgs; };
   };
 
+  # The user's zsh is configured by home-manager (`nix/programs/zsh`, part of
+  # every profile), which runs its own compinit and sets the prompt through
+  # starship. nix-darwin's defaults would do both again in /etc/zshrc: a second
+  # compinit (with its compaudit pass, ~50 ms per shell) and a `prompt suse`
+  # that starship immediately replaces. Completions stay installed and on
+  # fpath; only the duplicate calls go.
+  programs.zsh = {
+    enableGlobalCompInit = false;
+    promptInit = "";
+  };
+
   system = {
     stateVersion = 5;
     primaryUser = userProfile.username;
