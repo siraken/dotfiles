@@ -73,6 +73,19 @@
       max_temp = 92;
       polling_interval = 3;
     };
+    # The 2014 Apple SSD (SM0256): watch its SMART health and attributes, and
+    # show a desktop notification (systembus-notify → swaync) when they fail.
+    smartd = {
+      enable = true;
+      notifications.systembus-notify.enable = true;
+    };
+    # One btrfs filesystem holds every subvolume. With a single device a scrub
+    # can only detect damage, not repair it; restore from a backup then.
+    btrfs.autoScrub = {
+      enable = true;
+      interval = "monthly";
+      fileSystems = [ "/" ];
+    };
     power-profiles-daemon.enable = true;
     thermald.enable = true;
     upower.enable = true;
