@@ -92,6 +92,13 @@
   # Swap in daily use; the swapfile is only for hibernation.
   zramSwap.enable = true;
 
+  # Suspend, and hibernate after two hours asleep so a forgotten machine does
+  # not run flat. Closing the lid and hypridle's last step both do this.
+  # Resuming from hibernation asks for the LUKS passphrase and takes about a
+  # minute and a half.
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
+  services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
+
   services = {
     pipewire = {
       enable = true;
