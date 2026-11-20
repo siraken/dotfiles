@@ -37,10 +37,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    llm-agents = {
-      url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # No `inputs.nixpkgs.follows`: upstream builds and caches against its own
+    # pinned nixpkgs-unstable, so following ours changes every store path and
+    # misses cache.numtide.com (codex then rebuilds from Rust source).
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
