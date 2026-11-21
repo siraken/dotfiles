@@ -22,10 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # No `inputs.nixpkgs.follows`: nixvim's CI builds the plugins against its
+    # own pinned nixpkgs and pushes them to nix-community.cachix.org. nixpkgs
+    # keeps most generated vimPlugins off Hydra (`meta.hydraPlatforms = [ ]`),
+    # so following ours left them in no cache and rebuilt them locally.
+    nixvim.url = "github:nix-community/nixvim";
 
     home-manager = {
       url = "github:nix-community/home-manager";
