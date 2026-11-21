@@ -1,21 +1,40 @@
-# システムの closure のうち、上流のバイナリキャッシュがどれも持っていない
-# パスだけを自前の Cachix へ push する。
+# システムと home-manager の closure のうち、上流のバイナリキャッシュがどれも
+# 持っていないパスだけを自前の Cachix へ push する。
 #
 # closure 全体は 1174 パス / 12.6 GiB あるが、上流に無いのは 214 パス /
 # 286 MiB だけだった (2026-08-03 実測。mise 105MiB・1password-cli 77MiB・
 # emacs パッケージ 99MiB・このリポジトリ由来の派生など)。丸ごと push すると
 # 無料枠を使い切ってしまうため、narinfo の有無で絞り込んでいる。
 #
+# 引数を省くと /run/current-system と home-manager の profile のうち、存在する
+# ものを対象にする。home-manager は OS とは別の standalone 構成なので、
+# システムの closure には emacs パッケージや 1password-cli が入っていない。
+#
 # cachix の認証情報は 1Password Shell Plugin が持っているが、あれはシェル関数
 # なのでスクリプトからは効かない。op があれば op plugin run 経由で呼ぶ。
 
 CACHE="${CACHIX_CACHE:-siraken-dotfiles}"
-TARGET="${1:-/run/current-system}"
+
+if [ "$#" -gt 0 ]; then
+  targets=("$@")
+else
+  targets=()
+  for t in /run/current-system "${XDG_STATE_HOME:-$HOME/.local/state}/nix/profiles/home-manager"; do
+    if [ -e "$t" ]; then
+      targets+=("$t")
+    fi
+  done
+  if [ "${#targets[@]}" -eq 0 ]; then
+    echo 'push 対象がありません (/run/current-system も home-manager の profile も無い)' >&2
+    exit 1
+  fi
+fi
+printf '対象: %s\n' "${targets[@]}"
 
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
-nix-store --query --requisites "$TARGET" | sort -u >"$tmp/closure"
+nix-store --query --requisites "${targets[@]}" | sort -u >"$tmp/closure"
 awk -F/ '{ print substr($NF, 1, 32) }' "$tmp/closure" | sort -u >"$tmp/todo"
 printf 'closure: %s パス\n' "$(wc -l <"$tmp/closure" | tr -d ' ')"
 
