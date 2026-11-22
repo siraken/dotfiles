@@ -1,10 +1,13 @@
 # herdr は TUI 版 (`herdr`) とデスクトップ版 (`herdr-desktop` + `herdr-core`) の
 # 2 系統があり、エージェントも設定も共有しない別物。どちらも nixpkgs から入れる。
-# ここで宣言する `settings` は TUI 版の `$XDG_CONFIG_HOME/herdr/config.toml` だけで、
-# デスクトップ版の設定 (`~/.config/herdr-app`) はまだ管理しない。
+# `programs.herdr.settings` は TUI 版の `$XDG_CONFIG_HOME/herdr/config.toml`。
+# デスクトップ版の設定 (`~/.config/herdr-app`, `~/.config/herdr-core`) は
+# ファイル末尾の「デスクトップ版」以降で、TUI 版の設定をデスクトップ版の仕組みに
+# 移したもの。
 #
 # 設定キーの一覧: https://herdr.dev/docs/config-reference/
 # 手元のデフォルト値: `herdr --default-config`
+# デスクトップ版のガイド: `~/.config/herdr-app/AGENTS.md` (アプリが起動時に書き出す)
 {
   config,
   pkgs,
@@ -15,6 +18,77 @@ let
   # activation から herdr を呼ぶための絶対パス。activation の PATH には
   # home.packages が載っていないので、ストアのパスを直接埋める。
   herdrBin = lib.getExe config.programs.herdr.package;
+  jq = lib.getExe pkgs.jq;
+
+  zsh = lib.getExe config.programs.zsh.package;
+
+  # デスクトップ版のホーム。アプリは XDG_CONFIG_HOME を見ず `~/.config/herdr-app`
+  # 固定 (HERDR_APP_HOME で変えられる) なので、xdg.configFile ではなく home.file で置く。
+  appHome = ".config/herdr-app";
+
+  tn = import ../../colors/tokyonight.nix;
+
+  # TUI 版の theme.name = "tokyo-night" に当たるもの。デスクトップ版は TokyoNight を
+  # 同梱していないので themes/<name>.json を足す。ANSI の割り当ては foot
+  # (nix/programs/hyprland/colors.nix) と同じで、前景色だけ Ghostty の TokyoNight に
+  # 合わせて white にする。パネルの色はアプリがこの 4 色 + ANSI から導く。
+  appTheme = {
+    background = tn.ui.bg;
+    foreground = tn.white;
+    selection = tn.ui.bgSelection;
+    cursor = tn.white;
+    ansi = [
+      tn.darkBlack
+      tn.red
+      tn.lightGreen
+      tn.yellow
+      tn.blue
+      tn.magenta
+      tn.cyan
+      tn.ui.fgDark
+      tn.black
+      tn.red
+      tn.lightGreen
+      tn.yellow
+      tn.blue
+      tn.magenta
+      tn.cyan
+      tn.white
+    ];
+  };
+
+  # settings.json / keys.json に足す分。アプリ自身がこの 2 つを書き換える
+  # (ズームキーや設定画面) ので丸ごと生成も symlink もできない。switch のたびに
+  # 既存のファイルへ `. * patch` で深くマージし、ここに無いキーはアプリに任せる。
+  appSettingsPatch = {
+    # main レイアウトは theme を持たないので settings.json の theme が効く。
+    # テーマピッカーで選ぶとレイアウト側の theme が優先される。
+    theme = "tokyo-night";
+  };
+
+  # TUI 版のキーは prefix (ctrl+b) 方式だが、デスクトップ版の keys.json は単発の
+  # ショートカットだけで prefix の概念がない。TUI 版で埋めた移動系は既定で揃っている
+  # ので足さない:
+  #   prefix+shift+1..9 (workspace 選択)   → ctrl-1..9      (space.select)
+  #   prefix+ctrl+p / n (前後の workspace) → cmd-alt-[ / ]  (space.prev / next)
+  #   prefix+shift+a / a (前後の agent)    → cmd-[ / ]      (agent.prev / next)
+  # prefix+shift+o (worktree を開く) は、worktree ダイアログが props 付きの
+  # openOverlay でしか開けずキーから呼べるコマンドが無いので移せない。
+  # スペースのメニューか + メニューの Open worktree から開く。
+  appKeysPatch = {
+    global = {
+      # TUI 版の prefix+u (gitui をポップアップ)。デスクトップ版には浮かせて開く
+      # ターミナルが無いので新しいタブで開く。gitui を終了するとタブも閉じる。
+      # 起動はシェルを通らないので絶対パスで渡す。
+      "cmd-u" = {
+        command = "terminal.open";
+        args = {
+          argv = [ (lib.getExe config.programs.gitui.package) ];
+          name = "gitui";
+        };
+      };
+    };
+  };
 in
 {
   programs.herdr = {
@@ -149,6 +223,61 @@ in
     pkgs.herdr-desktop
     pkgs.herdr-core
   ];
+
+  # TUI 版の terminal.default_shell に当たるもの。デスクトップ版のターミナルは
+  # herdr-core が起こすので、シェルはアプリではなく core の設定で決まる。指定しないと
+  # ログインシェル (macOS では Apple の /bin/zsh) になる。
+  # core が起動時に読むので、変えたら `hc server restart` (ターミナルは残る)。
+  home.file.".config/herdr-core/config.toml".source =
+    (pkgs.formats.toml { }).generate "herdr-core.toml"
+      {
+        shell = [ zsh ];
+      };
+
+  # アプリは themes/ の自作テーマを書き換えない (同梱テーマの更新だけ) ので symlink で置ける。
+  home.file."${appHome}/themes/tokyo-night.json".text = builtins.toJSON appTheme;
+
+  # TUI 版から移していないもの:
+  # - onboarding = false: ウェルカム画面を消す設定が無い (一度閉じれば出ない)。
+  # - update.*: ソースからのビルドなのでアプリも core も自動更新しない。
+  # - terminal.new_cwd = "follow": デスクトップ版は既定でフォーカス中のペインの
+  #   フォルダで開く。
+  # - ui.agent_panel_sort = "priority": agents パネルの既定の並び順。
+  # - ui.sidebar.spaces.rows の $num: スペース一覧が既定で番号を描く。
+  # - ui.toast.delivery = "system": 通知はアプリ内のトーストで出る。OS の通知センターへ
+  #   出すにはレイアウトを複製して toast mod を差し替える必要がある。
+  # - experimental.*: 日本語入力は macOS のネイティブのテキスト入力を通るので不要。
+  #   prefix も無いので ASCII 切り替えの対象が無い。
+  home.activation.herdrAppSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    herdrAppMerge() {
+      file=$1 patch=$2
+      tmp=$(mktemp "$file.XXXXXX")
+      if ! ${jq} --argjson patch "$patch" '. * $patch' "$file" > "$tmp"; then
+        warnEcho "herdr-app: $file is not valid JSON, leaving it alone"
+      elif ! cmp -s "$tmp" "$file"; then
+        $DRY_RUN_CMD mv "$tmp" "$file"
+      fi
+      rm -f "$tmp"
+    }
+
+    appHome="$HOME/${appHome}"
+    $DRY_RUN_CMD mkdir -p "$appHome"
+
+    # settings.json は無ければ空から作ってよい。アプリは足りない項目を既定で補う。
+    [ -f "$appHome/settings.json" ] || $DRY_RUN_CMD sh -c "echo '{}' > '$appHome/settings.json'"
+    [ -f "$appHome/settings.json" ] && \
+      herdrAppMerge "$appHome/settings.json" ${lib.escapeShellArg (builtins.toJSON appSettingsPatch)}
+
+    # keys.json は全ショートカットの一覧で、既定のキーとはマージされない。無いところに
+    # ここの分だけ書くと既定のキーが全部消えるので、アプリが一度起動して既定を書き出して
+    # から次の switch で足す。手を入れたファイルはアプリの更新で新しい既定キーを
+    # 受け取らなくなるので、増えたキーは `herdr-app commands` と AGENTS.md を見て足す。
+    if [ -f "$appHome/keys.json" ]; then
+      herdrAppMerge "$appHome/keys.json" ${lib.escapeShellArg (builtins.toJSON appKeysPatch)}
+    else
+      noteEcho "herdr-app: no keys.json yet; start Herdr once, then switch again to add key bindings"
+    fi
+  '';
 
   # herdr はエージェント用のスキルを SKILL.md 形式でバイナリに同梱していて
   # `herdr --skill` で取り出せるが、配置までは面倒を見ない。置かないとエージェントに
