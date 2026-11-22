@@ -288,33 +288,51 @@ in
     fi
   '';
 
-  # herdr はエージェント用のスキルを SKILL.md 形式でバイナリに同梱していて
-  # `herdr --skill` で取り出せるが、配置までは面倒を見ない。置かないとエージェントに
-  # 毎回使い方を教えることになる。
+  # TUI 版とデスクトップ版はそれぞれエージェント用のスキルを同梱しているが、配置までは
+  # 面倒を見ない。置かないとエージェントに毎回使い方を教えることになるうえ、片方しか
+  # 無いと、もう片方の中で動くエージェントが手元のスキルの前提 (TUI 版の `herdr` なら
+  # HERDR_ENV=1) を満たせず「Herdr の外にいる」と判断して止まる。
+  # - herdr: TUI 版。`herdr --skill` で取り出す。
+  # - herdr-core: デスクトップ版。パッケージの share/skills に入っている。中身は
+  #   「$HC_TERMINAL_ID があれば hc を使い、`hc --skill` / `herdr-app --skill` を読め」
+  #   という入口だけで、本文はバイナリ側にあるのでバージョンがずれない。
   #
   # 中身は入っている herdr のバージョンに追従するため、リポジトリにコミットすると
-  # herdr を更新した時点でスキルだけ古くなる。switch のたびにバイナリから吐き直す。
+  # herdr を更新した時点でスキルだけ古くなる。switch のたびに入っているものから置き直す。
   #
   # 配布先は apm (~/.apm/apm.yml) が materialize するのと同じランタイムのディレクトリ。
   # apm 自身の依存には載せない。apm が配るのは公開パッケージで、こちらは手元のバイナリ
   # から生成する派生物なので、載せると herdr 更新のたびに再生成と `apm install` の
   # 2 手が要る。apm は自分の管理外のファイルを既定では上書きしないので共存できる。
   home.activation.herdrAgentSkill = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    herdrInstallSkill() {
+      name=$1 src=$2
+      for runtime in \
+        "$HOME/.claude/skills" \
+        "$HOME/.codex/skills" \
+        "$HOME/.gemini/skills" \
+        "$HOME/.config/opencode/skills"; do
+        # そのエージェントを入れていないホストに skills ディレクトリを作らない
+        [ -d "$runtime" ] || continue
+        $DRY_RUN_CMD mkdir -p "$runtime/$name"
+        # ストアのファイルは読み取り専用なので、モードは揃えて置く
+        $DRY_RUN_CMD install -m 0644 "$src" "$runtime/$name/SKILL.md"
+      done
+    }
+
     if [ -x ${herdrBin} ]; then
       skill=$(mktemp)
       if ${herdrBin} --skill > "$skill" 2>/dev/null && [ -s "$skill" ]; then
-        for runtime in \
-          "$HOME/.claude/skills" \
-          "$HOME/.codex/skills" \
-          "$HOME/.gemini/skills" \
-          "$HOME/.config/opencode/skills"; do
-          # そのエージェントを入れていないホストに skills ディレクトリを作らない
-          [ -d "$runtime" ] || continue
-          $DRY_RUN_CMD mkdir -p "$runtime/herdr"
-          $DRY_RUN_CMD cp -f "$skill" "$runtime/herdr/SKILL.md"
-        done
+        herdrInstallSkill herdr "$skill"
       fi
       rm -f "$skill"
+    fi
+
+    coreSkill=${pkgs.herdr-core}/share/skills/herdr-core/herdr-core/SKILL.md
+    if [ -s "$coreSkill" ]; then
+      herdrInstallSkill herdr-core "$coreSkill"
+    else
+      warnEcho "herdr-core: $coreSkill not found; the package layout may have changed"
     fi
   '';
 }
