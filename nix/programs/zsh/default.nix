@@ -35,11 +35,14 @@
       C = "| pbcopy";
     };
 
-    # Source option.zsh from the repo directly (`repoPath` follows
+    # Source the repo fragments directly (`repoPath` follows
     # `dotfiles.linkMode`, so with the checkout a new shell picks up edits
     # without a rebuild). See #70.
     initContent = ''
       source ${repoPath "config/zsh/option.zsh"}
+
+      # Report the cwd to the terminal (OSC 7)
+      source ${repoPath "config/zsh/osc7.zsh"}
     '';
   };
 }

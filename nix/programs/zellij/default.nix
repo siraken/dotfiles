@@ -10,7 +10,7 @@
       hex = import ./layouts/hex.nix;
     };
     settings = {
-      default_shell = "bash";
+      default_shell = "zsh";
       theme = "tokyo-night";
       show_startup_tips = false;
       show_release_notes = true;

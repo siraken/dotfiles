@@ -27,7 +27,7 @@
       };
       terminal = {
         shell = {
-          program = "bash";
+          program = "zsh";
         };
         toolbar = {
           breadcrumbs = false;

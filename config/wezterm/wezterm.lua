@@ -36,7 +36,6 @@ local config = wezterm.config_builder and wezterm.config_builder() or {}
 -- General ----------------------------------------------------------------
 
 config.automatically_reload_config = true
-config.default_prog = { "bash", "-l" }
 config.exit_behavior = "Close"
 config.status_update_interval = 1000
 config.use_ime = true
@@ -61,11 +60,10 @@ if is_darwin then
 elseif is_windows then
   -- Open panes in WezTerm's WSL domain instead of running wsl.exe as a Windows
   -- program: WezTerm then knows the Linux cwd (reported via OSC 7, see
-  -- config/bash/osc7.sh) and new tabs / splits open in the same directory.
+  -- config/zsh/osc7.zsh and config/bash/osc7.sh) and new tabs / splits open
+  -- in the same directory.
+  -- Like everywhere else, no default_prog: the pane runs the login shell.
   local wsl_domains = wezterm.default_wsl_domains()
-  for _, domain in ipairs(wsl_domains) do
-    domain.default_prog = { "bash", "-l" }
-  end
   config.wsl_domains = wsl_domains
   config.default_domain = pick_wsl_domain(wsl_domains)
   -- Windows shells stay reachable from the launcher (Alt+L)
