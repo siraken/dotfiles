@@ -64,6 +64,15 @@ let
     # main レイアウトは theme を持たないので settings.json の theme が効く。
     # テーマピッカーで選ぶとレイアウト側の theme が優先される。
     theme = "tokyo-night";
+
+    # ターミナルの文字サイズ (px, ズーム 1 のとき)。既定は 14。main レイアウトは
+    # font_size を持たないのでここが効く。パネルまで大きくしたいときは zoom。
+    font_size = 16;
+
+    # Settings → Privacy の "Share anonymous usage data"。無いと on。ソースからの
+    # ビルドはもともと送らないが、どのビルドでも止まるように明示しておく。
+    # false にするとまだ送っていない分も消える。
+    telemetry = false;
   };
 
   # TUI 版のキーは prefix (ctrl+b) 方式だが、デスクトップ版の keys.json は単発の
