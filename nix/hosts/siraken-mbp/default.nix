@@ -44,7 +44,6 @@
           "goreleaser"
           "gpg"
           "hashcat"
-          "herdr"
           "hydra"
           "ios-deploy"
           "jmeter"
