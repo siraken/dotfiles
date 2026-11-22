@@ -1,7 +1,7 @@
-# macOS では herdr 本体を Homebrew で入れている (nix/hosts/siraken-mbp/default.nix の
-# `brews`) ので `package = null` で nixpkgs 版の導入だけを止め、home-manager には
-# `$XDG_CONFIG_HOME/herdr/config.toml` の生成を任せる。それ以外 (WSL など) は
-# nixpkgs の herdr をそのまま使うため、両方とも既定のままでよい。
+# herdr は TUI 版 (`herdr`) とデスクトップ版 (`herdr-desktop` + `herdr-core`) の
+# 2 系統があり、エージェントも設定も共有しない別物。どちらも nixpkgs から入れる。
+# ここで宣言する `settings` は TUI 版の `$XDG_CONFIG_HOME/herdr/config.toml` だけで、
+# デスクトップ版の設定 (`~/.config/herdr-app`) はまだ管理しない。
 #
 # 設定キーの一覧: https://herdr.dev/docs/config-reference/
 # 手元のデフォルト値: `herdr --default-config`
@@ -12,17 +12,13 @@
   ...
 }:
 let
-  # macOS だけ brew 管理。この分岐が `package` と onChange の両方を決める。
-  useBrew = pkgs.stdenv.hostPlatform.isDarwin;
-
-  # activation から herdr を呼ぶための絶対パス。PATH に頼れない事情は下の
-  # `onChange` のコメントを参照。
-  herdrBin = if useBrew then "/opt/homebrew/bin/herdr" else lib.getExe pkgs.herdr;
+  # activation から herdr を呼ぶための絶対パス。activation の PATH には
+  # home.packages が載っていないので、ストアのパスを直接埋める。
+  herdrBin = lib.getExe config.programs.herdr.package;
 in
 {
   programs.herdr = {
     enable = true;
-    package = lib.mkIf useBrew null;
 
     settings = {
       onboarding = false;
@@ -40,7 +36,7 @@ in
       };
 
       update = {
-        # 更新は brew / nixpkgs 側で行うので herdr 自身のバージョンチェックは止める。
+        # 更新は flake.lock 側で行うので herdr 自身のバージョンチェックは止める。
         # エージェント検出マニフェストの更新だけは残す。
         version_check = false;
         manifest_check = true;
@@ -143,16 +139,16 @@ in
     };
   };
 
-  # home-manager の onChange は `package = null` のとき裸の `herdr` を呼ぶ。activation は
-  # `launchctl asuser … sudo -u siraken --set-home` 経由で PATH に /opt/homebrew/bin を
-  # 含まないため `command not found` になり、`|| true` に飲まれて reload が黙って飛ぶ。
-  # brew の絶対パス指定に差し替える (variable.nix の JAVA_HOME と同じ macOS 前提)。
-  # nixpkgs 版を使う環境では `lib.getExe` が store の絶対パスを埋めるので上書き不要。
-  xdg.configFile."herdr/config.toml".onChange = lib.mkIf useBrew (
-    lib.mkForce ''
-      /opt/homebrew/bin/herdr server reload-config || true
-    ''
-  );
+  # デスクトップ版。Herdr.app は targets.darwin.copyApps で
+  # ~/Applications/Home Manager Apps に置かれる。アプリは hc を PATH と既知の場所から
+  # 探し、nixpkgs 版はそこに herdr-core のストアパスを足してあるので、herdr-core を
+  # 入れるのは `hc` を手元のシェルやエージェントからも叩けるようにするため。
+  # ソースからのビルドなのでアプリ内の自動更新は効かず、設定画面にも nixpkgs の
+  # パッチで「Managed by nix」と出る。更新は flake.lock 側で行う。
+  home.packages = [
+    pkgs.herdr-desktop
+    pkgs.herdr-core
+  ];
 
   # herdr はエージェント用のスキルを SKILL.md 形式でバイナリに同梱していて
   # `herdr --skill` で取り出せるが、配置までは面倒を見ない。置かないとエージェントに
