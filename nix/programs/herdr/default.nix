@@ -5,7 +5,12 @@
 #
 # 設定キーの一覧: https://herdr.dev/docs/config-reference/
 # 手元のデフォルト値: `herdr --default-config`
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   # macOS だけ brew 管理。この分岐が `package` と onChange の両方を決める。
   useBrew = pkgs.stdenv.hostPlatform.isDarwin;
@@ -29,10 +34,8 @@ in
       };
 
       terminal = {
-        # zellij (`default_shell`) に合わせて bash。
-        # atuin / starship / zoxide の bash 統合は standard プロファイルで有効なので、
-        # ログインシェル (zsh) と操作感は変わらない。
-        default_shell = "${pkgs.bash}/bin/bash";
+        # ログインシェル / zellij (`default_shell`) に合わせて zsh。
+        default_shell = lib.getExe config.programs.zsh.package;
         new_cwd = "follow";
       };
 

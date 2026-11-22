@@ -76,6 +76,8 @@ nix run .#mbp   # or .#macmini
 home-manager switch --flake .#siraken@wsl-ubuntu
 ```
 
+To make zsh the login shell, see the generic home-manager profile below.
+
 </details>
 
 <details>
@@ -109,6 +111,13 @@ sudo systemctl restart nix-daemon
 ```
 
 Writing them to the user's nix.conf instead does not work unless the user is in `trusted-users`: Nix ignores each substituter with a warning on every call.
+
+The login shell is zsh everywhere: NixOS hosts set it in `nix/modules/nixos/zsh.nix` and macOS already uses `/bin/zsh`. home-manager cannot change it, so on any other host switch it once by hand:
+
+```bash
+echo "$HOME/.nix-profile/bin/zsh" | sudo tee -a /etc/shells
+chsh -s "$HOME/.nix-profile/bin/zsh"
+```
 
 </details>
 

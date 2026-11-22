@@ -31,6 +31,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     { nixpkgs.hostPlatform = system; }
     ../modules/nix-caches.nix
+    ../modules/nixos/zsh.nix
     { nixpkgs.overlays = import ./overlays.nix { inherit inputs; }; }
   ]
   ++ modules;
