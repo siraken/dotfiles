@@ -28,11 +28,10 @@
     shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).base;
     packages = (import ../../modules/packages.nix { inherit pkgs; }).base;
 
-    # `mkDefault` so a host that leaves a shell out (fish on wsl-nixos and
-    # nixos-vm) can switch its integration off.
+    # `mkDefault` so a host that leaves a shell out can switch its
+    # integration off.
     shell = {
       enableBashIntegration = lib.mkDefault true;
-      enableFishIntegration = lib.mkDefault true;
       enableZshIntegration = lib.mkDefault true;
       enableShellIntegration = lib.mkDefault true;
     };

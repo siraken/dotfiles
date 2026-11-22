@@ -8,7 +8,6 @@ in
   programs.mise = {
     enable = true;
     enableBashIntegration = true;
-    enableFishIntegration = true;
     enableZshIntegration = true;
     globalConfig = {
       tools = {

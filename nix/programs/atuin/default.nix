@@ -3,7 +3,6 @@
   programs.atuin = {
     enable = true;
     enableBashIntegration = true;
-    enableFishIntegration = true;
     enableZshIntegration = true;
 
     # atuin 18.19 以降は `?` を AI 起動ウィジェットに bind するため、

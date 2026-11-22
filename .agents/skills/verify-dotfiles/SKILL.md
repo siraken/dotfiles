@@ -81,7 +81,7 @@ then; the live comparison is against this machine).
    - **Repo-linked file** (`mkRepoLink`): with `dotfiles.linkMode = "outOfStore"`
      `~/REL` is a symlink into `~/dotfiles`, so an edit there is live without a
      switch: check it with `readlink -f ~/REL` and by running the consumer
-     (`fish -c 'functions x'`, `bash -ic 'type x'`, `git config --get x`).
+     (`zsh -ic 'which x'`, `bash -ic 'type x'`, `git config --get x`).
      With `"store"` the file is a copy in the Nix store and changes only on
      the next switch.
 

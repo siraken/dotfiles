@@ -7,7 +7,6 @@ in
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
-    enableFishIntegration = true;
     enableZshIntegration = true;
     historyWidget.command = "";
     colors = {
