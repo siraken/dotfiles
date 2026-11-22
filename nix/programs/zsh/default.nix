@@ -41,6 +41,9 @@
     initContent = ''
       source ${repoPath "config/zsh/option.zsh"}
 
+      # Custom functions
+      source ${repoPath "config/zsh/function.zsh"}
+
       # Report the cwd to the terminal (OSC 7)
       source ${repoPath "config/zsh/osc7.zsh"}
     '';
