@@ -1,0 +1,11 @@
+-- Rex (Superlogical) の設定ファイル。
+--
+-- Rex がファイルから読むのはキーバインド (rex.bind / rex.unbind)、モード
+-- (rex.mode)、独自アクション (rex.action) とイベントハンドラ (rex.on) だけ。
+-- フォント・テーマ・サイドバーなどアプリの設定は macOS の defaults
+-- (com.superlogical.rex) に保存され、このファイルでは扱わない。
+--
+-- 確認とリロード (rex CLI は /Applications/Rex.app/Contents/Helpers/ 配下):
+--   rex config check ~/dotfiles/config/rex/init.lua
+--   rex config reload
+--   rex keymap

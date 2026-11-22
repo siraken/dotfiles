@@ -11,6 +11,7 @@
     # programs (macOS only)
     ../../programs/ghostty
     ../../programs/kitty
+    ../../programs/rex
     ../../programs/wezterm
     ../../programs/zed
   ];
