@@ -15,7 +15,6 @@
       grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
         # this repo / shells
         bash
-        fish
         make
         nix
         # web

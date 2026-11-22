@@ -12,7 +12,6 @@
     ../../programs/fastfetch
     ../../programs/ghostty
     ../../programs/kitty
-    # ../../programs/fish # disabled due to fisher hash mismatch
   ];
 
   # Keep the out-of-store links this VM has always used (needs ~/dotfiles).
@@ -24,9 +23,6 @@
     packages = [
       pkgs.playerctl
     ];
-
-    # fish is not installed on this host (see above).
-    shell.enableFishIntegration = false;
   };
 
   programs = {

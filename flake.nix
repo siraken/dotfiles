@@ -175,7 +175,6 @@
               # as a thematic break and a heading, and the metadata is lost.
               plugins = ps: [ ps.mdformat-frontmatter ];
             };
-            programs.fish_indent.enable = true;
             programs.taplo.enable = true;
           };
 

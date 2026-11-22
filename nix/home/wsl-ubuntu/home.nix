@@ -6,7 +6,6 @@
     ../profiles/full.nix
     # inputs.dotfiles-private.homeManagerModules.default
     # host-specific programs
-    ../../programs/fish
     ../../programs/spotify-player
   ];
 }

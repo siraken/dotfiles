@@ -45,7 +45,7 @@ nix store gc
 ### Development
 
 ```bash
-# Format all files (Nix, Lua, Shell, JSON, YAML, Markdown, Fish)
+# Format all files (Nix, Lua, Shell, JSON, YAML, Markdown)
 nix fmt
 
 # Enter development shell (also installs pre-commit hooks via git-hooks.nix)
@@ -88,7 +88,7 @@ Personal dotfiles management system combining Nix and declarative configuration 
 
 **Code Quality**:
 
-- treefmt-nix with flake-parts module for multi-language formatting (nixfmt, stylua, shfmt, oxfmt, yamlfmt, mdformat, fish_indent)
+- treefmt-nix with flake-parts module for multi-language formatting (nixfmt, stylua, shfmt, oxfmt, yamlfmt, mdformat)
 - git-hooks.nix for pre-commit hook that runs treefmt on staged files
 
 **Symlink Management**:
@@ -117,7 +117,7 @@ Manages 40+ tool configurations across multiple categories:
 
 - **Editors**: Neovim (via [Nixvim](https://github.com/nix-community/nixvim)), Vim, Emacs, Helix, Zed
 - **IDEs**: VS Code
-- **Shells**: Bash, Zsh, Fish
+- **Shells**: Bash, Zsh
 - **Terminals**: Kitty, WezTerm, Ghostty
 - **Window Managers**: AeroSpace, Sketchybar, JankyBorders (macOS); Hyprland, Waybar, swaync, swayosd, wlogout, rofi (`siraken-mba`)
 - **Dev Tools**: Git, GitUI, Zellij, Yazi, Direnv, Starship, Mise, Difftastic, Fzf, gh-dash, Lazydocker, Bat, Bottom, Fastfetch, Zoxide, AWS CLI

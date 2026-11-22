@@ -4,7 +4,6 @@
     ../../home/profiles/full.nix
     ../../home/profiles/darwin.nix
     # host-specific programs
-    ../../programs/fish
     ../../programs/spotify-player
     # ../../programs/vscode
   ];
