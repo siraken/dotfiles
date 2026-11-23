@@ -153,7 +153,7 @@ Manages 40+ tool configurations across multiple categories:
 
 ### Verifying Changes
 
-- Use the `verify-dotfiles` skill (`.agents/skills/verify-dotfiles/`, linked into `.claude/skills/`) to check that a change reaches the generation and the running machine. Its `scripts/hmcheck` evaluates only; it never builds unless asked and never switches.
+- Use the `verify-dotfiles` skill (distributed from [siraken/skills](https://github.com/siraken/skills); install with `apm install -g siraken/skills`) to check that a change reaches the generation and the running machine. Run its `scripts/hmcheck` from inside this checkout; it evaluates only, never builds unless asked and never switches.
 
 ### Command Execution
 
