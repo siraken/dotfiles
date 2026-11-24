@@ -4,9 +4,6 @@
     enable = true;
 
     userSettings = {
-      edit_predictions = {
-        provider = "zed";
-      };
       disable_ai = true;
       telemetry = {
         diagnostics = false;

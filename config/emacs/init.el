@@ -1,4 +1,4 @@
-;;; init.el --- Initialization file for Emacs
+;;; init.el --- Initialization file for Emacs -*- lexical-binding: t; -*-
 ;; Author: siraken
 ;; Maintainer: siraken
 
@@ -7,53 +7,63 @@
 
 ;;; Code:
 
+;; Raise GC threshold during startup and restore afterward
+(setq gc-cons-threshold most-positive-fixnum)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 16 1024 1024))))
+
+;; Increase read buffer for LSP / subprocess output (1 MiB)
+(setq read-process-output-max (* 1024 1024))
+
+(when (boundp 'native-comp-async-report-warnings-errors)
+  (setq native-comp-async-report-warnings-errors 'silent))
+
 ;; https://github.com/magit/magit
-(use-package magit)
+(use-package magit
+  :defer t)
 
 ;; https://github.com/flycheck/flycheck
 (use-package flycheck
-  :ensure t
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  :hook (after-init . global-flycheck-mode))
 
 ;; https://github.com/doomemacs/themes
 (use-package doom-themes
-  :ensure t
   :config
-  (setq doom-themes-enabled-bold t
-        doom-themes-enabled-italic t)
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
   (load-theme 'doom-tokyo-night t))
 
 ;; https://github.com/seagle0128/doom-modeline
 (use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1))
+  :config
+  (doom-modeline-mode 1))
 
 ;; https://github.com/auto-complete/auto-complete
-(use-package auto-complete)
-(use-package auto-complete-config)
+(use-package auto-complete
+  :config
+  (require 'auto-complete-config)
+  (global-auto-complete-mode 1))
+
+;; https://github.com/emacsorphanage/git-gutter
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode 1))
 
 ;; https://github.com/emacs-evil/evil
-(use-package evil)
-
-(global-auto-complete-mode 1)
-(global-git-gutter-mode 1)
+(use-package evil
+  :defer t)
 
 ;;
 ;; Emacs Configuration
 ;;
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(if window-system
-    (progn
-      (set-frame-parameter nil 'alpha 75)))
+(when window-system
+  (set-frame-parameter nil 'alpha 75))
 
 (global-display-line-numbers-mode 1)
 
-(add-to-list 'default-frame-alist '(cursor-type . bar))
-(add-to-list 'default-frame-alist '(cursor-type . hbar))
-(add-to-list 'default-frame-alist '(cursor-type . (hbar . 10)))
-(add-to-list 'default-frame-alist '(cursor-type . box))
 (add-to-list 'default-frame-alist '(cursor-type . hollow))
 
 (set-default-coding-systems 'utf-8)
@@ -63,8 +73,10 @@
 
 (setq-default indicate-empty-lines t)
 (setq-default indicate-buffer-boundaries 'left)
+(setq-default tab-width 4)
 
-(tool-bar-mode 0)
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode 0))
 (display-time)
 (menu-bar-mode 0)
 (show-paren-mode 1)
@@ -73,6 +85,7 @@
 (xterm-mouse-mode 1)
 
 (delete-selection-mode t)
+(setq cua-enable-cua-keys nil)
 (cua-mode t)
 
 (setq inhibit-startup-message 1)
@@ -83,5 +96,6 @@
 (setq auto-save-default nil)
 (setq select-enable-clipboard t)
 (setq mac-command-modifier 'super)
-(setq default-tab-width 4)
-(setq cua-enable-cua-keys nil)
+
+(provide 'init)
+;;; init.el ends here
