@@ -30,6 +30,16 @@
       "rd.udev.log_level=3"
       "systemd.show_status=auto"
     ];
+
+    # Tuned for zram: prefer compressing anonymous pages over evicting file
+    # cache, skip swap readahead (zero seek cost), and wake kswapd earlier to
+    # avoid direct-reclaim stalls.
+    kernel.sysctl = {
+      "vm.swappiness" = 180;
+      "vm.page-cluster" = 0;
+      "vm.watermark_boost_factor" = 0;
+      "vm.watermark_scale_factor" = 125;
+    };
   };
 
   networking = {
@@ -56,6 +66,13 @@
   console = {
     keyMap = "jp106";
     earlySetup = true;
+  };
+
+  # Keep Nix builds and store maintenance out of the way of the desktop on
+  # this 2-core Haswell CPU and 2014 SSD.
+  nix = {
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
   };
 
   # Tighter retention than the NixOS default on this 256 GB SSD, matching
@@ -97,6 +114,13 @@
   };
 
   services = {
+    # Reclaim memory before exhaustion freezes the desktop; report kills via
+    # systembus-notify -> swaync (already enabled for smartd).
+    earlyoom = {
+      enable = true;
+      enableNotifications = true;
+    };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -110,7 +134,11 @@
     };
   };
 
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    # Real-time scheduling for PipeWire (independent of Hyprland's mkDefault).
+    rtkit.enable = true;
+  };
 
   programs = {
     _1password.enable = true;
