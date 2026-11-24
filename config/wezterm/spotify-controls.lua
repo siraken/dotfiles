@@ -4,7 +4,7 @@ local spotify = require("spotify")
 local M = {}
 
 local function tell_spotify(command)
-  wezterm.run_child_process({
+  wezterm.background_child_process({
     "osascript",
     "-e",
     'tell application "Spotify" to ' .. command,
@@ -33,14 +33,12 @@ function M.volume_down()
 end
 
 -- Show current track information
-function M.show_track_info()
-  local info = spotify.get_spotify_info()
-
-  local window = wezterm.mux.get_active_window()
+function M.show_track_info(window, _pane)
   if not window then
     return
   end
 
+  local info = spotify.get_spotify_info()
   if info then
     local status = info.is_playing and "Playing" or "Paused"
     local message = string.format("%s: %s - %s", status, info.track, info.artist)

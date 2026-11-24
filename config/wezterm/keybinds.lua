@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local utils = require("utils")
-local spotify_controls = require("spotify-controls")
 
 -- Modifier sets shared by many bindings. Shifted keys ("C", "!") arrive with
 -- or without SHIFT in mods; unshifted ones ("c", "1") are also bound on SUPER.
@@ -10,8 +9,7 @@ local CTRL_SHIFT_OR_SUPER = { "SHIFT|CTRL", "SUPER" }
 local SHIFTED = { "NONE", "SHIFT" }
 
 -- Windows reserves nearly every Win-key shortcut (Win+L, Win+V, Win+1..9,
--- Win+Shift+S, ...), and the Cmd+Shift Spotify controls call osascript, so
--- bindings on SUPER / CMD are only registered off Windows.
+-- Win+Shift+S, ...), so bindings on SUPER / CMD are skipped on Windows.
 local function is_available(mods)
   return not (utils.is_windows and (mods:find("SUPER") or mods:find("CMD")))
 end
@@ -155,15 +153,19 @@ local input = {
   { "Enter", "SHIFT", act.SendString("\n") },
 }
 
--- Spotify controls (Cmd+Shift+<key>)
-local spotify = {
-  { "s", "CMD|SHIFT", wezterm.action_callback(spotify_controls.play_pause) },
-  { "n", "CMD|SHIFT", wezterm.action_callback(spotify_controls.next_track) },
-  { "p", "CMD|SHIFT", wezterm.action_callback(spotify_controls.previous_track) },
-  { "i", "CMD|SHIFT", wezterm.action_callback(spotify_controls.show_track_info) },
-  { "=", "CMD|SHIFT", wezterm.action_callback(spotify_controls.volume_up) },
-  { "-", "CMD|SHIFT", wezterm.action_callback(spotify_controls.volume_down) },
-}
+-- Spotify controls (macOS only; uses osascript)
+local spotify = {}
+if utils.is_darwin then
+  local spotify_controls = require("spotify-controls")
+  spotify = {
+    { "s", "CMD|SHIFT", wezterm.action_callback(spotify_controls.play_pause) },
+    { "n", "CMD|SHIFT", wezterm.action_callback(spotify_controls.next_track) },
+    { "p", "CMD|SHIFT", wezterm.action_callback(spotify_controls.previous_track) },
+    { "i", "CMD|SHIFT", wezterm.action_callback(spotify_controls.show_track_info) },
+    { "=", "CMD|SHIFT", wezterm.action_callback(spotify_controls.volume_up) },
+    { "-", "CMD|SHIFT", wezterm.action_callback(spotify_controls.volume_down) },
+  }
+end
 
 local copy_mode = {
   -- Exit
