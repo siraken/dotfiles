@@ -20,7 +20,6 @@
         cachix
         coreutils
         curl
-        findutils
         gawk
         gnugrep
         gnused
