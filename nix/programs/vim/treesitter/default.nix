@@ -80,8 +80,20 @@
       };
     };
 
-    ts-autotag.enable = true;
+    ts-autotag = {
+      enable = true;
+      lazyLoad = {
+        enable = true;
+        settings.event = [ "InsertEnter" ];
+      };
+    };
 
-    ts-comments.enable = true;
+    ts-comments = {
+      enable = true;
+      lazyLoad = {
+        enable = true;
+        settings.event = [ "DeferredUIEnter" ];
+      };
+    };
   };
 }

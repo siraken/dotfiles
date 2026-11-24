@@ -24,7 +24,6 @@
             globalstatus = true;
             component_separators = "";
             section_separators = "";
-            disabled_filetypes.statusline = [ "neo-tree" ];
           };
           sections = {
             lualine_a = [ ];
@@ -172,7 +171,36 @@
         };
       };
 
-      colorizer.enable = true;
+      colorizer = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings = {
+            event = [ "BufReadPre" ];
+            cmd = [
+              "ColorizerToggle"
+              "ColorizerAttachToBuffer"
+            ];
+          };
+        };
+        settings = {
+          filetypes = [
+            "css"
+            "scss"
+            "html"
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+            "lua"
+            "nix"
+            "toml"
+            "yaml"
+            "json"
+          ];
+          user_default_options.names = false;
+        };
+      };
 
       noice = {
         enable = true;
@@ -217,7 +245,13 @@
         settings.use_diagnostic_signs = true;
       };
 
-      todo-comments.enable = true;
+      todo-comments = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.event = [ "DeferredUIEnter" ];
+        };
+      };
     };
 
     keymaps = [

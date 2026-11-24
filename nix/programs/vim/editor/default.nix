@@ -33,6 +33,10 @@
 
       flash = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.lazy = true;
+        };
         settings.modes = {
           char.enabled = false;
           search.enabled = false;
@@ -78,6 +82,17 @@
               hide_hidden = false;
               hide_gitignored = false;
               hide_by_name = [ ".git" ];
+              # Keep dotfiles and .env visible, but never scan or watch heavy
+              # dependency/build trees that cause libuv watcher storms.
+              never_show = [
+                "node_modules"
+                "target"
+                ".next"
+                ".turbo"
+                ".venv"
+                "__pycache__"
+                ".DS_Store"
+              ];
             };
           };
           window.mappings."<space>" = "none";
@@ -89,7 +104,7 @@
         enable = true;
         lazyLoad = {
           enable = true;
-          settings.event = [ "DeferredUIEnter" ];
+          settings.event = [ "BufReadPre" ];
         };
       };
     };
@@ -98,11 +113,13 @@
       fzf
     ];
 
-    # Neo-tree is lazy-loaded on :Neotree, so `nvim <dir>` would open netrw.
+    # Neo-tree is lazy-loaded on :Neotree and netrw is disabled, so bootstrap
+    # Neo-tree when entering a directory buffer (`nvim .` or `:e dir/`).
     extraConfigLua = builtins.readFile ./neo-tree-directory.lua;
 
     keymaps = [
-      # flash
+      # flash (keep native <CR> in quickfix, location list, cmdwin, and other
+      # special buffers)
       {
         mode = [
           "n"
@@ -112,10 +129,16 @@
         key = "<CR>";
         action.__raw = ''
           function()
-            require("flash").jump({ label = { before = true, after = false } })
+            if vim.bo.buftype ~= "" or vim.fn.getcmdwintype() ~= "" then
+              return "<CR>"
+            end
+            return "<Cmd>lua require('lz.n').trigger_load('flash.nvim'); require('flash').jump({ label = { before = true, after = false } })<CR>"
           end
         '';
-        options.desc = "Flash";
+        options = {
+          expr = true;
+          desc = "Flash";
+        };
       }
       # fzf-lua
       {
@@ -208,19 +231,34 @@
       {
         mode = "n";
         key = "<leader>qs";
-        action.__raw = ''function() require("persistence").load() end'';
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("persistence.nvim")
+            require("persistence").load()
+          end
+        '';
         options.desc = "Restore Session";
       }
       {
         mode = "n";
         key = "<leader>ql";
-        action.__raw = ''function() require("persistence").load({ last = true }) end'';
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("persistence.nvim")
+            require("persistence").load({ last = true })
+          end
+        '';
         options.desc = "Restore Last Session";
       }
       {
         mode = "n";
         key = "<leader>qd";
-        action.__raw = ''function() require("persistence").stop() end'';
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("persistence.nvim")
+            require("persistence").stop()
+          end
+        '';
         options.desc = "Don't Save Current Session";
       }
     ];
