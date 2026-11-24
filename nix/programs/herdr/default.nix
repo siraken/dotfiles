@@ -258,34 +258,53 @@ in
   # - experimental.*: 日本語入力は macOS のネイティブのテキスト入力を通るので不要。
   #   prefix も無いので ASCII 切り替えの対象が無い。
   home.activation.herdrAppSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    herdrAppMerge() {
-      file=$1 patch=$2
-      tmp=$(mktemp "$file.XXXXXX")
-      if ! ${jq} --argjson patch "$patch" '. * $patch' "$file" > "$tmp"; then
-        warnEcho "herdr-app: $file is not valid JSON, leaving it alone"
-      elif ! cmp -s "$tmp" "$file"; then
-        $DRY_RUN_CMD mv "$tmp" "$file"
-      fi
-      rm -f "$tmp"
-    }
+    (
+      appHome="$HOME/${appHome}"
+      tmp_files=()
+      trap '(( ''${#tmp_files[@]} == 0 )) || rm -f -- "''${tmp_files[@]}"' EXIT
 
-    appHome="$HOME/${appHome}"
-    $DRY_RUN_CMD mkdir -p "$appHome"
+      herdrAppMerge() {
+        local file=$1 patch=$2 dir base tmp
+        if [[ -v DRY_RUN ]]; then
+          noteEcho "herdr-app: would merge settings into $file"
+          return 0
+        fi
+        dir=$(dirname "$file")
+        base=$(basename "$file")
+        tmp=$(mktemp "$dir/.$base.XXXXXX")
+        tmp_files+=("$tmp")
+        if [ -f "$file" ]; then
+          if ! ${jq} --argjson patch "$patch" '. * $patch' "$file" > "$tmp" || [ ! -s "$tmp" ]; then
+            warnEcho "herdr-app: $file is not valid JSON, leaving it alone"
+            rm -f "$tmp"
+            return 0
+          fi
+        else
+          ${jq} -n --argjson patch "$patch" '{} * $patch' > "$tmp"
+        fi
+        chmod 0644 "$tmp"
+        if [ -f "$file" ] && [ ! -L "$file" ] && [ -w "$file" ] && cmp -s "$tmp" "$file"; then
+          rm -f "$tmp"
+        else
+          run mv -f "$tmp" "$file"
+        fi
+      }
 
-    # settings.json は無ければ空から作ってよい。アプリは足りない項目を既定で補う。
-    [ -f "$appHome/settings.json" ] || $DRY_RUN_CMD sh -c "echo '{}' > '$appHome/settings.json'"
-    [ -f "$appHome/settings.json" ] && \
+      run mkdir -p "$appHome"
+
+      # settings.json は無ければ空から作ってよい。アプリは足りない項目を既定で補う。
       herdrAppMerge "$appHome/settings.json" ${lib.escapeShellArg (builtins.toJSON appSettingsPatch)}
 
-    # keys.json は全ショートカットの一覧で、既定のキーとはマージされない。無いところに
-    # ここの分だけ書くと既定のキーが全部消えるので、アプリが一度起動して既定を書き出して
-    # から次の switch で足す。手を入れたファイルはアプリの更新で新しい既定キーを
-    # 受け取らなくなるので、増えたキーは `herdr-app commands` と AGENTS.md を見て足す。
-    if [ -f "$appHome/keys.json" ]; then
-      herdrAppMerge "$appHome/keys.json" ${lib.escapeShellArg (builtins.toJSON appKeysPatch)}
-    else
-      noteEcho "herdr-app: no keys.json yet; start Herdr once, then switch again to add key bindings"
-    fi
+      # keys.json は全ショートカットの一覧で、既定のキーとはマージされない。無いところに
+      # ここの分だけ書くと既定のキーが全部消えるので、アプリが一度起動して既定を書き出して
+      # から次の switch で足す。手を入れたファイルはアプリの更新で新しい既定キーを
+      # 受け取らなくなるので、増えたキーは `herdr-app commands` と AGENTS.md を見て足す。
+      if [ -f "$appHome/keys.json" ]; then
+        herdrAppMerge "$appHome/keys.json" ${lib.escapeShellArg (builtins.toJSON appKeysPatch)}
+      else
+        noteEcho "herdr-app: no keys.json yet; start Herdr once, then switch again to add key bindings"
+      fi
+    )
   '';
 
   # TUI 版とデスクトップ版はそれぞれエージェント用のスキルを同梱しているが、配置までは
@@ -305,34 +324,58 @@ in
   # から生成する派生物なので、載せると herdr 更新のたびに再生成と `apm install` の
   # 2 手が要る。apm は自分の管理外のファイルを既定では上書きしないので共存できる。
   home.activation.herdrAgentSkill = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    herdrInstallSkill() {
-      name=$1 src=$2
-      for runtime in \
-        "$HOME/.claude/skills" \
-        "$HOME/.codex/skills" \
-        "$HOME/.gemini/skills" \
-        "$HOME/.config/opencode/skills"; do
-        # そのエージェントを入れていないホストに skills ディレクトリを作らない
-        [ -d "$runtime" ] || continue
-        $DRY_RUN_CMD mkdir -p "$runtime/$name"
-        # ストアのファイルは読み取り専用なので、モードは揃えて置く
-        $DRY_RUN_CMD install -m 0644 "$src" "$runtime/$name/SKILL.md"
-      done
-    }
+    (
+      tmp_files=()
+      trap '(( ''${#tmp_files[@]} == 0 )) || rm -f -- "''${tmp_files[@]}"' EXIT
 
-    if [ -x ${herdrBin} ]; then
-      skill=$(mktemp)
-      if ${herdrBin} --skill > "$skill" 2>/dev/null && [ -s "$skill" ]; then
-        herdrInstallSkill herdr "$skill"
+      herdrInstallSkill() {
+        local name=$1 src=$2 runtime dir dest tmp
+        for runtime in \
+          "$HOME/.claude/skills" \
+          "$HOME/.codex/skills" \
+          "$HOME/.gemini/skills" \
+          "$HOME/.config/opencode/skills"; do
+          # そのエージェントを入れていないホストに skills ディレクトリを作らない
+          [ -d "$runtime" ] || continue
+          dir="$runtime/$name"
+          dest="$dir/SKILL.md"
+          if [ -n "$src" ] && [ -f "$dest" ] && [ ! -L "$dest" ] && [ -w "$dest" ] && cmp -s "$src" "$dest"; then
+            continue
+          fi
+          run mkdir -p "$dir"
+          if [[ -v DRY_RUN ]]; then
+            noteEcho "herdr: would update $dest"
+            continue
+          fi
+          # ストアのファイルは読み取り専用なので、モードを揃えて原子的に置き換える
+          tmp=$(mktemp "$dir/.SKILL.md.XXXXXX")
+          tmp_files+=("$tmp")
+          cat "$src" > "$tmp"
+          chmod 0644 "$tmp"
+          run mv -f "$tmp" "$dest"
+        done
+      }
+
+      if [ -x ${herdrBin} ]; then
+        if [[ -v DRY_RUN ]]; then
+          herdrInstallSkill herdr ""
+        else
+          skill=$(mktemp)
+          tmp_files+=("$skill")
+          if ${herdrBin} --skill > "$skill" && [ -s "$skill" ]; then
+            herdrInstallSkill herdr "$skill"
+          else
+            warnEcho "herdr: '${herdrBin} --skill' failed or produced empty output; skipping skill update"
+          fi
+        fi
       fi
-      rm -f "$skill"
-    fi
 
-    coreSkill=${pkgs.herdr-core}/share/skills/herdr-core/herdr-core/SKILL.md
-    if [ -s "$coreSkill" ]; then
-      herdrInstallSkill herdr-core "$coreSkill"
-    else
-      warnEcho "herdr-core: $coreSkill not found; the package layout may have changed"
-    fi
+      coreSkill=${pkgs.herdr-core}/share/skills/herdr-core/herdr-core/SKILL.md
+      if [ -s "$coreSkill" ]; then
+        herdrInstallSkill herdr-core "$coreSkill"
+      else
+        warnEcho "herdr-core: $coreSkill not found; the package layout may have changed"
+      fi
+    )
   '';
 }
