@@ -14,7 +14,14 @@
 }:
 let
   inherit (inputs.nixpkgs) lib;
-  mkHome = import ../lib/mk-home.nix { inherit inputs userProfile; };
+
+  systems = [
+    "aarch64-darwin"
+    "aarch64-linux"
+    "x86_64-linux"
+  ];
+
+  mkHome = import ../lib/mk-home.nix { inherit inputs userProfile systems; };
 
   hosts = {
     siraken-mbp = {
@@ -49,11 +56,6 @@ let
     "base"
     "standard"
     "full"
-  ];
-  systems = [
-    "aarch64-darwin"
-    "aarch64-linux"
-    "x86_64-linux"
   ];
 
   # A generic profile knows nothing about the host, so on Linux it assumes a

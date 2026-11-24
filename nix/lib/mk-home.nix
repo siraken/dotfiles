@@ -18,38 +18,61 @@
 {
   inputs,
   userProfile,
+  systems ? [
+    "aarch64-darwin"
+    "aarch64-linux"
+    "x86_64-linux"
+  ],
 }:
+let
+  inherit (inputs.nixpkgs) lib;
+  overlays = import ./overlays.nix { inherit inputs; };
+  mkPkgs =
+    system:
+    import inputs.nixpkgs {
+      inherit system overlays;
+      config.allowUnfree = true;
+    };
+  # Memoize nixpkgs per system across every configuration built from one
+  # factory instance (`nix/home/default.nix` defines 15 across 3 systems).
+  # Attrset entries are lazy, so single-system callers only evaluate the
+  # system they request.
+  pkgsBySystem = lib.genAttrs systems mkPkgs;
+in
 {
   system,
   homeModule,
   extraSpecialArgs ? { },
 }:
-inputs.home-manager.lib.homeManagerConfiguration {
+let
   # Same nixpkgs settings the nix-darwin / NixOS hosts apply globally
   # (`useGlobalPkgs`), so a profile evaluates identically either way.
-  pkgs = import inputs.nixpkgs {
-    inherit system;
-    overlays = import ./overlays.nix { inherit inputs; };
-    config.allowUnfree = true;
-  };
+  pkgs = pkgsBySystem.${system} or (mkPkgs system);
+in
+inputs.home-manager.lib.homeManagerConfiguration {
+  inherit pkgs;
 
   modules = [
     homeModule
     # Wired in through `sharedModules` by the nix-darwin / NixOS builders.
     inputs.nixvim.homeModules.nixvim
-    (
-      { pkgs, ... }:
-      {
-        home = {
-          username = userProfile.username;
-          homeDirectory =
-            if pkgs.stdenv.hostPlatform.isDarwin then
-              "/Users/${userProfile.username}"
-            else
-              "/home/${userProfile.username}";
-        };
-      }
-    )
+    {
+      # `homeManagerConfiguration` loads `misc/nixpkgs.nix`, which re-imports
+      # `nixpkgs` from `pkgs.path` and binds `_module.args.pkgs` at default
+      # priority (100), discarding the memoized `pkgs` passed above. Pinning
+      # `_module.args.pkgs` here mirrors `useGlobalPkgs` so all configurations
+      # sharing a system actually reuse one evaluated `nixpkgs` instance.
+      _module.args.pkgs = lib.mkForce pkgs;
+
+      home = {
+        username = userProfile.username;
+        homeDirectory =
+          if pkgs.stdenv.hostPlatform.isDarwin then
+            "/Users/${userProfile.username}"
+          else
+            "/home/${userProfile.username}";
+      };
+    }
   ];
 
   # `isWSL` is always passed: a default written in a module's argument list
