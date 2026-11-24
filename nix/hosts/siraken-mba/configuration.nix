@@ -58,35 +58,13 @@
     earlySetup = true;
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # Keep the last three generations, of the system and of every user's
-  # profiles (home-manager included), and collect the rest weekly. nix.gc can
-  # only keep by age.
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      dates = "weekly";
-      extraArgs = "--keep 3";
-    };
-  };
-
-  # Hard-link identical files in the store once a week. Persistent, so a run
-  # missed while asleep happens at the next boot.
-  nix.optimise = {
-    automatic = true;
-    dates = [ "weekly" ];
-  };
+  # Tighter retention than the NixOS default on this 256 GB SSD, matching
+  # `systemd-boot.configurationLimit = 3`.
+  programs.nh.clean.extraArgs = "--keep 3";
 
   # The journal stays small on this 256 GB SSD (the default cap is 10% of the
   # filesystem, up to 4 GB).
   services.journald.settings.Journal.SystemMaxUse = "500M";
-
-  nixpkgs.config.allowUnfree = true;
 
   users.users.${userProfile.username} = {
     isNormalUser = true;
