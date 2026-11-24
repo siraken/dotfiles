@@ -260,23 +260,20 @@
         };
       };
 
+      # picom and dunst are managed by their home-manager systemd user units
+      # (graphical-session.target / D-Bus activation), so they are not launched here.
       startup = [
         {
           command = "xrandr --output Virtual-1 --mode 1920x1080";
           notification = false;
         }
         {
-          command = "picom -b";
-          notification = false;
-        }
-        {
-          command = "dunst";
-          notification = false;
-        }
-        {
           command = "feh --bg-fill ~/.wallpaper.jpg || feh --bg-scale /run/current-system/sw/share/backgrounds/gnome/adwaita-l.jpg";
           notification = false;
         }
+        # NixOS i18n.inputMethod relies on XDG autostart, which the bare none+i3
+        # session does not run while services.xserver.desktopManager.runXdgAutostartIfNone
+        # is false.
         {
           command = "fcitx5 -d";
           notification = false;
