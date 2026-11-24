@@ -6,7 +6,7 @@
     # host-specific programs
     ../../programs/fastfetch
     ../../programs/herdr
-    # ../../programs/spotify-player # disabled: nixpkgs linker crash (cctools-binutils-darwin)
+    ../../programs/spotify-player
     # ../../programs/vscode
   ];
 
