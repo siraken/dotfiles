@@ -17,6 +17,7 @@
     ../../programs/bottom
     ../../programs/fzf
     ../../programs/git
+    ../../programs/ssh
     ../../programs/starship
     ../../programs/zoxide
     ../../programs/zsh
