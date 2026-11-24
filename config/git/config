@@ -72,7 +72,6 @@
 [fetch]
 	all = true
 	prune = true
-	pruneTags = true
 
 [ghq]
 	root = "~/repos"
