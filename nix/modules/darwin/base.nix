@@ -2,6 +2,7 @@
 # SSH (siraken-macmini). Anything for a Mac you sit in front of — macOS
 # defaults, keyboard, fonts, the window manager — belongs in `workstation.nix`.
 {
+  lib,
   pkgs,
   userProfile,
   hostName,
@@ -51,6 +52,10 @@
 
   environment = {
     shells = import ../shells.nix { inherit pkgs; };
+    # Put Homebrew after Nix profiles (order 1000) and before macOS system
+    # paths (order 1200) so Nix packages take priority over Homebrew formulas
+    # while Homebrew (including keg-only openssl@3) still beats Apple's /usr/bin.
+    systemPath = lib.mkOrder 1100 (import ../path.nix { inherit lib pkgs; }).homebrew;
   };
 
   # The user's zsh is configured by home-manager (`nix/programs/zsh`, part of

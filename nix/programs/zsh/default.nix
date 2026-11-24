@@ -5,6 +5,18 @@
   repoPath,
   ...
 }:
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+  paths = import ../../modules/path.nix { inherit lib pkgs; };
+  darwinStandaloneFrontPaths =
+    config.home.sessionPath
+    ++ [
+      "$HOME/.nix-profile/bin"
+      "/nix/var/nix/profiles/default/bin"
+    ]
+    ++ paths.homebrew;
+  quoteForZsh = p: "\"${lib.escape [ "\"" "\\" "`" ] p}\"";
+in
 {
   programs.zsh = {
     enable = true;
@@ -48,6 +60,23 @@
     // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
       C = "| pbcopy";
     };
+
+    # On macOS with nix-darwin, /etc/zshenv runs set-environment (which sets
+    # Nix profiles > Homebrew > system paths via `environment.systemPath`) and
+    # /etc/zprofile does not invoke path_helper. On a standalone macOS host
+    # without nix-darwin, Apple's /etc/zprofile runs path_helper before
+    # ~/.config/zsh/.zprofile and pushes /usr/bin ahead of Nix profiles while
+    # omitting Homebrew's keg-only openssl@3 and sbin. Restore the same
+    # precedence there.
+    profileExtra = lib.optionalString isDarwin ''
+      if [[ -z "''${__NIX_DARWIN_SET_ENVIRONMENT_DONE-}" ]]; then
+        typeset -U path
+        path=(
+          ${lib.concatMapStringsSep "\n    " quoteForZsh darwinStandaloneFrontPaths}
+          $path
+        )
+      fi
+    '';
 
     # Source the repo fragments directly (`repoPath` follows
     # `dotfiles.linkMode`, so with the checkout a new shell picks up edits

@@ -28,7 +28,7 @@
   dotfiles.linkMode = lib.mkDefault "outOfStore";
 
   home = {
-    sessionPath = [ "$COMPOSER_HOME/vendor/bin" ];
+    sessionPath = (import ../../modules/path.nix { inherit lib pkgs; }).full;
     sessionVariables = import ../../modules/variable.nix { inherit config lib pkgs; };
 
     shellAliases =

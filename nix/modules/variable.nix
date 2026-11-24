@@ -29,7 +29,5 @@
   JAVA_HOME = "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home";
 
   # Android Studio の SDK Manager が管理する SDK。~/Library 以下なので macOS 専用。
-  # PATH の platform-tools は base プロファイル (path.nix) にあり、この変数は
-  # full でしか定義されないので、そちらはリテラルのままにしておく。
   ANDROID_HOME = "${config.home.homeDirectory}/Library/Android/sdk";
 }
