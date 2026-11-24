@@ -138,6 +138,12 @@ in
         command = "${lib.getExe pkgs.gitleaks} git --pre-commit --staged --redact --verbose --no-banner --log-level warn";
       };
     }
+    // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
+      # Built-in fsmonitor--daemon speeds up `git status` on large repos by
+      # watching FSEvents instead of stat-ing every tracked path. Linux Git
+      # does not support the built-in daemon, so enable it on macOS only.
+      core.fsmonitor = true;
+    }
     // lib.optionalAttrs isWSL {
       # Repositories on the Windows drives (/mnt/c, /mnt/d, ...) are owned by a
       # different uid under WSL, which git's dubious-ownership check rejects.
@@ -162,6 +168,15 @@ in
       { path = "${repoPath "config/git/config"}"; }
       # git-personas.nix appends its generated include after this one, so
       # persona overrides win over the shared config.
+    ]
+    ++ lib.optionals isWSL [
+      # Disable untrackedCache on Windows mounts (/mnt/*): 9p/DrvFs directory
+      # mtime caching can miss newly created untracked files, while WSL's
+      # native ext4 filesystem keeps untrackedCache enabled.
+      {
+        condition = "gitdir:/mnt/";
+        contents.core.untrackedCache = false;
+      }
     ];
 
     ignores = ignoreFiles;
