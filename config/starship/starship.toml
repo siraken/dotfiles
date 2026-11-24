@@ -11,8 +11,5 @@ disabled = true
 [gcloud]
 disabled = true
 
-[sudo]
-disabled = false
-
 [vagrant]
 disabled = true
