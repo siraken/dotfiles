@@ -30,50 +30,149 @@ end
 -- Git --------------------------------------------------------------------
 
 -- On Windows the panes live in WSL, so their cwd is a Linux path that the
--- Windows git cannot open. Skip the lookups there instead of spawning a
--- process on every status update for nothing.
+-- Windows side cannot open directly. Skip the lookups there.
 
--- Cache for git repo lookups (cwd -> repo name or false)
+local GIT_REPO_CACHE_TTL = 10
+local GIT_REPO_CACHE_MAX = 128
+
+-- Bounded TTL cache: cwd -> { repo = { name, git_dir } | false, expires_at = timestamp }
 local git_repo_cache = {}
+local git_repo_cache_size = 0
 
-local function git(cwd, ...)
-  return wezterm.run_child_process({ "git", "-C", cwd, ... })
+local function parent_dir(path)
+  if path == "/" or not path:match("^/") then
+    return nil
+  end
+  return path:match("^(.+)/[^/]+$") or "/"
+end
+
+-- Resolve the .git directory for a candidate repository root without spawning
+-- git. Supports both regular repositories (.git/HEAD) and worktrees/submodules
+-- (.git file containing "gitdir: <path>").
+local function resolve_git_dir(dir)
+  local dot_git = dir == "/" and "/.git" or (dir .. "/.git")
+
+  local head = io.open(dot_git .. "/HEAD", "r")
+  if head then
+    head:close()
+    return dot_git
+  end
+
+  local file = io.open(dot_git, "r")
+  if not file then
+    return nil
+  end
+  local line = file:read("*l")
+  file:close()
+  if not line then
+    return nil
+  end
+
+  local gitdir = line:match("^gitdir:%s*(.-)%s*$")
+  if not gitdir or gitdir == "" then
+    return nil
+  end
+  if not gitdir:match("^/") then
+    gitdir = dir == "/" and ("/" .. gitdir) or (dir .. "/" .. gitdir)
+  end
+
+  local wt_head = io.open(gitdir .. "/HEAD", "r")
+  if not wt_head then
+    return nil
+  end
+  wt_head:close()
+  return gitdir
+end
+
+local function find_git_repo(cwd)
+  if not cwd or cwd == "" or M.is_windows then
+    return nil
+  end
+
+  local now = os.time()
+  local cached = git_repo_cache[cwd]
+  if cached and now < cached.expires_at then
+    return cached.repo or nil
+  end
+
+  local dir = cwd:gsub("/+$", "")
+  if dir == "" then
+    dir = "/"
+  end
+
+  local repo = nil
+  while dir do
+    local git_dir = resolve_git_dir(dir)
+    if git_dir then
+      repo = {
+        name = dir:match("([^/]+)$"),
+        git_dir = git_dir,
+      }
+      break
+    end
+    dir = parent_dir(dir)
+  end
+
+  if git_repo_cache[cwd] == nil then
+    if git_repo_cache_size >= GIT_REPO_CACHE_MAX then
+      git_repo_cache = {}
+      git_repo_cache_size = 0
+    end
+    git_repo_cache_size = git_repo_cache_size + 1
+  end
+  git_repo_cache[cwd] = {
+    repo = repo or false,
+    expires_at = now + GIT_REPO_CACHE_TTL,
+  }
+
+  return repo
+end
+
+local function read_git_head(git_dir)
+  local file = io.open(git_dir .. "/HEAD", "r")
+  if not file then
+    return nil
+  end
+  local line = file:read("*l")
+  file:close()
+  if not line then
+    return nil
+  end
+
+  line = line:match("^%s*(.-)%s*$")
+  local branch = line:match("^ref:%s*refs/heads/(.+)$")
+  if branch then
+    return branch
+  end
+  local ref = line:match("^ref:%s*(.+)$")
+  if ref then
+    return ref
+  end
+  if line:match("^[0-9a-fA-F]+$") then
+    return line:sub(1, 7)
+  end
+  return nil
 end
 
 -- Get git branch name for the given directory
 function M.get_git_branch(cwd)
-  if not cwd or M.is_windows then
+  local repo = find_git_repo(cwd)
+  if not repo then
     return nil
   end
 
-  local success, stdout = git(cwd, "rev-parse", "--abbrev-ref", "HEAD")
-  if success then
-    return stdout:gsub("%s+", "")
+  local branch = read_git_head(repo.git_dir)
+  if not branch and git_repo_cache[cwd] ~= nil then
+    git_repo_cache[cwd] = nil
+    git_repo_cache_size = math.max(git_repo_cache_size - 1, 0)
   end
-  return nil
+  return branch
 end
 
 -- Get project name (git repository root directory name, with cache)
 function M.get_project_name(cwd)
-  if not cwd or M.is_windows then
-    return nil
-  end
-
-  local cached = git_repo_cache[cwd]
-  if cached ~= nil then
-    return cached or nil
-  end
-
-  local success, stdout = git(cwd, "rev-parse", "--show-toplevel")
-  if success and stdout then
-    local path = stdout:gsub("%s+$", "")
-    local name = path:match("([^/\\]+)$")
-    git_repo_cache[cwd] = name or false
-    return name
-  end
-
-  git_repo_cache[cwd] = false
-  return nil
+  local repo = find_git_repo(cwd)
+  return repo and repo.name or nil
 end
 
 -- Panes ------------------------------------------------------------------

@@ -5,6 +5,20 @@ local utils = require("utils")
 local PROJECT_MAX_LEN = 20
 local BRANCH_MAX_LEN = 24
 
+local function is_tab_bar_visible(window)
+  local cfg = window:effective_config()
+  if not cfg.enable_tab_bar then
+    return false
+  end
+  if cfg.hide_tab_bar_if_only_one_tab then
+    local mux_window = window:mux_window()
+    if mux_window and #mux_window:tabs() <= 1 then
+      return false
+    end
+  end
+  return true
+end
+
 local function update_left_status(window)
   window:set_left_status(wezterm.format({}))
 end
@@ -14,7 +28,7 @@ local function update_right_status(window, pane)
 
   local cwd = utils.get_cwd(pane)
   local project = utils.get_project_name(cwd)
-  local branch = utils.get_git_branch(cwd)
+  local branch = project and utils.get_git_branch(cwd) or nil
 
   if window:leader_is_active() then
     table.insert(elems, { Background = colors.TRANSPARENT })
@@ -42,6 +56,9 @@ local function update_right_status(window, pane)
 end
 
 wezterm.on("update-status", function(window, pane)
+  if not is_tab_bar_visible(window) then
+    return
+  end
   update_left_status(window)
   update_right_status(window, pane)
 end)
