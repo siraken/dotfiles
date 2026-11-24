@@ -1,6 +1,7 @@
 # `base` plus the interactive tooling for a host that is worked on but is not a
 # daily driver (nixos-vm).
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -43,6 +44,7 @@
   };
 
   home = {
+    sessionPath = (import ../../modules/path.nix { inherit lib pkgs; }).standard;
     shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).standard;
     packages = (import ../../modules/packages.nix { inherit pkgs; }).standard;
   };

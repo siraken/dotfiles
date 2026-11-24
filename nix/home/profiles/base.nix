@@ -24,7 +24,7 @@
 
   home = {
     # preferXdgDirectories = true; # to be enabled
-    sessionPath = import ../../modules/path.nix { inherit lib pkgs; };
+    sessionPath = (import ../../modules/path.nix { inherit lib pkgs; }).base;
     shellAliases = (import ../../modules/aliases.nix { inherit pkgs; }).base;
     packages = (import ../../modules/packages.nix { inherit pkgs; }).base;
 
