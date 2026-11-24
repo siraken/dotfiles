@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.atuin = {
     enable = true;
@@ -25,8 +30,20 @@
         max_depth = 10;
       };
     };
-    # daemon = {
-    #   enable = true;
-    # };
+
+    # Avoid direct SQLite writes from preexec/precmd (WAL lock contention across
+    # concurrent panes/agents). Enabled on macOS (launchd) here and on NixOS
+    # hosts in `nix/modules/home/nixos-host.nix` (systemd). Non-NixOS Linux
+    # (`wsl-ubuntu`, generic profiles) keeps it off: Home Manager writes
+    # `daemon.enabled = true` unconditionally on Linux, and Atuin prints errors
+    # on every command when no user systemd daemon is running.
+    daemon.enable = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (lib.mkDefault true);
   };
+
+  # Run in the `user` launchd domain rather than `gui`: atuin-daemon needs no
+  # Aqua session, and `gui/$UID` is unavailable on headless SSH logins (e.g.
+  # siraken-macmini).
+  launchd.agents.atuin-daemon.domain = lib.mkIf (
+    pkgs.stdenv.hostPlatform.isDarwin && config.programs.atuin.daemon.enable
+  ) (lib.mkDefault "user");
 }
