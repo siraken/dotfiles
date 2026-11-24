@@ -57,6 +57,12 @@
     ];
   };
 
+  # Swap (hardware-configuration.nix defines no disk swap)
+  zramSwap.enable = true;
+
+  # Real-time scheduling for PipeWire
+  security.rtkit.enable = true;
+
   # Services
   services = {
     # X11 & i3
