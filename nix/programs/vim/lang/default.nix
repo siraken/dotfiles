@@ -8,12 +8,11 @@ in
   programs.nixvim = {
     plugins = {
       # Rust
+      # Not lazy-loaded: rustaceanvim already self-lazy-loads via
+      # ftplugin/rust.lua, and upstream warns that lazy-loading on `ft = "rust"`
+      # causes FileType races.
       rustaceanvim = {
         enable = true;
-        lazyLoad = {
-          enable = true;
-          settings.ft = [ "rust" ];
-        };
         settings.server = {
           on_attach.__raw = builtins.readFile ./rustaceanvim-on-attach.lua;
           default_settings = {

@@ -20,6 +20,17 @@
     enable = true;
     enableMan = false;
 
+    # Bytecode cache (vim.loader) and build-time Lua byte-compilation.
+    # Leave `plugins = false` so plugin derivations keep hitting
+    # nix-community.cachix.org (see flake.nix).
+    luaLoader.enable = true;
+    performance.byteCompileLua = {
+      enable = true;
+      initLua = true;
+      configs = true;
+      nvimRuntime = true;
+    };
+
     plugins.lz-n.enable = true;
 
     # Plugins NOT needed with Nixvim:
@@ -32,6 +43,9 @@
     globals = {
       mapleader = " ";
       maplocalleader = "\\";
+      # Neo-tree handles directory buffers (see editor/neo-tree-directory.lua).
+      loaded_netrw = 1;
+      loaded_netrwPlugin = 1;
     };
 
     # ── Options ──

@@ -4,6 +4,13 @@
     plugins = {
       conform-nvim = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings = {
+            event = [ "BufWritePre" ];
+            cmd = [ "ConformInfo" ];
+          };
+        };
         settings = {
           formatters_by_ft = {
             lua = [ "stylua" ];
@@ -27,6 +34,10 @@
 
       nvim-autopairs = {
         enable = true;
+        lazyLoad = {
+          enable = true;
+          settings.event = [ "InsertEnter" ];
+        };
         settings = {
           disable_filetype = [ "vim" ];
         };
@@ -56,6 +67,7 @@
         key = "<leader>cf";
         action.__raw = ''
           function()
+            require("lz.n").trigger_load("conform.nvim")
             require("conform").format({ async = true, lsp_format = "fallback" })
           end
         '';
@@ -69,6 +81,7 @@
         key = "<leader>cF";
         action.__raw = ''
           function()
+            require("lz.n").trigger_load("conform.nvim")
             require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
           end
         '';
