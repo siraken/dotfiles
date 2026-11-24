@@ -25,9 +25,20 @@
       # substituters and trusted-public-keys are defined in ../nix-caches.nix
     };
 
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 7d";
+    # Scheduled rather than `settings.auto-optimise-store`, which nix-darwin
+    # warns has corrupted the store on some Nix versions.
+    optimise.automatic = true;
+  };
+
+  # Keep at least the last three generations and everything from the last week
+  # (system and per-user profiles, including home-manager), collecting the rest
+  # weekly. `nix.gc` can only prune by age and would drop all rollback
+  # generations after a week without a rebuild.
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep 3 --keep-since 7d";
     };
   };
 
