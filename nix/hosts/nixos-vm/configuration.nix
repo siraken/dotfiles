@@ -87,7 +87,6 @@
           i3status
           i3lock
           dmenu
-          rofi
         ];
       };
       displayManager.lightdm.enable = true;
@@ -145,24 +144,15 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  # System packages
+  # System packages (user CLI/desktop tools such as vim, eza, bat, ripgrep, fd,
+  # jq, tree, wget, kitty, picom, dunst and rofi live in ./home.nix; keep only
+  # minimal bootstrap/recovery tools and OS-level desktop utilities here).
   environment.systemPackages = with pkgs; [
-    vim
     git
     curl
-    wget
-    tree
     htop
-    eza
-    bat
-    ripgrep
-    fd
-    jq
     # i3 essentials
-    kitty
     feh
-    picom
-    dunst
     maim
     xclip
     arandr
