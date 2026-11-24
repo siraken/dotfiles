@@ -47,12 +47,14 @@ done < <(SwitchAudioSource -a -t output 2>/dev/null)
 
 if [ "$overflow" -gt 0 ] && [ "$SLOTS" -gt 0 ]; then
   last=$((SLOTS - 1))
+  # 最後のスロットを上書きするとそこに入っていたデバイスも隠れるため +1 する
+  hidden=$((overflow + 1))
   args+=(
     --set "volume.popup.device.$last"
     drawing=on
     icon="󰕾"
     icon.color="$COLOR_MUTED"
-    label="... and $overflow more"
+    label="... and $hidden more"
     label.color="$COLOR_MUTED"
     click_script=""
   )

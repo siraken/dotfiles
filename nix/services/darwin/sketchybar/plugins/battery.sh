@@ -5,9 +5,9 @@ if [ "$SENDER" = "mouse.exited.global" ]; then
 fi
 
 BATT="$(pmset -g batt)"
-PERCENTAGE="$(printf '%s\n' "$BATT" | grep -Eo '[0-9]+%' | head -n1 | tr -d '%')"
-
-if [ -z "$PERCENTAGE" ]; then
+if [[ $BATT =~ ([0-9]+)% ]]; then
+  PERCENTAGE="${BASH_REMATCH[1]}"
+else
   exit 0
 fi
 
@@ -43,7 +43,7 @@ else
   COLOR="$COLOR_PURPLE"
 fi
 
-##### popup の中身 #####
+##### popup の中身（pmset で取れる項目だけ更新。Cycles/Health は battery_click.sh 側）#####
 
 case "$STATUS" in
 charging) STATUS_TEXT="Charging" ;;
@@ -52,7 +52,10 @@ plugged) STATUS_TEXT="AC (not charging)" ;;
 *) STATUS_TEXT="On battery" ;;
 esac
 
-REMAINING="$(printf '%s\n' "$BATT" | grep -Eo '[0-9]+:[0-9]{2}' | head -n1)"
+REMAINING=""
+if [[ $BATT =~ [0-9]+:[0-9]{2} ]]; then
+  REMAINING="${BASH_REMATCH[0]}"
+fi
 if [ -n "$REMAINING" ] && [ "$REMAINING" != "0:00" ]; then
   if [ "$STATUS" = charging ]; then
     TIME_TEXT="$REMAINING until full"
@@ -63,20 +66,6 @@ else
   TIME_TEXT="No estimate"
 fi
 
-# ioreg の AppleSmartBattery からサイクル数と最大容量を取る。
-# BatteryData の巨大な blob 内にも同名キーがあるが、そちらは "Key"=value と
-# 空白が無いため ' = ' 区切りのパターンには引っかからない。
-IOREG="$(ioreg -rn AppleSmartBattery -w0)"
-CYCLES="$(printf '%s\n' "$IOREG" | awk -F' = ' '/"CycleCount" = /{ print $2; exit }')"
-NOMINAL="$(printf '%s\n' "$IOREG" | awk -F' = ' '/"NominalChargeCapacity" = /{ print $2; exit }')"
-DESIGN="$(printf '%s\n' "$IOREG" | awk -F' = ' '/"DesignCapacity" = /{ print $2; exit }')"
-
-if [[ $NOMINAL =~ ^[0-9]+$ && $DESIGN =~ ^[0-9]+$ ]] && [ "$DESIGN" -gt 0 ]; then
-  HEALTH="$((NOMINAL * 100 / DESIGN))%"
-else
-  HEALTH="Unknown"
-fi
-
 sketchybar --set "$NAME" \
   icon="$ICON" \
   icon.color="$COLOR" \
@@ -85,6 +74,4 @@ sketchybar --set "$NAME" \
   background.color="$COLOR_BG" \
   background.drawing=on \
   --set battery.popup.status label="$STATUS_TEXT" \
-  --set battery.popup.time label="$TIME_TEXT" \
-  --set battery.popup.cycles label="Cycles: ${CYCLES:-Unknown}" \
-  --set battery.popup.health label="Health: $HEALTH"
+  --set battery.popup.time label="$TIME_TEXT"

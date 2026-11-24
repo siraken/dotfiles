@@ -6,5 +6,4 @@
 
 SwitchAudioSource -s "$1" -t output >/dev/null 2>&1
 
-sketchybar --set volume popup.drawing=off
-sketchybar --trigger volume_update
+sketchybar --set volume popup.drawing=off --trigger volume_update

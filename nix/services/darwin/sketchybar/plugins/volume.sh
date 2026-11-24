@@ -4,18 +4,42 @@
 # 受け取った値をここに控えておき、スクロール時の基準として使う。
 VOLUME_STATE="${TMPDIR:-/tmp}/sketchybar-volume"
 
-read_volume() {
-  local value
-  value="$(osascript -e 'output volume of (get volume settings)' 2>/dev/null)"
-  case "$value" in
-  '' | *[!0-9]*)
-    value="$(cat "$VOLUME_STATE" 2>/dev/null)"
-    ;;
-  esac
+# `get volume settings` の出力は
+# "output volume:81, input volume:27, alert volume:100, output muted:false"
+# の形式。1 回の osascript 呼び出しから音量とミュート状態を両方取り出す。
+read_volume_settings() {
+  local settings
+  settings="$(osascript -e 'get volume settings' 2>/dev/null)"
+  VOL_SETTING=""
+  MUTED_SETTING=""
+  if [[ $settings =~ output\ volume:[[:space:]]*([0-9]+) ]]; then
+    VOL_SETTING="${BASH_REMATCH[1]}"
+  fi
+  if [[ $settings =~ output\ muted:[[:space:]]*(true|false) ]]; then
+    MUTED_SETTING="${BASH_REMATCH[1]}"
+  fi
+}
+
+read_saved_volume() {
+  local value=""
+  if [ -r "$VOLUME_STATE" ]; then
+    IFS= read -r value <"$VOLUME_STATE" || true
+  fi
   case "$value" in
   '' | *[!0-9]*) return 1 ;;
   esac
   printf '%s' "$value"
+}
+
+save_volume() {
+  local value="$1"
+  local tmp
+  tmp="$(mktemp "${VOLUME_STATE}.XXXXXX" 2>/dev/null)" || return 1
+  if printf '%s\n' "$value" >"$tmp" 2>/dev/null; then
+    mv -f "$tmp" "$VOLUME_STATE" 2>/dev/null || rm -f "$tmp"
+  else
+    rm -f "$tmp"
+  fi
 }
 
 # バーの外にカーソルが出たら popup を閉じる
@@ -28,14 +52,21 @@ fi
 # 音量を変えると volume_change が飛んでくるので、描画はそちらに任せる。
 if [ "$SENDER" = "mouse.scrolled" ]; then
   DIRECTION="$(awk -v d="$SCROLL_DELTA" 'BEGIN { print (d > 0 ? 1 : (d < 0 ? -1 : 0)) }')"
-  if [ "$DIRECTION" != "0" ] && CURRENT="$(read_volume)"; then
-    NEXT=$((CURRENT + DIRECTION * 5))
-    if [ "$NEXT" -lt 0 ]; then
-      NEXT=0
-    elif [ "$NEXT" -gt 100 ]; then
-      NEXT=100
+  if [ "$DIRECTION" != "0" ]; then
+    read_volume_settings
+    CURRENT="$VOL_SETTING"
+    if [ -z "$CURRENT" ]; then
+      CURRENT="$(read_saved_volume)" || CURRENT=""
     fi
-    osascript -e "set volume output volume $NEXT" 2>/dev/null
+    if [ -n "$CURRENT" ]; then
+      NEXT=$((CURRENT + DIRECTION * 5))
+      if [ "$NEXT" -lt 0 ]; then
+        NEXT=0
+      elif [ "$NEXT" -gt 100 ]; then
+        NEXT=100
+      fi
+      osascript -e "set volume output volume $NEXT" 2>/dev/null
+    fi
   fi
   exit 0
 fi
@@ -44,13 +75,23 @@ if [ "$SENDER" = "volume_change" ]; then
   VOLUME="$INFO"
   case "$VOLUME" in
   '' | *[!0-9]*) ;;
-  *) printf '%s' "$VOLUME" >"$VOLUME_STATE" ;;
+  *)
+    # ミュート時は volume_change が 0 を送ってくるため、既存の非ゼロ値を
+    # 0 で上書きしない（未作成時のみ 0 も記録してスクロール基準を確保する）
+    if [ "$VOLUME" -gt 0 ] || [ ! -s "$VOLUME_STATE" ]; then
+      save_volume "$VOLUME"
+    fi
+    ;;
   esac
 else
-  VOLUME="$(read_volume)" || VOLUME=""
-  MUTED="$(osascript -e 'output muted of (get volume settings)' 2>/dev/null)"
-  if [ "$MUTED" = "true" ]; then
+  read_volume_settings
+  if [ "$MUTED_SETTING" = "true" ]; then
     VOLUME=0
+  else
+    VOLUME="$VOL_SETTING"
+    if [ -z "$VOLUME" ]; then
+      VOLUME="$(read_saved_volume)" || VOLUME=""
+    fi
   fi
 fi
 
