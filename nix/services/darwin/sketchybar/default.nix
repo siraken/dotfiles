@@ -221,7 +221,7 @@ in
         --set clock \
           "''${island[@]}" \
           "''${popup_style[@]}" \
-          update_freq=10 \
+          update_freq=30 \
           script="${clockPlugin}" \
           click_script="${clockClickPlugin}" \
         --subscribe clock mouse.exited.global
