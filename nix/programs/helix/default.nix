@@ -10,7 +10,6 @@
       editor = {
         line-number = "relative";
         mouse = true;
-        idle-timeout = 0;
 
         lsp = {
           display-messages = true;
