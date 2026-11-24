@@ -301,6 +301,9 @@ in
       # Spotify と Apple Music を 1 つのアイテムに統合し、操作時は即時更新する。
       # 左クリックで再生/一時停止、右クリックで曲送りの popup を開く。
       #
+      # 再生状態や曲の切り替わりは各アプリが配信する通知で受け取るため、
+      # 定期ポーリングはアプリ終了の取りこぼしを拾うための 30 秒間隔のみ。
+      #
       # 幅は曲名に合わせて伸縮させる（label.width は既定の dynamic）。固定にすると
       # 曲名が短いときに島の右側が間延びするため、代わりに上限をプラグイン側に持たせ、
       # 超えた分を「…」に置き換えている。
@@ -310,15 +313,17 @@ in
       # 左右の padding 8px ずつを足した 220px が最大で、このとき右端 1142 に対して
       # 左端は 896 までしか伸びず、ノッチまで 48px 残る。
       sketchybar --add event media_update
+      sketchybar --add event spotify_change com.spotify.client.PlaybackStateChanged
+      sketchybar --add event music_change com.apple.Music.playerInfo
       sketchybar --add item media right \
         --set media \
           "''${island[@]}" \
           "''${popup_style[@]}" \
           popup.horizontal=on \
-          update_freq=3 \
+          update_freq=30 \
           script="${mediaPlugin} 204" \
           click_script="${mediaClickPlugin} ${mediaControlPlugin}" \
-        --subscribe media media_update mouse.exited.global
+        --subscribe media media_update spotify_change music_change mouse.exited.global
 
       sketchybar --add item media.popup.prev popup.media \
         --set media.popup.prev \
