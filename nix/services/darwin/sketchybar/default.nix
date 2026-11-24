@@ -196,8 +196,8 @@ in
           background.drawing=on
 
       # ワークスペース表示は 1 本のドライバでまとめて更新する（自身は描画しない）。
-      # AeroSpace 側の on-focus-changed / on-focused-monitor-changed からも
-      # aerospace_workspace_change が飛ぶため、定期ポーリングは持たせていない。
+      # AeroSpace 側の on-focus-changed から aerospace_workspace_change が飛ぶため、
+      # 定期ポーリングや front_app_switched の重複購読は持たせていない。
       sketchybar --add item spaces_watcher left \
         --set spaces_watcher \
           drawing=off \
@@ -205,7 +205,6 @@ in
           script="${spacesPlugin} ''${SPACE_IDS[*]}" \
         --subscribe spaces_watcher \
           aerospace_workspace_change \
-          front_app_switched \
           space_windows_change \
           display_change
 
@@ -351,7 +350,6 @@ in
           click_script="${mediaControlPlugin} next"
 
       sketchybar --update
-      sketchybar --trigger aerospace_workspace_change
     '';
   };
 }

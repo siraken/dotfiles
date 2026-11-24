@@ -97,11 +97,6 @@ let
     };
     run = "layout floating";
   };
-
-  # ウィンドウを別ワークスペースへ移してもフォーカス中のワークスペースは変わらないため
-  # exec-on-workspace-change は発火しない。Sketchybar 側のアプリアイコン表示を
-  # 追従させるために、移動系のバインドから明示的にイベントを投げる。
-  sketchybarRefresh = "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change";
 in
 {
   services.aerospace = {
@@ -122,10 +117,16 @@ in
 
       automatically-unhide-macos-hidden-apps = false;
 
-      # ウィンドウの開閉はフォーカス移動を伴うので、これを拾えば Sketchybar の
-      # アプリアイコン表示が追従する。定期ポーリングの保険を持たずに済む。
-      on-focus-changed = [ sketchybarRefresh ];
-      on-focused-monitor-changed = [ sketchybarRefresh ];
+      # AeroSpace の on-focus-changed は (windowId, workspaceName, monitorId) の
+      # いずれかが変わるたびに発火するため、ウィンドウの開閉・フォーカス移動・別ワーク
+      # スペースへのウィンドウ移動・ワークスペース切替・モニタ切替をすべて 1 回で拾える。
+      # exec-on-workspace-change / on-focused-monitor-changed や移動バインドにも同じ
+      # トリガを置くと 1 回の操作で spaces.sh が多重起動するため、ここに一本化している。
+      on-focus-changed = [
+        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change"
+      ];
+      # nix-darwin の既定値（move-mouse monitor-lazy-center）が有効にならないよう空にしておく。
+      on-focused-monitor-changed = [ ];
 
       # Gaps and padding
       gaps = {
@@ -176,42 +177,15 @@ in
         alt-9 = [ "workspace 9" ];
 
         # Move windows to workspaces
-        alt-shift-1 = [
-          "move-node-to-workspace 1"
-          sketchybarRefresh
-        ];
-        alt-shift-2 = [
-          "move-node-to-workspace 2"
-          sketchybarRefresh
-        ];
-        alt-shift-3 = [
-          "move-node-to-workspace 3"
-          sketchybarRefresh
-        ];
-        alt-shift-4 = [
-          "move-node-to-workspace 4"
-          sketchybarRefresh
-        ];
-        alt-shift-5 = [
-          "move-node-to-workspace 5"
-          sketchybarRefresh
-        ];
-        alt-shift-6 = [
-          "move-node-to-workspace 6"
-          sketchybarRefresh
-        ];
-        alt-shift-7 = [
-          "move-node-to-workspace 7"
-          sketchybarRefresh
-        ];
-        alt-shift-8 = [
-          "move-node-to-workspace 8"
-          sketchybarRefresh
-        ];
-        alt-shift-9 = [
-          "move-node-to-workspace 9"
-          sketchybarRefresh
-        ];
+        alt-shift-1 = [ "move-node-to-workspace 1" ];
+        alt-shift-2 = [ "move-node-to-workspace 2" ];
+        alt-shift-3 = [ "move-node-to-workspace 3" ];
+        alt-shift-4 = [ "move-node-to-workspace 4" ];
+        alt-shift-5 = [ "move-node-to-workspace 5" ];
+        alt-shift-6 = [ "move-node-to-workspace 6" ];
+        alt-shift-7 = [ "move-node-to-workspace 7" ];
+        alt-shift-8 = [ "move-node-to-workspace 8" ];
+        alt-shift-9 = [ "move-node-to-workspace 9" ];
 
         # Toggle layout modes
         alt-shift-space = "layout tiles horizontal vertical";
@@ -270,12 +244,6 @@ in
       persistent-workspaces = map toString (lib.range 1 9);
 
       workspace-to-monitor-force-assignment = { };
-
-      exec-on-workspace-change = [
-        "/bin/bash"
-        "-c"
-        "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
-      ];
     };
   };
 
