@@ -1,5 +1,4 @@
 " Static vim config sourced from programs.vim.extraConfig (see #70).
-autocmd!
 
 set encoding=utf-8
 scriptencoding utf-8
@@ -13,7 +12,8 @@ packadd! nohlsearch
 
 syntax enable
 set termguicolors
-colorscheme catppuccin
+" Bundled in Vim 9.2+ (Mocha on dark, Latte on light); guard for older Vim
+silent! colorscheme catppuccin
 
 set signcolumn=yes
 set laststatus=2
@@ -89,4 +89,4 @@ xnoremap <S-Tab> <gv
 " Stay visual mode after formatting
 xnoremap = =gv
 
-let $LANG = 'en_US'
+let $LANG = 'en_US.UTF-8'

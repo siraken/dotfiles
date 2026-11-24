@@ -3,7 +3,7 @@
   programs.vscode = {
     enable = true;
     profiles = {
-      Default = {
+      default = {
         languageSnippets = {
           c = import ./snippets/c.nix;
           cobol = import ./snippets/cobol.nix;
