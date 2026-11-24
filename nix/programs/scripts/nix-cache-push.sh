@@ -45,12 +45,41 @@ nix config show substituters | tr ' ' '\n' | sed '/^$/d; s:/*$::' | sort -u >"$t
 while read -r host; do
   [ -s "$tmp/todo" ] || break
 
-  # curl の -o は URL ごとの指定なので、設定ファイル側に書く必要がある
+  expected="$(wc -l <"$tmp/todo" | tr -d ' ')"
+
+  # curl の -o は URL ごとの指定なので、設定ファイル側に書く必要がある。
+  # リダイレクト後も元の URL からハッシュを取り出せるよう %{url} を使う。
   awk -v h="$host" '{ printf "url = \"%s/%s.narinfo\"\noutput = \"/dev/null\"\n", h, $0 }' \
     "$tmp/todo" >"$tmp/urls.conf"
-  curl -s --parallel --parallel-max 32 -I \
-    -w '%{http_code} %{url_effective}\n' --config "$tmp/urls.conf" >"$tmp/res" || true
-  awk '$1 != "200" { n = split($2, a, "/"); h = a[n]; sub(/\.narinfo$/, "", h); print h }' \
+
+  curl_status=0
+  curl -sS -L --parallel --parallel-max 32 -I \
+    --connect-timeout 10 --max-time 30 --retry 3 \
+    -w '%{http_code} %{url}\n' --config "$tmp/urls.conf" >"$tmp/res" || curl_status=$?
+
+  if [ "$curl_status" -ne 0 ]; then
+    printf 'エラー: %s への問い合わせに失敗しました (curl exit %s)。push を中止します\n' \
+      "$host" "$curl_status" >&2
+    exit 1
+  fi
+
+  received="$(wc -l <"$tmp/res" | tr -d ' ')"
+  if [ "$received" -ne "$expected" ]; then
+    printf 'エラー: %s の応答件数が一致しません (要求 %s / 応答 %s)。push を中止します\n' \
+      "$host" "$expected" "$received" >&2
+    exit 1
+  fi
+
+  # 200 (キャッシュ済み) と 404 (未キャッシュ) 以外は通信・サーバー異常として中断する
+  awk 'NF != 2 || ($1 != "200" && $1 != "404")' "$tmp/res" >"$tmp/errors"
+  if [ -s "$tmp/errors" ]; then
+    printf 'エラー: %s から 200/404 以外の応答が %s 件返りました。push を中止します\n' \
+      "$host" "$(wc -l <"$tmp/errors" | tr -d ' ')" >&2
+    head -n 5 "$tmp/errors" >&2
+    exit 1
+  fi
+
+  awk '$1 == "404" { n = split($2, a, "/"); h = a[n]; sub(/\.narinfo$/, "", h); print h }' \
     "$tmp/res" >"$tmp/next"
   mv "$tmp/next" "$tmp/todo"
 
@@ -66,7 +95,7 @@ grep -F -f "$tmp/todo" "$tmp/closure" >"$tmp/push"
 printf '%s パスを %s へ push します\n' "$(wc -l <"$tmp/push" | tr -d ' ')" "$CACHE"
 
 if command -v op >/dev/null 2>&1; then
-  xargs op plugin run -- cachix push "$CACHE" <"$tmp/push"
+  op plugin run -- cachix push "$CACHE" <"$tmp/push"
 else
-  xargs cachix push "$CACHE" <"$tmp/push"
+  cachix push "$CACHE" <"$tmp/push"
 fi
