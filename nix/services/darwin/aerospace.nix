@@ -44,6 +44,7 @@ let
     video = [
       "DaVinci Resolve"
       "OBS"
+      "OBS Studio"
       "VTube Studio"
     ];
 
@@ -65,7 +66,6 @@ let
       "Steam"
       "Riot Client"
       "League of Legends"
-      "League Of Legends"
       "Minecraft Launcher"
       "java"
       "Godot"
@@ -88,9 +88,12 @@ let
   allUnmanagedApps = lib.flatten (lib.attrValues unmanagedApps);
 
   # AeroSpace on-window-detected ルールを生成
+  # app-name-regex-substring は大文字小文字を区別しない部分一致のため、
+  # 意図しないアプリ ("Dia" や "OBS" が "Obsidian" に一致するなど) を
+  # 巻き込まないよう ^...$ で完全一致に固定し、正規表現メタ文字もエスケープする。
   mkWindowRule = app: {
     "if" = {
-      app-name-regex-substring = app;
+      app-name-regex-substring = "^${lib.escapeRegex app}$";
     };
     run = "layout floating";
   };
