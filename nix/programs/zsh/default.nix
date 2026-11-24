@@ -9,11 +9,17 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    # Resolve symlinks in fpath and drop missing entries before compinit so
+    # `typeset -U fpath` collapses identical Nix store targets (otherwise Nix's
+    # zsh sees its own functions dir three times: ~/.nix-profile,
+    # /run/current-system/sw, and its built-in store path).
+    #
     # Key the completion dump by $ZSH_VERSION under XDG_CACHE_HOME. On macOS
     # Apple's /bin/zsh (5.9) and Nix's zsh (5.9.2) both run on the same host
     # (login shell vs. tools invoking pkgs.zsh); sharing one .zcompdump causes
     # a full ~0.8-1.5 s rebuild whenever the other version runs.
     completionInit = ''
+      fpath=(''${^fpath}(N-/:A))
       [[ -d "${config.xdg.cacheHome}/zsh" ]] || mkdir -p "${config.xdg.cacheHome}/zsh"
       autoload -U compinit && compinit -d "${config.xdg.cacheHome}/zsh/zcompdump-$ZSH_VERSION"
     '';
