@@ -180,7 +180,20 @@ in
     ];
 
     ignores = ignoreFiles;
+
+    # GitHub Desktop runs its bundled `git lfs install` on launch. When the
+    # filter.lfs.* values are missing or differ from what it writes, it tries to
+    # rewrite the read-only, store-linked ~/.config/git/config and fails.
+    # A null package makes the module write the bare `git-lfs` command, which
+    # matches; with a package set it writes an absolute store path instead.
+    lfs = {
+      enable = true;
+      package = null;
+    };
   };
+
+  # Installed separately because `lfs.package` is null (see above).
+  home.packages = [ pkgs.git-lfs ];
 
   # Per-client identity, credential confinement and `.envrc` files. secrets.toml
   # is read at *activation* time, never during evaluation, so the flake stays
