@@ -128,18 +128,6 @@ in
 
       commit.gpgsign = pkgs.stdenv.hostPlatform.isDarwin || isWSL;
 
-      # Git LFS filters, written exactly as `git lfs install` writes them.
-      # GitHub Desktop runs its bundled `git lfs install` on launch and, when
-      # these differ or are missing, tries to write them into the read-only,
-      # store-linked ~/.config/git/config. `programs.git.lfs.enable` is not
-      # used because it writes absolute store paths, which never match.
-      filter.lfs = {
-        clean = "git-lfs clean -- %f";
-        smudge = "git-lfs smudge -- %f";
-        process = "git-lfs filter-process";
-        required = true;
-      };
-
       # Scan staged changes for secrets in every repository. A config-defined
       # hook (git >= 2.54) runs in addition to the repository's own
       # .git/hooks/pre-commit (e.g. git-hooks.nix), which core.hooksPath would
@@ -192,8 +180,19 @@ in
     ];
 
     ignores = ignoreFiles;
+
+    # GitHub Desktop runs its bundled `git lfs install` on launch. When the
+    # filter.lfs.* values are missing or differ from what it writes, it tries to
+    # rewrite the read-only, store-linked ~/.config/git/config and fails.
+    # A null package makes the module write the bare `git-lfs` command, which
+    # matches; with a package set it writes an absolute store path instead.
+    lfs = {
+      enable = true;
+      package = null;
+    };
   };
 
+  # Installed separately because `lfs.package` is null (see above).
   home.packages = [ pkgs.git-lfs ];
 
   # Per-client identity, credential confinement and `.envrc` files. secrets.toml
